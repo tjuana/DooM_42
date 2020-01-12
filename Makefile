@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/12 16:51:14 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/12 19:57:21 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = DooM_nuKem
 EDITOR_NAME = map_editor
-USERNAME = tjuana
+USERNAME = dorange-
 
 FLAGS = -g -O3 
 CC = gcc
@@ -80,7 +80,7 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 
 
 EDITOR_SRCS_DIRECTORY = ./src/editor/
-EDITOR_SRCS_LIST = editor.c render.c map.c events.c mouse.c draw.c init.c neighbors.c editor_debug.c
+EDITOR_SRCS_LIST = editor.c render.c map.c events.c mouse.c draw.c init.c neighbors.c editor_debug.c editor_threads.c
 
 EDITOR_OBJS_DIRECTORY = ./obj_editor/
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))

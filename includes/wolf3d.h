@@ -3,7 +3,7 @@
 # define WIN_HEIGHT 1080
 # define WIN_WIDTH 1920
 # define TEXTURES_NUMBER 23
-# define THREADS 1
+# define THREADS 10
 # define TEX_W 64
 # define TEX_H 64
 # define ONE_ANIM 20
@@ -39,6 +39,14 @@
 //# include "matrix/sdl.h"
 //# include "matrix/fdf.h"
 # include "algebra.h" // math library for matrix transform
+
+typedef struct			f_ui_elem
+{
+	t_vector3			v1;	// left top point
+	t_vector3			v2; // right bottom point
+	int					w;	// frame width
+	int					h;	// frame height
+}						t_ui_elem;
 
 // new struct for sector
 typedef struct			s_sector
@@ -223,6 +231,7 @@ typedef struct			s_wolf3d
 	int					sector_count;
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
+	t_ui_elem			ui_map;
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -256,6 +265,15 @@ typedef struct			s_thread_help
 	int					text_y;
 	int					temp;
 	int					half_height;
+
+
+	// new for map
+	t_vector3			mouse_pos;
+	int					sector_status; // 0: nothing; 1: set new sector
+	int					sector_count;
+	int					status; // game status: 0: error; 1: map editor; 2: game
+
+	t_ui_elem			ui_map;
 }						t_threads_help;
 
 typedef struct			s_threads
@@ -458,7 +476,7 @@ void			ft_editor_delete_last_vertex(t_wolf3d *w);
 
 int				ft_editor_map_check_area(t_wolf3d *w);
 
-int				ft_sector_check_sector(t_wolf3d *w);
+int				ft_sector_check_sector(void *a, t_vector3 v);
 int				ft_sector_check_cross(t_wolf3d *w, t_sector *ptr_sector, t_vector3 v);
 
 int				ft_editor_sector_compare_vertexes(t_vector3 v1, t_vector3 v2);
@@ -471,5 +489,9 @@ int				ft_editor_sector_search_neighbors(t_wolf3d *w, t_sector *sector);
 
 // editor/editor_debug.c
 void			ft_editor_sector_special_debug(t_list *ptr_list);
+
+int				ft_editor_check_event_area_map(t_wolf3d *w, t_vector3 v);
+
+void			ft_editor_threading(t_wolf3d *w);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:40:14 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/10 19:28:44 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/12 19:17:18 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,15 @@ void		ft_we_need_more_init(t_wolf3d *w)
 	w->arr[9] = 0;
 }
 
+void		ft_init_multi_wolf_for_sector(t_threads_help *w, t_wolf3d *head)
+{
+	w->mouse_pos = head->mouse_pos;
+	w->sector_status = head->sector_status;
+	w->sector_count = head->sector_count;
+	w->status = head->status;
+	w->ui_map = head->ui_map;
+}
+
 void		ft_init_multi_wolf(t_threads_help *w, t_wolf3d *head)
 {
 	w->sdl = head->sdl;
@@ -125,4 +134,6 @@ void		ft_init_multi_wolf(t_threads_help *w, t_wolf3d *head)
 	w->sector = head->sector;
 	w->fov = head->fov;
 	w->l_p = head->l_p;
+
+	ft_init_multi_wolf_for_sector(w, head);
 }

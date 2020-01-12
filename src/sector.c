@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 16:27:33 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 11:36:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/12 20:20:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int		ft_sector_check_cross(t_wolf3d *w, t_sector *ptr_sector, t_vector3 v)
 			// 	return (1);
 			// }
 			// else
-				return (0);
+			return (0);
 		}
 
 		if (ft_check_point_in_line_segment(v, vertex3, vertex4))
@@ -203,11 +203,14 @@ int		ft_sector_check_cross(t_wolf3d *w, t_sector *ptr_sector, t_vector3 v)
 	return (1);
 }
 
-int		ft_sector_check_sector(t_wolf3d *w)
+int		ft_sector_check_sector(void *a, t_vector3 v)
 {
+	t_wolf3d	*w;
 	t_list		*ptr_list;
 	t_sector	*ptr_sector;
 	int			i;
+
+	w = (t_wolf3d*)a;
 
 	// printf("check...\n");
 	ptr_list = w->sector;
@@ -224,7 +227,7 @@ int		ft_sector_check_sector(t_wolf3d *w)
 		}
 		// printf("CHECK SECTOR #%d\n", i);
 
-		if (ft_sector_check_cross(w, ptr_sector, w->mouse_pos))
+		if (ft_sector_check_cross(w, ptr_sector, v))
 			return (i + 1);
 
 		ptr_list = ptr_list->next;

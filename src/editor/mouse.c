@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 15:46:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/12 18:59:41 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ void	ft_editor_mouse_move_map(t_wolf3d *w)
 		w->mouse_vertex = (t_vector3){0, 0, 0, 0};
 }
 
+int		ft_editor_check_event_area_map(t_wolf3d *w, t_vector3 v)
+{
+	if (
+		(int)v.x >= w->ui_map.v1.x - 4 &&
+		(int)v.x < w->ui_map.v2.x + 4 &&
+		(int)v.y >= w->ui_map.v1.y - 4 &&
+		(int)v.y < w->ui_map.v2.y + 4
+	)
+		return (1);
+	return (0);
+}
+
 void	ft_editor_mouse_move(t_wolf3d *w, SDL_Event e)
 {
 	int			x;
@@ -55,11 +67,10 @@ void	ft_editor_mouse_move(t_wolf3d *w, SDL_Event e)
 	w->mouse_pos = (t_vector3){x, y, 0, 0};
 	w->mouse_vertex = (t_vector3){0, 0, 0, 0};
 
-	// check screen areas
-	if (x >= WIN_WIDTH - 100 || y >= WIN_HEIGHT - 100)
-		return ;
-	else
+	if (ft_editor_check_event_area_map(w, w->mouse_pos))
 		ft_editor_mouse_move_map(w);
+	else
+		return ;		
 }
 
 void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v)
@@ -169,7 +180,7 @@ int		ft_editor_map_check_area(t_wolf3d *w)
 
 	if (w->sector == NULL)
 		return (1);
-	if (ft_sector_check_sector(w)) // check sector intersect
+	if (ft_sector_check_sector(w, w->mouse_pos)) // check sector intersect
 		return (0);
 
 	sector = w->sector->content;

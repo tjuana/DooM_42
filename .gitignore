@@ -62,6 +62,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .DS_Store
-Doom
+DooM_nuKem
 wolf3d
 *.txt
