@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/12 16:23:18 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/12 16:51:14 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = wolf3d
+NAME = DooM_nuKem
 EDITOR_NAME = map_editor
-USERNAME = dorange-
+USERNAME = tjuana
 
 FLAGS = -g -O3 
 CC = gcc
@@ -32,18 +32,6 @@ HEADERS_LIST = wolf3d.h
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 DIRECTORY =  $(shell pwd)
-
-SDL_DIRECTORY = $(DIRECTORY)/lib
-SDL_MAKE = $(DIRECTORY)/SDL2
-
-LIB_LIST =	libSDL2.a\
-			libSDL2.la\
-			libSDL2_test.la\
-			libSDL2main.la\
-			libSDL2-2.0.0.dylib\
-			libSDL2.dylib\
-			libSDL2_test.a\
-			libSDL2main.a
 
 PARSER_DIRECTORY = ./src/parser/
 PARSER_LIST = parser_func.c parser_nnmp_sector.c parser_nnmp.c parser_vertex.c
@@ -115,7 +103,6 @@ RESET = \033[0m
 all: $(NAME) $(EDITOR_NAME)
 
 
-
 $(NAME): $(LIBFT) $(OBJS_DIRECTORY) $(PARSER_OBJS_DIRECTORY) $(MAIN_OBJS_DIRECTORY) $(OBJS) $(PARSER_OBJS) $(MAIN_OBJS)
 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJS) $(MAIN_OBJS) $(PARSER_OBJS) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
@@ -161,10 +148,6 @@ $(EDITOR_OBJS_DIRECTORY)%.o : $(EDITOR_SRCS_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
-$(SDL_LIBS):
-	cd SDL2; ./configure --prefix=$(DIRECTORY); make;
-	$(MAKE) -sC $(SDL_MAKE) install
-
 $(LIBFT):
 	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"
 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
@@ -176,8 +159,6 @@ clean:
 	@rm -rf $(PARSER_OBJS_DIRECTORY)
 	@echo "$(NAME): $(RED)$(PARSER_OBJS_DIRECTORY) was deleted$(RESET)"
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
-	@$(MAKE) -sC $(SDL_MAKE) clean
-	@echo "$(SDL_MAKE): $(RED)object files were deleted$(RESET)"
 
 dd:
 	rm $(NAME)
@@ -187,16 +168,6 @@ fclean: clean
 	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
 	@rm -f $(NAME)
 	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
-	@rm -f $(DIRECTORY)/bin/sdl2-config
-	@rm -f $(DIRECTORY)/lib/libSDL2.la
-	@rm -f $(DIRECTORY)/lib/libSDL2main.la
-	@rm -f $(DIRECTORY)/lib/libSDL2_test.la
-	@rm -f $(DIRECTORY)/share/aclocal/sdl2.m4
-	@rm -f $(DIRECTORY)/lib/pkgconfig/sdl2.pc
-	@rm -f $(DIRECTORY)/lib/cmake/SDL2/sdl2-config.cmake
-	@rm -rf lib bin share
-	@echo "$(SDL_MAKE): $(RED)was unistalled$(RESET)"
-
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
