@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 13:30:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:51:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,6 +314,7 @@ void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
 			{
 				sector->status = 1;
 				w->sector_status = 0;
+				ft_editor_init_sectors_item_area(w, sector);
 			}
 		}
 

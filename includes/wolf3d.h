@@ -89,6 +89,8 @@ typedef struct			s_sector
 	int					txtr_ceil;		// Номер текстуры сектора (?)
 	int					color;			// Цвет сектора (for map editor)
 	int					status;			// 0: broken line; 1: polygon
+
+	t_ui_elem			elem_2d;		// Сектор как элемент ui
 }						t_sector;
 
 typedef struct			s_sort_util	// Структура для спрайтов (?)
@@ -513,6 +515,8 @@ int				ft_editor_sector_compare_vertexes(t_vector3 v1, t_vector3 v2);
 void			ft_editor_init(t_wolf3d *w);
 void			ft_editor_init_fonts(t_wolf3d *w);
 void			ft_editor_close_fonts(t_wolf3d *w);
+void			ft_editor_init_sectors_areas(t_wolf3d *w, t_list *sector);
+void			ft_editor_init_sectors_item_area(t_wolf3d *w, t_sector *s);
 
 // editor/neighbors.c
 int				ft_editor_sector_search_neighbors(t_wolf3d *w, t_sector *sector);

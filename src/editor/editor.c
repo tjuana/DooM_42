@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 14:24:37 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:41:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		main(int c, char **v)
 	w.sdl = sdl_init(w.sdl);
 	ft_init_wolf(&w);
 	ft_editor_init_fonts(&w);
+	ft_editor_init_sectors_areas(&w, w.sector);
 
 	ft_load_textures(&w);
 	ft_init_anim(&w);
