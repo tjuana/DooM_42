@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 14:54:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:30:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,50 @@ void	ft_editor_draw_line(t_wolf3d *w)
 			0x333333 \
 		);
 		i += 32;
+	}
+}
+
+t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
+{
+	t_sector	*sector;
+	while (list)
+	{
+		sector = list->content;
+		if (sector->id == i)
+			return ((t_sector*)(list->content));
+		list = list->next;
+	}
+	return (NULL);
+}
+
+void	ft_editor_map_fill_active_sector(t_wolf3d *w, t_vector3 v)
+{
+	int			n;
+	int			x;
+	int			y;
+	int			pos;
+	int			color;
+	t_sector	*sector;
+
+	n = ft_sector_check_sector(w, v);
+	if (n == 0)
+		return ;
+	sector = ft_editor_search_sector_by_id(w, w->sector, n);
+	y = sector->elem_2d.v1.y;
+	while (y <= sector->elem_2d.v2.y)
+	{
+		x = sector->elem_2d.v1.x;
+		while (x <= sector->elem_2d.v2.x)
+		{
+			if (ft_sector_check_cross(w, sector, (t_vector3){x, y, 0, 0}))
+			{
+				pos = x + (y * WIN_WIDTH);
+				color = ft_fdf_get_color(0xffff00, (int)w->sdl->pixels[pos], 0.7);
+				w->sdl->pixels[pos] = color;
+			}
+			x++;
+		}
+		y++;
 	}
 }
 
@@ -140,6 +184,7 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 	if (ft_editor_check_event_area_map(wolf, wolf->mouse_pos))
 	{
 		ft_editor_draw_mouse_vertex(wolf);
+		ft_editor_map_fill_active_sector(wolf, wolf->mouse_pos);
 		if (wolf->sector_status == 1)
 		{
 			if (!ft_sector_check_sector(wolf, wolf->mouse_pos))

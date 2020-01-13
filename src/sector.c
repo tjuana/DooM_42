@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 16:27:33 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 20:20:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:31:34 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ int		ft_sector_check_sector(void *a, t_vector3 v)
 		// printf("CHECK SECTOR #%d\n", i);
 
 		if (ft_sector_check_cross(w, ptr_sector, v))
-			return (i + 1);
+			return (ptr_sector->id);
 
 		ptr_list = ptr_list->next;
 		i++;
