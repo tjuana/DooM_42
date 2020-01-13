@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 12:07:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 18:26:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 20:38:34 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,23 @@ void		ft_editor_init_fonts(t_wolf3d *w)
 		ft_error("FONT ERROR (0)");
 }
 
+void		ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent)
+{
+	child->parent = parent;
+	child->pos.top = child->v1.y - parent->v1.y;
+	child->pos.bottom = parent->v2.y - child->v2.y;
+	child->pos.left = child->v1.x - parent->v1.x;
+	child->pos.right = parent->v2.x - child->v2.x;
+}
+
+void		ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent)
+{
+	child->v1.x = parent->v1.x + child->pos.left;
+	child->v1.y = parent->v1.y + child->pos.top;
+	child->v2.x = parent->v2.x - child->pos.right;
+	child->v2.y = parent->v2.y - child->pos.bottom;
+}
+
 void		ft_editor_init_ui_elem(t_ui_elem *elem, t_ui_coord v1, t_ui_coord v2, int status)
 {
 	if (elem == NULL)
@@ -93,6 +110,11 @@ void		ft_editor_init_ui_elem(t_ui_elem *elem, t_ui_coord v1, t_ui_coord v2, int 
 	elem->h = elem->v2.y - elem->v1.y;
 	elem->status = status;
 	elem->trigger = 0;
+	elem->parent = NULL;
+	elem->pos.top = 0;
+	elem->pos.bottom = 0;
+	elem->pos.left = 0;
+	elem->pos.right = 0;
 }
 
 /*
@@ -116,6 +138,7 @@ void		ft_editor_init(t_wolf3d *w)
 	ft_editor_init_ui_elem(&w->ui_act_s_ceil, (t_ui_coord){1740, 20, 0}, (t_ui_coord){1900, 50, 0}, 1);
 	ft_editor_init_ui_elem(&w->ui_txtr_opt, (t_ui_coord){1430, 20, 0}, (t_ui_coord){1730, 220, 0}, 0);
 	ft_editor_init_ui_elem(&w->ui_txtr_opt_close, (t_ui_coord){1709, 20, 0}, (t_ui_coord){1725, 36, 0}, 0);
+	ft_editor_init_ui_child_elem(&w->ui_txtr_opt_close, &w->ui_txtr_opt);
 
 	w->act_s = NULL;
 }

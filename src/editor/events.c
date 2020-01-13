@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:58:22 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 14:13:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 19:01:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ void			ft_editor_handle_events(t_wolf3d *w)
 			e.key.keysym.scancode == SDL_SCANCODE_T ? w->arr[8] = 0 : 0;
 			e.key.keysym.scancode == SDL_SCANCODE_G ? w->arr[9] = 0 : 0;
 		}
-		if (e.type == SDL_MOUSEMOTION)
-			ft_editor_mouse_move(w, e);
 		if (e.type == SDL_MOUSEBUTTONDOWN)
 			ft_editor_mouse_click(w, e);
+		if (e.type == SDL_MOUSEBUTTONUP)
+			ft_editor_mouse_btn_up(w, e);
+		if (e.type == SDL_MOUSEMOTION)
+			ft_editor_mouse_move(w, e);
 	}
 }
 

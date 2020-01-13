@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 18:10:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:47:18 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,8 @@ void		ft_editor_draw_txtr_opt_elem_font(t_wolf3d *w)
 
 void	ft_editor_renderer(t_wolf3d *wolf)
 {
+	// init some values
+
 	ft_bzero(wolf->sdl->pixels, 4 * WIN_WIDTH * WIN_HEIGHT);
 	SDL_SetRenderDrawColor(wolf->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(wolf->sdl->renderer);

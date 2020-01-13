@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 16:47:16 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:49:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ int		main(int c, char **v)
 	fpsinit();
 	while (w.sdl->running)
 	{
-		ft_editor_renderer(&w);
 		ft_editor_handle_events(&w);
 		ft_editor_use_events(&w);
+		ft_editor_renderer(&w);
+		
+		// init some value
+		// w.ui_txtr_opt.trigger = 0;
+
 		// fpsthink();
 	}
 	ft_editor_close_fonts(&w);

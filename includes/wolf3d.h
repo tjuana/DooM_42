@@ -60,6 +60,14 @@ typedef struct			s_font
 	int					half_menu;
 }						t_font;
 
+typedef	struct			s_ui_pos		// позиционирование
+{
+	int					top;
+	int					bottom;
+	int					left;
+	int					right;
+}						t_ui_pos;
+
 typedef struct			s_ui_coord
 {
 	int					x;
@@ -67,14 +75,18 @@ typedef struct			s_ui_coord
 	int					w; // element diameter
 }						t_ui_coord;
 
-typedef struct			f_ui_elem
+typedef struct			s_ui_elem
 {
 	t_ui_coord			v1;				// left top point
 	t_ui_coord			v2;				// right bottom point
+	// t_ui_coord			r1;				// restriction
+	// t_ui_coord			r2;				// ...
 	int					w;				// frame width
 	int					h;				// frame height
 	int					status;			// element status: 0: disable, 1: block
 	int					trigger;		// element trigger: 0: static, 1: hover, 2: click, 3: active, 4: disabled
+	struct s_ui_elem	*parent;		// parent element
+	t_ui_pos			pos;			// position: top, bottom, left, right
 }						t_ui_elem;
 
 // new struct for sector
@@ -551,5 +563,10 @@ void			ft_editor_mouse_move_act_s_mark(t_wolf3d *w);
 void			ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color);
 
 int				ft_editor_check_event_area(t_vector3 v, t_ui_elem c);
+
+void			ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e);
+
+void			ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent);
+void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:24:13 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/13 17:28:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 19:16:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void		ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color)
 	int		x;
 	int		y;
 
-	y = elem.v1.y;
-	while (y <= elem.v2.y)
+	y = elem.v1.y >= 0 ? elem.v1.y : 0;
+	while (y <= elem.v2.y && y < WIN_HEIGHT)
 	{
-		x = elem.v1.x;
-		while (x <= elem.v2.x)
+		x = elem.v1.x >= 0 ? elem.v1.x : 0;
+		while (x <= elem.v2.x && x < WIN_WIDTH)
 		{
 			w->sdl->pixels[x + (y * WIN_WIDTH)] = color;
 			x++;

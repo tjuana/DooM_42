@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 18:22:41 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 20:42:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,8 +290,14 @@ void	ft_editor_mouse_click_txtr_opt_close(t_wolf3d *w, SDL_Event e)
 
 void	ft_editor_mouse_click_txtr_opt(t_wolf3d *w, SDL_Event e)
 {
+	w->ui_txtr_opt.trigger = 2;
 	return ;
-	// w->ui_txtr_opt->status = 0;
+}
+
+void	ft_editor_mouse_btn_up_txtr_opt(t_wolf3d *w, SDL_Event e)
+{
+	w->ui_txtr_opt.trigger = 0;
+	return ;
 }
 
 void	ft_editor_mouse_click_map(t_wolf3d *w, SDL_Event e)
@@ -379,10 +385,33 @@ void	ft_editor_mouse_click_act_s(t_wolf3d *w, SDL_Event e)
 		w->txtr_opt_type = 2;
 }
 
-// void	ft_editor_mouse_move_txtr_opt_close(t_wolf3d *w, SDL_Event e)
-// {
-// 	w->ui_txtr_opt_close.trigger = 1;
-// }
+void	ft_editor_ui_elem_add_offset(t_wolf3d *w, t_ui_elem *elem, int xrel, int yrel)
+{
+	if (elem->w > WIN_WIDTH || elem->h > WIN_HEIGHT)
+		return ;
+	elem->v1 = (t_ui_coord){elem->v1.x + xrel, elem->v1.y + yrel, 0};
+	elem->v2 = (t_ui_coord){elem->v2.x + xrel, elem->v2.y + yrel, 0};
+
+	if (elem->v1.x < 0)
+		ft_editor_ui_elem_add_offset(w, elem, -elem->v1.x, 0);
+	if (elem->v2.x > WIN_WIDTH)
+		ft_editor_ui_elem_add_offset(w, elem, (WIN_WIDTH - elem->v2.x), 0);
+
+	if (elem->v1.y < 0)
+		ft_editor_ui_elem_add_offset(w, elem, 0, -elem->v1.y);
+	if (elem->v2.y > WIN_HEIGHT)
+		ft_editor_ui_elem_add_offset(w, elem, 0, (WIN_HEIGHT - elem->v2.y));
+}
+
+void	ft_editor_mouse_move_txtr_opt(t_wolf3d *w, SDL_Event e)
+{
+	if (w->ui_txtr_opt.trigger == 2)
+	{
+		ft_editor_ui_elem_add_offset(w, &w->ui_txtr_opt, e.motion.xrel, e.motion.yrel);
+		ft_editor_init_ui_elem_reset(&w->ui_txtr_opt_close, &w->ui_txtr_opt);
+		// ft_editor_ui_elem_add_offset(w, &w->ui_txtr_opt_close, e.motion.xrel, e.motion.yrel);
+	}
+}
 
 void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
 {
@@ -406,6 +435,23 @@ void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
 		ft_editor_mouse_click_map(w, e);
 }
 
+void	ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e)
+{
+	int			x;
+	int			y;
+
+	x = 0;
+	y = 0;
+	SDL_GetMouseState(&x, &y);
+	w->mouse_pos = (t_vector3){x, y, 0, 0};
+	w->mouse_vertex = (t_vector3){0, 0, 0, 0};
+
+	w->ui_txtr_opt.trigger = 0;
+
+	if (ft_editor_check_event_area(w->mouse_pos, w->ui_txtr_opt))
+		ft_editor_mouse_btn_up_txtr_opt(w, e);
+}
+
 void	ft_editor_mouse_move(t_wolf3d *w, SDL_Event e)
 {
 	int			x;
@@ -418,7 +464,9 @@ void	ft_editor_mouse_move(t_wolf3d *w, SDL_Event e)
 	w->mouse_vertex = (t_vector3){0, 0, 0, 0};
 
 	if (ft_editor_check_event_area(w->mouse_pos, w->ui_txtr_opt_close))
-		return ;		
+		return ;
+	if (ft_editor_check_event_area(w->mouse_pos, w->ui_txtr_opt))
+		ft_editor_mouse_move_txtr_opt(w, e);
 		// ft_editor_mouse_move_txtr_opt_close(w, e);
 	// else if (ft_editor_check_event_area(w->mouse_pos, w->ui_txtr_opt))
 	// 	ft_editor_mouse_move_txtr_opt(w, e);
