@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 16:57:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:10:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void		ft_editor_font_draw_sector_item(t_wolf3d *w, t_sector *sector, t_ui_coord 
 	char	*str;
 
 	ft_font_preset_sc(w, 18, sector->color);
-	ft_font_putstr_sdl(w, "Sector", c);\
+	ft_font_putstr_sdl(w, "Sector", c);
 
 	c.x += 70;
 	str = ft_itoa(sector->id);
@@ -227,6 +227,30 @@ void	ft_editor_draw_sector_to_elem(t_wolf3d *w, t_sector *s)
 	// );
 }
 
+void		ft_editor_draw_txtr_opt_elem_draw(t_wolf3d *w)
+{
+	if (w->ui_txtr_opt.status == 0)
+		return ;
+	ft_editor_fill_elem(w, w->ui_txtr_opt, 0xffffff);
+	if (ft_editor_check_event_area(w->mouse_pos, w->ui_txtr_opt_close))
+		ft_editor_fill_elem(w, w->ui_txtr_opt_close, 0xff2400);
+	else
+		ft_editor_fill_elem(w, w->ui_txtr_opt_close, 0xcc0605);
+}
+
+void		ft_editor_draw_txtr_opt_elem_font(t_wolf3d *w)
+{
+	t_ui_coord	c;
+
+	if (w->ui_txtr_opt.status == 0)
+		return ;
+	c = w->ui_txtr_opt.v1;
+	c.x += 5;
+	c.y += 5;
+	ft_font_preset_sc(w, 14, 0x333333);
+	ft_font_putstr_sdl(w, "Select a texture:", c);
+}
+
 /*
 ** **************************************************************************
 **	void ft_editor_renderer(t_wolf3d *wolf)
@@ -260,10 +284,17 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 		}
 	}
 
+	ft_editor_draw_txtr_opt_elem_draw(wolf);
+
 	SDL_UpdateTexture(wolf->sdl->text, 0, wolf->sdl->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(wolf->sdl->renderer, wolf->sdl->text, NULL, NULL);
+
 	ft_editor_font_draw_sector_list(wolf, wolf->sector, 0); // draw sector list
 	ft_editor_mouse_move_act_s_mark(wolf); // mark
+	ft_editor_draw_txtr_opt_elem_font(wolf);
+
+	// ft_editor_draw_txtr_opt_elem_draw(wolf); // mark
+
 	// TTF_CloseFont(wolf->sdl->font.ptr);
 	SDL_RenderPresent(wolf->sdl->renderer);
 }

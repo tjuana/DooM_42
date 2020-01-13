@@ -73,7 +73,8 @@ typedef struct			f_ui_elem
 	t_ui_coord			v2;				// right bottom point
 	int					w;				// frame width
 	int					h;				// frame height
-	int					status;			// element status: 0: disable, 1: active
+	int					status;			// element status: 0: disable, 1: block
+	int					trigger;		// element trigger: 0: static, 1: hover, 2: click, 3: active, 4: disabled
 }						t_ui_elem;
 
 // new struct for sector
@@ -268,6 +269,10 @@ typedef struct			s_wolf3d
 	t_ui_elem			ui_act_s_wall;
 	t_ui_elem			ui_act_s_ceil;
 	t_sector			*act_s;		// Просматриваемый сектор: если нет, то NULL
+
+	t_ui_elem			ui_txtr_opt;
+	t_ui_elem			ui_txtr_opt_close;
+	int					txtr_opt_type;	// 0: floor, 1: wall, 2: ceil
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -485,7 +490,7 @@ int				ft_parser_get_param(char *line, char *needly);
 
 void			ft_editor_renderer(t_wolf3d *wolf);
 
-void			ft_editor_fill_frame(t_wolf3d *w);
+// void			ft_editor_fill_frame(t_wolf3d *w);
 int				ft_editor_check_line_for_map(t_vector3 p1, t_vector3 p2);
 double			ft_editor_get_angle(double sin, double cos);
 void			ft_editor_map_transform_vertexes(t_wolf3d *w, t_sector *ptr_sector, t_sector *ptr_sector_origin, double diff);
@@ -542,5 +547,9 @@ void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
 t_sector		*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i);
 
 void			ft_editor_mouse_move_act_s_mark(t_wolf3d *w);
+
+void			ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color);
+
+int				ft_editor_check_event_area(t_vector3 v, t_ui_elem c);
 
 #endif

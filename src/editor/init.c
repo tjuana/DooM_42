@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 12:07:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 17:06:16 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:26:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void		ft_editor_init_ui_elem(t_ui_elem *elem, t_ui_coord v1, t_ui_coord v2, int 
 	elem->w = elem->v2.x - elem->v1.x;
 	elem->h = elem->v2.y - elem->v1.y;
 	elem->status = status;
+	elem->trigger = 0;
 }
 
 /*
@@ -106,12 +107,15 @@ void		ft_editor_init(t_wolf3d *w)
 	w->mouse_pos = (t_vector3){0, 0, 0, 0};
 	w->status = 1;
 	w->sector_count = 0;
+	w->txtr_opt_type = 1;
 
 	ft_editor_init_ui_elem(&w->ui_map, (t_ui_coord){20, 20, 0}, (t_ui_coord){1720, 1060, 0}, 1);
 	ft_editor_init_ui_elem(&w->ui_act_s, (t_ui_coord){1740, 20, 0}, (t_ui_coord){1900, 180, 0}, 1);
 	ft_editor_init_ui_elem(&w->ui_act_s_floor, (t_ui_coord){1740, 150, 0}, (t_ui_coord){1900, 180, 0}, 1);
 	ft_editor_init_ui_elem(&w->ui_act_s_wall, (t_ui_coord){1740, 50, 0}, (t_ui_coord){1900, 150, 0}, 1);
 	ft_editor_init_ui_elem(&w->ui_act_s_ceil, (t_ui_coord){1740, 20, 0}, (t_ui_coord){1900, 50, 0}, 1);
+	ft_editor_init_ui_elem(&w->ui_txtr_opt, (t_ui_coord){1430, 20, 0}, (t_ui_coord){1730, 220, 0}, 0);
+	ft_editor_init_ui_elem(&w->ui_txtr_opt_close, (t_ui_coord){1709, 20, 0}, (t_ui_coord){1725, 36, 0}, 0);
 
 	w->act_s = NULL;
 }

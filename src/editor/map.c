@@ -6,25 +6,24 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:24:13 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/12 11:52:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 17:28:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void		ft_editor_fill_frame(t_wolf3d *w)
+void		ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color)
 {
 	int		x;
 	int		y;
-	int		pos;
 
-	y = w->view_map.place.y;
-	while (y < w->view_map.pframe.size.y + w->view_map.place.y)
+	y = elem.v1.y;
+	while (y <= elem.v2.y)
 	{
-		x = w->view_map.place.x;
-		while (x < w->view_map.pframe.size.x + w->view_map.place.x)
+		x = elem.v1.x;
+		while (x <= elem.v2.x)
 		{
-			w->sdl->pixels[x + (y * WIN_WIDTH)] = 0x000000;
+			w->sdl->pixels[x + (y * WIN_WIDTH)] = color;
 			x++;
 		}
 		y++;
