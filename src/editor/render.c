@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 15:30:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 16:57:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void		ft_editor_font_draw_sector_item(t_wolf3d *w, t_sector *sector, t_ui_coord 
 	ft_font_putstr_sdl(w, str, c);
 	free(str);
 
-	c.x += 40;
+	c.x += 25;
 	ft_font_putstr_sdl(w, "height:", c);
 
 	c.x += 55;
@@ -156,9 +156,75 @@ void		ft_editor_font_draw_sector_list(t_wolf3d *w, t_list *sector, int i)
 	if (sector)
 	{
 		ft_editor_font_draw_sector_list(w, sector->next, i + 1);
-		c = (t_ui_coord){1740, 100 + i * 50, 0};
+		c = (t_ui_coord){1740, 200 + i * 50, 0};
 		ft_editor_font_draw_sector_item(w, (t_sector*)sector->content, c);
 	}
+}
+
+void	ft_editor_draw_sector_to_elem(t_wolf3d *w, t_sector *s)
+{
+	int	x;
+	int	y;
+	int	pos;
+	int	color;
+
+	if (s == NULL)
+		return ;
+
+	y = w->ui_act_s_floor.v1.y;
+	while (y <= w->ui_act_s_floor.v2.y)
+	{
+		x = w->ui_act_s_floor.v1.x;
+		while (x <= w->ui_act_s_floor.v2.x)
+		{
+			pos = x + (y * WIN_WIDTH);
+			color = ft_fdf_get_color(0xff0000, (int)w->sdl->pixels[pos], 0.7);
+			w->sdl->pixels[pos] = color;
+			x++;
+		}
+		y++;
+	}
+
+	y = w->ui_act_s_wall.v1.y;
+	while (y <= w->ui_act_s_wall.v2.y)
+	{
+		x = w->ui_act_s_wall.v1.x;
+		while (x <= w->ui_act_s_wall.v2.x)
+		{
+			pos = x + (y * WIN_WIDTH);
+			color = ft_fdf_get_color(0x00ff00, (int)w->sdl->pixels[pos], 0.7);
+			w->sdl->pixels[pos] = color;
+			x++;
+		}
+		y++;
+	}
+
+	y = w->ui_act_s_ceil.v1.y;
+	while (y <= w->ui_act_s_ceil.v2.y)
+	{
+		x = w->ui_act_s_ceil.v1.x;
+		while (x <= w->ui_act_s_ceil.v2.x)
+		{
+			pos = x + (y * WIN_WIDTH);
+			color = ft_fdf_get_color(0x0000ff, (int)w->sdl->pixels[pos], 0.7);
+			w->sdl->pixels[pos] = color;
+			x++;
+		}
+		y++;
+	}
+
+	// 2 варианта:
+	// -- отрисовывать сектор в изометрической (или иной) проекции
+	// -- отрисовывать псевдопроекцию, демонстрирующую текстуры пола и потолка
+
+
+
+	// ft_fdf_wu_color( \
+	// 	&(t_vector3){1800, 100, 0, 0}, \
+	// 	&(t_vector3){1830, 130, 0, 0}, \
+	// 	w, \
+	// 	0xff0000 \
+	// );
 }
 
 /*
@@ -178,6 +244,8 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 	ft_editor_draw_line(wolf);
 	ft_editor_draw_map_2d(wolf, wolf->sector);
 
+	ft_editor_draw_sector_to_elem(wolf, wolf->act_s);
+
 	// ft_editor_threading(wolf); // sectors color fill
 	// ft_editor_map_fill_sectors(wolf);
 
@@ -195,6 +263,7 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 	SDL_UpdateTexture(wolf->sdl->text, 0, wolf->sdl->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(wolf->sdl->renderer, wolf->sdl->text, NULL, NULL);
 	ft_editor_font_draw_sector_list(wolf, wolf->sector, 0); // draw sector list
+	ft_editor_mouse_move_act_s_mark(wolf); // mark
 	// TTF_CloseFont(wolf->sdl->font.ptr);
 	SDL_RenderPresent(wolf->sdl->renderer);
 }

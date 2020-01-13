@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 14:51:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 16:52:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	ft_editor_mouse_move_map(t_wolf3d *w)
 		w->mouse_vertex = (t_vector3){0, 0, 0, 0};
 }
 
+int		ft_editor_check_event_area(t_vector3 v, t_ui_elem c)
+{
+	return (v.x >= c.v1.x && v.x < c.v2.x && v.y >= c.v1.y && v.y < c.v2.y);
+}
+
 int		ft_editor_check_event_area_map(t_wolf3d *w, t_vector3 v)
 {
 	if (
@@ -56,21 +61,16 @@ int		ft_editor_check_event_area_map(t_wolf3d *w, t_vector3 v)
 	return (0);
 }
 
-void	ft_editor_mouse_move(t_wolf3d *w, SDL_Event e)
+int		ft_editor_check_event_area_act_s(t_wolf3d *w, t_vector3 v)
 {
-	int			x;
-	int			y;
-
-	x = 0;
-	y = 0;
-	SDL_GetMouseState(&x, &y);
-	w->mouse_pos = (t_vector3){x, y, 0, 0};
-	w->mouse_vertex = (t_vector3){0, 0, 0, 0};
-
-	if (ft_editor_check_event_area_map(w, w->mouse_pos))
-		ft_editor_mouse_move_map(w);
-	else
-		return ;		
+	if (
+		(int)v.x >= w->ui_act_s.v1.x &&
+		(int)v.x < w->ui_act_s.v2.x &&
+		(int)v.y >= w->ui_act_s.v1.y &&
+		(int)v.y < w->ui_act_s.v2.y
+	)
+		return (1);
+	return (0);
 }
 
 void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v)
@@ -282,7 +282,7 @@ void	ft_editor_sector_draw_line_to_vertex(t_wolf3d *w)
 		ft_fdf_wu_color(&(t_vector3){w->mouse_pos.x, w->mouse_pos.y, 0, 0}, &c, w, 0xCCCCCC);
 }
 
-void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
+void	ft_editor_map_mouse_click(t_wolf3d *w, SDL_Event e)
 {
 	int			x;
 	int			y;
@@ -290,9 +290,22 @@ void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
 	int			y_c;
 	t_sector	*sector;
 
+	int			n;
+
 	x = 0;
 	y = 0;
 	SDL_GetMouseState(&x, &y);
+
+	n = ft_sector_check_sector(w, w->mouse_pos);
+	if (n > 0)
+	{
+		sector = ft_editor_search_sector_by_id(w, w->sector, n);
+		if (w->act_s == sector)
+			w->act_s = NULL;
+		else
+			w->act_s = sector;
+	}
+
 	if (ft_editor_check_mouse_vertex_pos(w, x, y) && ft_editor_map_check_area(w))
 	{
 		if (w->sector_status == 0)
@@ -321,4 +334,57 @@ void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
 		printf("===\n");
 		ft_editor_sector_special_debug(w->sector);
 	}
+}
+
+void	ft_editor_mouse_move_act_s_mark(t_wolf3d *w)
+{
+	t_ui_coord	c;
+
+	if (!ft_editor_check_event_area(w->mouse_pos, w->ui_act_s) || w->act_s == NULL)
+		return ;
+	ft_font_preset_sc(w, 14, 0xcccccc);
+	c = (t_ui_coord){(int)w->mouse_pos.x + 10, (int)w->mouse_pos.y + 10, 0};
+	if (ft_editor_check_event_area(w->mouse_pos, w->ui_act_s_floor))
+		ft_font_putstr_sdl(w, "floor", c);
+	if (ft_editor_check_event_area(w->mouse_pos, w->ui_act_s_wall))
+		ft_font_putstr_sdl(w, "wall", c);
+	if (ft_editor_check_event_area(w->mouse_pos, w->ui_act_s_ceil))
+		ft_font_putstr_sdl(w, "ceil", c);
+	// printf("yes! %f %f\n", w->mouse_pos.x, w->mouse_pos.y);
+}
+
+void	ft_editor_mouse_click(t_wolf3d *w, SDL_Event e)
+{
+	int			x;
+	int			y;
+
+	x = 0;
+	y = 0;
+	SDL_GetMouseState(&x, &y);
+	w->mouse_pos = (t_vector3){x, y, 0, 0};
+	w->mouse_vertex = (t_vector3){0, 0, 0, 0};
+
+	if (ft_editor_check_event_area_map(w, w->mouse_pos))
+		ft_editor_map_mouse_click(w, e);
+	else
+		return ;
+}
+
+void	ft_editor_mouse_move(t_wolf3d *w, SDL_Event e)
+{
+	int			x;
+	int			y;
+
+	x = 0;
+	y = 0;
+	SDL_GetMouseState(&x, &y);
+	w->mouse_pos = (t_vector3){x, y, 0, 0};
+	w->mouse_vertex = (t_vector3){0, 0, 0, 0};
+
+	if (ft_editor_check_event_area_map(w, w->mouse_pos))
+		ft_editor_mouse_move_map(w);
+	// if (ft_editor_check_event_area_act_s(w, w->mouse_pos))
+		// ft_editor_mouse_move_act_s(w);
+	else
+		return ;
 }

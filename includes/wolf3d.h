@@ -69,10 +69,11 @@ typedef struct			s_ui_coord
 
 typedef struct			f_ui_elem
 {
-	t_ui_coord			v1;	// left top point
-	t_ui_coord			v2; // right bottom point
-	int					w;	// frame width
-	int					h;	// frame height
+	t_ui_coord			v1;				// left top point
+	t_ui_coord			v2;				// right bottom point
+	int					w;				// frame width
+	int					h;				// frame height
+	int					status;			// element status: 0: disable, 1: active
 }						t_ui_elem;
 
 // new struct for sector
@@ -262,6 +263,11 @@ typedef struct			s_wolf3d
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
 	t_ui_elem			ui_map;
+	t_ui_elem			ui_act_s;
+	t_ui_elem			ui_act_s_floor;
+	t_ui_elem			ui_act_s_wall;
+	t_ui_elem			ui_act_s_ceil;
+	t_sector			*act_s;		// Просматриваемый сектор: если нет, то NULL
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -532,5 +538,9 @@ void			ft_editor_threading(t_wolf3d *w);
 SDL_Rect		*ft_create_rect(int w, int h, int x, int y);
 int				ft_font_preset_sc(t_wolf3d *w, int size, int color);
 void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
+
+t_sector		*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i);
+
+void			ft_editor_mouse_move_act_s_mark(t_wolf3d *w);
 
 #endif
