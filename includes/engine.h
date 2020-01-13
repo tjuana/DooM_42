@@ -32,7 +32,7 @@ typedef struct	s_others
     int		moving;
 }			t_others;
 
-typedef struct	s_ceil //y - height of ceil, n - neighbor, a - left, b - right
+typedef struct	s_ceil //y - height of ceil, n - neighbor, a - top, b - bottom
 {
 	float	yceil;//ceiling heights, relative to where the player's view is
 	float	nyceil;//boundary between two neighbor sectors
@@ -48,7 +48,7 @@ typedef struct	s_ceil //y - height of ceil, n - neighbor, a - left, b - right
 	int		cnyb;//Y coordinates for neighbor ceil in this X coordinate
 }				t_ceil;
 
-typedef struct	s_floor//y - height of floor, n - neighbor, a - left, b - right
+typedef struct	s_floor//y - height of floor, n - neighbor, a - top, b - bottom
 {
 	float	yfloor;//floor heights, relative to where the player's view is
 	float	nyfloor;//boundary between two neighbor sectors

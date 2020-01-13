@@ -19,19 +19,19 @@
 # include "engine.h"
 # include "events.h"
 # include "player.h"
-//# include <dirent.h>
 
 static unsigned NumSectors = 0;
 
 typedef struct	s_w
-{
-    t_anime		anim;
-    int			*tex_col;
-    SDL_Surface	*weapon_texture;
-    int			color;
+{	
+	SDL_Surface	*weapon_texture;
+	t_anime		anim;
+	int			*tex_col;
+	int			color;
 }				t_wolf3d;
 
 
+/*			math_functions.c			*/
 float		min(float a, float b);
 float		max(float a, float b);
 float		clamp(float a, float mi, float ma);
@@ -45,13 +45,14 @@ void		MovePlayer(float dx, float dy, t_player *player);
 float		Yaw(float y, float z, t_player *player);
 
 /*			engine.c			*/
+void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
 /*			engine_exp.c			*/
 int			engine_cross(t_player *pl, int sec_n, unsigned s);
 void		engine_scale(t_player *pl, float tz1, float tz2);
+void		engine_ceil_floor(t_player *pl, int flag);
 
 /*			functions_main.c			*/
-
 int			sub_events(t_subevents *se, t_player *player);
 int			events(t_subevents *se, t_player *player);
 void		mouse_movement(t_mouse *ms, t_player *player);
@@ -60,7 +61,6 @@ void		sectors_ops(t_sector_ops *op, t_player *player, t_others *ot, t_subevents 
 void		jumps(t_subevents *se, t_player *player, t_sector_ops *op, t_others *ot);
 
 /*			animations.c			*/
-
 int			ft_init_anim(t_wolf3d *wolf);
 void		ft_draw_animation(t_wolf3d *w, SDL_Surface *surface);
 void		ft_animation_play(t_wolf3d *w);

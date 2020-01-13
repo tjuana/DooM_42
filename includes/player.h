@@ -4,6 +4,7 @@
 
 typedef struct	s_player
 {
+	SDL_Surface	*srf;
 	t_xy		t1;
 	t_xy		t2;
 	t_xy		scale_1;
@@ -23,8 +24,10 @@ typedef struct	s_player
 	float		farz;
 	float		nearside;
 	float		farside;
-	int			x1;
-	int			x2;
+	float			x1;
+	float			x2;
+	int			beginx;
+	int			endx;
 }				t_player;
 
 #endif

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   engine_exp.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/10 21:27:28 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/11 21:21:39 by drafe            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//**************************************************************************
+//                                                                          
+//                                                       :::      ::::::::  
+//  engine_exp.c                                       :+:      :+:    :+:  
+//                                                   +:+ +:+         +:+    
+//  By: drafe <drafe@student.42.fr>                +#+  +:+       +#+       
+//                                               +#+#+#+#+#+   +#+          
+//  Created: 2020/01/10 21:27:28 by drafe             #+#    #+#            
+//  Updated: 2020/01/12 19:03:44 by drafe            ###   ########.fr      
+//                                                                          
+//**************************************************************************
 
 #include "wolf3d.h"
 
@@ -16,7 +16,7 @@
 ** **************************************************************************
 **	int engine_cross(t_player *pl, t_sector *sect, unsigned s)
 **	Function to find intersections and set t1 & t2
-**	t1.y - tz1
+**	t1.y was tz1 before recontruction
 ** **************************************************************************
 */
 
@@ -51,54 +51,9 @@ int		engine_cross(t_player *pl, int sec_n, unsigned s)
 		(pl->t2.y < pl->nearz && i1.y > 0) ? pl->t2 = i1 : pl->t2;
 		(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;
 	}
-	
-
 	return (1);
 }
-/*
-	printf("CROSS_1 i1.x==%f i1.y==%f i2.x==%f i2.y==%f \n", i1.x, i1.y, i2.x, i2.y);
-	printf("CROSS_2 t1.x==%f t1.y==%f t2.x==%f t2.y==%f \n", pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y);
-	//CROSS_1 i1.x==1.203689 i1.y==-0.300819 i2.x==2.036359 i2.y==0.509177
-	//CROSS_2 t1.x==2.036359 t1.y==0.509177 t2.x==4.838886 t2.y==3.235392
 
-	//CROSS_1 i1.x==2.111018 i1.y==0.000000 i2.x==0.000000 i2.y==0.000000
-	//CROSS_2 t1.x==4.838886 t1.y==3.235392 t2.x==2.049765 t2.y==6.102586
-
-if(pl->t1.y < pl->nearz)
-{
-	pl->t1 = i2;
-	(i1.y > 0) ? pl->t1 = i1 : pl->t1;
-	//(i1.y > 0) ? pl->t1 = i1 : i2;
-}
-if(pl->t2.y < pl->nearz)
-{
-	pl->t2 = i2;
-	(i1.y > 0) ? pl->t2 = i1 : pl->t2;
-	//(i1.y > 0) ? pl->t2 = i1 : i2;
-}
-*/
-/*
-printf(" t1.x==%f t1.y==%f t2.x==%f t2.y==%f \n", tx1, tz1, tx2, tz2);
-			printf(" t1.x==%f t1.y==%f t2.x==%f t2.y==%f \n", pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y);
-		//printf("CROSS_1 v_end.x==%f v_end.y==%f v_start.x==%f v_start.y==%f \n", v_end->x, v_end->y, v_start->x, v_start->y);
-	//printf("CROSS_2 t1.x==%f t1.y==%f t2.x==%f t2.y==%f \n", pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y);		
-*/
-/*
-if(pl->t1.y < pl->nearz)
-{
-	if(i1.y > 0)
-		pl->t1 = i1;
-	else
-		pl->t1 = i2;
-}
-if(pl->t2.y < pl->nearz)
-{
-	if(i1.y > 0)
-		pl->t2 = i1;
-	else
-		pl->t2 = i2;
-}
-*/
 /*
 ** **************************************************************************
 **	void engine_scale(t_player *pl, float tz1, float tz2)
@@ -114,7 +69,7 @@ void	engine_scale(t_player *pl, float tz1, float tz2)
 	pl->scale_2.y = vfov / tz2;
 	//Do perspective transformation
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
-	pl->x2 = WIN_W / 2 - (int)(pl->t2.y * pl->scale_2.x);
+	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
 	//Project our ceiling & floor heights into screen coordinates (Y coordinate)
 	pl->ceil.y1a = WIN_H / 2 - (int)(Yaw(pl->ceil.yceil, tz1, pl) * pl->scale_1.y);
 	pl->floor.y1b = WIN_H / 2 - (int)(Yaw(pl->floor.yfloor, tz1, pl) * pl->scale_1.y);
@@ -125,4 +80,79 @@ void	engine_scale(t_player *pl, float tz1, float tz2)
 	pl->floor.ny1b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, tz1, pl) * pl->scale_1.y);
 	pl->ceil.ny2a = WIN_H / 2 - (int)(Yaw(pl->ceil.nyceil, tz2, pl) * pl->scale_2.y);
 	pl->floor.ny2b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, tz2, pl) * pl->scale_2.y);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+** **************************************************************************
+**	void engine_ceil_floor(t_player *pl, int x)
+**	Function to calculate(render) the wall & ceil
+** **************************************************************************
+*/
+
+void	engine_ceil_floor(t_player *pl, int flag)
+{
+	int			x;//each X (from 0 to WIN_W)
+	int			ytop[WIN_W] = { 0 };
+	int			ybottom[WIN_W];
+	unsigned	col_up;//upper wall color (r1)
+	unsigned	col_bottom;//bottom wall color(r2)
+	int			z;
+
+	x = -1;
+	col_up = 0;
+	col_bottom = 0;
+	for(unsigned x = 0; x < WIN_W; ++x) ybottom[x] = WIN_H - 1;
+	for(x = pl->beginx; x <= pl->endx; ++x)
+	{
+		//Calculate the Z coordinate for this point. (Only used for lighting.)
+		z = ((x - pl->x1) * (pl->t2.y - pl->t1.y) / (pl->x2 - pl->x1) + pl->t1.y) * 8;
+		//Acquire the Y coordinates for our ceiling & floor for this X coordinate. Clamp them.
+		pl->floor.ya = (x - pl->x1) * (pl->ceil.y2a - pl->ceil.y1a) / (pl->x2 - pl->x1) + pl->ceil.y1a;
+		pl->ceil.cya = clamp(pl->floor.ya, ytop[x],ybottom[x]); // top
+		pl->floor.yb = (x - pl->x1) * (pl->floor.y2b - pl->floor.y1b) / (pl->x2 - pl->x1) + pl->floor.y1b;
+		pl->ceil.cyb = clamp(pl->floor.yb, ytop[x],ybottom[x]); 
+		// bottom
+		//Render ceiling: everything above this sector's ceiling height.
+		vline(x, ytop[x], pl->ceil.cya - 1, 0xffffff, 0x222222 , 0xff0000, pl->srf);//ceiling colors
+		//Render floor: everything below this sector's floor height.
+		vline(x, pl->ceil.cyb + 1, ybottom[x], 0x00ff00, 0x0000AA, 0x0000FF, pl->srf);//floor colors
+		//Is there another sector behind this edge?
+		if(flag >= 0) //floor and ceil
+		{
+			//Same for _their_ floor and ceiling
+			pl->floor.nya = (x - pl->x1) * (pl->ceil.ny2a - pl->ceil.ny1a) / (pl->x2 - pl->x1) + pl->ceil.ny1a;
+			pl->ceil.cnya = clamp(pl->floor.nya, ytop[x], ybottom[x]);
+			pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b) / (pl->x2 - pl->x1) + pl->floor.ny1b;
+			pl->ceil.cnyb = clamp(pl->floor.nyb, ytop[x], ybottom[x]);
+			//If our ceiling is higher than their ceiling, render upper wall
+			unsigned r1 = 0xff0000 * (255 - z ), r2 = 0x00ff00 * (31 - z / 8);//wall colors
+			r1 += 0;
+			r2 += 0;
+			vline(x, pl->ceil.cya, pl->ceil.cnya - 1, 0, (x == pl->x1) || (x == pl->x2) ? 0 : r1, 0, pl->srf); // Between our and their ceiling
+			ytop[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya), ytop[x], WIN_H-1);   // Shrink the remaining window below these ceilings
+			//If our floor is lower than their floor, render bottom wall
+			vline(x, pl->ceil.cnyb+1, pl->ceil.cyb, 0, (x == pl->x1) || (x == pl->x2) ? 0 : r2, 0, pl->srf); // Between their and our floor
+			ybottom[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, ybottom[x]); // Shrink the remaining window above these floors
+		}
+		else//walls
+		{
+			//There's no neighbor. Render wall from top (cya = ceiling level) to bottom (cyb = floor level).
+			unsigned r = 0x0000ff * (255 - z);
+			vline(x, pl->ceil.cya, pl->ceil.cyb, 0, (x == pl->x1) || (x == pl->x2) ? 0 : r, 0, pl->srf);
+		}
+	}
 }
