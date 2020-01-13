@@ -8,6 +8,7 @@ obj_parser/
 obj_editor/
 obj_main/
 map_editor
+.vscode/
 
 # Prerequisites
 *.d

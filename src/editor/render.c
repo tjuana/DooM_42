@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 20:22:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 14:22:12 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,91 @@ void	ft_editor_map_fill_sectors(t_wolf3d *w)
 	}
 }
 
+void		ft_editor_font_draw_sector_item(t_wolf3d *w, t_sector *ptr_sector, t_ui_coord c)
+{
+	char	*str;
+
+	ft_font_preset_sc(w, 18, ptr_sector->color);
+	ft_font_putstr_sdl(w, "Sector", c);\
+
+	c.x += 70;
+	str = ft_itoa(ptr_sector->id);
+	ft_font_putstr_sdl(w, str, c);
+	free(str);
+
+	c.x -= 70;
+	c.y += 25;
+	ft_font_preset_sc(w, 14, 0xdddddd);
+	ft_font_putstr_sdl(w, "floor:", c);
+
+	c.x += 50;
+	str = ft_itoa(ptr_sector->floor);
+	ft_font_putstr_sdl(w, str, c);
+	free(str);
+
+	c.x += 40;
+	ft_font_putstr_sdl(w, "height:", c);
+
+	c.x += 55;
+	str = ft_itoa(ptr_sector->height);
+	ft_font_putstr_sdl(w, str, c);
+	free(str);
+}
+
+void		ft_editor_font_draw_sector_list(t_wolf3d *w, t_list *sector, int i)
+{
+	t_ui_coord	c;
+
+	if (sector)
+	{
+		ft_editor_font_draw_sector_list(w, sector->next, i + 1);
+		c = (t_ui_coord){1740, 100 + i * 50, 0};
+		ft_editor_font_draw_sector_item(w, (t_sector*)sector->content, c);
+	}
+}
+
+// void	ft_editor_font_draw_sector_list_2(t_wolf3d *w, t_list *ptr_list)
+// {
+// 	ft_font_preset_sc(w, 56, 0xff0000);
+// 	ft_font_putstr_sdl(
+// 		w, "Life:", \
+// 		(t_ui_coord){ \
+// 			w->sdl->font.g_sz * 15, \
+// 			WIN_HEIGHT - w->sdl->font.f_sz * 2.5, \
+// 			0
+// 		}
+// 	);
+
+// 	ft_font_putstr_sdl(
+// 		w, ft_itoa(10), \
+// 		(t_ui_coord){ \
+// 			w->sdl->font.g_sz * 20, \
+// 			WIN_HEIGHT - w->sdl->font.f_sz * 2.5, \
+// 			0
+// 		}
+// 	);
+
+// 	ft_font_putstr_sdl(
+// 		w, "Ammo:", \
+// 		(t_ui_coord){ \
+// 			w->sdl->font.g_sz * 15, \
+// 			WIN_HEIGHT - w->sdl->font.f_sz * 1.5, \
+// 			0
+// 		}
+// 	);
+
+// 	ft_font_putstr_sdl(
+// 		w, ft_itoa(20), \
+// 		(t_ui_coord){ \
+// 			w->sdl->font.g_sz * 21, \
+// 			WIN_HEIGHT - w->sdl->font.f_sz * 1.5, \
+// 			0
+// 		}
+// 	);
+
+// 	TTF_CloseFont(w->sdl->font.ptr);
+// }
+
 /*
 ** **************************************************************************
 **	void ft_editor_renderer(t_wolf3d *wolf)
@@ -82,7 +167,7 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 	ft_editor_draw_line(wolf);
 	ft_editor_draw_map_2d(wolf, wolf->sector);
 
-	ft_editor_threading(wolf);
+	// ft_editor_threading(wolf); // sectors color fill
 	// ft_editor_map_fill_sectors(wolf);
 
 	if (ft_editor_check_event_area_map(wolf, wolf->mouse_pos))
@@ -97,5 +182,7 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 
 	SDL_UpdateTexture(wolf->sdl->text, 0, wolf->sdl->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(wolf->sdl->renderer, wolf->sdl->text, NULL, NULL);
+	ft_editor_font_draw_sector_list(wolf, wolf->sector, 0); // draw sector list
+	// TTF_CloseFont(wolf->sdl->font.ptr);
 	SDL_RenderPresent(wolf->sdl->renderer);
 }

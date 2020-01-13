@@ -21,8 +21,12 @@
 # define E_GRID_V_D 6 // VERTEX DIAMETER
 # define E_GRID_V_D_D 4 // VERTEX DRAW DIAMETER
 
+# define FONT_PATH "fonts/RobotoMono-Medium.ttf"
+
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_thread.h"
+# include "SDL2/SDL_ttf.h"
+
 # include <pthread.h>
 # include <string.h>
 # include <stdio.h>
@@ -40,10 +44,33 @@
 //# include "matrix/fdf.h"
 # include "algebra.h" // math library for matrix transform
 
+typedef struct			s_font
+{
+	SDL_Surface			*surf[7];
+
+	TTF_Font			*ptr_font_18_m;
+	TTF_Font			*ptr_font_14_m;
+
+	TTF_Font			*ptr;
+	SDL_Color			color;
+	int					f_sz;
+	int					g_sz;
+	int					w;
+	int					h;
+	int					half_menu;
+}						t_font;
+
+typedef struct			s_ui_coord
+{
+	int					x;
+	int					y;
+	int					w; // element diameter
+}						t_ui_coord;
+
 typedef struct			f_ui_elem
 {
-	t_vector3			v1;	// left top point
-	t_vector3			v2; // right bottom point
+	t_ui_coord			v1;	// left top point
+	t_ui_coord			v2; // right bottom point
 	int					w;	// frame width
 	int					h;	// frame height
 }						t_ui_elem;
@@ -120,6 +147,7 @@ typedef struct			s_sdl
 	Uint32				*wav_len;
 	Uint8				**wav_buff;
 	SDL_AudioDeviceID	*audio_device;
+	t_font				font;
 	unsigned char		i;
 	
 }						t_sdl;
@@ -483,6 +511,8 @@ int				ft_editor_sector_compare_vertexes(t_vector3 v1, t_vector3 v2);
 
 // editor/init.c
 void			ft_editor_init(t_wolf3d *w);
+void			ft_editor_init_fonts(t_wolf3d *w);
+void			ft_editor_close_fonts(t_wolf3d *w);
 
 // editor/neighbors.c
 int				ft_editor_sector_search_neighbors(t_wolf3d *w, t_sector *sector);
@@ -493,5 +523,10 @@ void			ft_editor_sector_special_debug(t_list *ptr_list);
 int				ft_editor_check_event_area_map(t_wolf3d *w, t_vector3 v);
 
 void			ft_editor_threading(t_wolf3d *w);
+
+// editor/fonts.c
+SDL_Rect		*ft_create_rect(int w, int h, int x, int y);
+int				ft_font_preset_sc(t_wolf3d *w, int size, int color);
+void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
 
 #endif

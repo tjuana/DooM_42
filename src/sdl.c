@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:40:14 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/12 19:17:18 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:35:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	, SDL_TEXTUREACCESS_STREAMING, WIN_WIDTH, WIN_HEIGHT)))
 		ft_error("SDL non textures");
 	sdl->running = 1;
+	// new??
+	if (TTF_Init() != 0)
+		ft_error("ft_sdl_error(w)\n");
 	return (sdl);
 }
 

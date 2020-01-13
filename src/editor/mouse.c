@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 18:59:41 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/13 13:30:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ void	ft_editor_sector_create(t_wolf3d *w)
 	sector->vertex = NULL;
 	sector->vertex_count = 0;
 	sector->status = 0;
+	sector->floor = 0;
+	sector->height = 10;
 	list_item = ft_lstnew(sector, sizeof(t_sector));
 	if (w->sector == NULL)
 		w->sector = list_item;
