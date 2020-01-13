@@ -48,9 +48,10 @@ float		Yaw(float y, float z, t_player *player);
 void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
 /*			engine_exp.c			*/
+void		engine_preset(t_player *pl);
 int			engine_cross(t_player *pl, int sec_n, unsigned s);
 void		engine_scale(t_player *pl, float tz1, float tz2);
-void		engine_ceil_floor(t_player *pl, int flag);
+void		engine_put_lines(t_player *pl, int neib);
 
 /*			functions_main.c			*/
 int			sub_events(t_subevents *se, t_player *player);
@@ -62,7 +63,7 @@ void		jumps(t_subevents *se, t_player *player, t_sector_ops *op, t_others *ot);
 
 /*			animations.c			*/
 int			ft_init_anim(t_wolf3d *wolf);
-void		ft_draw_animation(t_wolf3d *w, SDL_Surface *surface);
+void		ft_draw_animation(t_wolf3d *w);
 void		ft_animation_play(t_wolf3d *w);
 
 

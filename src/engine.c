@@ -51,11 +51,11 @@ void LoadData(char *ag, t_player *pl)//this function reads a new map format
             case 's': // sector
                 if(p == 0)
                 {
-                    pl->sectors = malloc(NumSectors * sizeof(*pl->sectors));//allocate memory if first time
+                    pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
                     p++;
                 }
-                pl->sectors = realloc(pl->sectors, ++NumSectors * sizeof(*pl->sectors));//reallocate memory
-                t_sector  *sect = &pl->sectors[NumSectors-1];//SECT CREATED
+                pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
+                t_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
                 int* num = NULL;
                 sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
@@ -80,11 +80,11 @@ void LoadData(char *ag, t_player *pl)//this function reads a new map format
 
 void UnloadData(t_player *pl)
 {
-    for(unsigned a=0; a<NumSectors; ++a) free(pl->sectors[a].vertex);
-    for(unsigned a=0; a<NumSectors; ++a) free(pl->sectors[a].neighbors);
+    for(unsigned a=0; a < pl->sectors_nb; ++a) free(pl->sectors[a].vertex);
+    for(unsigned a=0; a < pl->sectors_nb; ++a) free(pl->sectors[a].neighbors);
     free(pl->sectors);
     pl->sectors = NULL;
-    NumSectors = 0;
+    pl->sectors_nb = 0;
 }
 
 //vline: Draw a vertical line on screen, with a different color pixel in top & bottom
@@ -135,39 +135,25 @@ void MovePlayer(float dx, float dy, t_player *pl)
     pl->anglecos = cosf(pl->angle);
 }
 
-void DrawScreen(t_player *pl, SDL_Surface *surface)
+void DrawScreen(t_player *pl)
 {
 	int neighbor;
-	
-	enum { MaxQueue = 32 };  // maximum number of pending portal renders
-	struct item { int sectorno, sx1, sx2; } queue[MaxQueue], *head = queue, *tail = queue;
-	int renderedsectors[NumSectors];
-	int ytop[WIN_W] = { 0 };
-	int ybottom[WIN_W];
-	for(unsigned x = 0; x < WIN_W; ++x) ybottom[x] = WIN_H - 1;
-	ytop[0] += 0;
-	//Render the wall.
-	//int beginx;
-	//int endx;
-	int x;
-	//Calculate the Z coordinate for this point. (Only used for lighting.)
-	int z;
-	x = 0;
-	z = 0;
-	z += 0;
-	x += 0;
-	pl->srf = surface;
+	struct item { int sectorno, sx1, sx2; } queue[MAX_QUEUE], *head = queue, *tail = queue;
+	int renderedsectors[pl->sectors_nb];
 
-	for(unsigned n = 0; n < NumSectors; ++n) renderedsectors[n] = 0;
+	engine_preset(pl);
+
+	for(unsigned n = 0; n < pl->sectors_nb; ++n) renderedsectors[n] = 0;
 
 	//Begin whole-screen rendering from where the player is.
 	*head = (struct item) { pl->sector, 0, WIN_W-1 };
-	if(++head == queue + MaxQueue) head = queue;
+
+	if(++head == queue + MAX_QUEUE) head = queue;
 
     do {
         //Pick a sector & slice from the queue to draw
         const struct item now = *tail;
-        if(++tail == queue + MaxQueue) tail = queue;
+        if(++tail == queue + MAX_QUEUE) tail = queue;
 
         if(renderedsectors[now.sectorno] & 0x21) continue; // Odd = still rendering, 0x20 = give up
         ++renderedsectors[now.sectorno];
@@ -187,59 +173,17 @@ void DrawScreen(t_player *pl, SDL_Surface *surface)
 				pl->ceil.nyceil  = pl->sectors[neighbor].ceil  - pl->where.z;
 				pl->floor.nyfloor = pl->sectors[neighbor].floor - pl->where.z;
 			}
-			//Project ceiling & floor heights into screen coordinates (Y coordinate)
 			engine_scale(pl, pl->t1.y, pl->t2.y);
-			//Do perspective transformation
-			pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
-			pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
 			if(pl->x1 >= pl->x2 || pl->x2 < now.sx1 || pl->x1 > now.sx2) continue; // Only render if it's visible
 			//Render the wall.
 			pl->beginx = max(pl->x1, now.sx1);
 			pl->endx = min(pl->x2, now.sx2);
-			engine_ceil_floor(pl, neighbor);
-			/*
-			for(x = pl->beginx; x <= pl->endx; ++x)
-			{
-				//Calculate the Z coordinate for this point. (Only used for lighting.)
-				z = ((x - pl->x1) * (pl->t2.y - pl->t1.y) / (pl->x2 - pl->x1) + pl->t1.y) * 8;
-				//Acquire the Y coordinates for our ceiling & floor for this X coordinate. Clamp them.
-				pl->floor.ya = (x - pl->x1) * (pl->ceil.y2a - pl->ceil.y1a) / (pl->x2 - pl->x1) + pl->ceil.y1a;
-				pl->ceil.cya = clamp(pl->floor.ya, ytop[x],ybottom[x]); // top
-				pl->floor.yb = (x - pl->x1) * (pl->floor.y2b - pl->floor.y1b) / (pl->x2 - pl->x1) + pl->floor.y1b;
-				pl->ceil.cyb = clamp(pl->floor.yb, ytop[x],ybottom[x]); 
-				// bottom
-				//Render ceiling: everything above this sector's ceiling height.
-				vline(x, ytop[x], pl->ceil.cya - 1, 0xffffff, 0x222222 , 0xff0000, pl->srf);//ceiling colors
-				//Render floor: everything below this sector's floor height.
-				vline(x, pl->ceil.cyb + 1, ybottom[x], 0x00ff00, 0x0000AA, 0x0000FF, pl->srf);//floor colors
-				//Is there another sector behind this edge?
-				if(neighbor >= 0) //floor and ceil
-                {
-                    //Same for _their_ floor and ceiling
-                    pl->floor.nya = (x - pl->x1) * (pl->ceil.ny2a - pl->ceil.ny1a) / (pl->x2 - pl->x1) + pl->ceil.ny1a;
-                    pl->ceil.cnya = clamp(pl->floor.nya, ytop[x], ybottom[x]);
-					pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b) / (pl->x2 - pl->x1) + pl->floor.ny1b;
-                    pl->ceil.cnyb = clamp(pl->floor.nyb, ytop[x], ybottom[x]);
-                    //If our ceiling is higher than their ceiling, render upper wall
-                    unsigned r1 = 0xff0000 * (255 - z ), r2 = 0x00ff00 * (31 - z / 8);//wall colors
-                    vline(x, pl->ceil.cya, pl->ceil.cnya - 1, 0, (x == pl->x1) || (x == pl->x2) ? 0 : r1, 0, pl->srf); // Between our and their ceiling
-                    ytop[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya), ytop[x], WIN_H-1);   // Shrink the remaining window below these ceilings
-                    //If our floor is lower than their floor, render bottom wall
-                   vline(x, pl->ceil.cnyb+1, pl->ceil.cyb, 0, (x == pl->x1) || (x == pl->x2) ? 0 : r2, 0, pl->srf); // Between their and our floor
-                    ybottom[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, ybottom[x]); // Shrink the remaining window above these floors
-                }
-                else//walls
-                {
-                    //There's no neighbor. Render wall from top (cya = ceiling level) to bottom (cyb = floor level).
-                    unsigned r = 0x0000ff * (255 - z);
-                    vline(x, pl->ceil.cya, pl->ceil.cyb, 0, (x == pl->x1) || (x == pl->x2) ? 0 : r, 0, pl->srf);
-                }
-            }*/
+			engine_put_lines(pl, neighbor);
             //Schedule the neighboring sector for rendering within the window formed by this wall.
-            if(neighbor >= 0 && pl->endx >= pl->beginx && (head + MaxQueue + 1 - tail) % MaxQueue)
+            if(neighbor >= 0 && pl->endx >= pl->beginx && (head + MAX_QUEUE + 1 - tail) % MAX_QUEUE)
             {
                 *head = (struct item) { neighbor, pl->beginx, pl->endx};
-                if(++head == queue+MaxQueue) head = queue;
+                if(++head == queue + MAX_QUEUE) head = queue;
             }
         } // for s in sector's edges
         ++renderedsectors[now.sectorno];
@@ -255,9 +199,9 @@ int main(int ac, char **ag)
     t_sector_ops op;
 	t_wolf3d w;
 	//SDL_Texture *texture = NULL;
-    SDL_Renderer *renderer = NULL;
-    SDL_Surface* surface = NULL;
 
+    SDL_Renderer *renderer = NULL;
+	pl.sectors_nb = 0;
     w.weapon_texture = SDL_LoadBMP("Textures/pistol.bmp");
     if (ac < 2 || ac > 2)
     {
@@ -282,7 +226,7 @@ int main(int ac, char **ag)
         }
         else
             {
-            surface = SDL_GetWindowSurface(window);
+            pl.srf = SDL_GetWindowSurface(window);
             SDL_UpdateWindowSurface( window );
             renderer = SDL_CreateRenderer(window,-1, SDL_RENDERER_ACCELERATED );
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -313,7 +257,7 @@ int main(int ac, char **ag)
                 //}
                 //SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0x00, 0xFF );
                 //SDL_RenderPresent(renderer);
-                DrawScreen(&pl, surface);
+                DrawScreen(&pl);
                 //ft_animation_play(&w);
                 //ft_draw_animation(&w, surface);
                 SDL_UpdateWindowSurface( window );

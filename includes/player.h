@@ -16,6 +16,7 @@ typedef struct	s_player
     float		anglecos;
     float		yaw;   // Looking towards (and sin() and cos() thereof)
     unsigned	sector;// Which sector the player is currently in
+	unsigned	sectors_nb;//Sectors number
     t_sector	*sectors;
 	int			neighbor;
 	t_ceil		ceil;
@@ -24,8 +25,10 @@ typedef struct	s_player
 	float		farz;
 	float		nearside;
 	float		farside;
-	float			x1;
-	float			x2;
+	float		x1;
+	float		x2;
+	int			y_top[WIN_W];
+	int			y_bot[WIN_W];
 	int			beginx;
 	int			endx;
 }				t_player;
