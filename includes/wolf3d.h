@@ -256,8 +256,11 @@ typedef struct			s_gui_fonts
 # define GUI_ELEM_FOCUS			0x50
 # define GUI_ELEM_DISABLE		0x60
 
+# define GUI_ELEM_ACT_MASK		0x0F
+
 typedef struct			s_gui_elem
 {
+	char				*name;			// name
 	t_ui_coord			v1;				// left top point
 	t_ui_coord			v2;				// right bottom point
 	t_ui_coord			r1;				// absolute area
@@ -276,12 +279,19 @@ typedef struct			s_gui_elem
 # define GUI_REDRAW				0x01
 # define GUI_REDRAW_FRAME		0x02
 
+// по логике дублирует redraw
+# define GUI_EVENT_OFF			0x00
+# define GUI_EVENT_ON			0x01
+# define GUI_EVENT_SEARCH		0x02
+
 typedef struct			s_gui
 {
 	t_list				*fonts;
 	t_list				*dom;
 	unsigned char		redraw;
 	t_gui_elem			*redraw_elem;
+	t_ui_coord			mouse_pos;
+	unsigned char		search_elem;
 }						t_gui;
 
 typedef struct			s_wolf3d
@@ -636,10 +646,15 @@ void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
 int				ft_gui_redraw(t_wolf3d *w);
 void			ft_gui_events(t_wolf3d *w);
 void			ft_gui_init(t_wolf3d *w);
-void			ft_gui_elem_init(t_list **dom, t_ui_coord v1, t_ui_coord v2, int status);
+void			ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2);
 void			ft_gui_elem_set_color(t_list *list, int color);
 void			ft_gui_elem_set_parent(t_list *parent, t_list *child);
 void			ft_gui_print_element_list(t_list *dom, int level);
 void			ft_gui_desctuct(t_list *dom);
+
+void			ft_gui_mouse_btn_down(t_wolf3d *w, SDL_Event e, t_list *dom);
+void			ft_gui_mouse_btn_up(t_wolf3d *w, SDL_Event e, t_list *dom);
+void			ft_gui_mouse_move(t_wolf3d *w, SDL_Event e, t_list *dom);
+void			ft_gui_elem_set_status(t_list *list, unsigned char status);
 
 #endif

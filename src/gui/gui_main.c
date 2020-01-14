@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:14:16 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 19:12:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/14 21:01:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			ft_gui_main(void)
 	ft_init_sound(&w);
 
 	ft_gui_init(&w);
+	ft_gui_print_element_list(w.gui.dom, 0);
 	ft_gui_redraw(&w);
 	while (w.sdl->running)
 	{

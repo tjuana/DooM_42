@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 18:51:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/14 21:59:43 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,19 @@
 **	
 **	Function that initialize gui element.
 */
-void	ft_gui_elem_init(t_list **dom, t_ui_coord v1, t_ui_coord v2, int status)
+void	ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2)
 {
 	t_list		*list;
 	t_gui_elem	*elem;
 
 	elem = ft_my_malloc(sizeof(t_gui_elem));
 	bzero(elem, sizeof(t_gui_elem)); // need to use standart slow bzero
+	elem->name = ft_strdup(name);
 	elem->v1 = v1;
 	elem->v2 = v2;
 	elem->w = elem->v2.x - elem->v1.x;
 	elem->h = elem->v2.y - elem->v1.y;
-	elem->status = status | GUI_ELEM_NORMAL;
+	elem->status = GUI_ELEM_HIDDEN | GUI_ELEM_NORMAL;
 	elem->parent = NULL;
 	elem->child = NULL;
 
@@ -58,16 +59,45 @@ void	ft_gui_elem_set_color(t_list *list, int color)
 }
 
 /*
+**	void ft_gui_elem_set_status(t_list *list, unsigned char status)
+**	
+**	Function that set special status for gui element.
+*/
+void	ft_gui_elem_set_status(t_list *list, unsigned char status)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	if (status > GUI_ELEM_ACT_MASK)
+	{
+		elem->status = elem->status & GUI_ELEM_ACT_MASK;
+		elem->status = elem->status | status;
+	}
+	if (status & (GUI_ELEM_HIDDEN | GUI_ELEM_VISIBLE))
+		elem->status = (elem->status ^ (GUI_ELEM_HIDDEN | GUI_ELEM_VISIBLE)) | status;
+	if (status & (GUI_ELEM_STATIC | GUI_ELEM_DYNAMIC))
+		elem->status = (elem->status ^ (GUI_ELEM_STATIC | GUI_ELEM_DYNAMIC)) | status;
+}
+
+/*
 **	void ft_gui_elem_set_parent(t_list *parent, t_list *child)
 **	
 **	Function that set parent for gui element.
 */
 void	ft_gui_elem_set_parent(t_list *parent, t_list *child)
 {
-	t_gui_elem	*elem;
+	t_gui_elem	*child_elem;
+	t_gui_elem	*parent_elem;
 
-	if (elem == NULL)
+	if (child_elem == NULL)
 		ft_error("ERROR");
-	elem = child->content;
-	elem->parent = parent;
+	if (parent_elem == NULL)
+		ft_error("ERROR");
+	child_elem = child->content;
+	parent_elem = parent->content;
+	child_elem->parent = parent;
+	child_elem->pos.top = child_elem->v1.y - parent_elem->v1.y;
+	child_elem->pos.bottom = parent_elem->v2.y - child_elem->v2.y;
+	child_elem->pos.left = child_elem->v1.x - parent_elem->v1.x;
+	child_elem->pos.right = parent_elem->v2.x - child_elem->v2.x;
 }
