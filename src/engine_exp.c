@@ -14,7 +14,7 @@
 
 /*
 ** **************************************************************************
-**	int engine_cross(t_player *pl, t_sector *sect, unsigned s)
+**	int engine_cross(t_player *pl, int sec_n, unsigned s)
 **	Function to find intersections and set t1 & t2
 **	t1.y was tz1 before recontruction
 ** **************************************************************************
@@ -56,7 +56,7 @@ int			engine_cross(t_player *pl, int sec_n, unsigned s)
 
 /*
 ** **************************************************************************
-**	void engine_ceil_floor(t_player *pl, int x)
+**	static void engine_ceil_floor(t_player *pl, int x, int *z, int neib)
 **	Function to draw ceil and floor lines and lines betwen them
 ** **************************************************************************
 */
@@ -95,7 +95,7 @@ static void	engine_ceil_floor(t_player *pl, int x, int *z, int neib)
 
 /*
 ** **************************************************************************
-**	void engine_ceil_floor(t_player *pl, int x)
+**	void engine_ceil_floor(t_player *pl, int neib)
 **	Function to draw all needed lines
 ** **************************************************************************
 */

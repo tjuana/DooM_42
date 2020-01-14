@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/14 19:29:27 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/14 21:31:25 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** **************************************************************************
-**	static int engine_pick_sec(t_player *pl, t_cycle *cycle, t_sector *sect)
+**	static int engine_pick_sec(t_player *pl)
 **	Function to pick a sector & slice from the queue to draw
 ** **************************************************************************
 */
@@ -25,8 +25,8 @@ static int	engine_pick_sec(t_player *pl)
 	pl->cycle.current = pl->cycle.tail;//const struct item now = *cycle.tail;
 	if(++pl->cycle.tail == pl->cycle.queue + MAX_QUEUE)
 		pl->cycle.tail = pl->cycle.queue;
-	if(pl->cycle.rend_sec[pl->cycle.current->sec_nb] & 0x21)// Odd = still rendering, 0x20 = give up
-		return (-2);
+	if(pl->cycle.rend_sec[pl->cycle.current->sec_nb] & 0x21)
+		return (-2); // Odd = still rendering, 0x20 = give up
 	++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
 	pl->sect = &pl->sectors[pl->cycle.current->sec_nb];//SECT CREATED
 	return (-1);
@@ -34,37 +34,36 @@ static int	engine_pick_sec(t_player *pl)
 
 /*
 ** **************************************************************************
-**	void engine_preset(t_player *pl)
+**	static void engine_preset(t_player *pl)
 **	Function to set up some arrays and lists for engine
 ** **************************************************************************
 */
 
-void		engine_preset(t_player *pl)
+static void	engine_preset(t_player *pl)
 {
 	int	i;
 	int	*rend_sec;
 
-	i = -1;
-	if (!(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
+	if ((i = -1) && !(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
 	{
 		ft_putstr_fd("engine_preset - malloc error.\n", 2);
-		exit(-1);
+		exit (-1);
 	}
-	while (++i < pl->sectors_nb)
+	while(++i < pl->sectors_nb)
 		rend_sec[i] = 0;
 	pl->cycle.rend_sec = rend_sec;
 	i = -1;
-	while (++i < WIN_W)
+	while(++i < WIN_W)
 		pl->y_top[i] = 0;
 	i = -1;
-	while (++i < WIN_W)
+	while(++i < WIN_W)
 		pl->y_bot[i] = WIN_H - 1;
 	pl->cycle.head = pl->cycle.queue;
 	pl->cycle.tail = pl->cycle.queue;
 	pl->cycle.head->sec_nb = (int)pl->sector;
 	pl->cycle.head->sx1 = 0;
 	pl->cycle.head->sx2 = WIN_W - 1;
-	if (++pl->cycle.head == pl->cycle.queue + MAX_QUEUE)
+	if(++pl->cycle.head == pl->cycle.queue + MAX_QUEUE)
 		pl->cycle.head = pl->cycle.queue;
 }
 
@@ -94,7 +93,7 @@ int		engine_scale(t_player *pl, int sx1, int sx2)
 	pl->floor.ny1b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, pl->t1.y, pl) * pl->scale_1.y);
 	pl->ceil.ny2a = WIN_H / 2 - (int)(Yaw(pl->ceil.nyceil, pl->t2.y, pl) * pl->scale_2.y);
 	pl->floor.ny2b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, pl->t2.y, pl) * pl->scale_2.y);
-	if (pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
+	if(pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
 		return (0);
 	return (1);
 }
@@ -112,9 +111,9 @@ void	engine_begin(t_player *pl)
 	int			s;
 
 	engine_preset(pl);
-	while (pl->cycle.head != pl->cycle.tail)
+    while(pl->cycle.head != pl->cycle.tail)
 	{
-		if ((s = engine_pick_sec(pl)) && (s == -2))
+		if ((s = engine_pick_sec(pl)) == -2)
 			continue;
 		while (++s < pl->sect->npoints)
 		{
@@ -124,9 +123,10 @@ void	engine_begin(t_player *pl)
 			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
 			pl->floor.yfloor = pl->sect->floor - pl->where.z;
 			//Check the edge type. neighbor=-1 means wall, other=boundary between two sectors.
-			if((neib = pl->sect->neighbors[s]) && (neib >= 0)) // Is another sector showing through this portal? This permit us draw other sectors after the one where we are
+			neib = pl->sect->neighbors[s];
+			if(neib >= 0) // Is another sector showing through this portal? This permit us draw other sectors after the one where we are
 			{
-				pl->ceil.nyceil = pl->sectors[neib].ceil  - pl->where.z;
+				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
 				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
 			}
 			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
@@ -134,5 +134,5 @@ void	engine_begin(t_player *pl)
 			engine_put_lines(pl, neib);//Render all.
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
-	}
+    }
 }
