@@ -6,11 +6,31 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/14 18:55:16 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/14 19:29:27 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+/*
+** **************************************************************************
+**	static int engine_pick_sec(t_player *pl, t_cycle *cycle, t_sector *sect)
+**	Function to pick a sector & slice from the queue to draw
+** **************************************************************************
+*/
+
+static int	engine_pick_sec(t_player *pl)
+{
+	//Pick a sector & slice from the queue to draw
+	pl->cycle.current = pl->cycle.tail;//const struct item now = *cycle.tail;
+	if(++pl->cycle.tail == pl->cycle.queue + MAX_QUEUE)
+		pl->cycle.tail = pl->cycle.queue;
+	if(pl->cycle.rend_sec[pl->cycle.current->sec_nb] & 0x21)// Odd = still rendering, 0x20 = give up
+		return (-2);
+	++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
+	pl->sect = &pl->sectors[pl->cycle.current->sec_nb];//SECT CREATED
+	return (-1);
+}
 
 /*
 ** **************************************************************************
@@ -19,32 +39,33 @@
 ** **************************************************************************
 */
 
-void		engine_preset(t_player *pl, t_cycle	*cycle)
+void		engine_preset(t_player *pl)
 {
 	int	i;
 	int	*rend_sec;
 
-	if ((i = -1) && !(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
+	i = -1;
+	if (!(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
 	{
 		ft_putstr_fd("engine_preset - malloc error.\n", 2);
-		exit (-1);
+		exit(-1);
 	}
-	while(++i < pl->sectors_nb)
+	while (++i < pl->sectors_nb)
 		rend_sec[i] = 0;
-	cycle->rend_sec = rend_sec;
+	pl->cycle.rend_sec = rend_sec;
 	i = -1;
-	while(++i < WIN_W)
+	while (++i < WIN_W)
 		pl->y_top[i] = 0;
 	i = -1;
-	while(++i < WIN_W)
+	while (++i < WIN_W)
 		pl->y_bot[i] = WIN_H - 1;
-	cycle->head = cycle->queue;
-	cycle->tail = cycle->queue;
-	cycle->head->sec_nb = (int)pl->sector;
-	cycle->head->sx1 = 0;
-	cycle->head->sx2 = WIN_W - 1;
-	if(++cycle->head == cycle->queue + MAX_QUEUE)
-		cycle->head = cycle->queue;
+	pl->cycle.head = pl->cycle.queue;
+	pl->cycle.tail = pl->cycle.queue;
+	pl->cycle.head->sec_nb = (int)pl->sector;
+	pl->cycle.head->sx1 = 0;
+	pl->cycle.head->sx2 = WIN_W - 1;
+	if (++pl->cycle.head == pl->cycle.queue + MAX_QUEUE)
+		pl->cycle.head = pl->cycle.queue;
 }
 
 /*
@@ -73,7 +94,7 @@ int		engine_scale(t_player *pl, int sx1, int sx2)
 	pl->floor.ny1b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, pl->t1.y, pl) * pl->scale_1.y);
 	pl->ceil.ny2a = WIN_H / 2 - (int)(Yaw(pl->ceil.nyceil, pl->t2.y, pl) * pl->scale_2.y);
 	pl->floor.ny2b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, pl->t2.y, pl) * pl->scale_2.y);
-	if(pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
+	if (pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
 		return (0);
 	return (1);
 }
@@ -88,40 +109,30 @@ int		engine_scale(t_player *pl, int sx1, int sx2)
 void	engine_begin(t_player *pl)
 {
 	int			neib;
-	t_cycle		cycle;
-	t_sector	*sect;//was CONSTx2
 	int			s;
 
-	engine_preset(pl, &cycle);
-    while(cycle.head != cycle.tail)
+	engine_preset(pl);
+	while (pl->cycle.head != pl->cycle.tail)
 	{
-        //Pick a sector & slice from the queue to draw
-        cycle.current = cycle.tail;//const struct item now = *cycle.tail;
-        if(++cycle.tail == cycle.queue + MAX_QUEUE)
-			cycle.tail = cycle.queue;
-        if(cycle.rend_sec[cycle.current->sec_nb] & 0x21)
-			continue; // Odd = still rendering, 0x20 = give up
-        ++cycle.rend_sec[cycle.current->sec_nb];
-        sect = &pl->sectors[cycle.current->sec_nb];//SECT CREATED
-		s = -1;
-		while (++s < sect->npoints)
+		if ((s = engine_pick_sec(pl)) && (s == -2))
+			continue;
+		while (++s < pl->sect->npoints)
 		{
-			if (engine_cross(pl, cycle.current->sec_nb, s) == 0)
+			if (engine_cross(pl, pl->cycle.current->sec_nb, s) == 0)
 				continue;
 			//Acquire the floor and ceiling heights, relative to where the player's view is
-			pl->ceil.yceil = sect->ceil - pl->where.z;
-			pl->floor.yfloor = sect->floor - pl->where.z;
+			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
+			pl->floor.yfloor = pl->sect->floor - pl->where.z;
 			//Check the edge type. neighbor=-1 means wall, other=boundary between two sectors.
-			neib = sect->neighbors[s];
-			if(neib >= 0) // Is another sector showing through this portal? This permit us draw other sectors after the one where we are
+			if((neib = pl->sect->neighbors[s]) && (neib >= 0)) // Is another sector showing through this portal? This permit us draw other sectors after the one where we are
 			{
-				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
+				pl->ceil.nyceil = pl->sectors[neib].ceil  - pl->where.z;
 				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
 			}
-			if (engine_scale(pl, cycle.current->sx1, cycle.current->sx2) == 0)
+			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
 				continue; // Only render if it's visible
-			engine_put_lines(pl, &cycle, neib);//Render all.
+			engine_put_lines(pl, neib);//Render all.
 		}
-        ++cycle.rend_sec[cycle.current->sec_nb];
-    }  // render any other queued sectors (was while(cycle.head != cycle.tail);)
+        ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
+	}
 }

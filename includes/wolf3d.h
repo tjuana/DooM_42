@@ -48,13 +48,13 @@ float		Yaw(float y, float z, t_player *player);
 void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
 /*			engine.c			*/
-void		engine_preset(t_player *pl, t_cycle *cycle);
+void		engine_preset(t_player *pl);
 void		engine_begin(t_player *pl);
 int			engine_scale(t_player *pl, int sx1, int sx2);
 
 /*			engine_exp.c			*/
 int			engine_cross(t_player *pl, int sec_n, unsigned s);
-void		engine_put_lines(t_player *pl, t_cycle *cycle, int neib);
+void		engine_put_lines(t_player *pl, int neib);
 
 /*			functions_main.c			*/
 int			sub_events(t_subevents *se, t_player *player);

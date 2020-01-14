@@ -18,6 +18,8 @@ typedef struct	s_player
     unsigned	sector;// Which sector the player is currently in
 	int			sectors_nb;//Sectors number
     t_sector	*sectors;
+	t_cycle		cycle;
+	t_sector	*sect;//current sector
 	int			neib;
 	t_ceil		ceil;
 	t_floor		floor;

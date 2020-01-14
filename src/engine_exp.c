@@ -100,14 +100,14 @@ static void	engine_ceil_floor(t_player *pl, int x, int *z, int neib)
 ** **************************************************************************
 */
 
-void		engine_put_lines(t_player *pl, t_cycle *cycle, int neib)
+void		engine_put_lines(t_player *pl, int neib)
 {
 	int			z;
 	int			x;
 	unsigned	col;
 
-	pl->beginx = (int)fmax((double)pl->x1, (double)cycle->current->sx1);
-	pl->endx = (int)fmin((double)pl->x2, (double)cycle->current->sx2);
+	pl->beginx = (int)fmax((double)pl->x1, (double)pl->cycle.current->sx1);
+	pl->endx = (int)fmin((double)pl->x2, (double)pl->cycle.current->sx2);
 	x = pl->beginx;
 	while (++x <= pl->endx)
 	{
@@ -120,12 +120,12 @@ void		engine_put_lines(t_player *pl, t_cycle *cycle, int neib)
 		}	
 	}
 	//Schedule the neighboring sector for rendering within the window formed by this wall.
-	if(neib >= 0 && pl->endx >= pl->beginx && (cycle->head + MAX_QUEUE + 1 - cycle->tail) % MAX_QUEUE)
+	if(neib >= 0 && pl->endx >= pl->beginx && (pl->cycle.head + MAX_QUEUE + 1 - pl->cycle.tail) % MAX_QUEUE)
 	{
-		cycle->head->sec_nb = neib;
-		cycle->head->sx1 = pl->beginx;
-		cycle->head->sx2 = pl->endx;
-		if(++cycle->head == cycle->queue + MAX_QUEUE)
-			cycle->head = cycle->queue;
+		pl->cycle.head->sec_nb = neib;
+		pl->cycle.head->sx1 = pl->beginx;
+		pl->cycle.head->sx2 = pl->endx;
+		if(++pl->cycle.head == pl->cycle.queue + MAX_QUEUE)
+			pl->cycle.head = pl->cycle.queue;
 	}
 }
