@@ -20,7 +20,7 @@
 # include "events.h"
 # include "player.h"
 
-static unsigned NumSectors = 0;
+//static unsigned NumSectors = 0;
 
 typedef struct	s_w
 {	
@@ -44,14 +44,17 @@ void		UnloadData();
 void		MovePlayer(float dx, float dy, t_player *player);
 float		Yaw(float y, float z, t_player *player);
 
-/*			engine.c			*/
+/*			main.c			*/
 void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
+/*			engine.c			*/
+void		engine_preset(t_player *pl, t_cycle *cycle);
+void		engine_begin(t_player *pl);
+int			engine_scale(t_player *pl, int sx1, int sx2);
+
 /*			engine_exp.c			*/
-void		engine_preset(t_player *pl);
 int			engine_cross(t_player *pl, int sec_n, unsigned s);
-void		engine_scale(t_player *pl, float tz1, float tz2);
-void		engine_put_lines(t_player *pl, int neib);
+void		engine_put_lines(t_player *pl, t_cycle *cycle, int neib);
 
 /*			functions_main.c			*/
 int			sub_events(t_subevents *se, t_player *player);

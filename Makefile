@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/13 15:59:37 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/14 18:45:13 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS_LIST = functions_main.c\
 			math_functions.c\
 			engine_exp.c\
 			engine.c\
+			main.c
 
 OBJS_DIRECTORY = objects/
 

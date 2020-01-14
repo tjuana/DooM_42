@@ -2,13 +2,22 @@
 #define ENGINE_H
 # include "wolf3d.h"
 
+typedef struct	s_cycle//item
+{
+	t_tmp_trio	queue[MAX_QUEUE];
+	t_tmp_trio	*head;
+	t_tmp_trio	*current;
+	t_tmp_trio	*tail;
+	int			*rend_sec;
+}				t_cycle;
+
 typedef struct	s_sector//have to be static
 {
     float		floor;
 	float		ceil;
     t_xy		*vertex; // Each vertex has an x and y coordinate
     signed char	*neighbors;           // Each edge may have a corresponding neighboring sector
-    unsigned	npoints;                 // How many vertexes there are
+    int			npoints;                 // How many vertexes there are
 }				t_sector;//*sectors = NULL;
 
 typedef struct s_sector_ops

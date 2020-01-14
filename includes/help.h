@@ -1,6 +1,12 @@
 #ifndef HELP_H
 # define HELP_H
 
+typedef struct	s_tmp_trio //sectorno, sx1, sx2;
+{
+    int	sec_nb;
+    int	sx1;
+    int	sx2;
+}				t_tmp_trio;
 typedef struct	s_xy
 {
     float	x;

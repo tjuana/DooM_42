@@ -113,7 +113,7 @@ void sectors_ops(t_sector_ops *op, t_player *player, t_others *ot, t_subevents *
         op->sect = &player->sectors[player->sector];
         op->vert = op->sect->vertex;
         /* Check if the player is about to cross one of the sector's edges */
-        for (unsigned s = 0; s < op->sect->npoints; ++s)
+        for (int s = 0; s < op->sect->npoints; ++s)
             if (IntersectBox(op->px, op->py, op->px + op->dx, op->py + op->dy, op->vert[s + 0].x, op->vert[s + 0].y, op->vert[s + 1].x,op->vert[s + 1].y) \
                         && PointSide(op->px + op->dx, op->py + op->dy, op->vert[s + 0].x, op->vert[s + 0].y, op->vert[s + 1].x, op->vert[s + 1].y) < 0)
             {
