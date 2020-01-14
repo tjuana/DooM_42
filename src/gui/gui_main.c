@@ -1,53 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor.c                                           :+:      :+:    :+:   */
+/*   gui_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 18:24:14 by dorange-         ###   ########.fr       */
+/*   Created: 2020/01/14 15:14:16 by dorange-          #+#    #+#             */
+/*   Updated: 2020/01/14 19:12:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		main(int c, char **v)
+/*
+**	void ft_gui_main(void)
+**	
+**	This is a gui main function that compiles ./gui test programm with
+**	some gui elements.
+*/
+void			ft_gui_main(void)
 {
 	t_wolf3d	w;
 
-	ft_editor_init(&w);
-	if (c >= 2)
-	{
-		if ((w.fd = open(v[1], O_RDONLY)) < 0)
-			ft_error("Error: bad file");
-		ft_parser_nnmp(w.fd, &w);
-	}
-
-	ft_editor_sector_special_debug(w.sector);
-
 	w.sdl = sdl_init(w.sdl);
 	ft_init_wolf(&w);
-	ft_editor_init_fonts(&w);
-	ft_editor_init_sectors_areas(&w, w.sector);
 
+	// Not use
 	ft_load_textures(&w);
-	// ft_init_anim(&w);
-	// ft_init_view_map(&w);
 	ft_init_sound(&w);
-	fpsinit();
+
+	ft_gui_init(&w);
+	ft_gui_redraw(&w);
 	while (w.sdl->running)
 	{
-		ft_editor_handle_events(&w);
-		ft_editor_use_events(&w);
-		ft_editor_renderer(&w);
-		
-		// init some value
-		// w.ui_txtr_opt.trigger = 0;
-
-		// fpsthink();
+		ft_gui_events(&w);
+		// render -> redraw -> ft_gui_events
 	}
-	ft_editor_close_fonts(&w);
+	ft_gui_desctuct(w.gui.dom);
 	ft_clean_sdl(&w);
+}
+
+int				main(void)
+{
+	ft_gui_main();
 	return (0);
 }

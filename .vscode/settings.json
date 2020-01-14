@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"wolf3d.h": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"stdio.h": "c"
 	}
 }

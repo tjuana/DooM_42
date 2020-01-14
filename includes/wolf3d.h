@@ -232,6 +232,58 @@ typedef struct			s_time
 	unsigned char		flag;
 }						t_time;
 
+typedef struct			s_gui_fonts
+{
+	SDL_Surface			*surf[7];
+	TTF_Font			*ptr;
+	SDL_Color			color;
+	int					f_sz;
+	int					g_sz;
+	int					w;
+	int					h;
+	int					half_menu;
+}						t_gui_fonts;
+
+# define GUI_ELEM_HIDDEN		0x01
+# define GUI_ELEM_VISIBLE		0x02
+# define GUI_ELEM_STATIC		0x04
+# define GUI_ELEM_DYNAMIC		0x08
+
+# define GUI_ELEM_NORMAL		0x10
+# define GUI_ELEM_HOVER			0x20
+# define GUI_ELEM_CLICK			0x30
+# define GUI_ELEM_ACTIVE		0x40
+# define GUI_ELEM_FOCUS			0x50
+# define GUI_ELEM_DISABLE		0x60
+
+typedef struct			s_gui_elem
+{
+	t_ui_coord			v1;				// left top point
+	t_ui_coord			v2;				// right bottom point
+	t_ui_coord			r1;				// absolute area
+	t_ui_coord			r2;				// ...
+	int					w;				// frame width
+	int					h;				// frame height
+	unsigned char		status;			// element status
+	t_list				*parent;		// parent element
+	t_ui_pos			pos;			// position: top, bottom, left, right
+
+	t_list				*child;			// child elements
+	int					color;			// element color
+}						t_gui_elem;
+
+# define GUI_NOT_REDRAW			0x00
+# define GUI_REDRAW				0x01
+# define GUI_REDRAW_FRAME		0x02
+
+typedef struct			s_gui
+{
+	t_list				*fonts;
+	t_list				*dom;
+	unsigned char		redraw;
+	t_gui_elem			*redraw_elem;
+}						t_gui;
+
 typedef struct			s_wolf3d
 {
 	// add list with sector
@@ -285,6 +337,11 @@ typedef struct			s_wolf3d
 	t_ui_elem			ui_txtr_opt;
 	t_ui_elem			ui_txtr_opt_close;
 	int					txtr_opt_type;	// 0: floor, 1: wall, 2: ceil
+
+	t_ui_elem			ui_me_menu;	// Меню map_editor: основная информация о карте,
+									// выбор помещаемого объекта, сохранение карты.
+
+	t_gui				gui;
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -568,5 +625,21 @@ void			ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e);
 
 void			ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent);
 void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
+
+
+
+
+
+/*
+**	gui functions
+*/
+int				ft_gui_redraw(t_wolf3d *w);
+void			ft_gui_events(t_wolf3d *w);
+void			ft_gui_init(t_wolf3d *w);
+void			ft_gui_elem_init(t_list **dom, t_ui_coord v1, t_ui_coord v2, int status);
+void			ft_gui_elem_set_color(t_list *list, int color);
+void			ft_gui_elem_set_parent(t_list *parent, t_list *child);
+void			ft_gui_print_element_list(t_list *dom, int level);
+void			ft_gui_desctuct(t_list *dom);
 
 #endif

@@ -6,12 +6,16 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/13 12:52:54 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/14 18:49:47 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = DooM_nuKem
 EDITOR_NAME = map_editor
+
+# temp for testing
+GUI_NAME = gui_test
+
 USERNAME = dorange-
 
 FLAGS = -g -O3 
@@ -89,6 +93,15 @@ EDITOR_OBJS = $(addprefix $(EDITOR_OBJS_DIRECTORY), $(EDITOR_OBJS_LIST))
 
 
 
+GUI_SRCS_DIRECTORY = ./src/gui/
+GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c gui_elem_init.c gui_destruct.c gui_debug.c
+
+GUI_OBJS_DIRECTORY = ./obj_gui/
+GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))
+GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
+
+
+
 SDL_LIBS = $(addprefix $(DIRECTORY)/lib/, $(LIB_LIST))
 
 LIBFT = libft/libft.a
@@ -101,7 +114,7 @@ RESET = \033[0m
 
 .PHONY: all clean fclean re
 
-all: $(NAME) $(EDITOR_NAME)
+all: $(NAME) $(EDITOR_NAME) $(GUI_NAME)
 
 
 $(NAME): $(LIBFT) $(OBJS_DIRECTORY) $(PARSER_OBJS_DIRECTORY) $(MAIN_OBJS_DIRECTORY) $(OBJS) $(PARSER_OBJS) $(MAIN_OBJS)
@@ -136,7 +149,7 @@ $(MAIN_OBJS_DIRECTORY)%.o : $(MAIN_SRCS_DIRECTORY)%.c $(HEADERS)
 
 
 $(EDITOR_NAME): $(LIBFT) $(EDITOR_OBJS_DIRECTORY) $(EDITOR_OBJS) $(OBJS)
-	@echo $(EDITOR_OBJS) $(OBJS)
+	#@echo $(EDITOR_OBJS) $(OBJS)
 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS) $(OBJS) $(PARSER_OBJS) -o $(EDITOR_NAME)
 	@echo "\n$(EDITOR_NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
@@ -148,6 +161,24 @@ $(EDITOR_OBJS_DIRECTORY):
 $(EDITOR_OBJS_DIRECTORY)%.o : $(EDITOR_SRCS_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
+
+
+
+$(GUI_NAME): $(LIBFT) $(GUI_OBJS_DIRECTORY) $(GUI_OBJS) $(OBJS)
+	#@echo $(GUI_OBJS) $(OBJS)
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(GUI_OBJS) $(OBJS) $(PARSER_OBJS) -o $(GUI_NAME)
+	@echo "\n$(GUI_NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(GUI_NAME): $(GREEN)$(GUI_NAME) was created$(RESET)"
+
+$(GUI_OBJS_DIRECTORY):
+	@mkdir -p $(GUI_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@echo "$(GUI_NAME): $(GREEN)$(GUI_OBJS_DIRECTORY) was created$(RESET)"
+
+$(GUI_OBJS_DIRECTORY)%.o : $(GUI_SRCS_DIRECTORY)%.c $(HEADERS)
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+
 
 $(LIBFT):
 	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"

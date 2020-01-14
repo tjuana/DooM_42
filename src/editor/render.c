@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 18:47:18 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/14 18:30:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,12 @@ void	ft_editor_map_fill_sectors(t_wolf3d *w)
 	}
 }
 
+/*
+**	[DEPRECATED]
+**	void ft_editor_font_draw_sector_item(t_wolf3d *w, t_sector *sector, t_ui_coord c)
+**	
+**	Function that print sectors list on the screen.
+*/
 void		ft_editor_font_draw_sector_item(t_wolf3d *w, t_sector *sector, t_ui_coord c)
 {
 	char	*str;
@@ -149,15 +155,30 @@ void		ft_editor_font_draw_sector_item(t_wolf3d *w, t_sector *sector, t_ui_coord 
 	}
 }
 
-void		ft_editor_font_draw_sector_list(t_wolf3d *w, t_list *sector, int i)
+void		ft_editor_font_draw_sector_list(t_wolf3d *w, t_list *s_list, int i)
 {
 	t_ui_coord	c;
+	t_sector	*sector;
+	char		*str;
 
-	if (sector)
+	if (s_list)
 	{
-		ft_editor_font_draw_sector_list(w, sector->next, i + 1);
-		c = (t_ui_coord){1740, 200 + i * 50, 0};
-		ft_editor_font_draw_sector_item(w, (t_sector*)sector->content, c);
+		ft_editor_font_draw_sector_list(w, s_list->next, i + 1);
+		// c = (t_ui_coord){1740, 200 + i * 50, 0};
+
+		sector = s_list->content;
+
+		if (sector->status == 1)
+		{
+			ft_font_preset_sc(w, 14, 0xdddddd);
+			c.x = sector->elem_2d.v1.x + sector->elem_2d.w / 2;
+			c.y = sector->elem_2d.v1.y + sector->elem_2d.h / 2;
+			str = ft_itoa(sector->id);
+			ft_font_putstr_sdl(w, str, c);
+			free(str);
+		}
+		// ft_editor_font_draw_sector_item(w, (t_sector*)sector->content, c);
+		
 	}
 }
 
@@ -291,7 +312,11 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 	SDL_UpdateTexture(wolf->sdl->text, 0, wolf->sdl->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(wolf->sdl->renderer, wolf->sdl->text, NULL, NULL);
 
+	// SDL_UpdateTexture(wolf->sdl->text, 0, wolf->sdl->pixels, WIN_WIDTH * 4);
+	// SDL_RenderCopy(wolf->sdl->renderer, wolf->sdl->text, NULL, NULL);
+
 	ft_editor_font_draw_sector_list(wolf, wolf->sector, 0); // draw sector list
+
 	ft_editor_mouse_move_act_s_mark(wolf); // mark
 	ft_editor_draw_txtr_opt_elem_font(wolf);
 

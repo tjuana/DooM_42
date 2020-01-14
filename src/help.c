@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/08 15:39:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/14 15:41:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ int				ft_cleanmem(t_list **lst)
 	return (0);
 }
 
+/*
+**	void ft_clean_sdl(t_wolf3d *w)
+**	
+**	Function that clear and close audio, texture and window.
+**	Need to add check:
+**	-- init audio
+**	-- init textures
+*/
 void			ft_clean_sdl(t_wolf3d *w)
 {
 	SDL_CloseAudioDevice(w->sdl->audio_device[0]);

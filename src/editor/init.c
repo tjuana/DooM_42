@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 12:07:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 20:38:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:40:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,9 @@ void		ft_editor_init(t_wolf3d *w)
 	ft_editor_init_ui_elem(&w->ui_txtr_opt, (t_ui_coord){1430, 20, 0}, (t_ui_coord){1730, 220, 0}, 0);
 	ft_editor_init_ui_elem(&w->ui_txtr_opt_close, (t_ui_coord){1709, 20, 0}, (t_ui_coord){1725, 36, 0}, 0);
 	ft_editor_init_ui_child_elem(&w->ui_txtr_opt_close, &w->ui_txtr_opt);
+
+	// me_menu
+	ft_editor_init_ui_elem(&w->ui_me_menu, (t_ui_coord){1740, 20, 0}, (t_ui_coord){1900, 1060, 0}, 1);
 
 	w->act_s = NULL;
 }
