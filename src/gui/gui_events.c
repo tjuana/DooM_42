@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 21:40:16 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 13:27:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	ft_gui_events(t_wolf3d *w)
 		if (e.type == SDL_MOUSEMOTION)
 			ft_gui_mouse_move(w, e, w->gui.dom);
 	}
-	if (w->gui.search_elem == GUI_EVENT_ON)
+	if (w->gui.search_elem == GUI_EVENT_ON || \
+		w->gui.search_elem == GUI_EVENT_SEARCH)
 	{
 		ft_gui_redraw(w);
 		w->gui.search_elem = GUI_EVENT_OFF;

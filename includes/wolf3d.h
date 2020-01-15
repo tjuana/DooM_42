@@ -232,6 +232,14 @@ typedef struct			s_time
 	unsigned char		flag;
 }						t_time;
 
+typedef struct			s_gui_event
+{
+	int					type;
+	int					code;
+	void				(*func)(void *data, SDL_Event e, t_list *dom, int type);
+	t_list				*elem;
+}						t_gui_event;
+
 typedef struct			s_gui_fonts
 {
 	SDL_Surface			*surf[7];
@@ -273,6 +281,7 @@ typedef struct			s_gui_elem
 
 	t_list				*child;			// child elements
 	int					color;			// element color
+	t_list				*events;		// element events
 }						t_gui_elem;
 
 # define GUI_NOT_REDRAW			0x00
@@ -648,6 +657,7 @@ void			ft_gui_events(t_wolf3d *w);
 void			ft_gui_init(t_wolf3d *w);
 void			ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2);
 void			ft_gui_elem_set_color(t_list *list, int color);
+void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code);
 void			ft_gui_elem_set_parent(t_list *parent, t_list *child);
 void			ft_gui_print_element_list(t_list *dom, int level);
 void			ft_gui_desctuct(t_list *dom);
@@ -656,5 +666,7 @@ void			ft_gui_mouse_btn_down(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_mouse_btn_up(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_mouse_move(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_elem_set_status(t_list *list, unsigned char status);
+
+void			ft_gui_mousemotion_elem1(void *data, SDL_Event e, t_list *dom, int type);
 
 #endif

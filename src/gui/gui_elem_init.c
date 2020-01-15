@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 21:59:43 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 12:59:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2)
 	elem->status = GUI_ELEM_HIDDEN | GUI_ELEM_NORMAL;
 	elem->parent = NULL;
 	elem->child = NULL;
+	elem->events = NULL;
 
 	list = ft_lstnew(elem, sizeof(t_gui_elem));
 	if (list == NULL)
@@ -59,6 +60,7 @@ void	ft_gui_elem_set_color(t_list *list, int color)
 }
 
 /*
+**	[TEMPORARY]
 **	void ft_gui_elem_set_status(t_list *list, unsigned char status)
 **	
 **	Function that set special status for gui element.
@@ -77,6 +79,30 @@ void	ft_gui_elem_set_status(t_list *list, unsigned char status)
 		elem->status = (elem->status ^ (GUI_ELEM_HIDDEN | GUI_ELEM_VISIBLE)) | status;
 	if (status & (GUI_ELEM_STATIC | GUI_ELEM_DYNAMIC))
 		elem->status = (elem->status ^ (GUI_ELEM_STATIC | GUI_ELEM_DYNAMIC)) | status;
+}
+
+/*
+**	void ft_gui_elem_set_event(t_list *list, int type, void *func)
+**	
+**	Function that set event for gui element.
+*/
+void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code)
+{
+	t_gui_elem	*elem;
+	t_gui_event	*event;
+	t_list		*new_list;
+
+	elem = list->content;
+	event = ft_my_malloc(sizeof(t_gui_event));
+	event->type = type;
+	event->func = func;
+	event->code = code;
+	event->elem = list;
+	new_list = ft_lstnew(event, sizeof(t_gui_event));
+	if (elem->events == NULL)
+		elem->events = new_list;
+	else
+		ft_lstadd(&elem->events, new_list);
 }
 
 /*

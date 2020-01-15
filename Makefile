@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/14 20:47:17 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/15 12:40:47 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,8 @@ EDITOR_OBJS = $(addprefix $(EDITOR_OBJS_DIRECTORY), $(EDITOR_OBJS_LIST))
 
 GUI_SRCS_DIRECTORY = ./src/gui/
 GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c \
-	gui_elem_init.c gui_destruct.c gui_debug.c gui_mouse.c
+	gui_elem_init.c gui_destruct.c gui_debug.c gui_mouse.c \
+	gui_events_elem1.c
 
 GUI_OBJS_DIRECTORY = ./obj_gui/
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))

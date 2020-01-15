@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 21:04:53 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 12:37:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_gui_init_dom(t_list *head)
 	ft_gui_elem_init(&win->child, "elem1", (t_ui_coord){20, 20, 0}, \
 		(t_ui_coord){100, 100, 0});
 	ft_gui_elem_set_color(win->child, 0x00ff00);
+	ft_gui_elem_set_event(win->child, ft_gui_mousemotion_elem1, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_parent(head, win->child);
 
 	ft_gui_elem_init(&win->child, "elem2", (t_ui_coord){1000, 20, 0}, \
