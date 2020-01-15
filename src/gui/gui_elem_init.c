@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 14:21:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 21:11:56 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void	ft_gui_elem_set_color(t_list *list, int color)
 
 /*
 **	[TEMPORARY]
-**	void ft_gui_elem_set_status(t_list *list, unsigned char status)
+**	void ft_gui_elem_set_status(t_list *list, int status)
 **	
 **	Function that set special status for gui element.
 */
-void	ft_gui_elem_set_status(t_list *list, unsigned char status)
+void	ft_gui_elem_set_status(t_list *list, int status)
 {
 	t_gui_elem	*elem;
 
@@ -124,6 +124,37 @@ void			ft_gui_elem_set_button(t_list *list, void *str)
 }
 
 /*
+**	void ft_gui_elem_set_input(t_list *list, void *str)
+**	
+**	Function that set input type for gui element.
+*/
+void			ft_gui_elem_set_input(t_list *list, void *str)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_ELEM_TYPE_INPUT;
+	elem->str = ft_strdup(str);
+	ft_gui_elem_set_event(list, ft_gui_mousemotion_input, SDL_MOUSEMOTION, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_input, SDL_MOUSEBUTTONDOWN, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_input, SDL_MOUSEBUTTONUP, 0);
+}
+
+/*
+**	void ft_gui_elem_set_text(t_list *list, void *str)
+**	
+**	Function that set text type for gui element.
+*/
+void			ft_gui_elem_set_text(t_list *list, void *str)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_ELEM_TYPE_TEXT;
+	elem->str = ft_strdup(str);
+}
+
+/*
 **	void ft_gui_elem_set_parent(t_list *parent, t_list *child)
 **	
 **	Function that set parent for gui element.
@@ -144,4 +175,46 @@ void	ft_gui_elem_set_parent(t_list *parent, t_list *child)
 	child_elem->pos.bottom = parent_elem->v2.y - child_elem->v2.y;
 	child_elem->pos.left = child_elem->v1.x - parent_elem->v1.x;
 	child_elem->pos.right = parent_elem->v2.x - child_elem->v2.x;
+}
+
+/*
+**	void ft_gui_delete_status_focus(t_list *dom)
+**	
+**	Function that delete all focus status of gui elements.
+*/
+void	ft_gui_delete_status_focus(t_list *dom)
+{
+	t_list		*list;
+	t_gui_elem	*elem;
+
+	list = dom;
+	while (list != NULL)
+	{
+		ft_gui_elem_set_status(list, GUI_ELEM_NORMAL);
+		elem = list->content;
+		ft_gui_delete_status_focus(elem->child);
+		list = list->next;
+	}
+}
+
+/*
+**	void ft_gui_delete_status(t_list *dom)
+**	
+**	Function that delete all status except focus of gui elements.
+*/
+void	ft_gui_delete_status(t_list *dom)
+{
+	t_list		*list;
+	t_gui_elem	*elem;
+
+	list = dom;
+	while (list != NULL)
+	{
+		// ft_gui_elem_set_status(list, GUI_ELEM_NORMAL);
+		elem = list->content;
+		if (!(elem->status & GUI_ELEM_FOCUS))
+			ft_gui_elem_set_status(list, GUI_ELEM_NORMAL);
+		ft_gui_delete_status(elem->child);
+		list = list->next;
+	}
 }

@@ -253,24 +253,24 @@ typedef struct			s_gui_font
 	int					half_menu;
 }						t_gui_font;
 
-# define GUI_ELEM_HIDDEN		0x01
-# define GUI_ELEM_VISIBLE		0x02
-# define GUI_ELEM_STATIC		0x04
-# define GUI_ELEM_DYNAMIC		0x08
+# define GUI_ELEM_HIDDEN		0x00000001
+# define GUI_ELEM_VISIBLE		0x00000002
+# define GUI_ELEM_STATIC		0x00000004
+# define GUI_ELEM_DYNAMIC		0x00000008
 
-# define GUI_ELEM_NORMAL		0x10
-# define GUI_ELEM_HOVER			0x20
-# define GUI_ELEM_CLICK			0x30
-# define GUI_ELEM_ACTIVE		0x40
-# define GUI_ELEM_FOCUS			0x50
-# define GUI_ELEM_DISABLE		0x60
+# define GUI_ELEM_NORMAL		0x00000010
+# define GUI_ELEM_HOVER			0x00000020
+# define GUI_ELEM_CLICK			0x00000040
+# define GUI_ELEM_ACTIVE		0x00000080
+# define GUI_ELEM_FOCUS			0x00000100
+# define GUI_ELEM_DISABLE		0x00000200
 
-# define GUI_ELEM_ACT_MASK		0x0F
+# define GUI_ELEM_ACT_MASK		0x0000000F
 
 # define GUI_ELEM_TYPE_BLOCK	0x01
-# define GUI_ELEM_TYPE_BUTTON	0x02
-// # define GUI_ELEM_TYPE_BLOCK	0x01
-// # define GUI_ELEM_TYPE_BLOCK	0x01
+# define GUI_ELEM_TYPE_TEXT		0x02
+# define GUI_ELEM_TYPE_BUTTON	0x03
+# define GUI_ELEM_TYPE_INPUT	0x04
 // # define GUI_ELEM_TYPE_BLOCK	0x01
 // # define GUI_ELEM_TYPE_BLOCK	0x01
 
@@ -284,7 +284,7 @@ typedef struct			s_gui_elem
 	t_ui_coord			r2;				// ...
 	int					w;				// frame width
 	int					h;				// frame height
-	unsigned char		status;			// element status
+	int					status;			// element status
 	t_list				*parent;		// parent element
 	t_ui_pos			pos;			// position: top, bottom, left, right
 
@@ -311,7 +311,8 @@ typedef struct			s_gui
 	unsigned char		redraw;
 	t_gui_elem			*redraw_elem;
 	t_ui_coord			mouse_pos;
-	unsigned char		search_elem;
+	int					search_elem;
+	t_list				*focus_elem;
 }						t_gui;
 
 typedef struct			s_wolf3d
@@ -676,7 +677,7 @@ void			ft_gui_desctuct(t_list *dom);
 void			ft_gui_mousebuttondown(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom);
-void			ft_gui_elem_set_status(t_list *list, unsigned char status);
+void			ft_gui_elem_set_status(t_list *list, int status);
 
 void			ft_gui_mousemotion_elem1(void *data, SDL_Event e, t_list *dom, int type);
 
@@ -684,8 +685,20 @@ void			ft_gui_mousemotion_button(void *data, SDL_Event e, t_list *dom, int type)
 void			ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type);
 
-SDL_Rect		*ft_gui_create_rect(int w, int h, int x, int y);
-int				ft_gui_font_preset_fsc(t_wolf3d *w, int size, int color);
+int				ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, int size, int color);
 void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
+SDL_Rect		*ft_gui_create_sdl_rect(int w, int h, int x, int y);
+void			ft_gui_desctuct_fonts(t_list *fonts_list);
+void			ft_gui_elem_set_button(t_list *list, void *str);
+
+void			ft_gui_elem_set_text(t_list *list, void *str);
+
+void			ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_gui_elem_set_input(t_list *list, void *str);
+void			ft_gui_delete_status_focus(t_list *dom);
+void		ft_gui_delete_status(t_list *dom);
 
 #endif

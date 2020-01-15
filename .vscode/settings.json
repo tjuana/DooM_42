@@ -3,6 +3,7 @@
 		"wolf3d.h": "c",
 		"algorithm": "c",
 		"stdio.h": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"sstream": "c"
 	}
 }

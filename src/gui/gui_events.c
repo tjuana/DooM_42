@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 14:24:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 21:03:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_gui_events(t_wolf3d *w)
 		if (e.type == SDL_KEYDOWN)
 		{
 			(e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) ? w->sdl->running = 0 : 0;
-			(e.key.keysym.scancode == SDL_SCANCODE_R) ? ft_gui_redraw(w) : 0;
+			if (w->gui.focus_elem != NULL)
+				ft_gui_focus_keydown(w, e, w->gui.focus_elem);
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN)
 			ft_gui_mousebuttondown(w, e, w->gui.dom);
