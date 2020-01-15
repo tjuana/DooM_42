@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:58:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 13:29:00 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:26:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ void	ft_gui_init_mouse_pos(t_wolf3d *w)
 	y = 0;
 	SDL_GetMouseState(&x, &y);
 	w->gui.mouse_pos = (t_ui_coord){x, y, 0};
-}
-
-void	ft_gui_mouse_btn_down(t_wolf3d *w, SDL_Event e, t_list *dom)
-{
-	return ;
-}
-
-void	ft_gui_mouse_btn_up(t_wolf3d *w, SDL_Event e, t_list *dom)
-{
-	return ;
 }
 
 /*
@@ -117,13 +107,27 @@ int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 }
 
 /*
-**	void ft_gui_mouse_move(t_wolf3d *w, SDL_Event e, t_list *dom)
+**	void ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom)
 **	
 **	Function that search mouse position area.
 */
-void	ft_gui_mouse_move(t_wolf3d *w, SDL_Event e, t_list *dom)
+void	ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom)
 {
 	ft_gui_init_mouse_pos(w);
 	w->gui.search_elem = GUI_EVENT_SEARCH;
 	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEMOTION);
+}
+
+void	ft_gui_mousebuttondown(t_wolf3d *w, SDL_Event e, t_list *dom)
+{
+	ft_gui_init_mouse_pos(w);
+	w->gui.search_elem = GUI_EVENT_SEARCH;
+	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEBUTTONDOWN);
+}
+
+void	ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, t_list *dom)
+{
+	ft_gui_init_mouse_pos(w);
+	w->gui.search_elem = GUI_EVENT_SEARCH;
+	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEBUTTONUP);
 }

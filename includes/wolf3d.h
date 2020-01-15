@@ -240,8 +240,9 @@ typedef struct			s_gui_event
 	t_list				*elem;
 }						t_gui_event;
 
-typedef struct			s_gui_fonts
+typedef struct			s_gui_font
 {
+	char				*path;
 	SDL_Surface			*surf[7];
 	TTF_Font			*ptr;
 	SDL_Color			color;
@@ -250,7 +251,7 @@ typedef struct			s_gui_fonts
 	int					w;
 	int					h;
 	int					half_menu;
-}						t_gui_fonts;
+}						t_gui_font;
 
 # define GUI_ELEM_HIDDEN		0x01
 # define GUI_ELEM_VISIBLE		0x02
@@ -265,6 +266,14 @@ typedef struct			s_gui_fonts
 # define GUI_ELEM_DISABLE		0x60
 
 # define GUI_ELEM_ACT_MASK		0x0F
+
+# define GUI_ELEM_TYPE_BLOCK	0x01
+# define GUI_ELEM_TYPE_BUTTON	0x02
+// # define GUI_ELEM_TYPE_BLOCK	0x01
+// # define GUI_ELEM_TYPE_BLOCK	0x01
+// # define GUI_ELEM_TYPE_BLOCK	0x01
+// # define GUI_ELEM_TYPE_BLOCK	0x01
+
 
 typedef struct			s_gui_elem
 {
@@ -282,6 +291,8 @@ typedef struct			s_gui_elem
 	t_list				*child;			// child elements
 	int					color;			// element color
 	t_list				*events;		// element events
+	int					type;			// element type
+	char				*str;			// element string
 }						t_gui_elem;
 
 # define GUI_NOT_REDRAW			0x00
@@ -662,11 +673,19 @@ void			ft_gui_elem_set_parent(t_list *parent, t_list *child);
 void			ft_gui_print_element_list(t_list *dom, int level);
 void			ft_gui_desctuct(t_list *dom);
 
-void			ft_gui_mouse_btn_down(t_wolf3d *w, SDL_Event e, t_list *dom);
-void			ft_gui_mouse_btn_up(t_wolf3d *w, SDL_Event e, t_list *dom);
-void			ft_gui_mouse_move(t_wolf3d *w, SDL_Event e, t_list *dom);
+void			ft_gui_mousebuttondown(t_wolf3d *w, SDL_Event e, t_list *dom);
+void			ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, t_list *dom);
+void			ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_elem_set_status(t_list *list, unsigned char status);
 
 void			ft_gui_mousemotion_elem1(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_gui_mousemotion_button(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type);
+
+SDL_Rect		*ft_gui_create_rect(int w, int h, int x, int y);
+int				ft_gui_font_preset_fsc(t_wolf3d *w, int size, int color);
+void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 12:59:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:21:49 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2)
 	elem->parent = NULL;
 	elem->child = NULL;
 	elem->events = NULL;
+	elem->type = GUI_ELEM_TYPE_BLOCK;
 
 	list = ft_lstnew(elem, sizeof(t_gui_elem));
 	if (list == NULL)
@@ -103,6 +104,23 @@ void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code)
 		elem->events = new_list;
 	else
 		ft_lstadd(&elem->events, new_list);
+}
+
+/*
+**	void ft_gui_elem_set_button(t_list *list, void *str)
+**	
+**	Function that set button type for gui element.
+*/
+void			ft_gui_elem_set_button(t_list *list, void *str)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_ELEM_TYPE_BUTTON;
+	elem->str = ft_strdup(str);
+	ft_gui_elem_set_event(list, ft_gui_mousemotion_button, SDL_MOUSEMOTION, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_button, SDL_MOUSEBUTTONDOWN, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_button, SDL_MOUSEBUTTONUP, 0);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 19:50:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:21:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,25 @@ void	ft_gui_desctuct(t_list *dom)
 		free(elem->name);
 		free(elem);
 		free(list);
+	}
+}
+
+/*
+**	void ft_gui_desctuct_fonts(t_list *fonts_list)
+**	
+**	Function that desctuct all fonts.
+*/
+void	ft_gui_desctuct_fonts(t_list *fonts_list)
+{
+	t_list		*list;
+	t_gui_font	*font;
+
+	list = fonts_list;
+	if (list != NULL)
+	{
+		ft_gui_desctuct(list->next);
+		font = list->content;
+		TTF_CloseFont(font->ptr);
+		free(font->path);
 	}
 }

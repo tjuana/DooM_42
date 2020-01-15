@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 12:37:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:00:41 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	ft_gui_init_dom(t_list *head)
 		(t_ui_coord){1100, 100, 0});
 	ft_gui_elem_set_color(win->child, 0x0000ff);
 	ft_gui_elem_set_parent(head, win->child);
+
+	ft_gui_elem_init(&win->child, "win_btn", (t_ui_coord){500, 100, 0}, \
+		(t_ui_coord){600, 200, 0});
+	ft_gui_elem_set_color(win->child, 0x00ffff);
+	ft_gui_elem_set_button(win->child, "Hello!");
+	ft_gui_elem_set_parent(head, win->child);
 }
 
 /*
@@ -46,6 +52,7 @@ void	ft_gui_init(t_wolf3d *w)
 	w->gui.redraw_elem = NULL;
 	w->gui.search_elem = GUI_EVENT_OFF;
 	w->gui.dom = NULL;
+	w->gui.fonts = NULL;
 	ft_gui_elem_init(&w->gui.dom, "win", (t_ui_coord){0, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(w->gui.dom, 0xff0000);

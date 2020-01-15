@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 13:28:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:55:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 	if (elem == NULL)
 		ft_error("ERROR");
 	if (elem->status & GUI_ELEM_HOVER)
-	{
-		// color = 0x000000;
-		// printf("%d   %d\n", elem->status, GUI_ELEM_HOVER);
 		color = ft_fdf_get_color(color, 0xffffff, 0.5);
-	}
+	if (elem->status & GUI_ELEM_ACTIVE)
+		color = ft_fdf_get_color(color, 0x000000, 0.5);
+	
 	y = elem->v1.y >= 0 ? elem->v1.y : 0;
 	while (y <= elem->v2.y && y < WIN_HEIGHT)
 	{
@@ -96,6 +95,8 @@ int		ft_gui_redraw(t_wolf3d *w)
 
 	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL);
+
+	ft_gui_redraw_elem_font(w, w->gui.dom);
 
 	SDL_RenderPresent(w->sdl->renderer);
 
