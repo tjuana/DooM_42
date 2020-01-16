@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 19:25:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 21:32:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 13:47:27 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type)
 
 	w = (t_wolf3d*)data;
 	ft_gui_delete_status_focus(w->gui.dom);
+	w->gui.focus_elem = NULL;
 	ft_gui_elem_set_status(dom, GUI_ELEM_FOCUS);
 	w->gui.focus_elem = dom;
 }

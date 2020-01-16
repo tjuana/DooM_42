@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:58:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 20:53:31 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 14:56:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 	{
 		elem = list->content;
 
-		if (ft_gui_check_event_area(w->gui.mouse_pos, elem))
+		if (ft_gui_check_event_area(w->gui.mouse_pos, elem) && elem->status & GUI_ELEM_VISIBLE)
 		{
 			ft_gui_event_search_elem(w, e, elem->child, type);
 			if (w->gui.search_elem == GUI_EVENT_SEARCH)

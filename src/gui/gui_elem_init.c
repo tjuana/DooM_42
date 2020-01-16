@@ -6,11 +6,36 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 21:11:56 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:29:17 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+/*
+**	t_list *ft_gui_search_elem_by_name(t_list *dom, char *name)
+**	
+**	Function that search elem by name.
+*/
+t_list	*ft_gui_search_elem_by_name(t_list *dom, char *name)
+{
+	t_list		*list;
+	t_gui_elem	*elem;
+	int			cmp;
+
+	list = dom;
+	while (list != NULL)
+	{
+		elem = list->content;
+		cmp = ft_strcmp(name, elem->name);
+		if (cmp == 0)
+			return (list);
+		else if (cmp == '_')
+			return (ft_gui_search_elem_by_name(elem->child, name));
+		list = list->next;
+	}
+	return (NULL);
+}
 
 /*
 **	void ft_gui_init(t_wolf3d *w)
@@ -29,11 +54,12 @@ void	ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2)
 	elem->v2 = v2;
 	elem->w = elem->v2.x - elem->v1.x;
 	elem->h = elem->v2.y - elem->v1.y;
-	elem->status = GUI_ELEM_HIDDEN | GUI_ELEM_NORMAL;
+	elem->status = GUI_ELEM_VISIBLE | GUI_ELEM_NORMAL;
 	elem->parent = NULL;
 	elem->child = NULL;
 	elem->events = NULL;
 	elem->type = GUI_ELEM_TYPE_BLOCK;
+	elem->str = NULL;
 
 	list = ft_lstnew(elem, sizeof(t_gui_elem));
 	if (list == NULL)
@@ -70,6 +96,8 @@ void	ft_gui_elem_set_status(t_list *list, int status)
 {
 	t_gui_elem	*elem;
 
+	if (list == NULL)
+		return ;
 	elem = list->content;
 	if (status > GUI_ELEM_ACT_MASK)
 	{
@@ -105,6 +133,21 @@ void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code)
 	else
 		ft_lstadd(&elem->events, new_list);
 }
+
+/*
+**	void ft_gui_elem_set_block(t_list *list)
+**	
+**	Function that set block type for gui element.
+*/
+void			ft_gui_elem_set_block(t_list *list)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_ELEM_TYPE_BLOCK;
+	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_block, SDL_MOUSEBUTTONUP, 0);
+}
+
 
 /*
 **	void ft_gui_elem_set_button(t_list *list, void *str)

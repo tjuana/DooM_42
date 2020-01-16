@@ -699,6 +699,15 @@ void			ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type
 
 void			ft_gui_elem_set_input(t_list *list, void *str);
 void			ft_gui_delete_status_focus(t_list *dom);
-void		ft_gui_delete_status(t_list *dom);
+void			ft_gui_delete_status(t_list *dom);
+
+void			ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_elem_set_block(t_list *list);
+void			ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom);
+
+void			ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setsector_btn_cancel(void *data, SDL_Event e, t_list *dom, int type);
+
+t_list			*ft_gui_search_elem_by_name(t_list *dom, char *name);
 
 #endif
