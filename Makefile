@@ -6,7 +6,7 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/12 16:51:14 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/16 15:53:32 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = DooM_nuKem
 EDITOR_NAME = map_editor
 USERNAME = tjuana
 
-FLAGS = -g -O3 
+FLAGS = -g -O3 -O0 
 CC = gcc
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)\
 	-lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib\
