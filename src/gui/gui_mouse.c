@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:58:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 14:56:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 19:58:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,11 @@ void	ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, t_list *dom)
 	ft_gui_init_mouse_pos(w);
 	w->gui.search_elem = GUI_EVENT_SEARCH;
 	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEBUTTONUP);
+}
+
+void	ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, t_list *dom)
+{
+	ft_gui_init_mouse_pos(w);
+	w->gui.search_elem = GUI_EVENT_SEARCH;
+	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEWHEEL);
 }

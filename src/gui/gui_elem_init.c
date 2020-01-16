@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 15:29:17 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:21:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,22 @@ void			ft_gui_elem_set_block(t_list *list)
 	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_block, SDL_MOUSEBUTTONUP, 0);
 }
 
+/*
+**	void ft_gui_elem_set_map(t_list *list, void *str)
+**	
+**	Function that set map type for gui element.
+*/
+void			ft_gui_elem_set_map(t_list *list)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_ELEM_TYPE_MAP;
+	ft_gui_elem_set_event(list, ft_gui_mousemotion_win_map, SDL_MOUSEMOTION, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_win_map, SDL_MOUSEBUTTONDOWN, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_win_map, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousewheel_win_map, SDL_MOUSEWHEEL, 0);
+}
 
 /*
 **	void ft_gui_elem_set_button(t_list *list, void *str)

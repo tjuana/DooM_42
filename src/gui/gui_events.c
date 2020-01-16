@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/15 21:03:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:22:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ void	ft_gui_events(t_wolf3d *w)
 				ft_gui_focus_keydown(w, e, w->gui.focus_elem);
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN)
-			ft_gui_mousebuttondown(w, e, w->gui.dom);
+		{
+			if (e.button.button == SDL_BUTTON_LEFT)
+				ft_gui_mousebuttondown(w, e, w->gui.dom);
+		}
+		if (e.type == SDL_MOUSEWHEEL)
+			ft_gui_mousewheel(w, e, w->gui.dom);
 		if (e.type == SDL_MOUSEBUTTONUP)
 			ft_gui_mousebuttonup(w, e, w->gui.dom);
 		if (e.type == SDL_MOUSEMOTION)

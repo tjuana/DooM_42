@@ -232,6 +232,14 @@ typedef struct			s_time
 	unsigned char		flag;
 }						t_time;
 
+typedef struct			s_gui_rect
+{
+	t_ui_coord			v1;
+	t_ui_coord			v2;
+	int					w;
+	int					h;
+}						t_gui_rect;
+
 typedef struct			s_gui_event
 {
 	int					type;
@@ -253,6 +261,16 @@ typedef struct			s_gui_font
 	int					half_menu;
 }						t_gui_font;
 
+/*
+**	Special struct for map element parameters.
+*/
+typedef struct			s_gui_map
+{
+	int					grid_scale;
+	unsigned char		check_vertex;
+	t_vector3			v;
+}						t_gui_map;
+
 # define GUI_ELEM_HIDDEN		0x00000001
 # define GUI_ELEM_VISIBLE		0x00000002
 # define GUI_ELEM_STATIC		0x00000004
@@ -271,6 +289,7 @@ typedef struct			s_gui_font
 # define GUI_ELEM_TYPE_TEXT		0x02
 # define GUI_ELEM_TYPE_BUTTON	0x03
 # define GUI_ELEM_TYPE_INPUT	0x04
+# define GUI_ELEM_TYPE_MAP		0xF1
 // # define GUI_ELEM_TYPE_BLOCK	0x01
 // # define GUI_ELEM_TYPE_BLOCK	0x01
 
@@ -357,6 +376,8 @@ typedef struct			s_wolf3d
 	int					sector_status; // 0: nothing; 1: set new sector
 	int					sector_count;
 	int					status; // game status: 0: error; 1: map editor; 2: game
+
+	t_gui_map			gui_map;
 
 	t_ui_elem			ui_map;
 	t_ui_elem			ui_act_s;
@@ -679,8 +700,6 @@ void			ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom);
 void			ft_gui_elem_set_status(t_list *list, int status);
 
-void			ft_gui_mousemotion_elem1(void *data, SDL_Event e, t_list *dom, int type);
-
 void			ft_gui_mousemotion_button(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type);
@@ -709,5 +728,17 @@ void			ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list 
 void			ft_gui_mousebuttonup_win_setsector_btn_cancel(void *data, SDL_Event e, t_list *dom, int type);
 
 t_list			*ft_gui_search_elem_by_name(t_list *dom, char *name);
+
+void			ft_gui_mousemotion_win_map(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_map(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousewheel_win_map(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_gui_elem_set_map(t_list *list);
+void			ft_gui_draw_map(t_wolf3d *w, t_list *list);
+
+void			ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, t_list *dom);
+
+void			ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color);
 
 #endif

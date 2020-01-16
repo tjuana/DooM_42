@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2020/01/16 14:42:28 by dorange-         ###   ########.fr        #
-=======
-#    Updated: 2020/01/16 15:27:42 by tjuana           ###   ########.fr        #
->>>>>>> 131aa61084041109532626c2e52c5891ee1eb746
+#    Updated: 2020/01/16 17:34:28 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,8 +96,9 @@ EDITOR_OBJS = $(addprefix $(EDITOR_OBJS_DIRECTORY), $(EDITOR_OBJS_LIST))
 GUI_SRCS_DIRECTORY = ./src/gui/
 GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c \
 	gui_elem_init.c gui_destruct.c gui_debug.c gui_mouse.c \
-	gui_events_elem1.c gui_elem_button.c gui_fonts.c gui_elem_input.c \
-	gui_keydown.c gui_elem_block.c gui_elem_event_list.c
+	gui_elem_button.c gui_fonts.c gui_elem_input.c \
+	gui_keydown.c gui_elem_block.c gui_elem_event_list.c \
+	gui_events_win_map.c gui_draw_map.c
 
 GUI_OBJS_DIRECTORY = ./obj_gui/
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))

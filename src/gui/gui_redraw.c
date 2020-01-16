@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 15:36:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:22:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,10 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 			list = list->next;
 			continue ;
 		}
-		if (elem->type == GUI_ELEM_TYPE_BLOCK || elem->type == GUI_ELEM_TYPE_BUTTON)
+		if (elem->type == GUI_ELEM_TYPE_MAP)
+			ft_gui_draw_map(w, list);
+		else if (elem->type == GUI_ELEM_TYPE_BLOCK || \
+			elem->type == GUI_ELEM_TYPE_BUTTON)
 			ft_gui_fill_elem(w, list, elem->color);
 		else if (elem->type == GUI_ELEM_TYPE_INPUT)
 			ft_gui_draw_border(w, list, elem->color, 3);

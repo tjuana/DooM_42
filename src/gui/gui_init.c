@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 15:37:48 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/16 21:38:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,13 @@ void	ft_gui_init_win(t_list *head)
 
 	win = head->content;
 
+	ft_gui_elem_init(&win->child, "win_map", (t_ui_coord){0, 0, 0}, \
+		(t_ui_coord){1620, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(win->child, 0x000000);
+	ft_gui_elem_set_map(win->child);
+	ft_gui_elem_set_parent(head, win->child);
+	ft_gui_init_win_menu(win->child);
+
 	ft_gui_elem_init(&win->child, "win_menu", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(win->child, 0x151719);
@@ -162,6 +169,11 @@ void	ft_gui_init(t_wolf3d *w)
 	w->gui.search_elem = GUI_EVENT_OFF;
 	w->gui.dom = NULL;
 	w->gui.fonts = NULL;
+
+	w->gui_map.grid_scale = 32;
+	w->gui_map.v = (t_vector3){-2.5, -2.5, 0, 0};
+	w->gui_map.check_vertex = 0;
+
 	ft_gui_elem_init(&w->gui.dom, "win", (t_ui_coord){0, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(w->gui.dom, 0x000000);
