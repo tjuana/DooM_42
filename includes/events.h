@@ -5,7 +5,7 @@
 typedef struct	s_subevents
 {
     SDL_Event	ev;
-    int			wsad[4];
+    int			wsad[40];
     int			ground;
     int			falling;
     int			ducking;

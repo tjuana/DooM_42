@@ -13,6 +13,10 @@ int sub_events(t_subevents *se, t_player *player)
         se->wsad[2] = se->ev.type == SDL_KEYDOWN;
     if (se->ev.key.keysym.sym == 'd')
         se->wsad[3] = (se->ev.type == SDL_KEYDOWN);
+	if (se->ev.key.keysym.sym == SDLK_KP_2)
+		se->wsad[4] = (se->ev.type == SDL_KEYDOWN);
+        
+	
     if (se->ev.key.keysym.sym == SDLK_ESCAPE)//quit
     {
         UnloadData(player);
@@ -92,6 +96,10 @@ void vectors_vel_dir(t_player *player, t_subevents *se, t_others *ot)//for flyin
     {
         ot->move_vec[0] -= player->anglesin * 0.2f;
         ot->move_vec[1] += player->anglecos * 0.2f;
+    }
+	if (se->wsad[4])
+    {
+        ft_putstr("NUM_2 PRESSED\n");
     }
     int pushing = se->wsad[0] || se->wsad[1] || se->wsad[2] || se->wsad[3];
     float acceleration = pushing ? 0.4 : 0.2;

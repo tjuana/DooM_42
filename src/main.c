@@ -28,7 +28,6 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 
 void LoadData(char *ag, t_player *pl)//this function reads a new map format
 {
-
     FILE* fp = fopen(ag, "rt");
     if(!fp) { perror(ag); exit(1); }
     char Buf[256];
