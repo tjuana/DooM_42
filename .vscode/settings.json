@@ -4,6 +4,7 @@
 		"algorithm": "c",
 		"stdio.h": "c",
 		"typeinfo": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"sdl_ttf.h": "c"
 	}
 }

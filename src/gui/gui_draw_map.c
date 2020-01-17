@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 15:23:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:30:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,25 @@ void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_rect rect, int scale)
 int		ft_gui_draw_map_vertex(t_wolf3d *w, t_ui_coord c, int status)
 {
 	int	v_d;
+	int	color;
 
 	v_d = w->gui_map.grid_scale / 8;
 	if (v_d < 2)
 		v_d = 2;
-	if (status == 1)
+	if (status == 1 && w->gui.mode != GUI_MD_ME)
 	{
+		color = GUI_CL_STANDART;
+		if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
+			color = GUI_CL_SECTOR;
+		if (w->gui.mode == GUI_MD_ME_SET_PLAYER)
+			color = GUI_CL_PLAYER;
+		if (w->gui.mode == GUI_MD_ME_SET_SPRITE)
+			color = GUI_CL_SPRITE;
+		if (w->gui.mode == GUI_MD_ME_SET_ENEMY)
+			color = GUI_CL_ENEMY;
 		ft_gui_fill_area(w, (t_ui_coord){c.x - v_d, c.y - v_d, 0}, \
-			(t_ui_coord){c.x + v_d, c.y + v_d, 0}, 0xff0000);
+			(t_ui_coord){c.x + v_d, c.y + v_d, 0}, color);
+
 	}
 	return (0);
 }

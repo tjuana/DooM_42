@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 14:53:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:27:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,21 @@ void	ft_gui_init_win_menu(t_list *head)
 		(t_ui_coord){WIN_WIDTH - 20, 140, 0});
 	ft_gui_elem_set_color(elem->child, 0xa496f2);
 	ft_gui_elem_set_button(elem->child, "Add player");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_player, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_sprite", (t_ui_coord){1640, 150, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 190, 0});
 	ft_gui_elem_set_color(elem->child, 0xdf73ff);
 	ft_gui_elem_set_button(elem->child, "Add sprite");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_sprite, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_enemy", (t_ui_coord){1640, 200, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 240, 0});
 	ft_gui_elem_set_color(elem->child, 0xfb607f);
 	ft_gui_elem_set_button(elem->child, "Add enemy");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_in_menu_btn_enemy, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_title_input", (t_ui_coord){1640, 400, 0}, \
@@ -130,7 +133,6 @@ void	ft_gui_init_win_setsector(t_list *head)
 void	ft_gui_init_win(t_list *head)
 {
 	t_gui_elem	*win;
-	// t_list		child;
 
 	win = head->content;
 
@@ -139,7 +141,6 @@ void	ft_gui_init_win(t_list *head)
 	ft_gui_elem_set_color(win->child, 0x000000);
 	ft_gui_elem_set_map(win->child);
 	ft_gui_elem_set_parent(head, win->child);
-	ft_gui_init_win_menu(win->child);
 
 	ft_gui_elem_init(&win->child, "win_menu", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
@@ -169,6 +170,7 @@ void	ft_gui_init(t_wolf3d *w)
 	w->gui.search_elem = GUI_EVENT_OFF;
 	w->gui.dom = NULL;
 	w->gui.fonts = NULL;
+	w->gui.mode = GUI_MD_ME;
 
 	w->gui_map.grid_scale = 32;
 	w->gui_map.v = (t_vector3){-5.2, -5.5, 0, 0};

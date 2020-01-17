@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 18:22:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:16:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 
 	elem = list->content;
 	if (elem->status & GUI_ELEM_HOVER)
+	{
 		color = ft_fdf_get_color(color, 0xffffff, 0.3);
+	}
 	if (elem->status & GUI_ELEM_ACTIVE || elem->status & GUI_ELEM_FOCUS)
 	{
 		color = ft_fdf_get_color(color, 0xffffff, 0.5);
@@ -77,24 +79,22 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 	t_gui_elem	*elem;
 
 	elem = list->content;
+
+	// printf("%s\n", elem->name);
+
 	if (elem == NULL)
 		ft_error("ERROR");
+
 	if (elem->status & GUI_ELEM_HOVER)
-		color = ft_fdf_get_color(color, 0xffffff, 0.5);
-	if (elem->status & GUI_ELEM_ACTIVE)
-		color = ft_fdf_get_color(color, 0x000000, 0.5);
-	
-	y = elem->v1.y >= 0 ? elem->v1.y : 0;
-	while (y <= elem->v2.y && y < WIN_HEIGHT)
 	{
-		x = elem->v1.x >= 0 ? elem->v1.x : 0;
-		while (x <= elem->v2.x && x < WIN_WIDTH)
-		{
-			w->sdl->pixels[x + (y * WIN_WIDTH)] = color;
-			x++;
-		}
-		y++;
+		color = ft_fdf_get_color(color, 0xffffff, 0.5);
 	}
+	if (elem->status & GUI_ELEM_ACTIVE)
+	{
+		color = ft_fdf_get_color(color, 0x000000, 0.5);
+	}
+
+	ft_gui_fill_area(w, elem->v1, elem->v2, color);
 }
 
 /*
@@ -225,6 +225,7 @@ int		ft_gui_redraw(t_wolf3d *w)
 	SDL_RenderClear(w->sdl->renderer);
 
 	ft_gui_redraw_elem(w, w->gui.dom);
+
 	// ft_gui_print_element_list(w->gui.dom, 0);
 
 	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, WIN_WIDTH * 4);

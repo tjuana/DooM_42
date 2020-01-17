@@ -323,6 +323,20 @@ typedef struct			s_gui_elem
 # define GUI_EVENT_ON			0x01
 # define GUI_EVENT_SEARCH		0x02
 
+// Режимы
+# define GUI_MD_ME				0x0000F001
+# define GUI_MD_ME_SET_SECTOR	0x0000F100
+# define GUI_MD_ME_SET_PLAYER	0x0000F200
+# define GUI_MD_ME_SET_SPRITE	0x0000F300
+# define GUI_MD_ME_SET_ENEMY	0x0000F400
+
+// Цвета
+# define GUI_CL_STANDART		0x00ff0000
+# define GUI_CL_SECTOR			0x00ffd700
+# define GUI_CL_PLAYER			0x00a496f2
+# define GUI_CL_SPRITE			0x00df73ff
+# define GUI_CL_ENEMY			0x00fb607f
+
 typedef struct			s_gui
 {
 	t_list				*fonts;
@@ -332,6 +346,7 @@ typedef struct			s_gui
 	t_ui_coord			mouse_pos;
 	int					search_elem;
 	t_list				*focus_elem;
+	int					mode;	// режим
 }						t_gui;
 
 typedef struct			s_wolf3d
@@ -743,5 +758,9 @@ void			ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color);
 
 t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c);
 t_ui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
+
+void			ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_menu_btn_sprite(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *dom, int type);
 
 #endif
