@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/17 14:15:33 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/17 14:53:00 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ GUI_NAME = gui_test
 
 USERNAME = tjuana
 
-FLAGS = -g -O3 
+FLAGS = -g -O3 -O0
 CC = gcc
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)\
 	-lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib\
@@ -85,7 +85,8 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 
 EDITOR_SRCS_DIRECTORY = ./src/editor/
 EDITOR_SRCS_LIST = editor.c render.c map.c events.c mouse.c \
-draw.c init.c neighbors.c editor_debug.c editor_threads.c fonts.c
+draw.c init.c neighbors.c editor_debug.c editor_threads.c fonts.c\
+editor_save_file.c
 
 EDITOR_OBJS_DIRECTORY = ./obj_editor/
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))
@@ -97,7 +98,7 @@ GUI_SRCS_DIRECTORY = ./src/gui/
 GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c \
 	gui_elem_init.c gui_destruct.c gui_debug.c gui_mouse.c \
 	gui_events_elem1.c gui_elem_button.c gui_fonts.c gui_elem_input.c \
-	gui_keydown.c gui_elem_block.c gui_elem_event_list.c
+	gui_keydown.c gui_elem_block.c gui_elem_event_list.c 
 
 GUI_OBJS_DIRECTORY = ./obj_gui/
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))

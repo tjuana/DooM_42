@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 18:24:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 14:51:06 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		main(int c, char **v)
 
 		// fpsthink();
 	}
+	ft_save_the_file(&w);
 	ft_editor_close_fonts(&w);
 	ft_clean_sdl(&w);
 	return (0);

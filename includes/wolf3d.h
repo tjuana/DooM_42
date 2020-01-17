@@ -21,6 +21,8 @@
 # define E_GRID_V_D 6 // VERTEX DIAMETER
 # define E_GRID_V_D_D 4 // VERTEX DRAW DIAMETER
 
+# define VER_HEIGHT (int)54
+# define VER_WIDTH (int)33
 # define FONT_PATH "fonts/RobotoMono-Medium.ttf"
 
 # include "SDL2/SDL.h"
@@ -43,7 +45,7 @@
 //# include "matrix/sdl.h"
 //# include "matrix/fdf.h"
 # include "algebra.h" // math library for matrix transform
-
+# include "file.h"
 typedef struct			s_font
 {
 	SDL_Surface			*surf[7];
@@ -317,6 +319,7 @@ typedef struct			s_gui
 
 typedef struct			s_wolf3d
 {
+	t_list				*vertex;
 	// add list with sector
 	t_list				*sector;
 	// add temp list for map
@@ -349,7 +352,7 @@ typedef struct			s_wolf3d
 	unsigned char		arr[10];
 	Uint8				*tex_col;
 	Uint32				color;
-
+	int					sort[33][54];
 	int					type;
 
 	t_vector3			mouse_vertex;
@@ -710,4 +713,9 @@ void			ft_gui_mousebuttonup_win_setsector_btn_cancel(void *data, SDL_Event e, t_
 
 t_list			*ft_gui_search_elem_by_name(t_list *dom, char *name);
 
+
+///just do it
+void	ft_editor_take_vertex(t_wolf3d *w);
+void	ft_save_the_file(t_wolf3d *w);
+void	ft_sort_vertex(t_wolf3d *w);
 #endif

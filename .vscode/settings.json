@@ -1,9 +1,5 @@
 {
-	"files.associations": {
-		"wolf3d.h": "c",
-		"algorithm": "c",
-		"stdio.h": "c",
-		"typeinfo": "c",
-		"sstream": "c"
-	}
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+	"editor.tabSize": 4,
 }
