@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 21:38:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 14:53:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,8 @@ void	ft_gui_init(t_wolf3d *w)
 	w->gui.fonts = NULL;
 
 	w->gui_map.grid_scale = 32;
-	w->gui_map.v = (t_vector3){-2.5, -2.5, 0, 0};
+	w->gui_map.v = (t_vector3){-5.2, -5.5, 0, 0};
+	// w->gui_map.v = (t_vector3){-2.2, -2.2, 0, 0};
 	w->gui_map.check_vertex = 0;
 
 	ft_gui_elem_init(&w->gui.dom, "win", (t_ui_coord){0, 0, 0}, \

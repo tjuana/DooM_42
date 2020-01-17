@@ -741,4 +741,7 @@ void			ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, t_list *dom);
 
 void			ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color);
 
+t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c);
+t_ui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
+
 #endif
