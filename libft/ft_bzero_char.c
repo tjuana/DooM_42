@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_bzero_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 14:26:01 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/17 18:11:27 by tjuana           ###   ########.fr       */
+/*   Created: 2019/04/05 15:56:10 by tjuana            #+#    #+#             */
+/*   Updated: 2020/01/17 18:19:30 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	ft_bzero_char(void *b, size_t n)
 {
-	if (!alst || !*alst)
-		return ;
-	if (del != NULL)
-		del((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = NULL;
+	t_byte	*ptr;
+
+	ptr = (t_byte*)b;
+	while (n-- > 0)
+		*(ptr++) = 0;
 }
