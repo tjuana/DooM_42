@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/18 20:19:44 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/18 20:49:48 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void		ft_save_the_file(t_wolf3d *w)
 {
 	ft_editor_take_vertex(w);
-	count_origin_vertexes(w);
-	
+	ft_count_origin_vertexes(w);
+	ft_save_to_file(w);
 }
 
 /*
@@ -62,7 +62,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 **	S
 */
 
-void		count_origin_vertexes(t_wolf3d *w)
+void		ft_count_origin_vertexes(t_wolf3d *w)
 {
 	w->file.count = 0;
 	w->file.i = -1;
@@ -73,6 +73,7 @@ void		count_origin_vertexes(t_wolf3d *w)
 		{
 			if (w->file.sort[w->file.i][w->file.j] == 77)
 			{
+				ft_print_to_file(w);
 				ft_create_list_of_vertexes(w);\
 				w->file.count++;
 			}

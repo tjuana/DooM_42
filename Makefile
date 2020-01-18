@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/18 16:11:16 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/18 20:37:04 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 EDITOR_SRCS_DIRECTORY = ./src/editor/
 EDITOR_SRCS_LIST = editor.c render.c map.c events.c mouse.c \
 draw.c init.c neighbors.c editor_debug.c editor_threads.c fonts.c\
-editor_save_file.c
+editor_save_file.c editor_save_file2.c
 
 EDITOR_OBJS_DIRECTORY = ./obj_editor/
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))

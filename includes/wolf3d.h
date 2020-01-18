@@ -772,6 +772,7 @@ void			ft_editor_take_vertex(t_wolf3d *w);
 void			ft_save_the_file(t_wolf3d *w);
 
 void			ft_create_list_of_vertexes(t_wolf3d *w);
-void			count_origin_vertexes(t_wolf3d *w);
+void			ft_count_origin_vertexes(t_wolf3d *w);
 void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
+void			ft_save_to_file(t_wolf3d *w);
 #endif

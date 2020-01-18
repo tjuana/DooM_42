@@ -3,14 +3,14 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/includes/**",
-                "${workspaceFolder}/libft/**",
-                "${workspaceFolder}/includes/**"
+                "${workspaceFolder}/include/**",
+				"/.brew/Cellar/sdl2/2.0.10/include/**",
+				"${workspaceFolder}/includes/**",
+				"${workspaceFolder}/libft/includes/"
             ],
             "defines": [],
             "macFrameworkPath": [
-                "/System/Library/Frameworks",
-                "/Library/Frameworks"
+                "/.brew/Cellar/"
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
