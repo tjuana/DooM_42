@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.h                                             :+:      :+:    :+:   */
+/*   editor_save_file2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/18 20:22:47 by tjuana           ###   ########.fr       */
+/*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
+/*   Updated: 2020/01/18 20:22:34 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-# define VER_HEIGHT (int)33
-# define VER_WIDTH (int)54
 
-
-typedef struct			s_file
+void	ft_save_to_file(t_wolf3d *w)
 {
-	int			sort[33][54];
-	int			i;
-	int			j;
-	int			count;
-	int			fd;
-	char		*name;
-}						t_file;
+	if ((w->file.fd = open(w->file.name, O_CREAT | O_WRONLY | O_TRUNC, \
+	S_IWRITE)) == -1)
+		ft_error("open failed on output file");
+}
+
+void	ft_print_to_file(t_wolf3d *w, int flag)
+{
+
+}

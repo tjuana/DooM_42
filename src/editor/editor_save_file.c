@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/18 16:01:24 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/18 20:19:44 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		ft_save_the_file(t_wolf3d *w)
 {
 	ft_editor_take_vertex(w);
 	count_origin_vertexes(w);
+	
 }
 
 /*

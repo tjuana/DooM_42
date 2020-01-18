@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:40:14 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/17 20:56:30 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/18 20:23:37 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void		ft_init_wolf(t_wolf3d *w)
 	w->fov = 1.5708; // 90 градусов
 	//w->fov = 3.00000;
 	w->l_p = WIN_WIDTH / (2 * tan(w->fov / 2)); // Расстояние до воображаемой стены
-	
+	//name of file
+	w->file.name = "map_fuck_map.txt";
 	// w->pl.camera_vector.x = 0;
 	// w->pl.camera_vector.y = 1;
 	// w->pl.camera_vector.z = 0;
