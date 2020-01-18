@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 14:26:01 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/17 18:11:27 by tjuana           ###   ########.fr       */
+/*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
+/*   Updated: 2020/01/17 16:21:10 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "wolf3d.h"
+# define VER_HEIGHT (int)33
+# define VER_WIDTH (int)54
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+
+typedef struct			s_file
 {
-	if (!alst || !*alst)
-		return ;
-	if (del != NULL)
-		del((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = NULL;
-}
+	int			sort[33][54];
+	int			i;
+	int			j;
+	int			count;
+}						t_file;

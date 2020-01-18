@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_debug.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 14:08:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/12 14:48:41 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:46:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	ft_editor_sector_special_debug(t_list *ptr_list)
 			if (j > 0)
 				printf(" | ");
 			printf(
-				"[%02.0f, %02.0f]",
+				"[%02.0f, %02.0f]AAAA[%.f]",
 				ptr_sector->vertex[j]->x,
-				ptr_sector->vertex[j]->y
+				ptr_sector->vertex[j]->y,
+				ptr_sector->vertex[j]->w
 			);
-			
 			j++;
 		}
 

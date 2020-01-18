@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/16 17:34:28 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/18 16:11:16 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ EDITOR_NAME = map_editor
 # temp for testing
 GUI_NAME = gui_test
 
-USERNAME = dorange-
+USERNAME = tjuana
 
-FLAGS = -g -O3 
+FLAGS = -g -O3 -O0
 CC = gcc
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)\
 	-lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib\
@@ -85,7 +85,8 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 
 EDITOR_SRCS_DIRECTORY = ./src/editor/
 EDITOR_SRCS_LIST = editor.c render.c map.c events.c mouse.c \
-draw.c init.c neighbors.c editor_debug.c editor_threads.c fonts.c
+draw.c init.c neighbors.c editor_debug.c editor_threads.c fonts.c\
+editor_save_file.c
 
 EDITOR_OBJS_DIRECTORY = ./obj_editor/
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))

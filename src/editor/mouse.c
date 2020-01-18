@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 20:42:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/18 14:31:45 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v)
 		i++;
 	}
 	p = malloc(sizeof(t_vector3));
-	ft_bzero(p, sizeof(t_vector3));
+	ft_bzero_char(p, sizeof(t_vector3));
 	*p = v;
 	vertex[i] = p;
 	free(sector->vertex);

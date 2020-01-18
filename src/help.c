@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/14 15:41:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/18 13:41:14 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,16 @@ void			ft_clean_sdl(t_wolf3d *w)
 	free(w->sdl->audio_device);
 	free(w->sdl->textures);
 	free(w->sdl->pixels);
-	if (w->map.s_count > 0)
-	{
-		free(w->map.s_ord);
-		free(w->map.s_dst);
-		//free(w->map.sprite);
-	}
-	free(w->map.map);
+	//if (w->map.s_count > 0)
+	//{
+	//	free(w->map.s_ord);
+	//	free(w->map.s_dst);
+	//	//free(w->map.sprite);
+	//}
+	//free(w->map.map);
+
+	ft_lstdel(&w->vertex, ft_bzero_char);
+	ft_lstdel(&w->sector, ft_bzero_char);
 	SDL_DestroyTexture(w->sdl->text);
 	SDL_DestroyRenderer(w->sdl->renderer);
 	SDL_DestroyWindow(w->sdl->win);

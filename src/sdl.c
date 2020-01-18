@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sdl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:40:14 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/13 12:35:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:56:30 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void		ft_we_need_more_init(t_wolf3d *w)
 	w->arr[7] = 0;
 	w->arr[8] = 0;
 	w->arr[9] = 0;
+	ft_bzero_char(&w->file.sort, sizeof(int)*VER_HEIGHT*VER_WIDTH);
 }
 
 void		ft_init_multi_wolf_for_sector(t_threads_help *w, t_wolf3d *head)
@@ -137,6 +138,5 @@ void		ft_init_multi_wolf(t_threads_help *w, t_wolf3d *head)
 	w->sector = head->sector;
 	w->fov = head->fov;
 	w->l_p = head->l_p;
-
 	ft_init_multi_wolf_for_sector(w, head);
 }
