@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/17 20:56:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/18 13:41:14 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void			ft_clean_sdl(t_wolf3d *w)
 	//	//free(w->map.sprite);
 	//}
 	//free(w->map.map);
-	ft_save_the_file(&w);
+
 	ft_lstdel(&w->vertex, ft_bzero_char);
 	ft_lstdel(&w->sector, ft_bzero_char);
 	SDL_DestroyTexture(w->sdl->text);

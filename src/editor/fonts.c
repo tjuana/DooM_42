@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fonts.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 12:46:18 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/13 14:22:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/18 14:54:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c)
 	if (SDL_RenderCopy(w->sdl->renderer, tmp_texture, 0, tmp_rect) != 0)
 		ft_error("FONT ERROR (6)");
 	SDL_DestroyTexture(tmp_texture);
+	free(tmp_rect);
 }

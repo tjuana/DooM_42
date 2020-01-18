@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 20:56:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/18 13:32:52 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int c, char **v)
 			ft_error("Error: bad file");
 		ft_parser_nnmp(w.fd, &w);
 	}
-	// ft_editor_sector_special_debug(w.sector);
+	// 
 	w.sdl = sdl_init(w.sdl);
 	ft_init_wolf(&w);
 	ft_editor_init_fonts(&w);
@@ -42,6 +42,8 @@ int		main(int c, char **v)
 		// w.ui_txtr_opt.trigger = 0;
 		// fpsthink();
 	}
+	ft_save_the_file(&w);
+	ft_editor_sector_special_debug(w.sector);
 	ft_editor_close_fonts(&w);
 	ft_clean_sdl(&w);
 	return (0);

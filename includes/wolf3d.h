@@ -717,6 +717,8 @@ t_list			*ft_gui_search_elem_by_name(t_list *dom, char *name);
 ///just do it
 void			ft_editor_take_vertex(t_wolf3d *w);
 void			ft_save_the_file(t_wolf3d *w);
-void			ft_sort_vertex(t_wolf3d *w);
+
 void			ft_create_list_of_vertexes(t_wolf3d *w);
+void			count_origin_vertexes(t_wolf3d *w);
+void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
 #endif
