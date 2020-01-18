@@ -1,0 +1,11 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc build active file",
+			"command": "make -j32",
+ 
+        }
+    ],
+    "version": "2.0.0"
+}
