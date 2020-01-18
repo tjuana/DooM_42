@@ -20,6 +20,9 @@ typedef struct	s_player
     t_sector	*sectors;
 	t_cycle		cycle;//one draw_screen cycle
 	t_sector	*sect;//current sector
+	int			door_all;//how much doors
+	int			door_nb;//door near with player
+	t_door		*doors;//arry of doors
 	int			neib;
 	t_ceil		ceil;
 	t_floor		floor;

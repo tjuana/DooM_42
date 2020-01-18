@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/14 18:45:13 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/18 21:49:46 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ HEADERS_LIST = wolf3d.h\
 	engine.h\
 	events.h\
 	player.h\
+	door.h\
 	wolf3d.h
 
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
@@ -49,6 +50,9 @@ SRCS_LIST = functions_main.c\
 			math_functions.c\
 			engine_exp.c\
 			engine.c\
+			door.c\
+			vectors_1.c\
+			vectors_2.c\
 			main.c
 
 OBJS_DIRECTORY = objects/

@@ -24,12 +24,13 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 	pl->farz = 5;
 	pl->nearside = 1e-5f;
 	pl->farside = 20.f;
+	pl->door_all = -1;
 }
 
 void LoadData(char *ag, t_player *pl)//this function reads a new map format
 {
     FILE* fp = fopen(ag, "rt");
-    if(!fp) { perror(ag); exit(1); }
+    if(!fp) { perror(ag); exit(EXIT_FAILURE); }
     char Buf[256];
     char word[256];
     char *ptr;
@@ -215,7 +216,8 @@ int main(int ac, char **ag)
                 mouse_movement(&ms, &pl);//mouse aiming
                 vectors_vel_dir(&pl, &se, &ot);
                 MovePlayer(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
-            }
+            	door(&pl, &se);
+			}
             UnloadData(&pl);
             SDL_Quit();
         }

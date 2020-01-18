@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/14 21:31:25 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/18 16:27:48 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	engine_preset(t_player *pl)
 	if ((i = -1) && !(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
 	{
 		ft_putstr_fd("engine_preset - malloc error.\n", 2);
-		exit (-1);
+		exit (EXIT_FAILURE);
 	}
 	while(++i < pl->sectors_nb)
 		rend_sec[i] = 0;

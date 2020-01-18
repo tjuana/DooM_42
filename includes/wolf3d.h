@@ -18,7 +18,9 @@
 # include "animations.h"
 # include "engine.h"
 # include "events.h"
+# include "door.h"
 # include "player.h"
+
 
 //static unsigned NumSectors = 0;
 
@@ -68,5 +70,22 @@ int			ft_init_anim(t_wolf3d *wolf);
 void		ft_draw_animation(t_wolf3d *w);
 void		ft_animation_play(t_wolf3d *w);
 
+/*			door.c			*/
+void		door_button(t_player *pl, t_subevents *se);
+void		door(t_player *pl, t_subevents *se);
+
+/*			vector_1.c			*/
+t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
+double		ft_vec3_magnitude(t_vector3 this);
+t_vector3	ft_vec3_add(t_vector3 this, t_vector3 rhs);
+t_vector3	ft_vec3_sub(t_vector3 this, t_vector3 rhs);
+t_vector3	ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
+
+/*			vector_2.c			*/
+double		ft_vec3_dot_product(t_vector3 this, t_vector3 rhs);
+double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
+t_vector3	ft_vec3_opposite(t_vector3 this);
+t_vector3	ft_vec3_scalar_product(t_vector3 this, double k);
+t_vector3	ft_vec3_normalize(t_vector3 vtc);
 
 #endif
