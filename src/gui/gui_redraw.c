@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 20:16:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:51:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 	t_gui_elem	*elem;
 
 	elem = list->content;
-
-	// printf("%s\n", elem->name);
 
 	if (elem == NULL)
 		ft_error("ERROR");

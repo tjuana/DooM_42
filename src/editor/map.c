@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:24:13 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/13 19:16:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:33:21 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void		ft_editor_map_draw_walls_height(t_wolf3d *w, t_sector *ptr_sector, t_secto
 	}
 }
 
+// ft_editor_draw_map_2d -> ft_gui_draw_map_sector
 void		ft_editor_draw_map_2d(t_wolf3d *w, t_list *sector)
 {
 	if (sector)

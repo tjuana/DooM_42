@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 14:31:45 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/18 19:49:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ void	ft_editor_sector_create(t_wolf3d *w)
 		ft_lstadd(&(w->sector), list_item);
 }
 
+// dublicate
 int		ft_editor_map_check_area(t_wolf3d *w)
 {
 	t_vector3	vector;

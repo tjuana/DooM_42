@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:34:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/14 18:30:00 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:14:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,7 @@ void	ft_editor_renderer(t_wolf3d *wolf)
 	ft_editor_draw_line(wolf);
 	ft_editor_draw_map_2d(wolf, wolf->sector);
 
+	// for active sector
 	ft_editor_draw_sector_to_elem(wolf, wolf->act_s);
 
 	// ft_editor_threading(wolf); // sectors color fill

@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/18 16:11:16 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/18 18:40:43 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ EDITOR_NAME = map_editor
 # temp for testing
 GUI_NAME = gui_test
 
-USERNAME = tjuana
+USERNAME = dorange-
 
 FLAGS = -g -O3 -O0
 CC = gcc
@@ -99,7 +99,11 @@ GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c \
 	gui_elem_init.c gui_destruct.c gui_debug.c gui_mouse.c \
 	gui_elem_button.c gui_fonts.c gui_elem_input.c \
 	gui_keydown.c gui_elem_block.c gui_elem_event_list.c \
-	gui_events_win_map.c gui_draw_map.c
+	gui_events_win_map.c gui_draw_map.c \
+	\
+	gui_temp.c gui_map_func.c
+
+
 
 GUI_OBJS_DIRECTORY = ./obj_gui/
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))

@@ -292,9 +292,6 @@ typedef struct			s_gui_map
 # define GUI_ELEM_TYPE_BUTTON	0x03
 # define GUI_ELEM_TYPE_INPUT	0x04
 # define GUI_ELEM_TYPE_MAP		0xF1
-// # define GUI_ELEM_TYPE_BLOCK	0x01
-// # define GUI_ELEM_TYPE_BLOCK	0x01
-
 
 typedef struct			s_gui_elem
 {
@@ -774,4 +771,15 @@ void			ft_save_the_file(t_wolf3d *w);
 void			ft_create_list_of_vertexes(t_wolf3d *w);
 void			count_origin_vertexes(t_wolf3d *w);
 void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
+
+// TEMP.
+void			ft_editor_sector_create(t_wolf3d *w);
+void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v);
+
+t_ui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
+					t_gui_elem *elem);
+
+// for test
+int				ft_new_editor_map_check_area(t_wolf3d *w);
+
 #endif
