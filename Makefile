@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/19 18:00:11 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/19 18:08:16 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ EDITOR_NAME = map_editor
 # temp for testing
 GUI_NAME = gui_test
 
-USERNAME = dorange-
+USERNAME = tjuana
 
 FLAGS = -g -O3 -O0
 CC = gcc

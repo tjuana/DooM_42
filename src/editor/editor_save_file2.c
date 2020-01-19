@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/19 17:03:29 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/19 18:09:01 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	ft_save_neighbour(t_sector *sector, int fd)
 			ft_putstr_fd(str, fd);
 		}
 	}
+	ft_strdel(&str);
 }
 
-t_list	*ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
+void	ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 {
 	char		*str;
 	t_sector	*sector;
@@ -37,7 +38,8 @@ t_list	*ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 
 	ptr_list = list;
 	if (ptr_list == NULL)
-		return (0);
+		return ;
+	ft_print_sectors_to_file(w, ptr_list->next);
 	sector = (t_sector*)ptr_list->content;
 	str = ft_strjoin(ft_strjoin(ft_strjoin(ft_strjoin("sector\t", \
 			ft_itoa(sector->height)), " "), ft_itoa(sector->floor)), "\t");
@@ -49,11 +51,9 @@ t_list	*ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 		ft_putstr_fd(str, w->file.fd);
 	}
 	ft_putstr_fd("    ", w->file.fd);
-	ft_strdel(&str);///????????????????????!!!OKIDJSFOIDF
 	ft_save_neighbour(sector, w->file.fd);
 	ft_putstr_fd("\n", w->file.fd);
 	ft_strdel(&str);
-	return (ft_print_sectors_to_file(w, ptr_list->next));
 }
 
 void	ft_print_to_file(t_wolf3d *w, int f)
