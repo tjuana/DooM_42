@@ -177,8 +177,10 @@ typedef struct			s_sdl
 */
 typedef struct			s_sprite
 {
-	double				x;
-	double				y;
+	int					id;
+	t_vector3			pos;
+	double				x; // (deprecated)
+	double				y; // (deprecated)
 	double				distance;
 	int					texture;
 }						t_sprite;
@@ -400,6 +402,8 @@ typedef struct			s_wolf3d
 
 	t_gui_map			gui_map;
 	t_gui				gui;
+
+
 
 	t_ui_elem			ui_map; // (deprecated)
 	t_ui_elem			ui_act_s; // (deprecated)
