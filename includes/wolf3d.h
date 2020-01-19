@@ -106,7 +106,9 @@ typedef struct			s_sector
 	int					color;			// Цвет сектора (for map editor)
 	int					status;			// 0: broken line; 1: polygon
 
-	t_ui_elem			elem_2d;		// Сектор как элемент ui
+	t_ui_elem			elem_2d;		// Сектор как элемент ui (устаревшее)
+
+	t_vector3			vtx_center;		// Центр сектора
 }						t_sector;
 
 typedef struct			s_sort_util	// Структура для спрайтов (?)
@@ -268,6 +270,7 @@ typedef struct			s_gui_font
 */
 typedef struct			s_gui_map
 {
+	t_list				*ptr;		// Указатель на gui-элемент
 	int					grid_scale;
 	unsigned char		check_vertex;
 	t_vector3			v;
@@ -390,25 +393,27 @@ typedef struct			s_wolf3d
 	t_vector3			mouse_pos;
 	int					sector_status; // 0: nothing; 1: set new sector
 	int					sector_count;
+
+	int					player_status; // 0: nothing; 1: player was set;
+
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
 	t_gui_map			gui_map;
+	t_gui				gui;
 
-	t_ui_elem			ui_map;
-	t_ui_elem			ui_act_s;
-	t_ui_elem			ui_act_s_floor;
-	t_ui_elem			ui_act_s_wall;
-	t_ui_elem			ui_act_s_ceil;
+	t_ui_elem			ui_map; // (deprecated)
+	t_ui_elem			ui_act_s; // (deprecated)
+	t_ui_elem			ui_act_s_floor; // (deprecated)
+	t_ui_elem			ui_act_s_wall; // (deprecated)
+	t_ui_elem			ui_act_s_ceil; // (deprecated)
 	t_sector			*act_s;		// Просматриваемый сектор: если нет, то NULL
 
-	t_ui_elem			ui_txtr_opt;
-	t_ui_elem			ui_txtr_opt_close;
-	int					txtr_opt_type;	// 0: floor, 1: wall, 2: ceil
+	t_ui_elem			ui_txtr_opt; // (deprecated)
+	t_ui_elem			ui_txtr_opt_close; // (deprecated)
+	int					txtr_opt_type;	// 0: floor, 1: wall, 2: ceil  // (deprecated)
 
-	t_ui_elem			ui_me_menu;	// Меню map_editor: основная информация о карте,
-									// выбор помещаемого объекта, сохранение карты.
-
-	t_gui				gui;
+	t_ui_elem			ui_me_menu;	// Меню map_editor: основная информация о карте,  // (deprecated)
+									// выбор помещаемого объекта, сохранение карты. // (deprecated)
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -781,5 +786,15 @@ t_ui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
 
 // for test
 int				ft_new_editor_map_check_area(t_wolf3d *w);
+
+void			ft_gui_mousebuttonup_win_setplayer_btncancel(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_gui_mousebuttonup_win_setsprite_btncancel(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setenemy_btncancel(void *data, SDL_Event e, t_list *dom, int type);
+
+int				ft_search_point_in_sector(void *a, t_vector3 v);
+void			ft_gui_draw_point(t_wolf3d *w, t_ui_coord c, int color);
+
+void			ft_gui_draw_player(t_wolf3d *w);
 
 #endif

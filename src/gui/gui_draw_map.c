@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 20:39:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:58:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,28 +97,33 @@ void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_rect rect, int scale)
 	}
 }
 
-int		ft_gui_draw_map_vertex(t_wolf3d *w, t_ui_coord c, int status)
+void	ft_gui_draw_point(t_wolf3d *w, t_ui_coord c, int color)
 {
 	int	v_d;
-	int	color;
 
 	v_d = w->gui_map.grid_scale / 8;
 	if (v_d < 2)
 		v_d = 2;
-	if (status == 1 && w->gui.mode != GUI_MD_ME)
+	ft_gui_fill_area(w, (t_ui_coord){c.x - v_d, c.y - v_d, 0}, \
+		(t_ui_coord){c.x + v_d, c.y + v_d, 0}, color);
+}
+
+int		ft_gui_draw_map_vertex(t_wolf3d *w, t_ui_coord c, int status, int mode)
+{
+	int	color;
+
+	if (status == 1 && mode != GUI_MD_ME)
 	{
 		color = GUI_CL_STANDART;
-		if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
+		if (mode == GUI_MD_ME_SET_SECTOR)
 			color = GUI_CL_SECTOR;
-		if (w->gui.mode == GUI_MD_ME_SET_PLAYER)
+		if (mode == GUI_MD_ME_SET_PLAYER)
 			color = GUI_CL_PLAYER;
-		if (w->gui.mode == GUI_MD_ME_SET_SPRITE)
+		if (mode == GUI_MD_ME_SET_SPRITE)
 			color = GUI_CL_SPRITE;
-		if (w->gui.mode == GUI_MD_ME_SET_ENEMY)
+		if (mode == GUI_MD_ME_SET_ENEMY)
 			color = GUI_CL_ENEMY;
-		ft_gui_fill_area(w, (t_ui_coord){c.x - v_d, c.y - v_d, 0}, \
-			(t_ui_coord){c.x + v_d, c.y + v_d, 0}, color);
-
+		ft_gui_draw_point(w, c, color);
 	}
 	return (0);
 }
@@ -146,7 +151,7 @@ int		ft_gui_draw_map_vertex_line(t_wolf3d *w, t_ui_coord c1)
 
 	Draw walls on the map.
 */
-void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *ptr_sector)
+void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s)
 {
 	int				i;
 	t_ui_coord		c1;
@@ -155,38 +160,36 @@ void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *ptr_sector)
 	int				vtx2_n;
 
 	i = 0;
-	if (ptr_sector->status == 0)
-		ptr_sector->color = 0x7b68ee;
+	if (s->status == 0)
+		s->color = 0x7b68ee;
 	else
-		ptr_sector->color = 0xf8f32b;
-	while (i < ptr_sector->vertex_count)
+		s->color = 0xf8f32b;
+	while (i < s->vertex_count)
 	{
 		vtx1_n = i;
 		vtx2_n = i + 1;
-		if (vtx2_n == ptr_sector->vertex_count)
+		if (vtx2_n == s->vertex_count)
 		{
-			if (ptr_sector->status == 1)
+			if (s->status == 1)
 				vtx2_n = 0;
 			else
 				break ;
 		}
 
 		// Get line coordinates  
-		c1 = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, *ptr_sector->vertex[vtx1_n]);
-		c2 = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, *ptr_sector->vertex[vtx2_n]);
+		c1 = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, *s->vertex[vtx1_n]);
+		c2 = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, *s->vertex[vtx2_n]);
 
-		// if (ft_editor_check_line_for_map(c1, c2)) -> all TRUE
-		ft_fdf_wu_color(&(t_vector3){c1.x, c1.y, 0, 0}, &(t_vector3){c2.x, c2.y, 0, 0}, w, ptr_sector->color);
+		ft_fdf_wu_color(&(t_vector3){c1.x, c1.y, 0, 0}, &(t_vector3){c2.x, c2.y, 0, 0}, w, s->color);
 
 		i++;
 	}
 
 	i = 0;
-	while (i < ptr_sector->vertex_count)
+	while (i < s->vertex_count)
 	{
-		c1 = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, *ptr_sector->vertex[i]);
-		// ft_editor_draw_point(w, c1, ptr_sector->color);
-		ft_gui_draw_map_vertex(w, c1, 1);
+		c1 = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, *s->vertex[i]);
+		ft_gui_draw_point(w, c1, s->color);
 		i++;
 	}
 }
@@ -217,7 +220,8 @@ void	ft_gui_draw_map(t_wolf3d *w, t_list *list)
 	ft_gui_draw_map_grid_limit_line(w, (t_gui_rect){elem->v1, elem->v2, elem->w, \
 		elem->h}, (t_vector3){0, 0, 0, 0}, w->gui_map.grid_scale);
 	w->gui_map.check_vertex = ft_gui_draw_map_vertex(w, w->gui.mouse_pos, \
-		w->gui_map.check_vertex);
+		w->gui_map.check_vertex, w->gui.mode);
 	ft_gui_draw_map_vertex_line(w, w->gui.mouse_pos);
 	ft_gui_draw_map_sector(w, w->sector);
+	ft_gui_draw_player(w);
 }

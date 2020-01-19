@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:43:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 18:36:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:57:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,39 +47,55 @@ void	ft_gui_mouse_click_map(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_sector	*sector;
 	int			n;
 	t_ui_coord	coord;
+	t_vector3	v;
 
-	if (w->gui.mode != GUI_MD_ME_SET_SECTOR)
-		return ;
-
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
-	if (coord.w)
+	if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
 	{
-		if (w->sector_status == 0)
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
+		if (coord.w)
 		{
-			w->sector_status = 1;
-			ft_editor_sector_create(w);
-			w->sector_count++;
-		}
-
-		ft_editor_sector_set_vertex(w, w->sector->content, \
-			ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord));
-
-		sector = w->sector->content;
-		if (sector->vertex_count > 1 && \
-			ft_editor_sector_compare_vertexes(*sector->vertex[0], \
-				*sector->vertex[sector->vertex_count - 1]))
-		{
-			ft_editor_delete_last_vertex(w);
-			if (ft_editor_sector_search_neighbors(w, sector))
+			if (w->sector_status == 0)
 			{
-				sector->status = 1;
-				w->sector_status = 0;
-				ft_editor_init_sectors_item_area(w, sector);
+				w->sector_status = 1;
+				ft_editor_sector_create(w);
+				w->sector_count++;
+			}
+
+			ft_editor_sector_set_vertex(w, w->sector->content, \
+				ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord));
+
+			sector = w->sector->content;
+			if (sector->vertex_count > 1 && \
+				ft_editor_sector_compare_vertexes(*sector->vertex[0], \
+					*sector->vertex[sector->vertex_count - 1]))
+			{
+				ft_editor_delete_last_vertex(w);
+				if (ft_editor_sector_search_neighbors(w, sector))
+				{
+					sector->status = 1;
+					w->sector_status = 0;
+					ft_editor_init_sectors_item_area(w, sector);
+				}
+			}
+
+			printf("===\n");
+			ft_editor_sector_special_debug(w->sector);
+		}
+	}
+	else if (w->gui.mode == GUI_MD_ME_SET_PLAYER)
+	{
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
+		if (coord.w)
+		{
+			v = ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord);
+
+			// Инициализируем игрока, если точка находится
+			if (ft_search_point_in_sector((void*)w, v))
+			{
+				w->pl.pos = v;
+				w->player_status = 1;
 			}
 		}
-
-		printf("===\n");
-		ft_editor_sector_special_debug(w->sector);
 	}
 }
 
