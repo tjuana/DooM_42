@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 16:56:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 19:33:49 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,28 @@ void	ft_gui_init_win_menu(t_list *head)
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_sector", (t_ui_coord){1640, 50, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 90, 0});
-	ft_gui_elem_set_color(elem->child, 0xffd700);
+	ft_gui_elem_set_color(elem->child, GUI_CL_SECTOR);
 	ft_gui_elem_set_button(elem->child, "Add sector");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_sector, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_player", (t_ui_coord){1640, 100, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 140, 0});
-	ft_gui_elem_set_color(elem->child, 0xa496f2);
+	ft_gui_elem_set_color(elem->child, GUI_CL_PLAYER);
 	ft_gui_elem_set_button(elem->child, "Add player");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_player, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_sprite", (t_ui_coord){1640, 150, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 190, 0});
-	ft_gui_elem_set_color(elem->child, 0xdf73ff);
+	ft_gui_elem_set_color(elem->child, GUI_CL_SPRITE);
 	ft_gui_elem_set_button(elem->child, "Add sprite");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_sprite, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_enemy", (t_ui_coord){1640, 200, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 240, 0});
-	ft_gui_elem_set_color(elem->child, 0xfb607f);
+	ft_gui_elem_set_color(elem->child, GUI_CL_ENEMY);
 	ft_gui_elem_set_button(elem->child, "Add enemy");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_in_menu_btn_enemy, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
@@ -115,6 +115,7 @@ void	ft_gui_init_win_setsector(t_list *head)
 		(t_ui_coord){WIN_WIDTH - 20, 1080 - 70, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save sector");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setsector_btnsavemap, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsector_btn_cancel", (t_ui_coord){1640, 1080 - 60, 0}, \
@@ -146,6 +147,7 @@ void	ft_gui_init_win_setplayer(t_list *head)
 		(t_ui_coord){WIN_WIDTH - 20, 1080 - 70, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save player");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setplayer_btnsaveplayer, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setplayer_btncancel", (t_ui_coord){1640, 1080 - 60, 0}, \
@@ -177,6 +179,7 @@ void	ft_gui_init_win_setsprite(t_list *head)
 		(t_ui_coord){WIN_WIDTH - 20, 1080 - 70, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save player");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setsprite_btnsaveplayer, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsprite_btncancel", (t_ui_coord){1640, 1080 - 60, 0}, \
@@ -208,6 +211,7 @@ void	ft_gui_init_win_setenemy(t_list *head)
 		(t_ui_coord){WIN_WIDTH - 20, 1080 - 70, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save player");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setenemy_btnsaveplayer, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setenemy_btncancel", (t_ui_coord){1640, 1080 - 60, 0}, \
@@ -244,7 +248,7 @@ void	ft_gui_init_win(t_list *head)
 
 	ft_gui_elem_init(&win->child, "win_setsector", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
-	ft_gui_elem_set_color(win->child, 0xffd700);
+	ft_gui_elem_set_color(win->child, GUI_CL_SECTOR);
 	ft_gui_elem_set_block(win->child);
 	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, win->child);
@@ -252,7 +256,7 @@ void	ft_gui_init_win(t_list *head)
 
 	ft_gui_elem_init(&win->child, "win_setplayer", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
-	ft_gui_elem_set_color(win->child, 0xa496f2);
+	ft_gui_elem_set_color(win->child, GUI_CL_PLAYER);
 	ft_gui_elem_set_block(win->child);
 	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, win->child);
@@ -260,7 +264,7 @@ void	ft_gui_init_win(t_list *head)
 
 	ft_gui_elem_init(&win->child, "win_setsprite", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
-	ft_gui_elem_set_color(win->child, 0xdf73ff);
+	ft_gui_elem_set_color(win->child, GUI_CL_SPRITE);
 	ft_gui_elem_set_block(win->child);
 	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, win->child);
@@ -268,7 +272,7 @@ void	ft_gui_init_win(t_list *head)
 
 	ft_gui_elem_init(&win->child, "win_setenemy", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
-	ft_gui_elem_set_color(win->child, 0xfb607f);
+	ft_gui_elem_set_color(win->child, GUI_CL_ENEMY);
 	ft_gui_elem_set_block(win->child);
 	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, win->child);
@@ -296,6 +300,12 @@ void	ft_gui_init(t_wolf3d *w)
 
 	w->player_status = 0;
 	w->sector_status = 0;
+	w->sprite_status = 0;
+	w->enemy_status = 0;
+
+	w->sector = NULL;
+	w->sprite = NULL;
+	w->enemy = NULL;
 
 	ft_gui_elem_init(&w->gui.dom, "win", (t_ui_coord){0, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/19 18:08:16 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/19 19:47:31 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ EDITOR_NAME = map_editor
 # temp for testing
 GUI_NAME = gui_test
 
-USERNAME = tjuana
+USERNAME = dorange-
 
 FLAGS = -g -O3 -O0
 CC = gcc
@@ -101,7 +101,8 @@ GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c \
 	gui_keydown.c gui_elem_block.c gui_elem_event_list.c \
 	gui_events_win_map.c gui_draw_map.c \
 	\
-	gui_temp.c gui_map_func.c gui_draw_map_objects.c
+	gui_temp.c gui_map_func.c gui_draw_map_objects.c \
+	gui_map_sprite.c gui_map_enemy.c gui_map_sector.c
 
 
 

@@ -182,7 +182,8 @@ typedef struct			s_sprite
 	double				x; // (deprecated)
 	double				y; // (deprecated)
 	double				distance;
-	int					texture;
+	int					texture; // (as type?)
+	int					status;	// 0: no set, 1: set (?)
 }						t_sprite;
 
 /*
@@ -338,7 +339,7 @@ typedef struct			s_gui_elem
 # define GUI_CL_STANDART		0x00ff0000
 # define GUI_CL_SECTOR			0x00ffd700
 # define GUI_CL_PLAYER			0x00a496f2
-# define GUI_CL_SPRITE			0x00df73ff
+# define GUI_CL_SPRITE			0x005499a1
 # define GUI_CL_ENEMY			0x00fb607f
 
 typedef struct			s_gui
@@ -355,14 +356,34 @@ typedef struct			s_gui
 
 typedef struct			s_wolf3d
 {
+	// game objects
+	t_list				*sector;
+	t_player			pl;
+	t_list				*sprite;
+	t_list				*enemy;
+
+	// game status (temp.)
+	int					sector_status; // 0: nothing; 1: set new sector
+	int					player_status; // 0: nothing; 1: player was set;
+	int					sprite_status; // 0: nothing; 1: sprite was set;
+	int					enemy_status; // 0: nothing; 1: enemy was set;
+
+	// game objects count
+	int					sector_count;
+	int					sprite_count;
+	int					enemy_count;
+
+
+
+
+
 	t_file				file;
 	t_list				*vertex;
 	// add list with sector
-	t_list				*sector;
 	// add temp list for map
-	t_list				*map_sector;
+	t_list				*map_sector; // (deprecated)
 	// add temp list for map (top vertex)
-	t_list				*map_sector_top;
+	t_list				*map_sector_top; // (deprecated)
 	// spec param
 	double				fov;
 	double				l_p;
@@ -373,7 +394,6 @@ typedef struct			s_wolf3d
 	t_map				map;
 	t_time				t;
 	t_const				c;
-	t_player			pl;
 	SDL_Surface			*weapon_texture;
 	SDL_Surface			*map_texture;
 	t_anime				anim;
@@ -393,10 +413,8 @@ typedef struct			s_wolf3d
 
 	t_vector3			mouse_vertex;
 	t_vector3			mouse_pos;
-	int					sector_status; // 0: nothing; 1: set new sector
-	int					sector_count;
 
-	int					player_status; // 0: nothing; 1: player was set;
+
 
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
@@ -803,5 +821,21 @@ int				ft_search_point_in_sector(void *a, t_vector3 v);
 void			ft_gui_draw_point(t_wolf3d *w, t_ui_coord c, int color);
 
 void			ft_gui_draw_player(t_wolf3d *w);
+
+void			ft_set_sprite(t_wolf3d *w, t_vector3 pos, int type);
+void			ft_delete_sprite(t_wolf3d *w);
+
+void			ft_gui_draw_sprites(t_wolf3d *w);
+
+void			ft_set_enemy(t_wolf3d *w, t_vector3 pos, int type);
+void			ft_delete_enemy(t_wolf3d *w);
+void			ft_gui_draw_enemies(t_wolf3d *w);
+
+void			ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setsprite_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setenemy_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_delete_sector(t_wolf3d *w);
 
 #endif

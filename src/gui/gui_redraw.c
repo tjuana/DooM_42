@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 19:51:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:54:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,8 @@ int		ft_gui_redraw(t_wolf3d *w)
 	SDL_RenderClear(w->sdl->renderer);
 
 	ft_gui_redraw_elem(w, w->gui.dom);
+	ft_gui_draw_sprites(w);
+	ft_gui_draw_enemies(w);
 
 	// ft_gui_print_element_list(w->gui.dom, 0);
 

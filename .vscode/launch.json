@@ -45,6 +45,19 @@
 			"externalConsole": false,
 			"MIMode": "lldb",
 			"preLaunchTask": "gcc build active file"
+		},
+		{
+			"name": "debug gui",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/gui_test",
+			//"args": ["${workspaceRoot}/maps/map.txt"],
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb",
 		}
 	]
 }

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:43:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 16:57:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 19:45:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,41 @@ void	ft_gui_mouse_click_map(t_wolf3d *w, SDL_Event e, t_list *elem)
 		{
 			v = ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord);
 
-			// Инициализируем игрока, если точка находится
+			// Инициализируем игрока, если точка находится в секторе
 			if (ft_search_point_in_sector((void*)w, v))
 			{
 				w->pl.pos = v;
 				w->player_status = 1;
+			}
+		}
+	}
+	else if (w->gui.mode == GUI_MD_ME_SET_SPRITE)
+	{
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
+		if (coord.w)
+		{
+			v = ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord);
+
+			// Инициализируем спрайт, если точка находится в секторе
+			if (ft_search_point_in_sector((void*)w, v))
+			{
+				ft_set_sprite(w, v, 1);
+				w->sprite_status = 1;
+			}
+		}
+	}
+	else if (w->gui.mode == GUI_MD_ME_SET_ENEMY)
+	{
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
+		if (coord.w)
+		{
+			v = ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord);
+
+			// Инициализируем спрайт, если точка находится в секторе
+			if (ft_search_point_in_sector((void*)w, v))
+			{
+				ft_set_enemy(w, v, 1);
+				w->enemy_status = 1;
 			}
 		}
 	}
