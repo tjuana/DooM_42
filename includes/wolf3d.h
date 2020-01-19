@@ -776,10 +776,13 @@ void			ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *d
 ///just do it
 void			ft_editor_take_vertex(t_wolf3d *w);
 void			ft_save_the_file(t_wolf3d *w);
+t_list			*ft_print_sectors_to_file(t_wolf3d *w, t_list *ptr_list);
+void			ft_save_neighbour(t_sector *sector, int fd);
 
 void			ft_create_list_of_vertexes(t_wolf3d *w);
-void			count_origin_vertexes(t_wolf3d *w);
+void			ft_count_origin_vertexes(t_wolf3d *w);
 void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
+void			ft_print_to_file(t_wolf3d *w, int f);
 
 // TEMP.
 void			ft_editor_sector_create(t_wolf3d *w);

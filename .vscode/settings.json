@@ -1,11 +1,5 @@
 {
-    "editor.insertSpaces": false,
-    "editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
 	"editor.tabSize": 4,
-	"files.associations": {
-		"wolf3d.h": "c",
-		"libft.h": "c",
-		"sdl.h": "c",
-		"sdl_thread.h": "c"
-	},
 }
