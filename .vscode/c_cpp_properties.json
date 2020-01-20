@@ -6,7 +6,7 @@
                 "${workspaceFolder}/include/**",
 				"/.brew/Cellar/sdl2/2.0.10/include/**",
 				"${workspaceFolder}/includes/**",
-				"${workspaceFolder}/libft/includes/"
+				"${workspaceFolder}/libft/includes/*"
             ],
             "defines": [],
             "macFrameworkPath": [

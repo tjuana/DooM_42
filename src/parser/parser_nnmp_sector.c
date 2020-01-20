@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 14:21:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 17:06:30 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/19 20:30:49 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_parser_nnmp_sector_neighborhood(t_wolf3d *w, char **line, \
 	int			i;
 
 	sector->neighbors = NULL;
-	neighborhood = malloc(sizeof(int) * sector->vertex_count);
+	neighborhood = ft_my_malloc(sizeof(int) * sector->vertex_count);
 	str = ft_parser_search_param(*line, "neighborhood:");
 	if (str == NULL)
 		ft_error("MAP INCORRECT");
@@ -118,7 +118,7 @@ void	ft_parser_nnmp_sector(t_wolf3d *w, char **line)
 	ft_parser_nnmp_sector_param(w, line, sector);
 	ft_parser_nnmp_sector_vertexes(w, line, sector);
 	ft_parser_nnmp_sector_neighborhood(w, line, sector);
-	list_item = ft_lstnew(sector, sizeof(t_sector));
+	list_item = ft_lstnew(&sector, sizeof(t_sector*));
 	if (w->sector == NULL)
 		w->sector = list_item;
 	else
