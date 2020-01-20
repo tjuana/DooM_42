@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 21:01:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:18:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:52:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
 		free(elem->str);
 		elem->str = str;
 	}
-	if (elem->type == GUI_ELEM_TYPE_INPUT_NUMB)
+	if (elem->type == GUI_INPUT_NUMB)
 	{
 		numb = ft_atoi(elem->str);
 		if (e.key.keysym.scancode == SDL_SCANCODE_UP)

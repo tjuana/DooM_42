@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 20:14:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int			ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, int size, int color)
 ** **************************************************************************
 */
 
-void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c)
+void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c)
 {
 	SDL_Surface	*text_surf;
 	SDL_Texture	*tmp_texture;

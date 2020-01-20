@@ -6,18 +6,18 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 18:37:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:52:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 /*
-**	void ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color)
+**	void ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 **	
 **	Function that fill area screen.
 */
-void	ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color)
+void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 {
 	int			x;
 	int			y;
@@ -56,15 +56,15 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 		color = ft_fdf_get_color(color, 0xffffff, 0.5);
 	}
 
-	ft_gui_fill_area(w, (t_ui_coord){elem->v1.x, elem->v1.y, 0}, \
-		(t_ui_coord){elem->v1.x + border_width, elem->v2.y, 0}, color);
-	ft_gui_fill_area(w, (t_ui_coord){elem->v1.x, elem->v1.y, 0}, \
-		(t_ui_coord){elem->v2.x, elem->v1.y + border_width, 0}, color);
+	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x, elem->v1.y, 0}, \
+		(t_gui_coord){elem->v1.x + border_width, elem->v2.y, 0}, color);
+	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x, elem->v1.y, 0}, \
+		(t_gui_coord){elem->v2.x, elem->v1.y + border_width, 0}, color);
 
-	ft_gui_fill_area(w, (t_ui_coord){elem->v1.x + border_width, elem->v2.y - border_width, 0}, \
-		(t_ui_coord){elem->v2.x, elem->v2.y, 0}, color);
-	ft_gui_fill_area(w, (t_ui_coord){elem->v2.x - border_width, elem->v1.y + border_width, 0}, \
-		(t_ui_coord){elem->v2.x, elem->v2.y, 0}, color);
+	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x + border_width, elem->v2.y - border_width, 0}, \
+		(t_gui_coord){elem->v2.x, elem->v2.y, 0}, color);
+	ft_gui_fill_area(w, (t_gui_coord){elem->v2.x - border_width, elem->v1.y + border_width, 0}, \
+		(t_gui_coord){elem->v2.x, elem->v2.y, 0}, color);
 }
 
 /*
@@ -117,10 +117,10 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 		}
 		if (elem->redraw)
 			elem->redraw(w, list);
-		else if (elem->type == GUI_ELEM_TYPE_BLOCK || \
-			elem->type == GUI_ELEM_TYPE_BUTTON)
+		else if (elem->type == GUI_BLOCK || \
+			elem->type == GUI_BUTTON)
 			ft_gui_fill_elem(w, list, elem->color);
-		else if (elem->type == GUI_ELEM_TYPE_INPUT || elem->type == GUI_ELEM_TYPE_INPUT_NUMB)
+		else if (elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 			ft_gui_draw_border(w, list, elem->color, 3);
 		ft_gui_redraw_elem(w, elem->child);
 		list = list->next;
@@ -152,7 +152,7 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 	if (elem == NULL)
 		ft_error("ERROR");
 	
-	if (elem->type == GUI_ELEM_TYPE_BUTTON)
+	if (elem->type == GUI_BUTTON)
 	{
 		if (elem->status & GUI_ELEM_HOVER)
 			color = ft_fdf_get_color(color, 0xffffff, 0.5);
@@ -166,19 +166,19 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 		// invertion
 		// color = ~color & 0x00ffffff;
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
-		ft_gui_font_putstr_sdl(w, elem->str, (t_ui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
 	}
 
-	if (elem->type == GUI_ELEM_TYPE_TEXT)// || elem->type == GUI_ELEM_TYPE_INPUT)
+	if (elem->type == GUI_TEXT)// || elem->type == GUI_INPUT)
 	{
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
-		ft_gui_font_putstr_sdl(w, elem->str, (t_ui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
 	}
-	if (elem->type == GUI_ELEM_TYPE_INPUT || elem->type == GUI_ELEM_TYPE_INPUT_NUMB)
+	if (elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 	{
 		// color = ft_fdf_get_color(color, 0xffffff, 1);
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
-		ft_gui_font_putstr_sdl(w, elem->str, (t_ui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
 	}
 }
 

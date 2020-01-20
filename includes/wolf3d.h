@@ -45,7 +45,8 @@
 //# include "matrix/sdl.h"
 //# include "matrix/fdf.h"
 # include "algebra.h" // math library for matrix transform
-#include "file.h"
+# include "file.h"
+# include "gui.h"
 typedef struct			s_font
 {
 	SDL_Surface			*surf[7];
@@ -62,21 +63,6 @@ typedef struct			s_font
 	int					half_menu;
 }						t_font;
 
-typedef	struct			s_ui_pos		// позиционирование
-{
-	int					top;
-	int					bottom;
-	int					left;
-	int					right;
-}						t_ui_pos;
-
-typedef struct			s_ui_coord
-{
-	int					x;
-	int					y;
-	int					w; // element diameter
-}						t_ui_coord;
-
 // new struct for sector
 typedef struct			s_sector
 {
@@ -92,7 +78,7 @@ typedef struct			s_sector
 	int					color;			// Цвет сектора (for map editor)
 	int					status;			// 0: broken line; 1: polygon
 
-	t_vector3			vtx_center;		// Центр сектора
+	t_vector3			vtx_center;		// Центр сектора (?)
 }						t_sector;
 
 typedef struct			s_sort_util	// Структура для спрайтов (?)
@@ -224,40 +210,6 @@ typedef struct			s_time
 }						t_time;
 
 /*
-	Рассмотреть целесообразность использования t_gui_rect.
-	[?] -> достаточно указателя на элемент интерфейса,
-	в котором отрисовывается map и производятся все действия
-*/
-typedef struct			s_gui_rect
-{
-	t_ui_coord			v1;
-	t_ui_coord			v2;
-	int					w;
-	int					h;
-}						t_gui_rect;
-
-typedef struct			s_gui_event
-{
-	int					type;
-	int					code;
-	void				(*func)(void *data, SDL_Event e, t_list *dom, int type);
-	t_list				*elem;
-}						t_gui_event;
-
-typedef struct			s_gui_font
-{
-	char				*path;
-	SDL_Surface			*surf[7];
-	TTF_Font			*ptr;
-	SDL_Color			color;
-	int					f_sz;
-	int					g_sz;
-	int					w;
-	int					h;
-	int					half_menu;
-}						t_gui_font;
-
-/*
 **	Special struct for map element parameters.
 */
 typedef struct			s_gui_map
@@ -268,82 +220,6 @@ typedef struct			s_gui_map
 	t_vector3			v;
 }						t_gui_map;
 
-# define GUI_ELEM_HIDDEN		0x00000001
-# define GUI_ELEM_VISIBLE		0x00000002
-# define GUI_ELEM_STATIC		0x00000004
-# define GUI_ELEM_DYNAMIC		0x00000008
-
-# define GUI_ELEM_NORMAL		0x00000010
-# define GUI_ELEM_HOVER			0x00000020
-# define GUI_ELEM_CLICK			0x00000040
-# define GUI_ELEM_ACTIVE		0x00000080
-# define GUI_ELEM_FOCUS			0x00000100
-# define GUI_ELEM_DISABLE		0x00000200
-
-# define GUI_ELEM_ACT_MASK		0x0000000F
-
-# define GUI_ELEM_TYPE_BLOCK		0x01
-# define GUI_ELEM_TYPE_TEXT			0x02
-# define GUI_ELEM_TYPE_BUTTON		0x03
-# define GUI_ELEM_TYPE_INPUT		0x04
-# define GUI_ELEM_TYPE_INPUT_NUMB	0x05
-# define GUI_ELEM_TYPE_MAP			0xF1
-
-typedef struct			s_gui_elem
-{
-	char				*name;					// name
-	t_ui_coord			v1;						// left top point
-	t_ui_coord			v2;						// right bottom point
-	t_ui_coord			r1;						// absolute area
-	t_ui_coord			r2;						// ...
-	int					w;						// frame width
-	int					h;						// frame height
-	int					status;					// element status
-	t_list				*parent;				// parent element
-	t_ui_pos			pos;					// position: top, bottom, left, right
-
-	t_list				*child;					// child elements
-	int					color;					// element color
-	t_list				*events;				// element events
-	int					type;					// element type
-	char				*str;					// element string
-	void				(*redraw)(void *data, t_list *dom);
-}						t_gui_elem;
-
-# define GUI_NOT_REDRAW			0x00
-# define GUI_REDRAW				0x01
-# define GUI_REDRAW_FRAME		0x02
-
-// по логике дублирует redraw
-# define GUI_EVENT_OFF			0x00
-# define GUI_EVENT_ON			0x01
-# define GUI_EVENT_SEARCH		0x02
-
-// Режимы
-# define GUI_MD_ME				0x0000F001
-# define GUI_MD_ME_SET_SECTOR	0x0000F100
-# define GUI_MD_ME_SET_PLAYER	0x0000F200
-# define GUI_MD_ME_SET_SPRITE	0x0000F300
-# define GUI_MD_ME_SET_ENEMY	0x0000F400
-
-// Цвета
-# define GUI_CL_STANDART		0x00ff0000
-# define GUI_CL_SECTOR			0x00ffd700
-# define GUI_CL_PLAYER			0x00a496f2
-# define GUI_CL_SPRITE			0x005499a1
-# define GUI_CL_ENEMY			0x00fb607f
-
-typedef struct			s_gui
-{
-	t_list				*fonts;
-	t_list				*dom;
-	unsigned char		redraw;
-	t_gui_elem			*redraw_elem;
-	t_ui_coord			mouse_pos;
-	int					search_elem;
-	t_list				*focus_elem;
-	int					mode;	// режим
-}						t_gui;
 
 typedef struct			s_wolf3d
 {
@@ -682,7 +558,7 @@ void			ft_editor_threading(t_wolf3d *w);
 // editor/fonts.c
 SDL_Rect		*ft_create_rect(int w, int h, int x, int y);
 int				ft_font_preset_sc(t_wolf3d *w, int size, int color);
-void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
+void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c);
 
 t_sector		*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i);
 
@@ -707,7 +583,7 @@ void			ft_editor_mouse_move_act_s_mark(t_wolf3d *w);
 int				ft_gui_redraw(t_wolf3d *w);
 void			ft_gui_events(t_wolf3d *w);
 void			ft_gui_init(t_wolf3d *w);
-void			ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2);
+void			ft_gui_elem_init(t_list **dom, char *name, t_gui_coord v1, t_gui_coord v2);
 void			ft_gui_elem_set_color(t_list *list, int color);
 void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code);
 void			ft_gui_elem_set_parent(t_list *parent, t_list *child);
@@ -724,7 +600,7 @@ void			ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int t
 void			ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type);
 
 int				ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, int size, int color);
-void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
+void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c);
 SDL_Rect		*ft_gui_create_sdl_rect(int w, int h, int x, int y);
 void			ft_gui_desctuct_fonts(t_list *fonts_list);
 void			ft_gui_elem_set_button(t_list *list, void *str);
@@ -758,10 +634,10 @@ void			ft_gui_draw_map(t_wolf3d *w, t_list *list);
 
 void			ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, t_list *dom);
 
-void			ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color);
+void			ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color);
 
-t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c);
-t_ui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
+t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_gui_coord c);
+t_gui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
 
 void			ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_win_menu_btn_sprite(void *data, SDL_Event e, t_list *dom, int type);
@@ -783,7 +659,7 @@ void			ft_print_to_file(t_wolf3d *w, int f);
 void			ft_editor_sector_create(t_wolf3d *w);
 void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v);
 
-t_ui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
+t_gui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_gui_coord c, \
 					t_gui_elem *elem);
 
 // for test
@@ -795,7 +671,7 @@ void			ft_gui_mousebuttonup_win_setsprite_btncancel(void *data, SDL_Event e, t_l
 void			ft_gui_mousebuttonup_win_setenemy_btncancel(void *data, SDL_Event e, t_list *dom, int type);
 
 int				ft_search_point_in_sector(void *a, t_vector3 v);
-void			ft_gui_draw_point(t_wolf3d *w, t_ui_coord c, int color);
+void			ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, int color);
 
 void			ft_gui_draw_player(t_wolf3d *w);
 

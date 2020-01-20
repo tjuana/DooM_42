@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:43:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 18:25:48 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 	t_gui_elem	*elem;
-	t_ui_coord	coord;
+	t_gui_coord	coord;
 
 	w = (t_wolf3d*)data;
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
@@ -36,7 +36,7 @@ void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
 
 void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 {
-	t_ui_coord	coord;
+	t_gui_coord	coord;
 	t_sector	*sector;
 
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
@@ -74,7 +74,7 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 
 void	ft_gui_event_set_player(t_wolf3d *w, SDL_Event e, t_list *elem)
 {
-	t_ui_coord	coord;
+	t_gui_coord	coord;
 	t_vector3	v;
 
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
@@ -94,7 +94,7 @@ void	ft_gui_event_set_player(t_wolf3d *w, SDL_Event e, t_list *elem)
 
 void	ft_gui_event_set_sprite(t_wolf3d *w, SDL_Event e, t_list *elem)
 {
-	t_ui_coord	coord;
+	t_gui_coord	coord;
 	t_vector3	v;
 
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
@@ -113,7 +113,7 @@ void	ft_gui_event_set_sprite(t_wolf3d *w, SDL_Event e, t_list *elem)
 
 void	ft_gui_event_set_enemy(t_wolf3d *w, SDL_Event e, t_list *elem)
 {
-	t_ui_coord	coord;
+	t_gui_coord	coord;
 	t_vector3	v;
 
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
@@ -161,7 +161,7 @@ void	ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 	t_gui_elem	*elem;
-	t_ui_coord	coord;
+	t_gui_coord	coord;
 
 	w = (t_wolf3d*)data;
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);

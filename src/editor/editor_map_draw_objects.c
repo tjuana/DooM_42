@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_draw_map_objects.c                             :+:      :+:    :+:   */
+/*   editor_map_draw_objects.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 16:46:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 18:53:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_gui_draw_player(t_wolf3d *w)
 {
-	t_ui_coord	c;
+	t_gui_coord	c;
 
 	if (w->player_status == 1)
 	{
@@ -25,7 +25,7 @@ void	ft_gui_draw_player(t_wolf3d *w)
 
 void	ft_gui_draw_sprites(t_wolf3d *w)
 {
-	t_ui_coord	c;
+	t_gui_coord	c;
 	t_list		*list;
 	t_sprite	*sprite;
 
@@ -41,7 +41,7 @@ void	ft_gui_draw_sprites(t_wolf3d *w)
 
 void	ft_gui_draw_enemies(t_wolf3d *w)
 {
-	t_ui_coord	c;
+	t_gui_coord	c;
 	t_list		*list;
 	t_sprite	*enemy;
 

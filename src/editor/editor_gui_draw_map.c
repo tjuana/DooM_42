@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 18:27:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@
 void	ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, t_gui_rect rect, \
 	t_vector3 v, int type)
 {
-	t_ui_coord	pos;
+	t_gui_coord	pos;
 
 	pos = ft_gui_map_vertex_to_coord(w, rect, v);
 	if (type == GUI_MAP_GRID_LIMIT_TL || type == GUI_MAP_GRID_LIMIT_TR)
-		ft_gui_fill_area(w, (t_ui_coord){rect.v1.x, rect.v1.y, 0}, \
-			(t_ui_coord){rect.v2.x, pos.y, 0}, 0x222222);
+		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, rect.v1.y, 0}, \
+			(t_gui_coord){rect.v2.x, pos.y, 0}, 0x222222);
 	else
-		ft_gui_fill_area(w, (t_ui_coord){rect.v1.x, pos.y, 0}, \
-			(t_ui_coord){rect.v2.x, rect.v2.y, 0}, 0x222222);
+		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, pos.y, 0}, \
+			(t_gui_coord){rect.v2.x, rect.v2.y, 0}, 0x222222);
 	if (type == GUI_MAP_GRID_LIMIT_TL || type == GUI_MAP_GRID_LIMIT_BL)
-		ft_gui_fill_area(w, (t_ui_coord){rect.v1.x, rect.v1.y, 0}, \
-				(t_ui_coord){pos.x, rect.v2.y, 0}, 0x222222);
+		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, rect.v1.y, 0}, \
+				(t_gui_coord){pos.x, rect.v2.y, 0}, 0x222222);
 	else
-		ft_gui_fill_area(w, (t_ui_coord){pos.x, rect.v1.y, 0}, \
-			(t_ui_coord){rect.v2.x, rect.v2.y, 0}, 0x222222);
+		ft_gui_fill_area(w, (t_gui_coord){pos.x, rect.v1.y, 0}, \
+			(t_gui_coord){rect.v2.x, rect.v2.y, 0}, 0x222222);
 }
 
 /*
@@ -51,7 +51,7 @@ void	ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, t_gui_rect rect, \
 */
 void	ft_gui_draw_map_grid_limit_line(t_wolf3d *w, t_gui_rect rect, t_vector3 v, int scale)
 {
-	t_ui_coord	pos;
+	t_gui_coord	pos;
 
 	pos = ft_gui_map_vertex_to_coord(w, rect, v);
 	ft_fdf_wu_color(
@@ -73,7 +73,7 @@ void	ft_gui_draw_map_grid_limit_line(t_wolf3d *w, t_gui_rect rect, t_vector3 v, 
 */
 void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_rect rect, int scale)
 {
-	t_ui_coord	pos;
+	t_gui_coord	pos;
 
 	pos = ft_gui_map_vertex_to_coord(w, rect, \
 		(t_vector3){floor(w->gui_map.v.x), floor(w->gui_map.v.y), 0, 0});
@@ -97,18 +97,18 @@ void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_rect rect, int scale)
 	}
 }
 
-void	ft_gui_draw_point(t_wolf3d *w, t_ui_coord c, int color)
+void	ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, int color)
 {
 	int	v_d;
 
 	v_d = w->gui_map.grid_scale / 8;
 	if (v_d < 2)
 		v_d = 2;
-	ft_gui_fill_area(w, (t_ui_coord){c.x - v_d, c.y - v_d, 0}, \
-		(t_ui_coord){c.x + v_d, c.y + v_d, 0}, color);
+	ft_gui_fill_area(w, (t_gui_coord){c.x - v_d, c.y - v_d, 0}, \
+		(t_gui_coord){c.x + v_d, c.y + v_d, 0}, color);
 }
 
-int		ft_gui_draw_map_vertex(t_wolf3d *w, t_ui_coord c, int status, int mode)
+int		ft_gui_draw_map_vertex(t_wolf3d *w, t_gui_coord c, int status, int mode)
 {
 	int	color;
 
@@ -129,10 +129,10 @@ int		ft_gui_draw_map_vertex(t_wolf3d *w, t_ui_coord c, int status, int mode)
 }
 
 // function that draw line
-int		ft_gui_draw_map_vertex_line(t_wolf3d *w, t_ui_coord c1)
+int		ft_gui_draw_map_vertex_line(t_wolf3d *w, t_gui_coord c1)
 {
 	t_sector	*s;
-	t_ui_coord	c2;
+	t_gui_coord	c2;
 
 	if (w->gui.mode == GUI_MD_ME_SET_SECTOR && w->sector)
 	{
@@ -154,8 +154,8 @@ int		ft_gui_draw_map_vertex_line(t_wolf3d *w, t_ui_coord c1)
 void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s)
 {
 	int				i;
-	t_ui_coord		c1;
-	t_ui_coord		c2;
+	t_gui_coord		c1;
+	t_gui_coord		c2;
 	int				vtx1_n; // vertex number
 	int				vtx2_n;
 
