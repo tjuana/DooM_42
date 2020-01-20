@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/20 15:36:51 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/20 22:06:43 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,101 +80,38 @@ static void	door_total(t_player *pl)
 
 static int	door_exist(t_player *pl)
 {
-	t_xy	intersect;
-	//t_xy	view_vec;
 	t_vector3	vec;
 	t_vector3	vec2;
 	t_vector3	vec3;
 	t_vector3	vec4;
 	int		sec_nb;
-	float	x2;
-	float	y2;
-	//float	x3;
-	//float	y3;
-	//float	pl_x;
-	//float	pl_y;
+	float	c;
 	int		dist;
-
+	
 	dist = -1;
 	sec_nb = 2;
-	x2 = 0;
-	y2 = 0;
-	intersect.x = 0;
-	printf("where x == %f where y == %f agl==%f aglcos==%f aglsin==%f\n", pl->where.x, pl->where.y, pl->angle, pl->anglecos, pl->anglesin);
-	printf("v0  x==%f y==%f points==%d\n", pl->sectors[sec_nb].vertex[1].x, pl->sectors[sec_nb].vertex[1].y, pl->sectors[sec_nb].npoints);
-	printf("v3  x==%f y==%f points==%d\n", pl->sectors[sec_nb].vertex[3].x, pl->sectors[sec_nb].vertex[3].y, pl->sectors[sec_nb].npoints);
-	printf("\n pl->t1.x==%f, pl->t1.y==%f,\n pl->t2.x==%f, pl->t2.y==%f \n\n", pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y);
-	printf("\n pl->x1==%f, pl->x2==%f\n\n", pl->x1, pl->x2);
-	pl->t1.x = vec2.x * pl->anglesin - vec2.y * pl->anglecos;
-	pl->t1.y = vec2.x * pl->anglecos + vec2.y * pl->anglesin;
-	pl->t2.x = vec3.x * pl->anglesin - vec3.y * pl->anglecos;
-	pl->t2.y = vec3.x * pl->anglecos + vec3.y * pl->anglesin;
-	
+	c = 0;
+
 	vec2.x = pl->sectors[sec_nb].vertex[1].x - pl->where.x;
 	vec2.y = pl->sectors[sec_nb].vertex[1].y - pl->where.y;
 	vec3.x = pl->sectors[sec_nb].vertex[3].x - pl->where.x;
 	vec3.y = pl->sectors[sec_nb].vertex[3].y - pl->where.y;
-
-	if ((vec2.y <= 0) || (vec2.y <= 0))
-	{
-		intersect = Intersect(vec2.x, vec2.y, vec3.x, vec3.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
-
-		printf("i1 x == %f y == %f\n", intersect.x, intersect.y);
-		intersect = Intersect(vec2.x, vec2.y, vec3.x, vec3.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
-		printf("i2 x == %f y == %f\n", intersect.x, intersect.y);
-	}
-	//vec2 = ft_vec3_normalize(vec2);
-	//vec3 = ft_vec3_normalize(vec3);
-	//x2 = vxs(vec2.x, vec2.y, vec.x, vec.y);
-	//y2 = vxs(vec3.x, vec3.y, vec.x, vec.y);
 	
-	printf("vec x==%f y==%f z==%f\n", vec.x, vec.y, vec.z);
-	printf("vec 2 x==%f y==%f z==%f\n", vec2.x, vec2.y, vec2.z);
-	printf("vec 3 x==%f y==%f z==%f\n", vec3.x, vec3.y, vec3.z);
-	printf("vec 4 x==%f y==%f z==%f\n", vec4.x, vec4.y, vec4.z);
-	//printf("nearside==%f nearz==%f farside==%f farz==%f\n", pl->nearside, pl->nearz, pl->farside, pl->farz);
-	//printf("x2 == %f y2 == %f\n", x2, y2);
-	//printf("x2 == %f y2 == %f x3 == %f y3 == %f pl_x == %f pl_y == %f\n", x2, y2, x3, y3, pl_x, pl_y);
+	vec = ft_vec3_add(vec2, vec3);// find diagonal between pl and door edges
+	dist = sqrt(pow(vec.x, 2) + pow(vec.y, 2));
 
-	/*
-	//ft_vec3_normalize()
-	//x2 = vxs(pl->where.x, pl->where.y, pl->sectors[sec_nb].vertex[0].x, pl->sectors[sec_nb].vertex[0].y);
-	//y2 = vxs(pl->where.x, pl->where.y, pl->sectors[sec_nb].vertex[3].x, pl->sectors[sec_nb].vertex[3].y);
-	//x2 = vxs();
-	//y2 = vxs();
-	//D' = D / |D| 
-	= (1, 1) / sqrt(12 + 12) 
-	= (1, 1) / sqrt(2) 
-	= (0.71, 0.71)
-	//V' = V / |V| 
-	= (2, -1) / sqrt(22 + (-1)2) 
-	= (2,-1) / sqrt(5) 
-	= (0.89, -0.45)//hero
-	//Θ = acos(D'V') = acos(0.71*0.89 + 0.71*(-0.45)) = acos(0.31) = 72
-*/
-	/*	
-	intersect = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
-	x = fabs(pl->sectors[sec_nb].vertex[0].x - pl->sectors[sec_nb].vertex[3].x);
-	y = fabs(pl->sectors[sec_nb].vertex[0].y - pl->sectors[sec_nb].vertex[3].y);
-	x = pl->where.x - x;
-	y = pl->where.y - y;
-	intersect = Intersect(pl->sectors[sec_nb].vertex[0].x, pl->sectors[sec_nb].vertex[0].y, \
-	pl->sectors[sec_nb].vertex[3].x, pl->sectors[sec_nb].vertex[3].x, pl->where.x, pl->where.y, x, y);
-
-
-
-	x = pl->sectors[sec_nb].vertex->x - pl->where.x;
-	y = pl->sectors[sec_nb].vertex->y - pl->where.y;
+	vec4.x = pl->anglecos;
+	vec4.y = pl->anglesin;
+	vec = ft_vec3_normalize(vec);
 	
-		view_vec.x = pl->where.x - pl->sectors[sec_nb].vertex->x;
-	view_vec.y = pl->where.y - pl->sectors[sec_nb].vertex->y;
-	dist = sqrt(pow(view_vec.x, 2) + pow(view_vec.y, 2));
-	
-	*/
-
-	//printf("x==%d y==%d dist==%d\n", x, y, dist);
-	//printf("x==%f y==%f\n", intersect.x, intersect.y);
-	//printf("x==%f y==%f x2==%f y2==%f\n", pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y);
+	c = acos(ft_vec3_cosinus(vec4, vec));
+	c = to_degrees(c);
+	//printf("\nacos c==%f \n", c);
+	//printf("\ndist==%d \n", dist);
+	if ((c >= 0) && (c < 48) && (dist < 8))
+		printf("\nITS A DOOOOR dist==%d deg==%f \n", dist, c);
+	else
+		printf("\nITS JUST WALL \n");
 	return (1);
 }
 
@@ -223,28 +160,10 @@ void		door(t_player *pl, t_subevents *se)
 	d_sec_nb = 0;
 	if ((pl->door_all < 1) || (d_nb > pl->door_all))
 		return ;
+	door_exist(pl);
 	d_sec_nb = pl->doors[d_nb].nb;
-	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].dir) \
+	/*if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].dir) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].dir;
-	/**/d_sec_nb = se->wsad[4] == 1;
+	*/d_sec_nb = se->wsad[4] == 1;
 }
-
-/*
-//printf("wsad==%d, ceil==%f, dir==%f\n", se->wsad[4], pl->sectors[2].ceil, pl->door.dir);
-	//printf("all_sec_nb == %d floor == %f\n", pl->sectors_nb, pl->sectors[2].floor);
-	//if (((pl->sectors[2].ceil + pl->door.dir) >= 0) && se->wsad[4] && (pl->door.dir < 0))
-	//	pl->sectors[2].ceil += pl->door.dir;printf("x == %f	y == %f	angle==%f\n", pl->where.x, pl->where.y, pl->angle);
-	
-	printf("pl->doors[0].nb == %d\n", pl->doors[0].nb);
-	printf("pl->doors[1].nb == %d\n", pl->doors[1].nb);
-	printf("pl->doors[2].nb == %d\n", pl->doors[2].nb);
-	printf("pl->doors[3].nb == %d\n", pl->doors[3].nb);
-	pl->door.nb = 2;
-	pl->door.dir = 0.1;
-	pl->door.max_d = 20;
-	pl->door.min_d = 0;
-	pl->door.doors_nb = -1;
-	pl->door.nb = 0;
-
-*/

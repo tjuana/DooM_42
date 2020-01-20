@@ -45,6 +45,7 @@ t_xy		Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float
 void		UnloadData();
 void		MovePlayer(float dx, float dy, t_player *player);
 float		Yaw(float y, float z, t_player *player);
+double		to_degrees(double radians);
 
 /*			main.c			*/
 void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
@@ -87,5 +88,8 @@ double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
 t_vector3	ft_vec3_opposite(t_vector3 this);
 t_vector3	ft_vec3_scalar_product(t_vector3 this, double k);
 t_vector3	ft_vec3_normalize(t_vector3 vtc);
+
+/*			sdl_addons.c			*/
+SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
 
 #endif

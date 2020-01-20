@@ -15,9 +15,9 @@ typedef struct	s_sector//have to be static
 {
     float		floor;
 	float		ceil;
-    t_xy		*vertex; // Each vertex has an x and y coordinate
-    signed char	*neighbors;           // Each edge may have a corresponding neighboring sector
-    int			npoints;                 // How many vertexes there are
+    t_xy		*vertex; //here stored all sector vertexes.
+    signed char	*neighbors;// Each edge may have a corresponding neighboring sector
+    int			npoints;// How many vertexes there are
 }				t_sector;//*sectors = NULL;
 
 typedef struct s_sector_ops

@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/18 21:49:46 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/20 18:24:25 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS_LIST = functions_main.c\
 			engine_exp.c\
 			engine.c\
 			door.c\
+			sdl_addons.c\
 			vectors_1.c\
 			vectors_2.c\
 			main.c

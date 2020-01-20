@@ -144,6 +144,7 @@ int main(int ac, char **ag)
     t_sector_ops op;
 	t_wolf3d w;
 	//SDL_Texture *texture = NULL;
+	SDL_Surface *scr_surf = NULL;
 
     SDL_Renderer *renderer = NULL;
 	pl.sectors_nb = 0;
@@ -172,6 +173,7 @@ int main(int ac, char **ag)
         else
             {
             pl.srf = SDL_GetWindowSurface(window);
+			
             SDL_UpdateWindowSurface( window );
             renderer = SDL_CreateRenderer(window,-1, SDL_RENDERER_ACCELERATED );
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -202,10 +204,23 @@ int main(int ac, char **ag)
                 //}
                 //SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0x00, 0xFF );
                 //SDL_RenderPresent(renderer);
-                engine_begin(&pl);
+                
+				//SDL_RenderCopy(renderer, NULL, NULL, NULL);
+				engine_begin(&pl);
+				
                 //ft_animation_play(&w);
                 //ft_draw_animation(&w, surface);
+				//ft_create_rect(WIN_W / 2, WIN_H / 2, 100, 100)
+
+				//SDL_RenderCopy(renderer, SDL_CreateTextureFromSurface(renderer, pl.srf), NULL, NULL);
+				//SDL_RenderPresent(renderer);
+				scr_surf = SDL_GetWindowSurface(window);
+				SDL_RenderClear(renderer);
+				SDL_BlitSurface(w.weapon_texture, ft_create_rect(15, 15, 0, 0), scr_surf, ft_create_rect(50, 50, WIN_W / 2, WIN_H / 2));
+
+				//SDL_FreeSurface(scr_surf);
                 SDL_UpdateWindowSurface( window );
+
                 //Vertical collision detection
                 op.eyeheight = se.ducking ? DuckHeight : EyeHeight;
                 se.ground = !se.falling;
@@ -218,6 +233,7 @@ int main(int ac, char **ag)
                 MovePlayer(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
             	door(&pl, &se);
 			}
+			
             UnloadData(&pl);
             SDL_Quit();
         }

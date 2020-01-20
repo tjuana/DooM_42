@@ -2,9 +2,9 @@
 
 vertex	0 0 20 21 40	# 0 1 2 3
 
-vertex	2.5 20 21		# 4 5
+vertex	3 20 21		# 4 5
 
-vertex	7.5 20 21		# 6 7
+vertex	8 20 21		# 6 7
 
 vertex	20 0 20 21 40	# 8 9 10 11
 
@@ -21,8 +21,7 @@ sector	0 20		0 1 4 6 9 8			-1 -1 -1 2 -1 -1			#0
 sector	2 18		2 3 11 10 7 5  		-1 -1 -1 -1 -1 2			#1
 #door 1
 sector	0 0			4 5 7 6				0 -1 1 -1					#2
-sector	0 0
-sector	0 0
+
 
 
 # Player: Location (x y), angle, and sector number
