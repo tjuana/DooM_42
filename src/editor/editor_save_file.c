@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/19 16:51:32 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/20 19:50:44 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void		ft_save_the_file(t_wolf3d *w)
 {
-	if ((w->file.fd = open(w->file.name, O_CREAT | O_WRONLY | O_TRUNC, 0777)) \
+	if ((w->file.fd = open("123.txt",O_WRONLY | O_TRUNC | O_CREAT, \
+	0777)) \
 			== -1)
 		ft_error("open failed on output file");
 	ft_editor_take_vertex(w);
@@ -47,6 +48,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 		b = 0;
 		while (j < p_sec->vertex_count)
 		{
+			ft_sort_list_vertex((int)p_sec->vertex[j]->y, (int)p_sec->vertex[j]->x);
 			tmp = p_sec->vertex[j]->y;
 			b = p_sec->vertex[j]->x;
 			w->file.sort[tmp][b] = 77;
@@ -55,6 +57,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 		p_lst = p_lst->next;
 	}
 }
+
 
 /*
 **	void ft_clean_sdl(t_wolf3d *w)

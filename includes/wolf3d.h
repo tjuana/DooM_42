@@ -21,8 +21,6 @@
 # define E_GRID_V_D 6 // VERTEX DIAMETER
 # define E_GRID_V_D_D 4 // VERTEX DRAW DIAMETER
 
-# define VER_HEIGHT (int)33
-# define VER_WIDTH (int)54
 # define FONT_PATH "fonts/RobotoMono-Medium.ttf"
 
 # include "SDL2/SDL.h"
@@ -774,15 +772,19 @@ void			ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *d
 
 
 ///just do it
+///editor_save_file.c
 void			ft_editor_take_vertex(t_wolf3d *w);
 void			ft_save_the_file(t_wolf3d *w);
-void			ft_print_sectors_to_file(t_wolf3d *w, t_list *ptr_list);
-void			ft_save_neighbour(t_sector *sector, int fd);
 
+void			ft_save_neighbour(t_sector *sector, int fd);
+void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
+///editor_save_file2.c
+void			ft_print_sectors_to_file(t_wolf3d *w, t_list *ptr_list);
 void			ft_create_list_of_vertexes(t_wolf3d *w);
 void			ft_count_origin_vertexes(t_wolf3d *w);
-void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
 void			ft_print_to_file(t_wolf3d *w, int f);
+///editor_save_file3.c
+void			ft_save_neighbour(t_sector *sector, int fd);
 
 // TEMP.
 void			ft_editor_sector_create(t_wolf3d *w);

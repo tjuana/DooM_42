@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 13:32:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/20 19:44:15 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		main(int c, char **v)
 	// ft_init_view_map(&w);
 	ft_init_sound(&w);
 	fpsinit();
+		
 	while (w.sdl->running)
 	{
 		ft_editor_handle_events(&w);
