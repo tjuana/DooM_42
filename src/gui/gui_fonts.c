@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 18:39:48 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 20:14:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 SDL_Rect	*ft_gui_create_sdl_rect(int w, int h, int x, int y)
 {
+	// Обратить внимание на возможные утечки.
 	SDL_Rect	*tmp;
 
 	if (!(tmp = (SDL_Rect*)malloc(sizeof(tmp))))

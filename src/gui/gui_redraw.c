@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 18:54:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:18:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,9 +222,13 @@ int		ft_gui_redraw(t_wolf3d *w)
 	SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
 
+	// Разобраться с последовательностью и порядком отрисовки
 	ft_gui_redraw_elem(w, w->gui.dom);
 	ft_gui_draw_sprites(w);
 	ft_gui_draw_enemies(w);
+
+	// if (w->redraw)
+		// w->redraw(w);
 
 	// ft_gui_print_element_list(w->gui.dom, 0);
 
@@ -232,6 +236,9 @@ int		ft_gui_redraw(t_wolf3d *w)
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL);
 
 	ft_gui_redraw_elem_font(w, w->gui.dom);
+
+	// if (w->font_redraw)
+		// w->font_redraw(w);
 
 	SDL_RenderPresent(w->sdl->renderer);
 

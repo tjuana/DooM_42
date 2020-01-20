@@ -37,29 +37,6 @@ void		threading(t_wolf3d *w)
 	//ft_draw_sprites(w);
 }
 
-// Проверяем, лежит ли точка на отрезке (?!)
-int			ft_check_point_in_line_segment(t_vector3 p, t_vector3 p1, t_vector3 p2)
-{
-	double	d;
-	int		p_d;
-
-	d = (p.x - p1.x) * (p2.y - p1.y) - (p.y - p1.y) * (p2.x - p1.x);
-	if (
-		(p1.x < p.x && p.x < p2.x) || (p2.x < p.x && p.x < p1.x) ||
-		(p1.y < p.y && p.y < p2.y) || (p2.y < p.y && p.y < p1.y)
-	)
-	{
-		p_d = abs((int)(d * 100));
-		if (p_d < 1)
-			return (1);
-		else
-			return (0);
-	}
-	else
-		return (0);
-	return (0);
-}
-
 int			ft_check_point(t_vector3 p, t_vector3 p1, t_vector3 p2, t_vector3 p1_pl, t_vector3 p2_pl)
 {
 	// Определяем, в верном ли направлении лежит точка

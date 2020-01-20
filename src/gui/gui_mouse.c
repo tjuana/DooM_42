@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:58:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 19:58:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 20:12:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 }
 
 /*
+**	Однотипные функции, возможно объединение
+**	
 **	void ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom)
 **	
 **	Function that search mouse position area.

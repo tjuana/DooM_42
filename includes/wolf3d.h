@@ -77,20 +77,6 @@ typedef struct			s_ui_coord
 	int					w; // element diameter
 }						t_ui_coord;
 
-typedef struct			s_ui_elem
-{
-	t_ui_coord			v1;				// left top point
-	t_ui_coord			v2;				// right bottom point
-	// t_ui_coord			r1;				// restriction
-	// t_ui_coord			r2;				// ...
-	int					w;				// frame width
-	int					h;				// frame height
-	int					status;			// element status: 0: disable, 1: block
-	int					trigger;		// element trigger: 0: static, 1: hover, 2: click, 3: active, 4: disabled
-	struct s_ui_elem	*parent;		// parent element
-	t_ui_pos			pos;			// position: top, bottom, left, right
-}						t_ui_elem;
-
 // new struct for sector
 typedef struct			s_sector
 {
@@ -105,8 +91,6 @@ typedef struct			s_sector
 	int					txtr_ceil;		// Номер текстуры сектора (?)
 	int					color;			// Цвет сектора (for map editor)
 	int					status;			// 0: broken line; 1: polygon
-
-	t_ui_elem			elem_2d;		// Сектор как элемент ui (устаревшее)
 
 	t_vector3			vtx_center;		// Центр сектора
 }						t_sector;
@@ -239,6 +223,11 @@ typedef struct			s_time
 	unsigned char		flag;
 }						t_time;
 
+/*
+	Рассмотреть целесообразность использования t_gui_rect.
+	[?] -> достаточно указателя на элемент интерфейса,
+	в котором отрисовывается map и производятся все действия
+*/
 typedef struct			s_gui_rect
 {
 	t_ui_coord			v1;
@@ -421,21 +410,8 @@ typedef struct			s_wolf3d
 	t_gui_map			gui_map;
 	t_gui				gui;
 
-
-
-	t_ui_elem			ui_map; // (deprecated)
-	t_ui_elem			ui_act_s; // (deprecated)
-	t_ui_elem			ui_act_s_floor; // (deprecated)
-	t_ui_elem			ui_act_s_wall; // (deprecated)
-	t_ui_elem			ui_act_s_ceil; // (deprecated)
-	t_sector			*act_s;		// Просматриваемый сектор: если нет, то NULL
-
-	t_ui_elem			ui_txtr_opt; // (deprecated)
-	t_ui_elem			ui_txtr_opt_close; // (deprecated)
-	int					txtr_opt_type;	// 0: floor, 1: wall, 2: ceil  // (deprecated)
-
-	t_ui_elem			ui_me_menu;	// Меню map_editor: основная информация о карте,  // (deprecated)
-									// выбор помещаемого объекта, сохранение карты. // (deprecated)
+	void				(*redraw)(void *data);
+	void				(*font_redraw)(void *data);
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -477,7 +453,6 @@ typedef struct			s_thread_help
 	int					sector_count;
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
-	t_ui_elem			ui_map;
 }						t_threads_help;
 
 typedef struct			s_threads
@@ -711,14 +686,14 @@ t_sector		*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i);
 
 void			ft_editor_mouse_move_act_s_mark(t_wolf3d *w);
 
-void			ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color);
+// void			ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color);
 
-int				ft_editor_check_event_area(t_vector3 v, t_ui_elem c);
+// int				ft_editor_check_event_area(t_vector3 v, t_ui_elem c);
 
-void			ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e);
+// void			ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e);
 
-void			ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent);
-void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
+// void			ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent);
+// void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
 
 
 
@@ -837,5 +812,33 @@ void			ft_gui_mousebuttonup_win_setsprite_btnsaveplayer(void *data, SDL_Event e,
 void			ft_gui_mousebuttonup_win_setenemy_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
 
 void			ft_delete_sector(t_wolf3d *w);
+
+int				ft_compare_vertexes(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_vector(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_double(double x1, double y1, double x2, double y2);
+int				ft_check_div_vector(t_vector3 v1, t_vector3 v2, t_vector3 v3, t_vector3 v4);
+t_vector3		ft_find_line_intersect(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+int				ft_check_line_segment_intersect_vector(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+
+int				ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v);
+int				ft_search_point_in_sector(void *a, t_vector3 v);
+int				ft_new_editor_map_check_area(t_wolf3d *w);
+
+// MATH
+int				ft_compare_vertexes(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_vector(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_double(double x1, double y1, double x2, double y2);
+int				ft_check_div_vector(t_vector3 v1, t_vector3 v2, t_vector3 v3, t_vector3 v4);
+t_vector3		ft_find_line_intersect(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+int				ft_check_line_segment_intersect_vector(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+
+
+void			ft_editor_init(t_wolf3d *w);
+void			ft_editor_gui_init(t_wolf3d *w);
+void			ft_editor_redraw(void *ptr);
 
 #endif

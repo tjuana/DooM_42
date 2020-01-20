@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_init.c                                         :+:      :+:    :+:   */
+/*   editor_gui_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 17:00:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 19:33:49 by dorange-         ###   ########.fr       */
+/*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
+/*   Updated: 2020/01/20 16:03:57 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+/*
+	Рассмотреть возможность структуризации и типизации
+	блоков меню, объектов и событий.
+*/
 
 void	ft_gui_init_win_menu(t_list *head)
 {
@@ -284,7 +289,7 @@ void	ft_gui_init_win(t_list *head)
 **	
 **	Function that set gui.
 */
-void	ft_gui_init(t_wolf3d *w)
+void	ft_editor_gui_init(t_wolf3d *w)
 {
 	w->gui.redraw = 0;
 	w->gui.redraw_elem = NULL;

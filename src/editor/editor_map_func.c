@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_map_func.c                                     :+:      :+:    :+:   */
+/*   editor_gui_map_func.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:36:39 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/18 20:06:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:52:25 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 /*
 ** **************************************************************************
-**	t_vector3 ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c)
-
+**	t_vector3 ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, \
+**	t_ui_coord c)
+**
 **	Function that convert vertex to screen coordinate.
 ** **************************************************************************
 */
-t_vector3	ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c)
+t_vector3	ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, \
+				t_ui_coord c)
 {
 	t_vector3	v;
 
@@ -32,7 +34,7 @@ t_vector3	ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c)
 /*
 ** **************************************************************************
 **	t_ui_coord ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v)
-
+**
 **	Function that convert vertex to screen coordinate.
 ** **************************************************************************
 */
@@ -48,14 +50,16 @@ t_ui_coord	ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v)
 
 /*
 ** **************************************************************************
-**	t_ui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, t_gui_elem *elem)
-
+**	t_ui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
+**	t_gui_elem *elem)
+**
 **	Function that check mouse position (for map!!!)
 ** **************************************************************************
 */
 t_ui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
 	t_gui_elem *elem)
 {
+	// Упростить функцию
 	t_vector3	pos;
 	t_ui_coord	pos_start;
 	t_ui_coord	offset;
@@ -89,8 +93,10 @@ t_ui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
 		c = ft_gui_map_vertex_to_coord(w, \
 			(t_gui_rect){elem->v1, elem->v2, elem->w, elem->h}, \
 			(t_vector3){\
-				(c.x - pos_start.x) / w->gui_map.grid_scale + (offset.x > w->gui_map.grid_scale - v_d), \
-				(c.y - pos_start.y) / w->gui_map.grid_scale + (offset.y > w->gui_map.grid_scale - v_d), \
+				(c.x - pos_start.x) / w->gui_map.grid_scale + \
+				(offset.x > w->gui_map.grid_scale - v_d), \
+				(c.y - pos_start.y) / w->gui_map.grid_scale + \
+				(offset.y > w->gui_map.grid_scale - v_d), \
 				0, 0
 			}
 		);

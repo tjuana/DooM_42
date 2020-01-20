@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 21:01:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 14:37:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/19 20:13:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
 	if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
 		e.key.keysym.scancode <= SDL_SCANCODE_0)
 	{
+		// Выделить в отдельную функцию (набор текста в input)
 		if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
 			e.key.keysym.scancode <= SDL_SCANCODE_Z)
 			c = 'a' + e.key.keysym.scancode - 4;

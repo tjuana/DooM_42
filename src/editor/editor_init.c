@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_elem_block.c                                   :+:      :+:    :+:   */
+/*   editor_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 14:02:35 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 14:04:08 by dorange-         ###   ########.fr       */
+/*   Created: 2020/01/12 12:07:54 by dorange-          #+#    #+#             */
+/*   Updated: 2020/01/20 17:46:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 /*
-**	void ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type)
-**	
-**	Function that transform block status for mousemotuin event.
+**	void ft_editor_init(t_wolf3d *w)
+**
+**	Function that init. some values...
 */
-void	ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type)
+void		ft_editor_init(t_wolf3d *w)
 {
-	t_wolf3d	*w;
-
-	w = (t_wolf3d*)data;
-	ft_gui_delete_status_focus(w->gui.dom);
-	w->gui.focus_elem = NULL;
+	w->redraw = ft_editor_redraw;
+	// w->sector_status = 0;
+	// w->mouse_pos = (t_vector3){0, 0, 0, 0};
+	// w->status = 1;
+	// w->sector_count = 0;
+	// w->txtr_opt_type = 1;
+	// w->act_s = NULL;
 }
