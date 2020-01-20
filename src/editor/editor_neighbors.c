@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 11:58:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 17:50:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:24:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int		ft_editor_sector_search_neighbors_item(t_wolf3d *w, \
 	list = w->sector;
 	while (list)
 	{
-		sector = list->content;
+		s = list->content;
 		if (s->id != sector->id && s->status)
 		{
 			i = -1; // bad
-			while (i++ < s->vertex_count)
+			while (++i < s->vertex_count)
 			{
 				vtx1_n = i;
 				vtx2_n = (i + 1) % s->vertex_count;

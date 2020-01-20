@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 16:03:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:15:17 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,17 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_text(elem->child, "Save map as:");
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_input_name", (t_ui_coord){1640, 440, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_inputmapname", (t_ui_coord){1640, 440, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 480, 0});
 	ft_gui_elem_set_color(elem->child, 0xaaaaaa);
-	ft_gui_elem_set_input(elem->child, " ");
+	ft_gui_elem_set_input(elem->child, " ", 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_save_map", (t_ui_coord){1640, 490, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_btnsavemap", (t_ui_coord){1640, 490, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 530, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save map");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnsavemap, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 }
 
@@ -92,28 +93,28 @@ void	ft_gui_init_win_setsector(t_list *head)
 	ft_gui_elem_set_block(elem->child);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_title_inputfloor", (t_ui_coord){1640, 400, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_titleinputfloor", (t_ui_coord){1640, 400, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 440, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
 	ft_gui_elem_set_text(elem->child, "Floor:");
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_inputfloor", (t_ui_coord){1640, 440, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_inputfloor", (t_ui_coord){1640, 440, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 480, 0});
 	ft_gui_elem_set_color(elem->child, 0x333333);
-	ft_gui_elem_set_input(elem->child, "0");
+	ft_gui_elem_set_input(elem->child, "0", 1);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_title_inputfloor", (t_ui_coord){1640, 500, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_titleinputheight", (t_ui_coord){1640, 500, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 540, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
 	ft_gui_elem_set_text(elem->child, "Height:");
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_inputfloor", (t_ui_coord){1640, 540, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_inputheight", (t_ui_coord){1640, 540, 0}, \
 		(t_ui_coord){WIN_WIDTH - 20, 580, 0});
 	ft_gui_elem_set_color(elem->child, 0x333333);
-	ft_gui_elem_set_input(elem->child, "0");
+	ft_gui_elem_set_input(elem->child, "0", 1);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsector_btn_save_map", (t_ui_coord){1640, 1080 - 110, 0}, \
@@ -243,6 +244,7 @@ void	ft_gui_init_win(t_list *head)
 	ft_gui_elem_set_color(win->child, 0x000000);
 	ft_gui_elem_set_map(win->child);
 	ft_gui_elem_set_parent(head, win->child);
+	ft_gui_elem_set_redraw(win->child, ft_gui_draw_map);
 
 	ft_gui_elem_init(&win->child, "win_menu", (t_ui_coord){1620, 0, 0}, \
 		(t_ui_coord){WIN_WIDTH, WIN_HEIGHT, 0});

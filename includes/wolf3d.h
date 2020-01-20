@@ -282,30 +282,32 @@ typedef struct			s_gui_map
 
 # define GUI_ELEM_ACT_MASK		0x0000000F
 
-# define GUI_ELEM_TYPE_BLOCK	0x01
-# define GUI_ELEM_TYPE_TEXT		0x02
-# define GUI_ELEM_TYPE_BUTTON	0x03
-# define GUI_ELEM_TYPE_INPUT	0x04
-# define GUI_ELEM_TYPE_MAP		0xF1
+# define GUI_ELEM_TYPE_BLOCK		0x01
+# define GUI_ELEM_TYPE_TEXT			0x02
+# define GUI_ELEM_TYPE_BUTTON		0x03
+# define GUI_ELEM_TYPE_INPUT		0x04
+# define GUI_ELEM_TYPE_INPUT_NUMB	0x05
+# define GUI_ELEM_TYPE_MAP			0xF1
 
 typedef struct			s_gui_elem
 {
-	char				*name;			// name
-	t_ui_coord			v1;				// left top point
-	t_ui_coord			v2;				// right bottom point
-	t_ui_coord			r1;				// absolute area
-	t_ui_coord			r2;				// ...
-	int					w;				// frame width
-	int					h;				// frame height
-	int					status;			// element status
-	t_list				*parent;		// parent element
-	t_ui_pos			pos;			// position: top, bottom, left, right
+	char				*name;					// name
+	t_ui_coord			v1;						// left top point
+	t_ui_coord			v2;						// right bottom point
+	t_ui_coord			r1;						// absolute area
+	t_ui_coord			r2;						// ...
+	int					w;						// frame width
+	int					h;						// frame height
+	int					status;					// element status
+	t_list				*parent;				// parent element
+	t_ui_pos			pos;					// position: top, bottom, left, right
 
-	t_list				*child;			// child elements
-	int					color;			// element color
-	t_list				*events;		// element events
-	int					type;			// element type
-	char				*str;			// element string
+	t_list				*child;					// child elements
+	int					color;					// element color
+	t_list				*events;				// element events
+	int					type;					// element type
+	char				*str;					// element string
+	void				(*redraw)(void *data, t_list *dom);
 }						t_gui_elem;
 
 # define GUI_NOT_REDRAW			0x00
@@ -733,7 +735,7 @@ void			ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type);
 
-void			ft_gui_elem_set_input(t_list *list, void *str);
+void			ft_gui_elem_set_input(t_list *list, void *str, int flag_numb);
 void			ft_gui_delete_status_focus(t_list *dom);
 void			ft_gui_delete_status(t_list *dom);
 
@@ -840,5 +842,12 @@ int				ft_check_line_segment_intersect_vector(t_vector3 v1, t_vector3 v2, \
 void			ft_editor_init(t_wolf3d *w);
 void			ft_editor_gui_init(t_wolf3d *w);
 void			ft_editor_redraw(void *ptr);
+
+void			ft_gui_elem_set_redraw(t_list *list, void *func);
+int				ft_check_general_segment_line(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+
+char			*ft_gui_elem_get_value(t_list *list);
+void			ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, SDL_Event e, t_list *dom, int type);
 
 #endif

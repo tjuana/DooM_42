@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 17:45:21 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:16:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			ft_editor_main(int c, char **v)
 	ft_gui_redraw(&w);
 	while (w.sdl->running)
 		ft_gui_events(&w);
-	ft_save_the_file(&w);
+	// ft_save_the_file(&w);
 	ft_editor_sector_special_debug(w.sector);
 	ft_gui_desctuct(w.gui.dom);
 	ft_gui_desctuct_fonts(w.gui.fonts);

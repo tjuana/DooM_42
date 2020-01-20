@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 16:27:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:58:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,16 @@ void	ft_gui_elem_set_status(t_list *list, int status)
 		elem->status = (elem->status ^ (GUI_ELEM_STATIC | GUI_ELEM_DYNAMIC)) | status;
 }
 
+char	*ft_gui_elem_get_value(t_list *list)
+{
+	t_gui_elem	*elem;
+
+	if (list == NULL)
+		return (NULL);
+	elem = list->content;
+	return (elem->str);
+}
+
 /*
 **	void ft_gui_elem_set_event(t_list *list, int type, void *func)
 **	
@@ -132,6 +142,21 @@ void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code)
 		elem->events = new_list;
 	else
 		ft_lstadd(&elem->events, new_list);
+}
+
+/*
+**	void ft_gui_elem_set_event(t_list *list, int type, void *func)
+**	
+**	Function that set event for gui element.
+*/
+void			ft_gui_elem_set_redraw(t_list *list, void *func)
+{
+	t_gui_elem	*elem;
+	t_gui_event	*event;
+	t_list		*new_list;
+
+	elem = list->content;
+	elem->redraw = func;
 }
 
 /*
@@ -187,12 +212,14 @@ void			ft_gui_elem_set_button(t_list *list, void *str)
 **	
 **	Function that set input type for gui element.
 */
-void			ft_gui_elem_set_input(t_list *list, void *str)
+void			ft_gui_elem_set_input(t_list *list, void *str, int flag_numb)
 {
 	t_gui_elem	*elem;
 
 	elem = list->content;
 	elem->type = GUI_ELEM_TYPE_INPUT;
+	if (flag_numb)
+		elem->type = GUI_ELEM_TYPE_INPUT_NUMB;
 	elem->str = ft_strdup(str);
 	ft_gui_elem_set_event(list, ft_gui_mousemotion_input, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_input, SDL_MOUSEBUTTONDOWN, 0);

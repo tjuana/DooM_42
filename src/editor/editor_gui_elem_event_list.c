@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_elem_event_list.c                              :+:      :+:    :+:   */
+/*   editor_gui_elem_event_list.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 14:41:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 20:18:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:15:49 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,32 @@ void	ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *dom
 	w->enemy_status = 0;
 }
 
+void	ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, SDL_Event e, t_list *dom, int type)
+{
+	t_wolf3d	*w;
+
+	w = (t_wolf3d*)data;
+	w->file.name = ft_gui_elem_get_value(ft_gui_search_elem_by_name(w->gui.dom, "win_menu_inputmapname"));
+	ft_save_the_file(w);
+}
+
 
 // save change
 void	ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
+	t_sector	*s;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_setsector"), GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), GUI_ELEM_VISIBLE);
 	w->gui.mode = GUI_MD_ME;
+	w->sector_status = 0;
+	s = w->sector->content;
+	// Считываем значения
+	s->height = ft_atoi(ft_gui_elem_get_value(ft_gui_search_elem_by_name(w->gui.dom, "win_setsector_inputheight")));
+	s->floor = ft_atoi(ft_gui_elem_get_value(ft_gui_search_elem_by_name(w->gui.dom, "win_setsector_inputfloor")));
 }
 
 void	ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type)

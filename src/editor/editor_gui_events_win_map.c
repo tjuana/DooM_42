@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:43:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 17:54:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:25:48 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 			if (ft_editor_sector_search_neighbors(w, sector))
 			{
 				sector->status = 1;
-				w->sector_status = 0;
+				// w->sector_status = 0;
 				// ft_editor_init_sectors_item_area(w, sector); // -> определять ли центр?
 			}
 		}

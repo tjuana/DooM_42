@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 16:18:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:37:51 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,12 +115,12 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 			list = list->next;
 			continue ;
 		}
-		if (elem->type == GUI_ELEM_TYPE_MAP)
-			ft_gui_draw_map(w, list);
+		if (elem->redraw)
+			elem->redraw(w, list);
 		else if (elem->type == GUI_ELEM_TYPE_BLOCK || \
 			elem->type == GUI_ELEM_TYPE_BUTTON)
 			ft_gui_fill_elem(w, list, elem->color);
-		else if (elem->type == GUI_ELEM_TYPE_INPUT)
+		else if (elem->type == GUI_ELEM_TYPE_INPUT || elem->type == GUI_ELEM_TYPE_INPUT_NUMB)
 			ft_gui_draw_border(w, list, elem->color, 3);
 		ft_gui_redraw_elem(w, elem->child);
 		list = list->next;
@@ -151,7 +151,7 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 	elem = list->content;
 	if (elem == NULL)
 		ft_error("ERROR");
-
+	
 	if (elem->type == GUI_ELEM_TYPE_BUTTON)
 	{
 		if (elem->status & GUI_ELEM_HOVER)
@@ -174,7 +174,7 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_ui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
 	}
-	if (elem->type == GUI_ELEM_TYPE_INPUT)
+	if (elem->type == GUI_ELEM_TYPE_INPUT || elem->type == GUI_ELEM_TYPE_INPUT_NUMB)
 	{
 		// color = ft_fdf_get_color(color, 0xffffff, 1);
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
@@ -217,34 +217,15 @@ int		ft_gui_redraw(t_wolf3d *w)
 {
 	if (w->gui.redraw == GUI_REDRAW_FRAME)
 		return (ft_gui_redraw_frame(w));
-
 	ft_bzero(w->sdl->pixels, 4 * WIN_WIDTH * WIN_HEIGHT);
 	SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
-
-	// Разобраться с последовательностью и порядком отрисовки
 	ft_gui_redraw_elem(w, w->gui.dom);
-	ft_gui_draw_sprites(w);
-	ft_gui_draw_enemies(w);
-
-	// if (w->redraw)
-		// w->redraw(w);
-
-	// ft_gui_print_element_list(w->gui.dom, 0);
-
 	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL);
-
 	ft_gui_redraw_elem_font(w, w->gui.dom);
-
-	// if (w->font_redraw)
-		// w->font_redraw(w);
-
 	SDL_RenderPresent(w->sdl->renderer);
-
 	w->gui.redraw = GUI_NOT_REDRAW;
-
 	ft_gui_delete_status(w->gui.dom);
-
 	return (0);
 }

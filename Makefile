@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/20 16:45:36 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/20 18:14:47 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,14 +151,13 @@ editor_save_file.c \
 editor_save_file2.c \
 \
 editor_gui_init.c \
-editor_gui_draw_map_objects.c \
+editor_map_draw_objects.c \
 editor_gui_draw_map.c \
 editor_gui_elem_event_list.c \
 editor_gui_events_win_map.c \
 editor_gui_map_check.c \
 editor_gui_map_enemy.c \
-editor_gui_map_func.c \
-editor_gui_map_sector.c \
+editor_map_func.c \
 editor_gui_map_sprite.c \
 \
 editor_redraw.c \

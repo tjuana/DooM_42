@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_draw_map.c                                     :+:      :+:    :+:   */
+/*   editor_gui_draw_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 16:58:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:27:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,4 +224,6 @@ void	ft_gui_draw_map(t_wolf3d *w, t_list *list)
 	ft_gui_draw_map_vertex_line(w, w->gui.mouse_pos);
 	ft_gui_draw_map_sector(w, w->sector);
 	ft_gui_draw_player(w);
+	ft_gui_draw_sprites(w);
+	ft_gui_draw_enemies(w);
 }
