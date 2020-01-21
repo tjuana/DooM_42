@@ -29,6 +29,7 @@
 # include "SDL2/SDL_thread.h"
 # include "SDL2/SDL_ttf.h"
 
+# include "vetors.h"
 # include <pthread.h>
 # include <string.h>
 # include <stdio.h>

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:45:00 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/19 19:48:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/21 19:20:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void			ft_save_neighbour(t_sector *sector, int fd)
 			ft_strdel(&str);
 		}
 	}
-	
 }

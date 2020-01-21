@@ -6,7 +6,7 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 18:51:09 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/17 18:20:03 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/21 18:01:22 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ OBJECTS = ft_putchar.o ft_putchar_fd.o ft_atoi.o ft_strcmp.o ft_strdup.o \
 		ft_bzero_char.o
 
 
-INCLUDES=./
+INCLUDES=./includes/**
 
 .PHONY: clean fclean all re
 

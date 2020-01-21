@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/19 20:31:44 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/21 18:46:39 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 		while (j < p_sec->vertex_count)
 		{
 			// ft_sort_list_vertex(p_sec->vertex[j]->y, p_sec->vertex[j]->x);
+			
 			tmp = p_sec->vertex[j]->y;
 			b = p_sec->vertex[j]->x;
 			w->file.sort[tmp][b] = 77;
