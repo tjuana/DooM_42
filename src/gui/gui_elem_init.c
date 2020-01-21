@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:52:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:28:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,11 +152,27 @@ void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code)
 void			ft_gui_elem_set_redraw(t_list *list, void *func)
 {
 	t_gui_elem	*elem;
-	t_gui_event	*event;
-	t_list		*new_list;
 
 	elem = list->content;
 	elem->redraw = func;
+}
+
+void			ft_gui_elem_set_redraw_font(t_list *list, void *func)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->redraw_font = func;
+}
+
+void			ft_gui_elem_set_image(t_list *list, char *path)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_IMAGE;
+	elem->surf = IMG_Load(path);
+	elem->surf == NULL ? ft_error("IMAGE LOAD ERROR") : 0;
 }
 
 /*
@@ -171,23 +187,6 @@ void			ft_gui_elem_set_block(t_list *list)
 	elem = list->content;
 	elem->type = GUI_BLOCK;
 	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_block, SDL_MOUSEBUTTONUP, 0);
-}
-
-/*
-**	void ft_gui_elem_set_map(t_list *list, void *str)
-**	
-**	Function that set map type for gui element.
-*/
-void			ft_gui_elem_set_map(t_list *list)
-{
-	t_gui_elem	*elem;
-
-	elem = list->content;
-	elem->type = GUI_MAP;
-	ft_gui_elem_set_event(list, ft_gui_mousemotion_win_map, SDL_MOUSEMOTION, 0);
-	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_win_map, SDL_MOUSEBUTTONDOWN, 0);
-	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_win_map, SDL_MOUSEBUTTONUP, 0);
-	ft_gui_elem_set_event(list, ft_gui_mousewheel_win_map, SDL_MOUSEWHEEL, 0);
 }
 
 /*

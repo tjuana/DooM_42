@@ -6,11 +6,29 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:52:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:58:28 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+// Image (?)
+void	ft_gui_draw_image(t_wolf3d *w, t_list *list)
+{
+	t_gui_elem	*elem;
+	SDL_Texture	*tmp_texture;
+	SDL_Rect	*tmp_rect;
+
+	elem = list->content;
+	tmp_texture = NULL;
+
+	tmp_rect = ft_gui_create_sdl_rect(elem->w, elem->h, elem->v1.x, elem->v1.y);
+	tmp_texture = SDL_CreateTextureFromSurface(w->sdl->renderer, elem->surf);
+	tmp_texture == NULL ? ft_error("ERROR") : 0;
+	SDL_SetTextureBlendMode(tmp_texture, SDL_BLENDMODE_BLEND) != 0 ? ft_error("ERROR") : 0;
+	SDL_RenderCopy(w->sdl->renderer, tmp_texture, NULL, tmp_rect) != 0 ? ft_error("ERROR") : 0;
+	SDL_DestroyTexture(tmp_texture);
+}
 
 /*
 **	void ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
@@ -21,6 +39,12 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 {
 	int			x;
 	int			y;
+	double		d;
+
+	if (color & C_A)
+		d = (double)((color & C_A) >> 24) / 255;
+	else
+		d = 0.0;
 
 	y = v1.y >= 0 ? v1.y : 0;
 	while (y <= v2.y && y < WIN_HEIGHT)
@@ -28,7 +52,11 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 		x = v1.x >= 0 ? v1.x : 0;
 		while (x <= v2.x && x < WIN_WIDTH)
 		{
-			w->sdl->pixels[x + (y * WIN_WIDTH)] = color;
+			if (d == 0.0)
+				w->sdl->pixels[x + (y * WIN_WIDTH)] = color;
+			else
+				w->sdl->pixels[x + (y * WIN_WIDTH)] = ft_fdf_get_color(color, \
+					w->sdl->pixels[x + (y * WIN_WIDTH)], d);
 			x++;
 		}
 		y++;
@@ -49,11 +77,11 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 	elem = list->content;
 	if (elem->status & GUI_ELEM_HOVER)
 	{
-		color = ft_fdf_get_color(color, 0xffffff, 0.3);
+		color = ft_fdf_get_color(color, 0xffffff, 0.3) + color & 0xff000000;
 	}
 	if (elem->status & GUI_ELEM_ACTIVE || elem->status & GUI_ELEM_FOCUS)
 	{
-		color = ft_fdf_get_color(color, 0xffffff, 0.5);
+		color = ft_fdf_get_color(color, 0xffffff, 0.5) + color & 0xff000000;
 	}
 
 	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x, elem->v1.y, 0}, \
@@ -85,11 +113,11 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 
 	if (elem->status & GUI_ELEM_HOVER)
 	{
-		color = ft_fdf_get_color(color, 0xffffff, 0.5);
+		color = ft_fdf_get_color(color, 0xffffff, 0.5) + color & 0xff000000;
 	}
 	if (elem->status & GUI_ELEM_ACTIVE)
 	{
-		color = ft_fdf_get_color(color, 0x000000, 0.5);
+		color = ft_fdf_get_color(color, 0x000000, 0.5) + color & 0xff000000;
 	}
 
 	ft_gui_fill_area(w, elem->v1, elem->v2, color);
@@ -117,6 +145,8 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 		}
 		if (elem->redraw)
 			elem->redraw(w, list);
+		else if (elem->type == GUI_IMAGE)
+			ft_gui_draw_image(w, list);
 		else if (elem->type == GUI_BLOCK || \
 			elem->type == GUI_BUTTON)
 			ft_gui_fill_elem(w, list, elem->color);

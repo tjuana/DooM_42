@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_map_sprite.c                                   :+:      :+:    :+:   */
+/*   editor_gui_map_sprite.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:05:37 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 19:34:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:33:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,21 @@ void	ft_delete_sprite(t_wolf3d *w)
 	w->sprite = w->sprite->next;
 	free(list->content);
 	free(list);
+}
+
+/*
+**	void ft_gui_elem_set_map(t_list *list, void *str)
+**	
+**	Function that set map type for gui element.
+*/
+void			ft_gui_elem_set_map(t_list *list)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_MAP;
+	ft_gui_elem_set_event(list, ft_gui_mousemotion_win_map, SDL_MOUSEMOTION, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_win_map, SDL_MOUSEBUTTONDOWN, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_win_map, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(list, ft_gui_mousewheel_win_map, SDL_MOUSEWHEEL, 0);
 }

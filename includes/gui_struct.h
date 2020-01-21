@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui.h                                              :+:      :+:    :+:   */
+/*   gui_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 20:25:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:09:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GUI_H
-# define GUI_H
+#ifndef GUI_STRUCT_H
+# define GUI_STRUCT_H
 
 # include <libft.h>
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
+# include "SDL2/SDL_image.h"
 
 /*
 ** **************************************************************************
@@ -46,6 +47,7 @@
 # define GUI_BUTTON				0x03
 # define GUI_INPUT				0x04
 # define GUI_INPUT_NUMB			0x05
+# define GUI_IMAGE				0x06
 # define GUI_MAP				0xF1
 
 /*
@@ -169,19 +171,21 @@ typedef struct		s_gui_font
 **	Structure for gui-element.
 **
 **	Arguments:
-**	char *name		| element name
-**	t_gui_coord v1	| left top vertex element coordinate
-**	t_gui_coord v2	| right bottom vertex element coordinate
-**	int w			| element width
-**	int h			| element height
-**	int status		| element status
-**	t_list *parent	| pointer to parent element
-**	t_list *child	| pointer to child elements
-**	int color		| background color (or text color)
-**	t_list *events	| pointer to event list
-**	int type		| type
-**	char *str		| element values
-**	void (*redraw)	| function that redraw element
+**	char *name			| element name
+**	t_gui_coord v1		| left top vertex element coordinate
+**	t_gui_coord v2		| right bottom vertex element coordinate
+**	int w				| element width
+**	int h				| element height
+**	int status			| element status
+**	t_list *parent		| pointer to parent element
+**	t_list *child		| pointer to child elements
+**	int color			| background color (or text color)
+**	t_list *events		| pointer to event list
+**	int type			| type
+**	char *str			| element values
+**	void (*redraw)		| function that redraw element
+**	void (*redraw)		| function that redraw element font
+**	SDL_Surface *surf	| pointer to element surface (image)
 ** **************************************************************************
 */
 typedef struct		s_gui_elem
@@ -199,6 +203,8 @@ typedef struct		s_gui_elem
 	int				type;
 	char			*str;
 	void			(*redraw)(void *data, t_list *dom);
+	void			(*redraw_font)(void *data, t_list *dom);
+	SDL_Surface		*surf;
 }					t_gui_elem;
 
 /*
@@ -229,135 +235,5 @@ typedef struct		s_gui
 	t_list			*focus_elem;
 	int				mode;
 }					t_gui;
-
-/*
-** **************************************************************************
-**	gui/gui_debug.c
-** **************************************************************************
-*/
-void				ft_gui_print_element_list(t_list *dom, int level);
-
-/*
-** **************************************************************************
-**	gui/gui_destruct.c
-** **************************************************************************
-*/
-void				ft_gui_desctuct(t_list *dom);
-void				ft_gui_desctuct_fonts(t_list *fonts_list);
-
-/*
-** **************************************************************************
-**	gui/gui_elem_button.c
-** **************************************************************************
-*/
-void				ft_gui_mousemotion_button(void *data, SDL_Event e, \
-						t_list *dom, int type);
-void				ft_gui_mousebuttondown_button(void *data, SDL_Event e, \
-						t_list *dom, int type);
-void				ft_gui_mousebuttonup_button(void *data, SDL_Event e, \
-						t_list *dom, int type);
-void				ft_gui_mousebuttonup_block(void *data, SDL_Event e, \
-						t_list *dom, int type);
-
-/*
-** **************************************************************************
-**	gui/gui_elem_init.c
-** **************************************************************************
-*/
-t_list				*ft_gui_search_elem_by_name(t_list *dom, char *name);
-void				ft_gui_elem_init(t_list **dom, char *name, \
-						t_gui_coord v1, t_gui_coord v2);
-void				ft_gui_elem_set_color(t_list *list, int color);
-void				ft_gui_elem_set_status(t_list *list, int status);
-char				*ft_gui_elem_get_value(t_list *list);
-void				ft_gui_elem_set_event(t_list *list, void *func, \
-						int type, int code);
-void				ft_gui_elem_set_redraw(t_list *list, void *func);
-void				ft_gui_elem_set_block(t_list *list);
-void				ft_gui_elem_set_map(t_list *list);
-void				ft_gui_elem_set_button(t_list *list, void *str);
-void				ft_gui_elem_set_input(t_list *list, void *str, \
-						int flag_numb);
-void				ft_gui_elem_set_text(t_list *list, void *str);
-void				ft_gui_elem_set_parent(t_list *parent, t_list *child);
-void				ft_gui_delete_status_focus(t_list *dom);
-void				ft_gui_delete_status(t_list *dom);
-
-/*
-** **************************************************************************
-**	gui/gui_elem_input.c
-** **************************************************************************
-*/
-void				ft_gui_mousemotion_input(void *data, SDL_Event e, \
-						t_list *dom, int type);
-void				ft_gui_mousebuttondown_input(void *data, SDL_Event e, \
-						t_list *dom, int type);
-void				ft_gui_mousebuttonup_input(void *data, SDL_Event e, \
-						t_list *dom, int type);
-
-/*
-** **************************************************************************
-**	gui/events.c
-** **************************************************************************
-*/
-void				ft_gui_events(t_wolf3d *w);
-
-/*
-** **************************************************************************
-**	gui/gui_fonts.c
-** **************************************************************************
-*/
-SDL_Rect			*ft_gui_create_sdl_rect(int w, int h, int x, int y);
-void				ft_gui_set_font(t_wolf3d *w, char *font_path, int size);
-int					ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, \
-						int size, int color);
-void				ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, \
-						t_gui_coord c);
-
-/*
-** **************************************************************************
-**	gui/gui_keydown.c
-** **************************************************************************
-*/
-void				ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, \
-						t_list *dom);
-
-/*
-** **************************************************************************
-**	gui/gui_mouse.c
-** **************************************************************************
-*/
-int					ft_gui_check_event_area(t_gui_coord v, t_gui_elem *c);
-void				ft_gui_init_mouse_pos(t_wolf3d *w);
-int					ft_gui_event_call_func(t_wolf3d *w, SDL_Event e, \
-						t_gui_event *event, int type);
-int					ft_gui_event_action(t_wolf3d *w, SDL_Event e, \
-						t_list *dom, int type);
-int					ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, \
-						t_list *dom, int type);
-void				ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom);
-void				ft_gui_mousebuttondown(t_wolf3d *w, SDL_Event e, \
-						t_list *dom);
-void				ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, \
-						t_list *dom);
-void				ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, \
-						t_list *dom);
-
-/*
-** **************************************************************************
-**	gui/gui_redraw.c
-** **************************************************************************
-*/
-void				ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, \
-						t_gui_coord v2, int color);
-void				ft_gui_draw_border(t_wolf3d *w, t_list *list, \
-						int color, int border_width);
-void				ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color);
-void				ft_gui_redraw_elem(t_wolf3d *w, t_list *dom);
-int					ft_gui_redraw_frame(t_wolf3d *w);
-void				ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, \
-						int color);
-void				ft_gui_redraw_elem_font(t_wolf3d *w, t_list *dom);
-int					ft_gui_redraw(t_wolf3d *w);
 
 #endif

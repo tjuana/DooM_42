@@ -13,6 +13,7 @@
 
 # define DEG_30 0.52360
 
+# define C_A 0xFF000000
 # define C_R 0x00FF0000
 # define C_G 0x0000FF00
 # define C_B 0x000000FF
@@ -46,7 +47,9 @@
 //# include "matrix/fdf.h"
 # include "algebra.h" // math library for matrix transform
 # include "file.h"
-# include "gui.h"
+# include "gui_struct.h"
+# include "func_struct.h"
+
 typedef struct			s_font
 {
 	SDL_Surface			*surf[7];
@@ -124,10 +127,9 @@ typedef struct			s_write			// Для чтения карты
 	int					s_count;
 }						t_write;
 
-
 typedef struct			s_sdl
 {
-    int					running;
+	int					running;
 	SDL_Window			*win;
 	SDL_Renderer		*renderer;
 	Uint32				*pixels;
@@ -288,8 +290,8 @@ typedef struct			s_wolf3d
 	t_gui_map			gui_map;
 	t_gui				gui;
 
-	void				(*redraw)(void *data);
-	void				(*font_redraw)(void *data);
+	// void				(*redraw)(void *data);
+	// void				(*font_redraw)(void *data);
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -340,48 +342,10 @@ typedef struct			s_threads
 	int					t2;
 }						t_threads;
 
-typedef struct			s_fdf_wu
-{
-	double				x1;
-	double				y1;
-	double				x2;
-	double				y2;
-	double				p;
-	double				dx;
-	double				dy;
-	double				gradient;
-	double				xend;
-	double				yend;
-	double				xgap;
-	double				xpxl1;
-	double				ypxl1;
-	double				xpxl2;
-	double				ypxl2;
-	double				intery;
-	int					steep;
-	int					steps;
-	int					step;
-	int					color1;
-	int					color2;
-	int					check_color_rev;
-	double				temp_f;
-}						t_fdf_wu;
+// # include "gui.h"
+// # include "func.h"
 
-typedef struct			s_fdf_get_color
-{
-	int					color1;	// Первый цвет
-	int					color2;	// Второй цвет
-	double				f1;		// Полупрозрачность первого цвета
-	int					r1;
-	int					g1;
-	int					b1;
-	int					r2;
-	int					g2;
-	int					b2;
-	int					r_rez;
-	int					g_rez;
-	int					b_rez;
-}						t_fdf_get_color;
+# include "func_func.h"
 
 
 void					ft_clean_sdl(t_wolf3d *w);
@@ -725,5 +689,15 @@ int				ft_check_general_segment_line(t_vector3 v1, t_vector3 v2, \
 
 char			*ft_gui_elem_get_value(t_list *list);
 void			ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_game_render(t_wolf3d *w);
+void			ft_gui_elem_set_map(t_list *list);
+
+void			ft_game_render_font(t_wolf3d *w);
+
+// ?!?!?!?!?
+void			ft_gui_elem_set_redraw_font(t_list *list, void *func);
+void			ft_gui_elem_set_image(t_list *list, char *path);
+
 
 #endif

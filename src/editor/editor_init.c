@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 12:07:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 18:22:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 14:10:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 */
 void		ft_editor_init(t_wolf3d *w)
 {
-	w->redraw = ft_editor_redraw;
+	// w->redraw = ft_editor_redraw;
 	// w->sector_status = 0;
 	// w->mouse_pos = (t_vector3){0, 0, 0, 0};
 	// w->status = 1;

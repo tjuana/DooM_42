@@ -19,10 +19,10 @@
 			//"preLaunchTask": "gcc build active file"
 		},
 		{
-			"name": "debug new map",
+			"name": "debug doom_nukem with new map",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/wolf3d",
+			"program": "${workspaceRoot}/doom_nukem",
 			//"args": ["${workspaceRoot}/maps/map.txt"],
 			"args": ["${workspaceRoot}/maps/new_template.nnmp", "nmp"],
 			"stopAtEntry": false,
