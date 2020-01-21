@@ -6,18 +6,18 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:58:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 19:58:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 /*
-**	int ft_gui_check_event_area(t_ui_coord v, t_gui_elem *c)
+**	int ft_gui_check_event_area(t_gui_coord v, t_gui_elem *c)
 **	
 **	Function that check event area.
 */
-int		ft_gui_check_event_area(t_ui_coord v, t_gui_elem *c)
+int		ft_gui_check_event_area(t_gui_coord v, t_gui_elem *c)
 {
 	return (v.x >= c->v1.x && v.x < c->v2.x \
 		&& v.y >= c->v1.y && v.y < c->v2.y && c->status);
@@ -36,7 +36,7 @@ void	ft_gui_init_mouse_pos(t_wolf3d *w)
 	x = 0;
 	y = 0;
 	SDL_GetMouseState(&x, &y);
-	w->gui.mouse_pos = (t_ui_coord){x, y, 0};
+	w->gui.mouse_pos = (t_gui_coord){x, y, 0};
 }
 
 /*
@@ -110,6 +110,8 @@ int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 }
 
 /*
+**	Однотипные функции, возможно объединение
+**	
 **	void ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom)
 **	
 **	Function that search mouse position area.

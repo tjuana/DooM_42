@@ -6,24 +6,42 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/19 19:49:26 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/21 20:04:19 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = DooM_nuKem
-EDITOR_NAME = map_editor
+# Project structure:
+# src/
+#		func/		General functions
+#		algebra/	Functions for use linear algebra
+#		math/		Mathematic functions for calculations (temp.?)
+#		editor/		Map editor (with main file)
+#
+#		gui/		Functions for create interface
+#		game/		Game (with main file)
+#
+#
 
-# temp for testing
+# Project name
+NAME = DooM_nuKem
+
+# File name
+GAME_NAME = doom_nukem
+EDITOR_NAME = map_editor
 GUI_NAME = gui_test
 
-USERNAME = tjuana
-
-FLAGS = -g -O3 -O0
+# Сompiler settings
 CC = gcc
-LIBRARIES = -lft -L$(LIBFT_DIRECTORY)\
-	-lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib\
-	-lSDL2_ttf -L/Users/$(USERNAME)/.brew/Cellar/sdl2_ttf/2.0.15/lib\
-	-lSDL2_image -L/Users/$(USERNAME)/.brew/Cellar/sdl2_image/2.0.5/lib
+FLAGS = -g -O3 -O0
+
+# SDL2 settings
+USERNAME = dorange-
+LIBRARIES = \
+-lft -L$(LIBFT_DIRECTORY)\
+-lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib \
+-lSDL2_ttf -L/Users/$(USERNAME)/.brew/Cellar/sdl2_ttf/2.0.15/lib \
+-lSDL2_image -L/Users/$(USERNAME)/.brew/Cellar/sdl2_image/2.0.5/lib
+
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(SDL_HEADERS)
 
 LIBFT = $(addprefix $(LIBFT_DIRECTORY),libft.a)
@@ -37,75 +55,137 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 DIRECTORY =  $(shell pwd)
 
-PARSER_DIRECTORY = ./src/parser/
-PARSER_LIST = parser_func.c parser_nnmp_sector.c parser_nnmp.c parser_vertex.c
+SRCS_PATH = ./src/
+OBJS_PATH = ./objects/
 
-PARSER_OBJS_DIRECTORY = ./obj_parser/
+# ALGEBRA FUNCTIONS
+ALGEBRA_DIRECTORY = $(SRCS_PATH)algebra/
+ALGEBRA_LIST = \
+algebra_matrix.c \
+algebra_vectors_1.c \
+algebra_vectors_2.c
+
+ALGEBRA_OBJS_DIRECTORY = $(OBJS_PATH)
+ALGEBRA_OBJS_LIST = $(patsubst %.c, %.o, $(ALGEBRA_LIST))
+ALGEBRA_OBJS = $(addprefix $(ALGEBRA_OBJS_DIRECTORY), $(ALGEBRA_OBJS_LIST))
+
+# MATH FUNCTIONS
+MATH_DIRECTORY = $(SRCS_PATH)math/
+MATH_LIST = \
+math_intersect.c \
+math_vectors.c
+
+MATH_OBJS_DIRECTORY = $(OBJS_PATH)
+MATH_OBJS_LIST = $(patsubst %.c, %.o, $(MATH_LIST))
+MATH_OBJS = $(addprefix $(MATH_OBJS_DIRECTORY), $(MATH_OBJS_LIST))
+
+# PARSER
+PARSER_DIRECTORY = $(SRCS_PATH)parser/
+PARSER_LIST = \
+parser_func.c \
+parser_nnmp_sector.c \
+parser_nnmp.c \
+parser_vertex.c
+
+PARSER_OBJS_DIRECTORY = $(OBJS_PATH)
 PARSER_OBJS_LIST = $(patsubst %.c, %.o, $(PARSER_LIST))
 PARSER_OBJS = $(addprefix $(PARSER_OBJS_DIRECTORY), $(PARSER_OBJS_LIST))
 
-SRCS_DIRECTORY = ./src/
-SRCS_LIST = \
-			help.c\
-			read_map.c\
-			sdl.c\
-			textures.c\
-			events.c\
-			threads.c\
-			sdl_render.c\
-			move.c\
-			fpc.c\
-			animation.c\
-			sound.c	\
-			map.c \
-			alg_wu_color.c \
-			alg_wu_draw.c \
-			alg_wu.c \
-			map_arrow.c \
-			vectors_1.c \
-			vectors_2.c \
-			matrix.c \
-			debug.c \
-			sector.c
-
-OBJS_DIRECTORY = ./objects/
-OBJS_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
-OBJS = $(addprefix $(OBJS_DIRECTORY), $(OBJS_LIST))
 
 
+# OBJECTS
+GENERAL_SRCS_DIRECTORY = $(SRCS_PATH)
+GENERAL_SRCS_LIST = \
+read_map.c \
+sdl.c \
+textures.c \
+events.c \
+threads.c \
+sdl_render.c \
+move.c \
+animation.c \
+sound.c	\
+map.c \
+map_arrow.c \
+debug.c \
+sector.c
 
-MAIN_SRCS_DIRECTORY = ./src/
-MAIN_SRCS_LIST = main.c
+GENERAL_OBJS_DIRECTORY = $(OBJS_PATH)
+GENERAL_OBJS_LIST = $(patsubst %.c, %.o, $(GENERAL_SRCS_LIST))
+GENERAL_OBJS = $(addprefix $(GENERAL_OBJS_DIRECTORY), $(GENERAL_OBJS_LIST))
 
-MAIN_OBJS_DIRECTORY = ./obj_main/
+# FUNC FUNCTIONS
+FUNC_DIRECTORY = $(SRCS_PATH)func/
+FUNC_LIST = \
+func_fpc.c \
+func_help.c \
+func_sdl.c \
+func_wu_color.c \
+func_wu_draw.c \
+func_wu.c
+
+FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
+FUNC_OBJS_LIST = $(patsubst %.c, %.o, $(FUNC_LIST))
+FUNC_OBJS = $(addprefix $(FUNC_OBJS_DIRECTORY), $(FUNC_OBJS_LIST))
+
+
+# MAIN GAME FILE
+MAIN_SRCS_DIRECTORY = $(SRCS_PATH)
+MAIN_SRCS_LIST = \
+main.c
+
+MAIN_OBJS_DIRECTORY = $(OBJS_PATH)
 MAIN_OBJS_LIST = $(patsubst %.c, %.o, $(MAIN_SRCS_LIST))
 MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 
 
 
-EDITOR_SRCS_DIRECTORY = ./src/editor/
-EDITOR_SRCS_LIST = editor.c render.c map.c events.c mouse.c \
-draw.c init.c neighbors.c editor_debug.c editor_threads.c fonts.c\
-editor_save_file.c editor_save_file2.c editor_save_file3.c
+# EDITOR WITH MAIN FILE
+EDITOR_SRCS_DIRECTORY = $(SRCS_PATH)editor/
+EDITOR_SRCS_LIST = \
+editor_main.c \
+editor_init.c \
+editor_neighbors.c \
+editor_debug.c \
+editor_save_file.c \
+editor_save_file2.c \
+\
+editor_gui_init.c \
+editor_map_draw_objects.c \
+editor_gui_draw_map.c \
+editor_gui_elem_event_list.c \
+editor_gui_events_win_map.c \
+editor_gui_map_check.c \
+editor_gui_map_enemy.c \
+editor_map_func.c \
+editor_gui_map_sprite.c \
+\
+editor_redraw.c \
+editor_sector.c
 
-EDITOR_OBJS_DIRECTORY = ./obj_editor/
+EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))
 EDITOR_OBJS = $(addprefix $(EDITOR_OBJS_DIRECTORY), $(EDITOR_OBJS_LIST))
 
 
 
-GUI_SRCS_DIRECTORY = ./src/gui/
-GUI_SRCS_LIST = gui_main.c gui_events.c gui_redraw.c gui_init.c \
-	gui_elem_init.c gui_destruct.c gui_debug.c gui_mouse.c \
-	gui_elem_button.c gui_fonts.c gui_elem_input.c \
-	gui_keydown.c gui_elem_block.c gui_elem_event_list.c \
-	gui_events_win_map.c gui_draw_map.c \
-	\
-	gui_temp.c gui_map_func.c gui_draw_map_objects.c
+# GUI WITH MAIN FILE
+GUI_SRCS_DIRECTORY = $(SRCS_PATH)gui/
+GUI_SRCS_LIST = \
+gui_events.c \
+gui_redraw.c \
+gui_elem_init.c \
+gui_destruct.c \
+gui_debug.c \
+gui_mouse.c \
+gui_elem_button.c \
+gui_fonts.c \
+gui_elem_input.c \
+gui_keydown.c
 
 
 
-GUI_OBJS_DIRECTORY = ./obj_gui/
+GUI_OBJS_DIRECTORY = $(OBJS_PATH)
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))
 GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
 
@@ -123,67 +203,86 @@ RESET = \033[0m
 
 .PHONY: all clean fclean re
 
-all: $(NAME) $(EDITOR_NAME) $(GUI_NAME)
+all: $(NAME)
 
+# all objs file
+OBJS_COMPILE = \
+$(GENERAL_OBJS) \
+$(ALGEBRA_OBJS) \
+$(MATH_OBJS) \
+$(PARSER_OBJS) \
+$(MAIN_OBJS) \
+$(EDITOR_OBJS) \
+$(GUI_OBJS) \
+$(FUNC_OBJS)
 
-$(NAME): $(LIBFT) $(OBJS_DIRECTORY) $(PARSER_OBJS_DIRECTORY) $(MAIN_OBJS_DIRECTORY) $(OBJS) $(PARSER_OBJS) $(MAIN_OBJS)
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJS) $(MAIN_OBJS) $(PARSER_OBJS) -o $(NAME)
+# file for game
+GAME_OBJS_COMPILE = \
+$(GENERAL_OBJS) \
+$(MATH_OBJS) \
+$(MAIN_OBJS) \
+$(PARSER_OBJS) \
+$(ALGEBRA_OBJS) \
+$(FUNC_OBJS) \
+$(GUI_OBJS)
+
+# file for editor
+EDITOR_OBJS_COMPILE = \
+$(EDITOR_OBJS) \
+$(GUI_OBJS) \
+$(MATH_OBJS) \
+$(GENERAL_OBJS) \
+$(PARSER_OBJS) \
+$(ALGEBRA_OBJS) \
+$(FUNC_OBJS)
+
+$(NAME): $(LIBFT) $(OBJS_COMPILE)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(GAME_OBJS_COMPILE) -o $(GAME_NAME)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
-
-$(OBJS_DIRECTORY):
-	@mkdir -p $(OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@echo "$(NAME): $(GREEN)$(OBJS_DIRECTORY) was created$(RESET)"
-
-$(OBJS_DIRECTORY)%.o : $(SRCS_DIRECTORY)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
-
-$(PARSER_OBJS_DIRECTORY):
-	@mkdir -p $(PARSER_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@echo "$(NAME): $(GREEN)$(PARSER_OBJS_DIRECTORY) was created$(RESET)"
-
-$(PARSER_OBJS_DIRECTORY)%.o : $(PARSER_DIRECTORY)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
-
-$(MAIN_OBJS_DIRECTORY):
-	@mkdir -p $(MAIN_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@echo "$(NAME): $(GREEN)$(MAIN_OBJS_DIRECTORY) was created$(RESET)"
-
-$(MAIN_OBJS_DIRECTORY)%.o : $(MAIN_SRCS_DIRECTORY)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
-
-
-
-$(EDITOR_NAME): $(LIBFT) $(EDITOR_OBJS_DIRECTORY) $(EDITOR_OBJS) $(OBJS)
-	#@echo $(EDITOR_OBJS) $(OBJS)
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS) $(OBJS) $(PARSER_OBJS) -o $(EDITOR_NAME)
-	@echo "\n$(EDITOR_NAME): $(GREEN)object files were created$(RESET)"
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS_COMPILE) -o $(EDITOR_NAME)
 	@echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
 
-$(EDITOR_OBJS_DIRECTORY):
-	@mkdir -p $(EDITOR_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_OBJS_DIRECTORY) was created$(RESET)"
 
-$(EDITOR_OBJS_DIRECTORY)%.o : $(EDITOR_SRCS_DIRECTORY)%.c $(HEADERS)
+
+# Object files
+$(GENERAL_OBJS_DIRECTORY)%.o : $(GENERAL_SRCS_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(GENERAL_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
+$(PARSER_OBJS_DIRECTORY)%.o : $(PARSER_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(PARSER_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
 
+$(MAIN_OBJS_DIRECTORY)%.o : $(MAIN_SRCS_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(MAIN_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
 
-$(GUI_NAME): $(LIBFT) $(GUI_OBJS_DIRECTORY) $(GUI_OBJS) $(OBJS)
-	#@echo $(GUI_OBJS) $(OBJS)
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(GUI_OBJS) $(OBJS) $(PARSER_OBJS) -o $(GUI_NAME)
-	@echo "\n$(GUI_NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(GUI_NAME): $(GREEN)$(GUI_NAME) was created$(RESET)"
-
-$(GUI_OBJS_DIRECTORY):
-	@mkdir -p $(GUI_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@echo "$(GUI_NAME): $(GREEN)$(GUI_OBJS_DIRECTORY) was created$(RESET)"
+$(EDITOR_OBJS_DIRECTORY)%.o : $(EDITOR_SRCS_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(EDITOR_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
 
 $(GUI_OBJS_DIRECTORY)%.o : $(GUI_SRCS_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(GUI_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+$(ALGEBRA_OBJS_DIRECTORY)%.o : $(ALGEBRA_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(ALGEBRA_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+$(MATH_OBJS_DIRECTORY)%.o : $(MATH_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(MATH_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
+
+$(FUNC_OBJS_DIRECTORY)%.o : $(FUNC_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(FUNC_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
@@ -193,10 +292,12 @@ $(LIBFT):
 	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"
 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
 
+
+
 clean:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
-	@rm -rf $(OBJS_DIRECTORY)
-	@echo "$(NAME): $(RED)$(OBJS_DIRECTORY) was deleted$(RESET)"
+	@rm -rf $(GENERAL_OBJS_DIRECTORY)
+	@echo "$(NAME): $(RED)$(GENERAL_OBJS_DIRECTORY) was deleted$(RESET)"
 	@rm -rf $(PARSER_OBJS_DIRECTORY)
 	@echo "$(NAME): $(RED)$(PARSER_OBJS_DIRECTORY) was deleted$(RESET)"
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"

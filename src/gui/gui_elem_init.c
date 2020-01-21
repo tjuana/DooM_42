@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 16:27:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 15:28:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_list	*ft_gui_search_elem_by_name(t_list *dom, char *name)
 **	
 **	Function that initialize gui element.
 */
-void	ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2)
+void	ft_gui_elem_init(t_list **dom, char *name, t_gui_coord v1, t_gui_coord v2)
 {
 	t_list		*list;
 	t_gui_elem	*elem;
@@ -58,7 +58,7 @@ void	ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2)
 	elem->parent = NULL;
 	elem->child = NULL;
 	elem->events = NULL;
-	elem->type = GUI_ELEM_TYPE_BLOCK;
+	elem->type = GUI_BLOCK;
 	elem->str = NULL;
 
 	list = ft_lstnew(elem, sizeof(t_gui_elem));
@@ -110,6 +110,16 @@ void	ft_gui_elem_set_status(t_list *list, int status)
 		elem->status = (elem->status ^ (GUI_ELEM_STATIC | GUI_ELEM_DYNAMIC)) | status;
 }
 
+char	*ft_gui_elem_get_value(t_list *list)
+{
+	t_gui_elem	*elem;
+
+	if (list == NULL)
+		return (NULL);
+	elem = list->content;
+	return (elem->str);
+}
+
 /*
 **	void ft_gui_elem_set_event(t_list *list, int type, void *func)
 **	
@@ -135,6 +145,37 @@ void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code)
 }
 
 /*
+**	void ft_gui_elem_set_event(t_list *list, int type, void *func)
+**	
+**	Function that set event for gui element.
+*/
+void			ft_gui_elem_set_redraw(t_list *list, void *func)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->redraw = func;
+}
+
+void			ft_gui_elem_set_redraw_font(t_list *list, void *func)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->redraw_font = func;
+}
+
+void			ft_gui_elem_set_image(t_list *list, char *path)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	elem->type = GUI_IMAGE;
+	elem->surf = IMG_Load(path);
+	elem->surf == NULL ? ft_error("IMAGE LOAD ERROR") : 0;
+}
+
+/*
 **	void ft_gui_elem_set_block(t_list *list)
 **	
 **	Function that set block type for gui element.
@@ -144,25 +185,8 @@ void			ft_gui_elem_set_block(t_list *list)
 	t_gui_elem	*elem;
 
 	elem = list->content;
-	elem->type = GUI_ELEM_TYPE_BLOCK;
+	elem->type = GUI_BLOCK;
 	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_block, SDL_MOUSEBUTTONUP, 0);
-}
-
-/*
-**	void ft_gui_elem_set_map(t_list *list, void *str)
-**	
-**	Function that set map type for gui element.
-*/
-void			ft_gui_elem_set_map(t_list *list)
-{
-	t_gui_elem	*elem;
-
-	elem = list->content;
-	elem->type = GUI_ELEM_TYPE_MAP;
-	ft_gui_elem_set_event(list, ft_gui_mousemotion_win_map, SDL_MOUSEMOTION, 0);
-	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_win_map, SDL_MOUSEBUTTONDOWN, 0);
-	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_win_map, SDL_MOUSEBUTTONUP, 0);
-	ft_gui_elem_set_event(list, ft_gui_mousewheel_win_map, SDL_MOUSEWHEEL, 0);
 }
 
 /*
@@ -175,7 +199,7 @@ void			ft_gui_elem_set_button(t_list *list, void *str)
 	t_gui_elem	*elem;
 
 	elem = list->content;
-	elem->type = GUI_ELEM_TYPE_BUTTON;
+	elem->type = GUI_BUTTON;
 	elem->str = ft_strdup(str);
 	ft_gui_elem_set_event(list, ft_gui_mousemotion_button, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_button, SDL_MOUSEBUTTONDOWN, 0);
@@ -187,12 +211,14 @@ void			ft_gui_elem_set_button(t_list *list, void *str)
 **	
 **	Function that set input type for gui element.
 */
-void			ft_gui_elem_set_input(t_list *list, void *str)
+void			ft_gui_elem_set_input(t_list *list, void *str, int flag_numb)
 {
 	t_gui_elem	*elem;
 
 	elem = list->content;
-	elem->type = GUI_ELEM_TYPE_INPUT;
+	elem->type = GUI_INPUT;
+	if (flag_numb)
+		elem->type = GUI_INPUT_NUMB;
 	elem->str = ft_strdup(str);
 	ft_gui_elem_set_event(list, ft_gui_mousemotion_input, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_input, SDL_MOUSEBUTTONDOWN, 0);
@@ -209,7 +235,7 @@ void			ft_gui_elem_set_text(t_list *list, void *str)
 	t_gui_elem	*elem;
 
 	elem = list->content;
-	elem->type = GUI_ELEM_TYPE_TEXT;
+	elem->type = GUI_TEXT;
 	elem->str = ft_strdup(str);
 }
 
@@ -230,10 +256,10 @@ void	ft_gui_elem_set_parent(t_list *parent, t_list *child)
 	child_elem = child->content;
 	parent_elem = parent->content;
 	child_elem->parent = parent;
-	child_elem->pos.top = child_elem->v1.y - parent_elem->v1.y;
-	child_elem->pos.bottom = parent_elem->v2.y - child_elem->v2.y;
-	child_elem->pos.left = child_elem->v1.x - parent_elem->v1.x;
-	child_elem->pos.right = parent_elem->v2.x - child_elem->v2.x;
+	// child_elem->pos.top = child_elem->v1.y - parent_elem->v1.y;
+	// child_elem->pos.bottom = parent_elem->v2.y - child_elem->v2.y;
+	// child_elem->pos.left = child_elem->v1.x - parent_elem->v1.x;
+	// child_elem->pos.right = parent_elem->v2.x - child_elem->v2.x;
 }
 
 /*

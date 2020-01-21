@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:39:41 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 18:16:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/20 15:28:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ void	ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type)
 	ft_gui_delete_status_focus(w->gui.dom);
 	w->gui.focus_elem = NULL;
 	ft_gui_elem_set_status(dom, GUI_ELEM_HOVER);
+}
+
+/*
+**	void ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type)
+**	
+**	Function that transform block status for mousemotuin event.
+*/
+void	ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type)
+{
+	t_wolf3d	*w;
+
+	w = (t_wolf3d*)data;
+	ft_gui_delete_status_focus(w->gui.dom);
+	w->gui.focus_elem = NULL;
 }

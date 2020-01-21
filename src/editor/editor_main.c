@@ -1,51 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor.c                                           :+:      :+:    :+:   */
+/*   editor_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 20:16:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/21 20:04:36 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		main(int c, char **v)
+/*
+** **************************************************************************
+**	void ft_editor_main(int c, char **v)
+**
+**	Function for map editor programm.
+** **************************************************************************
+*/
+
+void			ft_editor_main(int c, char **v)
 {
 	t_wolf3d	w;
 
+	w.sdl = sdl_init(w.sdl);
+	ft_init_wolf(&w);
+
 	ft_editor_init(&w);
+	ft_editor_gui_init(&w);
+
 	if (c >= 2)
 	{
 		if ((w.fd = open(v[1], O_RDONLY)) < 0)
 			ft_error("Error: bad file");
 		ft_parser_nnmp(w.fd, &w);
 	}
-	// 
-	w.sdl = sdl_init(w.sdl);
-	ft_init_wolf(&w);
-	ft_editor_init_fonts(&w);
-	ft_editor_init_sectors_areas(&w, w.sector);
-	ft_load_textures(&w);
-	// ft_init_anim(&w);
-	// ft_init_view_map(&w);
-	ft_init_sound(&w);
-	fpsinit();
 
+	// Not use
+	ft_load_textures(&w);
+	ft_init_sound(&w);
+
+	ft_gui_print_element_list(w.gui.dom, 0);
+	ft_gui_redraw(&w);
 	while (w.sdl->running)
-	{
-		ft_editor_handle_events(&w);
-		ft_editor_use_events(&w);
-		ft_editor_renderer(&w);
-		// init some value
-		// w.ui_txtr_opt.trigger = 0;
-		// fpsthink();
-	}
-	ft_save_the_file(&w);
+		ft_gui_events(&w);
+	// ft_save_the_file(&w);
 	ft_editor_sector_special_debug(w.sector);
-	ft_editor_close_fonts(&w);
+	ft_gui_desctuct(w.gui.dom);
+	ft_gui_desctuct_fonts(w.gui.fonts);
 	ft_clean_sdl(&w);
+}
+
+int				main(int c, char **v)
+{
+	ft_editor_main(c, v);
 	return (0);
 }

@@ -13,6 +13,7 @@
 
 # define DEG_30 0.52360
 
+# define C_A 0xFF000000
 # define C_R 0x00FF0000
 # define C_G 0x0000FF00
 # define C_B 0x000000FF
@@ -46,7 +47,10 @@
 //# include "matrix/sdl.h"
 //# include "matrix/fdf.h"
 # include "algebra.h" // math library for matrix transform
-#include "file.h"
+# include "file.h"
+# include "gui_struct.h"
+# include "func_struct.h"
+
 typedef struct			s_font
 {
 	SDL_Surface			*surf[7];
@@ -63,35 +67,6 @@ typedef struct			s_font
 	int					half_menu;
 }						t_font;
 
-typedef	struct			s_ui_pos		// позиционирование
-{
-	int					top;
-	int					bottom;
-	int					left;
-	int					right;
-}						t_ui_pos;
-
-typedef struct			s_ui_coord
-{
-	int					x;
-	int					y;
-	int					w; // element diameter
-}						t_ui_coord;
-
-typedef struct			s_ui_elem
-{
-	t_ui_coord			v1;				// left top point
-	t_ui_coord			v2;				// right bottom point
-	// t_ui_coord			r1;				// restriction
-	// t_ui_coord			r2;				// ...
-	int					w;				// frame width
-	int					h;				// frame height
-	int					status;			// element status: 0: disable, 1: block
-	int					trigger;		// element trigger: 0: static, 1: hover, 2: click, 3: active, 4: disabled
-	struct s_ui_elem	*parent;		// parent element
-	t_ui_pos			pos;			// position: top, bottom, left, right
-}						t_ui_elem;
-
 // new struct for sector
 typedef struct			s_sector
 {
@@ -107,9 +82,7 @@ typedef struct			s_sector
 	int					color;			// Цвет сектора (for map editor)
 	int					status;			// 0: broken line; 1: polygon
 
-	t_ui_elem			elem_2d;		// Сектор как элемент ui (устаревшее)
-
-	t_vector3			vtx_center;		// Центр сектора
+	t_vector3			vtx_center;		// Центр сектора (?)
 }						t_sector;
 
 typedef struct			s_sort_util	// Структура для спрайтов (?)
@@ -155,10 +128,9 @@ typedef struct			s_write			// Для чтения карты
 	int					s_count;
 }						t_write;
 
-
 typedef struct			s_sdl
 {
-    int					running;
+	int					running;
 	SDL_Window			*win;
 	SDL_Renderer		*renderer;
 	Uint32				*pixels;
@@ -183,7 +155,8 @@ typedef struct			s_sprite
 	double				x; // (deprecated)
 	double				y; // (deprecated)
 	double				distance;
-	int					texture;
+	int					texture; // (as type?)
+	int					status;	// 0: no set, 1: set (?)
 }						t_sprite;
 
 /*
@@ -239,35 +212,6 @@ typedef struct			s_time
 	unsigned char		flag;
 }						t_time;
 
-typedef struct			s_gui_rect
-{
-	t_ui_coord			v1;
-	t_ui_coord			v2;
-	int					w;
-	int					h;
-}						t_gui_rect;
-
-typedef struct			s_gui_event
-{
-	int					type;
-	int					code;
-	void				(*func)(void *data, SDL_Event e, t_list *dom, int type);
-	t_list				*elem;
-}						t_gui_event;
-
-typedef struct			s_gui_font
-{
-	char				*path;
-	SDL_Surface			*surf[7];
-	TTF_Font			*ptr;
-	SDL_Color			color;
-	int					f_sz;
-	int					g_sz;
-	int					w;
-	int					h;
-	int					half_menu;
-}						t_gui_font;
-
 /*
 **	Special struct for map element parameters.
 */
@@ -279,91 +223,37 @@ typedef struct			s_gui_map
 	t_vector3			v;
 }						t_gui_map;
 
-# define GUI_ELEM_HIDDEN		0x00000001
-# define GUI_ELEM_VISIBLE		0x00000002
-# define GUI_ELEM_STATIC		0x00000004
-# define GUI_ELEM_DYNAMIC		0x00000008
-
-# define GUI_ELEM_NORMAL		0x00000010
-# define GUI_ELEM_HOVER			0x00000020
-# define GUI_ELEM_CLICK			0x00000040
-# define GUI_ELEM_ACTIVE		0x00000080
-# define GUI_ELEM_FOCUS			0x00000100
-# define GUI_ELEM_DISABLE		0x00000200
-
-# define GUI_ELEM_ACT_MASK		0x0000000F
-
-# define GUI_ELEM_TYPE_BLOCK	0x01
-# define GUI_ELEM_TYPE_TEXT		0x02
-# define GUI_ELEM_TYPE_BUTTON	0x03
-# define GUI_ELEM_TYPE_INPUT	0x04
-# define GUI_ELEM_TYPE_MAP		0xF1
-
-typedef struct			s_gui_elem
-{
-	char				*name;			// name
-	t_ui_coord			v1;				// left top point
-	t_ui_coord			v2;				// right bottom point
-	t_ui_coord			r1;				// absolute area
-	t_ui_coord			r2;				// ...
-	int					w;				// frame width
-	int					h;				// frame height
-	int					status;			// element status
-	t_list				*parent;		// parent element
-	t_ui_pos			pos;			// position: top, bottom, left, right
-
-	t_list				*child;			// child elements
-	int					color;			// element color
-	t_list				*events;		// element events
-	int					type;			// element type
-	char				*str;			// element string
-}						t_gui_elem;
-
-# define GUI_NOT_REDRAW			0x00
-# define GUI_REDRAW				0x01
-# define GUI_REDRAW_FRAME		0x02
-
-// по логике дублирует redraw
-# define GUI_EVENT_OFF			0x00
-# define GUI_EVENT_ON			0x01
-# define GUI_EVENT_SEARCH		0x02
-
-// Режимы
-# define GUI_MD_ME				0x0000F001
-# define GUI_MD_ME_SET_SECTOR	0x0000F100
-# define GUI_MD_ME_SET_PLAYER	0x0000F200
-# define GUI_MD_ME_SET_SPRITE	0x0000F300
-# define GUI_MD_ME_SET_ENEMY	0x0000F400
-
-// Цвета
-# define GUI_CL_STANDART		0x00ff0000
-# define GUI_CL_SECTOR			0x00ffd700
-# define GUI_CL_PLAYER			0x00a496f2
-# define GUI_CL_SPRITE			0x00df73ff
-# define GUI_CL_ENEMY			0x00fb607f
-
-typedef struct			s_gui
-{
-	t_list				*fonts;
-	t_list				*dom;
-	unsigned char		redraw;
-	t_gui_elem			*redraw_elem;
-	t_ui_coord			mouse_pos;
-	int					search_elem;
-	t_list				*focus_elem;
-	int					mode;	// режим
-}						t_gui;
 
 typedef struct			s_wolf3d
 {
+	// game objects
+	t_list				*sector;
+	t_player			pl;
+	t_list				*sprite;
+	t_list				*enemy;
+
+	// game status (temp.)
+	int					sector_status; // 0: nothing; 1: set new sector
+	int					player_status; // 0: nothing; 1: player was set;
+	int					sprite_status; // 0: nothing; 1: sprite was set;
+	int					enemy_status; // 0: nothing; 1: enemy was set;
+
+	// game objects count
+	int					sector_count;
+	int					sprite_count;
+	int					enemy_count;
+
+
+
+
+
 	t_file				file;
 	t_list				*vertex;
 	// add list with sector
-	t_list				*sector;
 	// add temp list for map
-	t_list				*map_sector;
+	t_list				*map_sector; // (deprecated)
 	// add temp list for map (top vertex)
-	t_list				*map_sector_top;
+	t_list				*map_sector_top; // (deprecated)
 	// spec param
 	double				fov;
 	double				l_p;
@@ -374,7 +264,6 @@ typedef struct			s_wolf3d
 	t_map				map;
 	t_time				t;
 	t_const				c;
-	t_player			pl;
 	SDL_Surface			*weapon_texture;
 	SDL_Surface			*map_texture;
 	t_anime				anim;
@@ -394,31 +283,16 @@ typedef struct			s_wolf3d
 
 	t_vector3			mouse_vertex;
 	t_vector3			mouse_pos;
-	int					sector_status; // 0: nothing; 1: set new sector
-	int					sector_count;
 
-	int					player_status; // 0: nothing; 1: player was set;
+
 
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
 	t_gui_map			gui_map;
 	t_gui				gui;
 
-
-
-	t_ui_elem			ui_map; // (deprecated)
-	t_ui_elem			ui_act_s; // (deprecated)
-	t_ui_elem			ui_act_s_floor; // (deprecated)
-	t_ui_elem			ui_act_s_wall; // (deprecated)
-	t_ui_elem			ui_act_s_ceil; // (deprecated)
-	t_sector			*act_s;		// Просматриваемый сектор: если нет, то NULL
-
-	t_ui_elem			ui_txtr_opt; // (deprecated)
-	t_ui_elem			ui_txtr_opt_close; // (deprecated)
-	int					txtr_opt_type;	// 0: floor, 1: wall, 2: ceil  // (deprecated)
-
-	t_ui_elem			ui_me_menu;	// Меню map_editor: основная информация о карте,  // (deprecated)
-									// выбор помещаемого объекта, сохранение карты. // (deprecated)
+	// void				(*redraw)(void *data);
+	// void				(*font_redraw)(void *data);
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -460,7 +334,6 @@ typedef struct			s_thread_help
 	int					sector_count;
 	int					status; // game status: 0: error; 1: map editor; 2: game
 
-	t_ui_elem			ui_map;
 }						t_threads_help;
 
 typedef struct			s_threads
@@ -470,48 +343,10 @@ typedef struct			s_threads
 	int					t2;
 }						t_threads;
 
-typedef struct			s_fdf_wu
-{
-	double				x1;
-	double				y1;
-	double				x2;
-	double				y2;
-	double				p;
-	double				dx;
-	double				dy;
-	double				gradient;
-	double				xend;
-	double				yend;
-	double				xgap;
-	double				xpxl1;
-	double				ypxl1;
-	double				xpxl2;
-	double				ypxl2;
-	double				intery;
-	int					steep;
-	int					steps;
-	int					step;
-	int					color1;
-	int					color2;
-	int					check_color_rev;
-	double				temp_f;
-}						t_fdf_wu;
+// # include "gui.h"
+// # include "func.h"
 
-typedef struct			s_fdf_get_color
-{
-	int					color1;	// Первый цвет
-	int					color2;	// Второй цвет
-	double				f1;		// Полупрозрачность первого цвета
-	int					r1;
-	int					g1;
-	int					b1;
-	int					r2;
-	int					g2;
-	int					b2;
-	int					r_rez;
-	int					g_rez;
-	int					b_rez;
-}						t_fdf_get_color;
+# include "func_func.h"
 
 
 void					ft_clean_sdl(t_wolf3d *w);
@@ -688,20 +523,20 @@ void			ft_editor_threading(t_wolf3d *w);
 // editor/fonts.c
 SDL_Rect		*ft_create_rect(int w, int h, int x, int y);
 int				ft_font_preset_sc(t_wolf3d *w, int size, int color);
-void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
+void			ft_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c);
 
 t_sector		*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i);
 
 void			ft_editor_mouse_move_act_s_mark(t_wolf3d *w);
 
-void			ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color);
+// void			ft_editor_fill_elem(t_wolf3d *w, t_ui_elem elem, int color);
 
-int				ft_editor_check_event_area(t_vector3 v, t_ui_elem c);
+// int				ft_editor_check_event_area(t_vector3 v, t_ui_elem c);
 
-void			ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e);
+// void			ft_editor_mouse_btn_up(t_wolf3d *w, SDL_Event e);
 
-void			ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent);
-void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
+// void			ft_editor_init_ui_child_elem(t_ui_elem *child, t_ui_elem *parent);
+// void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
 
 
 
@@ -713,7 +548,7 @@ void			ft_editor_init_ui_elem_reset(t_ui_elem *child, t_ui_elem *parent);
 int				ft_gui_redraw(t_wolf3d *w);
 void			ft_gui_events(t_wolf3d *w);
 void			ft_gui_init(t_wolf3d *w);
-void			ft_gui_elem_init(t_list **dom, char *name, t_ui_coord v1, t_ui_coord v2);
+void			ft_gui_elem_init(t_list **dom, char *name, t_gui_coord v1, t_gui_coord v2);
 void			ft_gui_elem_set_color(t_list *list, int color);
 void			ft_gui_elem_set_event(t_list *list, void *func, int type, int code);
 void			ft_gui_elem_set_parent(t_list *parent, t_list *child);
@@ -730,7 +565,7 @@ void			ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int t
 void			ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type);
 
 int				ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, int size, int color);
-void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_ui_coord c);
+void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c);
 SDL_Rect		*ft_gui_create_sdl_rect(int w, int h, int x, int y);
 void			ft_gui_desctuct_fonts(t_list *fonts_list);
 void			ft_gui_elem_set_button(t_list *list, void *str);
@@ -741,7 +576,7 @@ void			ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type);
 
-void			ft_gui_elem_set_input(t_list *list, void *str);
+void			ft_gui_elem_set_input(t_list *list, void *str, int flag_numb);
 void			ft_gui_delete_status_focus(t_list *dom);
 void			ft_gui_delete_status(t_list *dom);
 
@@ -764,10 +599,10 @@ void			ft_gui_draw_map(t_wolf3d *w, t_list *list);
 
 void			ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, t_list *dom);
 
-void			ft_gui_fill_area(t_wolf3d *w, t_ui_coord v1, t_ui_coord v2, int color);
+void			ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color);
 
-t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_ui_coord c);
-t_ui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
+t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_gui_coord c);
+t_gui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
 
 void			ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_win_menu_btn_sprite(void *data, SDL_Event e, t_list *dom, int type);
@@ -789,7 +624,7 @@ void			ft_print_to_file(t_wolf3d *w, int f);
 void			ft_editor_sector_create(t_wolf3d *w);
 void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v);
 
-t_ui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_ui_coord c, \
+t_gui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_gui_coord c, \
 					t_gui_elem *elem);
 
 // for test
@@ -801,8 +636,69 @@ void			ft_gui_mousebuttonup_win_setsprite_btncancel(void *data, SDL_Event e, t_l
 void			ft_gui_mousebuttonup_win_setenemy_btncancel(void *data, SDL_Event e, t_list *dom, int type);
 
 int				ft_search_point_in_sector(void *a, t_vector3 v);
-void			ft_gui_draw_point(t_wolf3d *w, t_ui_coord c, int color);
+void			ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, int color);
 
 void			ft_gui_draw_player(t_wolf3d *w);
+
+void			ft_set_sprite(t_wolf3d *w, t_vector3 pos, int type);
+void			ft_delete_sprite(t_wolf3d *w);
+
+void			ft_gui_draw_sprites(t_wolf3d *w);
+
+void			ft_set_enemy(t_wolf3d *w, t_vector3 pos, int type);
+void			ft_delete_enemy(t_wolf3d *w);
+void			ft_gui_draw_enemies(t_wolf3d *w);
+
+void			ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setsprite_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setenemy_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_delete_sector(t_wolf3d *w);
+
+int				ft_compare_vertexes(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_vector(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_double(double x1, double y1, double x2, double y2);
+int				ft_check_div_vector(t_vector3 v1, t_vector3 v2, t_vector3 v3, t_vector3 v4);
+t_vector3		ft_find_line_intersect(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+int				ft_check_line_segment_intersect_vector(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+
+int				ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v);
+int				ft_search_point_in_sector(void *a, t_vector3 v);
+int				ft_new_editor_map_check_area(t_wolf3d *w);
+
+// MATH
+int				ft_compare_vertexes(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_vector(t_vector3 v1, t_vector3 v2);
+double			ft_vxs_double(double x1, double y1, double x2, double y2);
+int				ft_check_div_vector(t_vector3 v1, t_vector3 v2, t_vector3 v3, t_vector3 v4);
+t_vector3		ft_find_line_intersect(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+int				ft_check_line_segment_intersect_vector(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+
+
+void			ft_editor_init(t_wolf3d *w);
+void			ft_editor_gui_init(t_wolf3d *w);
+void			ft_editor_redraw(void *ptr);
+
+void			ft_gui_elem_set_redraw(t_list *list, void *func);
+int				ft_check_general_segment_line(t_vector3 v1, t_vector3 v2, \
+					t_vector3 v3, t_vector3 v4);
+
+char			*ft_gui_elem_get_value(t_list *list);
+void			ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_game_render(t_wolf3d *w);
+void			ft_gui_elem_set_map(t_list *list);
+
+void			ft_game_render_font(t_wolf3d *w);
+
+// ?!?!?!?!?
+void			ft_gui_elem_set_redraw_font(t_list *list, void *func);
+void			ft_gui_elem_set_image(t_list *list, char *path);
+
 
 #endif
