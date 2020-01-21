@@ -6,21 +6,46 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 18:46:39 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/21 21:46:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+int		ft_2darrclean(int ***dst)
+{
+	size_t i;
+
+	i = 0;
+	while (i < VER_HEIGHT)
+	{
+		free((*dst)[i]);
+		(*dst)[i] = NULL;
+		i++;
+	}
+	free(*dst);
+	*dst = NULL;
+	dst = NULL;
+	return (1);
+}
+
 void		ft_save_the_file(t_wolf3d *w)
 {
-	if ((w->file.fd = open("fuck_you.txt", O_CREAT | O_WRONLY | O_TRUNC, 0777)) \
+	int	k;
+
+	k = -1;
+	if ((w->file.fd = open("ebanoeit", O_CREAT | O_TRUNC | O_WRONLY, 0777)) \
 			== -1)
 		ft_error("open failed on output file");
+	w->file.map = ft_my_malloc(sizeof(int) * VER_HEIGHT);
+	while (++k <= VER_WIDTH)
+		w->file.map[k] = ft_my_malloc(sizeof(int) * VER_WIDTH);
 	ft_editor_take_vertex(w);
 	ft_count_origin_vertexes(w);
 	ft_print_sectors_to_file(w, w->sector);
+	ft_2darrclean(&w->file.map);
 }
+
 
 /*
 **	void	ft_editor_take_vertex(t_wolf3d *w)
@@ -38,7 +63,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 	int			j;
 	int			tmp;
 	int			b;
-
+	
 	p_lst = w->sector;
 	while (p_lst != NULL)
 	{
@@ -47,11 +72,9 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 		b = 0;
 		while (j < p_sec->vertex_count)
 		{
-			// ft_sort_list_vertex(p_sec->vertex[j]->y, p_sec->vertex[j]->x);
-			
-			tmp = p_sec->vertex[j]->y;
-			b = p_sec->vertex[j]->x;
-			w->file.sort[tmp][b] = 77;
+			tmp = (int)p_sec->vertex[j]->y;
+			b = (int)p_sec->vertex[j]->x;
+			w->file.map[tmp][b] = 77;
 			j++;
 		}
 		p_lst = p_lst->next;
@@ -73,13 +96,14 @@ void		ft_count_origin_vertexes(t_wolf3d *w)
 
 	w->file.count = 0;
 	w->file.i = -1;
+
 	while (++w->file.i <= VER_HEIGHT)
 	{
 		w->file.j = -1;
 		f = 0;
 		while (++w->file.j <= VER_WIDTH)
 		{
-			if (w->file.sort[w->file.i][w->file.j] == 77)
+			if (w->file.map[w->file.i][w->file.j] == 77)
 			{
 				ft_print_to_file(w, f);
 				f = 1;
@@ -141,8 +165,8 @@ void		ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes)
 		j = -1;
 		while (++j < ptr_sector->vertex_count)
 		{
-			if (ptr_sector->vertex[j]->x == vertexes->x && \
-			ptr_sector->vertex[j]->y == vertexes->y)
+			if ((int)ptr_sector->vertex[j]->x == vertexes->x && \
+			(int)ptr_sector->vertex[j]->y == vertexes->y)
 			{
 				ptr_sector->vertex[j]->w = vertexes->w;
 			}

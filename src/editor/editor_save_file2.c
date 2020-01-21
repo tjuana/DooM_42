@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/19 20:16:34 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/21 21:49:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ static char	*ft_my_join_baby(int height, int floor)
 	tmp = ft_strdup(join);
 	ft_strdel(&itoa);
 	ft_strdel(&join);
-	itoa = ft_itoa(height);
 	join = ft_strjoin(tmp, " ");
 	ft_strdel(&tmp);
 	tmp = ft_strdup(join);
 	ft_strdel(&join);
+	itoa = ft_itoa(height);
 	join = ft_strjoin(tmp, itoa);
 	ft_strdel(&itoa);
 	ft_strdel(&tmp);
@@ -106,6 +106,7 @@ void		ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 	sector = (t_sector*)ptr_list->content;
 	str = ft_my_join_baby(sector->height, sector->floor);
 	ft_putstr_fd(str, w->file.fd);
+	ft_strdel(&str);
 	j = -1;
 	while (++j < sector->vertex_count)
 	{

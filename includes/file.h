@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 19:20:50 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/21 21:23:58 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct			s_file
 {
-	int			**sort;
+	int			**map;
 	int			i;
 	int			j;
 	int			count;

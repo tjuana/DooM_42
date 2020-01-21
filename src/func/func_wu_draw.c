@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_wu_draw.c                                      :+:      :+:    :+:   */
+/*   func_wu_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:27 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/10 17:38:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:35:01 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 	double	o;
 
 	// Special rules for map frame
-	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
+	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return ;
 	wu->temp_f = 1 - wu->temp_f;
 	if (wu->steps == 0)

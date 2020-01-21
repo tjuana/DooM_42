@@ -38,7 +38,7 @@
 			"request": "launch",
 			"program": "${workspaceRoot}/map_editor",
 			//"args": ["${workspaceRoot}/maps/map.txt"],
-			"args": ["${workspaceRoot}/maps/new_template.nnmp"],
+			// "args": ["${workspaceRoot}/maps/new_template.nnmp"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

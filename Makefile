@@ -6,7 +6,7 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/21 20:04:19 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/21 20:16:38 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CC = gcc
 FLAGS = -g -O3 -O0
 
 # SDL2 settings
-USERNAME = dorange-
+USERNAME = tjuana
 LIBRARIES = \
 -lft -L$(LIBFT_DIRECTORY)\
 -lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib \
@@ -149,7 +149,7 @@ editor_neighbors.c \
 editor_debug.c \
 editor_save_file.c \
 editor_save_file2.c \
-\
+editor_save_file3.c\
 editor_gui_init.c \
 editor_map_draw_objects.c \
 editor_gui_draw_map.c \

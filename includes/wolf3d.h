@@ -49,7 +49,7 @@
 # include "algebra.h" // math library for matrix transform
 # include "file.h"
 # include "gui_struct.h"
-# include "func_struct.h"
+
 
 typedef struct			s_font
 {
