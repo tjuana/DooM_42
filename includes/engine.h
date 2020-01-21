@@ -4,7 +4,7 @@
 
 typedef struct	s_cycle//item
 {
-	t_tmp_trio	queue[MAX_QUEUE];
+	t_tmp_trio	queue[MAX_QUEUE];//sectors queue for draw sector by sector
 	t_tmp_trio	*head;
 	t_tmp_trio	*current;
 	t_tmp_trio	*tail;
@@ -13,8 +13,8 @@ typedef struct	s_cycle//item
 
 typedef struct	s_sector//have to be static
 {
-    float		floor;
-	float		ceil;
+    float		floor;//floor height
+	float		ceil;//ceil height
     t_xy		*vertex; //here stored all sector vertexes.
     signed char	*neighbors;// Each edge may have a corresponding neighboring sector
     int			npoints;// How many vertexes there are
@@ -37,7 +37,7 @@ typedef struct s_sector_ops
 
 typedef struct	s_others
 {
-    float	move_vec[2];
+    float	move_vec[2];//when player moves
     int		moving;
 }			t_others;
 

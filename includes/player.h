@@ -22,7 +22,7 @@ typedef struct	s_player
 	t_sector	*sect;//current sector
 	int			door_all;//how much doors
 	int			door_nb;//door near with player
-	t_door		*doors;//arry of doors
+	t_door		*doors;//array of doors
 	int			neib;
 	t_ceil		ceil;
 	t_floor		floor;

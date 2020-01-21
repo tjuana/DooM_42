@@ -61,9 +61,9 @@ void LoadData(char *ag, t_player *pl)//this function reads a new map format
                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
                 { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
                 sect->npoints   = m /= 2;
-                sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
-                sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
-                for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
+                sect->neighbors = malloc((m) * sizeof(*sect->neighbors));
+                sect->vertex    = malloc((m + 1) * sizeof(*sect->vertex));
+				for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
                 for(n=0; n<m; ++n) sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
                 sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
                 free(num);

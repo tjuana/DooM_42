@@ -25,4 +25,4 @@ sector	0 0			4 5 7 6				0 -1 1 -1					#2
 
 
 # Player: Location (x y), angle, and sector number
-player	15 15	0	0
+player	11 5.5	0	0

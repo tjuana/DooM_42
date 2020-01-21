@@ -75,6 +75,9 @@ void		ft_animation_play(t_wolf3d *w);
 void		door_button(t_player *pl, t_subevents *se);
 void		door(t_player *pl, t_subevents *se);
 
+/*			door_detect.c			*/
+int			door_exist(t_player *pl);
+
 /*			vector_1.c			*/
 t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
 double		ft_vec3_magnitude(t_vector3 this);
