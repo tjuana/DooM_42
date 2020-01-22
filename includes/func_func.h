@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 14:01:00 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:30:32 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FUNC_FUNC_H
 
 # include <libft.h>
+# include "func_struct.h"
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
 

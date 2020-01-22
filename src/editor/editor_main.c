@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 16:23:38 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 20:14:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void			ft_editor_main(int c, char **v)
 	ft_load_textures(&w);
 	ft_init_sound(&w);
 
-	ft_gui_print_element_list(w.gui.dom, 0);
+	// ft_gui_print_element_list(w.gui.dom, 0);
 	ft_gui_redraw(&w);
+	// ft_allocate_int2darr(&w);
 	while (w.sdl->running)
 		ft_gui_events(&w);
 	// ft_save_the_file(&w);

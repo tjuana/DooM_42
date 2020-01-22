@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.h                                             :+:      :+:    :+:   */
+/*   s.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 21:23:58 by tjuana           ###   ########.fr       */
+/*   Created: 2020/01/22 19:37:34 by tjuana            #+#    #+#             */
+/*   Updated: 2020/01/22 19:37:59 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_H
-# define FILE_H
+#include "libft.h"
 
-#include "wolf3d.h"
-# define VER_HEIGHT (int)33
-# define VER_WIDTH (int)54
-
-
-typedef struct			s_file
+int		ft_2d_int_arrclean(int ***dst)
 {
-	int			**map;
-	int			i;
-	int			j;
-	int			count;
-	int			fd;
-	char		*name;
-}						t_file;
+	size_t i;
 
-#endif
+	i = 1;
+	while ((*dst)[i - 1])
+	{
+		free((*dst)[i]);
+		(*dst)[i] = NULL;
+		i++;
+	}
+	free(*dst);
+	*dst = NULL;
+	dst = NULL;
+	return (0);
+}

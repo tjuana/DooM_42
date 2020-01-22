@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sdl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:40:14 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/20 16:40:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 21:28:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		ft_init_wolf(t_wolf3d *w)
 	//w->fov = 3.00000;
 	w->l_p = WIN_WIDTH / (2 * tan(w->fov / 2)); // Расстояние до воображаемой стены
 	//name of file
-	w->file.name = "fuck.txt";
+	w->file.name = "fuck_you.txt";
 	// w->pl.camera_vector.x = 0;
 	// w->pl.camera_vector.y = 1;
 	// w->pl.camera_vector.z = 0;
@@ -80,7 +80,6 @@ void		ft_we_need_more_init(t_wolf3d *w)
 	w->arr[7] = 0;
 	w->arr[8] = 0;
 	w->arr[9] = 0;
-	ft_bzero_char(&w->file.sort, sizeof(int)*VER_HEIGHT*VER_WIDTH);
 }
 
 void		ft_init_multi_wolf_for_sector(t_threads_help *w, t_wolf3d *head)

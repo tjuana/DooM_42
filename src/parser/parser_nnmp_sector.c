@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 14:21:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 16:18:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 20:15:28 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_parser_nnmp_sector_neighborhood(t_wolf3d *w, char **line, \
 	int			i;
 
 	sector->neighbors = NULL;
-	neighborhood = malloc(sizeof(int) * sector->vertex_count);
+	neighborhood = ft_my_malloc(sizeof(int) * sector->vertex_count);
 	str = ft_parser_search_param(*line, "neighborhood:");
 	if (str == NULL)
 		ft_error("MAP INCORRECT");

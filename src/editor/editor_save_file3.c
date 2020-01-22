@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.h                                             :+:      :+:    :+:   */
+/*   editor_save_file3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 21:23:58 by tjuana           ###   ########.fr       */
+/*   Created: 2020/01/19 19:45:00 by tjuana            #+#    #+#             */
+/*   Updated: 2020/01/22 19:53:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_H
-# define FILE_H
-
 #include "wolf3d.h"
-# define VER_HEIGHT (int)33
-# define VER_WIDTH (int)54
 
-
-typedef struct			s_file
+static char		*ft_space_only_join(int j)
 {
-	int			**map;
-	int			i;
-	int			j;
-	int			count;
-	int			fd;
-	char		*name;
-}						t_file;
+	char	*itoa;
+	char	*join;
 
-#endif
+	itoa = ft_itoa(j);
+	join = ft_strjoin(" ", itoa);
+	ft_strdel(&itoa);
+	return (join);
+}
+
+void			ft_save_neighbour(t_sector *sector, int fd)
+{
+	char	*str;
+	int		j;
+
+	if (sector->status == 1)
+	{
+		j = -1;
+		while (++j < sector->vertex_count)
+		{
+			str = ft_space_only_join(sector->neighbors[j]);
+			ft_putstr_fd(str, fd);
+			ft_strdel(&str);
+		}
+	}
+}

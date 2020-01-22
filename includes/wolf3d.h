@@ -30,6 +30,7 @@
 # include "SDL2/SDL_thread.h"
 # include "SDL2/SDL_ttf.h"
 
+# include "vetors.h"
 # include <pthread.h>
 # include <string.h>
 # include <stdio.h>
@@ -48,7 +49,7 @@
 # include "algebra.h" // math library for matrix transform
 # include "file.h"
 # include "gui_struct.h"
-# include "func_struct.h"
+
 
 typedef struct			s_font
 {
@@ -631,7 +632,7 @@ void			ft_create_list_of_vertexes(t_wolf3d *w);
 void			ft_count_origin_vertexes(t_wolf3d *w);
 void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
 void			ft_print_to_file(t_wolf3d *w, int f);
-
+void			ft_allocate_int2darr(t_wolf3d *w);
 // TEMP.
 void			ft_editor_sector_create(t_wolf3d *w);
 void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v);
