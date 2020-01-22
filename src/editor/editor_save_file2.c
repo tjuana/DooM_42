@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 21:49:16 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/22 19:54:03 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,17 @@ static char	*ft_str_vertex(int i)
 	char	*itoa;
 	char	*join;
 	char	*tmp;
+	char	*vert;
 
+	itoa = NULL;
+	join = NULL;
+	tmp = NULL;
+	vert = NULL;
+	vert = ft_strdup("vertex\t");
 	itoa = ft_itoa(i);
-	join = ft_strjoin("vertex\t", itoa);
-	tmp = ft_strdup(join);
+	join = ft_strjoin(vert, itoa);
+	ft_strdel(&vert);
+	tmp = strdup(join);
 	ft_strdel(&itoa);
 	ft_strdel(&join);
 	join = ft_strjoin(tmp, "\t");
@@ -35,14 +42,19 @@ static char	*ft_space(int k, int j)
 	char	*tmp;
 
 	itoa = ft_itoa(j);
+	tmp = ft_strdup(" ");
 	if (!k)
+	{
+		ft_strdel(&tmp);
 		return (itoa);
-	join = ft_strjoin(" ", itoa);
+	}
+	join = ft_strjoin(tmp, itoa);
 	ft_strdel(&itoa);
+	ft_strdel(&tmp);
 	return (join);
 }
 
-void	ft_print_to_file(t_wolf3d *w, int f)
+void		ft_print_to_file(t_wolf3d *w, int f)
 {
 	char	*sy;
 	char	*sx;
@@ -106,7 +118,7 @@ void		ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 	sector = (t_sector*)ptr_list->content;
 	str = ft_my_join_baby(sector->height, sector->floor);
 	ft_putstr_fd(str, w->file.fd);
-	ft_strdel(&str);
+	// ft_strdel(&str);
 	j = -1;
 	while (++j < sector->vertex_count)
 	{

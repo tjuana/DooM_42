@@ -4,6 +4,7 @@
             "type": "shell",
             "label": "gcc build active file",
 			"command": "make -j32",
+			// "command": "gcc -g src/editor/jhony.c",
  
         }
     ],

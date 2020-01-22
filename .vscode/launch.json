@@ -50,7 +50,7 @@
 			"name": "debug gui",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/gui_test",
+			"program": "${workspaceRoot}/a.out",
 			//"args": ["${workspaceRoot}/maps/map.txt"],
 			"args": [],
 			"stopAtEntry": false,
@@ -58,6 +58,7 @@
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb",
+			"preLaunchTask": "gcc build active file"
 		}
 	]
 }

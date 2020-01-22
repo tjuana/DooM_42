@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   .c                                          :+:      :+:    :+:   */
+/*   s.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:25:19 by tjuana            #+#    #+#             */
-/*   Updated: 2019/04/20 18:08:31 by tjuana           ###   ########.fr       */
+/*   Created: 2020/01/22 19:37:34 by tjuana            #+#    #+#             */
+/*   Updated: 2020/01/22 19:37:59 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	chars(int n)
+int		ft_2d_int_arrclean(int ***dst)
 {
-	int c;
+	size_t i;
 
-	c = (n < 0) ? 2 : 1;
-	while (n && (n /= 10))
-		c++;
-	return (c);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*r;
-	int		i;
-	int		sign;
-
-	i = 0;
-	if (!(r = ft_strnew(chars(n))))
-		return (NULL);
-	sign = (n < 0) ? 1 : 0;
-	while (n)
+	i = 1;
+	while ((*dst)[i - 1])
 	{
-		r[i++] = (n % 10 > 0) ? (n % 10 + '0') : (n % 10 * (-1) + '0');
-		n /= 10;
+		free((*dst)[i]);
+		(*dst)[i] = NULL;
+		i++;
 	}
-	if (sign)
-		r[i++] = '-';
-	if (r[0] == 0)
-		r[0] = '0';
-	return (ft_strrev(r));
+	free(*dst);
+	*dst = NULL;
+	dst = NULL;
+	return (0);
 }
