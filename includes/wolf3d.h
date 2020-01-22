@@ -72,11 +72,11 @@ void		ft_draw_animation(t_wolf3d *w);
 void		ft_animation_play(t_wolf3d *w);
 
 /*			door.c			*/
-void		door_button(t_player *pl, t_subevents *se);
-void		door(t_player *pl, t_subevents *se);
+void		door_button(t_player *pl, t_subevents *se);//when you press button
+void		door(t_player *pl, t_subevents *se);//cycle for open door
 
 /*			door_detect.c			*/
-int			door_exist(t_player *pl);
+int			door_exist(t_player *pl);//return sec_nb of door
 
 /*			vector_1.c			*/
 t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);

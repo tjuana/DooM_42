@@ -12,12 +12,12 @@ typedef struct	s_player
     t_xyz		where;      // Current position
     t_xyz		velocity;   // Current motion vector
     float		angle;
-    float		anglesin;
-    float		anglecos;
+    float		anglesin;//player view sin
+    float		anglecos;//player view cos
     float		yaw;   // Looking towards (and sin() and cos() thereof)
     unsigned	sector;// Which sector the player is currently in
 	int			sectors_nb;//Sectors number
-    t_sector	*sectors;
+    t_sector	*sectors;//store all sectors
 	t_cycle		cycle;//one draw_screen cycle
 	t_sector	*sect;//current sector
 	int			door_all;//how much doors

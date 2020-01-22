@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/21 21:44:29 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/22 17:48:47 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	door_init(t_player *pl, int	*sec_arr)
 		pl->doors[i].dir = 0.1;
 		pl->doors[i].max_d = 20;
 		pl->doors[i].min_d = 0;
-		pl->doors[i].opened = 0;
+		pl->doors[i].state = 0;
 	}
 }
 
@@ -92,7 +92,7 @@ void		door_button(t_player *pl, t_subevents *se)
 	while (++i < pl->door_all)
 		if (pl->doors[i].s_nb == d_sec_nb)
 			d_nb = i;
-	if ((d_nb == -1) || (pl->doors[d_nb].opened == 1))
+	if ((d_nb == -1) || (pl->doors[d_nb].state == 1))
 		return ;
 	pl->door_nb = d_nb;
 	if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[d_nb].max_d)
@@ -123,6 +123,6 @@ void		door(t_player *pl, t_subevents *se)
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].dir) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].dir;
-	pl->doors[d_nb].opened = 1;
+	pl->doors[d_nb].state = 1;
 	//d_sec_nb = se->wsad[4] == 1;
 }
