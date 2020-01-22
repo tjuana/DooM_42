@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_nnmp_sector.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 14:21:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 17:06:30 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/22 16:18:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,14 @@ void	ft_parser_nnmp_sector_param(t_wolf3d *w, char **line, \
 
 void	ft_parser_nnmp_sector(t_wolf3d *w, char **line)
 {
-	t_sector	*sector;
+	t_sector	sector;
 	t_list		*list_item;
 
-	sector = ft_my_malloc(sizeof(t_sector));
-	ft_parser_nnmp_sector_param(w, line, sector);
-	ft_parser_nnmp_sector_vertexes(w, line, sector);
-	ft_parser_nnmp_sector_neighborhood(w, line, sector);
-	list_item = ft_lstnew(sector, sizeof(t_sector));
+	// sector = ft_my_malloc(sizeof(t_sector));
+	ft_parser_nnmp_sector_param(w, line, &sector);
+	ft_parser_nnmp_sector_vertexes(w, line, &sector);
+	ft_parser_nnmp_sector_neighborhood(w, line, &sector);
+	list_item = ft_lstnew(&sector, sizeof(t_sector));
 	if (w->sector == NULL)
 		w->sector = list_item;
 	else

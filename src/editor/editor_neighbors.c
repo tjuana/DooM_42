@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 11:58:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 18:24:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:55:51 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int		ft_editor_sector_search_neighbors_item(t_wolf3d *w, \
 				vtx2_n = (i + 1) % s->vertex_count;
 				if (ft_check_general_segment_line(*s->vertex[vtx1_n], \
 					*s->vertex[vtx2_n], *v1, *v2))
+				{
+					s->neighbors[i] = sector->id; // ?!?!?
 					return (s->id);
+				}
 			}
 		}
 		list = list->next;

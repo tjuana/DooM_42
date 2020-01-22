@@ -217,11 +217,19 @@ typedef struct			s_time
 typedef struct			s_gui_map
 {
 	t_list				*ptr;		// Указатель на gui-элемент
+	t_vector3			r1;			// left top vertex ограничение (для координат карты)
+	t_vector3			r2;			// right bottom vertex ограничение
 	int					grid_scale;
 	unsigned char		check_vertex;
 	t_vector3			v;
 }						t_gui_map;
 
+// Test texture struct
+typedef struct			s_txtr
+{
+	int					id;		// texture number
+	int					color;	// basic color
+}						t_txtr;
 
 typedef struct			s_wolf3d
 {
@@ -241,6 +249,10 @@ typedef struct			s_wolf3d
 	int					sector_count;
 	int					sprite_count;
 	int					enemy_count;
+
+	// ?!
+	t_list				*txtr;
+	int					txtr_count;
 
 
 
@@ -346,6 +358,7 @@ typedef struct			s_threads
 // # include "func.h"
 
 # include "func_func.h"
+# include "gui_func.h"
 
 
 void					ft_clean_sdl(t_wolf3d *w);
@@ -584,7 +597,7 @@ void			ft_gui_elem_set_block(t_list *list);
 void			ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom);
 
 void			ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list *dom, int type);
-void			ft_gui_mousebuttonup_win_setsector_btn_cancel(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_setsector_btncancel(void *data, SDL_Event e, t_list *dom, int type);
 
 t_list			*ft_gui_search_elem_by_name(t_list *dom, char *name);
 
@@ -699,5 +712,10 @@ void			ft_game_render_font(t_wolf3d *w);
 void			ft_gui_elem_set_redraw_font(t_list *list, void *func);
 void			ft_gui_elem_set_image(t_list *list, char *path);
 
+void			*ft_editor_redraw_txtr(void *data, t_list *dom);
+
+void			ft_gui_mousebuttonup_win_setsector_walltxtr(void *data, SDL_Event e, t_list *dom, int type);
+
+void			ft_editor_desctuct(t_wolf3d *w);
 
 #endif

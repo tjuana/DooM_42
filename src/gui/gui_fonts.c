@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:17:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ SDL_Rect	*ft_gui_create_sdl_rect(int w, int h, int x, int y)
 void		ft_gui_set_font(t_wolf3d *w, char *font_path, int size)
 {
 	t_list		*new_list;
-	t_gui_font	*new_font;
+	t_gui_font	new_font;
 
-	new_font = ft_my_malloc(sizeof(t_gui_font));
-	new_font->path = ft_strdup(font_path);
-	new_font->f_sz = size;
-	new_font->ptr = w->sdl->font.ptr;
-	new_list = ft_lstnew(new_font, sizeof(t_gui_font));
+	// new_font = ft_my_malloc(sizeof(t_gui_font));
+	new_font.path = ft_strdup(font_path);
+	new_font.f_sz = size;
+	new_font.ptr = w->sdl->font.ptr;
+	new_list = ft_lstnew(&new_font, sizeof(t_gui_font));
 	if (w->gui.fonts == NULL)
 		w->gui.fonts = new_list;
 	else

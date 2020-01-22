@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 13:33:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 15:57:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:31:16 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_game_gui_init_menu(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_hud_live", (t_gui_coord){116, 16, 0}, \
 	 	(t_gui_coord){184, 84, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
+	// ft_gui_elem_set_image(elem->child, "img/heart.png");
 	ft_gui_elem_set_image(elem->child, "img/heart.png");
 	ft_gui_elem_set_parent(head, elem->child);
 

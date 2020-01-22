@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:49:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ void	ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, t_gui_rect rect, \
 	pos = ft_gui_map_vertex_to_coord(w, rect, v);
 	if (type == GUI_MAP_GRID_LIMIT_TL || type == GUI_MAP_GRID_LIMIT_TR)
 		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, rect.v1.y, 0}, \
-			(t_gui_coord){rect.v2.x, pos.y, 0}, 0x222222);
+			(t_gui_coord){rect.v2.x, (pos.y > rect.v2.y ? rect.v2.y : pos.y), 0}, 0x222222);
 	else
-		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, pos.y, 0}, \
+		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, (pos.y < rect.v1.y ? rect.v1.y : pos.y), 0}, \
 			(t_gui_coord){rect.v2.x, rect.v2.y, 0}, 0x222222);
 	if (type == GUI_MAP_GRID_LIMIT_TL || type == GUI_MAP_GRID_LIMIT_BL)
 		ft_gui_fill_area(w, (t_gui_coord){rect.v1.x, rect.v1.y, 0}, \
-				(t_gui_coord){pos.x, rect.v2.y, 0}, 0x222222);
+				(t_gui_coord){(pos.x > rect.v2.x ? rect.v2.x : pos.x), rect.v2.y, 0}, 0x222222);
 	else
-		ft_gui_fill_area(w, (t_gui_coord){pos.x, rect.v1.y, 0}, \
+		ft_gui_fill_area(w, (t_gui_coord){(pos.x < rect.v1.x ? rect.v1.x : pos.x), rect.v1.y, 0}, \
 			(t_gui_coord){rect.v2.x, rect.v2.y, 0}, 0x222222);
 }
 
@@ -54,16 +54,18 @@ void	ft_gui_draw_map_grid_limit_line(t_wolf3d *w, t_gui_rect rect, t_vector3 v, 
 	t_gui_coord	pos;
 
 	pos = ft_gui_map_vertex_to_coord(w, rect, v);
-	ft_fdf_wu_color(
-		&(t_vector3){rect.v1.x, pos.y, 0, 0}, \
-		&(t_vector3){rect.v2.x, pos.y, 0, 0}, \
-		w, 0x888888 \
-	);
-	ft_fdf_wu_color(
-		&(t_vector3){pos.x, rect.v1.y, 0, 0}, \
-		&(t_vector3){pos.x, rect.v2.y, 0, 0}, \
-		w, 0x888888 \
-	);
+	if (pos.y >= rect.v1.y && pos.y <= rect.v2.y)
+		ft_fdf_wu_color(
+			&(t_vector3){rect.v1.x, pos.y, 0, 0}, \
+			&(t_vector3){rect.v2.x, pos.y, 0, 0}, \
+			w, 0x888888 \
+		);
+	if (pos.x >= rect.v1.x && pos.x <= rect.v2.x)
+		ft_fdf_wu_color(
+			&(t_vector3){pos.x, rect.v1.y, 0, 0}, \
+			&(t_vector3){pos.x, rect.v2.y, 0, 0}, \
+			w, 0x888888 \
+		);
 }
 
 /*
@@ -77,7 +79,7 @@ void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_rect rect, int scale)
 
 	pos = ft_gui_map_vertex_to_coord(w, rect, \
 		(t_vector3){floor(w->gui_map.v.x), floor(w->gui_map.v.y), 0, 0});
-	while (pos.y < rect.v2.y)
+	while (pos.y < rect.v2.y && pos.y < WIN_HEIGHT)
 	{
 		ft_fdf_wu_color(
 			&(t_vector3){rect.v1.x, pos.y, 0, 0}, \
@@ -86,7 +88,7 @@ void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_rect rect, int scale)
 		);
 		pos.y += w->gui_map.grid_scale;
 	}
-	while (pos.x < rect.v2.x)
+	while (pos.x < rect.v2.x && pos.x < WIN_WIDTH)
 	{
 		ft_fdf_wu_color(
 			&(t_vector3){pos.x, rect.v1.y, 0, 0}, \
@@ -214,11 +216,15 @@ void	ft_gui_draw_map(t_wolf3d *w, t_list *list)
 
 	elem = list->content;
 	ft_gui_draw_map_grid_limit_sector(w, (t_gui_rect){elem->v1, elem->v2, elem->w, \
-		elem->h}, (t_vector3){0, 0, 0, 0}, GUI_MAP_GRID_LIMIT_TL);
+		elem->h}, w->gui_map.r1, GUI_MAP_GRID_LIMIT_TL);
+	ft_gui_draw_map_grid_limit_sector(w, (t_gui_rect){elem->v1, elem->v2, elem->w, \
+		elem->h}, w->gui_map.r2, GUI_MAP_GRID_LIMIT_BR);
 	ft_gui_draw_map_grid(w, (t_gui_rect){elem->v1, elem->v2, elem->w, \
 		elem->h}, w->gui_map.grid_scale);
 	ft_gui_draw_map_grid_limit_line(w, (t_gui_rect){elem->v1, elem->v2, elem->w, \
-		elem->h}, (t_vector3){0, 0, 0, 0}, w->gui_map.grid_scale);
+		elem->h}, w->gui_map.r1, w->gui_map.grid_scale);
+	ft_gui_draw_map_grid_limit_line(w, (t_gui_rect){elem->v1, elem->v2, elem->w, \
+		elem->h}, w->gui_map.r2, w->gui_map.grid_scale);
 	w->gui_map.check_vertex = ft_gui_draw_map_vertex(w, w->gui.mouse_pos, \
 		w->gui_map.check_vertex, w->gui.mode);
 	ft_gui_draw_map_vertex_line(w, w->gui.mouse_pos);

@@ -6,13 +6,17 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 15:58:28 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:11:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 // Image (?)
+/*
+**	PNG -> put pixel
+**	Скорректировать
+*/
 void	ft_gui_draw_image(t_wolf3d *w, t_list *list)
 {
 	t_gui_elem	*elem;
@@ -22,12 +26,16 @@ void	ft_gui_draw_image(t_wolf3d *w, t_list *list)
 	elem = list->content;
 	tmp_texture = NULL;
 
-	tmp_rect = ft_gui_create_sdl_rect(elem->w, elem->h, elem->v1.x, elem->v1.y);
+	tmp_rect = ft_gui_create_sdl_rect(elem->w, elem->h, \
+		elem->v1.x, elem->v1.y);
 	tmp_texture = SDL_CreateTextureFromSurface(w->sdl->renderer, elem->surf);
 	tmp_texture == NULL ? ft_error("ERROR") : 0;
-	SDL_SetTextureBlendMode(tmp_texture, SDL_BLENDMODE_BLEND) != 0 ? ft_error("ERROR") : 0;
-	SDL_RenderCopy(w->sdl->renderer, tmp_texture, NULL, tmp_rect) != 0 ? ft_error("ERROR") : 0;
+	SDL_SetTextureBlendMode(tmp_texture, SDL_BLENDMODE_BLEND) != 0 ? \
+		ft_error("ERROR") : 0;
+	SDL_RenderCopy(w->sdl->renderer, tmp_texture, NULL, tmp_rect) != 0 ? \
+		ft_error("ERROR") : 0;
 	SDL_DestroyTexture(tmp_texture);
+	// printf("x1:%d y1:%d   x2:%d y2:%d\n", elem->w, elem->h, elem->v1.x, elem->v1.y);
 }
 
 /*
@@ -77,11 +85,11 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 	elem = list->content;
 	if (elem->status & GUI_ELEM_HOVER)
 	{
-		color = ft_fdf_get_color(color, 0xffffff, 0.3) + color & 0xff000000;
+		color = ft_fdf_get_color(color, 0xffffff, 0.3);
 	}
 	if (elem->status & GUI_ELEM_ACTIVE || elem->status & GUI_ELEM_FOCUS)
 	{
-		color = ft_fdf_get_color(color, 0xffffff, 0.5) + color & 0xff000000;
+		color = ft_fdf_get_color(color, 0xffffff, 0.5);
 	}
 
 	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x, elem->v1.y, 0}, \
@@ -109,15 +117,15 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 	elem = list->content;
 
 	if (elem == NULL)
-		ft_error("ERROR");
+		ft_error("ERROR (N5)");
 
 	if (elem->status & GUI_ELEM_HOVER)
 	{
-		color = ft_fdf_get_color(color, 0xffffff, 0.5) + color & 0xff000000;
+		color = ft_fdf_get_color(color, 0xffffff, 0.5);
 	}
 	if (elem->status & GUI_ELEM_ACTIVE)
 	{
-		color = ft_fdf_get_color(color, 0x000000, 0.5) + color & 0xff000000;
+		color = ft_fdf_get_color(color, 0x000000, 0.5);
 	}
 
 	ft_gui_fill_area(w, elem->v1, elem->v2, color);
@@ -180,7 +188,7 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 
 	elem = list->content;
 	if (elem == NULL)
-		ft_error("ERROR");
+		ft_error("ERROR (N6)");
 	
 	if (elem->type == GUI_BUTTON)
 	{
@@ -248,11 +256,11 @@ int		ft_gui_redraw(t_wolf3d *w)
 	if (w->gui.redraw == GUI_REDRAW_FRAME)
 		return (ft_gui_redraw_frame(w));
 	ft_bzero(w->sdl->pixels, 4 * WIN_WIDTH * WIN_HEIGHT);
-	SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
+	// SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
 	ft_gui_redraw_elem(w, w->gui.dom);
-	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, WIN_WIDTH * 4);
-	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL);
+	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, WIN_WIDTH * 4); //no
+	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL); //no
 	ft_gui_redraw_elem_font(w, w->gui.dom);
 	SDL_RenderPresent(w->sdl->renderer);
 	w->gui.redraw = GUI_NOT_REDRAW;

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 15:29:31 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:17:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,9 @@ void				ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, \
 **	gui/gui_mouse.c
 ** **************************************************************************
 */
-int					ft_gui_check_event_area(t_gui_coord v, t_gui_elem *c);
+int					ft_gui_check_event_area(t_gui_coord v, t_gui_coord v1, \
+						t_gui_coord v2);
+int					ft_gui_check_event_elem_area(t_gui_coord v, t_gui_elem *c);
 void				ft_gui_init_mouse_pos(t_wolf3d *w);
 int					ft_gui_event_call_func(t_wolf3d *w, SDL_Event e, \
 						t_gui_event *event, int type);

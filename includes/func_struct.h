@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 20:26:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 14:01:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:51:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_fdf_get_color
 	int			color1;
 	int			color2;
 	double		f1;
+	int			a1;
 	int			r1;
 	int			g1;
 	int			b1;

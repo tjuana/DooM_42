@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_wu_color.c                                     :+:      :+:    :+:   */
+/*   func_wu_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:54:53 by dorange-          #+#    #+#             */
-/*   Updated: 2019/11/14 17:23:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:51:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int				ft_fdf_get_color(int color1, int color2, double f1)
 	t_fdf_get_color	c;
 	int				rlt_color;
 
+	c.a1 = (color1 & C_A) >> 24;
 	c.r1 = (color1 & C_R) >> 16;
 	c.g1 = (color1 & C_G) >> 8;
 	c.b1 = (color1 & C_B);
@@ -54,6 +55,6 @@ int				ft_fdf_get_color(int color1, int color2, double f1)
 		c.b_rez = c.b1 + (int)((f1) * (c.b2 - c.b1));
 	else
 		c.b_rez = c.b2 + (int)((1 - f1) * (c.b1 - c.b2));
-	rlt_color = (c.r_rez << 16) + (c.g_rez << 8) + c.b_rez;
+	rlt_color = (c.a1 << 24) + (c.r_rez << 16) + (c.g_rez << 8) + c.b_rez;
 	return (rlt_color);
 }

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:36:39 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:58:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,16 @@ t_gui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_gui_coord c, \
 	t_gui_coord	pos_start;
 	t_gui_coord	offset;
 	int			v_d;
+	t_vector3	mp_vertex;
+
+	mp_vertex = ft_gui_map_coord_to_vertex(w, (t_gui_rect){elem->v1, elem->v2, \
+		elem->w, elem->h}, c);
+
+	if (mp_vertex.x < w->gui_map.r1.x ||
+		mp_vertex.x > w->gui_map.r2.x ||
+		mp_vertex.y < w->gui_map.r1.y ||
+		mp_vertex.y > w->gui_map.r2.y)
+		return ((t_gui_coord){0, 0, 0});
 
 	if ((c.x <= elem->v1.x || c.x > elem->v2.x) ||
 		(c.y <= elem->v1.y || c.y > elem->v2.y))

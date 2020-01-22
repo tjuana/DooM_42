@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:34:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,18 @@ void	ft_gui_init_win_setsector(t_list *head)
 	t_gui_elem	*elem;
 
 	elem = head->content;
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_title", (t_gui_coord){1640, 5, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_title", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
 	ft_gui_elem_set_text(elem->child, "Set sector");
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_sector", (t_gui_coord){1640, 50, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_walltxtr", (t_gui_coord){1640, 50, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 310, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_block(elem->child);
+	ft_gui_elem_set_redraw(elem->child, ft_editor_redraw_txtr);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setsector_walltxtr, SDL_MOUSEBUTTONUP, 0);
+	// ft_gui_elem_set_block(elem->child);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsector_titleinputfloor", (t_gui_coord){1640, 400, 0}, \
@@ -117,18 +119,18 @@ void	ft_gui_init_win_setsector(t_list *head)
 	ft_gui_elem_set_input(elem->child, "0", 1);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_save_map", (t_gui_coord){1640, 1080 - 110, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_btnsavemap", (t_gui_coord){1640, 1080 - 110, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 1080 - 70, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save sector");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setsector_btnsavemap, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_setsector_btn_cancel", (t_gui_coord){1640, 1080 - 60, 0}, \
+	ft_gui_elem_init(&elem->child, "win_setsector_btncancel", (t_gui_coord){1640, 1080 - 60, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 1080 - 20, 0});
 	ft_gui_elem_set_color(elem->child, 0xcc0605);
 	ft_gui_elem_set_button(elem->child, "Cancel");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setsector_btn_cancel, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setsector_btncancel, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 }
 

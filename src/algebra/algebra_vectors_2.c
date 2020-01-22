@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 13:44:37 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/20 13:23:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:03:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ double		ft_vec3_dot_product(t_vector3 this, t_vector3 rhs)
 	return (res);
 }
 
+// ?
 double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs)
 {
 	double	res;
@@ -29,6 +30,7 @@ double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs)
 	return (res);
 }
 
+// invertion vector
 t_vector3	ft_vec3_opposite(t_vector3 this)
 {
 	t_vector3	res;

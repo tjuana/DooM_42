@@ -6,11 +6,21 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/17 16:32:17 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:22:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void	ft_gui_desctuct_events(t_list *events)
+{
+	if (events != NULL)
+	{
+		ft_gui_desctuct_events(events->next);
+		free(events->content);
+		free(events);
+	}
+}
 
 /*
 **	void ft_gui_desctuct(t_list *dom)
@@ -28,6 +38,7 @@ void	ft_gui_desctuct(t_list *dom)
 		ft_gui_desctuct(list->next);
 		elem = list->content;
 		ft_gui_desctuct(elem->child);
+		ft_gui_desctuct_events(elem->events);
 		free(elem->name);
 		free(elem->str);
 		free(elem);
