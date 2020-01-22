@@ -25,6 +25,7 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 	pl->nearside = 1e-5f;
 	pl->farside = 20.f;
 	pl->door_all = -1;
+	pl->but_all = -1;
 }
 
 void LoadData(char *ag, t_player *pl)//this function reads a new map format

@@ -23,6 +23,9 @@ typedef struct	s_player
 	int			door_all;//how much doors
 	int			door_nb;//door near with player
 	t_door		*doors;//array of doors
+	int			but_all;//how much buttons
+	int			but_nb;//buttons near with player
+	t_but		*buttons;//array of buttons
 	int			neib;
 	t_ceil		ceil;
 	t_floor		floor;

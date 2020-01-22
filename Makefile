@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/21 18:47:32 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/22 21:06:29 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,16 +46,19 @@ DIRECTORY = $(shell pwd)
 
 SRCS_DIRECTORY = ./src/
 
-SRCS_LIST = functions_main.c\
-			math_functions.c\
-			engine_exp.c\
-			engine.c\
+SRCS_LIST = but_detect.c\
+			but.c\
 			door_detect.c\
 			door.c\
+			engine_exp.c\
+			engine.c\
+			functions_main.c\
+			main.c\
+			math_functions.c\
 			sdl_addons.c\
 			vectors_1.c\
-			vectors_2.c\
-			main.c
+			vectors_2.c
+			
 
 OBJS_DIRECTORY = objects/
 

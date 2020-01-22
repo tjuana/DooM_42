@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/22 17:48:47 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/22 21:20:22 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** **************************************************************************
-**	static int door_total(t_player *pl)
+**	static void door_init(t_player *pl, int	*sec_arr)
 **	Function to init array of doors
 ** **************************************************************************
 */
@@ -27,7 +27,7 @@ static void	door_init(t_player *pl, int	*sec_arr)
 	while(++i < pl->door_all)
 	{
 		pl->doors[i].s_nb = sec_arr[i];
-		pl->doors[i].dir = 0.1;
+		pl->doors[i].spd = 0.1;
 		pl->doors[i].max_d = 20;
 		pl->doors[i].min_d = 0;
 		pl->doors[i].state = 0;
@@ -38,7 +38,6 @@ static void	door_init(t_player *pl, int	*sec_arr)
 ** **************************************************************************
 **	static void door_total(t_player *pl)
 **	Function to countdown doors and malloc them
-**	pl->sectors[pl->door.nb].ceil = pl->sectors[pl->door.nb].ceil
 ** **************************************************************************
 */
 
@@ -71,12 +70,12 @@ static void	door_total(t_player *pl)
 
 /*
 ** **************************************************************************
-**	void door_button(t_player *pl, t_subevents *se)
-**	Function to start lift door when button pressed
+**	void door_сlick(t_player *pl, t_subevents *se)
+**	Function to start lift door when pressed
 ** **************************************************************************
 */
 
-void		door_button(t_player *pl, t_subevents *se)
+void		door_but_сlick(t_player *pl, t_subevents *se)
 {
 	int		d_nb;
 	int		d_sec_nb;
@@ -85,10 +84,14 @@ void		door_button(t_player *pl, t_subevents *se)
 	i = -1;
 	d_nb = -1;
 	if (pl->door_all == -1)
+	{
 		door_total(pl);
+		but_total(pl);
+	}
 	else if (pl->door_all < 1)
 		return ;
-	d_sec_nb = door_exist(pl);
+	but_detect(pl);
+	d_sec_nb = door_detect(pl);
 	while (++i < pl->door_all)
 		if (pl->doors[i].s_nb == d_sec_nb)
 			d_nb = i;
@@ -120,9 +123,9 @@ void		door(t_player *pl, t_subevents *se)
 		return ;
 	//door_exist(pl);
 	d_sec_nb = pl->doors[d_nb].s_nb;
-	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].dir) \
+	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
-		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].dir;
+		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].spd;
 	pl->doors[d_nb].state = 1;
 	//d_sec_nb = se->wsad[4] == 1;
 }

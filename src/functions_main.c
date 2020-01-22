@@ -14,11 +14,8 @@ int sub_events(t_subevents *se, t_player *pl)
     if (se->ev.key.keysym.sym == 'd')
         se->wsad[3] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
-		door_button(pl, se);
-	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
-		door_button(pl, se);
+		door_but_сlick(pl, se);
         
-	
     if (se->ev.key.keysym.sym == SDLK_ESCAPE)//quit
     {
         UnloadData(pl);
