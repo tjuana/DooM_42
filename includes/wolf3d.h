@@ -47,7 +47,11 @@ void		MovePlayer(float dx, float dy, t_player *player);
 float		Yaw(float y, float z, t_player *player);
 double		to_degrees(double radians);
 
+/*			load_file.c			*/
+void		load_file(char *ag, t_player *pl);
+
 /*			main.c			*/
+void		player_init(t_player *pl, t_xy *v, float *angle, int *n);
 void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
 /*			engine.c			*/
@@ -80,6 +84,7 @@ int			door_detect(t_player *pl);//return sec_nb of door
 
 /*			but.c			*/
 void		but_total(t_player *pl);//create buttons array
+int			but_script(t_player *pl, int but_nb, t_subevents *se);//choose but task
 
 /*			but_detect.c			*/
 int			but_detect(t_player *pl);//return sec_nb of button

@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/22 21:06:29 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/23 17:44:12 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCS_LIST = but_detect.c\
 			engine_exp.c\
 			engine.c\
 			functions_main.c\
+			load_file.c\
 			main.c\
 			math_functions.c\
 			sdl_addons.c\

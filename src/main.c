@@ -28,61 +28,16 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 	pl->but_all = -1;
 }
 
-void LoadData(char *ag, t_player *pl)//this function reads a new map format
-{
-    FILE* fp = fopen(ag, "rt");
-    if(!fp) { perror(ag); exit(EXIT_FAILURE); }
-    char Buf[256];
-    char word[256];
-    char *ptr;
-    float angle;
-    t_xy *vert = NULL;//, v;
-    t_xy v;
-    int n;
-    int m;
-    static int p;//the first time is 0. Is a rule for all statics variables
-    int NumVertices = 0;
-    while(fgets(Buf, sizeof Buf, fp))
-        switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
-        {
-            case 'v': // vertex
-                for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1; )
-                { vert = realloc(vert, ++NumVertices * sizeof(*vert)); vert[NumVertices-1] = v; }
-                break;
-            case 's': // sector
-                if(p == 0)
-                {
-                    pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
-                    p++;
-                }
-                pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
-                t_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
-                int* num = NULL;
-                sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
-                for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
-                { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;
-                sect->neighbors = malloc((m) * sizeof(*sect->neighbors));
-                sect->vertex    = malloc((m + 1) * sizeof(*sect->vertex));
-				for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
-                for(n=0; n<m; ++n) sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
-                sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
-                free(num);
-                break;
-            case 'p':; // player
-
-                sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
-                player_init(pl, &v, &angle, &n); // TODO: Range checking
-                pl->where.z = pl->sectors[pl->sector].floor + EyeHeight;
-        }
-    fclose(fp);
-    free(vert);
-}
-
 void UnloadData(t_player *pl)
 {
-    for(int a=0; a < pl->sectors_nb; ++a) free(pl->sectors[a].vertex);
-    for(int a=0; a < pl->sectors_nb; ++a) free(pl->sectors[a].neighbors);
+	int i;
+
+	i = -1;
+	while (++i < pl->sectors_nb)
+		free(pl->sectors[i].vertex);
+	i == 2 ? i = 3 : i;
+	while (++i < pl->sectors_nb)
+		free(pl->sectors[i].neighbors);
     free(pl->sectors);
     pl->sectors = NULL;
     pl->sectors_nb = 0;
@@ -156,7 +111,8 @@ int main(int ac, char **ag)
         return (0);
     }
     se.quit = 0;
-    LoadData(ag[1], &pl);//load map and init typedef t_player data
+    load_file(ag[1], &pl);
+	//LoadData(ag[1], &pl);//load map and init typedef t_player data
     //ft_init_anim(&w);//gun
     SDL_Window* window = NULL;
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -223,7 +179,7 @@ int main(int ac, char **ag)
                 SDL_UpdateWindowSurface( window );
 
                 //Vertical collision detection
-                op.eyeheight = se.ducking ? DuckHeight : EyeHeight;
+                op.eyeheight = se.ducking ? DuckHeight : EYEHEIGHT;
                 se.ground = !se.falling;
                 jumps(&se, &pl, &op, &ot);
                 sectors_ops(&op, &pl, &ot, &se);

@@ -14,18 +14,22 @@
 
 /*
 ** **************************************************************************
-**	static int vec2_cos(t_vector3 vec1, t_vector3 vec2)
-**	Function to define door
+**	static int but_bool(int dist, float degree)
+**	Function to check angle between view vec and button center
 ** **************************************************************************
 */
 
-static int		but_bool(int dist, float degree)
+static int		but_bool(int dist, float degree, float yaw)
 {
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
-	else if ((degree >= 0) && (degree < 67) && (dist == 1))
+	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
+	((to_degrees(yaw) < 100) && (to_degrees(yaw) > 0)))
 		return (dist);
-	else if ((degree >= 0) && (degree < 50) && (dist == 2))
+	else if ((degree >= 0) && (degree < 125) && (dist == 0))
+		return (dist);
+	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
+	((to_degrees(yaw) > -100) && (to_degrees(yaw) <= 0)))
 		return (dist);
 	return (-1);
 }
@@ -52,41 +56,6 @@ static float	vec2_cos(t_vector3 vec1, t_vector3 vec2)
 
 /*
 ** **************************************************************************
-**	static void but_v_find(t_player *pl)
-**	Function to chooze nearest door vertexes
-** **************************************************************************
-*/
-
-static int		but_vert_find(t_player *pl, t_vector3 *vec, int s_nb)
-{
-	int			dist;
-	int			tmp_dist;
-	int			i;
-	int			j;
-
-	i = -1;
-	j = -1;
-	dist = 6;
-	tmp_dist = 0;
-	while (++i < pl->sectors[s_nb].npoints)
-	{
-		j = -1;
-		while(++j < pl->sectors[s_nb].npoints)
-		{
-			//printf("LFGK i==%d j==%d  x==%f y==%f \n", i, j, pl->sectors[s_nb].vertex[i].x, pl->sectors[s_nb].vertex[j].y);
-			vec->x = (pl->sectors[s_nb].vertex[i].x + pl->sectors[s_nb].vertex[j].x) / 2;
-			vec->y = (pl->sectors[s_nb].vertex[i].y + pl->sectors[s_nb].vertex[j].y) / 2;
-			vec->x = vec->x - pl->where.x;
-			vec->y = vec->y - pl->where.y;
-			tmp_dist = (int)sqrt(pow(vec->x, 2) + pow(vec->y, 2));
-			tmp_dist <= dist ? dist = tmp_dist : 0;
-		}
-	}
-	return (dist);
-}
-
-/*
-** **************************************************************************
 **	static int but_dist(t_vector3 vec1, t_vector3 vec2)
 **	Function to define distance to door
 ** **************************************************************************
@@ -98,22 +67,26 @@ static int		but_dist(t_player *pl, int s_nb)
 	t_vector3	vec2;
 	int			tmp_dist;
 
-	tmp_dist = 6;
-	tmp_dist = but_vert_find(pl, &vec, s_nb);
+	tmp_dist = 3;
+	vec.x = (pl->sectors[s_nb].vertex[1].x + pl->sectors[s_nb].vertex[0].x) / 2;
+	vec.y = (pl->sectors[s_nb].vertex[1].y + pl->sectors[s_nb].vertex[0].y) / 2;
+	vec.x = vec.x - pl->where.x;
+	vec.y = vec.y - pl->where.y;
+	tmp_dist = (int)sqrt(pow(vec.x, 2) + pow(vec.y, 2));
 	vec2.x = pl->anglecos;
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	printf("dist==%d  deg==%f\n", tmp_dist, to_degrees(acos(vec2_cos(vec, vec2))));
-	if (but_bool(tmp_dist, to_degrees(acos(vec2_cos(vec, vec2)))) == -1)
-		return (6);
+	//printf("dist==%d  deg==%f yaw==%f\n", tmp_dist, to_degrees(acos(vec2_cos(vec, vec2))), to_degrees(pl->yaw));
+	if (but_bool(tmp_dist, to_degrees(acos(vec2_cos(vec, vec2))), pl->yaw) == -1)
+		return (3);
 	return (tmp_dist);
 }
 
 /*
 ** **************************************************************************
 **	static int but_exist(t_player *pl)
-**	Function to return door sector nb in front of player
+**	Function to return button sector nb in front of player
 ** **************************************************************************
 */
 
@@ -127,23 +100,23 @@ int				but_detect(t_player *pl)
 
 	i = -1;
 	s_nb = -1;
-	dist = 5;
+	dist = 3;
 	tmp_dist = 0;
 	but_sec_nb = -1;
 	while (++i < pl->sectors[pl->sector].npoints)
 	{
 		s_nb = pl->sectors[pl->sector].neighbors[i];
-		//printf("npoi==%d\n", pl->sectors[i].npoints);
 		if ((pl->sectors[pl->sector].neighbors[i] >= 0) && \
 		pl->sectors[s_nb].npoints == 2)
 		{
 			tmp_dist = but_dist(pl, s_nb);
-			if (tmp_dist <= dist)
+			if (tmp_dist < dist)
 			{
 				dist = tmp_dist;
 				but_sec_nb = s_nb;
 			}
 		}
 	}
+	printf("%d, %d\n", dist, but_sec_nb);
 	return (but_sec_nb);
 }

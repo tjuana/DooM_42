@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/22 21:20:22 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/23 18:48:28 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,23 @@ void		door_but_сlick(t_player *pl, t_subevents *se)
 
 	i = -1;
 	d_nb = -1;
-	if (pl->door_all == -1)
+	if ((pl->door_all == -1) || (pl->but_all == -1))
 	{
 		door_total(pl);
 		but_total(pl);
 	}
-	else if (pl->door_all < 1)
+	if (pl->door_all < 1 || (but_script(pl, but_detect(pl), se) == 1))
 		return ;
-	but_detect(pl);
 	d_sec_nb = door_detect(pl);
+	
 	while (++i < pl->door_all)
 		if (pl->doors[i].s_nb == d_sec_nb)
 			d_nb = i;
+	
 	if ((d_nb == -1) || (pl->doors[d_nb].state == 1))
 		return ;
 	pl->door_nb = d_nb;
+	
 	if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[d_nb].max_d)
 		se->wsad[4] = 1;
 	else
@@ -121,11 +123,9 @@ void		door(t_player *pl, t_subevents *se)
 	d_sec_nb = 0;
 	if ((pl->door_all < 1) || (d_nb > pl->door_all))
 		return ;
-	//door_exist(pl);
 	d_sec_nb = pl->doors[d_nb].s_nb;
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].spd;
 	pl->doors[d_nb].state = 1;
-	//d_sec_nb = se->wsad[4] == 1;
 }

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/22 21:08:46 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/23 16:28:38 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 /*
 ** **************************************************************************
-**	static int vec2_cos(t_vector3 vec1, t_vector3 vec2)
-**	Function to define door
+**	static int door_bool(int dist, float degree)
+**	Function to check angle between view vec and door center
 ** **************************************************************************
 */
 
@@ -76,8 +76,7 @@ static int		door_vert_find(t_player *pl, t_vector3 *vec, int s_nb)
 	{
 		j = -1;
 		while(++j < pl->sectors[s_nb].npoints)
-		{
-			//printf("LFGK i==%d j==%d  x==%f y==%f \n", i, j, pl->sectors[s_nb].vertex[i].x, pl->sectors[s_nb].vertex[j].y);
+		{//printf("LFGK i==%d j==%d  x==%f y==%f \n", i, j, pl->sectors[s_nb].vertex[i].x, pl->sectors[s_nb].vertex[j].y);
 			vec->x = (pl->sectors[s_nb].vertex[i].x + pl->sectors[s_nb].vertex[j].x) / 2;
 			vec->y = (pl->sectors[s_nb].vertex[i].y + pl->sectors[s_nb].vertex[j].y) / 2;
 			vec->x = vec->x - pl->where.x;

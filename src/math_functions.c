@@ -65,6 +65,7 @@ t_xy Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float 
 
 float Yaw(float y, float z, t_player *player)
 {
+	// printf("y:%f   z:%f   yaw:%f\n", y, z, player->yaw);
     return(y + z*player->yaw);
 }
 
