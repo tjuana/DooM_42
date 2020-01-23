@@ -133,6 +133,8 @@ int main(int ac, char **ag)
 			
             SDL_UpdateWindowSurface( window );
             renderer = SDL_CreateRenderer(window,-1, SDL_RENDERER_ACCELERATED );
+			pl.win = window;
+			pl.rend = renderer;
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
             se.wsad[0] = 0;
@@ -177,6 +179,7 @@ int main(int ac, char **ag)
 
 				//SDL_FreeSurface(scr_surf);
                 SDL_UpdateWindowSurface( window );
+				
 
                 //Vertical collision detection
                 op.eyeheight = se.ducking ? DuckHeight : EYEHEIGHT;

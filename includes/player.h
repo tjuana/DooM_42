@@ -5,6 +5,9 @@
 typedef struct	s_player
 {
 	SDL_Surface	*srf;
+	SDL_Window	*win;
+	SDL_Renderer	*rend;
+	char		*lvl;
 	t_xy		t1;
 	t_xy		t2;
 	t_xy		scale_1;

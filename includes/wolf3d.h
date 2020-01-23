@@ -48,6 +48,7 @@ float		Yaw(float y, float z, t_player *player);
 double		to_degrees(double radians);
 
 /*			load_file.c			*/
+int			load_next(t_player *pl);
 void		load_file(char *ag, t_player *pl);
 
 /*			main.c			*/

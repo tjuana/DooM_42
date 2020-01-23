@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/23 19:17:29 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/23 19:48:40 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int			but_script(t_player *pl, int sec_nb, t_subevents *se)
 			but_nb = i;
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -2))
 		return (but_open_door(pl, but_nb, se));
+	if ((but_nb > -1) && (pl->buttons[but_nb].state == -4))
+		load_next(pl);
 	return (0);
 }
 
@@ -155,6 +157,9 @@ void	but_total(t_player *pl)
 	ptr = sec_arr;
 	if (pl->but_all > 0)
 		if (!(pl->buttons = (t_but *)malloc(sizeof(t_but) * pl->but_all)))
+		{
+			ft_putstr_fd("Buttons malloc error", 2);
 			exit(EXIT_FAILURE);
+		}
 	but_init(pl, ptr);
 }

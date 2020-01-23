@@ -6,13 +6,43 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/23 18:25:49 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/23 20:25:21 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void load_file(char *ag, t_player *pl)//this function reads a new map format
+/*
+** **************************************************************************
+**	int load_next(t_player *pl)
+**	Function to open next map
+** **************************************************************************
+*/
+
+int		load_next(t_player *pl)
+{
+	t_player pl2;
+
+	pl2 = *pl;
+	pl->x1 += 0;
+	load_file(pl->lvl, pl);
+	//free(pl);
+	SDL_DestroyRenderer(pl->rend);
+	SDL_GetWindowSurface(pl2.win);
+	pl2.rend = SDL_CreateRenderer(pl2.win,-1, SDL_RENDERER_ACCELERATED );
+	SDL_UpdateWindowSurface(pl2.win);
+	pl = &pl2;
+	return(0);
+}
+
+/*
+** **************************************************************************
+**	int but_script(t_player *pl, int sec_nb, t_subevents *se)
+**	Function to do button scipts
+** **************************************************************************
+*/
+
+void	load_file(char *ag, t_player *pl)//this function reads a new map format
 {
     FILE* fp = fopen(ag, "rt");
 	
@@ -47,7 +77,7 @@ void load_file(char *ag, t_player *pl)//this function reads a new map format
                 pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
                 t_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
                 int* num = NULL;
-                sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
+                sscanf(ptr += n, "%f%f%n", &sect->floor, &sect->ceil, &n);
                 for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
                 {
 					num = realloc(num, ++m * sizeof(*num));
@@ -62,11 +92,20 @@ void load_file(char *ag, t_player *pl)//this function reads a new map format
 				for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
                 free(num);
                 break;
+			case 'l':
+				if (!(pl->lvl = (char *)malloc(sizeof(char) * 512)))
+				{
+					ft_putstr_fd("lvl path malloc error", 2);
+					exit(EXIT_FAILURE);
+				}
+				sscanf(ptr += n, "%s", pl->lvl);
+				break;
             case 'p':; // player
-
+			
                 sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
                 player_init(pl, &v, &angle, &n); // TODO: Range checking
                 pl->where.z = pl->sectors[pl->sector].floor + EYEHEIGHT;
+			
         }
     fclose(fp);
     free(vert);
