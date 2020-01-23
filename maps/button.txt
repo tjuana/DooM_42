@@ -18,7 +18,7 @@ vertex	20 10 11			# 16 17
 
 
 # Sectors (floor height, ceiling height, then vertex numbers in clockwise order)
-# 
+# -2 open door in this sector -3 lift up platform -4 next lvl
 # After the list of vertexes, comes the list of sector numbers on the "opposite" side of that wall; "x" = none.
 
 #skybox

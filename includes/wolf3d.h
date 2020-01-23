@@ -103,6 +103,9 @@ t_vector3	ft_vec3_opposite(t_vector3 this);
 t_vector3	ft_vec3_scalar_product(t_vector3 this, double k);
 t_vector3	ft_vec3_normalize(t_vector3 vtc);
 
+/*			vector_3.c			*/
+float		vec2_cos(t_vector3 vec1, t_vector3 vec2);
+
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
 

@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/23 17:44:12 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/23 19:22:37 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRCS_LIST = but_detect.c\
 			math_functions.c\
 			sdl_addons.c\
 			vectors_1.c\
-			vectors_2.c
+			vectors_2.c\
+			vectors_3.c
 			
 
 OBJS_DIRECTORY = objects/

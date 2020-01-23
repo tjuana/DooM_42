@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/23 16:28:38 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/23 19:22:24 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,6 @@ static int		door_bool(int dist, float degree)
 	else if ((degree >= 0) && (degree < 31) && (dist == 4))
 		return (dist);
 	return (-1);
-}
-
-/*
-** **************************************************************************
-**	static int vec2_cos(t_vector3 vec1, t_vector3 vec2)
-**	Function to define cos of two vec
-** **************************************************************************
-*/
-
-static float	vec2_cos(t_vector3 vec1, t_vector3 vec2)
-{
-	float	res;
-	float	tmp1;
-	float	tmp2;
-
-	tmp1 = sqrt(pow(vec1.x, 2) + pow(vec1.y, 2));
-	tmp2 = sqrt(pow(vec2.x, 2) + pow(vec2.y, 2));
-	res = (vec1.x * vec2.x + vec1.y * vec2.y);
-	res = res / (tmp1 * tmp2);
-	return (res);
 }
 
 /*

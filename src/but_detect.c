@@ -36,28 +36,8 @@ static int		but_bool(int dist, float degree, float yaw)
 
 /*
 ** **************************************************************************
-**	static int vec2_cos(t_vector3 vec1, t_vector3 vec2)
-**	Function to define cos of two vec
-** **************************************************************************
-*/
-
-static float	vec2_cos(t_vector3 vec1, t_vector3 vec2)
-{
-	float	res;
-	float	tmp1;
-	float	tmp2;
-
-	tmp1 = sqrt(pow(vec1.x, 2) + pow(vec1.y, 2));
-	tmp2 = sqrt(pow(vec2.x, 2) + pow(vec2.y, 2));
-	res = (vec1.x * vec2.x + vec1.y * vec2.y);
-	res = res / (tmp1 * tmp2);
-	return (res);
-}
-
-/*
-** **************************************************************************
-**	static int but_dist(t_vector3 vec1, t_vector3 vec2)
-**	Function to define distance to door
+**	static int but_dist(t_player *pl, int s_nb)
+**	Function to define distance to button
 ** **************************************************************************
 */
 
@@ -77,7 +57,6 @@ static int		but_dist(t_player *pl, int s_nb)
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	//printf("dist==%d  deg==%f yaw==%f\n", tmp_dist, to_degrees(acos(vec2_cos(vec, vec2))), to_degrees(pl->yaw));
 	if (but_bool(tmp_dist, to_degrees(acos(vec2_cos(vec, vec2))), pl->yaw) == -1)
 		return (3);
 	return (tmp_dist);
@@ -85,7 +64,7 @@ static int		but_dist(t_player *pl, int s_nb)
 
 /*
 ** **************************************************************************
-**	static int but_exist(t_player *pl)
+**	int but_detect(t_player *pl)
 **	Function to return button sector nb in front of player
 ** **************************************************************************
 */
@@ -117,6 +96,5 @@ int				but_detect(t_player *pl)
 			}
 		}
 	}
-	printf("%d, %d\n", dist, but_sec_nb);
 	return (but_sec_nb);
 }
