@@ -6,11 +6,63 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:43:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:59:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+// ?!
+typedef struct	s_line
+{
+	t_vector3	v1;	// line vertex 1
+	t_vector3	v2;	// line vertex 2
+}				t_line;
+
+void	ft_gui_mousemotion_win_map_door(t_wolf3d *w, SDL_Event e, t_list *dom)
+{
+	t_gui_elem	*elem;
+	// t_gui_coord	coord;
+	int			sector_id;
+	t_vector3	pos;
+	t_sector	*s;
+	int			i;
+
+	if (((t_sector*)w->sector->content)->status == SECTOR_STATUS_PRESET)
+		return ;
+
+	((t_sector*)w->sector->content)->status = SECTOR_STATUS_NOTHING;
+
+	// Перевели в координаты карты
+	// coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content); // ??!
+	pos = ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, w->gui.mouse_pos);
+
+	sector_id = ft_search_point_in_sector_line_diameter((void*)w, pos, 5);
+	// Поиск стены
+	if (sector_id > 0)
+	{
+		// printf(">>> SECTOR: %d\n", sector_id);
+
+		s = ft_editor_search_sector_by_id(w, w->sector, sector_id);
+		if (s == NULL)
+			ft_error("ERROR!");
+		i = ft_check_point_in_sector_line_diameter(s, pos, 5);
+
+		if (!ft_map_check_straight_line(*s->vertex[i], *s->vertex[(i + 1) % s->vertex_count]))
+			return ;
+
+		((t_sector*)w->sector->content)->status = SECTOR_STATUS_READY;
+		ft_change_door_vertex(w, *s->vertex[i], *s->vertex[(i + 1) % s->vertex_count]);
+	}
+
+	elem = dom->content;
+}
+
+void	ft_map_click_door(t_wolf3d *w, SDL_Event e, t_list *elem)
+{
+	if (((t_sector*)w->sector->content)->status == SECTOR_STATUS_READY)
+		((t_sector*)w->sector->content)->status = SECTOR_STATUS_PRESET;
+}
 
 /*
 **	void ft_gui_mousemotion_map(void *data, SDL_Event e, t_list *dom, int type)
@@ -21,15 +73,20 @@ void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_gui_elem	*elem;
+	// t_gui_elem	*elem;
 	t_gui_coord	coord;
 
 	w = (t_wolf3d*)data;
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
-	if (coord.w)
+	if (w->gui.mode == GUI_MD_ME_SET_DOOR)
+		ft_gui_mousemotion_win_map_door(w, e, dom);
+	else
 	{
-		w->gui.mouse_pos = coord;
-		w->gui_map.check_vertex = 1;
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
+		if (coord.w)
+		{
+			w->gui.mouse_pos = coord;
+			w->gui_map.check_vertex = 1;
+		}
 	}
 	return ;
 }
@@ -40,30 +97,19 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_sector	*sector;
 
 	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, elem->content);
-	if (coord.w)
+	sector = w->sector->content;
+	if (coord.w && sector->status != SECTOR_STATUS_POLYGON)
 	{
-		if (w->sector_status == 0)
-		{
-			w->sector_status = 1;
-			ft_editor_sector_create(w);
-			w->sector_count++;
-		}
-
 		ft_editor_sector_set_vertex(w, w->sector->content, \
 			ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord));
 
-		sector = w->sector->content;
 		if (sector->vertex_count > 1 && \
 			ft_editor_sector_compare_vertexes(*sector->vertex[0], \
 				*sector->vertex[sector->vertex_count - 1]))
 		{
 			ft_editor_delete_last_vertex(w);
 			if (ft_editor_sector_search_neighbors(w, sector))
-			{
-				sector->status = 1;
-				// w->sector_status = 0;
-				// ft_editor_init_sectors_item_area(w, sector); // -> определять ли центр?
-			}
+				sector->status = SECTOR_STATUS_POLYGON;
 		}
 
 		printf("===\n");
@@ -164,13 +210,18 @@ void	ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, \
 	t_gui_coord	coord;
 
 	w = (t_wolf3d*)data;
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
-	if (coord.w)
+	if (w->gui.mode == GUI_MD_ME_SET_DOOR)
+		ft_map_click_door(w, e, dom);
+	else
 	{
-		w->gui.mouse_pos = coord;
-		ft_gui_mouse_click_map(w, e, dom);
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
+		if (coord.w)
+		{
+			w->gui.mouse_pos = coord;
+			ft_gui_mouse_click_map(w, e, dom);
+		}
+		return ;
 	}
-	return ;
 }
 
 /*

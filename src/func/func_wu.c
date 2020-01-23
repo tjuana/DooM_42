@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alg_wu.c                                           :+:      :+:    :+:   */
+/*   func_wu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/05 19:12:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 18:45:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void		ft_fdf_init_wu(t_fdf_wu **wu, t_vector3 *dot_1, t_vector3 *dot_2)
 	(*wu)->y1 = dot_1->y + 0;
 	(*wu)->x2 = dot_2->x + 0;
 	(*wu)->y2 = dot_2->y + 0;
+	(*wu)->rx1 = 0;
+	(*wu)->ry1 = 0;
+	(*wu)->rx2 = WIN_WIDTH;
+	(*wu)->ry2 = WIN_HEIGHT;
 	(*wu)->color1 = 0xFFFF00;
 }
 
@@ -31,6 +35,26 @@ void		ft_fdf_init_wu_color(t_fdf_wu **wu, t_vector3 *dot_1, t_vector3 *dot_2, in
 	(*wu)->y1 = dot_1->y + 0;
 	(*wu)->x2 = dot_2->x + 0;
 	(*wu)->y2 = dot_2->y + 0;
+	(*wu)->rx1 = 0;
+	(*wu)->ry1 = 0;
+	(*wu)->rx2 = WIN_WIDTH;
+	(*wu)->ry2 = WIN_HEIGHT;
+	(*wu)->color1 = color;
+}
+
+void		ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, t_gui_rect area, int color)
+{
+	(*wu) = ft_memalloc(sizeof(t_fdf_wu));
+	ft_bzero(*wu, sizeof(t_fdf_wu));
+	(*wu)->x1 = coord.v1.x + 0;
+	(*wu)->y1 = coord.v1.y + 0;
+	(*wu)->x2 = coord.v2.x + 0;
+	(*wu)->y2 = coord.v2.y + 0;
+	(*wu)->rx1 = area.v1.x >= 0 ? area.v1.x : 0;
+	(*wu)->ry1 = area.v1.y >= 0 ? area.v1.y : 0;
+	(*wu)->rx2 = area.v2.x <= WIN_WIDTH ? area.v2.x : WIN_WIDTH;
+	(*wu)->ry2 = area.v2.x <= WIN_HEIGHT ? area.v2.x : WIN_HEIGHT;
+	// printf("[%f, %f]   [%f, %f]\n", (*wu)->rx1, (*wu)->ry1, (*wu)->rx2, (*wu)->ry2);
 	(*wu)->color1 = color;
 }
 
@@ -109,6 +133,25 @@ void		ft_fdf_wu_color(t_vector3 *dot_1, t_vector3 *dot_2, t_wolf3d *data, int co
 	double		x;
 
 	ft_fdf_init_wu_color(&wu, dot_1, dot_2, color);
+	wu->steep = fabs(wu->y2 - wu->y1) > fabs(wu->x2 - wu->x1);
+	ft_fdf_draw_line_swap(&wu);
+	ft_fdf_draw_line_param(data, &wu);
+	x = wu->xpxl1 + 1;
+	wu->steps = wu->xpxl2 - x;
+	wu->step = 0;
+	if (wu->steep)
+		ft_fdf_wu_cycle_y(data, wu, x);
+	else
+		ft_fdf_wu_cycle_x(data, wu, x);
+	free(wu);
+}
+
+void	ft_fdf_wu_rect_color(t_wolf3d *data, t_gui_rect coord, t_gui_rect area, int color)
+{
+	t_fdf_wu	*wu;
+	double		x;
+
+	ft_fdf_init_wu_rect_color(&wu, coord, area, color);
 	wu->steep = fabs(wu->y2 - wu->y1) > fabs(wu->x2 - wu->x1);
 	ft_fdf_draw_line_swap(&wu);
 	ft_fdf_draw_line_param(data, &wu);

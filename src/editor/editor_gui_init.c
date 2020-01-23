@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 15:34:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:08:41 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_menu_btn_title", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "Map editor menu");
+	ft_gui_elem_set_text(elem->child, "Map editor menu", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btn_sector", (t_gui_coord){1640, 50, 0}, \
@@ -56,10 +56,17 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_in_menu_btn_enemy, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
+	ft_gui_elem_init(&elem->child, "win_menu_btndoor", (t_gui_coord){1640, 250, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 290, 0});
+	ft_gui_elem_set_color(elem->child, GUI_CL_DOOR);
+	ft_gui_elem_set_button(elem->child, "Add door");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btndoor, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_parent(head, elem->child);
+
 	ft_gui_elem_init(&elem->child, "win_menu_btn_title_input", (t_gui_coord){1640, 400, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 440, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "Save map as:");
+	ft_gui_elem_set_text(elem->child, "Save map as:", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_inputmapname", (t_gui_coord){1640, 440, 0}, \
@@ -84,7 +91,7 @@ void	ft_gui_init_win_setsector(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_setsector_title", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set sector");
+	ft_gui_elem_set_text(elem->child, "Set sector", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsector_walltxtr", (t_gui_coord){1640, 50, 0}, \
@@ -98,7 +105,7 @@ void	ft_gui_init_win_setsector(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_setsector_titleinputfloor", (t_gui_coord){1640, 400, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 440, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Floor:");
+	ft_gui_elem_set_text(elem->child, "Floor:", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsector_inputfloor", (t_gui_coord){1640, 440, 0}, \
@@ -110,7 +117,7 @@ void	ft_gui_init_win_setsector(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_setsector_titleinputheight", (t_gui_coord){1640, 500, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 540, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Height:");
+	ft_gui_elem_set_text(elem->child, "Height:", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsector_inputheight", (t_gui_coord){1640, 540, 0}, \
@@ -142,7 +149,7 @@ void	ft_gui_init_win_setplayer(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_setplayer_btntitle", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set player");
+	ft_gui_elem_set_text(elem->child, "Set player", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setplayer_playervec", (t_gui_coord){1640, 50, 0}, \
@@ -174,7 +181,7 @@ void	ft_gui_init_win_setsprite(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_setsprite_btntitle", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set player");
+	ft_gui_elem_set_text(elem->child, "Set player", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setsprite_playervec", (t_gui_coord){1640, 50, 0}, \
@@ -206,7 +213,7 @@ void	ft_gui_init_win_setenemy(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_setenemy_btntitle", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set player");
+	ft_gui_elem_set_text(elem->child, "Set player", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_setenemy_playervec", (t_gui_coord){1640, 50, 0}, \
@@ -227,6 +234,39 @@ void	ft_gui_init_win_setenemy(t_list *head)
 	ft_gui_elem_set_color(elem->child, 0xcc0605);
 	ft_gui_elem_set_button(elem->child, "Cancel");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setenemy_btncancel, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_parent(head, elem->child);
+}
+
+void	ft_gui_init_win_setdoor(t_list *head)
+{
+	t_gui_elem	*elem;
+
+	elem = head->content;
+	ft_gui_elem_init(&elem->child, "win_setdoor_title", (t_gui_coord){1640, 5, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
+	ft_gui_elem_set_color(elem->child, 0x000000);
+	ft_gui_elem_set_text(elem->child, "Set door", 16);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_setdoor_text", (t_gui_coord){1640, 45, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
+	ft_gui_elem_set_color(elem->child, 0x000000);
+	// Другой размер шрифта -> моментальная sega.
+	ft_gui_elem_set_text(elem->child, "Draw line between two sector walls", 16);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_setdoor_btnsave", (t_gui_coord){1640, 1080 - 110, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 1080 - 70, 0});
+	ft_gui_elem_set_color(elem->child, 0x50c878);
+	ft_gui_elem_set_button(elem->child, "Save door");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setdoor_btnsave, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_setdoor_btncancel", (t_gui_coord){1640, 1080 - 60, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 1080 - 20, 0});
+	ft_gui_elem_set_color(elem->child, 0xcc0605);
+	ft_gui_elem_set_button(elem->child, "Cancel");
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_setdoor_btncancel, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 }
 
@@ -286,6 +326,14 @@ void	ft_gui_init_win(t_list *head)
 	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, win->child);
 	ft_gui_init_win_setenemy(win->child);
+
+	ft_gui_elem_init(&win->child, "win_setdoor", (t_gui_coord){1620, 0, 0}, \
+		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(win->child, GUI_CL_DOOR);
+	ft_gui_elem_set_block(win->child);
+	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, win->child);
+	ft_gui_init_win_setdoor(win->child);
 }
 
 /*

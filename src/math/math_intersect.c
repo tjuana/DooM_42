@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:40:11 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 17:50:29 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:08:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,30 @@ int			ft_check_point_in_line_segment(t_vector3 p, t_vector3 p1, t_vector3 p2)
 		p_d = abs((int)(d * 100));
 		if (p_d < 1)
 			return (1);
+		else
+			return (0);
+	}
+	else
+		return (0);
+	return (0);
+}
+
+// Проверяем, лежит ли точка на отрезке в определённом диаметре
+int			ft_check_point_in_line_segment_diameter(t_vector3 p, t_vector3 p1, t_vector3 p2, double diameter)
+{
+	double	d;
+
+	d = (p.x - p1.x) * (p2.y - p1.y) - (p.y - p1.y) * (p2.x - p1.x);
+	if (
+		(p1.x < p.x && p.x < p2.x) || (p2.x < p.x && p.x < p1.x) ||
+		(p1.y < p.y && p.y < p2.y) || (p2.y < p.y && p.y < p1.y)
+	)
+	{
+		if ((fabs(d) - diameter) < 0)
+		{
+			// printf("%f  %f\n", d, diameter);
+			return (1);
+		}
 		else
 			return (0);
 	}

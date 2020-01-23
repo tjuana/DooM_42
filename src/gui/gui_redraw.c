@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 16:11:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:30:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,20 +203,23 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 			color = 0xffffff;
 		// invertion
 		// color = ~color & 0x00ffffff;
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
+		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		// printf("FONT SIZE BUTTON: %d\n", elem->fs);
 	}
 
 	if (elem->type == GUI_TEXT)// || elem->type == GUI_INPUT)
 	{
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
+		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		// printf("FONT SIZE TEXT: %d\n", elem->fs);
 	}
 	if (elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 	{
 		// color = ft_fdf_get_color(color, 0xffffff, 1);
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", 16, color);
+		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		// printf("FONT SIZE INPUT: %d\n", elem->fs);
 	}
 }
 

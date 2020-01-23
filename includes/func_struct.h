@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 20:26:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 20:13:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 18:46:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct	s_fdf_wu
 	double		y1;
 	double		x2;
 	double		y2;
+	int			rx1;
+	int			ry1;
+	int			rx2;
+	int			ry2;
 	double		p;
 	double		dx;
 	double		dy;

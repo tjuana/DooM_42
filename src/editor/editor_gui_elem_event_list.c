@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 14:41:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 15:55:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:12:57 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ void	ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list *d
 	// ft_gui_print_element_list(w->gui.dom, 0);
 	w->gui.mode = GUI_MD_ME_SET_SECTOR;
 	w->sector_status = 0;
+
+	// Меняем порядок действий
+	if (w->sector_status == 0)
+	{
+		ft_editor_sector_create(w);
+		w->sector_count++;
+		w->sector_status = 1;
+	}
 }
 
 void	ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *dom, int type)
@@ -76,6 +84,20 @@ void	ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *dom
 	w->gui.mode = GUI_MD_ME_SET_ENEMY;
 	w->enemy_status = 0;
 }
+
+void	ft_gui_mousebuttonup_win_menu_btndoor(void *data, SDL_Event e, t_list *dom, int type)
+{
+	t_wolf3d	*w;
+	t_list	*list;
+
+	w = (t_wolf3d*)data;
+	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_setdoor"), GUI_ELEM_VISIBLE);
+	w->gui.mode = GUI_MD_ME_SET_DOOR;
+	w->door_status = 0;
+	ft_create_sector_door(w);
+}
+
 
 void	ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, SDL_Event e, t_list *dom, int type)
 {
@@ -193,6 +215,22 @@ void	ft_gui_mousebuttonup_win_setenemy_btnsaveplayer(void *data, SDL_Event e, t_
 	w->gui.mode = GUI_MD_ME;
 }
 
+void	ft_gui_mousebuttonup_win_setdoor_btnsave(void *data, SDL_Event e, t_list *dom, int type)
+{
+	t_wolf3d	*w;
+	t_list	*list;
+	t_sector	*s;
+
+	w = (t_wolf3d*)data;
+	s = w->sector->content;
+	if (!ft_editor_sector_search_neighbors(w, s))
+		ft_error("ERROR");
+	s->status = SECTOR_STATUS_SET;
+	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_setdoor"), GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), GUI_ELEM_VISIBLE);
+	w->gui.mode = GUI_MD_ME;
+}
+
 
 
 // cancel change
@@ -258,4 +296,24 @@ void	ft_gui_mousebuttonup_win_setenemy_btncancel(void *data, SDL_Event e, t_list
 	if (w->enemy_status == 0 && ((t_sector*)w->enemy->content)->status == 1)
 		return ;
 	ft_delete_enemy(w);
+}
+
+void	ft_gui_mousebuttonup_win_setdoor_btncancel(void *data, SDL_Event e, t_list *dom, int type)
+{
+	t_wolf3d	*w;
+	t_list	*list;
+
+	w = (t_wolf3d*)data;
+	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_setdoor"), GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), GUI_ELEM_VISIBLE);
+	w->gui.mode = GUI_MD_ME;
+	if (w->sector == NULL)
+		return ;
+	if (w->door_status == 0 && ((t_sector*)w->sector->content)->status == 1)
+		return ;
+
+	// delete last sector (?)
+	printf("delete door?");
+	ft_delete_sector(w);
+	w->door_status = 0;
 }

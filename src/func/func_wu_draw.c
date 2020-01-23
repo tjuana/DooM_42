@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_wu_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:27 by dorange-          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/01/21 21:32:26 by dorange-         ###   ########.fr       */
-=======
-/*   Updated: 2020/01/21 21:35:01 by tjuana           ###   ########.fr       */
->>>>>>> origin/another_branch
+/*   Updated: 2020/01/23 18:47:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +19,19 @@ void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 	double	o;
 
 	// Special rules for map frame
-	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
+	if (x < wu->rx1 || x >= wu->rx2 || y < wu->ry1 || y >= wu->ry2)
 		return ;
+	// if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 	wu->temp_f = 1 - wu->temp_f;
 	if (wu->steps == 0)
 		o = 0.0;
 	else
 		o = (double)wu->step / wu->steps;
 	pos = x + (y * WIN_WIDTH);
-	color = wu->color1;
-	color = ft_fdf_get_color(color, (int)data->sdl->pixels[pos], wu->temp_f);
 	if ((pos >= WIN_HEIGHT * WIN_WIDTH || pos < 0))
 		return ;
+	color = wu->color1;
+	color = ft_fdf_get_color(color, (int)data->sdl->pixels[pos], wu->temp_f);
 	data->sdl->pixels[pos] = color;
 }
 

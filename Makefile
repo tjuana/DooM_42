@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/22 20:14:04 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/23 15:39:53 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -163,7 +163,8 @@ editor_gui_map_sprite.c \
 editor_redraw.c \
 editor_sector.c \
 editor_gui_txtr.c \
-editor_desctuct.c
+editor_desctuct.c \
+editor_door.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))

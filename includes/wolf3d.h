@@ -26,6 +26,18 @@
 # define VER_WIDTH (int)54
 # define FONT_PATH "fonts/RobotoMono-Medium.ttf"
 
+/*
+** **************************************************************************
+**	Mode
+** **************************************************************************
+*/
+# define GUI_MD_ME				0x0000F001
+# define GUI_MD_ME_SET_SECTOR	0x0000F100
+# define GUI_MD_ME_SET_PLAYER	0x0000F200
+# define GUI_MD_ME_SET_SPRITE	0x0000F300
+# define GUI_MD_ME_SET_ENEMY	0x0000F400
+# define GUI_MD_ME_SET_DOOR		0x0000F500
+
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_thread.h"
 # include "SDL2/SDL_ttf.h"
@@ -49,7 +61,7 @@
 # include "algebra.h" // math library for matrix transform
 # include "file.h"
 # include "gui_struct.h"
-
+# include "func_struct.h"
 
 typedef struct			s_font
 {
@@ -67,6 +79,16 @@ typedef struct			s_font
 	int					half_menu;
 }						t_font;
 
+#define SECTOR_STATUS_NOTHING		0x00
+#define SECTOR_STATUS_BROKEN_LINE	0x00
+#define SECTOR_STATUS_POLYGON		0x01
+#define SECTOR_STATUS_READY			0x02 //.
+#define SECTOR_STATUS_PRESET		0x03 //.
+#define SECTOR_STATUS_SET			0x04 //.
+
+#define SECTOR_TYPE_SECTOR			0x00
+#define SECTOR_TYPE_DOOR			0x01
+
 // new struct for sector
 typedef struct			s_sector
 {
@@ -80,6 +102,7 @@ typedef struct			s_sector
 	int					txtr_walls;		// Номер текстуры сектора (?)
 	int					txtr_ceil;		// Номер текстуры сектора (?)
 	int					color;			// Цвет сектора (for map editor)
+	int					type;			// type
 	int					status;			// 0: broken line; 1: polygon
 
 	t_vector3			vtx_center;		// Центр сектора (?)
@@ -245,6 +268,7 @@ typedef struct			s_wolf3d
 	int					player_status; // 0: nothing; 1: player was set;
 	int					sprite_status; // 0: nothing; 1: sprite was set;
 	int					enemy_status; // 0: nothing; 1: enemy was set;
+	int					door_status;	// door as sector
 
 	// game objects count
 	int					sector_count;
@@ -419,6 +443,9 @@ void					ft_fdf_wu_color(t_vector3 *dot_1, t_vector3 *dot_2, \
 void					ft_fdf_init_wu_color(t_fdf_wu **wu, t_vector3 *dot_1, \
 							t_vector3 *dot_2, int color);
 
+void					ft_fdf_wu_rect_color(t_wolf3d *data, t_gui_rect coord, \
+							t_gui_rect area, int color);
+
 void					ft_fdf_draw_line_first_pixels(t_wolf3d *data, \
 							t_fdf_wu **wu);
 void					ft_fdf_draw_line_last_pixels(t_wolf3d *data, \
@@ -583,7 +610,7 @@ SDL_Rect		*ft_gui_create_sdl_rect(int w, int h, int x, int y);
 void			ft_gui_desctuct_fonts(t_list *fonts_list);
 void			ft_gui_elem_set_button(t_list *list, void *str);
 
-void			ft_gui_elem_set_text(t_list *list, void *str);
+void			ft_gui_elem_set_text(t_list *list, void *str, int font_size);
 
 void			ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type);
@@ -718,5 +745,18 @@ void			*ft_editor_redraw_txtr(void *data, t_list *dom);
 void			ft_gui_mousebuttonup_win_setsector_walltxtr(void *data, SDL_Event e, t_list *dom, int type);
 
 void			ft_editor_desctuct(t_wolf3d *w);
+
+void	ft_gui_mousebuttonup_win_menu_btndoor(void *data, SDL_Event e, t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_setdoor_btncancel(void *data, SDL_Event e, t_list *dom, int type);
+int		ft_map_check_straight_line(t_vector3 v1, t_vector3 v2);
+int		ft_check_point_in_line_segment_diameter(t_vector3 p, t_vector3 p1, t_vector3 p2, double diameter);
+int		ft_search_point_in_sector_line_diameter(void *a, t_vector3 v, double d);
+int		ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, double d);
+
+void	ft_create_sector_door(t_wolf3d *w);
+
+void	ft_change_door_vertex(t_wolf3d *w, t_vector3 v1, t_vector3 v2);
+
+void	ft_gui_mousebuttonup_win_setdoor_btnsave(void *data, SDL_Event e, t_list *dom, int type);
 
 #endif

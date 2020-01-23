@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 17:51:41 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:10:44 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,19 @@ void		ft_editor_delete_last_vertex(t_wolf3d *w)
 
 void	ft_editor_sector_create(t_wolf3d *w)
 {
-	t_sector	*sector;
+	t_sector	sector;
 	t_list		*list_item;
 
-	sector = ft_my_malloc(sizeof(t_sector));
-	sector->id = w->sector_count + 1;
-	sector->vertex = NULL;
-	sector->vertex_count = 0;
-	sector->status = 0;
-	sector->floor = 0;
-	sector->height = 10;
-	list_item = ft_lstnew(sector, sizeof(t_sector));
+	// sector = ft_my_malloc(sizeof(t_sector));
+	sector.id = w->sector_count + 1;
+	sector.vertex = NULL;
+	sector.neighbors = NULL;
+	sector.vertex_count = 0;
+	sector.status = SECTOR_STATUS_NOTHING;
+	sector.type = SECTOR_TYPE_SECTOR;
+	sector.floor = 0;
+	sector.height = 10;
+	list_item = ft_lstnew(&sector, sizeof(t_sector));
 	if (w->sector == NULL)
 		w->sector = list_item;
 	else

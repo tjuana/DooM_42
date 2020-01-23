@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 16:15:02 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:31:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ void			ft_gui_elem_set_button(t_list *list, void *str)
 	elem = list->content;
 	elem->type = GUI_BUTTON;
 	elem->str = ft_strdup(str);
+	elem->fs = 16;
 	ft_gui_elem_set_event(list, ft_gui_mousemotion_button, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_button, SDL_MOUSEBUTTONDOWN, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_button, SDL_MOUSEBUTTONUP, 0);
@@ -223,23 +224,26 @@ void			ft_gui_elem_set_input(t_list *list, void *str, int flag_numb)
 	if (flag_numb)
 		elem->type = GUI_INPUT_NUMB;
 	elem->str = ft_strdup(str);
+	elem->fs = 16;
 	ft_gui_elem_set_event(list, ft_gui_mousemotion_input, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttondown_input, SDL_MOUSEBUTTONDOWN, 0);
 	ft_gui_elem_set_event(list, ft_gui_mousebuttonup_input, SDL_MOUSEBUTTONUP, 0);
 }
 
 /*
-**	void ft_gui_elem_set_text(t_list *list, void *str)
+**	void ft_gui_elem_set_text(t_list *list, void *str, int font_size)
 **	
 **	Function that set text type for gui element.
 */
-void			ft_gui_elem_set_text(t_list *list, void *str)
+void			ft_gui_elem_set_text(t_list *list, void *str, int font_size)
 {
 	t_gui_elem	*elem;
 
 	elem = list->content;
 	elem->type = GUI_TEXT;
 	elem->str = ft_strdup(str);
+	elem->fs = font_size;
+	elem->fs == 0 ? elem->fs = 16 : 0;
 }
 
 /*

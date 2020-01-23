@@ -1,16 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_map_check.c                                    :+:      :+:    :+:   */
+/*   editor_gui_map_check.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 12:46:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:08:25 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, double d)
+{
+	int				i;
+	int				vtx1_n; // vertex number
+	int				vtx2_n;
+	int				count;
+
+	i = 0;
+	count = 0;
+	while (i < s->vertex_count)
+	{
+		vtx1_n = i;
+		vtx2_n = (i + 1) % s->vertex_count;
+
+		// Если точка лежит на отрезке сектора в некотором диаметре,
+		// то это наша стена -- возвращаем номер вершины
+		if (ft_check_point_in_line_segment_diameter(\
+			v, *s->vertex[vtx1_n], *s->vertex[vtx2_n], d))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+/*
+	Проверка, не лежит ли точка не линии сектора
+	(в области некоторого диаметра)
+*/
+int		ft_search_point_in_sector_line_diameter(void *a, t_vector3 v, double d)
+{
+	t_wolf3d	*w;
+	t_list		*list;
+	t_sector	*sector;
+	int			i;
+
+	w = (t_wolf3d*)a;
+
+	list = w->sector;
+	i = 0;
+	while (list)
+	{
+		sector = list->content;
+		if (sector->status == 1)
+		{
+			if (!ft_check_point_in_sector(w, sector, v))
+				if (ft_check_point_in_sector_line_diameter(sector, v, d) != -1)
+					return (sector->id);
+		}
+		list = list->next;
+		i++;
+	}
+	return (0);
+}
+
+
 
 /*
 **	Проверяем, находится ли мышка игрока в секторе

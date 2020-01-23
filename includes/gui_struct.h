@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 15:09:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:24:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,6 @@
 
 /*
 ** **************************************************************************
-**	Mode
-** **************************************************************************
-*/
-# define GUI_MD_ME				0x0000F001
-# define GUI_MD_ME_SET_SECTOR	0x0000F100
-# define GUI_MD_ME_SET_PLAYER	0x0000F200
-# define GUI_MD_ME_SET_SPRITE	0x0000F300
-# define GUI_MD_ME_SET_ENEMY	0x0000F400
-
-/*
-** **************************************************************************
 **	Color
 ** **************************************************************************
 */
@@ -89,6 +78,7 @@
 # define GUI_CL_PLAYER			0x00a496f2
 # define GUI_CL_SPRITE			0x005499a1
 # define GUI_CL_ENEMY			0x00fb607f
+# define GUI_CL_DOOR			0x00ff7538
 
 /*
 ** **************************************************************************
@@ -176,6 +166,7 @@ typedef struct		s_gui_font
 **	t_gui_coord v2		| right bottom vertex element coordinate
 **	int w				| element width
 **	int h				| element height
+**	int fs				| font size
 **	int status			| element status
 **	t_list *parent		| pointer to parent element
 **	t_list *child		| pointer to child elements
@@ -195,6 +186,7 @@ typedef struct		s_gui_elem
 	t_gui_coord		v2;
 	int				w;
 	int				h;
+	int				fs;
 	int				status;
 	t_list			*parent;
 	t_list			*child;
