@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 11:58:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 20:55:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/24 16:34:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,80 @@ int		ft_editor_sector_search_neighbors(t_wolf3d *w, t_sector *sector)
 	int		vtx2_n;
 	int		i;
 	int		v;
+	// int		*neighbors;
+	// int		id;
 
-	sector->neighbors = ft_my_malloc(sizeof(void*) * sector->vertex_count);
+	// id = sector->id;
+	// sector->neighbors = ft_my_malloc(sizeof(void*) * sector->vertex_count);
+	// ft_bzero(sector->neighbors, sizeof(void*) * sector->vertex_count);
+
+	// if (sector->neighbors == NULL)
+		// sector->neighbors = neighbors;
+
 	i = 0;
 	while (i < sector->vertex_count)
 	{
 		vtx1_n = i;
 		vtx2_n = (i + 1) % sector->vertex_count;
+		// printf("%d\n", neighbors[i]);
 		sector->neighbors[i] = ft_editor_sector_search_neighbors_item(\
 			w, sector, sector->vertex[vtx1_n], sector->vertex[vtx2_n]);
+		// printf("%d\n", neighbors[i]);
 		i++;
 	}
+	// if (sector->neighbors)
+		// free(sector->neighbors);
+	// sector->neighbors = neighbors;
 	return (1);
+}
+
+/*
+** **************************************************************************
+**	void ft_editor_sector_reset_neighbors(t_wolf3d *w)
+**
+**	Function that reset neigbors for sectors.
+** **************************************************************************
+*/
+
+void	ft_editor_sectors_reset_neighbors(t_wolf3d *w)
+{
+	t_list		*list;
+	t_sector	*s;
+
+	list = w->sector;
+	while (list)
+	{
+		s = list->content;
+		if (s->neighbors != NULL)
+			ft_bzero(s->neighbors, sizeof(int) * s->vertex_count);
+		list = list->next;
+	}
+}
+
+/*
+** **************************************************************************
+**	int ft_sectors_set_all_neighbors(t_wolf3d *w)
+**
+**	Function that set all sectors neighbors.
+** **************************************************************************
+*/
+
+int		ft_sectors_set_all_neighbors(t_wolf3d *w)
+{
+	t_list		*list;
+	t_sector	*sector;
+
+	ft_editor_sectors_reset_neighbors(w);
+	list = w->sector;
+	while (list)
+	{
+		sector = list->content;
+		if (sector->status == 1 || sector->status == SECTOR_STATUS_SET)
+			// free(sector->neighbors);
+			// sector->neighbors = ft_my_malloc(sizeof(void*) * sector->vertex_count);
+			// ft_bzero(sector->neighbors, sizeof(void*) * sector->vertex_count);
+			ft_editor_sector_search_neighbors(w, sector);
+		list = list->next;
+	}
+	return (0);
 }

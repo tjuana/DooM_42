@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 18:50:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:09:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,7 +300,19 @@ void	ft_gui_draw_map_sector(t_wolf3d *w, t_list *list)
 		s = list->content;
 		if (s->type == SECTOR_TYPE_SECTOR)
 			ft_gui_draw_map_sector_walls(w, s);
-		else if (s->type == SECTOR_TYPE_DOOR)
+		// else if (s->type == SECTOR_TYPE_DOOR)
+			// ft_draw_door(w, s);
+	}
+}
+
+void	ft_gui_draw_map_door(t_wolf3d *w, t_list *list)
+{
+	t_sector	*s;
+	if (list)
+	{
+		ft_gui_draw_map_door(w, list->next);
+		s = list->content;
+		if (s->type == SECTOR_TYPE_DOOR)
 			ft_draw_door(w, s);
 	}
 }
@@ -330,6 +342,7 @@ void	ft_gui_draw_map(t_wolf3d *w, t_list *list)
 	w->gui_map.check_vertex = ft_gui_draw_map_vertex(w, w->gui.mouse_pos, \
 		w->gui_map.check_vertex, w->gui.mode);
 	ft_gui_draw_map_vertex_line(w, w->gui.mouse_pos);
+	ft_gui_draw_map_door(w, w->sector);
 	ft_gui_draw_map_sector(w, w->sector);
 	ft_gui_draw_player(w);
 	ft_gui_draw_sprites(w);

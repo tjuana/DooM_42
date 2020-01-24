@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:43:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 16:59:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/24 16:13:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ typedef struct	s_line
 	t_vector3	v2;	// line vertex 2
 }				t_line;
 
+// v1,v2 -> to t_sline? (segment line)
+int		ft_check_neighbors_sector_vertex(t_sector *s, t_vector3 v)
+{
+	int	i;
+	
+	i = 0;
+	while (i < s->vertex_count)
+	{
+		if (ft_compare_vertexes(*s->vertex[i], v))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_gui_mousemotion_win_map_door(t_wolf3d *w, SDL_Event e, t_list *dom)
 {
 	t_gui_elem	*elem;
@@ -27,6 +42,7 @@ void	ft_gui_mousemotion_win_map_door(t_wolf3d *w, SDL_Event e, t_list *dom)
 	t_vector3	pos;
 	t_sector	*s;
 	int			i;
+	t_sector	*door;
 
 	if (((t_sector*)w->sector->content)->status == SECTOR_STATUS_PRESET)
 		return ;
@@ -41,18 +57,27 @@ void	ft_gui_mousemotion_win_map_door(t_wolf3d *w, SDL_Event e, t_list *dom)
 	// Поиск стены
 	if (sector_id > 0)
 	{
-		// printf(">>> SECTOR: %d\n", sector_id);
-
 		s = ft_editor_search_sector_by_id(w, w->sector, sector_id);
 		if (s == NULL)
 			ft_error("ERROR!");
 		i = ft_check_point_in_sector_line_diameter(s, pos, 5);
 
+		// Перпендикулярная линия (как именовать?)
 		if (!ft_map_check_straight_line(*s->vertex[i], *s->vertex[(i + 1) % s->vertex_count]))
 			return ;
 
+		ft_change_door_vertex(w, *s->vertex[i], *s->vertex[(i + 1) % s->vertex_count], pos);
+
+		door = w->sector->content;
+
+		// incorrect (!)
+		// Проверяем, не совпадает ли дверь с существующими вершинами
+		// if (ft_check_neighbors_sector_vertex(door, *s->vertex[i]) || \
+		// 	ft_check_neighbors_sector_vertex(door, *s->vertex[(i + 1) % s->vertex_count]))
+		// 	return ;
+
+		// А записывать соседей?!
 		((t_sector*)w->sector->content)->status = SECTOR_STATUS_READY;
-		ft_change_door_vertex(w, *s->vertex[i], *s->vertex[(i + 1) % s->vertex_count]);
 	}
 
 	elem = dom->content;
@@ -101,13 +126,16 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 	if (coord.w && sector->status != SECTOR_STATUS_POLYGON)
 	{
 		ft_editor_sector_set_vertex(w, w->sector->content, \
-			ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord));
+			ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, coord), sector->vertex_count);
 
 		if (sector->vertex_count > 1 && \
 			ft_editor_sector_compare_vertexes(*sector->vertex[0], \
 				*sector->vertex[sector->vertex_count - 1]))
 		{
 			ft_editor_delete_last_vertex(w);
+			// Определяем соседей
+			sector->neighbors = ft_my_malloc(sizeof(int) * sector->vertex_count);
+			ft_bzero(sector->neighbors, sizeof(int) * sector->vertex_count);
 			if (ft_editor_sector_search_neighbors(w, sector))
 				sector->status = SECTOR_STATUS_POLYGON;
 		}

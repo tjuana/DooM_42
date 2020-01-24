@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 17:08:41 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:05:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,38 @@ void	ft_gui_init_win_menu(t_list *head)
 	t_gui_elem	*elem;
 
 	elem = head->content;
-	ft_gui_elem_init(&elem->child, "win_menu_btn_title", (t_gui_coord){1640, 5, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_title", (t_gui_coord){1640, 5, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "Map editor menu", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_sector", (t_gui_coord){1640, 50, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_btnsector", (t_gui_coord){1640, 50, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 90, 0});
 	ft_gui_elem_set_color(elem->child, GUI_CL_SECTOR);
 	ft_gui_elem_set_button(elem->child, "Add sector");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_sector, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnsector, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_player", (t_gui_coord){1640, 100, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_btnplayer", (t_gui_coord){1640, 100, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 140, 0});
 	ft_gui_elem_set_color(elem->child, GUI_CL_PLAYER);
 	ft_gui_elem_set_button(elem->child, "Add player");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_player, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnplayer, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_sprite", (t_gui_coord){1640, 150, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_btnsprite", (t_gui_coord){1640, 150, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 190, 0});
 	ft_gui_elem_set_color(elem->child, GUI_CL_SPRITE);
 	ft_gui_elem_set_button(elem->child, "Add sprite");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btn_sprite, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnsprite, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_enemy", (t_gui_coord){1640, 200, 0}, \
+	ft_gui_elem_init(&elem->child, "win_menu_btnenemy", (t_gui_coord){1640, 200, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 240, 0});
 	ft_gui_elem_set_color(elem->child, GUI_CL_ENEMY);
 	ft_gui_elem_set_button(elem->child, "Add enemy");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_in_menu_btn_enemy, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnenemy, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btndoor", (t_gui_coord){1640, 250, 0}, \
@@ -63,20 +63,34 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btndoor, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btn_title_input", (t_gui_coord){1640, 400, 0}, \
-		(t_gui_coord){WIN_WIDTH - 20, 440, 0});
+	ft_gui_elem_init(&elem->child, "win_menu_btnskybox", (t_gui_coord){1640, 320, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 360, 0});
+	ft_gui_elem_set_color(elem->child, 0xcccccc);
+	ft_gui_elem_set_button(elem->child, "Set skybox");
+	// ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnskybox, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_menu_btnendplace", (t_gui_coord){1640, 370, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 410, 0});
+	ft_gui_elem_set_color(elem->child, 0xcccccc);
+	ft_gui_elem_set_button(elem->child, "Set place of end");
+	// ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnendplace, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_menu_titleinput", (t_gui_coord){1640, WIN_HEIGHT - 150, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, WIN_HEIGHT - 120, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "Save map as:", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_inputmapname", (t_gui_coord){1640, 440, 0}, \
-		(t_gui_coord){WIN_WIDTH - 20, 480, 0});
+	ft_gui_elem_init(&elem->child, "win_menu_inputmapname", (t_gui_coord){1640, WIN_HEIGHT - 110, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, WIN_HEIGHT - 70, 0});
 	ft_gui_elem_set_color(elem->child, 0xaaaaaa);
 	ft_gui_elem_set_input(elem->child, " ", 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	ft_gui_elem_init(&elem->child, "win_menu_btnsavemap", (t_gui_coord){1640, 490, 0}, \
-		(t_gui_coord){WIN_WIDTH - 20, 530, 0});
+	ft_gui_elem_init(&elem->child, "win_menu_btnsavemap", (t_gui_coord){1640, WIN_HEIGHT - 60, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, WIN_HEIGHT - 20, 0});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save map");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnsavemap, SDL_MOUSEBUTTONUP, 0);

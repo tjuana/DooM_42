@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 14:41:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 17:12:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/24 16:36:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 #include "wolf3d.h"
 
-void	ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list *dom, int type)
+void	ft_gui_mousebuttonup_win_menu_btnsector(void *data, SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
 	t_list	*list;
@@ -49,7 +49,7 @@ void	ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list *d
 	}
 }
 
-void	ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *dom, int type)
+void	ft_gui_mousebuttonup_win_menu_btnplayer(void *data, SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
 	t_list	*list;
@@ -61,7 +61,7 @@ void	ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *d
 	w->player_status = 0;
 }
 
-void	ft_gui_mousebuttonup_win_menu_btn_sprite(void *data, SDL_Event e, t_list *dom, int type)
+void	ft_gui_mousebuttonup_win_menu_btnsprite(void *data, SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
 	t_list	*list;
@@ -73,7 +73,7 @@ void	ft_gui_mousebuttonup_win_menu_btn_sprite(void *data, SDL_Event e, t_list *d
 	w->sprite_status = 0;
 }
 
-void	ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *dom, int type)
+void	ft_gui_mousebuttonup_win_menu_btnenemy(void *data, SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
 	t_list	*list;
@@ -180,6 +180,7 @@ void	ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, t_li
 	// Считываем значения
 	s->height = ft_atoi(ft_gui_elem_get_value(ft_gui_search_elem_by_name(w->gui.dom, "win_setsector_inputheight")));
 	s->floor = ft_atoi(ft_gui_elem_get_value(ft_gui_search_elem_by_name(w->gui.dom, "win_setsector_inputfloor")));
+	ft_map_set_new_sector(w, s); // Сохраняем данные
 }
 
 void	ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(void *data, SDL_Event e, t_list *dom, int type)
@@ -223,8 +224,8 @@ void	ft_gui_mousebuttonup_win_setdoor_btnsave(void *data, SDL_Event e, t_list *d
 
 	w = (t_wolf3d*)data;
 	s = w->sector->content;
-	if (!ft_editor_sector_search_neighbors(w, s))
-		ft_error("ERROR");
+	ft_map_set_new_sector(w, s);
+
 	s->status = SECTOR_STATUS_SET;
 	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_setdoor"), GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), GUI_ELEM_VISIBLE);

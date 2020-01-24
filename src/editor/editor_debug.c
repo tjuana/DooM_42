@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_debug.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 14:08:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 16:50:50 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/24 15:43:34 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ void	ft_editor_sector_special_debug(t_list *ptr_list)
 			if (j > 0)
 				printf(" | ");
 			printf(
-				"[%02.0f, %02.0f]AAAA[%.f]",
+				"[%02.0f, %02.0f]",
 				ptr_sector->vertex[j]->x,
-				ptr_sector->vertex[j]->y,
-				ptr_sector->vertex[j]->w
+				ptr_sector->vertex[j]->y
 			);
 			j++;
 		}
 
 		printf("\n");
 
-		if (ptr_sector->status == 1)
+		if (ptr_sector->status == SECTOR_STATUS_POLYGON ||
+			ptr_sector->status == SECTOR_STATUS_SET)
 		{
 			printf ("neighbors:  ");
 

@@ -624,7 +624,7 @@ void			ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type
 void			ft_gui_elem_set_block(t_list *list);
 void			ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom);
 
-void			ft_gui_mousebuttonup_win_menu_btn_sector(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_menu_btnsector(void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_win_setsector_btncancel(void *data, SDL_Event e, t_list *dom, int type);
 
 t_list			*ft_gui_search_elem_by_name(t_list *dom, char *name);
@@ -644,9 +644,9 @@ void			ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color);
 t_vector3		ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_rect rect, t_gui_coord c);
 t_gui_coord		ft_gui_map_vertex_to_coord(t_wolf3d *w, t_gui_rect rect, t_vector3 v);
 
-void			ft_gui_mousebuttonup_win_menu_btn_player(void *data, SDL_Event e, t_list *dom, int type);
-void			ft_gui_mousebuttonup_win_menu_btn_sprite(void *data, SDL_Event e, t_list *dom, int type);
-void			ft_gui_mousebuttonup_in_menu_btn_enemy(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_menu_btnplayer(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_menu_btnsprite(void *data, SDL_Event e, t_list *dom, int type);
+void			ft_gui_mousebuttonup_win_menu_btnenemy(void *data, SDL_Event e, t_list *dom, int type);
 
 
 ///just do it
@@ -662,7 +662,7 @@ void			ft_print_to_file(t_wolf3d *w, int f);
 void			ft_allocate_int2darr(t_wolf3d *w);
 // TEMP.
 void			ft_editor_sector_create(t_wolf3d *w);
-void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v);
+void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v, int pos);
 
 t_gui_coord		ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_gui_coord c, \
 					t_gui_elem *elem);
@@ -755,8 +755,14 @@ int		ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, double d);
 
 void	ft_create_sector_door(t_wolf3d *w);
 
-void	ft_change_door_vertex(t_wolf3d *w, t_vector3 v1, t_vector3 v2);
+void	ft_change_door_vertex(t_wolf3d *w, t_vector3 v1, t_vector3 v2, t_vector3 pos);
 
 void	ft_gui_mousebuttonup_win_setdoor_btnsave(void *data, SDL_Event e, t_list *dom, int type);
+
+void	ft_map_set_new_sector(t_wolf3d *w, t_sector *s);
+
+void	ft_editor_sectors_reset_neighbors(t_wolf3d *w);
+
+int		ft_sectors_set_all_neighbors(t_wolf3d *w);
 
 #endif

@@ -6,29 +6,41 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 17:10:44 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/24 15:05:53 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v)
+// Добавляет вершину по позиции
+void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
+			t_vector3 v, int pos)
 {
 	t_vector3	**vertex;
 	t_vector3	*p;
 	int			i;
+	int			j;
 
 	vertex = ft_my_malloc(sizeof(void*) * sector->vertex_count + 1);
 	i = 0;
-	while (i < sector->vertex_count)
+	j = 0;
+	while (i < sector->vertex_count + 1)
 	{
-		vertex[i] = sector->vertex[i];
+		if (i == pos)
+		{
+			p = malloc(sizeof(t_vector3));
+			ft_bzero_char(p, sizeof(t_vector3));
+			*p = v;
+			vertex[i] = p;
+		}
+		else
+		{
+			vertex[i] = sector->vertex[j];
+			j++;
+		}
 		i++;
 	}
-	p = malloc(sizeof(t_vector3));
-	ft_bzero_char(p, sizeof(t_vector3));
-	*p = v;
-	vertex[i] = p;
+
 	free(sector->vertex);
 	sector->vertex = vertex;
 	sector->vertex_count++;

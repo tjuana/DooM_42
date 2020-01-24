@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 18:45:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/24 14:49:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, t_gui_rect area
 	(*wu)->ry1 = area.v1.y >= 0 ? area.v1.y : 0;
 	(*wu)->rx2 = area.v2.x <= WIN_WIDTH ? area.v2.x : WIN_WIDTH;
 	(*wu)->ry2 = area.v2.x <= WIN_HEIGHT ? area.v2.x : WIN_HEIGHT;
-	// printf("[%f, %f]   [%f, %f]\n", (*wu)->rx1, (*wu)->ry1, (*wu)->rx2, (*wu)->ry2);
 	(*wu)->color1 = color;
 }
 
