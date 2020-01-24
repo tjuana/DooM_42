@@ -99,43 +99,41 @@ int main(int ac, char **ag)
     t_others ot;
     t_sector_ops op;
 	t_wolf3d w;
-	//SDL_Texture *texture = NULL;
 	SDL_Surface *scr_surf = NULL;
 
-    SDL_Renderer *renderer = NULL;
 	pl.sectors_nb = 0;
+	pl.contin = 0;
     w.weapon_texture = SDL_LoadBMP("Textures/pistol.bmp");
     if (ac < 2 || ac > 2)
     {
-        printf("map error");
+        printf("map error.\n");
         return (0);
     }
     se.quit = 0;
     load_file(ag[1], &pl);
 	//LoadData(ag[1], &pl);//load map and init typedef t_player data
     //ft_init_anim(&w);//gun
-    SDL_Window* window = NULL;
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
     }
     else
     {
-        window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN );
+        pl.win = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN );
 
-        if( window == NULL )
+        if( pl.win == NULL )
         {
             printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
         }
         else
             {
-            pl.srf = SDL_GetWindowSurface(window);
+            pl.srf = SDL_GetWindowSurface(pl.win);
 			
-            SDL_UpdateWindowSurface( window );
-            renderer = SDL_CreateRenderer(window,-1, SDL_RENDERER_ACCELERATED );
-			pl.win = window;
-			pl.rend = renderer;
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_UpdateWindowSurface(pl.win);
+            pl.rend = SDL_CreateRenderer(pl.win,-1, SDL_RENDERER_ACCELERATED);
+			//pl.win = pl.win;
+			//pl.rend = renderer;
+            SDL_SetRenderDrawColor(pl.rend, 0xFF, 0xFF, 0xFF, 0xFF);
             SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
             se.wsad[0] = 0;
             se.wsad[1] = 0;
@@ -165,7 +163,13 @@ int main(int ac, char **ag)
                 //SDL_RenderPresent(renderer);
                 
 				//SDL_RenderCopy(renderer, NULL, NULL, NULL);
+				//ft_putstr(pl.lvl);
+				//ft_putstr("\n");
+
+				pl.srf = SDL_GetWindowSurface(pl.win);
+				pl.srf == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				engine_begin(&pl);
+
 				
                 //ft_animation_play(&w);
                 //ft_draw_animation(&w, surface);
@@ -173,12 +177,12 @@ int main(int ac, char **ag)
 
 				//SDL_RenderCopy(renderer, SDL_CreateTextureFromSurface(renderer, pl.srf), NULL, NULL);
 				//SDL_RenderPresent(renderer);
-				scr_surf = SDL_GetWindowSurface(window);
-				SDL_RenderClear(renderer);
+				scr_surf = pl.srf;//SDL_GetWindowSurface(pl.win);
+				SDL_RenderClear(pl.rend);
 				SDL_BlitSurface(w.weapon_texture, ft_create_rect(15, 15, 0, 0), scr_surf, ft_create_rect(50, 50, WIN_W / 2, WIN_H / 2));
 
 				//SDL_FreeSurface(scr_surf);
-                SDL_UpdateWindowSurface( window );
+                SDL_UpdateWindowSurface(pl.win) == -1 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				
 
                 //Vertical collision detection
@@ -186,12 +190,17 @@ int main(int ac, char **ag)
                 se.ground = !se.falling;
                 jumps(&se, &pl, &op, &ot);
                 sectors_ops(&op, &pl, &ot, &se);
-                if (!events(&se, &pl))
-                    return(0);
+                MovePlayer(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+				if (!events(&se, &pl))
+					return(0);
+				if (pl.contin == 1)
+					continue;
                 mouse_movement(&ms, &pl);//mouse aiming
                 vectors_vel_dir(&pl, &se, &ot);
-                MovePlayer(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+
+               
             	door(&pl, &se);
+
 			}
 			
             UnloadData(&pl);

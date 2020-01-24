@@ -52,6 +52,8 @@ int			load_next(t_player *pl);
 void		load_file(char *ag, t_player *pl);
 
 /*			main.c			*/
+int			main(int ac, char **ag);
+void		MovePlayer(float dx, float dy, t_player *pl);
 void		player_init(t_player *pl, t_xy *v, float *angle, int *n);
 void		vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 

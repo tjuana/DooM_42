@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/23 19:48:40 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/24 16:59:36 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	but_total(t_player *pl)
 	if (pl->but_all > 0)
 		if (!(pl->buttons = (t_but *)malloc(sizeof(t_but) * pl->but_all)))
 		{
-			ft_putstr_fd("Buttons malloc error", 2);
+			ft_putstr_fd("Buttons malloc.\n", 2);
 			exit(EXIT_FAILURE);
 		}
 	but_init(pl, ptr);

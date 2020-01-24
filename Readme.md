@@ -35,7 +35,7 @@ seeing a front, side or back character.
 
 On-screen text display
 ----------------------
-- [ ] Check that messages can be displayed during the game, overprinted.
+- [ ] : Check that messages can be displayed during the game, overprinted.
 
 HUD - Head-Up Display
 ---------------------
@@ -103,7 +103,7 @@ and this file.
 
 
 ---------
-100/35 = 2 POINTS FOR ONE THING
+100/35 = 2.8 POINTS FOR ONE THING
 ---------
 
 

@@ -3,6 +3,10 @@
 		"iterator": "cpp",
 		"complex": "c",
 		"cmath": "c",
-		"wolf3d.h": "c"
+		"wolf3d.h": "c",
+		"array": "c",
+		"string_view": "c",
+		"string": "c",
+		"vector": "c"
 	}
 }

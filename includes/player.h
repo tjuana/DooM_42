@@ -42,6 +42,7 @@ typedef struct	s_player
 	int			y_bot[WIN_W];
 	int			beginx;
 	int			endx;
+	int			contin;
 }				t_player;
 
 #endif

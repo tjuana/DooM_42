@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/23 20:25:21 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/24 21:33:46 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,44 @@
 
 int		load_next(t_player *pl)
 {
-	t_player pl2;
+	t_player	*pl_next;
+	SDL_Surface	*srf2;
+	int			win_nb;
 
-	pl2 = *pl;
+	ft_putstr("LOAD_NEXT_LVL\n");
+	if (!(pl_next = (t_player *)malloc(sizeof(t_player))))
+	{
+		ft_putstr_fd("load_next malloc error.\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	pl->x1 += 0;
-	load_file(pl->lvl, pl);
-	//free(pl);
+	pl_next->sectors_nb = 0;
+	pl_next->win = pl->win;
+	win_nb = SDL_GetWindowID(pl->win);
+	
+	load_file(pl->lvl, pl_next);
+	srf2 = SDL_DuplicateSurface(pl->srf);
+
+	//pl_next->contin = 1;
 	SDL_DestroyRenderer(pl->rend);
-	SDL_GetWindowSurface(pl2.win);
-	pl2.rend = SDL_CreateRenderer(pl2.win,-1, SDL_RENDERER_ACCELERATED );
-	SDL_UpdateWindowSurface(pl2.win);
-	pl = &pl2;
+	SDL_free(pl->rend);
+	SDL_FreeSurface(pl->srf);
+	pl->srf = NULL;
+	pl->rend = NULL;
+	ft_putstr(pl->lvl);
+	ft_putstr("111\n");
+	pl = NULL;
+	free(pl);
+
+
+	pl = pl_next;
+
+	printf("win_nb==%d\n", win_nb);
+	//pl->srf = SDL_GetWindowSurface(pl->win);
+	pl->srf = srf2;
+	SDL_UpdateWindowSurface(pl->win);
+	pl->rend = SDL_CreateRenderer(pl->win,-1, SDL_RENDERER_ACCELERATED);
+	
 	return(0);
 }
 
@@ -44,6 +71,7 @@ int		load_next(t_player *pl)
 
 void	load_file(char *ag, t_player *pl)//this function reads a new map format
 {
+	printf("ag===|%s|\n", ag);
     FILE* fp = fopen(ag, "rt");
 	
     if(!fp) { perror(ag); exit(EXIT_FAILURE); }
@@ -56,19 +84,22 @@ void	load_file(char *ag, t_player *pl)//this function reads a new map format
     int n;
     int m;
 	int nb_vert;
-    static int p;//the first time is 0. Is a rule for all statics variables
+    int p;//the first time is 0. Is a rule for all statics variables
 	//int	p;
 	//p = 0;
     
+	p = 0;
 	nb_vert = 0;
     while(fgets(Buf, sizeof Buf, fp))
         switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
         {
             case 'v': // vertex
+				ft_putstr("load VERTXX\n");
                 for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1; )
                 { vert = realloc(vert, ++nb_vert * sizeof(*vert)); vert[nb_vert-1] = v; }
                 break;
             case 's': // sector
+				ft_putstr("load SEC\n");
                 if(p == 0)
                 {
                     pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
@@ -101,7 +132,7 @@ void	load_file(char *ag, t_player *pl)//this function reads a new map format
 				sscanf(ptr += n, "%s", pl->lvl);
 				break;
             case 'p':; // player
-			
+				ft_putstr("load PLAY\n");
                 sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
                 player_init(pl, &v, &angle, &n); // TODO: Range checking
                 pl->where.z = pl->sectors[pl->sector].floor + EYEHEIGHT;
