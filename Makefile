@@ -6,13 +6,13 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/23 19:22:37 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/24 15:21:49 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-FLAGS = -Wall -Werror -Wextra -O -O0 -O1 -O2 -O3 -Os -g 
+FLAGS = -Wall -Werror -Wextra# -O -O0 -O1 -O2 -O3 -Os -g 
 
 CC = gcc
 
