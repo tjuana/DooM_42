@@ -15,9 +15,9 @@ Visual Elements
 ---------------
 Check that these graphic elements are present (1 point per element):
 - [x] : You can look in all directions (top to bottom and right to left).
-- [x](?) : The spaces must have any shape, rooms with a different number of
+- [x] :(?) The spaces must have any shape, rooms with a different number of
 walls, with several orientations.
-- [x](?) : The floor and the ceiling have an adjustable height with unevenness
+- [x] :(?) The floor and the ceiling have an adjustable height with unevenness
 between the different spaces.
 - [ ] : The floor and ceiling must be able to be inclined.
 - [x] : Textures are present on the floor and ceiling.
@@ -25,7 +25,7 @@ between the different spaces.
 Decor elements
 --------------
 Check that these elements of the decor are present (1 point per element):
-- [x](?) : A sky must be present (not replace the texture of the ceiling by a sky...).
+- [x] :(?) A sky must be present (not replace the texture of the ceiling by a sky...).
 - [ ] : There must be partially transparent walls to see the space at the back.
 - [ ] : There should be decorative elements on the walls, above the main texture.
 - [ ] : There are sprites that always face the player as well as
