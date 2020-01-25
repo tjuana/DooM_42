@@ -36,5 +36,5 @@ sector	6 10		16 17				-1 -4						#4
 # Player: Location (x y), angle, and sector number
 player	10.5 18	1.55	1
 
-level maps/cube_door.txt
+level maps/button.txt
 #player	-100 5.5	0	0

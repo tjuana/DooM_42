@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/21 19:25:16 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/25 20:49:59 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,11 @@ static void	engine_preset(t_player *pl)
 
 int		engine_scale(t_player *pl, int sx1, int sx2)
 {
-	pl->scale_1.x = hfov / pl->t1.y;
-	pl->scale_1.y = vfov / pl->t1.y;
-	pl->scale_2.x = hfov / pl->t2.y;
-	pl->scale_2.y = vfov / pl->t2.y;
+	pl->scale_1.x = HOR_FOV / pl->t1.y;
+	pl->scale_1.y = VER_FOV / pl->t1.y;
+	pl->scale_1.x = HOR_FOV / pl->t1.y;
+	pl->scale_2.x = HOR_FOV / pl->t2.y;
+	pl->scale_2.y = VER_FOV / pl->t2.y;
 	//Do perspective transformation
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   but_detect.c                                      :+:      :+:    :+:   */
+/*   but_detect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/22 20:03:31 by drafe            ###   ########.fr       */
+/*   Created: 2020/01/25 21:13:51 by drafe             #+#    #+#             */
+/*   Updated: 2020/01/25 21:37:41 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 /*
 ** **************************************************************************
-**	static int but_bool(int dist, float degree)
+**	static int but_bool(int dist, float degree, float yaw)
 **	Function to check angle between view vec and button center
 ** **************************************************************************
 */
 
-static int		but_bool(int dist, float degree, float yaw)
+static int	but_bool(int dist, float degree, float yaw)
 {
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
-	((to_degrees(yaw) < 100) && (to_degrees(yaw) > 0)))
+	((to_deg(yaw) < 100) && (to_deg(yaw) > 0)))
 		return (dist);
 	else if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
-	((to_degrees(yaw) > -100) && (to_degrees(yaw) <= 0)))
+	((to_deg(yaw) > -100) && (to_deg(yaw) <= 0)))
 		return (dist);
 	return (-1);
 }
@@ -41,7 +41,7 @@ static int		but_bool(int dist, float degree, float yaw)
 ** **************************************************************************
 */
 
-static int		but_dist(t_player *pl, int s_nb)
+static int	but_dist(t_player *pl, int s_nb)
 {
 	t_vector3	vec;
 	t_vector3	vec2;
@@ -57,7 +57,7 @@ static int		but_dist(t_player *pl, int s_nb)
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	if (but_bool(tmp_dist, to_degrees(acos(vec2_cos(vec, vec2))), pl->yaw) == -1)
+	if (but_bool(tmp_dist, to_deg(acos(vec2_cos(vec, vec2))), pl->yaw) == -1)
 		return (3);
 	return (tmp_dist);
 }
@@ -69,7 +69,7 @@ static int		but_dist(t_player *pl, int s_nb)
 ** **************************************************************************
 */
 
-int				but_detect(t_player *pl)
+int			but_detect(t_player *pl)
 {
 	int		i;
 	int		s_nb;
@@ -86,14 +86,11 @@ int				but_detect(t_player *pl)
 	{
 		s_nb = pl->sectors[pl->sector].neighbors[i];
 		if ((pl->sectors[pl->sector].neighbors[i] >= 0) && \
-		pl->sectors[s_nb].npoints == 2)
+		(pl->sectors[s_nb].npoints == 2))
 		{
 			tmp_dist = but_dist(pl, s_nb);
-			if (tmp_dist < dist)
-			{
+			if ((tmp_dist < dist) && (but_sec_nb = s_nb))
 				dist = tmp_dist;
-				but_sec_nb = s_nb;
-			}
 		}
 	}
 	return (but_sec_nb);

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/24 21:33:46 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/25 21:45:47 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,53 @@
 
 /*
 ** **************************************************************************
-**	int load_next(t_player *pl)
+**	void end_game(t_player *pl)
+**	Function to end game
+** **************************************************************************
+*/
+
+void	end_game(t_player *pl)
+{	
+	//printf "END OF GAME!!!"
+	SDL_Delay(50);
+	//free and clean all old stuff
+	if (pl)
+		free(pl);
+	exit(EXIT_SUCCESS);
+}
+
+/*
+** **************************************************************************
+**	t_player *load_next(t_player *pl)
 **	Function to open next map
 ** **************************************************************************
 */
 
-int		load_next(t_player *pl)
+t_player		*load_next(t_player *pl)
 {
 	t_player	*pl_next;
-	SDL_Surface	*srf2;
-	int			win_nb;
 
-	ft_putstr("LOAD_NEXT_LVL\n");
+	pl_next = NULL;
+	if (pl->lvl == NULL)
+		end_game(pl);
 	if (!(pl_next = (t_player *)malloc(sizeof(t_player))))
 	{
 		ft_putstr_fd("load_next malloc error.\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	pl->x1 += 0;
 	pl_next->sectors_nb = 0;
 	pl_next->win = pl->win;
-	win_nb = SDL_GetWindowID(pl->win);
-	
 	load_file(pl->lvl, pl_next);
-	srf2 = SDL_DuplicateSurface(pl->srf);
-
-	//pl_next->contin = 1;
-	SDL_DestroyRenderer(pl->rend);
-	SDL_free(pl->rend);
-	SDL_FreeSurface(pl->srf);
+	pl->srf ? SDL_FreeSurface(pl->srf) : 0;
 	pl->srf = NULL;
-	pl->rend = NULL;
-	ft_putstr(pl->lvl);
-	ft_putstr("111\n");
+	//free(pl);
 	pl = NULL;
-	free(pl);
-
-
 	pl = pl_next;
-
-	printf("win_nb==%d\n", win_nb);
-	//pl->srf = SDL_GetWindowSurface(pl->win);
-	pl->srf = srf2;
-	SDL_UpdateWindowSurface(pl->win);
-	pl->rend = SDL_CreateRenderer(pl->win,-1, SDL_RENDERER_ACCELERATED);
-	
-	return(0);
+	pl->srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
+	!pl->srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	pl->rend = SDL_GetRenderer(pl->win);
+	!pl->rend ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	return(pl);
 }
 
 /*
@@ -135,7 +136,7 @@ void	load_file(char *ag, t_player *pl)//this function reads a new map format
 				ft_putstr("load PLAY\n");
                 sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
                 player_init(pl, &v, &angle, &n); // TODO: Range checking
-                pl->where.z = pl->sectors[pl->sector].floor + EYEHEIGHT;
+                pl->where.z = pl->sectors[pl->sector].floor + EYE_H;
 			
         }
     fclose(fp);

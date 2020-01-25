@@ -26,6 +26,7 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 	pl->farside = 20.f;
 	pl->door_all = -1;
 	pl->but_all = -1;
+	pl->lvl = NULL;
 }
 
 void UnloadData(t_player *pl)
@@ -33,6 +34,7 @@ void UnloadData(t_player *pl)
 	int i;
 
 	i = -1;
+	//better use free(pl);
 	while (++i < pl->sectors_nb)
 		free(pl->sectors[i].vertex);
 	i == 2 ? i = 3 : i;
@@ -61,57 +63,26 @@ void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* sur
         pix[y2 * WIN_W + x] = bottom;
     }
 }
-//MovePlayer(dx,dy): Moves the player by (dx,dy) in the map, and
-//also updates their anglesin/anglecos/sector properties properly.
-
-void MovePlayer(float dx, float dy, t_player *pl)
-{
-    float px = pl->where.x;
-    float py = pl->where.y;
-    //Check if this movement crosses one of this sector's edges
-    //that have a neighboring sector on the other side.
-    //Because the edge vertices of each sector are defined in
-    //clockwise order, PointSide will always return -1 for a point
-    //that is outside the sector and 0 or 1 for a point that is inside.
-    
-    const t_sector * const sect = &pl->sectors[pl->sector];
-    const t_xy* const vert = sect->vertex;
-    for(int s = 0; s < sect->npoints; ++s)
-        if(sect->neighbors[s] >= 0
-           && IntersectBox(px,py, px+dx,py+dy, vert[s+0].x, vert[s+0].y, vert[s+1].x, vert[s+1].y)
-           && PointSide(px+dx, py+dy, vert[s+0].x, vert[s+0].y, vert[s+1].x, vert[s+1].y) < 0)
-        {
-            pl->sector = sect->neighbors[s];
-            break;
-        }
-
-    pl->where.x += dx;
-    pl->where.y += dy;
-    pl->anglesin = sinf(pl->angle);
-    pl->anglecos = cosf(pl->angle);
-}
 
 int main(int ac, char **ag)
 {
-    t_subevents se;
+    t_sub_ev se;
     t_mouse ms;
     t_player pl;
     t_others ot;
-    t_sector_ops op;
+    t_sect_ops op;
 	t_wolf3d w;
-	SDL_Surface *scr_surf = NULL;
 
 	pl.sectors_nb = 0;
-	pl.contin = 0;
     w.weapon_texture = SDL_LoadBMP("Textures/pistol.bmp");
-    if (ac < 2 || ac > 2)
+	if (ac < 2 || ac > 2)
     {
         printf("map error.\n");
         return (0);
     }
     se.quit = 0;
     load_file(ag[1], &pl);
-	//LoadData(ag[1], &pl);//load map and init typedef t_player data
+
     //ft_init_anim(&w);//gun
     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
@@ -127,12 +98,8 @@ int main(int ac, char **ag)
         }
         else
             {
-            pl.srf = SDL_GetWindowSurface(pl.win);
-			
-            SDL_UpdateWindowSurface(pl.win);
+
             pl.rend = SDL_CreateRenderer(pl.win,-1, SDL_RENDERER_ACCELERATED);
-			//pl.win = pl.win;
-			//pl.rend = renderer;
             SDL_SetRenderDrawColor(pl.rend, 0xFF, 0xFF, 0xFF, 0xFF);
             SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
             se.wsad[0] = 0;
@@ -146,61 +113,57 @@ int main(int ac, char **ag)
             ms.yaw = 0;
             while (!se.quit)
             {
+				pl.srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
+				!pl.srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 
-                //texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-                //SDL_FreeSurface(surface);
-                //Clear screen
-                //SDL_RenderClear(renderer);
-                //Render texture to screen
-                //SDL_RenderCopy(renderer, texture, NULL, NULL );
-                //Update screen
-                //for( int i = 0; i < H; i += 1 )
-               // {
-                //    SDL_RenderDrawPoint( renderer, W / 2, i );
-                //}
-                //SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0x00, 0xFF );
-                //SDL_RenderPresent(renderer);
-                
+				//texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+				//SDL_FreeSurface(surface);
+				//Clear screen
+				//SDL_RenderClear(renderer);
+				//Render texture to screen
+				//SDL_RenderCopy(renderer, texture, NULL, NULL );
+				//Update screen
+				//for( int i = 0; i < H; i += 1 )
+				// {
+				//    SDL_RenderDrawPoint( renderer, W / 2, i );
+				//}
+				//SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0x00, 0xFF );
+				//SDL_RenderPresent(renderer);
+
 				//SDL_RenderCopy(renderer, NULL, NULL, NULL);
-				//ft_putstr(pl.lvl);
-				//ft_putstr("\n");
 
-				pl.srf = SDL_GetWindowSurface(pl.win);
-				pl.srf == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				engine_begin(&pl);
 
-				
-                //ft_animation_play(&w);
-                //ft_draw_animation(&w, surface);
+
+				//ft_animation_play(&w);
+				//ft_draw_animation(&w, surface);
 				//ft_create_rect(WIN_W / 2, WIN_H / 2, 100, 100)
 
 				//SDL_RenderCopy(renderer, SDL_CreateTextureFromSurface(renderer, pl.srf), NULL, NULL);
 				//SDL_RenderPresent(renderer);
-				scr_surf = pl.srf;//SDL_GetWindowSurface(pl.win);
-				SDL_RenderClear(pl.rend);
-				SDL_BlitSurface(w.weapon_texture, ft_create_rect(15, 15, 0, 0), scr_surf, ft_create_rect(50, 50, WIN_W / 2, WIN_H / 2));
 
-				//SDL_FreeSurface(scr_surf);
-                SDL_UpdateWindowSurface(pl.win) == -1 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-				
+				pl.texture = SDL_CreateTextureFromSurface(pl.rend, pl.srf);
+				pl.texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+				SDL_RenderCopy(pl.rend, pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+				SDL_RenderPresent(pl.rend);
+				SDL_DestroyTexture(pl.texture);
 
-                //Vertical collision detection
-                op.eyeheight = se.ducking ? DuckHeight : EYEHEIGHT;
-                se.ground = !se.falling;
-                jumps(&se, &pl, &op, &ot);
-                sectors_ops(&op, &pl, &ot, &se);
-                MovePlayer(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+
+
+				//Vertical collision detection
+				op.eye_h = se.ducking ? CROUCH_H : EYE_H;
+				se.ground = !se.falling;
+				events_jumps(&se, &pl, &op, &ot);
+				motion_chk(&op, &pl, &ot, &se);
+				motion_move_pl(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+
+				events_mouse_move(&ms, &pl);//mouse aiming
+				events_vel(&pl, &se, &ot);
 				if (!events(&se, &pl))
 					return(0);
-				if (pl.contin == 1)
-					continue;
-                mouse_movement(&ms, &pl);//mouse aiming
-                vectors_vel_dir(&pl, &se, &ot);
-
-               
-            	door(&pl, &se);
-
+				door(&pl, &se);
 			}
 			
             UnloadData(&pl);

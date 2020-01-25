@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/23 19:24:16 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/25 21:38:45 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** **************************************************************************
 */
 
-static int		door_bool(int dist, float degree)
+static int	door_bool(int dist, float degree)
 {
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
@@ -41,12 +41,12 @@ static int		door_bool(int dist, float degree)
 ** **************************************************************************
 */
 
-static int		door_vert_find(t_player *pl, t_vector3 *vec, int s_nb)
+static int	door_vert_find(t_player *pl, t_vector3 *vec, int s_nb)
 {
-	int			dist;
-	int			tmp_dist;
-	int			i;
-	int			j;
+	int	dist;
+	int	tmp_dist;
+	int	i;
+	int	j;
 
 	i = -1;
 	j = -1;
@@ -55,10 +55,12 @@ static int		door_vert_find(t_player *pl, t_vector3 *vec, int s_nb)
 	while (++i < pl->sectors[s_nb].npoints)
 	{
 		j = -1;
-		while(++j < pl->sectors[s_nb].npoints)
-		{//printf("LFGK i==%d j==%d  x==%f y==%f \n", i, j, pl->sectors[s_nb].vertex[i].x, pl->sectors[s_nb].vertex[j].y);
-			vec->x = (pl->sectors[s_nb].vertex[i].x + pl->sectors[s_nb].vertex[j].x) / 2;
-			vec->y = (pl->sectors[s_nb].vertex[i].y + pl->sectors[s_nb].vertex[j].y) / 2;
+		while (++j < pl->sectors[s_nb].npoints)
+		{
+			vec->x = (pl->sectors[s_nb].vertex[i].x + \
+			pl->sectors[s_nb].vertex[j].x) / 2;
+			vec->y = (pl->sectors[s_nb].vertex[i].y + \
+			pl->sectors[s_nb].vertex[j].y) / 2;
 			vec->x = vec->x - pl->where.x;
 			vec->y = vec->y - pl->where.y;
 			tmp_dist = (int)sqrt(pow(vec->x, 2) + pow(vec->y, 2));
@@ -75,7 +77,7 @@ static int		door_vert_find(t_player *pl, t_vector3 *vec, int s_nb)
 ** **************************************************************************
 */
 
-static int		door_dist(t_player *pl, int s_nb)
+static int	door_dist(t_player *pl, int s_nb)
 {
 	t_vector3	vec;
 	t_vector3	vec2;
@@ -87,7 +89,7 @@ static int		door_dist(t_player *pl, int s_nb)
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	if (door_bool(tmp_dist, to_degrees(acos(vec2_cos(vec, vec2)))) == -1)
+	if (door_bool(tmp_dist, to_deg(acos(vec2_cos(vec, vec2)))) == -1)
 		return (6);
 	return (tmp_dist);
 }
@@ -99,13 +101,13 @@ static int		door_dist(t_player *pl, int s_nb)
 ** **************************************************************************
 */
 
-int				door_detect(t_player *pl)
+int			door_detect(t_player *pl)
 {
-	int		i;
-	int		s_nb;
-	int		dist;
-	int		tmp_dist;
-	int		door_sec_nb;
+	int	i;
+	int	s_nb;
+	int	dist;
+	int	tmp_dist;
+	int	door_sec_nb;
 
 	i = -1;
 	s_nb = -1;
@@ -116,14 +118,11 @@ int				door_detect(t_player *pl)
 	{
 		s_nb = pl->sectors[pl->sector].neighbors[i];
 		if ((pl->sectors[pl->sector].neighbors[i] >= 0) && \
-		(pl->sectors[s_nb].floor == 0 && pl->sectors[s_nb].ceil == 0))
+		(!pl->sectors[s_nb].floor && !pl->sectors[s_nb].ceil))
 		{
 			tmp_dist = door_dist(pl, s_nb);
-			if (tmp_dist <= dist)
-			{
+			if ((tmp_dist <= dist) && (door_sec_nb = s_nb))
 				dist = tmp_dist;
-				door_sec_nb = s_nb;
-			}
 		}
 	}
 	return (door_sec_nb);

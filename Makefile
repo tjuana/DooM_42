@@ -6,13 +6,13 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/24 16:49:42 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/25 19:18:27 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-FLAGS = -O -O0 -O1 -O2 -O3 -Os -g -Wall -Werror -Wextra 
+FLAGS = -Wall -Werror -Wextra -O -O0 -O1 -O2 -O3 -Os -g 
 
 CC = gcc
 
@@ -52,10 +52,12 @@ SRCS_LIST = but_detect.c\
 			door.c\
 			engine_exp.c\
 			engine.c\
-			functions_main.c\
+			events_1.c\
+			events_2.c\
 			load_file.c\
 			main.c\
 			math_functions.c\
+			motion.c\
 			sdl_addons.c\
 			vectors_1.c\
 			vectors_2.c\

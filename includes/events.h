@@ -2,7 +2,7 @@
 #define EVENTS_H
 # include "wolf3d.h"
 
-typedef struct	s_subevents
+typedef struct	s_sub_ev
 {
     SDL_Event	ev;
     int			wsad[40];
@@ -10,7 +10,7 @@ typedef struct	s_subevents
     int			falling;
     int			ducking;
     int			quit;
-}				t_subevents;
+}				t_sub_ev;
 
 typedef struct	s_mouse
 {

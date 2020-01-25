@@ -2,11 +2,20 @@
 #define PLAYER_H
 # include "wolf3d.h"
 
+
+
 typedef struct	s_player
 {
 	SDL_Surface	*srf;
 	SDL_Window	*win;
 	SDL_Renderer	*rend;
+	Uint32 rmask, gmask, bmask, amask;
+	SDL_Texture	*texture;
+	
+
+	int bpp; 
+	int w;
+	int h;
 	char		*lvl;
 	t_xy		t1;
 	t_xy		t2;
