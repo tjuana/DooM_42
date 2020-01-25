@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 13:56:33 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 15:55:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 19:20:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	*ft_editor_redraw_txtr(void *data, t_list *dom)
 	int			padding_x;
 	int			padding_y;
 	int			max_elem_to_line;
+
+	int			pos;
 
 	t_gui_coord	v1;
 	t_gui_coord	v2;
@@ -74,6 +76,9 @@ void	*ft_editor_redraw_txtr(void *data, t_list *dom)
 		}
 
 		ft_gui_fill_area(w, v1, v2, border_color);
+
+		ft_gui_draw_image_area(w, (t_gui_rect){(t_gui_coord){v1.x + padding_x, v1.y + padding_y, 0}, (t_gui_coord){v2.x - padding_x, v2.y - padding_y, 0}, v2.x - v1.x - padding_x, v2.y - v1.y - padding_y}, txtr->surf);
+
 		ft_gui_fill_area(w, (t_gui_coord){v1.x + padding_x, v1.y + padding_y, 0}, \
 			(t_gui_coord){v2.x - padding_x, v2.y - padding_y, 0}, \
 			txtr->color);

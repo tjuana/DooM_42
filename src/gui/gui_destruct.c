@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 17:22:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 15:38:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_gui_desctuct(t_list *dom)
 		elem = list->content;
 		ft_gui_desctuct(elem->child);
 		ft_gui_desctuct_events(elem->events);
+		// free(elem->surf); // How to close?
 		free(elem->name);
 		free(elem->str);
 		free(elem);

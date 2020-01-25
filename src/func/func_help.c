@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/22 20:16:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:10:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ int				ft_cleanmem(t_list **lst)
 */
 void			ft_clean_sdl(t_wolf3d *w)
 {
-	SDL_CloseAudioDevice(w->sdl->audio_device[0]);
-	SDL_FreeWAV(w->sdl->wav_buff[0]);
-	SDL_CloseAudioDevice(w->sdl->audio_device[1]);
-	SDL_FreeWAV(w->sdl->wav_buff[1]);
-	SDL_CloseAudioDevice(w->sdl->audio_device[2]);
-	SDL_FreeWAV(w->sdl->wav_buff[2]);
-	free(w->sdl->wav_buff);
-	free(w->sdl->wav_spect);
-	free(w->sdl->wav_len);
-	free(w->sdl->audio_device);
+	// SDL_CloseAudioDevice(w->sdl->audio_device[0]);
+	// SDL_FreeWAV(w->sdl->wav_buff[0]);
+	// SDL_CloseAudioDevice(w->sdl->audio_device[1]);
+	// SDL_FreeWAV(w->sdl->wav_buff[1]);
+	// SDL_CloseAudioDevice(w->sdl->audio_device[2]);
+	// SDL_FreeWAV(w->sdl->wav_buff[2]);
+	// free(w->sdl->wav_buff);
+	// free(w->sdl->wav_spect);
+	// free(w->sdl->wav_len);
+	// free(w->sdl->audio_device);
 	free(w->sdl->textures);
 	free(w->sdl->pixels);
 	//if (w->map.s_count > 0)
@@ -90,6 +90,23 @@ void			ft_clean_sdl(t_wolf3d *w)
 
 	ft_lstdel(&w->vertex, ft_bzero_char);
 	// ft_lstdel(&w->sector, ft_bzero_char);
+	SDL_DestroyTexture(w->sdl->text);
+	SDL_DestroyRenderer(w->sdl->renderer);
+	SDL_DestroyWindow(w->sdl->win);
+	SDL_Delay(777);
+	SDL_Quit();
+}
+
+void			ft_new_clean_sdl(t_wolf3d *w)
+{
+	free(w->sdl->wav_buff);
+	free(w->sdl->wav_spect);
+	free(w->sdl->wav_len);
+	free(w->sdl->audio_device);
+	free(w->sdl->textures);
+	free(w->sdl->pixels);
+
+	ft_lstdel(&w->vertex, ft_bzero_char);
 	SDL_DestroyTexture(w->sdl->text);
 	SDL_DestroyRenderer(w->sdl->renderer);
 	SDL_DestroyWindow(w->sdl->win);

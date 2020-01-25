@@ -6,12 +6,52 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 13:30:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 19:22:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+
+void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf)
+{
+	int			x;
+	int			y;
+	int			pos;
+	int			*ptr_color;
+	t_gui_elem	*elem;
+
+	// elem = list->content;
+
+	pos = 0;
+	y = rect.v1.y >= 0 ? rect.v1.y : 0;
+	while (y <= rect.v2.y && y < w->gui.win_h)
+	{
+		x = rect.v1.x >= 0 ? rect.v1.x : 0;
+		while (x <= rect.v2.x && x < w->gui.win_w)
+		{
+			pos = ((y - rect.v1.y) * surf->h / (rect.v2.y - rect.v1.y) % surf->h) * surf->h + \
+				((x - rect.v1.x) * surf->w / (rect.v2.x - rect.v1.x) % surf->w);
+
+			pos %= (surf->h * surf->w);
+			ptr_color = (int*)(surf->pixels) + pos;
+			if (*ptr_color != 0x00ffffff && *ptr_color != 0x00000000)
+			{
+				w->sdl->pixels[x + (y * w->gui.win_w)] = (int)*ptr_color;
+			}
+			// else
+				// printf();
+			// else
+			// {
+			// 	w->sdl->pixels[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
+			// 		w->sdl->pixels[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
+			// }
+			x++;
+			pos++;
+		}
+		y++;
+	}
+}
 // Image (?)
 /*
 **	PNG -> put pixel
@@ -19,23 +59,42 @@
 */
 void	ft_gui_draw_image(t_wolf3d *w, t_list *list)
 {
+	int			x;
+	int			y;
+	int			pos;
+	int			*ptr_color;
 	t_gui_elem	*elem;
-	SDL_Texture	*tmp_texture;
-	SDL_Rect	*tmp_rect;
 
 	elem = list->content;
-	tmp_texture = NULL;
 
-	tmp_rect = ft_gui_create_sdl_rect(elem->w, elem->h, \
-		elem->v1.x, elem->v1.y);
-	tmp_texture = SDL_CreateTextureFromSurface(w->sdl->renderer, elem->surf);
-	tmp_texture == NULL ? ft_error("ERROR") : 0;
-	SDL_SetTextureBlendMode(tmp_texture, SDL_BLENDMODE_BLEND) != 0 ? \
-		ft_error("ERROR") : 0;
-	SDL_RenderCopy(w->sdl->renderer, tmp_texture, NULL, tmp_rect) != 0 ? \
-		ft_error("ERROR") : 0;
-	SDL_DestroyTexture(tmp_texture);
-	// printf("x1:%d y1:%d   x2:%d y2:%d\n", elem->w, elem->h, elem->v1.x, elem->v1.y);
+	pos = 0;
+	y = elem->v1.y >= 0 ? elem->v1.y : 0;
+	while (y <= elem->v2.y && y < w->gui.win_h)
+	{
+		x = elem->v1.x >= 0 ? elem->v1.x : 0;
+		while (x <= elem->v2.x && x < w->gui.win_w)
+		{
+			pos = ((y - elem->v1.y) * elem->surf->h / (elem->v2.y - elem->v1.y) % elem->surf->h) * elem->surf->h + \
+				((x - elem->v1.x) * elem->surf->w / (elem->v2.x - elem->v1.x) % elem->surf->w);
+
+			pos %= (elem->surf->h * elem->surf->w);
+			ptr_color = (int*)(elem->surf->pixels) + pos;
+			if (*ptr_color != 0x00ffffff && *ptr_color != 0x00000000)
+			{
+				w->sdl->pixels[x + (y * w->gui.win_w)] = (int)*ptr_color;
+			}
+			// else
+				// printf();
+			// else
+			// {
+			// 	w->sdl->pixels[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
+			// 		w->sdl->pixels[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
+			// }
+			x++;
+			pos++;
+		}
+		y++;
+	}
 }
 
 /*
@@ -55,16 +114,16 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 		d = 0.0;
 
 	y = v1.y >= 0 ? v1.y : 0;
-	while (y <= v2.y && y < WIN_HEIGHT)
+	while (y <= v2.y && y < w->gui.win_h)
 	{
 		x = v1.x >= 0 ? v1.x : 0;
-		while (x <= v2.x && x < WIN_WIDTH)
+		while (x <= v2.x && x < w->gui.win_w)
 		{
 			if (d == 0.0)
-				w->sdl->pixels[x + (y * WIN_WIDTH)] = color;
+				w->sdl->pixels[x + (y * w->gui.win_w)] = color;
 			else
-				w->sdl->pixels[x + (y * WIN_WIDTH)] = ft_fdf_get_color(color, \
-					w->sdl->pixels[x + (y * WIN_WIDTH)], d);
+				w->sdl->pixels[x + (y * w->gui.win_w)] = ft_fdf_get_color(color, \
+					w->sdl->pixels[x + (y * w->gui.win_w)], d);
 			x++;
 		}
 		y++;
@@ -258,11 +317,11 @@ int		ft_gui_redraw(t_wolf3d *w)
 {
 	if (w->gui.redraw == GUI_REDRAW_FRAME)
 		return (ft_gui_redraw_frame(w));
-	ft_bzero(w->sdl->pixels, 4 * WIN_WIDTH * WIN_HEIGHT);
+	ft_bzero(w->sdl->pixels, 4 * w->gui.win_w * w->gui.win_h);
 	// SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
 	ft_gui_redraw_elem(w, w->gui.dom);
-	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, WIN_WIDTH * 4); //no
+	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, w->gui.win_w * 4); //no
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL); //no
 	ft_gui_redraw_elem_font(w, w->gui.dom);
 	SDL_RenderPresent(w->sdl->renderer);

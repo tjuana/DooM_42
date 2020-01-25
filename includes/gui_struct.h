@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 13:24:00 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:00:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,8 @@ typedef struct		s_gui_elem
 **	Special structure with general gui configuration.
 **
 **	Arguments:
+**	int win_w				| window width
+**	int win_h				| window height
 **	t_list *fonts			| pointer to font list
 **	t_list *dom				| pointer to element list
 **	unsigned char redraw	| redraw status
@@ -218,6 +220,8 @@ typedef struct		s_gui_elem
 */
 typedef struct		s_gui
 {
+	int				win_w;
+	int				win_h;
 	t_list			*fonts;
 	t_list			*dom;
 	unsigned char	redraw;

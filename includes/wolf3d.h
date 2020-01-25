@@ -1,7 +1,9 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
-# define WIN_HEIGHT 1080
-# define WIN_WIDTH 1920
+// # define WIN_HEIGHT 1080
+// # define WIN_WIDTH 1920
+# define WIN_HEIGHT 720
+# define WIN_WIDTH 1280
 # define TEXTURES_NUMBER 23
 # define THREADS 10
 # define TEX_W 64
@@ -62,6 +64,7 @@
 # include "file.h"
 # include "gui_struct.h"
 # include "func_struct.h"
+# include "new/wolf3d.h"
 
 typedef struct			s_font
 {
@@ -253,6 +256,7 @@ typedef struct			s_txtr
 {
 	int					id;		// texture number
 	int					color;	// basic color
+	SDL_Surface			*surf;	// pointer to surface
 }						t_txtr;
 
 typedef struct			s_wolf3d
@@ -329,6 +333,8 @@ typedef struct			s_wolf3d
 
 	// void				(*redraw)(void *data);
 	// void				(*font_redraw)(void *data);
+
+	void				*new_data;
 }						t_wolf3d;
 
 typedef struct			s_thread_help
@@ -764,5 +770,13 @@ void	ft_map_set_new_sector(t_wolf3d *w, t_sector *s);
 void	ft_editor_sectors_reset_neighbors(t_wolf3d *w);
 
 int		ft_sectors_set_all_neighbors(t_wolf3d *w);
+
+double		ft_math_vxs(double x0, double y0, double x1, double y1);
+
+void			ft_new_clean_sdl(t_wolf3d *w);
+
+void	ft_game_redraw(void *d, t_list *dom);
+
+void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf);
 
 #endif

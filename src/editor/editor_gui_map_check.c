@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 15:08:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:34:44 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,12 +184,12 @@ int		ft_new_editor_map_check_area(t_wolf3d *w)
 	vec1 = ft_vec3_create(s->vertex[s->vertex_count - 1], &pos);
 	vec2 = ft_vec3_create(s->vertex[s->vertex_count - 2], \
 		s->vertex[s->vertex_count - 1]);
-	if (ft_vxs_vector(vec1, vec2) < 0.0)
+	if (ft_vxs_vector(vec1, vec2) > 0.0)
 		return (0);
 
 	// Проверяем вторую полуплоскость
 	vec2 = ft_vec3_create(s->vertex[0], s->vertex[s->vertex_count - 1]);
-	if (ft_vxs_vector(vec1, vec2) < 0.0)
+	if (ft_vxs_vector(vec1, vec2) > 0.0)
 		return (0);
 
 	// ?!

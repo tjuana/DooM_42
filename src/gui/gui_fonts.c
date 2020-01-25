@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/22 16:17:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:03:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c)
 	SDL_Texture	*tmp_texture;
 	SDL_Rect	*tmp_rect;
 
-	if ((c.x < 0) || (c.y < 0) || (str == NULL) || (c.x > WIN_WIDTH) || (c.y > WIN_HEIGHT))
+	if ((c.x < 0) || (c.y < 0) || (str == NULL) || (c.x > w->gui.win_w) || (c.y > w->gui.win_h))
 		return ;
 	tmp_texture = NULL;
 	if (TTF_SizeText(w->sdl->font.ptr, str, &w->sdl->font.w, &w->sdl->font.h) == -1)

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 21:01:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:52:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/25 18:20:33 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
 
 	w->gui.search_elem = GUI_EVENT_ON;
 	elem = dom->content;
+	// if (elem)
+		// return ;
 	if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
 		e.key.keysym.scancode <= SDL_SCANCODE_0)
 	{
