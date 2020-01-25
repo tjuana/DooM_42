@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/22 19:51:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/25 22:23:27 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void		ft_save_the_file(t_wolf3d *w)
 	ft_editor_take_vertex(w);
 	ft_count_origin_vertexes(w);
 	ft_print_sectors_to_file(w, w->sector);
+	ft_putstr_fd("\n", w->file.fd);
+	ft_player_string(w);
 	ft_lstdel(&w->vertex, ft_bzero);
 	ft_2d_int_arrclean(&w->file.map);
 }
