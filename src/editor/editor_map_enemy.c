@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_map_enemy.c                                    :+:      :+:    :+:   */
+/*   editor_map_enemy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 18:54:05 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 19:34:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 14:49:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+/*
+** **************************************************************************
+**	void ft_set_enemy(t_wolf3d *w, t_vector3 pos, int type)
+**
+**	Function that set new enemy.
+** **************************************************************************
+*/
 
 void	ft_set_enemy(t_wolf3d *w, t_vector3 pos, int type)
 {
@@ -32,6 +40,14 @@ void	ft_set_enemy(t_wolf3d *w, t_vector3 pos, int type)
 	w->enemy_count++;
 	w->enemy_status = 0;
 }
+
+/*
+** **************************************************************************
+**	void ft_delete_enemy(t_wolf3d *w)
+**
+**	Function that delete last enemy.
+** **************************************************************************
+*/
 
 void	ft_delete_enemy(t_wolf3d *w)
 {

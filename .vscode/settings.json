@@ -9,6 +9,14 @@
 		"chrono": "c",
 		"unordered_map": "c",
 		"hashtable": "c",
-		"functional": "c"
+		"functional": "c",
+		"wolf3d.h": "c",
+		"array": "cpp",
+		"string_view": "cpp",
+		"iterator": "cpp",
+		"string": "cpp",
+		"vector": "cpp",
+		"gui_func.h": "c",
+		"func_struct.h": "c"
 	},
 }

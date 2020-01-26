@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor_gui_map_check.c                             :+:      :+:    :+:   */
+/*   editor_map_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 18:34:44 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:17:07 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+int		ft_editor_sector_compare_vertexes(t_vector3 v1, t_vector3 v2)
+{
+	if ((int)v1.x == (int)v2.x && \
+		(int)v1.y == (int)v2.y && \
+		(int)v1.z == (int)v2.z)
+		return (1);
+	return (0);
+}
+
+/*
+** **************************************************************************
+**	int ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, \
+**		double d)
+**
+**
+** **************************************************************************
+*/
+
 int		ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, double d)
 {
 	int				i;
-	int				vtx1_n; // vertex number
+	int				vtx1_n;
 	int				vtx2_n;
 	int				count;
 
@@ -25,9 +43,6 @@ int		ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, double d)
 	{
 		vtx1_n = i;
 		vtx2_n = (i + 1) % s->vertex_count;
-
-		// Если точка лежит на отрезке сектора в некотором диаметре,
-		// то это наша стена -- возвращаем номер вершины
 		if (ft_check_point_in_line_segment_diameter(\
 			v, *s->vertex[vtx1_n], *s->vertex[vtx2_n], d))
 			return (i);
@@ -37,9 +52,14 @@ int		ft_check_point_in_sector_line_diameter(t_sector *s, t_vector3 v, double d)
 }
 
 /*
-	Проверка, не лежит ли точка не линии сектора
-	(в области некоторого диаметра)
+** **************************************************************************
+**	int ft_search_point_in_sector_line_diameter(void *a, t_vector3 v, \
+**	double d)
+**
+**
+** **************************************************************************
 */
+
 int		ft_search_point_in_sector_line_diameter(void *a, t_vector3 v, double d)
 {
 	t_wolf3d	*w;
@@ -66,13 +86,14 @@ int		ft_search_point_in_sector_line_diameter(void *a, t_vector3 v, double d)
 	return (0);
 }
 
-
-
 /*
-**	Проверяем, находится ли мышка игрока в секторе
-**	
-**	
+** **************************************************************************
+**	int ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
+**
+**
+** **************************************************************************
 */
+
 int		ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 {
 	int				i;
@@ -111,10 +132,13 @@ int		ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 }
 
 /*
-**	Проверяем, находится ли точка в каком-то секторе.
-**	Если находится, то возвращается id сектора.
-**	
+** **************************************************************************
+**	int ft_search_point_in_sector(void *a, t_vector3 v)
+**
+**
+** **************************************************************************
 */
+
 int		ft_search_point_in_sector(void *a, t_vector3 v)
 {
 	t_wolf3d	*w;
@@ -140,22 +164,14 @@ int		ft_search_point_in_sector(void *a, t_vector3 v)
 	return (0);
 }
 
-
-
-
-
-
-
-
 /*
-**	new check
-**	
-**	
-**	
-**	
-**	
-**	
+** **************************************************************************
+**	int ft_new_editor_map_check_area(t_wolf3d *w)
+**
+**
+** **************************************************************************
 */
+
 int		ft_new_editor_map_check_area(t_wolf3d *w)
 {
 	t_vector3	vec1;
@@ -166,7 +182,7 @@ int		ft_new_editor_map_check_area(t_wolf3d *w)
 	if (w->sector == NULL)
 		return (1);
 
-	pos = ft_gui_map_coord_to_vertex(w, (t_gui_rect){0, 0, 0, 0}, w->gui.mouse_pos);
+	pos = ft_gui_map_coord_to_vertex(w, w->gui.mouse_pos);
 
 	// Ф-ия определяет, не находится ли точка в секторе
 	if (ft_search_point_in_sector(w, pos))

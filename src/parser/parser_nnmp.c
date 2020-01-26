@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_nnmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 14:13:36 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/19 20:26:33 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 15:02:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void		ft_parser_nnmp(int fd, t_wolf3d *w)
 			continue ;
 		else
 			ft_error("MAP INCORRECT");
+		ft_strdel(&line);
 		free(line);
 		i++;
 	}

@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor_map_draw_objects.c                          :+:      :+:    :+:   */
+/*   editor_draw_map_objects.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 16:46:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/20 19:35:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 14:51:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+/*
+** **************************************************************************
+**	void ft_gui_draw_player(t_wolf3d *w)
+**
+**	Function that draw player for editor map.
+** **************************************************************************
+*/
 
 void	ft_gui_draw_player(t_wolf3d *w)
 {
@@ -18,10 +26,18 @@ void	ft_gui_draw_player(t_wolf3d *w)
 
 	if (w->player_status == 1)
 	{
-		c = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, w->pl.pos);
+		c = ft_gui_map_vertex_to_coord(w, w->pl.pos);
 		ft_gui_draw_point(w, c, GUI_CL_PLAYER);
 	}
 }
+
+/*
+** **************************************************************************
+**	void ft_gui_draw_sprites(t_wolf3d *w)
+**
+**	Function that draw sprites for editor map.
+** **************************************************************************
+*/
 
 void	ft_gui_draw_sprites(t_wolf3d *w)
 {
@@ -33,11 +49,19 @@ void	ft_gui_draw_sprites(t_wolf3d *w)
 	while (list != NULL)
 	{
 		sprite = list->content;
-		c = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, sprite->pos);
+		c = ft_gui_map_vertex_to_coord(w, sprite->pos);
 		ft_gui_draw_point(w, c, GUI_CL_SPRITE);
 		list = list->next;
 	}
 }
+
+/*
+** **************************************************************************
+**	void ft_gui_draw_enemies(t_wolf3d *w)
+**
+**	Function that draw enemies for editor map.
+** **************************************************************************
+*/
 
 void	ft_gui_draw_enemies(t_wolf3d *w)
 {
@@ -49,7 +73,7 @@ void	ft_gui_draw_enemies(t_wolf3d *w)
 	while (list != NULL)
 	{
 		enemy = list->content;
-		c = ft_gui_map_vertex_to_coord(w, (t_gui_rect){0, 0, 0, 0}, enemy->pos);
+		c = ft_gui_map_vertex_to_coord(w, enemy->pos);
 		ft_gui_draw_point(w, c, GUI_CL_ENEMY);
 		list = list->next;
 	}

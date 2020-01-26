@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor_main.c                                      :+:      :+:    :+:   */
+/*   editor_event_win_map_move.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 14:25:38 by dorange-         ###   ########.fr       */
+/*   Created: 2020/01/26 15:38:48 by dorange-          #+#    #+#             */
+/*   Updated: 2020/01/26 15:40:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,30 @@
 
 /*
 ** **************************************************************************
-**	void ft_editor_main(int c, char **v)
+**	void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
+**				t_list *dom, int type)
 **
-**	Function for map editor programm.
+**	Function that transform map status for mousemotuin event.
 ** **************************************************************************
 */
 
-void			ft_editor_main(int c, char **v)
+void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
-	t_wolf3d	w;
+	t_wolf3d	*w;
+	t_gui_coord	coord;
 
-	w.sdl = sdl_init(w.sdl);
-	ft_init_wolf(&w);
-	ft_gui_init(&w);
-	ft_editor_init(&w);
-	ft_editor_gui_init(&w);
-	if (c >= 2)
+	w = (t_wolf3d*)data;
+	if (w->gui.mode == GUI_MD_ME_SET_DOOR)
+		ft_gui_mousemotion_win_map_door(w, e, dom);
+	else
 	{
-		if ((w.fd = open(v[1], O_RDONLY)) < 0)
-			ft_error("Error: bad file");
-		ft_parser_nnmp(w.fd, &w);
+		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
+		if (coord.w && ft_new_editor_map_check_area(w))
+		{
+			w->gui.mouse_pos = coord;
+			w->gui_map.check_vertex = 1;
+		}
 	}
-	ft_gui_redraw(&w);
-	while (w.sdl->running)
-		ft_gui_events(&w);
-	ft_editor_sector_special_debug(w.sector);
-	ft_editor_desctuct(&w);
-}
-
-int				main(int c, char **v)
-{
-	ft_editor_main(c, v);
-	return (0);
+	return ;
 }

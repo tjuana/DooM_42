@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 21:30:32 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 16:37:48 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ void			ft_fdf_draw_line_param(t_wolf3d *data, t_fdf_wu **wu);
 void			ft_fdf_wu(t_vector3 *dot_1, t_vector3 *dot_2, t_wolf3d *data);
 void			ft_fdf_wu_color(t_vector3 *dot_1, t_vector3 *dot_2, \
 					t_wolf3d *data, int color);
+void			ft_fdf_wu_rect_color(t_wolf3d *data, t_gui_rect coord, \
+					t_gui_rect area, int color);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/25 18:01:31 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/26 18:22:39 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,10 +97,7 @@ PARSER_OBJS = $(addprefix $(PARSER_OBJS_DIRECTORY), $(PARSER_OBJS_LIST))
 GENERAL_SRCS_DIRECTORY = $(SRCS_PATH)
 GENERAL_SRCS_LIST = \
 sdl.c \
-debug.c \
-sector.c \
-sound.c	\
-textures.c
+sound.c
 
 GENERAL_OBJS_DIRECTORY = $(OBJS_PATH)
 GENERAL_OBJS_LIST = $(patsubst %.c, %.o, $(GENERAL_SRCS_LIST))
@@ -125,28 +122,41 @@ FUNC_OBJS = $(addprefix $(FUNC_OBJS_DIRECTORY), $(FUNC_OBJS_LIST))
 # EDITOR WITH MAIN FILE
 EDITOR_SRCS_DIRECTORY = $(SRCS_PATH)editor/
 EDITOR_SRCS_LIST = \
-editor_main.c \
-editor_init.c \
-editor_neighbors.c \
 editor_debug.c \
+editor_desctuct.c \
+editor_draw_map.c \
+editor_draw_map_door.c \
+editor_draw_map_grid.c \
+editor_draw_map_objects.c \
+editor_draw_map_sector.c \
+editor_draw_map_vertex.c \
+editor_event_win_map_click.c \
+editor_event_win_map_door.c \
+editor_event_win_map_move.c \
+editor_event_win_map_set.c \
+editor_event_win_map_zoom.c \
+editor_event_win_menu.c \
+editor_event_win_menu2.c \
+editor_event_win_setdoor.c \
+editor_event_win_setenemy.c \
+editor_event_win_setplayer.c \
+editor_event_win_setsector.c \
+editor_event_win_setsprite.c \
+editor_gui_init.c \
+editor_gui_txtr.c \
+editor_init.c \
+editor_main.c \
+editor_map_check.c \
+editor_map_door.c \
+editor_map_enemy.c \
+editor_map_func.c \
+editor_map_sector.c \
+editor_map_sector_neighbors.c \
+editor_map_sector_vertex.c \
+editor_map_sprite.c \
 editor_save_file.c \
 editor_save_file2.c \
-editor_save_file3.c\
-editor_gui_init.c \
-editor_map_draw_objects.c \
-editor_gui_draw_map.c \
-editor_gui_elem_event_list.c \
-editor_gui_events_win_map.c \
-editor_gui_map_check.c \
-editor_gui_map_enemy.c \
-editor_map_func.c \
-editor_gui_map_sprite.c \
-\
-editor_redraw.c \
-editor_sector.c \
-editor_gui_txtr.c \
-editor_desctuct.c \
-editor_door.c
+editor_save_file3.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))

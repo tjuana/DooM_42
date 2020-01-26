@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 18:22:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 15:09:27 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 **	
 **	Function that get events and call necessary functions.
 */
+
+/*
+** **************************************************************************
+**	void ft_gui_events(t_wolf3d *w)
+**
+**	Function that handle user events.
+** **************************************************************************
+*/
+
 void	ft_gui_events(t_wolf3d *w)
 {
 	SDL_Event e;

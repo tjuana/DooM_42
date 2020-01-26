@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sound.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:42:06 by tjuana            #+#    #+#             */
-/*   Updated: 2019/11/14 12:36:06 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 18:24:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// ??!?!??!?!?
 #include "wolf3d.h"
 
 void	ft_init_sound(t_wolf3d *w)
@@ -61,11 +62,12 @@ void	ft_play_shot(t_wolf3d *w)
 
 void	ft_play_music(t_wolf3d *w)
 {
-	if (w->arr[5] == 1)
-	{
-		SDL_QueueAudio(w->sdl->audio_device[2], w->sdl->wav_buff[2],
-		w->sdl->wav_len[2]);
-		SDL_PauseAudioDevice(w->sdl->audio_device[2], 0);
-		w->arr[5] = 0;
-	}
+	// ?
+	// if (w->arr[5] == 1)
+	// {
+		// SDL_QueueAudio(w->sdl->audio_device[2], w->sdl->wav_buff[2],
+		// w->sdl->wav_len[2]);
+		// SDL_PauseAudioDevice(w->sdl->audio_device[2], 0);
+		// w->arr[5] = 0;
+	// }
 }

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 13:24:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 16:45:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ void				ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, \
 **	gui/gui_redraw.c
 ** **************************************************************************
 */
+void				ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, \
+						SDL_Surface *surf);
 void				ft_gui_draw_image(t_wolf3d *w, t_list *list);
 void				ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, \
 						t_gui_coord v2, int color);
@@ -151,5 +153,12 @@ void				ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, \
 						int color);
 void				ft_gui_redraw_elem_font(t_wolf3d *w, t_list *dom);
 int					ft_gui_redraw(t_wolf3d *w);
+
+/*
+** **************************************************************************
+**	gui/gui_init.c
+** **************************************************************************
+*/
+void				ft_gui_init(t_wolf3d *w);
 
 #endif

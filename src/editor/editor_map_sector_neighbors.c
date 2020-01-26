@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor_neighbors.c                                 :+:      :+:    :+:   */
+/*   editor_map_sector_neighbors.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 11:58:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/24 16:34:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 15:38:25 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,16 @@ int		ft_editor_sector_search_neighbors(t_wolf3d *w, t_sector *sector)
 	int		vtx2_n;
 	int		i;
 	int		v;
-	// int		*neighbors;
-	// int		id;
-
-	// id = sector->id;
-	// sector->neighbors = ft_my_malloc(sizeof(void*) * sector->vertex_count);
-	// ft_bzero(sector->neighbors, sizeof(void*) * sector->vertex_count);
-
-	// if (sector->neighbors == NULL)
-		// sector->neighbors = neighbors;
 
 	i = 0;
 	while (i < sector->vertex_count)
 	{
 		vtx1_n = i;
 		vtx2_n = (i + 1) % sector->vertex_count;
-		// printf("%d\n", neighbors[i]);
 		sector->neighbors[i] = ft_editor_sector_search_neighbors_item(\
 			w, sector, sector->vertex[vtx1_n], sector->vertex[vtx2_n]);
-		// printf("%d\n", neighbors[i]);
 		i++;
 	}
-	// if (sector->neighbors)
-		// free(sector->neighbors);
-	// sector->neighbors = neighbors;
 	return (1);
 }
 
@@ -137,11 +123,30 @@ int		ft_sectors_set_all_neighbors(t_wolf3d *w)
 	{
 		sector = list->content;
 		if (sector->status == 1 || sector->status == SECTOR_STATUS_SET)
-			// free(sector->neighbors);
-			// sector->neighbors = ft_my_malloc(sizeof(void*) * sector->vertex_count);
-			// ft_bzero(sector->neighbors, sizeof(void*) * sector->vertex_count);
 			ft_editor_sector_search_neighbors(w, sector);
 		list = list->next;
+	}
+	return (0);
+}
+
+/*
+** **************************************************************************
+**	int ft_check_neighbors_sector_vertex(t_sector *s, t_vector3 v)
+**
+**	Function that check neighbors sector vertex.
+** **************************************************************************
+*/
+
+int		ft_check_neighbors_sector_vertex(t_sector *s, t_vector3 v)
+{
+	int	i;
+	
+	i = 0;
+	while (i < s->vertex_count)
+	{
+		if (ft_compare_vertexes(*s->vertex[i], v))
+			return (1);
+		i++;
 	}
 	return (0);
 }
