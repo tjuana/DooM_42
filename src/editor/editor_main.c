@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:05:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 14:25:38 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:39:56 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ void			ft_editor_main(int c, char **v)
 	ft_gui_init(&w);
 	ft_editor_init(&w);
 	ft_editor_gui_init(&w);
-	if (c >= 2)
-	{
-		if ((w.fd = open(v[1], O_RDONLY)) < 0)
-			ft_error("Error: bad file");
-		ft_parser_nnmp(w.fd, &w);
-	}
 	ft_gui_redraw(&w);
 	while (w.sdl->running)
 		ft_gui_events(&w);

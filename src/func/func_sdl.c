@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 17:08:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:11:56 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,21 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	if (TTF_Init() != 0)
 		ft_error("ft_sdl_error(w)\n");
 	return (sdl);
+}
+
+void		ft_init_wolf(t_wolf3d *w)
+{
+	w->file.name = "fuck_you.txt";
+	// w->sdl->textures = ft_my_malloc(sizeof(SDL_Surface *) * TEXTURES_NUMBER);
+	w->t.flag = 1;
+	ft_we_need_more_init(w);
+}
+
+void		ft_we_need_more_init(t_wolf3d *w)
+{
+	w->t.time = 0;
+	w->t.old_time = 0;
+	w->t.sound_old_time = 0;
+	w->t.play_time = 1000;
+	w->t.sound_sum_time = 0;
 }

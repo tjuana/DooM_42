@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 12:07:54 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 14:27:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:55:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void		ft_editor_init(t_wolf3d *w)
 	w->txtr_count = 0;
 	ft_editor_init_txtr_list(w);
 	w->gui_map.r1 = (t_vector3){0, 0, 0, 0};
-	w->gui_map.r2 = (t_vector3){54, 33, 0, 0};
+	w->gui_map.r2 = (t_vector3){VER_WIDTH, VER_HEIGHT, 0, 0};
 }

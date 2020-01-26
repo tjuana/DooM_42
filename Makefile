@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/26 18:22:39 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/26 19:11:19 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,29 +79,10 @@ MATH_OBJS_DIRECTORY = $(OBJS_PATH)
 MATH_OBJS_LIST = $(patsubst %.c, %.o, $(MATH_LIST))
 MATH_OBJS = $(addprefix $(MATH_OBJS_DIRECTORY), $(MATH_OBJS_LIST))
 
-# PARSER
-PARSER_DIRECTORY = $(SRCS_PATH)parser/
-PARSER_LIST = \
-parser_func.c \
-parser_nnmp_sector.c \
-parser_nnmp.c \
-parser_vertex.c
-
-PARSER_OBJS_DIRECTORY = $(OBJS_PATH)
-PARSER_OBJS_LIST = $(patsubst %.c, %.o, $(PARSER_LIST))
-PARSER_OBJS = $(addprefix $(PARSER_OBJS_DIRECTORY), $(PARSER_OBJS_LIST))
 
 
 
-# OBJECTS
-GENERAL_SRCS_DIRECTORY = $(SRCS_PATH)
-GENERAL_SRCS_LIST = \
-sdl.c \
-sound.c
 
-GENERAL_OBJS_DIRECTORY = $(OBJS_PATH)
-GENERAL_OBJS_LIST = $(patsubst %.c, %.o, $(GENERAL_SRCS_LIST))
-GENERAL_OBJS = $(addprefix $(GENERAL_OBJS_DIRECTORY), $(GENERAL_OBJS_LIST))
 
 # FUNC FUNCTIONS
 FUNC_SRCS_DIRECTORY = $(SRCS_PATH)func/
@@ -243,19 +224,15 @@ all: $(NAME)
 # all objs file
 OBJS_COMPILE = \
 $(GAME_OBJS) \
-$(GENERAL_OBJS) \
 $(ALGEBRA_OBJS) \
 $(MATH_OBJS) \
-$(PARSER_OBJS) \
 $(EDITOR_OBJS) \
 $(GUI_OBJS) \
 $(FUNC_OBJS) \
 
 # file for game
 GAME_OBJS_COMPILE = \
-$(GENERAL_OBJS) \
 $(MATH_OBJS) \
-$(PARSER_OBJS) \
 $(ALGEBRA_OBJS) \
 $(FUNC_OBJS) \
 $(GUI_OBJS) \
@@ -266,8 +243,6 @@ EDITOR_OBJS_COMPILE = \
 $(EDITOR_OBJS) \
 $(GUI_OBJS) \
 $(MATH_OBJS) \
-$(GENERAL_OBJS) \
-$(PARSER_OBJS) \
 $(FUNC_OBJS) \
 $(ALGEBRA_OBJS)
 
@@ -279,17 +254,6 @@ $(NAME): $(LIBFT) $(OBJS_COMPILE)
 	@echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
 
 
-
-# Object files
-$(GENERAL_OBJS_DIRECTORY)%.o : $(GENERAL_SRCS_DIRECTORY)%.c $(HEADERS)
-	@mkdir -p $(GENERAL_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(C_TX_RED).$(RESET)\c"
-
-$(PARSER_OBJS_DIRECTORY)%.o : $(PARSER_DIRECTORY)%.c $(HEADERS)
-	@mkdir -p $(PARSER_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(C_TX_GREY).$(RESET)\c"
 
 $(EDITOR_OBJS_DIRECTORY)%.o : $(EDITOR_SRCS_DIRECTORY)%.c $(HEADERS)
 	@mkdir -p $(EDITOR_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null

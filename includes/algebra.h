@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:22:19 by tjuana            #+#    #+#             */
-/*   Updated: 2019/12/31 19:02:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:14:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define ALGEBRA_H
 
 # include "wolf3d.h"
-# define DEG2RAD(angleDegrees) ((angleDegrees) * M_PI / 180.0)
-# define RAD2DEG(angleRadians) ((angleRadians) * 180.0 / M_PI)
-// # define FOV (double)60.0
-// # define WIDTH (double)640.0
-// # define HIGHT (double)480.0
-// # define NEAR (double)1.0
-// # define FAR (double)100.0
+
+/*
+** **************************************************************************
+**	Constant
+** **************************************************************************
+*/
+# define DEG2RAD(angleDegrees)		((angleDegrees) * M_PI / 180.0)
+# define RAD2DEG(angleRadians)		((angleRadians) * 180.0 / M_PI)
 
 # define FOV (double)90.0
 # define WIDTH (double)WIN_WIDTH
@@ -28,7 +29,6 @@
 # define NEAR (double)1.0
 # define FAR (double)100.0
 
-// t_vector3 == vertex (?)
 typedef struct  s_vector3
 {
 	double		x;
@@ -55,7 +55,6 @@ t_vector3		ft_vec3_opposite(t_vector3 this);
 t_vector3		ft_vec3_scalar_product(t_vector3 this, double k);
 t_vector3		ft_vec3_normalize(t_vector3 vtc);
 
-// matrix transform
 t_matrix_4x4	ft_identify(t_matrix_4x4 neo);
 t_matrix_4x4	ft_scale(t_matrix_4x4 neo, double scale);
 t_matrix_4x4	ft_translitation(t_matrix_4x4 neo, t_vector3 *vtc);
@@ -67,6 +66,7 @@ t_matrix_4x4	ft_projection(t_matrix_4x4 neo, double ratio, \
 t_matrix_4x4	ft_mult_matrix(t_matrix_4x4 this, t_matrix_4x4 rhs);
 t_matrix_4x4	ft_oppositive_matrix(t_matrix_4x4 neo);
 t_vector3		ft_transform_vertex(t_vector3 this, t_matrix_4x4 neo);
-t_vector3		ft_camera(t_vector3 vtx_orig, t_matrix_4x4 orient, t_vector3 world_vertex);
+t_vector3		ft_camera(t_vector3 vtx_orig, t_matrix_4x4 orient, \
+					t_vector3 world_vertex);
 
 #endif

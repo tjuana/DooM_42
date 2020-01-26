@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 16:34:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:15:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 ** **************************************************************************
 */
 void				ft_editor_sector_special_debug(t_list *ptr_list);
+void				ft_print_sectors(t_list *ptr_list);
 
 /*
 ** **************************************************************************
-**	editor_desctuct.c
+**	editor/editor_desctuct.c
 ** **************************************************************************
 */
 void				ft_editor_desctuct_objects(t_wolf3d *w);
@@ -34,7 +35,7 @@ void				ft_editor_desctuct(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_draw_map.c
+**	editor/editor_draw_map.c
 ** **************************************************************************
 */
 void				ft_gui_draw_map_sectors(t_wolf3d *w, t_list *list);
@@ -43,7 +44,7 @@ void				ft_gui_draw_map(t_wolf3d *w, t_list *list);
 
 /*
 ** **************************************************************************
-**	editor_draw_map_door.c
+**	editor/editor_draw_map_door.c
 ** **************************************************************************
 */
 void				ft_draw_area_hatch(t_wolf3d *w, \
@@ -53,7 +54,7 @@ void				ft_editor_draw_door(t_wolf3d *w, t_sector *s);
 
 /*
 ** **************************************************************************
-**	editor_draw_map_grid.c
+**	editor/editor_draw_map_grid.c
 ** **************************************************************************
 */
 void				ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, \
@@ -65,7 +66,7 @@ void				ft_gui_draw_map_grid(t_wolf3d *w, \
 
 /*
 ** **************************************************************************
-**	editor_draw_map_objects.c
+**	editor/editor_draw_map_objects.c
 ** **************************************************************************
 */
 void				ft_gui_draw_player(t_wolf3d *w);
@@ -74,7 +75,7 @@ void				ft_gui_draw_enemies(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_draw_map_sector.c
+**	editor/editor_draw_map_sector.c
 ** **************************************************************************
 */
 void				ft_draw_sector_walls(t_wolf3d *w, t_sector *s);
@@ -82,7 +83,7 @@ void				ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s);
 
 /*
 ** **************************************************************************
-**	editor_draw_map_vertex.c
+**	editor/editor_draw_map_vertex.c
 ** **************************************************************************
 */
 void				ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, \
@@ -94,7 +95,7 @@ int					ft_gui_draw_map_vertex_line(t_wolf3d *w, \
 
 /*
 ** **************************************************************************
-**	editor_event_win_map_click.c
+**	editor/editor_event_win_map_click.c
 ** **************************************************************************
 */
 void				ft_gui_mouse_click_map(t_wolf3d *w, \
@@ -106,7 +107,7 @@ void				ft_gui_mousebuttonup_win_map(void *data, \
 
 /*
 ** **************************************************************************
-**	editor_event_win_map_door.c
+**	editor/editor_event_win_map_door.c
 ** **************************************************************************
 */
 void				ft_gui_mousemotion_win_map_door(t_wolf3d *w, \
@@ -116,7 +117,7 @@ void				ft_map_click_door(t_wolf3d *w, \
 
 /*
 ** **************************************************************************
-**	editor_event_win_map_move.c
+**	editor/editor_event_win_map_move.c
 ** **************************************************************************
 */
 void				ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
@@ -124,7 +125,7 @@ void				ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
 
 /*
 ** **************************************************************************
-**	editor_event_win_map_set.c
+**	editor/editor_event_win_map_set.c
 ** **************************************************************************
 */
 void				ft_gui_event_set_sector(t_wolf3d *w, \
@@ -138,7 +139,7 @@ void				ft_gui_event_set_enemy(t_wolf3d *w, \
 
 /*
 ** **************************************************************************
-**	editor_event_win_map_zoom.c
+**	editor/editor_event_win_map_zoom.c
 ** **************************************************************************
 */
 void				ft_gui_mousewheel_win_map(\
@@ -146,7 +147,7 @@ void				ft_gui_mousewheel_win_map(\
 
 /*
 ** **************************************************************************
-**	editor_event_win_menu.c
+**	editor/editor_event_win_menu.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_menu_btnsector(\
@@ -162,7 +163,7 @@ void				ft_gui_mousebuttonup_win_menu_btndoor(\
 
 /*
 ** **************************************************************************
-**	editor_event_win_menu_save_map.c
+**	editor/editor_event_win_menu_save_map.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, \
@@ -170,7 +171,7 @@ void				ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, \
 
 /*
 ** **************************************************************************
-**	editor_event_win_setdoor.c
+**	editor/editor_event_win_setdoor.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_setdoor_btnsave(\
@@ -180,7 +181,7 @@ void				ft_gui_mousebuttonup_win_setdoor_btncancel(\
 
 /*
 ** **************************************************************************
-**	editor_event_win_setenemy.c
+**	editor/editor_event_win_setenemy.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_setenemy_btnsaveplayer(\
@@ -190,7 +191,7 @@ void				ft_gui_mousebuttonup_win_setenemy_btncancel(\
 
 /*
 ** **************************************************************************
-**	editor_event_win_setplayer.c
+**	editor/editor_event_win_setplayer.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(\
@@ -200,7 +201,7 @@ void				ft_gui_mousebuttonup_win_setplayer_btncancel(\
 
 /*
 ** **************************************************************************
-**	editor_event_win_setsector.c
+**	editor/editor_event_win_setsector.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_setsector_walltxtr(\
@@ -212,7 +213,7 @@ void				ft_gui_mousebuttonup_win_setsector_btncancel(\
 
 /*
 ** **************************************************************************
-**	editor_event_win_setsprite.c
+**	editor/editor_event_win_setsprite.c
 ** **************************************************************************
 */
 void				ft_gui_mousebuttonup_win_setsprite_btnsaveplayer(\
@@ -222,7 +223,7 @@ void				ft_gui_mousebuttonup_win_setsprite_btncancel(\
 
 /*
 ** **************************************************************************
-**	editor_gui_init.c
+**	editor/editor_gui_init.c
 ** **************************************************************************
 */
 void				ft_gui_elem_set_map(t_list *list);
@@ -237,14 +238,14 @@ void				ft_editor_gui_init(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_gui_txtr.c
+**	editor/editor_gui_txtr.c
 ** **************************************************************************
 */
 void				*ft_editor_redraw_txtr(void *data, t_list *dom);
 
 /*
 ** **************************************************************************
-**	editor_init.c
+**	editor/editor_init.c
 ** **************************************************************************
 */
 void				ft_editor_add_new_txtr(t_wolf3d *w, char *path);
@@ -253,14 +254,14 @@ void				ft_editor_init(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_main.c
+**	editor/editor_main.c
 ** **************************************************************************
 */
 void				ft_editor_main(int c, char **v);
 
 /*
 ** **************************************************************************
-**	editor_map_check.c
+**	editor/editor_map_check.c
 ** **************************************************************************
 */
 int					ft_check_point_in_sector_line_diameter(t_sector *s, \
@@ -271,10 +272,12 @@ int					ft_check_point_in_sector(t_wolf3d *w, t_sector *s, \
 						t_vector3 v);
 int					ft_search_point_in_sector(void *a, t_vector3 v);
 int					ft_new_editor_map_check_area(t_wolf3d *w);
+int					ft_editor_sector_compare_vertexes(t_vector3 v1, \
+						t_vector3 v2);
 
 /*
 ** **************************************************************************
-**	editor_map_door.c
+**	editor/editor_map_door.c
 ** **************************************************************************
 */
 void				ft_create_sector_door(t_wolf3d *w);
@@ -288,7 +291,7 @@ void				ft_map_set_new_sector(t_wolf3d *w, t_sector *s);
 
 /*
 ** **************************************************************************
-**	editor_map_enemy.c
+**	editor/editor_map_enemy.c
 ** **************************************************************************
 */
 void				ft_set_enemy(t_wolf3d *w, t_vector3 pos, int type);
@@ -296,7 +299,7 @@ void				ft_delete_enemy(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_map_func.c
+**	editor/editor_map_func.c
 ** **************************************************************************
 */
 int					ft_map_check_straight_line(t_vector3 v1, t_vector3 v2);
@@ -307,7 +310,7 @@ t_gui_coord			ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, \
 
 /*
 ** **************************************************************************
-**	editor_map_sector.c
+**	editor/editor_map_sector.c
 ** **************************************************************************
 */
 void				ft_editor_sector_create(t_wolf3d *w);
@@ -317,7 +320,7 @@ t_sector			*ft_editor_search_sector_by_id(t_wolf3d *w, \
 
 /*
 ** **************************************************************************
-**	editor_map_sector_neighbors.c
+**	editor/editor_map_sector_neighbors.c
 ** **************************************************************************
 */
 int					ft_editor_sector_search_neighbors_item(t_wolf3d *w, \
@@ -331,7 +334,7 @@ int					ft_check_neighbors_sector_vertex(t_sector *s, \
 
 /*
 ** **************************************************************************
-**	editor_map_sector_vertex.c
+**	editor/editor_map_sector_vertex.c
 ** **************************************************************************
 */
 void				ft_editor_sector_set_vertex(t_wolf3d *w, \
@@ -342,7 +345,7 @@ void				ft_editor_delete_last_vertex(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_map_sprite.c
+**	editor/editor_map_sprite.c
 ** **************************************************************************
 */
 void				ft_set_sprite(t_wolf3d *w, t_vector3 pos, int type);
@@ -350,7 +353,7 @@ void				ft_delete_sprite(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	editor_save_file.c
+**	editor/editor_save_file.c
 ** **************************************************************************
 */
 void				ft_allocate_int2darr(t_wolf3d *w);
@@ -363,7 +366,7 @@ void				ft_sector_num_vertex(t_list *ptr_list, \
 
 /*
 ** **************************************************************************
-**	editor_save_file2.c
+**	editor/editor_save_file2.c
 ** **************************************************************************
 */
 static char			*ft_str_vertex(int i);
@@ -374,7 +377,7 @@ void				ft_print_sectors_to_file(t_wolf3d *w, t_list *list);
 
 /*
 ** **************************************************************************
-**	editor_save_file3.c
+**	editor/editor_save_file3.c
 ** **************************************************************************
 */
 static char			*ft_space_only_join(int j);

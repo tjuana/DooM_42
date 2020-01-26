@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:32:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 18:01:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:16:34 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@
 **	Sector type
 ** **************************************************************************
 */
-#define SECTOR_TYPE_SECTOR			0x00
-#define SECTOR_TYPE_DOOR			0x01
+# define SECTOR_TYPE_SECTOR			0x00
+# define SECTOR_TYPE_DOOR			0x01
 
 /*
 ** **************************************************************************
 **	Sector status
 ** **************************************************************************
 */
-#define SECTOR_STATUS_NOTHING		0x00
-#define SECTOR_STATUS_BROKEN_LINE	0x00
-#define SECTOR_STATUS_POLYGON		0x01
-#define SECTOR_STATUS_READY			0x02 //.
-#define SECTOR_STATUS_PRESET		0x03 //.
-#define SECTOR_STATUS_SET			0x04 //.
+# define SECTOR_STATUS_NOTHING		0x00
+# define SECTOR_STATUS_BROKEN_LINE	0x00
+# define SECTOR_STATUS_POLYGON		0x01
+# define SECTOR_STATUS_READY		0x02
+# define SECTOR_STATUS_PRESET		0x03
+# define SECTOR_STATUS_SET			0x04
 
 /*
 ** **************************************************************************
@@ -152,8 +152,6 @@ typedef struct			s_sprite
 **	Arguments:
 **	t_vector3 camera_vector	| Основной вектор камеры
 **	t_vector3 pos;			| Позиция игрока
-**	double cameraX;			| temp: Смещение луча от центра камеры (-1.0 ... 1.0)
-**	double cameraH;			| Высота камеры (-1.0 ... 1.0)
 **	double wall_dist;		| temp: Дистанция до стены с коррекцией fish eyes
 **	int side;				| flag: сторона (например, подкрашивает стены)
 ** **************************************************************************
@@ -162,8 +160,6 @@ typedef struct			s_player
 {
 	t_vector3			camera_vector;
 	t_vector3			pos;
-	double				cameraX;
-	double				cameraH;
 	double				wall_dist;
 	int					side;
 }						t_player;

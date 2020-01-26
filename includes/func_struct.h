@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 20:26:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 18:46:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:18:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FUNC_STRUCT_H
 
 # include <libft.h>
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_ttf.h"
 
 typedef struct	s_fdf_wu
 {

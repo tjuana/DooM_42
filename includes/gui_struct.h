@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 17:31:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:19:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define GUI_STRUCT_H
 
 # include <libft.h>
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_ttf.h"
-# include "SDL2/SDL_image.h"
 
 /*
 ** **************************************************************************
