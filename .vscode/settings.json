@@ -9,6 +9,8 @@
 		"chrono": "c",
 		"unordered_map": "c",
 		"hashtable": "c",
-		"functional": "c"
+		"functional": "c",
+		"wolf3d.h": "c",
+		"locale": "c"
 	},
 }

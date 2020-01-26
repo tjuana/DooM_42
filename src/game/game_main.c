@@ -55,6 +55,7 @@ void LoadData(char *ag, t_new_player *pl)//this function reads a new map format
     int m;
     static int p;//the first time is 0. Is a rule for all statics variables
     int NumVertices = 0;
+	ft_my_parse_map(pl, ag);
     while(fgets(Buf, sizeof Buf, fp))
         switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
         {

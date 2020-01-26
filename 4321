@@ -1,0 +1,6 @@
+vertex	0	4 15
+vertex	15	4 15
+
+sector	0 20	 0 1 3 2     -1 -1 -1 -1
+
+player	5 7	0	0

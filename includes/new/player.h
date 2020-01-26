@@ -2,6 +2,19 @@
 #define PLAYER_H
 # include "wolf3d.h"
 
+typedef struct	s_file_read
+{
+	int			fd;
+	int			res;
+	char		*line;
+	int			tmp[40];
+	char		**split;
+	char		*ptr_my;
+	int			i;
+	int			count_sectors;
+	int			count_sector_vertex;
+}				t_file_read;
+
 typedef struct	s_new_player
 {
 	// SDL_Surface	*srf;
@@ -56,6 +69,7 @@ typedef struct	s_new_player
 	int			wall_height;	// for coordinates
 	double		cl;				// Дистанция до стены?
 	void		*pixels;
+	t_file_read	file;	//open map
 }				t_new_player;
 
 #endif

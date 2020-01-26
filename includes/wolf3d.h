@@ -666,6 +666,7 @@ void			ft_count_origin_vertexes(t_wolf3d *w);
 void			ft_sector_num_vertex(t_list *ptr_list, t_vector3 *vertexes);
 void			ft_print_to_file(t_wolf3d *w, int f);
 void			ft_allocate_int2darr(t_wolf3d *w);
+void			ft_player_string(t_wolf3d *w);
 // TEMP.
 void			ft_editor_sector_create(t_wolf3d *w);
 void			ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, t_vector3 v, int pos);
@@ -779,4 +780,8 @@ void	ft_game_redraw(void *d, t_list *dom);
 
 void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf);
 
+///parse map for game
+void	ft_my_parse_map(t_new_player *pl, char *ag);
+void	ft_alloc_save_sectors(char *ag, t_new_player *pl);
+t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex);
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/25 18:01:31 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/26 13:18:25 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -190,7 +190,8 @@ game_sdl_addons.c \
 game_textures.c \
 game_vectors_1.c \
 game_vectors_2.c \
-game_walls.c
+game_walls.c \
+game_map_parse.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))
