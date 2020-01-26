@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/25 21:00:10 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/26 18:57:47 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	motion_chk_2(t_sect_ops *op, t_player *pl, int i)
 		op->dx = op->xd * (op->dx * op->xd + op->yd * op->dy) / \
 		(op->xd * op->xd + op->yd * op->yd);
 		op->dy = op->yd * (op->dx * op->xd + op->yd * op->dy) / \
-		(op->xd * op->xd + op->yd * op->yd);
+		(op->xd * op->xd + op->yd * op->yd);		/**/
 		return (0);
 	}
 	return (1);

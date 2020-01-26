@@ -90,7 +90,7 @@ int main(int ac, char **ag)
     }
     else
     {
-        pl.win = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN );
+        pl.win = SDL_CreateWindow( "SDL Tutorial", 10, 10, WIN_W, WIN_H, SDL_WINDOW_SHOWN);
 
         if( pl.win == NULL )
         {
@@ -98,10 +98,10 @@ int main(int ac, char **ag)
         }
         else
             {
-
             pl.rend = SDL_CreateRenderer(pl.win,-1, SDL_RENDERER_ACCELERATED);
             SDL_SetRenderDrawColor(pl.rend, 0xFF, 0xFF, 0xFF, 0xFF);
-            SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
+			SDL_SetRelativeMouseMode(1);
+            //SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
             se.wsad[0] = 0;
             se.wsad[1] = 0;
             se.wsad[2] = 0;
@@ -111,54 +111,28 @@ int main(int ac, char **ag)
             ot.moving = 0;
             se.ducking = 0;
             ms.yaw = 0;
+			//pl.textures = load_textures(&pl);
             while (!se.quit)
             {
 				pl.srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
 				!pl.srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 
-
-				//texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-				//SDL_FreeSurface(surface);
-				//Clear screen
-				//SDL_RenderClear(renderer);
-				//Render texture to screen
-				//SDL_RenderCopy(renderer, texture, NULL, NULL );
-				//Update screen
-				//for( int i = 0; i < H; i += 1 )
-				// {
-				//    SDL_RenderDrawPoint( renderer, W / 2, i );
-				//}
-				//SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0x00, 0xFF );
-				//SDL_RenderPresent(renderer);
-
-				//SDL_RenderCopy(renderer, NULL, NULL, NULL);
-
 				engine_begin(&pl);
 
-
-				//ft_animation_play(&w);
-				//ft_draw_animation(&w, surface);
-				//ft_create_rect(WIN_W / 2, WIN_H / 2, 100, 100)
-
-				//SDL_RenderCopy(renderer, SDL_CreateTextureFromSurface(renderer, pl.srf), NULL, NULL);
-				//SDL_RenderPresent(renderer);
+				//texture_init(&pl);
 
 				pl.texture = SDL_CreateTextureFromSurface(pl.rend, pl.srf);
 				pl.texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				SDL_RenderCopy(pl.rend, pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				SDL_RenderPresent(pl.rend);
 				SDL_DestroyTexture(pl.texture);
+				
 
-
-
-				//Vertical collision detection
 				op.eye_h = se.ducking ? CROUCH_H : EYE_H;
 				se.ground = !se.falling;
 				events_jumps(&se, &pl, &op, &ot);
 				motion_chk(&op, &pl, &ot, &se);
 				motion_move_pl(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
-
 				events_mouse_move(&ms, &pl);//mouse aiming
 				events_vel(&pl, &se, &ot);
 				if (!events(&se, &pl))

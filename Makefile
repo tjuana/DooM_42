@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/25 19:18:27 by drafe            ###   ########.fr        #
+#    Updated: 2020/01/26 16:22:23 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ HEADERS_LIST = wolf3d.h\
 	events.h\
 	player.h\
 	door.h\
+	texture.h\
 	wolf3d.h
 
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
@@ -55,10 +56,12 @@ SRCS_LIST = but_detect.c\
 			events_1.c\
 			events_2.c\
 			load_file.c\
+			load_textures.c\
 			main.c\
 			math_functions.c\
 			motion.c\
 			sdl_addons.c\
+			texture_parser.c\
 			vectors_1.c\
 			vectors_2.c\
 			vectors_3.c

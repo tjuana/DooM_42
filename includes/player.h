@@ -9,13 +9,11 @@ typedef struct	s_player
 	SDL_Surface	*srf;
 	SDL_Window	*win;
 	SDL_Renderer	*rend;
-	Uint32 rmask, gmask, bmask, amask;
-	SDL_Texture	*texture;
-	
 
-	int bpp; 
-	int w;
-	int h;
+	SDL_Texture	*texture;
+	t_texture	*textures;
+	int			textures_nb;
+
 	char		*lvl;
 	t_xy		t1;
 	t_xy		t2;

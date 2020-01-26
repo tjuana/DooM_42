@@ -13,13 +13,16 @@
 # include <math.h>
 # include <string.h>
 # include <libft.h>
+# include <sys/stat.h>
 # include "constants.h"
 # include "help.h"
 # include "animations.h"
 # include "engine.h"
 # include "events.h"
 # include "door.h"
+# include "texture.h"
 # include "player.h"
+
 
 
 //static unsigned NumSectors = 0;
@@ -71,6 +74,11 @@ void		events_jumps(t_sub_ev *se, t_player *pl, t_sect_ops *op, t_others *ot);
 t_player	*load_next(t_player *pl);
 void		load_file(char *ag, t_player *pl);
 
+/*			load_textures.c			*/
+t_texture	*load_textures(t_player *pl);
+void		texture_init(t_player *pl);
+SDL_Texture	*texture_new(t_player *pl);
+
 /*			main.c			*/
 int			main(int ac, char **ag);
 void		player_init(t_player *pl, t_xy *v, float *angle, int *n);
@@ -96,6 +104,15 @@ void		motion_move_pl(float dx, float dy, t_player *pl);
 
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
+void		ft_sdl_error();
+
+
+
+/*			texture_parser.c			*/
+t_texture	texture_parse(const char *fp, unsigned edit);
+
+
+
 
 /*			vector_1.c			*/
 t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);

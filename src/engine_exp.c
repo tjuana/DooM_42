@@ -46,10 +46,25 @@ int			engine_cross(t_player *pl, int sec_n, unsigned s)
 		// Find an intersection between the wall and the approximate edges of player's view
 		i1 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
 		i2 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
-		(pl->t1.y < pl->nearz && i1.y > 0) ? pl->t1 = i1 : pl->t1;
+		if(pl->t1.y < pl->nearz)
+		{
+			if(i1.y > 0)
+				pl->t1 = i1;
+			else
+				pl->t1 = i2;
+		}
+		if(pl->t2.y < pl->nearz)
+		{
+			if(i1.y > 0)
+				pl->t2 = i1;
+			else
+				pl->t2 = i2;
+		}
+		
+		/*(pl->t1.y < pl->nearz && i1.y > 0) ? pl->t1 = i1 : pl->t1;
 		(pl->t1.y < pl->nearz && i1.y < 0) ? pl->t1 = i2 : pl->t1;
 		(pl->t2.y < pl->nearz && i1.y > 0) ? pl->t2 = i1 : pl->t2;
-		(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;
+		(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;*/
 	}
 	return (1);
 }

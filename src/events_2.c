@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/25 20:28:37 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/26 18:38:11 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,27 @@ static void	events_vel_2(t_player *pl, t_sub_ev *se, t_others *ot)
 
 void		events_vel(t_player *pl, t_sub_ev *se, t_others *ot)
 {
-	ot->move_vec[0] = 0.f;
-	ot->move_vec[1] = 0.f;
+	ot->move_vec[0] = 0;
+	ot->move_vec[1] = 0;
 	if (se->wsad[0])
 	{
-		ot->move_vec[0] += pl->anglecos * 0.2f;
-		ot->move_vec[1] += pl->anglesin * 0.2f;
+		ot->move_vec[0] += pl->anglecos * (0.2 + 0.2 * se->wsad[6]);
+		ot->move_vec[1] += pl->anglesin * (0.2 + 0.2 * se->wsad[6]);
 	}
 	if (se->wsad[1])
 	{
-		ot->move_vec[0] -= pl->anglecos * 0.2f;
-		ot->move_vec[1] -= pl->anglesin * 0.2f;
+		ot->move_vec[0] -= pl->anglecos * 0.2;
+		ot->move_vec[1] -= pl->anglesin * 0.2;
 	}
 	if (se->wsad[2])
 	{
-		ot->move_vec[0] += pl->anglesin * 0.2f;
-		ot->move_vec[1] -= pl->anglecos * 0.2f;
+		ot->move_vec[0] += pl->anglesin * 0.2;
+		ot->move_vec[1] -= pl->anglecos * 0.2;
 	}
 	if (se->wsad[3])
 	{
-		ot->move_vec[0] -= pl->anglesin * 0.2f;
-		ot->move_vec[1] += pl->anglecos * 0.2f;
+		ot->move_vec[0] -= pl->anglesin * 0.2;
+		ot->move_vec[1] += pl->anglecos * 0.2;
 	}
 	events_vel_2(pl, se, ot);
 }

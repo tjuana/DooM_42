@@ -8,6 +8,8 @@
 		"string_view": "c",
 		"string": "c",
 		"vector": "c",
-		"ios": "c"
+		"ios": "c",
+		"player.h": "c",
+		"png_parser.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/25 20:32:47 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/26 18:36:19 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void	sub_events_2(t_sub_ev *se, t_player *pl)
 		se->wsad[2] = se->ev.type == SDL_KEYDOWN;
 	if (se->ev.key.keysym.sym == 'd')
 		se->wsad[3] = (se->ev.type == SDL_KEYDOWN);
+	if (se->ev.key.keysym.sym == SDLK_LSHIFT)
+		se->wsad[6] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
 		door_but_сlick(pl, se);
 }
