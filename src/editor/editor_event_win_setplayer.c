@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:19:37 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 15:20:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 void	ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(void *data, \
 			SDL_Event e, t_list *dom, int type)

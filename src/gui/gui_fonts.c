@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 18:03:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 23:26:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 /*
 ** **************************************************************************
@@ -82,8 +82,8 @@ int			ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, int size, int color)
 	while (fonts_list)
 	{
 		font = fonts_list->content;
-		// printf("f: %d : %d %d\n", font->f_sz, ft_strcmp(font_path, font->path), size == font->f_sz);
-		// printf("\n");
+		// // printf("f: %d : %d %d\n", font->f_sz, ft_strcmp(font_path, font->path), size == font->f_sz);
+		// // printf("\n");
 		if (ft_strcmp(font_path, font->path) == 0 && size == font->f_sz)
 		{
 			w->sdl->font.ptr = font->ptr;
@@ -98,7 +98,7 @@ int			ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, int size, int color)
 	ft_gui_set_font(w, font_path, size);
 	if (TTF_GlyphMetrics(w->sdl->font.ptr, 'A', 0, 0, 0, 0, &w->sdl->font.g_sz) == -1)
 		ft_error("FONT SET ERROR (3)");
-	printf("=======\n");
+	// printf("=======\n");
 	return (0);
 }
 
@@ -126,7 +126,9 @@ void			ft_gui_font_putstr_sdl(t_wolf3d *w, char *str, t_gui_coord c)
 		ft_error("FONT ERROR (5)");
 	else
 	{
+		w->sdl->renderer == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 		tmp_texture = SDL_CreateTextureFromSurface(w->sdl->renderer, text_surf);
+		tmp_texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 		tmp_texture == NULL ? ft_error("FONT ERROR (6)") : 0;
 		SDL_FreeSurface(text_surf);
 	}

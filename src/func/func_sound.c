@@ -6,12 +6,12 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:42:06 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/26 19:06:38 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // ??!?!??!?!?
-#include "wolf3d.h"
+#include "doom.h"
 
 void	ft_init_sound(t_wolf3d *w)
 {

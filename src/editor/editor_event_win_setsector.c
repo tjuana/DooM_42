@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:17:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 15:19:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 void	ft_gui_mousebuttonup_win_setsector_walltxtr(void *data, SDL_Event e, \
 			t_list *dom, int type)

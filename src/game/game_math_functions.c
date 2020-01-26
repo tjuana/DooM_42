@@ -2,7 +2,7 @@
 // Created by Nymphadora Shelly on 19/12/2019.
 //
 
-#include "wolf3d.h"
+#include "doom.h"
 /*
  * min: Choose smaller of two scalars.
  */
@@ -65,10 +65,11 @@ t_new_xy Intersect(float x1, float y1, float x2, float y2,float x3, float y3, fl
 
 float Yaw(float y, float z, t_new_player *player)
 {
-    return(y + z*player->yaw);
+	// // printf("y:%f   z:%f   yaw:%f\n", y, z, player->yaw);
+    return(y + z * player->yaw);
 }
 
-double to_degrees(double radians)
+double to_deg(double radians)
 {
     return radians * (180.0 / M_PI);
 }

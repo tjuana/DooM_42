@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:54:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 20:51:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 int				ft_fdf_ipart(double x)
 {

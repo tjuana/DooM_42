@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 15:32:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 22:32:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 {
@@ -38,7 +38,7 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 				sector->status = SECTOR_STATUS_POLYGON;
 		}
 
-		printf("===\n");
+		// printf("===\n");
 		ft_editor_sector_special_debug(w->sector);
 	}
 }

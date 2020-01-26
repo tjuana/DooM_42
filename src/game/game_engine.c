@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   engine.c                                           :+:      :+:    :+:   */
+/*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/25 16:51:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 /*
 ** **************************************************************************
@@ -74,12 +74,13 @@ static void	engine_preset(t_new_player *pl)
 ** **************************************************************************
 */
 
-int		engine_scale(t_new_player *pl, int sx1, int sx2)/*perspective*/
+int		engine_scale(t_new_player *pl, int sx1, int sx2)
 {
-	pl->scale_1.x = hfov / pl->t1.y;
-	pl->scale_1.y = vfov / pl->t1.y;
-	pl->scale_2.x = hfov / pl->t2.y;
-	pl->scale_2.y = vfov / pl->t2.y;
+	pl->scale_1.x = HOR_FOV / pl->t1.y;
+	pl->scale_1.y = VER_FOV / pl->t1.y;
+	pl->scale_1.x = HOR_FOV / pl->t1.y;
+	pl->scale_2.x = HOR_FOV / pl->t2.y;
+	pl->scale_2.y = VER_FOV / pl->t2.y;
 	//Do perspective transformation
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
@@ -122,7 +123,6 @@ void	engine_begin(t_new_player *pl)
 			//Acquire the floor and ceiling heights, relative to where the player's view is
 			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
 			pl->floor.yfloor = pl->sect->floor - pl->where.z;
-
 			//Check the edge type. neighbor=-1 means wall, other=boundary between two sectors.
 			neib = pl->sect->neighbors[s];
 			if(neib >= 0) // Is another sector showing through this portal? This permit us draw other sectors after the one where we are

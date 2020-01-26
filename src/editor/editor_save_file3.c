@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   editor_save_file3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:45:00 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/25 22:22:01 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 static char		*ft_space_only_join(int j)
 {

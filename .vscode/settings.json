@@ -26,6 +26,7 @@
 		"general_struct.h": "c",
 		"gui_struct.h": "c",
 		"sdl.h": "c",
-		"algebra.h": "c"
+		"algebra.h": "c",
+		"doom.h": "c"
 	},
 }

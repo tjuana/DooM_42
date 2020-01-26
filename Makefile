@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/26 19:11:19 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/26 22:46:56 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ LIBFT_HEADERS = ./libft/includes
 SDL_HEADERS = include/
 
 HEADERS_DIRECTORY = ./includes/
-HEADERS_LIST = wolf3d.h
+HEADERS_LIST = doom.h
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 DIRECTORY =  $(shell pwd)
@@ -171,17 +171,24 @@ GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
 # GAME WITH MAIN FILE
 GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
 GAME_SRCS_LIST = \
+game_but.c \
+game_but_detect.c \
+game_door.c \
+game_door_detect.c \
 game_engine.c \
 game_engine_exp.c \
-game_functions_main.c \
-game_gun.c \
+game_events_1.c \
+game_events_2.c \
+game_load_file.c \
+game_load_textures.c \
 game_main.c \
 game_math_functions.c \
+game_motion.c \
 game_sdl_addons.c \
-game_textures.c \
+game_texture_parser.c \
 game_vectors_1.c \
 game_vectors_2.c \
-game_walls.c
+game_vectors_3.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

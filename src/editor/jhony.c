@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jhony.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 15:10:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/22 17:18:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 22:32:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main()
   
     for (i = 0; i <  r; i++) 
       for (j = 0; j < c; j++) 
-         printf("%d ", arr[i][j]); 
+         // printf(">>%d ", arr[i][j]); 
 	ft_2darrclean(&arr);
    /* Code for further processing and free the  
       dynamically allocated memory */

@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:40:11 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 15:08:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 22:32:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 /*
 **	
@@ -95,7 +95,7 @@ int			ft_check_point_in_line_segment_diameter(t_vector3 p, t_vector3 p1, t_vecto
 	{
 		if ((fabs(d) - diameter) < 0)
 		{
-			// printf("%f  %f\n", d, diameter);
+			// // printf("%f  %f\n", d, diameter);
 			return (1);
 		}
 		else

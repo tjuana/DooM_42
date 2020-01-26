@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   editor_event_win_menu_save_map.c                   :+:      :+:    :+:   */
+/*   editor_event_win_menu2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:16:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 15:16:12 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 void	ft_gui_mousebuttonup_win_menu_btnsavemap(void *data, SDL_Event e, \
 			t_list *dom, int type)

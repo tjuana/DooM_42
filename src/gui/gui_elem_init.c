@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 15:37:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 22:32:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 /*
 **	t_list *ft_gui_search_elem_by_name(t_list *dom, char *name)
@@ -65,7 +65,7 @@ void	ft_gui_elem_init(t_list **dom, char *name, t_gui_coord v1, t_gui_coord v2)
 	list = ft_lstnew(&elem, sizeof(t_gui_elem));
 	if (list == NULL)
 	{
-		// printf("%s\n", elem.name);
+		// // printf("%s\n", elem.name);
 		ft_error("ERROR (N1)");
 	}
 	if (*dom == NULL)

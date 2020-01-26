@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 18:17:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 int		ft_editor_sector_compare_vertexes(t_vector3 v1, t_vector3 v2)
 {

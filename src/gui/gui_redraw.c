@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 19:22:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 23:23:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 
 void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf)
@@ -37,14 +37,14 @@ void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf)
 			ptr_color = (int*)(surf->pixels) + pos;
 			if (*ptr_color != 0x00ffffff && *ptr_color != 0x00000000)
 			{
-				w->sdl->pixels[x + (y * w->gui.win_w)] = (int)*ptr_color;
+				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = (int)*ptr_color;
 			}
 			// else
-				// printf();
+				// // printf();
 			// else
 			// {
-			// 	w->sdl->pixels[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
-			// 		w->sdl->pixels[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
+			// 	((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
+			// 		((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
 			// }
 			x++;
 			pos++;
@@ -81,14 +81,14 @@ void	ft_gui_draw_image(t_wolf3d *w, t_list *list)
 			ptr_color = (int*)(elem->surf->pixels) + pos;
 			if (*ptr_color != 0x00ffffff && *ptr_color != 0x00000000)
 			{
-				w->sdl->pixels[x + (y * w->gui.win_w)] = (int)*ptr_color;
+				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = (int)*ptr_color;
 			}
 			// else
-				// printf();
+				// // printf();
 			// else
 			// {
-			// 	w->sdl->pixels[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
-			// 		w->sdl->pixels[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
+			// 	((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
+			// 		((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
 			// }
 			x++;
 			pos++;
@@ -120,10 +120,10 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 		while (x <= v2.x && x < w->gui.win_w)
 		{
 			if (d == 0.0)
-				w->sdl->pixels[x + (y * w->gui.win_w)] = color;
+				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = color;
 			else
-				w->sdl->pixels[x + (y * w->gui.win_w)] = ft_fdf_get_color(color, \
-					w->sdl->pixels[x + (y * w->gui.win_w)], d);
+				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = ft_fdf_get_color(color, \
+					((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)], d);
 			x++;
 		}
 		y++;
@@ -264,21 +264,21 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 		// color = ~color & 0x00ffffff;
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-		// printf("FONT SIZE BUTTON: %d\n", elem->fs);
+		// // printf("FONT SIZE BUTTON: %d\n", elem->fs);
 	}
 
 	if (elem->type == GUI_TEXT)// || elem->type == GUI_INPUT)
 	{
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-		// printf("FONT SIZE TEXT: %d\n", elem->fs);
+		// // printf("FONT SIZE TEXT: %d\n", elem->fs);
 	}
 	if (elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 	{
 		// color = ft_fdf_get_color(color, 0xffffff, 1);
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-		// printf("FONT SIZE INPUT: %d\n", elem->fs);
+		// // printf("FONT SIZE INPUT: %d\n", elem->fs);
 	}
 }
 
@@ -317,15 +317,23 @@ int		ft_gui_redraw(t_wolf3d *w)
 {
 	if (w->gui.redraw == GUI_REDRAW_FRAME)
 		return (ft_gui_redraw_frame(w));
-	ft_bzero(w->sdl->pixels, 4 * w->gui.win_w * w->gui.win_h);
+	ft_bzero(w->sdl->srf->pixels, 4 * w->gui.win_w * w->gui.win_h);
 	// SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
 	ft_gui_redraw_elem(w, w->gui.dom);
-	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, w->gui.win_w * 4); //no
-	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL); //no
+	// SDL_UpdateTexture(w->sdl->text, 0, ((int*)w->sdl->srf->pixels), w->gui.win_w * 4); //no
+	// SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL); //no
+	w->sdl->text = SDL_CreateTextureFromSurface(w->sdl->renderer,w->sdl->srf);
+	w->sdl->text == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 	ft_gui_redraw_elem_font(w, w->gui.dom);
 	SDL_RenderPresent(w->sdl->renderer);
+	// SDL_RenderPresent(w->sdl->renderer);
 	w->gui.redraw = GUI_NOT_REDRAW;
 	ft_gui_delete_status(w->gui.dom);
 	return (0);
 }
+
+	// SDL_RenderCopy(data->pl.rend, data->pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	// SDL_RenderPresent(data->pl.rend);
+	// SDL_DestroyTexture(data->pl.texture);

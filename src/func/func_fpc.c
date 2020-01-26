@@ -1,4 +1,4 @@
-#include "wolf3d.h"
+#include "doom.h"
 
 // How many frames time values to keep
 // The higher the value the smoother the result is...
@@ -79,6 +79,6 @@ void fpsthink() {
 
         // now to make it an actual frames per second value...
         framespersecond = 1000.f / framespersecond;
-		printf("%f\n", framespersecond);
+		// printf("%f\n", framespersecond);
 
 }

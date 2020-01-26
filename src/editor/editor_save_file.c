@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   editor_save_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/25 22:23:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 void		ft_allocate_int2darr(t_wolf3d *w)
 {

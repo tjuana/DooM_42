@@ -1,19 +1,16 @@
 //
 // Created by Nymphadora Shelly on 04/12/2019.
 //
-#include "wolf3d.h"
+#include "doom.h"
 
 typedef	struct		s_new_temp
 {
-    t_subevents se;
+    t_new_sub_ev se;
     t_new_mouse ms;
     t_new_player pl;
     t_new_others ot;
-    t_new_sector_ops op;
+    t_new_sect_ops op;
 	t_new_wolf3d w;
-	t_new_weapons wpn;
-	SDL_Surface *scr_surf;
-	SDL_Window* window;
 }					t_new_temp;
 
 void player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n)//init data for LoadData function
@@ -37,69 +34,45 @@ void player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n)//init data
 	pl->farz = 5;
 	pl->nearside = 1e-5f;
 	pl->farside = 20.f;
-	//pl->door_all = -1;
-    pl->light = 1;
-}
-
-void LoadData(char *ag, t_new_player *pl)//this function reads a new map format
-{
-    FILE* fp = fopen(ag, "rt");
-    if(!fp) { perror(ag); exit(EXIT_FAILURE); }
-    char Buf[256];
-    char word[256];
-    char *ptr;
-    float angle;
-    t_new_xy *vert = NULL;//, v;
-    t_new_xy v;
-    int n;
-    int m;
-    static int p;//the first time is 0. Is a rule for all statics variables
-    int NumVertices = 0;
-    while(fgets(Buf, sizeof Buf, fp))
-        switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
-        {
-            case 'v': // vertex
-                for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1; )
-                { vert = realloc(vert, ++NumVertices * sizeof(*vert)); vert[NumVertices-1] = v; }
-                break;
-            case 's': // sector
-                if(p == 0)
-                {
-                    pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
-                    p++;
-                }
-                pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
-                t_new_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
-                int* num = NULL;
-                sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
-                for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
-                { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;
-                sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
-                sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
-                for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
-                for(n=0; n<m; ++n) sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
-                sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
-                free(num);
-                break;
-            case 'p':; // player
-
-                sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
-                player_init(pl, &v, &angle, &n); // TODO: Range checking
-                pl->where.z = pl->sectors[pl->sector].floor + EyeHeight;
-        }
-    fclose(fp);
-    free(vert);
+	pl->door_all = -1;
+	pl->but_all = -1;
+	pl->lvl = NULL;
 }
 
 void UnloadData(t_new_player *pl)
 {
-    for(int a=0; a < pl->sectors_nb; ++a) free(pl->sectors[a].vertex);
-    for(int a=0; a < pl->sectors_nb; ++a) free(pl->sectors[a].neighbors);
+	int i;
+
+	i = -1;
+	//better use free(pl);
+	while (++i < pl->sectors_nb)
+		free(pl->sectors[i].vertex);
+	i == 2 ? i = 3 : i;
+	while (++i < pl->sectors_nb)
+		free(pl->sectors[i].neighbors);
     free(pl->sectors);
     pl->sectors = NULL;
     pl->sectors_nb = 0;
 }
+
+// //vline: Draw a vertical line on screen, with a different color pixel in top & bottom
+// void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl)
+// {
+//     int	*pix;
+
+// 	pix = (int*)pl->pixels;
+//     y1 = clamp(y1, 0, WIN_H - 1);
+//     y2 = clamp(y2, 0, WIN_H - 1);
+//     if(y2 == y1)
+//         pix[y1* WIN_W + x] = middle;
+//     else if(y2 > y1)
+//     {
+//         pix[y1 * WIN_W + x] = top;
+//         for(int y= y1 + 1; y < y2; ++y)
+//             pix[y * WIN_W + x] = middle;
+//         pix[y2 * WIN_W + x] = bottom;
+//     }
+// }
 
 //vline: Draw a vertical line on screen, with a different color pixel in top & bottom
 void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface)
@@ -114,39 +87,10 @@ void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* sur
     else if(y2 > y1)
     {
         pix[y1 * WIN_W + x] = top;
-        //for(int y= y1 + 1; y < y2; ++y)
-          //  pix[y * WIN_W + x] = middle;
+        for(int y= y1 + 1; y < y2; ++y)
+            pix[y * WIN_W + x] = middle;
         pix[y2 * WIN_W + x] = bottom;
     }
-}
-//MovePlayer(dx,dy): Moves the player by (dx,dy) in the map, and
-//also updates their anglesin/anglecos/sector properties properly.
-
-void MovePlayer(float dx, float dy, t_new_player *pl)
-{
-    float px = pl->where.x;
-    float py = pl->where.y;
-    //Check if this movement crosses one of this sector's edges
-    //that have a neighboring sector on the other side.
-    //Because the edge vertices of each sector are defined in
-    //clockwise order, PointSide will always return -1 for a point
-    //that is outside the sector and 0 or 1 for a point that is inside.
-    
-    const t_new_sector * const sect = &pl->sectors[pl->sector];
-    const t_new_xy* const vert = sect->vertex;
-    for(int s = 0; s < sect->npoints; ++s)
-        if(sect->neighbors[s] >= 0
-           && IntersectBox(px,py, px+dx,py+dy, vert[s+0].x, vert[s+0].y, vert[s+1].x, vert[s+1].y)
-           && PointSide(px+dx, py+dy, vert[s+0].x, vert[s+0].y, vert[s+1].x, vert[s+1].y) < 0)
-        {
-            pl->sector = sect->neighbors[s];
-            break;
-        }
-
-    pl->where.x += dx;
-    pl->where.y += dy;
-    pl->anglesin = sinf(pl->angle);
-    pl->anglecos = cosf(pl->angle);
 }
 
 void	ft_game_redraw(void *d, t_list *dom)
@@ -157,48 +101,51 @@ void	ft_game_redraw(void *d, t_list *dom)
 	w = (t_wolf3d*)d;
 	data = w->new_data;
 
-	data->pl.pixels = w->sdl->pixels;
+	data->pl.srf = w->sdl->srf;
+	// data->pl.pixels = w->sdl->pixels;
 
-	if (w->sdl->pixels)
-		ft_bzero(w->sdl->pixels, 4 * WIN_W * WIN_H);
-		// ft_memset((void*)pl.srf->pixels, 0x80, 4 * WIN_W * WIN_H);
+	// data->pl.srf = w->sdl.surf;
 
+	// data->pl.srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
+	// !data->pl.srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 
-	data->pl.txtx = 0;
+	// w->sdl->pixels = data->pl.srf->pixels;
+	// if (data->)
+		// return;
+
+	// if (data->pl.sect)
+
 	engine_begin(&data->pl);
 
-		// printf("%d   %d\n", pl.floor.ya, pl.floor.yb);
-		
-	// data->scr_surf = SDL_GetWindowSurface(data->window);
-	// SDL_BlitSurface(w.weapon_texture, ft_create_rect(15, 15, 0, 0), scr_surf, ft_create_rect(50, 50, WIN_W / 2, WIN_H / 2));
-	if (data->pl.count_sprite == 10)// this for the event shoot
-	{
-		data->wpn.sprite_counter = 2;
-		data->pl.count_sprite = 1;
-	}
-	// draw_pistol(&data->wpn,w->sdl->pixels);//draw gun
-	// SDL_UpdateWindowSurface( data->window );
 
-	//Vertical collision detection
-	data->op.eyeheight = data->se.ducking ? DuckHeight : EyeHeight;
+
+
+	//texture_init(&pl);
+
+	// data->pl.texture = SDL_CreateTextureFromSurface(data->pl.rend, data->pl.srf);
+	// data->pl.texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	// SDL_RenderCopy(data->pl.rend, data->pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	// SDL_RenderPresent(data->pl.rend);
+	// SDL_DestroyTexture(data->pl.texture);
+
+
+	data->op.eye_h = data->se.ducking ? CROUCH_H : EYE_H;
 	data->se.ground = !data->se.falling;
-	jumps(&data->se, &data->pl, &data->op, &data->ot);
-	sectors_ops(&data->op, &data->pl, &data->ot, &data->se);
+	events_jumps(&data->se, &data->pl, &data->op, &data->ot);
+	motion_chk(&data->op, &data->pl, &data->ot, &data->se);
+	motion_move_pl(0, 0, &data->pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+	events_new_mouse_move(&data->ms, &data->pl);//mouse aiming
+	events_vel(&data->pl, &data->se, &data->ot);
 	if (!events(&data->se, &data->pl))
 		return ;
-	mouse_movement(&data->ms, &data->pl);//mouse aiming
-	vectors_vel_dir(&data->pl, &data->se, &data->ot);
-	MovePlayer(0, 0, &data->pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
-		//door(&pl, &se);
+	door(&data->pl, &data->se);
 }
 
 void	ft_game_init(t_new_temp *data, char *path)
 {
-	data->scr_surf = NULL;
-
 	data->pl.sectors_nb = 0;
     data->se.quit = 0;
-    LoadData(path, &data->pl);//load map and init typedef t_new_player data
+    load_file(path, &data->pl);//load map and init typedef t_new_player data
     //ft_init_anim(&w);//gun
     // SDL_Window* window = NULL;
 	// data->window = NULL;
@@ -216,15 +163,11 @@ void	ft_game_init(t_new_temp *data, char *path)
 	data->se.wsad[2] = 0;
 	data->se.wsad[3] = 0;
 	data->se.falling = 1;
-	data->pl.count_sprite = 1;
 	data->se.ground = 0;
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
 	//load_weapons(&wpn);
-	data->wpn.sprite_counter = 1;//if !1 is going to shoot
-	load_pistol(&data->wpn);//load gun
-	load_imgs(data->pl.img);
 }
 
 void	ft_game_gui_init_menu(t_list *head)
@@ -313,52 +256,97 @@ int main(int ac, char **ag)
 	ft_game_gui_init(&w);
 
 	w.new_data = &data;
-	
 
-
-
-
-
-	while (!data.se.quit)
+	while (w.sdl->running)
 	{
+		ft_gui_events(&w);
 		ft_gui_redraw(&w);
-		// if (data.pl.srf->pixels)
-		// ft_bzero(data.pl.srf->pixels, 4 * WIN_W * WIN_H);
-		// // ft_memset((void*)pl.srf->pixels, 0x80, 4 * WIN_W * WIN_H);
-
-
-		// data.pl.txtx = 0;
-		// engine_begin(&data.pl);
-
-		// // printf("%d   %d\n", pl.floor.ya, pl.floor.yb);
-		
-		// data.scr_surf = SDL_GetWindowSurface(data.window);
-		// // SDL_BlitSurface(w.weapon_texture, ft_create_rect(15, 15, 0, 0), scr_surf, ft_create_rect(50, 50, WIN_W / 2, WIN_H / 2));
-		// if (data.pl.count_sprite == 10)// this for the event shoot
-		// {
-		// 	data.wpn.sprite_counter = 2;
-		// 	data.pl.count_sprite = 1;
-		// }
-		// draw_pistol(&data.wpn,data.pl.srf);//draw gun
-		// SDL_UpdateWindowSurface( data.window );
-
-		// //Vertical collision detection
-		// data.op.eyeheight = data.se.ducking ? DuckHeight : EyeHeight;
-		// data.se.ground = !data.se.falling;
-		// jumps(&data.se, &data.pl, &data.op, &data.ot);
-		// sectors_ops(&data.op, &data.pl, &data.ot, &data.se);
-		// if (!events(&data.se, &data.pl))
-		// 	return(0);
-		// mouse_movement(&data.ms, &data.pl);//mouse aiming
-		// vectors_vel_dir(&data.pl, &data.se, &data.ot);
-		// MovePlayer(0, 0, &data.pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
-		// //door(&pl, &se);
 	}
-
-
-
 	
 	UnloadData(&data.pl);
 	SDL_Quit();
     return (0);
 }
+
+// int main(int ac, char **ag)
+// {
+//     t_new_sub_ev se;
+//     t_new_mouse ms;
+//     t_new_player pl;
+//     t_new_others ot;
+//     t_new_sect_ops op;
+// 	t_new_wolf3d w;
+
+// 	pl.sectors_nb = 0;
+//     w.weapon_texture = SDL_LoadBMP("Textures/pistol.bmp");
+// 	if (ac < 2 || ac > 2)
+//     {
+//         // printf("map error.\n");
+//         return (0);
+//     }
+//     se.quit = 0;
+//     load_file(ag[1], &pl);
+
+//     //ft_init_anim(&w);//gun
+//     if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+//     {
+//         // printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+//     }
+//     else
+//     {
+//         pl.win = SDL_CreateWindow( "SDL Tutorial", 10, 10, WIN_W, WIN_H, SDL_WINDOW_SHOWN);
+
+//         if( pl.win == NULL )
+//         {
+//             // printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+//         }
+//         else
+//             {
+//             pl.rend = SDL_CreateRenderer(pl.win,-1, SDL_RENDERER_ACCELERATED);
+//             SDL_SetRenderDrawColor(pl.rend, 0xFF, 0xFF, 0xFF, 0xFF);
+// 			SDL_SetRelativeMouseMode(1);
+//             //SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
+//             se.wsad[0] = 0;
+//             se.wsad[1] = 0;
+//             se.wsad[2] = 0;
+//             se.wsad[3] = 0;
+//             se.falling = 1;
+//             se.ground = 0;
+//             ot.moving = 0;
+//             se.ducking = 0;
+//             ms.yaw = 0;
+// 			//pl.textures = load_textures(&pl);
+//             while (!se.quit)
+//             {
+// 				pl.srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
+// 				!pl.srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+
+// 				engine_begin(&pl);
+
+// 				//texture_init(&pl);
+
+// 				pl.texture = SDL_CreateTextureFromSurface(pl.rend, pl.srf);
+// 				pl.texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+// 				SDL_RenderCopy(pl.rend, pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+// 				SDL_RenderPresent(pl.rend);
+// 				SDL_DestroyTexture(pl.texture);
+				
+
+// 				op.eye_h = se.ducking ? CROUCH_H : EYE_H;
+// 				se.ground = !se.falling;
+// 				events_jumps(&se, &pl, &op, &ot);
+// 				motion_chk(&op, &pl, &ot, &se);
+// 				motion_move_pl(0, 0, &pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+// 				events_new_mouse_move(&ms, &pl);//mouse aiming
+// 				events_vel(&pl, &se, &ot);
+// 				if (!events(&se, &pl))
+// 					return(0);
+// 				door(&pl, &se);
+// 			}
+			
+//             UnloadData(&pl);
+//             SDL_Quit();
+//         }
+//     }
+//     return 0;
+// }

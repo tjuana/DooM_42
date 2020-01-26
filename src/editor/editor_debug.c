@@ -6,11 +6,11 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 14:08:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 18:22:02 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 22:53:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 void	ft_editor_sector_special_debug(t_list *ptr_list)
 {
@@ -47,7 +47,7 @@ void	ft_editor_sector_special_debug(t_list *ptr_list)
 		if (ptr_sector->status == SECTOR_STATUS_POLYGON ||
 			ptr_sector->status == SECTOR_STATUS_SET)
 		{
-			printf ("neighbors:  ");
+			// printf ("neighbors:  ");
 
 			j = 0;
 			while (j < ptr_sector->vertex_count)
@@ -62,7 +62,7 @@ void	ft_editor_sector_special_debug(t_list *ptr_list)
 				j++;
 			}
 
-			printf ("\n");
+			// printf ("\n");
 		}
 		
 		// Get next sector

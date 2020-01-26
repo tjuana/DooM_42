@@ -6,14 +6,14 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:55:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 19:18:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/26 23:18:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GENERAL_STRUCT_H
 # define GENERAL_STRUCT_H
 
-# include "wolf3d.h"
+# include "doom.h"
 
 # include <libft.h>
 # include "editor_struct.h"
@@ -38,10 +38,11 @@ typedef struct			s_font
 
 typedef struct			s_sdl
 {
+	SDL_Surface			*srf;
 	int					running;
 	SDL_Window			*win;
 	SDL_Renderer		*renderer;
-	Uint32				*pixels;
+	// Uint32				*pixels;
 	SDL_Texture			*text;
 	SDL_Surface			**textures;
 	SDL_AudioSpec		*wav_spect;
