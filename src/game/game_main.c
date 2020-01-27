@@ -59,36 +59,66 @@ void LoadData(char *ag, t_new_player *pl)//this function reads a new map format
     while(fgets(Buf, sizeof Buf, fp))
         switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
         {
-            case 'v': // vertex
-                for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1; )
-                { vert = realloc(vert, ++NumVertices * sizeof(*vert)); vert[NumVertices-1] = v; }
-                break;
-            case 's': // sector
-                if(p == 0)
-                {
-                    pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
-                    p++;
-                }
-                pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
-                t_new_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
-                int* num = NULL;
-                sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
-                for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
-                { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-                sect->npoints   = m /= 2;
-                sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
-                sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
-                for(n=0; n<m; ++n) sect->neighbors[n] = num[m + n];
-                for(n=0; n<m; ++n) sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
-                sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
-                free(num);
-                break;
+        //     case 'v': // vertex
+        //         for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1;)
+        //         {
+		// 			vert = realloc(vert, ++NumVertices * sizeof(*vert)); 
+		// 			vert[NumVertices-1] = v; 
+		// 			//printf("NUM: %d [ x:%f ], [ y:%f ]\n",(NumVertices - 1),  vert[NumVertices-1].y, vert[NumVertices-1].x);
+		// 		}
+        //         break;
+        //     case 's': // sector
+        //         if(p == 0)
+        //         {
+        //             pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
+        //             p++;
+        //         }
+        //         pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
+        //         t_new_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
+        //         int* num = NULL;
+        //         sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
+        //         for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
+        //         { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
+        //         sect->npoints   = m /= 2;
+        //         sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
+        //         sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
+        //         for(n=0; n<m; ++n)
+		// 		{
+		// 			sect->neighbors[n] = num[m + n];
+		// 			printf("NUMBER %d   [%d]\n", n, sect->neighbors[n]);
+		// 		}
+
+        //         for(n=0; n<m; ++n)
+		// 		{
+		// 			sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
+		// 					//printf("NUMBER  : %d, Y  : %f, X   : %f\n", n+1, \
+		//  sect->vertex[n+1].y, sect->vertex[n+1].x);
+		// 		}
+        //         sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
+		// 		//printf("[         %f     %f     ]\n", sect->vertex[0].x , sect->vertex[0].y);
+        //         free(num);
+        //         break;
             case 'p':; // player
 
                 sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
                 player_init(pl, &v, &angle, &n); // TODO: Range checking
                 pl->where.z = pl->sectors[pl->sector].floor + EyeHeight;
         }
+	// 	int i = ;
+	// 	int f = pl->sectors_nb;
+	// while (f--)
+	// {
+	// 	printf("SECTOR [%d]     [ceil %f], [floor %f]\n", f, pl->sectors[f].ceil , pl->sectors[f].floor);
+	// 	int	j = pl->sectors[f].npoints;
+	// 	while (j--)
+	// 	{
+	// 		printf("x: [%f] ,y : [%f]\n", pl->sectors[f].vertex[i].x, pl->sectors[f].vertex[i].y);
+	// 		i++;
+	// 	}
+		
+	// }
+	
+
     fclose(fp);
     free(vert);
 }

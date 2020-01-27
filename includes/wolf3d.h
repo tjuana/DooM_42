@@ -781,7 +781,11 @@ void	ft_game_redraw(void *d, t_list *dom);
 void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf);
 
 ///parse map for game
-void	ft_my_parse_map(t_new_player *pl, char *ag);
-void	ft_alloc_save_sectors(char *ag, t_new_player *pl);
-t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_my_parse_map(t_new_player *pl, char *ag);
+void			ft_alloc_save_sectors(char *ag, t_new_player *pl);
+t_new_xy		*ft_vertex_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_sector_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_sector_count(t_new_player *pl);
+void				ft_vertex_count(t_new_player *pl);
+t_new_xy		*ft_malloc_sec_vertex(t_new_player *pl, char *v);
 #endif

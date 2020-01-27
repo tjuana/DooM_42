@@ -37,7 +37,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/asd"],
+			"args": ["${workspaceRoot}/map-clear.txt"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
 			// "args": ["${workspaceRoot}/test"],
 			"stopAtEntry": false,

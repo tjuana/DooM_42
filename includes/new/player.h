@@ -13,6 +13,7 @@ typedef struct	s_file_read
 	int			i;
 	int			count_sectors;
 	int			count_sector_vertex;
+	int			vertex_count;
 }				t_file_read;
 
 typedef struct	s_new_player
