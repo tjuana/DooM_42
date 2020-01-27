@@ -1,12 +1,12 @@
 # Vertexes (Y coordinate, followed by list of X coordinates)
 
-vertex	0 0 20 21 40	# 0 1 2 3
+vertex	0 0 40 21 80	# 0 1 2 3
 
-vertex	3 20 21		# 4 5
+vertex	3 40 21		# 4 5
 
-vertex	8 20 21		# 6 7
+vertex	8 40 21		# 6 7
 
-vertex	20 0 20 21 40	# 8 9 10 11
+vertex	40 0 40 21 80	# 8 9 10 11
 
 
 
@@ -15,14 +15,14 @@ vertex	20 0 20 21 40	# 8 9 10 11
 # 
 # After the list of vertexes, comes the list of sector numbers on the "opposite" side of that wall; "x" = none.
 
-#room 1
-sector	0 20		0 1 4 6 9 8			-1 -1 -1 2 -1 -1			#0
 #room 2
-sector	2 18		2 3 11 10 7 5  		-1 -1 -1 -1 -1 2			#1
+sector	2 18		2 3 11 10 7 5       -1 -1 -1 -1 -1 2
+#room 1
+sector	0 20		0 1 4 6 9 8         -1 -1 -1 2 -1 -1
 #door 1
-sector	0 0			4 5 7 6				0 -1 1 -1					#2
+sector	0 0			4 5 7 6             1 -1 0 -1
 
 
 
 # Player: Location (x y), angle, and sector number
-player	22.3 7.7	3.26	1
+player	11 5.5	0	1

@@ -8,12 +8,14 @@ typedef struct  s_vector3
     double      z;
     double      w;
 }               t_vector3;
+
 typedef struct	s_tmp_trio //sectorno, sx1, sx2;
 {
     int	sec_nb;
     int	sx1;
     int	sx2;
 }				t_tmp_trio;
+
 typedef struct	s_xy
 {
     float	x;
@@ -26,6 +28,19 @@ typedef struct	s_xyz
     float	y;
     float	z;
 }				t_xyz;
+
+typedef struct	s_xyz_int
+{
+    int x;
+    int y;
+    int z;
+}				t_xyz_int;
+
+typedef struct	s_xy_int
+{
+    int	x;
+    int	y;
+}				t_xy_int;
 
 typedef struct	s_rect
 {

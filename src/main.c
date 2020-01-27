@@ -20,10 +20,10 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
-	pl->nearz = 1e-4f;
-	pl->farz = 5;
-	pl->nearside = 1e-5f;
-	pl->farside = 20.f;
+	pl->nearz = 0;//1e-4f
+    pl->nearside = 0;//1e-5f
+	pl->farz = 0;//5
+	pl->farside = 0;//20
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/25 21:44:58 by drafe            ###   ########.fr       */
+/*   Updated: 2020/01/27 14:21:00 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void		door_but_сlick(t_player *pl, t_sub_ev *se)
 
 	i = -1;
 	d_nb = -1;
+	printf("a==%F x==%f y==%f \n", pl->angle, pl->where.x, pl->where.y);
 	if ((pl->door_all == -1) || (pl->but_all == -1))
 	{
 		door_total(pl);
