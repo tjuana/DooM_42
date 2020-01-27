@@ -134,6 +134,12 @@ float		vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2);
 // void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
 void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
-
+static void	nearz_change(t_new_player *pl);
+static void	nearside_change(t_new_player *pl);
+static void	farz_change(t_new_player *pl);
+static void	farside_change(t_new_player *pl);
+static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl);
+static int	sub_events(t_new_sub_ev *se, t_new_player *pl);
+int			events(t_new_sub_ev *se, t_new_player *pl);
 
 #endif

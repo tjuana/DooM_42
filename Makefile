@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/26 22:46:56 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/27 18:15:15 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -300,8 +300,8 @@ $(LIBFT):
 
 clean:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
-	@rm -rf $(GENERAL_OBJS_DIRECTORY)
-	@echo "$(NAME): $(RED)$(GENERAL_OBJS_DIRECTORY) was deleted$(RESET)"
+	@rm -rf $(OBJS_PATH)
+	@echo "$(NAME): $(RED)$(OBJS_PATH) was deleted$(RESET)"
 	@rm -rf $(PARSER_OBJS_DIRECTORY)
 	@echo "$(NAME): $(RED)$(PARSER_OBJS_DIRECTORY) was deleted$(RESET)"
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"

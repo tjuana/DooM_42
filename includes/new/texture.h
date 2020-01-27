@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:23:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:59:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct		s_new_color
 
 typedef struct		s_new_texture
 {
-	t_new_color			*pixels;
+	t_new_color		*pixels;
 	unsigned int	w;
 	unsigned int	h;
 	unsigned int	edit;

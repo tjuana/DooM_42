@@ -259,12 +259,14 @@ int main(int ac, char **ag)
 
 	while (w.sdl->running)
 	{
-		ft_gui_events(&w);
 		ft_gui_redraw(&w);
+		ft_gui_events(&w);
 	}
-	
-	UnloadData(&data.pl);
-	SDL_Quit();
+	ft_gui_desctuct(w.gui.dom);
+	ft_gui_desctuct_fonts(w.gui.fonts);
+	ft_clean_sdl(&w);
+	// UnloadData(&data.pl);
+	// SDL_Quit();
     return (0);
 }
 

@@ -6,11 +6,67 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 23:31:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:37:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+static void	nearz_change(t_new_player *pl)
+{
+	printf(" 1 - nearz_change\n\
+	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f) \n\
+	pl->farz==%f (5) ||pl->farside==%f (20)\
+	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
+	pl->nearz += 1;//1e-5f
+
+	/*	pl->nearz = 0;//1e-4f 
+    pl->nearside = 0;//1e-5f
+	pl->farz = 0;//5
+	pl->farside = 0;//20*/
+}
+
+static void	nearside_change(t_new_player *pl)
+{
+	printf(" 2 - nearside_change\n\
+	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f) \n\
+	pl->farz==%f (5) ||pl->farside==%f (20)\
+	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
+	pl->nearside += 1;
+
+	/*	pl->nearz = 0;//1e-4f
+    pl->nearside = 0;//1e-5f
+	pl->farz = 0;//5
+	pl->farside = 0;//20*/
+}
+
+static void	farz_change(t_new_player *pl)
+{
+	printf(" 3 - farz_change\n\
+	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f)  \n\
+	pl->farz==%f (5) ||pl->farside==%f (20)\
+	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
+	pl->farz += 1;
+
+	/*	pl->nearz = 0;//1e-4f
+    pl->nearside = 0;//1e-5f
+	pl->farz = 0;//5
+	pl->farside = 0;//20*/
+}
+
+static void	farside_change(t_new_player *pl)
+{
+	printf(" 4 - farside_change\n\
+	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f)  \n\
+	pl->farz==%f (5) ||pl->farside==%f (20)\
+	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
+	pl->farside += 1;
+	
+	/*	pl->nearz = 0;//1e-4f
+    pl->nearside = 0;//1e-5f
+	pl->farz = 0;//5
+	pl->farside = 0;//20*/
+}
 
 /*
 ** **************************************************************************
@@ -33,6 +89,14 @@ static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 		se->wsad[6] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
 		door_but_сlick(pl, se);
+	if (se->ev.key.keysym.sym == '1' && (se->ev.type == SDL_KEYDOWN))
+		nearz_change(pl);
+	if (se->ev.key.keysym.sym == '2' && (se->ev.type == SDL_KEYDOWN))
+		nearside_change(pl);
+	if (se->ev.key.keysym.sym == '3' && (se->ev.type == SDL_KEYDOWN))
+		farz_change(pl);
+	if (se->ev.key.keysym.sym == '4' && (se->ev.type == SDL_KEYDOWN))
+		farside_change(pl);
 }
 
 /*
@@ -75,7 +139,7 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 {
 	while (SDL_PollEvent(&se->ev))
 	{
-		// se->ev.type == SDL_QUIT ? se->quit = 1 : se->quit;
+		se->ev.type == SDL_QUIT ? se->quit = 1 : se->quit;
 		if (se->ev.type)
 		{
 			if (se->ev.type == SDL_KEYDOWN || se->ev.type == SDL_KEYUP)
@@ -83,13 +147,12 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 				if (se->ev.key.keysym.sym)
 					if (!sub_events(se, pl))
 						return (0);
-				// if (se->ev.type == SDL_QUIT)
-				// {
-				// 	UnloadData(pl);
-				// 	SDL_Quit();
-				// 	exit (0);
-				// 	return (0);
-				// }
+				if (se->ev.type == SDL_QUIT)
+				{
+					UnloadData(pl);
+					SDL_Quit();
+					return (0);
+				}
 			}
 		}
 	}

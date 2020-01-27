@@ -39,10 +39,12 @@ typedef struct	s_new_player
 	int			neib;
 	t_new_ceil		ceil;
 	t_new_floor		floor;
+
 	float		nearz;
 	float		farz;
 	float		nearside;
 	float		farside;
+
 	float		x1;
 	float		x2;
 	int			y_top[WIN_W];

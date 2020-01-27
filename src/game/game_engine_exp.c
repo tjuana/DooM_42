@@ -12,6 +12,36 @@
 
 #include "doom.h"
 
+int	ft_check_segment_line_to_fov(t_new_player *pl, t_new_xy v1, t_new_xy v2)
+{
+	// if((pl->t1.y <= 0) && (pl->t2.y <= 0))
+	// 	return (0);//continue
+
+	t_vector3	vec1;
+	t_vector3	vec2;
+	t_vector3	vtx1;
+	t_vector3	vtx2;
+
+	t_vector3	fov_vec;
+	t_vector3	fov_vec1;
+	t_vector3	fov_vec2;
+
+	vtx1 = (t_vector3){v1.x, v1.y, 0, 0};
+	vtx2 = (t_vector3){v2.x, v2.y, 0, 0};
+	vec1 = vtx1;
+	vec2 = vtx2;
+
+	fov_vec = (t_vector3){pl->anglecos, pl->anglesin, 0, 0};
+	fov_vec1 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST / 2));
+	fov_vec2 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST / 2));
+
+	if ((ft_vxs_vector(fov_vec1, vec1) < 0.0 && ft_vxs_vector(fov_vec2, vec1) > 0.0) &&
+		(ft_vxs_vector(fov_vec1, vec2) < 0.0 && ft_vxs_vector(fov_vec2, vec2) > 0.0))
+		return (0);
+
+	return (1);
+}
+
 /*
 ** **************************************************************************
 **	int engine_cross(t_new_player *pl, int sec_n, unsigned s)
@@ -38,7 +68,11 @@ int			engine_cross(t_new_player *pl, int sec_n, unsigned s)
 	pl->t2.x = v_end.x * pl->anglesin - v_end.y * pl->anglecos;
 	pl->t2.y = v_end.x * pl->anglecos + v_end.y * pl->anglesin;
 	//Is the wall at least partially in front of the player?
-	if((pl->t1.y <= 0) && (pl->t2.y <= 0))
+
+	// if((pl->t1.y <= 0) && (pl->t2.y <= 0))
+	// 	return (0);//continue
+
+	if(!ft_check_segment_line_to_fov(pl, pl->t1, pl->t2))
 		return (0);//continue
 	//If it's partially behind the player, cut it against player's view
 	if((pl->t1.y <= 0) || (pl->t2.y <= 0))
