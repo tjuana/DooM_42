@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:02:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:39:27 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/27 22:15:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,25 @@
 # include "gui_func.h"
 # include "editor_func.h"
 # include "math_func.h"
+
+void	ft_main_gui_init_win(t_list *head);
+void	ft_main_gui_init(t_wolf3d *w);
+void	ft_game_redraw(void *d, t_list *dom);
+void	ft_game_gui_init_hud(t_list *head);
+
+void	ft_gui_mousebuttonup_win_menu_btngame(\
+			void *data, \
+			SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_menu_btneditor(\
+			void *data, \
+			SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_menu_btnexit(\
+			void *data, \
+			SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_editor_menu_btnmenu(\
+			void *data, SDL_Event e, t_list *dom, int type);
 
 #endif

@@ -6,21 +6,18 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/27 18:15:15 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/27 21:48:20 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Project structure:
 # src/
-#		func/		General functions
-#		algebra/	Functions for use linear algebra
-#		math/		Mathematic functions for calculations (temp.?)
-#		editor/		Map editor (with main file)
-#
-#		gui/		Functions for create interface
-#		game/		Game (with main file)
-#
-#
+#		albegra/	Functions for use linear algebra
+#		editor/		Functions for map editor
+#		func/		?
+#		game/		Function for game
+#		gui/		Function for gui-interface
+#		math/		Mathematic functions for calculations
 
 # Project name
 NAME = DooM_nuKem
@@ -56,7 +53,18 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 DIRECTORY =  $(shell pwd)
 
 SRCS_PATH = ./src/
-OBJS_PATH = ./objects/
+OBJS_PATH = ./obj/
+
+# MAIN FUNCTIONS
+MAIN_SRCS_DIRECTORY = $(SRCS_PATH)main/
+MAIN_LIST = \
+main_gui_init.c \
+main.c \
+main_btn_action.c
+
+MAIN_OBJS_DIRECTORY = $(OBJS_PATH)
+MAIN_OBJS_LIST = $(patsubst %.c, %.o, $(MAIN_LIST))
+MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 
 # ALGEBRA FUNCTIONS
 ALGEBRA_SRCS_DIRECTORY = $(SRCS_PATH)algebra/
@@ -126,7 +134,6 @@ editor_event_win_setsprite.c \
 editor_gui_init.c \
 editor_gui_txtr.c \
 editor_init.c \
-editor_main.c \
 editor_map_check.c \
 editor_map_door.c \
 editor_map_enemy.c \
@@ -181,14 +188,14 @@ game_events_1.c \
 game_events_2.c \
 game_load_file.c \
 game_load_textures.c \
-game_main.c \
 game_math_functions.c \
 game_motion.c \
 game_sdl_addons.c \
 game_texture_parser.c \
 game_vectors_1.c \
 game_vectors_2.c \
-game_vectors_3.c
+game_vectors_3.c \
+game_main.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))
@@ -230,37 +237,43 @@ all: $(NAME)
 
 # all objs file
 OBJS_COMPILE = \
+$(MAIN_OBJS) \
 $(GAME_OBJS) \
+$(EDITOR_OBJS) \
 $(ALGEBRA_OBJS) \
 $(MATH_OBJS) \
-$(EDITOR_OBJS) \
 $(GUI_OBJS) \
 $(FUNC_OBJS) \
 
 # file for game
-GAME_OBJS_COMPILE = \
-$(MATH_OBJS) \
-$(ALGEBRA_OBJS) \
-$(FUNC_OBJS) \
-$(GUI_OBJS) \
-$(GAME_OBJS)
+# GAME_OBJS_COMPILE = \
+# $(MATH_OBJS) \
+# $(ALGEBRA_OBJS) \
+# $(FUNC_OBJS) \
+# $(GUI_OBJS) \
+# $(GAME_OBJS)
 
-# file for editor
-EDITOR_OBJS_COMPILE = \
-$(EDITOR_OBJS) \
-$(GUI_OBJS) \
-$(MATH_OBJS) \
-$(FUNC_OBJS) \
-$(ALGEBRA_OBJS)
+# # file for editor
+# EDITOR_OBJS_COMPILE = \
+# $(EDITOR_OBJS) \
+# $(GUI_OBJS) \
+# $(MATH_OBJS) \
+# $(FUNC_OBJS) \
+# $(ALGEBRA_OBJS)
 
 $(NAME): $(LIBFT) $(OBJS_COMPILE)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(GAME_OBJS_COMPILE) -o $(GAME_NAME)
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJS_COMPILE) -o $(GAME_NAME)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
-	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS_COMPILE) -o $(EDITOR_NAME)
-	@echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
+	# @$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS_COMPILE) -o $(EDITOR_NAME)
+	# @echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
 
 
+
+$(MAIN_OBJS_DIRECTORY)%.o : $(MAIN_SRCS_DIRECTORY)%.c $(HEADERS)
+	@mkdir -p $(MAIN_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
+	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
+	@echo "$(C_TX_YELLOW).$(RESET)\c"
 
 $(EDITOR_OBJS_DIRECTORY)%.o : $(EDITOR_SRCS_DIRECTORY)%.c $(HEADERS)
 	@mkdir -p $(EDITOR_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null

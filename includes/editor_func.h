@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/27 21:27:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +233,7 @@ void				ft_gui_init_win_setplayer(t_list *head);
 void				ft_gui_init_win_setsprite(t_list *head);
 void				ft_gui_init_win_setenemy(t_list *head);
 void				ft_gui_init_win_setdoor(t_list *head);
-void				ft_gui_init_win(t_list *head);
+void				ft_editor_gui_init_win_editor(t_list *head);
 void				ft_editor_gui_init(t_wolf3d *w);
 
 /*
