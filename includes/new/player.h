@@ -65,7 +65,7 @@ typedef struct	s_new_player
 	int       y2;
 	int			origin_y1_coord;
 	int		intery;	// intermediate y coordinate
-
+	char		*lvl;
 	double		wall_height_c;	// wall height coeff.
 	int			wall_height;	// for coordinates
 	double		cl;				// Дистанция до стены?

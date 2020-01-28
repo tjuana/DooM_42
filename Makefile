@@ -6,7 +6,7 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/26 13:18:25 by tjuana           ###   ########.fr        #
+#    Updated: 2020/01/28 14:29:50 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,7 +191,8 @@ game_textures.c \
 game_vectors_1.c \
 game_vectors_2.c \
 game_walls.c \
-game_map_parse.c
+game_map_parse.c \
+game_map_parse2.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

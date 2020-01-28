@@ -11,6 +11,7 @@
 		"hashtable": "c",
 		"functional": "c",
 		"wolf3d.h": "c",
-		"locale": "c"
+		"locale": "c",
+		"gui_struct.h": "c"
 	},
 }

@@ -16,7 +16,7 @@ typedef	struct		s_new_temp
 	SDL_Window* window;
 }					t_new_temp;
 
-void player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n)//init data for LoadData function
+void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data for LoadData function
 {
     //player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
     pl->where.x = v->x;
@@ -43,84 +43,8 @@ void player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n)//init data
 
 void LoadData(char *ag, t_new_player *pl)//this function reads a new map format
 {
-    FILE* fp = fopen(ag, "rt");
-    if(!fp) { perror(ag); exit(EXIT_FAILURE); }
-    char Buf[256];
-    char word[256];
-    char *ptr;
-    float angle;
-    t_new_xy *vert = NULL;//, v;
-    t_new_xy v;
-    int n;
-    int m;
-    static int p;//the first time is 0. Is a rule for all statics variables
-    int NumVertices = 0;
+
 	ft_my_parse_map(pl, ag);
-    while(fgets(Buf, sizeof Buf, fp))
-        switch(sscanf(ptr = Buf, "%32s%n", word, &n) == 1 ? word[0] : '\0')
-        {
-        //     case 'v': // vertex
-        //         for(sscanf(ptr += n, "%f%n", &v.y, &n); sscanf(ptr += n, "%f%n", &v.x, &n) == 1;)
-        //         {
-		// 			vert = realloc(vert, ++NumVertices * sizeof(*vert)); 
-		// 			vert[NumVertices-1] = v; 
-		// 			//printf("NUM: %d [ x:%f ], [ y:%f ]\n",(NumVertices - 1),  vert[NumVertices-1].y, vert[NumVertices-1].x);
-		// 		}
-        //         break;
-        //     case 's': // sector
-        //         if(p == 0)
-        //         {
-        //             pl->sectors = malloc(pl->sectors_nb * sizeof(*pl->sectors));//allocate memory if first time
-        //             p++;
-        //         }
-        //         pl->sectors = realloc(pl->sectors, ++pl->sectors_nb * sizeof(*pl->sectors));//reallocate memory
-        //         t_new_sector  *sect = &pl->sectors[pl->sectors_nb - 1];//SECT CREATED
-        //         int* num = NULL;
-        //         sscanf(ptr += n, "%f%f%n", &sect->floor,&sect->ceil, &n);
-        //         for(m=0; sscanf(ptr += n, "%32s%n", word, &n) == 1 && word[0] != '#'; )
-        //         { num = realloc(num, ++m * sizeof(*num)); num[m-1] = word[0]=='x' ? -1 : atoi(word); }
-        //         sect->npoints   = m /= 2;
-        //         sect->neighbors = malloc( (m  ) * sizeof(*sect->neighbors) );
-        //         sect->vertex    = malloc( (m+1) * sizeof(*sect->vertex)    );
-        //         for(n=0; n<m; ++n)
-		// 		{
-		// 			sect->neighbors[n] = num[m + n];
-		// 			printf("NUMBER %d   [%d]\n", n, sect->neighbors[n]);
-		// 		}
-
-        //         for(n=0; n<m; ++n)
-		// 		{
-		// 			sect->vertex[n+1]  = vert[num[n]]; // TODO: Range checking
-		// 					//printf("NUMBER  : %d, Y  : %f, X   : %f\n", n+1, \
-		//  sect->vertex[n+1].y, sect->vertex[n+1].x);
-		// 		}
-        //         sect->vertex[0] = sect->vertex[m]; // Ensure the vertexes form a loop
-		// 		//printf("[         %f     %f     ]\n", sect->vertex[0].x , sect->vertex[0].y);
-        //         free(num);
-        //         break;
-            case 'p':; // player
-
-                sscanf(ptr += n, "%f %f %f %d", &v.x, &v.y, &angle,&n);
-                player_init(pl, &v, &angle, &n); // TODO: Range checking
-                pl->where.z = pl->sectors[pl->sector].floor + EyeHeight;
-        }
-	// 	int i = ;
-	// 	int f = pl->sectors_nb;
-	// while (f--)
-	// {
-	// 	printf("SECTOR [%d]     [ceil %f], [floor %f]\n", f, pl->sectors[f].ceil , pl->sectors[f].floor);
-	// 	int	j = pl->sectors[f].npoints;
-	// 	while (j--)
-	// 	{
-	// 		printf("x: [%f] ,y : [%f]\n", pl->sectors[f].vertex[i].x, pl->sectors[f].vertex[i].y);
-	// 		i++;
-	// 	}
-		
-	// }
-	
-
-    fclose(fp);
-    free(vert);
 }
 
 void UnloadData(t_new_player *pl)
@@ -223,6 +147,33 @@ void	ft_game_redraw(void *d, t_list *dom)
 		//door(&pl, &se);
 }
 
+// static void	ft_debug(t_new_player *pl)
+// {
+// 	int secnb = 0;
+// 	int i = pl->sectors_nb;
+// 	int point = 0;
+// 	int neig = 0;
+// 	int n = 0;
+// 	int x = 0;
+// 	int y = 0;
+// 	while (secnb < i)
+// 	{
+// 		while (n < pl->sectors->npoints)
+// 		{
+// 			x = pl->sectors[secnb].vertex[point].x;
+// 			y = pl->sectors[secnb].vertex[point].y;
+// 			neig = pl->sectors[secnb].neighbors[point];
+// 			n++;
+// 			point++;
+// 		}
+		
+
+		
+// 		secnb++;
+// 	}
+	
+// }
+
 void	ft_game_init(t_new_temp *data, char *path)
 {
 	data->scr_surf = NULL;
@@ -230,6 +181,7 @@ void	ft_game_init(t_new_temp *data, char *path)
 	data->pl.sectors_nb = 0;
     data->se.quit = 0;
     LoadData(path, &data->pl);//load map and init typedef t_new_player data
+	// ft_debug(&data->pl);
     //ft_init_anim(&w);//gun
     // SDL_Window* window = NULL;
 	// data->window = NULL;

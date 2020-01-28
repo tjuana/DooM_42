@@ -788,4 +788,9 @@ void			ft_sector_save(t_new_player *pl, t_new_xy *vertex);
 void			ft_sector_count(t_new_player *pl);
 void				ft_vertex_count(t_new_player *pl);
 t_new_xy		*ft_malloc_sec_vertex(t_new_player *pl, char *v);
+void			ft_fill_the_sector(t_new_sector *sector, int number, \
+					t_file_read file, t_new_xy *vertex);
+void			ft_player_save(t_new_player *pl);
+void			player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n);
+void			ft_level_save(t_new_player *pl);
 #endif
