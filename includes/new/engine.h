@@ -2,6 +2,9 @@
 #define ENGINE_H
 # include "wolf3d.h"
 
+#define hfov (0.73f*WIN_H)
+#define vfov (.2f*WIN_H)
+
 typedef struct	s_new_cycle//item
 {
 	t_new_tmp_trio	queue[MAX_QUEUE];//sectors queue for draw sector by sector

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 22:10:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:23:28 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void			ft_main(int c, char **v)
 
 
 	// exit(0);
+	data.pl.tex = load_textures(&data.pl);
 
 
 	while (w.sdl->running)

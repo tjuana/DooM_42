@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 20:26:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:27:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	engine_preset(t_new_player *pl)
 	int	i;
 	int	*rend_sec;
 
-	if ((i = -1) && !(rend_sec = (int *)ft_my_malloc(sizeof(int) * (pl->sectors_nb + 1))))
+	if ((i = -1) && !(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
 	{
 		ft_putstr_fd("engine_preset - malloc error.\n", 2);
 		exit (EXIT_FAILURE);
@@ -74,13 +74,12 @@ static void	engine_preset(t_new_player *pl)
 ** **************************************************************************
 */
 
-int		engine_scale(t_new_player *pl, int sx1, int sx2)
+int		engine_scale(t_new_player *pl, int sx1, int sx2)/*perspective*/
 {
-	pl->scale_1.x = HOR_FOV / pl->t1.y;
-	pl->scale_1.y = VER_FOV / pl->t1.y;
-	pl->scale_1.x = HOR_FOV / pl->t1.y;
-	pl->scale_2.x = HOR_FOV / pl->t2.y;
-	pl->scale_2.y = VER_FOV / pl->t2.y;
+	pl->scale_1.x = hfov / pl->t1.y;
+	pl->scale_1.y = vfov / pl->t1.y;
+	pl->scale_2.x = hfov / pl->t2.y;
+	pl->scale_2.y = vfov / pl->t2.y;
 	//Do perspective transformation
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
@@ -118,8 +117,10 @@ void	engine_begin(t_new_player *pl)
 			continue;
 		while (++s < pl->sect->npoints)
 		{
-			if (engine_cross(pl, pl->cycle.current->sec_nb, s) == 0)
+		    pl->s = s;
+			if (engine_cross(pl) == 0)
 				continue;
+
 			//Acquire the floor and ceiling heights, relative to where the player's view is
 			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
 			pl->floor.yfloor = pl->sect->floor - pl->where.z;
@@ -130,11 +131,22 @@ void	engine_begin(t_new_player *pl)
 				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
 				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
 			}
+
 			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
 				continue; // Only render if it's visible
-			engine_put_lines(pl, neib);//Render all.
+            pl->f = 0;
+            if ( s < 1 && pl->sect->floor == 0)
+            {
+                pl->n = 0;
+            }
+            else if (pl->sect->floor == 6 && pl->sect->ceil == 10)
+                pl->n = 7;
+			else if (s == 4 && pl->sect->floor == 0)// && pl->sect->floor == 0)
+                pl->n = 10;
+                else
+                pl->n = 2;
+            engine_put_lines(pl, neib);//Render all.
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
     }
-	// free(pl->cycle.rend_sec);
 }
