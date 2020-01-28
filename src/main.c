@@ -20,10 +20,10 @@ void player_init(t_player *pl, t_xy *v, float *angle, int *n)//init data for Loa
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
-	pl->nearz = 0;//1e-4f
-    pl->nearside = 0;//1e-5f
-	pl->farz = 0;//5
-	pl->farside = 0;//20
+    pl->nearz = 1e-4f;
+    pl->nearside = 1e-5f;
+	pl->farz = 5;
+	pl->farside = 20;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;
@@ -72,7 +72,9 @@ int main(int ac, char **ag)
     t_others ot;
     t_sect_ops op;
 	t_wolf3d w;
+    int ye;
 
+    ye = 0;
 	pl.sectors_nb = 0;
     w.weapon_texture = SDL_LoadBMP("Textures/pistol.bmp");
 	if (ac < 2 || ac > 2)
@@ -125,7 +127,7 @@ int main(int ac, char **ag)
 				pl.texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				SDL_RenderCopy(pl.rend, pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 				SDL_RenderPresent(pl.rend);
-				SDL_DestroyTexture(pl.texture);
+			    SDL_DestroyTexture(pl.texture);
 				
 
 				op.eye_h = se.ducking ? CROUCH_H : EYE_H;
@@ -138,6 +140,9 @@ int main(int ac, char **ag)
 				if (!events(&se, &pl))
 					return(0);
 				door(&pl, &se);
+                ye++;
+                if (ye > 3000)
+                    exit(1);
 			}
 			
             UnloadData(&pl);

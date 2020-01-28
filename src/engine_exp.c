@@ -20,16 +20,18 @@
 ** **************************************************************************
 */
 
-int			engine_cross(t_player *pl, int sec_n, unsigned s)
+int			engine_cross(t_player *pl, int sec_n, int s)
 {
 	t_xy	i1;
 	t_xy	i2;
 	t_xy	v_start;
 	t_xy	v_end;
 
+	//if (pl->sect->neighbors[s] >= 0)
+	//	return (0);
 	//Acquire the x,y coordinates of the two endpoints (vertices) of this edge of the sector
-	v_start.x = pl->sectors[sec_n].vertex[s + 0].x - pl->where.x;
-	v_start.y = pl->sectors[sec_n].vertex[s + 0].y - pl->where.y;
+	v_start.x = pl->sectors[sec_n].vertex[s].x - pl->where.x;
+	v_start.y = pl->sectors[sec_n].vertex[s].y - pl->where.y;
 	v_end.x = pl->sectors[sec_n].vertex[s + 1].x - pl->where.x;
 	v_end.y = pl->sectors[sec_n].vertex[s + 1].y - pl->where.y;
 	//Rotate them around the player's view
@@ -38,6 +40,7 @@ int			engine_cross(t_player *pl, int sec_n, unsigned s)
 	pl->t2.x = v_end.x * pl->anglesin - v_end.y * pl->anglecos;
 	pl->t2.y = v_end.x * pl->anglecos + v_end.y * pl->anglesin;
 	//Is the wall at least partially in front of the player?
+	
 	if((pl->t1.y <= 0) && (pl->t2.y <= 0))
 		return (0);//continue
 	//If it's partially behind the player, cut it against player's view
@@ -46,25 +49,10 @@ int			engine_cross(t_player *pl, int sec_n, unsigned s)
 		// Find an intersection between the wall and the approximate edges of player's view
 		i1 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
 		i2 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
-		if(pl->t1.y < pl->nearz)
-		{
-			if(i1.y > 0)
-				pl->t1 = i1;
-			else
-				pl->t1 = i2;
-		}
-		if(pl->t2.y < pl->nearz)
-		{
-			if(i1.y > 0)
-				pl->t2 = i1;
-			else
-				pl->t2 = i2;
-		}
-		
-		/*(pl->t1.y < pl->nearz && i1.y > 0) ? pl->t1 = i1 : pl->t1;
+		(pl->t1.y < pl->nearz && i1.y > 0) ? pl->t1 = i1 : pl->t1;
 		(pl->t1.y < pl->nearz && i1.y < 0) ? pl->t1 = i2 : pl->t1;
 		(pl->t2.y < pl->nearz && i1.y > 0) ? pl->t2 = i1 : pl->t2;
-		(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;*/
+		(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;
 	}
 	return (1);
 }

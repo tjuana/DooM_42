@@ -55,7 +55,7 @@ void		door_but_сlick(t_player *pl, t_sub_ev *se);//when you press E key or butt
 void		door(t_player *pl, t_sub_ev *se);//cycle for open door
 
 /*			engine_exp.c			*/
-int			engine_cross(t_player *pl, int sec_n, unsigned s);
+int			engine_cross(t_player *pl, int sec_n, int s);
 void		engine_put_lines(t_player *pl, int neib);
 
 /*			engine.c			*/

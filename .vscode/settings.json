@@ -10,6 +10,7 @@
 		"vector": "c",
 		"ios": "c",
 		"player.h": "c",
-		"png_parser.h": "c"
+		"png_parser.h": "c",
+		"functional": "c"
 	}
 }
