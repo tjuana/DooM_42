@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/27 16:37:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:14:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,9 @@ static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
-		UnloadData(pl);
-		SDL_Quit();
+		// UnloadData(pl);
+		// SDL_Quit();
+		se->quit = 1;
 		return (0);
 	}
 	if (se->ev.key.keysym.sym == ' ' && se->ground)
@@ -147,14 +148,19 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 				if (se->ev.key.keysym.sym)
 					if (!sub_events(se, pl))
 						return (0);
-				if (se->ev.type == SDL_QUIT)
-				{
-					UnloadData(pl);
-					SDL_Quit();
-					return (0);
-				}
+				// if (se->ev.type == SDL_QUIT)
+				// {
+				// 	UnloadData(pl);
+				// 	SDL_Quit();
+				// 	return (0);
+				// }
 			}
 		}
 	}
 	return (1);
+}
+
+void	ft_game_events(t_new_temp *data)
+{
+	events(&data->se, &data->pl);
 }

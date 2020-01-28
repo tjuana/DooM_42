@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/27 16:39:01 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:11:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,25 @@ void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 	{
 		ot->move_vec[0] += pl->anglecos * (0.2 + 0.2 * se->wsad[6]);
 		ot->move_vec[1] += pl->anglesin * (0.2 + 0.2 * se->wsad[6]);
-		se->wsad[0] = 0;
+		// se->wsad[0] = 0;
 	}
 	if (se->wsad[1])
 	{
 		ot->move_vec[0] -= pl->anglecos * 0.2;
 		ot->move_vec[1] -= pl->anglesin * 0.2;
-		se->wsad[1] = 0;
+		// se->wsad[1] = 0;
 	}
 	if (se->wsad[2])
 	{
 		ot->move_vec[0] += pl->anglesin * 0.2;
 		ot->move_vec[1] -= pl->anglecos * 0.2;
-		se->wsad[2] = 0;
+		// se->wsad[2] = 0;
 	}
 	if (se->wsad[3])
 	{
 		ot->move_vec[0] -= pl->anglesin * 0.2;
 		ot->move_vec[1] += pl->anglecos * 0.2;
-		se->wsad[3] = 0;
+		// se->wsad[3] = 0;
 	}
 	events_vel_2(pl, se, ot);
 }

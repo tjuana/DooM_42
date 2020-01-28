@@ -3,15 +3,7 @@
 //
 #include "doom.h"
 
-typedef	struct		s_new_temp
-{
-    t_new_sub_ev se;
-    t_new_mouse ms;
-    t_new_player pl;
-    t_new_others ot;
-    t_new_sect_ops op;
-	t_new_wolf3d w;
-}					t_new_temp;
+
 
 void player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n)//init data for LoadData function
 {
@@ -101,9 +93,7 @@ void	ft_game_redraw(void *d, t_list *dom)
 	w = (t_wolf3d*)d;
 	data = w->new_data;
 
-	data->pl.srf = NULL;
-
-	data->pl.srf = w->sdl->srf;
+	// printf("%p\n", data->pl);
 	// data->pl.pixels = w->sdl->pixels;
 
 	// data->pl.srf = w->sdl.surf;
@@ -143,8 +133,13 @@ void	ft_game_redraw(void *d, t_list *dom)
 	door(&data->pl, &data->se);
 }
 
-void	ft_game_init(t_new_temp *data, char *path)
+void	ft_game_init(t_wolf3d *w, char *path)
 {
+	t_new_temp	*data;
+
+	data = (t_new_temp*)w->new_data;
+	// printf("%p\n", data->pl);
+	// printf("%d\n", data->pl.sectors_nb);
 	data->pl.sectors_nb = 0;
     data->se.quit = 0;
     load_file(path, &data->pl);//load map and init typedef t_new_player data
@@ -159,7 +154,7 @@ void	ft_game_init(t_new_temp *data, char *path)
 		// ft_error("Window could not be created! SDL_Error: %s\n");
 
 	// SDL_UpdateWindowSurface(data->window);
-	SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
+	// SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
 	data->se.wsad[2] = 0;
@@ -170,6 +165,10 @@ void	ft_game_init(t_new_temp *data, char *path)
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
 	//load_weapons(&wpn);
+
+	// data->pl.srf = NULL;
+
+	data->pl.srf = w->sdl->srf;
 }
 
 void	ft_game_gui_init_menu(t_list *head)

@@ -35,6 +35,16 @@ typedef struct	s_new_wolf3d
 	int			color;
 }				t_new_wolf3d;
 
+typedef	struct		s_new_temp
+{
+    t_new_sub_ev		se;
+    t_new_mouse			ms;
+    t_new_player		pl;
+    t_new_others		ot;
+    t_new_sect_ops		op;
+	t_new_wolf3d		w;
+}					t_new_temp;
+
 /*			animations.c			*/
 int			ft_init_anim(t_new_wolf3d *wolf);
 void		ft_draw_animation(t_new_wolf3d *w);
@@ -141,5 +151,10 @@ static void	farside_change(t_new_player *pl);
 static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl);
 static int	sub_events(t_new_sub_ev *se, t_new_player *pl);
 int			events(t_new_sub_ev *se, t_new_player *pl);
+void		ft_game_events(t_new_temp *data);
+
+void		ft_game_init(t_wolf3d *w, char *path);
+
+
 
 #endif

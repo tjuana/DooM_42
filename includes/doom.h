@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:02:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 22:15:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:54:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ void	ft_gui_mousebuttonup_win_menu_btnexit(\
 			t_list *dom, int type);
 void	ft_gui_mousebuttonup_win_editor_menu_btnmenu(\
 			void *data, SDL_Event e, t_list *dom, int type);
+
+void	ft_main_events(t_wolf3d *w);
 
 #endif
