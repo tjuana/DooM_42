@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/28 14:56:28 by dorange-         ###   ########.fr        #
+#    Updated: 2020/01/28 15:26:36 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -196,7 +196,9 @@ game_texture_parser.c \
 game_vectors_1.c \
 game_vectors_2.c \
 game_vectors_3.c \
-game_main.c
+game_main.c \
+game_map_parse.c \
+game_map_parse2.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

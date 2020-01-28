@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 14:52:51 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:37:04 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			ft_main(int c, char **v)
 	ft_editor_gui_init(&w);
 	ft_gui_redraw(&w);
 
-	ft_game_init(&w, "map1.txt"); // ?!?!?!?!?
+	ft_game_init(&w, "map1"); // Пока что инициализирует конкретный файл
 	
 	while (w.sdl->running)
 		ft_main_events(&w);

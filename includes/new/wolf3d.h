@@ -91,7 +91,7 @@ SDL_Texture	*texture_new(t_new_player *pl);
 
 /*			main.c			*/
 int			main(int ac, char **ag);
-void		player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n);
+// void		player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n);
 void		line(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
 
 /*			math_functions.c			*/
@@ -155,6 +155,18 @@ void		ft_game_events(t_new_temp *data);
 
 void		ft_game_init(t_wolf3d *w, char *path);
 
-
+///parse map for game
+void			ft_my_parse_map(t_new_player *pl, char *ag);
+void			ft_alloc_save_sectors(char *ag, t_new_player *pl);
+t_new_xy		*ft_vertex_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_sector_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_sector_count(t_new_player *pl);
+void				ft_vertex_count(t_new_player *pl);
+t_new_xy		*ft_malloc_sec_vertex(t_new_player *pl, char *v);
+void			ft_fill_the_sector(t_new_sector *sector, int number, \
+					t_file_read file, t_new_xy *vertex);
+void			ft_player_save(t_new_player *pl);
+void			player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n);
+void			ft_level_save(t_new_player *pl);
 
 #endif

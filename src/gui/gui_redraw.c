@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 00:10:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:23:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,11 @@ void	ft_gui_draw_image(t_wolf3d *w, t_list *list)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 **	
 **	Function that fill area screen.
+** **************************************************************************
 */
 void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 {
@@ -131,9 +133,11 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, t_gui_coord v2, int color)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 **	
 **	Function that draw border for gui elem.
+** **************************************************************************
 */
 void	ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 {
@@ -163,9 +167,11 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, int color, int border_width)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 **	
 **	Function that fill gui elem area.
+** **************************************************************************
 */
 void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 {
@@ -191,10 +197,12 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 }
 
 /*
+** **************************************************************************
 **	[TEMPORARY] [TESTING]
 **	void ft_gui_redraw_elem(t_wolf3d *w)
 **	
 **	Function that redraw gui elem.
+** **************************************************************************
 */
 void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 {
@@ -225,9 +233,11 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_redraw(t_wolf3d *w)
 **	
 **	Function that redraw frame.
+** **************************************************************************
 */
 int		ft_gui_redraw_frame(t_wolf3d *w)
 {
@@ -235,9 +245,11 @@ int		ft_gui_redraw_frame(t_wolf3d *w)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 **	
 **	Function that put text for elem area.
+** **************************************************************************
 */
 void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 {
@@ -255,39 +267,34 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 			color = ft_fdf_get_color(color, 0xffffff, 0.5);
 		if (elem->status & GUI_ELEM_ACTIVE)
 			color = ft_fdf_get_color(color, 0x000000, 0.5);
-		// hsl imitation
 		if ((((color & C_R) >> 16) + ((color & C_G) >> 8) + (color & C_B)) / 3 > 128)
 			color = 0x000000;
 		else
 			color = 0xffffff;
-		// invertion
-		// color = ~color & 0x00ffffff;
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-		// // printf("FONT SIZE BUTTON: %d\n", elem->fs);
 	}
 
-	if (elem->type == GUI_TEXT)// || elem->type == GUI_INPUT)
+	if (elem->type == GUI_TEXT)
 	{
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-		// // printf("FONT SIZE TEXT: %d\n", elem->fs);
 	}
 	if (elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 	{
-		// color = ft_fdf_get_color(color, 0xffffff, 1);
 		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-		// // printf("FONT SIZE INPUT: %d\n", elem->fs);
 	}
 }
 
 /*
-**	[TEMPORARY] [TESTING]
+** **************************************************************************
 **	void ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 **	
 **	Function that print font for elements.
+** **************************************************************************
 */
+
 void	ft_gui_redraw_elem_font(t_wolf3d *w, t_list *dom)
 {
 	t_list		*list;
@@ -309,31 +316,26 @@ void	ft_gui_redraw_elem_font(t_wolf3d *w, t_list *dom)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_redraw(t_wolf3d *w)
 **	
 **	Function that redraw windows.
+** **************************************************************************
 */
+
 int		ft_gui_redraw(t_wolf3d *w)
 {
 	if (w->gui.redraw == GUI_REDRAW_FRAME)
 		return (ft_gui_redraw_frame(w));
 	ft_bzero(w->sdl->srf->pixels, 4 * w->gui.win_w * w->gui.win_h);
-	// SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
 	ft_gui_redraw_elem(w, w->gui.dom);
-	// SDL_UpdateTexture(w->sdl->text, 0, ((int*)w->sdl->srf->pixels), w->gui.win_w * 4); //no
-	// SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL); //no
 	w->sdl->text = SDL_CreateTextureFromSurface(w->sdl->renderer,w->sdl->srf);
 	w->sdl->text == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 	ft_gui_redraw_elem_font(w, w->gui.dom);
 	SDL_RenderPresent(w->sdl->renderer);
-	// SDL_RenderPresent(w->sdl->renderer);
 	w->gui.redraw = GUI_NOT_REDRAW;
 	ft_gui_delete_status(w->gui.dom);
 	return (0);
 }
-
-	// SDL_RenderCopy(data->pl.rend, data->pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	// SDL_RenderPresent(data->pl.rend);
-	// SDL_DestroyTexture(data->pl.texture);

@@ -2,7 +2,19 @@
 #define PLAYER_H
 # include "wolf3d.h"
 
-
+typedef struct	s_file_read
+{
+	int			fd;
+	int			res;
+	char		*line;
+	int			tmp[40];
+	char		**split;
+	char		*ptr_my;
+	int			i;
+	int			count_sectors;
+	int			count_sector_vertex;
+	int			vertex_count;
+}				t_file_read;
 
 typedef struct	s_new_player
 {
@@ -14,7 +26,6 @@ typedef struct	s_new_player
 	t_new_texture	*textures;
 	int			textures_nb;
 
-	char		*lvl;
 	t_new_xy		t1;
 	t_new_xy		t2;
 	t_new_xy		scale_1;
@@ -53,6 +64,9 @@ typedef struct	s_new_player
 	int			endx;
 	int			contin;
 	void		*pixels;
+
+	char		*lvl;
+	t_file_read	file;	//open map
 }				t_new_player;
 
 #endif

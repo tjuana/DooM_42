@@ -69,11 +69,11 @@ int			engine_cross(t_new_player *pl, int sec_n, unsigned s)
 	pl->t2.y = v_end.x * pl->anglecos + v_end.y * pl->anglesin;
 	//Is the wall at least partially in front of the player?
 
-	// if((pl->t1.y <= 0) && (pl->t2.y <= 0))
-	// 	return (0);//continue
-
-	if(!ft_check_segment_line_to_fov(pl, pl->t1, pl->t2))
+	if((pl->t1.y <= 0) && (pl->t2.y <= 0))
 		return (0);//continue
+
+	// if(!ft_check_segment_line_to_fov(pl, pl->t1, pl->t2))
+	// 	return (0);//continue
 	//If it's partially behind the player, cut it against player's view
 	if((pl->t1.y <= 0) || (pl->t2.y <= 0))
 	{

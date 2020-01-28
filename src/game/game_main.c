@@ -5,7 +5,7 @@
 
 
 
-void player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n)//init data for LoadData function
+void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data for LoadData function
 {
     //player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
     pl->where.x = v->x;
@@ -142,7 +142,8 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	// printf("%d\n", data->pl.sectors_nb);
 	data->pl.sectors_nb = 0;
     data->se.quit = 0;
-    load_file(path, &data->pl);//load map and init typedef t_new_player data
+    // load_file(path, &data->pl);//load map and init typedef t_new_player data
+	ft_my_parse_map(&data->pl, path);
     //ft_init_anim(&w);//gun
     // SDL_Window* window = NULL;
 	// data->window = NULL;
