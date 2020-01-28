@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 21:36:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ static void		texture_header_chk(const char *fp, int fd, unsigned char *head)
 ** **************************************************************************
 */
 
-t_new_texture		texture_parse(const char *fp, unsigned edit)
+t_new_texture		texture_parse(const char *fp)
 {
 	t_new_texture		res;
 	struct stat		st_inf;
@@ -135,6 +135,5 @@ t_new_texture		texture_parse(const char *fp, unsigned edit)
 	texture_header_chk(fp, fd, head);
 	stat(fp, &st_inf);
 	res = texture_parse_2(st_inf.st_size, fd, head);
-	res.edit = edit;
 	return (res);
 }

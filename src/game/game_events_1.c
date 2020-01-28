@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 15:14:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 21:50:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,6 @@ static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 		se->wsad[6] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
 		door_but_сlick(pl, se);
-	if (se->ev.key.keysym.sym == '1' && (se->ev.type == SDL_KEYDOWN))
-		nearz_change(pl);
-	if (se->ev.key.keysym.sym == '2' && (se->ev.type == SDL_KEYDOWN))
-		nearside_change(pl);
-	if (se->ev.key.keysym.sym == '3' && (se->ev.type == SDL_KEYDOWN))
-		farz_change(pl);
-	if (se->ev.key.keysym.sym == '4' && (se->ev.type == SDL_KEYDOWN))
-		farside_change(pl);
 }
 
 /*
@@ -148,18 +140,25 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 				if (se->ev.key.keysym.sym)
 					if (!sub_events(se, pl))
 						return (0);
-				// if (se->ev.type == SDL_QUIT)
-				// {
-				// 	UnloadData(pl);
-				// 	SDL_Quit();
-				// 	return (0);
-				// }
+			}
+			if(se->ev.type == SDL_MOUSEBUTTONDOWN)// || se->ev.type == SDL_MOUSEBUTTONUP)
+			{
+				if (se->ev.button.button == SDL_BUTTON_LEFT)
+				{
+					pl->count_sprite = 10;
+				}
+				if (se->ev.button.button == SDL_BUTTON_RIGHT)
+				{
+					if (pl->light == 0.5)
+						pl->light = 1;
+					else
+						pl->light = 0.5f;
+				}
 			}
 		}
 	}
 	return (1);
 }
-
 void	ft_game_events(t_new_temp *data)
 {
 	events(&data->se, &data->pl);

@@ -22,6 +22,7 @@
 # include "door.h"
 # include "texture.h"
 # include "player.h"
+# include "sky.h"
 
 
 
@@ -119,7 +120,7 @@ void		ft_sdl_error();
 
 
 /*			texture_parser.c			*/
-t_new_texture	texture_parse(const char *fp, unsigned edit);
+t_new_texture	texture_parse(const char *fp);
 
 
 
@@ -168,5 +169,29 @@ void			ft_fill_the_sector(t_new_sector *sector, int number, \
 void			ft_player_save(t_new_player *pl);
 void			player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n);
 void			ft_level_save(t_new_player *pl);
+
+// texture.h
+void		draw_cur_pistol_sprite(t_gun *wpn, int width, int height, int cur_sprite, SDL_Surface *surface);
+void		load_pistol(t_gun *wpn);
+int			load_pistol_sprite(t_gun *wpn, int sprite_count);
+SDL_Surface		*load_pistol_part(int sprite);
+void			draw_pistol(t_gun *wpn, t_new_player *pl);
+
+void draw_walls(int x, t_new_player *pl, int wall, int n);
+t_scaler	scalar_create(int a, int b, int c, int d, int f);
+int			scr_nxt(t_scaler *i);
+int			color_transoform(int color, float percent);
+int			ft_get_pixel(SDL_Surface *sur, int x, int y);
+void		pix1(t_new_player *pl);
+void        load_imgs(SDL_Surface *img[10]);//load images
+void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n);
+void    draw_ceil_floor(int x, t_new_player *pl);
+
+// sky
+int			load_sky(t_new_player * pl);
+void		pix_sky(t_textures *t, t_new_player *pl);
+
+// new file
+int				hexcolor( int r, int g, int b);
 
 #endif

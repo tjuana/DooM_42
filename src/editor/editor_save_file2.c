@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:55:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_space(int k, int j)
 	char	*tmp;
 
 	itoa = ft_itoa(j);
-	tmp = ft_strdup(" ");
+	tmp = ft_strdup("\t");
 	if (!k)
 	{
 		ft_strdel(&tmp);

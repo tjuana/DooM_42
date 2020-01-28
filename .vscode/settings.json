@@ -27,6 +27,8 @@
 		"gui_struct.h": "c",
 		"sdl.h": "c",
 		"algebra.h": "c",
-		"doom.h": "c"
+		"doom.h": "c",
+		"player.h": "c",
+		"texture.h": "c"
 	},
 }

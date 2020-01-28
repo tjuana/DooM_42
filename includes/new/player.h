@@ -18,6 +18,8 @@ typedef struct	s_file_read
 
 typedef struct	s_new_player
 {
+	SDL_Surface *img[10];
+
 	SDL_Surface	*srf;
 	SDL_Window	*win;
 	SDL_Renderer	*rend;
@@ -67,6 +69,24 @@ typedef struct	s_new_player
 
 	char		*lvl;
 	t_file_read	file;	//open map
+
+	int         count_sprite;//for start animation
+	float       light;
+
+	int         **sky_pix;
+	t_textures	t;
+	t_new_texture   *tex;
+	int         f;
+	int         y1;
+	int         y2;
+	int         n;
+	int         s;
+	t_new_xy 		org1;
+	t_new_xy 		org2;
+	float         u0;// "
+	float         u1;
+	int			txtx;
+
 }				t_new_player;
 
 #endif

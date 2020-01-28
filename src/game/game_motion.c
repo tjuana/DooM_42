@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 21:14:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 **	Function to detect collisions when player move
 ** **************************************************************************
 */
+
+// Фиксим, чо
 
 void		motion_chk(t_new_sect_ops *op, t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 {
