@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 22:32:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 19:52:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,12 +170,14 @@ void			ft_gui_elem_set_redraw_font(t_list *list, void *func)
 
 void			ft_gui_elem_set_image(t_list *list, char *path)
 {
-	t_gui_elem	*elem;
+	t_gui_elem		*elem;
+	SDL_Surface		*temp_surf;
 
 	elem = list->content;
 	elem->type = GUI_IMAGE;
-	elem->surf = IMG_Load(path);
-	elem->surf = SDL_ConvertSurfaceFormat(elem->surf, SDL_PIXELFORMAT_RGB888, 0);
+	temp_surf = IMG_Load(path);
+	elem->surf = SDL_ConvertSurfaceFormat(temp_surf, SDL_PIXELFORMAT_RGB888, 0);
+	SDL_FreeSurface(temp_surf);
 	elem->surf == NULL ? ft_error("IMAGE LOAD ERROR") : 0;
 }
 

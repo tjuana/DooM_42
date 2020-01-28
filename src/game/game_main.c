@@ -141,14 +141,14 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	// printf("%p\n", data->pl);
 	// printf("%d\n", data->pl.sectors_nb);
 	data->pl.sectors_nb = 0;
-    data->se.quit = 0;
-    // load_file(path, &data->pl);//load map and init typedef t_new_player data
+	data->se.quit = 0;
+	// load_file(path, &data->pl);//load map and init typedef t_new_player data
 	ft_my_parse_map(&data->pl, path);
-    //ft_init_anim(&w);//gun
-    // SDL_Window* window = NULL;
+	//ft_init_anim(&w);//gun
+	// SDL_Window* window = NULL;
 	// data->window = NULL;
-    if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-        ft_error( "SDL could not initialize! SDL_Error: %s\n");
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+		ft_error( "SDL could not initialize! SDL_Error: %s\n");
 	// data->window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN );
 
 	// if(data->window == NULL)

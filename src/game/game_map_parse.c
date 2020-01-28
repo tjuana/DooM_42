@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/28 15:25:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:17:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
 		free(pl->file.line);
 	}
 	free(pl->file.line);
+	free(vertex);
 }
 
 t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)

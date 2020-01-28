@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:26:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	engine_preset(t_new_player *pl)
 	int	i;
 	int	*rend_sec;
 
-	if ((i = -1) && !(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
+	if ((i = -1) && !(rend_sec = (int *)ft_my_malloc(sizeof(int) * (pl->sectors_nb + 1))))
 	{
 		ft_putstr_fd("engine_preset - malloc error.\n", 2);
 		exit (EXIT_FAILURE);
@@ -136,4 +136,5 @@ void	engine_begin(t_new_player *pl)
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
     }
+	// free(pl->cycle.rend_sec);
 }
