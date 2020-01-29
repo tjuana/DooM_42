@@ -89,7 +89,7 @@ void	ft_game_redraw(void *d, t_list *dom)
 {
 	t_wolf3d	*w;
 	t_new_temp	*data;
-
+	t_gun	wpn;
 	w = (t_wolf3d*)d;
 	data = w->new_data;
 
@@ -106,9 +106,14 @@ void	ft_game_redraw(void *d, t_list *dom)
 		// return;
 
 	// if (data->pl.sect)
-
+	wpn.sprite_counter = 1;
 	engine_begin(&data->pl);
-
+	if (data->pl.count_sprite == 10)// this for the event shoot
+ 	{
+ 		wpn.sprite_counter = 2;
+		data->pl.count_sprite = 1;
+	}
+	draw_pistol(&wpn, &data->pl);
 
 
 

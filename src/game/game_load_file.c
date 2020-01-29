@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/29 13:34:00 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/29 13:43:43 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_new_player		*load_next(t_new_player *pl)
 	ft_my_parse_map(pl_next, pl->lvl);
 	pl->srf ? SDL_FreeSurface(pl->srf) : 0;
 	pl->srf = NULL;
-	//free(pl);
+	free(pl);
 	pl = NULL;
 	pl = pl_next;
 	pl->srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);

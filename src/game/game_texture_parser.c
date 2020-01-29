@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_texture_parser.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/28 21:36:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/29 14:39:26 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,7 @@ t_new_texture		texture_parse(const char *fp)
 	texture_header_chk(fp, fd, head);
 	stat(fp, &st_inf);
 	res = texture_parse_2(st_inf.st_size, fd, head);
+	res.w = ((short *)head)[IMG_W];
+	res.h = ((short *)head)[IMG_H];
 	return (res);
 }

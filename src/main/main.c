@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/29 13:37:40 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:10:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,10 @@ void			ft_main(int c, char **v)
 
 	// exit(0);
 	data.pl.tex = load_textures(&data.pl);
-
-
 	while (w.sdl->running)
 		ft_main_events(&w);
 		// ft_gui_events(&w);
-	ft_editor_sector_special_debug(w.sector);
+	// ft_editor_sector_special_debug(w.sector);
 	ft_editor_desctuct(&w);
 	ft_gui_desctuct(w.gui.dom);
 	ft_gui_desctuct_fonts(w.gui.fonts);

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 13:36:03 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/29 14:14:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void		ft_my_parse_map(t_new_player *pl, char *ag)
 {
 	pl->file.count_sectors = -1;
 	if ((pl->file.fd = open(ag, O_RDONLY)) < 0)
+	{
 		perror("Error: bad file");
+		exit(EXIT_FAILURE);
+	}
 	pl->file.vertex_count = 0;
 	while ((pl->file.res = get_next_line(pl->file.fd, &pl->file.line)) > 0)
 	{

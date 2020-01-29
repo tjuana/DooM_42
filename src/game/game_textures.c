@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:14 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 22:33:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/29 14:42:41 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void		pix1(t_new_player *pl)//guarda la textura gun
     int hex;
 
     pix = (int *)pl->srf->pixels;
-	// p = ((pl->t.txtz % pl->srf->h) * pl->tex[pl->f].w + (pl->t.txtx1 % pl->srf->w)% pl->tex[pl->f].w);//formula = y*w + x
-	// hex = hexcolor(pl->tex[pl->f].pixels[p].r, pl->tex[pl->f].pixels[p].g, pl->tex[pl->f].pixels[p].b);
-	hex = 0xff0000;
+	p = ((pl->t.txtz % pl->srf->h) * pl->tex[pl->f].w + (pl->t.txtx1 % pl->srf->w)% pl->tex[pl->f].w);//formula = y*w + x
+	hex = hexcolor(pl->tex[pl->f].pixels[p].r, pl->tex[pl->f].pixels[p].g, pl->tex[pl->f].pixels[p].b);
+	// hex = 0xff0000;
 	pix[pl->t.y * WIN_W + pl->t.x ] = color_transoform(hex, pl->light);
 }
