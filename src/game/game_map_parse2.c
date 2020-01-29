@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 16:25:07 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/29 17:55:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,23 @@ void		ft_sector_save(t_new_player *pl, t_new_xy *vertex)
 	ft_fill_the_sector(sector, number, pl->file, vertex);
 	pl->file.count_sectors++;
 }
+int		ft_22arrclean(char ***dst)
+{
+	size_t i;
+
+	i = 0;
+	while ((*dst)[i])
+	{
+		printf("%s\n", (*dst)[i]);
+		free((*dst)[i]);
+		(*dst)[i] = NULL;
+		i++;
+	}
+	free(*dst);
+	*dst = NULL;
+	dst = NULL;
+	return (1);
+}
 
 void		ft_fill_the_sector(t_new_sector *sector, int number, \
 	t_file_read file, t_new_xy *vertex)
@@ -70,6 +87,7 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 		s_c++;
 		v_c++;
 	}
+	ft_22arrclean(&file.split);
 }
 
 void		ft_player_save(t_new_player *pl)
