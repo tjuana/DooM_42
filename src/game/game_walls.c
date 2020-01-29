@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/29 14:42:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/29 15:21:51 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ void draw_walls(int x, t_new_player *pl, int wall, int n)
     }
     ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[0].w - 1);
     y = pl->y1;
-    //pix = (int *)pl->srf->pixels;
-   	pix = (int*)pl->srf->pixels;
+    pix = (int *)pl->srf->pixels;
+   	// pix = (int*)pl->srf->pixels;
     pl->y1 = clamp(pl->y1, 0, WIN_H-1);//??
     pl->y2 = clamp(pl->y2, 0, WIN_H-1);//??
     if(pl->y2 >= pl->y1 && wall)
