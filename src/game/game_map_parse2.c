@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/28 15:30:02 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:09:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		ft_player_save(t_new_player *pl)
 	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
 	v.x = ft_atoi(pl->file.split[1]);
 	v.y = ft_atoi(pl->file.split[2]);
-	angle = ft_atoi(pl->file.split[3]);
+	angle = 1;
 	n = ft_atoi(pl->file.split[4]);
 	player_init(pl, &v, &angle, &n);
 	pl->where.z = pl->sectors[pl->sector].floor + EYE_H;

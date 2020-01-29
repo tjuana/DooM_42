@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_save_file2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/28 20:55:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:08:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static char	*ft_my_join_baby(int height, int floor)
 	tmp = ft_strdup(join);
 	ft_strdel(&itoa);
 	ft_strdel(&join);
-	join = ft_strjoin(tmp, " ");
+	join = ft_strjoin(tmp, "\t");
 	ft_strdel(&tmp);
 	tmp = ft_strdup(join);
 	ft_strdel(&join);
@@ -125,7 +125,7 @@ void		ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 		str = ft_space(1, sector->vertex[j]->w);
 		ft_putstr_fd(str, w->file.fd);
 	}
-	ft_putstr_fd("    ", w->file.fd);
+	ft_putstr_fd("\t", w->file.fd);
 	ft_save_neighbour(sector, w->file.fd);
 	ft_putstr_fd("\n", w->file.fd);
 	ft_strdel(&str);
