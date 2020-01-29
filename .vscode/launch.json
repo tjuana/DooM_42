@@ -39,7 +39,7 @@
 			"program": "${workspaceRoot}/doom_nukem",
 			//"args": ["${workspaceRoot}/maps/map.txt"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
-			"args": ["${workspaceRoot}/map1.txt"],
+			"args": ["${workspaceRoot}/maps/ebanoeit"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

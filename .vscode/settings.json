@@ -29,6 +29,18 @@
 		"algebra.h": "c",
 		"doom.h": "c",
 		"player.h": "c",
-		"texture.h": "c"
+		"texture.h": "c",
+		"__functional_base": "cpp",
+		"atomic": "cpp",
+		"__memory": "cpp",
+		"limits": "cpp",
+		"locale": "cpp",
+		"memory": "cpp",
+		"ratio": "cpp",
+		"system_error": "cpp",
+		"tuple": "cpp",
+		"type_traits": "cpp",
+		"utility": "cpp",
+		"animations.h": "c"
 	},
 }

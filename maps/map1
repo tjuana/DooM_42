@@ -4,4 +4,4 @@ vertex	8	2	9	16
 sector	0	20		3	0	1	4					-1	-1	1	-1
 sector	0	20		4	1	2	5					0	-1	-1	-1
 
-player	5	5	0	0
+player	5	5	1	0
