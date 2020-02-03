@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 22:27:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/03 12:28:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,5 @@ void	engine_begin(t_new_player *pl)
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
     }
+	free(pl->cycle.rend_sec); // !!!
 }

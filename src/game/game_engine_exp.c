@@ -83,8 +83,16 @@ int			engine_cross(t_new_player *pl)
 	//If it's partially behind the player, cut it against player's view
 	if((pl->t1.y <= 0) || (pl->t2.y <= 0))
 	{
+		// Проверяем, не параллельны ли какие-то прямые
+		// if (Intersect_divider(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz))
+		// {
+			// printf("ZERO-O-O!\n");
+		// }
 		i1 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
 		i2 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
+
+		// if (i1.x == NAN || i1.y == NAN || i2.x == NAN || i2.y == NAN)
+			// printf("hmm...\n");
 
 		pl->org1.x = pl->t1.x;
 		pl->org1.y = pl->t1.y;
