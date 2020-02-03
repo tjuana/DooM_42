@@ -6,18 +6,36 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 17:55:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 12:51:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+int		ft_22arrclean(char ***dst)
+{
+	size_t i;
+
+	i = 0;
+	while ((*dst)[i])
+	{
+		free((*dst)[i]);
+		(*dst)[i] = NULL;
+		i++;
+	}
+	free(*dst);
+	*dst = NULL;
+	dst = NULL;
+	return (1);
+}
 
 t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
 {
 	int	count;
 
 	count = 2;
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
+		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[count] != NULL)
 	{
 		vertex[pl->file.i].y = ft_atoi(pl->file.split[1]);
@@ -38,27 +56,10 @@ void		ft_sector_save(t_new_player *pl, t_new_xy *vertex)
 	number = pl->file.tmp[pl->file.count_sectors];
 	pl->sectors[pl->file.count_sectors].npoints = pl->file.count_sector_vertex;
 	sector->neighbors = ft_my_malloc(sizeof(char) * (number + 1));
-	sector->vertex = ft_my_malloc(sizeof(t_new_xy) * number);
+	sector->vertex = ft_my_malloc(sizeof(t_new_xy) * (number + 1));
 	sector->npoints = number;
 	ft_fill_the_sector(sector, number, pl->file, vertex);
 	pl->file.count_sectors++;
-}
-int		ft_22arrclean(char ***dst)
-{
-	size_t i;
-
-	i = 0;
-	while ((*dst)[i])
-	{
-		printf("%s\n", (*dst)[i]);
-		free((*dst)[i]);
-		(*dst)[i] = NULL;
-		i++;
-	}
-	free(*dst);
-	*dst = NULL;
-	dst = NULL;
-	return (1);
 }
 
 void		ft_fill_the_sector(t_new_sector *sector, int number, \
@@ -67,14 +68,16 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 	int				v_c;
 	int				s_c;
 
-	file.split = ft_strsplit(file.ptr_my, '\t');
+	if (!(file.split = ft_strsplit(file.ptr_my, '\t')))
+		ft_error("MALLOC_SPLIT");
 	sector->floor = ft_atoi(file.split[1]);
 	sector->ceil = ft_atoi(file.split[2]);
 	v_c = 1;
 	s_c = 3;
 	while (number--)
 	{
-		sector->vertex[v_c] = vertex[ft_atoi(file.split[s_c])];
+		sector->vertex[v_c].x = vertex[ft_atoi(file.split[s_c])].x;
+		sector->vertex[v_c].y = vertex[ft_atoi(file.split[s_c])].y;
 		v_c++;
 		s_c++;
 	}
@@ -96,7 +99,8 @@ void		ft_player_save(t_new_player *pl)
 	int			angle;
 	int			n;
 
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
+		ft_error("MALLOC_SPLIT");
 	v.x = ft_atoi(pl->file.split[1]);
 	v.y = ft_atoi(pl->file.split[2]);
 	angle = 1;
@@ -111,6 +115,8 @@ void		ft_level_save(t_new_player *pl)
 	int			angle;
 	int			n;
 
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
+		ft_error("MALLOC_SPLIT");
 	pl->lvl = pl->file.split[1];
+	ft_2arrclean(&pl->file.split);
 }
