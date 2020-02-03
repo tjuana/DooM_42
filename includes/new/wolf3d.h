@@ -183,7 +183,7 @@ t_scaler	scalar_create(int a, int b, int c, int d, int f);
 int			scr_nxt(t_scaler *i);
 int			color_transoform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
-void		pix1(t_new_player *pl);
+void		pix1(t_new_player *pl, int image);
 void        load_imgs(SDL_Surface *img[10]);//load images
 void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n);
 void    draw_ceil_floor(int x, t_new_player *pl);

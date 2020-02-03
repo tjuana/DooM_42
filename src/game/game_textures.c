@@ -34,14 +34,14 @@ int			color_transoform(int color, float percent)
 }
 
 
-void		pix1(t_new_player *pl)//guarda la textura gun
+void		pix1(t_new_player *pl, int image)//guarda la textura gun
 {
     int *pix;
     unsigned int p;
     int hex;
 
     pix = (int *)pl->srf->pixels;
-	p = ((pl->t.txtz % pl->srf->h) * pl->tex[pl->f].w + (pl->t.txtx1 % pl->srf->w)% pl->tex[pl->f].w);//formula = y*w + x
-	hex = hexcolor(pl->tex[pl->f].pixels[p].r, pl->tex[pl->f].pixels[p].g, pl->tex[pl->f].pixels[p].b);
+	p = ((pl->t.txtz % pl->srf->h) * pl->tex[image].w + (pl->t.txtx1 % pl->srf->w)% pl->tex[image].w);//formula = y*w + x
+	hex = hexcolor(pl->tex[image].pixels[p].r, pl->tex[image].pixels[p].g, pl->tex[image].pixels[p].b);
 	pix[pl->t.y * WIN_W + pl->t.x ] = color_transoform(hex, pl->light);
 }

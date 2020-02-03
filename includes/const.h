@@ -59,4 +59,17 @@
 # define H_FOV					(1.0 * 0.73f * WIN_H / WIN_W)
 # define V_FOV					(1.0 * .2f)
 
+/*
+ *
+ * TEXTURES
+ */
+
+# define	LEAF 0
+# define	GREEN 1
+# define	MARBLE 2
+# define 	ROCK1	3
+# define 	ROCK2	4
+# define 	SKY		5
+# define 	FENCE	7
+
 #endif

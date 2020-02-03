@@ -16,30 +16,6 @@
 
 #include "doom.h"
 
-// delete
-void load_imgs(SDL_Surface *img[10])
-{
-    img[0]= IMG_Load("Textures/wall1.png");
-    img[0]= SDL_ConvertSurfaceFormat(img[0], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[1]= IMG_Load("Textures/wood.png");
-    img[1]= SDL_ConvertSurfaceFormat(img[1], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[2]= IMG_Load("Textures/wall2.png");
-    img[2]= SDL_ConvertSurfaceFormat(img[2], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[3]= IMG_Load("Textures/cosmos.png");
-    img[3]= SDL_ConvertSurfaceFormat(img[3], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[4]= IMG_Load("Textures/bloody_game.jpg");
-    img[4]= SDL_ConvertSurfaceFormat(img[4], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[5]= IMG_Load("Textures/graffiti.png");
-    img[5]= SDL_ConvertSurfaceFormat(img[5], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[6]= IMG_Load("Textures/green.png");
-    img[6]= SDL_ConvertSurfaceFormat(img[6], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[7]= IMG_Load("Textures/red.png");
-    img[7]= SDL_ConvertSurfaceFormat(img[7], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[8]= IMG_Load("Textures/met.png");
-    img[8]= SDL_ConvertSurfaceFormat(img[8], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[9]= IMG_Load("Textures/wood.png");
-}
-
 t_scaler	scalar_create(int a, int b, int c, int d, int f)
 {
     t_scaler	s;
@@ -81,25 +57,24 @@ void draw_walls(int x, t_new_player *pl, int wall, int n)
     if(wall == 0)
     {
         pl->y1 = pl->ceil.cya;
-        pl->y2 = pl->ceil.cnya;
+        pl->y2 = pl->ceil.cnya - 1;
     }
-    if(wall == 1)
+    else if(wall == 1)
     {
-        pl->y1 = pl->ceil.cnyb;
+        pl->y1 = pl->ceil.cnyb + 1;
         pl->y2 = pl->ceil.cyb;
     }
-    if(wall == 2)
+    else if(wall == 2)
     {
         pl->y1 = pl->ceil.cya;
         pl->y2 = pl->ceil.cyb;
     }
-    ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[0].w - 1);
+    ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[n].w - 1);
     y = pl->y1;
     pix = (int *)pl->srf->pixels;
-   	// pix = (int*)pl->srf->pixels;
     pl->y1 = clamp(pl->y1, 0, WIN_H-1);//??
     pl->y2 = clamp(pl->y2, 0, WIN_H-1);//??
-    if(pl->y2 >= pl->y1 && wall)
+    if(pl->y2 >= pl->y1)
     {
         // if(pl->y2 == pl->y1)
             // pix[pl->y1*WIN_W+x] = pl->sky_pix[pl->y1][x];
@@ -108,14 +83,13 @@ void draw_walls(int x, t_new_player *pl, int wall, int n)
         	++y;
             txty = scr_nxt(&ty);
 			p = ((txty % pl->srf->h) * pl->tex[n].w + (pl->txtx % pl->srf->w)% pl->tex[n].w);//formula = y*w + x
-            hex = hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b);
-            if (pl->tex[n].pixels[p].a == 0)//hex == 0x000000)
+            hex = color_transoform(hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b),pl->light);
+            if (pl->tex[n].pixels[p].a == 0)//this is for transparent wall
 			{
-				p = (y%pl->tex[5].h) * pl->tex[5].w + x%pl->tex[5].w ;//formula = y*w + x
-				hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[5].pixels[p].g, pl->tex[5].pixels[p].b);
+				p = (y%pl->tex[SKY].h) * pl->tex[SKY].w + x%pl->tex[SKY].w ;//formula = y*w + x
+				hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[SKY].pixels[p].g, pl->tex[SKY].pixels[p].b);
 			}
-			// hex = 0xff0000;
-            pix[y * WIN_W + x] = hex;//color;
+            pix[y * WIN_W + x] = hex;
         }
     }
 

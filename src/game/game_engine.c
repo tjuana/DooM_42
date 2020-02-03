@@ -21,12 +21,15 @@
 
 static int	engine_pick_sec(t_new_player *pl)
 {
+	static int i;
 	//Pick a sector & slice from the queue to draw
 	pl->cycle.current = pl->cycle.tail;//const struct item now = *cycle.tail;
 	if(++pl->cycle.tail == pl->cycle.queue + MAX_QUEUE)
 		pl->cycle.tail = pl->cycle.queue;
 	if(pl->cycle.rend_sec[pl->cycle.current->sec_nb] & 0x21)
+	{
 		return (-2); // Odd = still rendering, 0x20 = give up
+	}
 	++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
 	pl->sect = &pl->sectors[pl->cycle.current->sec_nb];//SECT CREATED
 	return (-1);
@@ -109,7 +112,9 @@ void	engine_begin(t_new_player *pl)
 {
 	int			neib;
 	int			s;
+	int 		sector_number;
 
+	sector_number = 0;
 	engine_preset(pl);
     while(pl->cycle.head != pl->cycle.tail)
 	{
@@ -117,10 +122,12 @@ void	engine_begin(t_new_player *pl)
 			continue;
 		while (++s < pl->sect->npoints)
 		{
+			if(s == 0) {
+				sector_number += 1;
+			}
 		    pl->s = s;
 			if (engine_cross(pl) == 0)
 				continue;
-
 			//Acquire the floor and ceiling heights, relative to where the player's view is
 			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
 			pl->floor.yfloor = pl->sect->floor - pl->where.z;
@@ -131,20 +138,12 @@ void	engine_begin(t_new_player *pl)
 				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
 				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
 			}
-
 			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
 				continue; // Only render if it's visible
-            pl->f = 0;
-            if ( s < 1 && pl->sect->floor == 0)
-            {
-                pl->n = 0;
-            }
-            else if (pl->sect->floor == 6 && pl->sect->ceil == 10)
-                pl->n = 7;
-			else if (s == 4 && pl->sect->floor == 0)// && pl->sect->floor == 0)
-                pl->n = 10;
-                else
-                pl->n = 2;
+            pl->f = GREEN;//floor and ceiling
+   			pl->n = ROCK1;
+   			if (s==1)
+   				pl->n = FENCE;
             engine_put_lines(pl, neib);//Render all.
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];

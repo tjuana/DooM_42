@@ -29,6 +29,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;
+	pl->light = 1.0f;
 }
 
 void UnloadData(t_new_player *pl)
@@ -47,26 +48,6 @@ void UnloadData(t_new_player *pl)
     pl->sectors_nb = 0;
 }
 
-// //vline: Draw a vertical line on screen, with a different color pixel in top & bottom
-// void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl)
-// {
-//     int	*pix;
-
-// 	pix = (int*)pl->pixels;
-//     y1 = clamp(y1, 0, WIN_H - 1);
-//     y2 = clamp(y2, 0, WIN_H - 1);
-//     if(y2 == y1)
-//         pix[y1* WIN_W + x] = middle;
-//     else if(y2 > y1)
-//     {
-//         pix[y1 * WIN_W + x] = top;
-//         for(int y= y1 + 1; y < y2; ++y)
-//             pix[y * WIN_W + x] = middle;
-//         pix[y2 * WIN_W + x] = bottom;
-//     }
-// }
-
-//vline: Draw a vertical line on screen, with a different color pixel in top & bottom
 void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface)
 {
     int	*pix;
@@ -92,20 +73,6 @@ void	ft_game_redraw(void *d, t_list *dom)
 	t_gun	wpn;
 	w = (t_wolf3d*)d;
 	data = w->new_data;
-
-	// printf("%p\n", data->pl);
-	// data->pl.pixels = w->sdl->pixels;
-
-	// data->pl.srf = w->sdl.surf;
-
-	// data->pl.srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
-	// !data->pl.srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-
-	// w->sdl->pixels = data->pl.srf->pixels;
-	// if (data->)
-		// return;
-
-	// if (data->pl.sect)
 	wpn.sprite_counter = 1;
 	engine_begin(&data->pl);
 	if (data->pl.count_sprite == 10)// this for the event shoot
@@ -114,18 +81,6 @@ void	ft_game_redraw(void *d, t_list *dom)
 		data->pl.count_sprite = 1;
 	}
 	draw_pistol(&wpn, &data->pl);
-
-
-
-	//texture_init(&pl);
-
-	// data->pl.texture = SDL_CreateTextureFromSurface(data->pl.rend, data->pl.srf);
-	// data->pl.texture == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	// SDL_RenderCopy(data->pl.rend, data->pl.texture, 0, 0) != 0 ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	// SDL_RenderPresent(data->pl.rend);
-	// SDL_DestroyTexture(data->pl.texture);
-
-
 	data->op.eye_h = data->se.ducking ? CROUCH_H : EYE_H;
 	data->se.ground = !data->se.falling;
 	events_jumps(&data->se, &data->pl, &data->op, &data->ot);
@@ -143,24 +98,13 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	t_new_temp	*data;
 
 	data = (t_new_temp*)w->new_data;
-	// printf("%p\n", data->pl);
-	// printf("%d\n", data->pl.sectors_nb);
 	data->pl.sectors_nb = 0;
 	data->se.quit = 0;
-	// load_file(path, &data->pl);//load map and init typedef t_new_player data
 	ft_my_parse_map(&data->pl, path);
-	//ft_init_anim(&w);//gun
-	// SDL_Window* window = NULL;
-	// data->window = NULL;
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 		ft_error( "SDL could not initialize! SDL_Error: %s\n");
-	// data->window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN );
 
-	// if(data->window == NULL)
-		// ft_error("Window could not be created! SDL_Error: %s\n");
-
-	// SDL_UpdateWindowSurface(data->window);
-	// SDL_ShowCursor(SDL_DISABLE);//NOT SHOW MOUSE CURSOR
+	SDL_ShowCursor(SDL_ENABLE);//NOT SHOW MOUSE CURSOR
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
 	data->se.wsad[2] = 0;
@@ -170,10 +114,6 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	//load_weapons(&wpn);
-
-	// data->pl.srf = NULL;
-
 	data->pl.srf = w->sdl->srf;
 }
 
@@ -215,7 +155,6 @@ void	ft_game_gui_init_menu(t_list *head)
 	ft_gui_elem_set_text(elem->child, "100", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
-	//pistol.png
 }
 
 void	ft_game_gui_init_hud(t_list *head)
@@ -248,35 +187,3 @@ void	ft_game_gui_init(t_wolf3d *w)
 	// ft_gui_elem_set_redraw_font(w->gui.dom, ft_game_render_font);
 	ft_game_gui_init_hud(w->gui.dom);
 }
-
-// int main(int ac, char **ag)
-// {
-// 	t_wolf3d	w;
-// 	t_new_temp	data;
-
-// 	if (ac < 2 || ac > 2)
-// 		ft_error("map error");
-
-// 	ft_bzero(&data, sizeof(t_new_temp));
-
-// 	ft_game_init(&data, ag[1]);
-
-// 	w.sdl = sdl_init(w.sdl);
-// 	ft_init_wolf(&w);
-// 	ft_gui_init(&w);
-// 	ft_game_gui_init(&w);
-
-// 	w.new_data = &data;
-
-// 	while (w.sdl->running)
-// 	{
-// 		ft_gui_redraw(&w);
-// 		ft_gui_events(&w);
-// 	}
-// 	ft_gui_desctuct(w.gui.dom);
-// 	ft_gui_desctuct_fonts(w.gui.fonts);
-// 	ft_clean_sdl(&w);
-// 	// UnloadData(&data.pl);
-// 	// SDL_Quit();
-//     return (0);
-// }

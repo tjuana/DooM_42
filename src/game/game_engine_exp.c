@@ -103,7 +103,6 @@ int			engine_cross(t_new_player *pl)
                         (pl->org2.y - pl->org1.y));
             pl->u1 =  ((pl->t2.y - pl->org1.y) * 1000/
                         (pl->org2.y - pl->org1.y));
-           // printf("w %d\n", pl->srf->w);
         }
 	}
 	return (1);
@@ -140,8 +139,7 @@ void engine_calcs(int x, t_new_player *pl, int operation)
 		pl->ceil.cnya = clamp(pl->floor.nya, pl->y_top[x], pl->y_bot[x]);
 		pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b) / (pl->x2 - pl->x1) + pl->floor.ny1b;
 		pl->ceil.cnyb = clamp(pl->floor.nyb, pl->y_top[x], pl->y_bot[x]);
-		pl->y_top[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya), pl->y_top[x], WIN_H-1);   // Shrink the remaining window below these ceilings
-		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]); // Shrink the remaining window above these floors
+
 	}
 }
 
@@ -158,11 +156,11 @@ void draw_ceil_floor(int x, t_new_player *pl)
 		}
 		engine_calcs(x, pl, 1);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil != 20)//pl->s != 0)// && pl->s != 1)
-			pix1(pl);
-		if (pl->t.y < pl->ceil.cya && pl->sect->ceil == 20)
+			pix1(pl, ROCK2);
+		if (pl->t.y < pl->ceil.cya && pl->sect->ceil == 20)//if the heigh is 20 so we draw skybox
 			pix_sky(&pl->t, pl);
-		if (pl->t.y >= pl->ceil.cya)// && pl->s != 0 && pl->s != 1)
-			pix1(pl);
+		if (pl->t.y >= pl->ceil.cya)
+			pix1(pl, GREEN);
 	}
 }
 
@@ -174,8 +172,10 @@ static void	engine_ceil_floor(t_new_player *pl, int x, int neib)
 	{
 		engine_calcs(x, pl, 2);
         draw_walls(x, pl, WALL_TOP, pl->n);
-        draw_walls(x, pl, WALL_BOTT, pl->n);
-    }
+		pl->y_top[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya), pl->y_top[x], WIN_H-1);   // Shrink the remaining window below these ceilings
+		draw_walls(x, pl, WALL_BOTT, pl->n);
+		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]); // Shrink the remaining window above these floors
+	}
 	else
         draw_walls(x, pl, WALL_FULL, pl->n);
 }

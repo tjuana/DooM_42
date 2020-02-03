@@ -22,9 +22,9 @@
 # define COLOR_MAP 1
 # define ID_LENGTH 0
 # define FLOOR  1
-# define WALL_FULL 2
 # define WALL_TOP  0
 # define WALL_BOTT 1
+# define WALL_FULL 2
 
 
 
