@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/29 15:21:51 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 12:14:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,53 +71,55 @@ int hexcolor( int r, int g, int b)
 
 void draw_walls(int x, t_new_player *pl, int wall, int n)
 {
-    unsigned	txty;
-    int			y;
-    int        *pix;
-    int 		hex;
-    unsigned int 		p;
-    t_scaler    ty;
+	unsigned	txty;
+	int			y;
+	int		*pix;
+	int 		hex;
+	unsigned int 		p;
+	t_scaler	ty;
 
-    if(wall == 0)
-    {
-        pl->y1 = pl->ceil.cya;
-        pl->y2 = pl->ceil.cnya;
-    }
-    if(wall == 1)
-    {
-        pl->y1 = pl->ceil.cnyb;
-        pl->y2 = pl->ceil.cyb;
-    }
-    if(wall == 2)
-    {
-        pl->y1 = pl->ceil.cya;
-        pl->y2 = pl->ceil.cyb;
-    }
-    ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[0].w - 1);
-    y = pl->y1;
-    pix = (int *)pl->srf->pixels;
-   	// pix = (int*)pl->srf->pixels;
-    pl->y1 = clamp(pl->y1, 0, WIN_H-1);//??
-    pl->y2 = clamp(pl->y2, 0, WIN_H-1);//??
-    if(pl->y2 >= pl->y1 && wall)
-    {
-        // if(pl->y2 == pl->y1)
-            // pix[pl->y1*WIN_W+x] = pl->sky_pix[pl->y1][x];
-        while (y < pl->y2)
-        {
-        	++y;
-            txty = scr_nxt(&ty);
-			p = ((txty % pl->srf->h) * pl->tex[n].w + (pl->txtx % pl->srf->w)% pl->tex[n].w);//formula = y*w + x
-            hex = hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b);
-            if (pl->tex[n].pixels[p].a == 0)//hex == 0x000000)
-			{
-				p = (y%pl->tex[5].h) * pl->tex[5].w + x%pl->tex[5].w ;//formula = y*w + x
-				hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[5].pixels[p].g, pl->tex[5].pixels[p].b);
-			}
-			// hex = 0xff0000;
-            pix[y * WIN_W + x] = hex;//color;
-        }
-    }
+	if(wall == 0)
+	{
+		pl->y1 = pl->ceil.cya;
+		pl->y2 = pl->ceil.cnya;
+	}
+	if(wall == 1)
+	{
+		pl->y1 = pl->ceil.cnyb;
+		pl->y2 = pl->ceil.cyb;
+	}
+	if(wall == 2)
+	{
+		pl->y1 = pl->ceil.cya;
+		pl->y2 = pl->ceil.cyb;
+	}
+	ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[0].w - 1);
+	y = pl->y1;
+	pix = (int *)pl->srf->pixels;
+	// pix = (int*)pl->srf->pixels;
+	pl->y1 = clamp(pl->y1, 0, WIN_H-1);//??
+	pl->y2 = clamp(pl->y2, 0, WIN_H-1);//??
+	if(pl->y2 >= pl->y1 && wall)
+	{
+		// if(pl->y2 == pl->y1)
+			// pix[pl->y1*WIN_W+x] = pl->sky_pix[pl->y1][x];
+		while (y < pl->y2)
+		{
+			++y;
+			txty = scr_nxt(&ty);
+			// p = ((txty % pl->srf->h) * pl->tex[n].w + (pl->txtx % pl->srf->w)% pl->tex[n].w);//formula = y*w + x
+			// hex = hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b);
+			// if (pl->tex[n].pixels[p].a == 0)//hex == 0x000000)
+			// {
+				// p = (y%pl->tex[5].h) * pl->tex[5].w + x%pl->tex[5].w ;//formula = y*w + x
+				// hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[5].pixels[p].g, pl->tex[5].pixels[p].b);
+			// }
+			// // hex = 0xff0000;
+			// pix[y * WIN_W + x] = hex;//color;
+
+			pix[y * WIN_W + x] = 0xca3a27;
+		}
+	}
 
 }
 

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/29 17:08:43 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 14:20:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,7 @@ void	engine_begin(t_new_player *pl)
                 pl->n = 2;
             engine_put_lines(pl, neib);//Render all.
 		}
-		// free(&pl->cycle.rend_sec[pl->cycle.current->sec_nb]);
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
-
     }
+	free(pl->cycle.rend_sec); 
 }

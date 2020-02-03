@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/29 15:10:47 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 13:00:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,13 @@ void			ft_main(int c, char **v)
 
 
 	ft_editor_gui_init(&w);
+
+	// sleep(10);
 	
-	ft_game_init(&w, v[1]); // Пока что инициализирует конкретный файл
+	// ft_game_init(&w, v[1]); // Пока что инициализирует конкретный файл
+	ft_game_init(&w, "cube4.txt");
+
+	// sleep(10);
 
 	ft_gui_redraw(&w);
 

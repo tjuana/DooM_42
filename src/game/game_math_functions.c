@@ -63,6 +63,11 @@ t_new_xy Intersect(float x1, float y1, float x2, float y2,float x3, float y3, fl
     return (xy);
 }
 
+int	Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4)
+{
+	return (vxs((x1)-(x2), (y1)-(y2), (x3)-(x4), (y3)-(y4)));
+}
+
 float Yaw(float y, float z, t_new_player *player)
 {
 	// // printf("y:%f   z:%f   yaw:%f\n", y, z, player->yaw);

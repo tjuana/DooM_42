@@ -23,9 +23,11 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
 	pl->nearz = 1e-4f;
-	pl->farz = 5;
+	pl->farz = 5.0f;
 	pl->nearside = 1e-5f;
-	pl->farside = 20.f;
+	pl->farside = 20.0f;
+
+	//
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;
@@ -243,7 +245,7 @@ void	ft_game_gui_init(t_wolf3d *w)
 
 	ft_gui_elem_init(&w->gui.dom, "win_game", (t_gui_coord){0, 0, 0}, \
 		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
-	ft_gui_elem_set_color(w->gui.dom, 0x000000);
+	ft_gui_elem_set_color(w->gui.dom, 0x0000FF);
 	ft_gui_elem_set_redraw(w->gui.dom, ft_game_redraw);
 	// ft_gui_elem_set_redraw_font(w->gui.dom, ft_game_render_font);
 	ft_game_gui_init_hud(w->gui.dom);

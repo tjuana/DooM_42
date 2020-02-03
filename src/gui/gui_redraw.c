@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 15:23:00 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/03 15:20:41 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, SDL_Surface *surf)
 			{
 				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = (int)*ptr_color;
 			}
-			// else
-				// // printf();
-			// else
-			// {
-			// 	((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = ft_fdf_get_color(*ptr_color, \
-			// 		((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)], (double)(*ptr_color >> 24 & 0xFF) / 0xFF);
-			// }
 			x++;
 			pos++;
 		}
