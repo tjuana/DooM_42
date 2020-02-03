@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/29 14:54:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 12:45:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	ft_gui_desctuct(t_list *dom)
 		free(elem->name);
 		free(elem->str);
 		free(elem);
-		// ft_lstdel(list, ft_bzero);
 		free(list);
 	}
 }
