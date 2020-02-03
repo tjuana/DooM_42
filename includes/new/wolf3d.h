@@ -105,7 +105,7 @@ int			Overlap(float a0, float a1, float b0, float b1);
 int			IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, float x3, float y3);
 float		PointSide(float px, float py, float x0, float y0,float x1, float y1);
 t_new_xy		Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
-int			Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
+float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		UnloadData();
 void		MovePlayer(float dx, float dy, t_new_player *player);
 float		Yaw(float y, float z, t_new_player *player);
