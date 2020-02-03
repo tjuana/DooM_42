@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 12:06:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/03 15:48:46 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void			ft_main(int c, char **v)
 		// ft_gui_events(&w);
 	// ft_editor_sector_special_debug(w.sector);
 	ft_editor_desctuct(&w);
-	ft_gui_desctuct(w.gui.dom);
-	ft_gui_desctuct_fonts(w.gui.fonts);
+	// ft_gui_desctuct(w.gui.dom);
+	// ft_gui_desctuct_fonts(w.gui.fonts);
 }
 
 int				main(int c, char **v)

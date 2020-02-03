@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_destruct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 12:45:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 15:47:41 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_gui_desctuct(t_list *dom)
 		free(elem);
 		free(list);
 	}
+	dom = NULL;
 }
 
 /*
@@ -60,9 +61,10 @@ void	ft_gui_desctuct_fonts(t_list *fonts_list)
 	list = fonts_list;
 	if (list != NULL)
 	{
-		ft_gui_desctuct(list->next);
+		// ft_gui_desctuct(list->next);
 		font = list->content;
 		TTF_CloseFont(font->ptr);
+		font->ptr = NULL;
 		free(font->path);
 	}
 }
