@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/29 14:32:25 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 17:07:41 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ t_new_texture			*load_textures(t_new_player *pl)
 		ft_putstr_fd("Can't allocate memory for textures array.\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	t_arr[0] = texture_parse("Img_tga/texture_leaf_burch.tga");
+	t_arr[0] = texture_parse("Img_tga/rock.tga");
 	t_arr[1] = texture_parse("Img_tga/ivy.tga");
 	t_arr[2] = texture_parse("Img_tga/marble.tga");
-	t_arr[3] = texture_parse("Img_tga/rock.tga");
+	t_arr[3] = texture_parse("Img_tga/texture_leaf_burch.tga");
 	t_arr[4] = texture_parse("Img_tga/rock1.tga");
 	t_arr[5] = texture_parse("Img_tga/cosmos.tga");
 	t_arr[6] = texture_parse("Img_tga/grid_black.tga");

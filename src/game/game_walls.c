@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 12:14:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/03 17:47:17 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,17 @@ void draw_walls(int x, t_new_player *pl, int wall, int n)
 		{
 			++y;
 			txty = scr_nxt(&ty);
-			// p = ((txty % pl->srf->h) * pl->tex[n].w + (pl->txtx % pl->srf->w)% pl->tex[n].w);//formula = y*w + x
-			// hex = hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b);
-			// if (pl->tex[n].pixels[p].a == 0)//hex == 0x000000)
-			// {
-				// p = (y%pl->tex[5].h) * pl->tex[5].w + x%pl->tex[5].w ;//formula = y*w + x
-				// hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[5].pixels[p].g, pl->tex[5].pixels[p].b);
-			// }
-			// // hex = 0xff0000;
-			// pix[y * WIN_W + x] = hex;//color;
+			p = ((txty % pl->srf->h) * pl->tex[n].w + (pl->txtx % pl->srf->w)% pl->tex[n].w);//formula = y*w + x
+			hex = hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b);
+			if (pl->tex[n].pixels[p].a == 0)//hex == 0x000000)
+			{
+				p = (y%pl->tex[5].h) * pl->tex[5].w + x%pl->tex[5].w ;//formula = y*w + x
+				hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[5].pixels[p].g, pl->tex[5].pixels[p].b);
+			}
+			// hex = 0xff0000;
+			pix[y * WIN_W + x] = hex;//color;
 
-			pix[y * WIN_W + x] = 0xca3a27;
+			// pix[y * WIN_W + x] = 0xca3a27;
 		}
 	}
 

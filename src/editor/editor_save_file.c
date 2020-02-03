@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 16:08:24 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 18:33:37 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void		ft_allocate_int2darr(t_wolf3d *w)
 	int	i = -1;
 	int count = 0;
 	int j = 0;
-	
+
+	arr = NULL;
 	arr = (int **)ft_my_malloc(VER_HEIGHT * sizeof(int *));
 	while (++i < VER_HEIGHT)
 		arr[i] = ft_my_malloc(sizeof(int) * VER_WIDTH);
@@ -42,10 +43,11 @@ void		ft_save_the_file(t_wolf3d *w)
 	ft_editor_take_vertex(w);
 	ft_count_origin_vertexes(w);
 	ft_print_sectors_to_file(w, w->sector);
+	ft_2d_int_arrclean(&w->file.map);
 	ft_putstr_fd("\n", w->file.fd);
 	ft_player_string(w);
 	ft_lstdel(&w->vertex, ft_bzero);
-	ft_2d_int_arrclean(&w->file.map);
+	// ft_2d_int_arrclean(&w->file.map);
 }
 
 
@@ -98,6 +100,7 @@ void		ft_count_origin_vertexes(t_wolf3d *w)
 
 	w->file.count = 0;
 	w->file.i = -1;
+	w->vertex = NULL;
 
 	while (++w->file.i < VER_HEIGHT)
 	{
@@ -129,7 +132,7 @@ void		ft_count_origin_vertexes(t_wolf3d *w)
 void		ft_create_list_of_vertexes(t_wolf3d *w)
 {
 	t_vector3	*vertexes;
-	t_list		*lst;
+	// t_list		*lst;
 	t_sector	*ptr_sector;
 	t_list		*ptr_list;
 	int			f;
@@ -139,11 +142,11 @@ void		ft_create_list_of_vertexes(t_wolf3d *w)
 	vertexes->x = w->file.j;
 	vertexes->y = w->file.i;
 	vertexes->w = w->file.count;
-	lst = ft_lstnew(vertexes, sizeof(t_vector3*));
+	// lst = ;
 	if (w->vertex == NULL)
-		w->vertex = lst;
+		w->vertex = ft_lstnew(vertexes, sizeof(t_vector3*));
 	else
-		ft_lstadd(&(w->vertex), lst);
+		ft_lstadd(&(w->vertex), ft_lstnew(vertexes, sizeof(t_vector3*)));
 	ft_sector_num_vertex(ptr_list, vertexes);
 }
 
