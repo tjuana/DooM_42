@@ -6,28 +6,11 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/03 12:51:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 12:55:05 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-int		ft_22arrclean(char ***dst)
-{
-	size_t i;
-
-	i = 0;
-	while ((*dst)[i])
-	{
-		free((*dst)[i]);
-		(*dst)[i] = NULL;
-		i++;
-	}
-	free(*dst);
-	*dst = NULL;
-	dst = NULL;
-	return (1);
-}
 
 t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
 {
@@ -90,7 +73,7 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 		s_c++;
 		v_c++;
 	}
-	ft_22arrclean(&file.split);
+	ft_2arrclean(&file.split);
 }
 
 void		ft_player_save(t_new_player *pl)
