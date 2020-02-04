@@ -1203,6 +1203,33 @@ src/func/func_sdl.c.s:
 	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sdl.c.s
 .PHONY : src/func/func_sdl.c.s
 
+src/func/func_sound.o: src/func/func_sound.c.o
+
+.PHONY : src/func/func_sound.o
+
+# target to build an object file
+src/func/func_sound.c.o:
+	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sound.c.o
+.PHONY : src/func/func_sound.c.o
+
+src/func/func_sound.i: src/func/func_sound.c.i
+
+.PHONY : src/func/func_sound.i
+
+# target to preprocess a source file
+src/func/func_sound.c.i:
+	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sound.c.i
+.PHONY : src/func/func_sound.c.i
+
+src/func/func_sound.s: src/func/func_sound.c.s
+
+.PHONY : src/func/func_sound.s
+
+# target to generate assembly for a file
+src/func/func_sound.c.s:
+	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sound.c.s
+.PHONY : src/func/func_sound.c.s
+
 src/func/func_wu.o: src/func/func_wu.c.o
 
 .PHONY : src/func/func_wu.o
@@ -2520,6 +2547,9 @@ help:
 	@echo "... src/func/func_sdl.o"
 	@echo "... src/func/func_sdl.i"
 	@echo "... src/func/func_sdl.s"
+	@echo "... src/func/func_sound.o"
+	@echo "... src/func/func_sound.i"
+	@echo "... src/func/func_sound.s"
 	@echo "... src/func/func_wu.o"
 	@echo "... src/func/func_wu.i"
 	@echo "... src/func/func_wu.s"

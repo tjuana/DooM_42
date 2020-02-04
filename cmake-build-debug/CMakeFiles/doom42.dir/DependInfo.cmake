@@ -44,6 +44,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/nshelly/CLionProjects/doom42/src/func/func_fpc.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_fpc.c.o"
   "/Users/nshelly/CLionProjects/doom42/src/func/func_help.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_help.c.o"
   "/Users/nshelly/CLionProjects/doom42/src/func/func_sdl.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_sdl.c.o"
+  "/Users/nshelly/CLionProjects/doom42/src/func/func_sound.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_sound.c.o"
   "/Users/nshelly/CLionProjects/doom42/src/func/func_wu.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_wu.c.o"
   "/Users/nshelly/CLionProjects/doom42/src/func/func_wu_color.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_wu_color.c.o"
   "/Users/nshelly/CLionProjects/doom42/src/func/func_wu_draw.c" "/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o"

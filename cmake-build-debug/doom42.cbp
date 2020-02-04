@@ -250,6 +250,9 @@
 		<Unit filename="/Users/nshelly/CLionProjects/doom42/src/func/func_sdl.c">
 			<Option target="doom42"/>
 		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/doom42/src/func/func_sound.c">
+			<Option target="doom42"/>
+		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/doom42/src/func/func_wu.c">
 			<Option target="doom42"/>
 		</Unit>

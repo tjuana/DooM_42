@@ -30,6 +30,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->but_all = -1;
 	pl->lvl = NULL;
 	pl->light = 1.0f;
+	pl->pix = (int *)pl->srf->pixels;
 }
 
 void UnloadData(t_new_player *pl)
@@ -100,6 +101,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data = (t_new_temp*)w->new_data;
 	data->pl.sectors_nb = 0;
 	data->se.quit = 0;
+	data->pl.srf = w->sdl->srf;
 	ft_my_parse_map(&data->pl, path);
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 		ft_error( "SDL could not initialize! SDL_Error: %s\n");
@@ -114,7 +116,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	data->pl.srf = w->sdl->srf;
+	//data->pl.srf = w->sdl->srf;
 }
 
 void	ft_game_gui_init_menu(t_list *head)

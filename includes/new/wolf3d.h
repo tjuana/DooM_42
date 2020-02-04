@@ -46,11 +46,6 @@ typedef	struct		s_new_temp
 	t_new_wolf3d		w;
 }					t_new_temp;
 
-/*			animations.c			*/
-int			ft_init_anim(t_new_wolf3d *wolf);
-void		ft_draw_animation(t_new_wolf3d *w);
-void		ft_animation_play(t_new_wolf3d *w);
-
 /*			but_detect.c			*/
 int			but_detect(t_new_player *pl);//return sec_nb of button
 
@@ -178,7 +173,7 @@ int			load_pistol_sprite(t_gun *wpn, int sprite_count);
 SDL_Surface		*load_pistol_part(int sprite);
 void			draw_pistol(t_gun *wpn, t_new_player *pl);
 
-void draw_walls(int x, t_new_player *pl, int wall, int n);
+void draw_walls(int x, t_new_player *pl, int wall, int img);
 t_scaler	scalar_create(int a, int b, int c, int d, int f);
 int			scr_nxt(t_scaler *i);
 int			color_transoform(int color, float percent);
@@ -194,5 +189,6 @@ void		pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
 int				hexcolor( int r, int g, int b);
+void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 
 #endif

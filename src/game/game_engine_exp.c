@@ -176,8 +176,10 @@ static void	engine_ceil_floor(t_new_player *pl, int x, int neib)
 		draw_walls(x, pl, WALL_BOTT, pl->n);
 		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]); // Shrink the remaining window above these floors
 	}
-	else
-        draw_walls(x, pl, WALL_FULL, pl->n);
+	else {
+		draw_walls(x, pl, WALL_FULL, pl->n);
+		draw_graffiti(x, pl, WALL_FULL, 14);
+	}
 }
 /*
 ** **************************************************************************

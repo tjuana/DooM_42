@@ -577,9 +577,22 @@ CMakeFiles/doom42.dir/src/func/func_sdl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom42.dir/src/func/func_sdl.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nshelly/CLionProjects/doom42/src/func/func_sdl.c -o CMakeFiles/doom42.dir/src/func/func_sdl.c.s
 
+CMakeFiles/doom42.dir/src/func/func_sound.c.o: CMakeFiles/doom42.dir/flags.make
+CMakeFiles/doom42.dir/src/func/func_sound.c.o: ../src/func/func_sound.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/doom42.dir/src/func/func_sound.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/func/func_sound.c.o   -c /Users/nshelly/CLionProjects/doom42/src/func/func_sound.c
+
+CMakeFiles/doom42.dir/src/func/func_sound.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom42.dir/src/func/func_sound.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nshelly/CLionProjects/doom42/src/func/func_sound.c > CMakeFiles/doom42.dir/src/func/func_sound.c.i
+
+CMakeFiles/doom42.dir/src/func/func_sound.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom42.dir/src/func/func_sound.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nshelly/CLionProjects/doom42/src/func/func_sound.c -o CMakeFiles/doom42.dir/src/func/func_sound.c.s
+
 CMakeFiles/doom42.dir/src/func/func_wu.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/func/func_wu.c.o: ../src/func/func_wu.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/doom42.dir/src/func/func_wu.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/doom42.dir/src/func/func_wu.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/func/func_wu.c.o   -c /Users/nshelly/CLionProjects/doom42/src/func/func_wu.c
 
 CMakeFiles/doom42.dir/src/func/func_wu.c.i: cmake_force
@@ -592,7 +605,7 @@ CMakeFiles/doom42.dir/src/func/func_wu.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/func/func_wu_color.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/func/func_wu_color.c.o: ../src/func/func_wu_color.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/doom42.dir/src/func/func_wu_color.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/doom42.dir/src/func/func_wu_color.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/func/func_wu_color.c.o   -c /Users/nshelly/CLionProjects/doom42/src/func/func_wu_color.c
 
 CMakeFiles/doom42.dir/src/func/func_wu_color.c.i: cmake_force
@@ -605,7 +618,7 @@ CMakeFiles/doom42.dir/src/func/func_wu_color.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o: ../src/func/func_wu_draw.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o   -c /Users/nshelly/CLionProjects/doom42/src/func/func_wu_draw.c
 
 CMakeFiles/doom42.dir/src/func/func_wu_draw.c.i: cmake_force
@@ -618,7 +631,7 @@ CMakeFiles/doom42.dir/src/func/func_wu_draw.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_but.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_but.c.o: ../src/game/game_but.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/doom42.dir/src/game/game_but.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/doom42.dir/src/game/game_but.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_but.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_but.c
 
 CMakeFiles/doom42.dir/src/game/game_but.c.i: cmake_force
@@ -631,7 +644,7 @@ CMakeFiles/doom42.dir/src/game/game_but.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_but_detect.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_but_detect.c.o: ../src/game/game_but_detect.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/doom42.dir/src/game/game_but_detect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/doom42.dir/src/game/game_but_detect.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_but_detect.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_but_detect.c
 
 CMakeFiles/doom42.dir/src/game/game_but_detect.c.i: cmake_force
@@ -644,7 +657,7 @@ CMakeFiles/doom42.dir/src/game/game_but_detect.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_door.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_door.c.o: ../src/game/game_door.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/doom42.dir/src/game/game_door.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/doom42.dir/src/game/game_door.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_door.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_door.c
 
 CMakeFiles/doom42.dir/src/game/game_door.c.i: cmake_force
@@ -657,7 +670,7 @@ CMakeFiles/doom42.dir/src/game/game_door.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_door_detect.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_door_detect.c.o: ../src/game/game_door_detect.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/doom42.dir/src/game/game_door_detect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/doom42.dir/src/game/game_door_detect.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_door_detect.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_door_detect.c
 
 CMakeFiles/doom42.dir/src/game/game_door_detect.c.i: cmake_force
@@ -670,7 +683,7 @@ CMakeFiles/doom42.dir/src/game/game_door_detect.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_engine.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_engine.c.o: ../src/game/game_engine.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/doom42.dir/src/game/game_engine.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/doom42.dir/src/game/game_engine.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_engine.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_engine.c
 
 CMakeFiles/doom42.dir/src/game/game_engine.c.i: cmake_force
@@ -683,7 +696,7 @@ CMakeFiles/doom42.dir/src/game/game_engine.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_engine_exp.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_engine_exp.c.o: ../src/game/game_engine_exp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/doom42.dir/src/game/game_engine_exp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/doom42.dir/src/game/game_engine_exp.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_engine_exp.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_engine_exp.c
 
 CMakeFiles/doom42.dir/src/game/game_engine_exp.c.i: cmake_force
@@ -696,7 +709,7 @@ CMakeFiles/doom42.dir/src/game/game_engine_exp.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_events_1.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_events_1.c.o: ../src/game/game_events_1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/doom42.dir/src/game/game_events_1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/doom42.dir/src/game/game_events_1.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_events_1.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_events_1.c
 
 CMakeFiles/doom42.dir/src/game/game_events_1.c.i: cmake_force
@@ -709,7 +722,7 @@ CMakeFiles/doom42.dir/src/game/game_events_1.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_events_2.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_events_2.c.o: ../src/game/game_events_2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/doom42.dir/src/game/game_events_2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/doom42.dir/src/game/game_events_2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_events_2.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_events_2.c
 
 CMakeFiles/doom42.dir/src/game/game_events_2.c.i: cmake_force
@@ -722,7 +735,7 @@ CMakeFiles/doom42.dir/src/game/game_events_2.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_gun.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_gun.c.o: ../src/game/game_gun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/doom42.dir/src/game/game_gun.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/doom42.dir/src/game/game_gun.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_gun.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_gun.c
 
 CMakeFiles/doom42.dir/src/game/game_gun.c.i: cmake_force
@@ -735,7 +748,7 @@ CMakeFiles/doom42.dir/src/game/game_gun.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_load_file.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_load_file.c.o: ../src/game/game_load_file.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/doom42.dir/src/game/game_load_file.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/doom42.dir/src/game/game_load_file.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_load_file.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_load_file.c
 
 CMakeFiles/doom42.dir/src/game/game_load_file.c.i: cmake_force
@@ -748,7 +761,7 @@ CMakeFiles/doom42.dir/src/game/game_load_file.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_load_textures.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_load_textures.c.o: ../src/game/game_load_textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/doom42.dir/src/game/game_load_textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/doom42.dir/src/game/game_load_textures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_load_textures.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_load_textures.c
 
 CMakeFiles/doom42.dir/src/game/game_load_textures.c.i: cmake_force
@@ -761,7 +774,7 @@ CMakeFiles/doom42.dir/src/game/game_load_textures.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_main.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_main.c.o: ../src/game/game_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/doom42.dir/src/game/game_main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/doom42.dir/src/game/game_main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_main.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_main.c
 
 CMakeFiles/doom42.dir/src/game/game_main.c.i: cmake_force
@@ -774,7 +787,7 @@ CMakeFiles/doom42.dir/src/game/game_main.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_map_parse.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_map_parse.c.o: ../src/game/game_map_parse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/doom42.dir/src/game/game_map_parse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/doom42.dir/src/game/game_map_parse.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_map_parse.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_map_parse.c
 
 CMakeFiles/doom42.dir/src/game/game_map_parse.c.i: cmake_force
@@ -787,7 +800,7 @@ CMakeFiles/doom42.dir/src/game/game_map_parse.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_map_parse2.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_map_parse2.c.o: ../src/game/game_map_parse2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/doom42.dir/src/game/game_map_parse2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/doom42.dir/src/game/game_map_parse2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_map_parse2.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_map_parse2.c
 
 CMakeFiles/doom42.dir/src/game/game_map_parse2.c.i: cmake_force
@@ -800,7 +813,7 @@ CMakeFiles/doom42.dir/src/game/game_map_parse2.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_math_functions.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_math_functions.c.o: ../src/game/game_math_functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/doom42.dir/src/game/game_math_functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/doom42.dir/src/game/game_math_functions.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_math_functions.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_math_functions.c
 
 CMakeFiles/doom42.dir/src/game/game_math_functions.c.i: cmake_force
@@ -813,7 +826,7 @@ CMakeFiles/doom42.dir/src/game/game_math_functions.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_motion.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_motion.c.o: ../src/game/game_motion.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/doom42.dir/src/game/game_motion.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/doom42.dir/src/game/game_motion.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_motion.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_motion.c
 
 CMakeFiles/doom42.dir/src/game/game_motion.c.i: cmake_force
@@ -826,7 +839,7 @@ CMakeFiles/doom42.dir/src/game/game_motion.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.o: ../src/game/game_sdl_addons.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_sdl_addons.c
 
 CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.i: cmake_force
@@ -839,7 +852,7 @@ CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_skybox.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_skybox.c.o: ../src/game/game_skybox.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/doom42.dir/src/game/game_skybox.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/doom42.dir/src/game/game_skybox.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_skybox.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_skybox.c
 
 CMakeFiles/doom42.dir/src/game/game_skybox.c.i: cmake_force
@@ -852,7 +865,7 @@ CMakeFiles/doom42.dir/src/game/game_skybox.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_texture_parser.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_texture_parser.c.o: ../src/game/game_texture_parser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/doom42.dir/src/game/game_texture_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/doom42.dir/src/game/game_texture_parser.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_texture_parser.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_texture_parser.c
 
 CMakeFiles/doom42.dir/src/game/game_texture_parser.c.i: cmake_force
@@ -865,7 +878,7 @@ CMakeFiles/doom42.dir/src/game/game_texture_parser.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_textures.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_textures.c.o: ../src/game/game_textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/doom42.dir/src/game/game_textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/doom42.dir/src/game/game_textures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_textures.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_textures.c
 
 CMakeFiles/doom42.dir/src/game/game_textures.c.i: cmake_force
@@ -878,7 +891,7 @@ CMakeFiles/doom42.dir/src/game/game_textures.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_vectors_1.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_vectors_1.c.o: ../src/game/game_vectors_1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/doom42.dir/src/game/game_vectors_1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/doom42.dir/src/game/game_vectors_1.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_vectors_1.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_vectors_1.c
 
 CMakeFiles/doom42.dir/src/game/game_vectors_1.c.i: cmake_force
@@ -891,7 +904,7 @@ CMakeFiles/doom42.dir/src/game/game_vectors_1.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_vectors_2.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_vectors_2.c.o: ../src/game/game_vectors_2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/doom42.dir/src/game/game_vectors_2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/doom42.dir/src/game/game_vectors_2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_vectors_2.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_vectors_2.c
 
 CMakeFiles/doom42.dir/src/game/game_vectors_2.c.i: cmake_force
@@ -904,7 +917,7 @@ CMakeFiles/doom42.dir/src/game/game_vectors_2.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_vectors_3.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_vectors_3.c.o: ../src/game/game_vectors_3.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/doom42.dir/src/game/game_vectors_3.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/doom42.dir/src/game/game_vectors_3.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_vectors_3.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_vectors_3.c
 
 CMakeFiles/doom42.dir/src/game/game_vectors_3.c.i: cmake_force
@@ -917,7 +930,7 @@ CMakeFiles/doom42.dir/src/game/game_vectors_3.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/game/game_walls.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/game/game_walls.c.o: ../src/game/game_walls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/doom42.dir/src/game/game_walls.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/doom42.dir/src/game/game_walls.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/game/game_walls.c.o   -c /Users/nshelly/CLionProjects/doom42/src/game/game_walls.c
 
 CMakeFiles/doom42.dir/src/game/game_walls.c.i: cmake_force
@@ -930,7 +943,7 @@ CMakeFiles/doom42.dir/src/game/game_walls.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_debug.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_debug.c.o: ../src/gui/gui_debug.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/doom42.dir/src/gui/gui_debug.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/doom42.dir/src/gui/gui_debug.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_debug.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_debug.c
 
 CMakeFiles/doom42.dir/src/gui/gui_debug.c.i: cmake_force
@@ -943,7 +956,7 @@ CMakeFiles/doom42.dir/src/gui/gui_debug.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_destruct.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_destruct.c.o: ../src/gui/gui_destruct.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/doom42.dir/src/gui/gui_destruct.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/doom42.dir/src/gui/gui_destruct.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_destruct.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_destruct.c
 
 CMakeFiles/doom42.dir/src/gui/gui_destruct.c.i: cmake_force
@@ -956,7 +969,7 @@ CMakeFiles/doom42.dir/src/gui/gui_destruct.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.o: ../src/gui/gui_elem_button.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_elem_button.c
 
 CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.i: cmake_force
@@ -969,7 +982,7 @@ CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.o: ../src/gui/gui_elem_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_elem_init.c
 
 CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.i: cmake_force
@@ -982,7 +995,7 @@ CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.o: ../src/gui/gui_elem_input.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_elem_input.c
 
 CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.i: cmake_force
@@ -995,7 +1008,7 @@ CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_events.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_events.c.o: ../src/gui/gui_events.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/doom42.dir/src/gui/gui_events.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/doom42.dir/src/gui/gui_events.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_events.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_events.c
 
 CMakeFiles/doom42.dir/src/gui/gui_events.c.i: cmake_force
@@ -1008,7 +1021,7 @@ CMakeFiles/doom42.dir/src/gui/gui_events.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_fonts.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_fonts.c.o: ../src/gui/gui_fonts.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/doom42.dir/src/gui/gui_fonts.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/doom42.dir/src/gui/gui_fonts.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_fonts.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_fonts.c
 
 CMakeFiles/doom42.dir/src/gui/gui_fonts.c.i: cmake_force
@@ -1021,7 +1034,7 @@ CMakeFiles/doom42.dir/src/gui/gui_fonts.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_init.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_init.c.o: ../src/gui/gui_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/doom42.dir/src/gui/gui_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/doom42.dir/src/gui/gui_init.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_init.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_init.c
 
 CMakeFiles/doom42.dir/src/gui/gui_init.c.i: cmake_force
@@ -1034,7 +1047,7 @@ CMakeFiles/doom42.dir/src/gui/gui_init.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_keydown.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_keydown.c.o: ../src/gui/gui_keydown.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/doom42.dir/src/gui/gui_keydown.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/doom42.dir/src/gui/gui_keydown.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_keydown.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_keydown.c
 
 CMakeFiles/doom42.dir/src/gui/gui_keydown.c.i: cmake_force
@@ -1047,7 +1060,7 @@ CMakeFiles/doom42.dir/src/gui/gui_keydown.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_mouse.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_mouse.c.o: ../src/gui/gui_mouse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/doom42.dir/src/gui/gui_mouse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/doom42.dir/src/gui/gui_mouse.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_mouse.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_mouse.c
 
 CMakeFiles/doom42.dir/src/gui/gui_mouse.c.i: cmake_force
@@ -1060,7 +1073,7 @@ CMakeFiles/doom42.dir/src/gui/gui_mouse.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/gui/gui_redraw.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/gui/gui_redraw.c.o: ../src/gui/gui_redraw.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/doom42.dir/src/gui/gui_redraw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/doom42.dir/src/gui/gui_redraw.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/gui/gui_redraw.c.o   -c /Users/nshelly/CLionProjects/doom42/src/gui/gui_redraw.c
 
 CMakeFiles/doom42.dir/src/gui/gui_redraw.c.i: cmake_force
@@ -1073,7 +1086,7 @@ CMakeFiles/doom42.dir/src/gui/gui_redraw.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/main/main.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/main/main.c.o: ../src/main/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/doom42.dir/src/main/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/doom42.dir/src/main/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/main/main.c.o   -c /Users/nshelly/CLionProjects/doom42/src/main/main.c
 
 CMakeFiles/doom42.dir/src/main/main.c.i: cmake_force
@@ -1086,7 +1099,7 @@ CMakeFiles/doom42.dir/src/main/main.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/main/main_btn_action.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/main/main_btn_action.c.o: ../src/main/main_btn_action.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/doom42.dir/src/main/main_btn_action.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/doom42.dir/src/main/main_btn_action.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/main/main_btn_action.c.o   -c /Users/nshelly/CLionProjects/doom42/src/main/main_btn_action.c
 
 CMakeFiles/doom42.dir/src/main/main_btn_action.c.i: cmake_force
@@ -1099,7 +1112,7 @@ CMakeFiles/doom42.dir/src/main/main_btn_action.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/main/main_events.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/main/main_events.c.o: ../src/main/main_events.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/doom42.dir/src/main/main_events.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/doom42.dir/src/main/main_events.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/main/main_events.c.o   -c /Users/nshelly/CLionProjects/doom42/src/main/main_events.c
 
 CMakeFiles/doom42.dir/src/main/main_events.c.i: cmake_force
@@ -1112,7 +1125,7 @@ CMakeFiles/doom42.dir/src/main/main_events.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/main/main_gui_init.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/main/main_gui_init.c.o: ../src/main/main_gui_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/doom42.dir/src/main/main_gui_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/doom42.dir/src/main/main_gui_init.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/main/main_gui_init.c.o   -c /Users/nshelly/CLionProjects/doom42/src/main/main_gui_init.c
 
 CMakeFiles/doom42.dir/src/main/main_gui_init.c.i: cmake_force
@@ -1125,7 +1138,7 @@ CMakeFiles/doom42.dir/src/main/main_gui_init.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/math/math_intersect.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/math/math_intersect.c.o: ../src/math/math_intersect.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/doom42.dir/src/math/math_intersect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/doom42.dir/src/math/math_intersect.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/math/math_intersect.c.o   -c /Users/nshelly/CLionProjects/doom42/src/math/math_intersect.c
 
 CMakeFiles/doom42.dir/src/math/math_intersect.c.i: cmake_force
@@ -1138,7 +1151,7 @@ CMakeFiles/doom42.dir/src/math/math_intersect.c.s: cmake_force
 
 CMakeFiles/doom42.dir/src/math/math_vectors.c.o: CMakeFiles/doom42.dir/flags.make
 CMakeFiles/doom42.dir/src/math/math_vectors.c.o: ../src/math/math_vectors.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/doom42.dir/src/math/math_vectors.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/doom42.dir/src/math/math_vectors.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/doom42.dir/src/math/math_vectors.c.o   -c /Users/nshelly/CLionProjects/doom42/src/math/math_vectors.c
 
 CMakeFiles/doom42.dir/src/math/math_vectors.c.i: cmake_force
@@ -1191,6 +1204,7 @@ doom42_OBJECTS = \
 "CMakeFiles/doom42.dir/src/func/func_fpc.c.o" \
 "CMakeFiles/doom42.dir/src/func/func_help.c.o" \
 "CMakeFiles/doom42.dir/src/func/func_sdl.c.o" \
+"CMakeFiles/doom42.dir/src/func/func_sound.c.o" \
 "CMakeFiles/doom42.dir/src/func/func_wu.c.o" \
 "CMakeFiles/doom42.dir/src/func/func_wu_color.c.o" \
 "CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o" \
@@ -1279,6 +1293,7 @@ doom42: CMakeFiles/doom42.dir/src/editor/editor_save_file3.c.o
 doom42: CMakeFiles/doom42.dir/src/func/func_fpc.c.o
 doom42: CMakeFiles/doom42.dir/src/func/func_help.c.o
 doom42: CMakeFiles/doom42.dir/src/func/func_sdl.c.o
+doom42: CMakeFiles/doom42.dir/src/func/func_sound.c.o
 doom42: CMakeFiles/doom42.dir/src/func/func_wu.c.o
 doom42: CMakeFiles/doom42.dir/src/func/func_wu_color.c.o
 doom42: CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o
@@ -1325,7 +1340,7 @@ doom42: CMakeFiles/doom42.dir/src/math/math_intersect.c.o
 doom42: CMakeFiles/doom42.dir/src/math/math_vectors.c.o
 doom42: CMakeFiles/doom42.dir/build.make
 doom42: CMakeFiles/doom42.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Linking C executable doom42"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Linking C executable doom42"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/doom42.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

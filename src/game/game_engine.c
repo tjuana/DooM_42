@@ -144,6 +144,8 @@ void	engine_begin(t_new_player *pl)
    			pl->n = ROCK1;
    			if (s==1)
    				pl->n = FENCE;
+   			if (s==2)
+   				pl->n = 11;
             engine_put_lines(pl, neib);//Render all.
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];

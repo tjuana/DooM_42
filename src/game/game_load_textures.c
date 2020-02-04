@@ -23,7 +23,7 @@ t_new_texture			*load_textures(t_new_player *pl)
 {
 	t_new_texture	*t_arr;
 
-	pl->textures_nb = 11;
+	pl->textures_nb = 15;
 	if (!(t_arr = (t_new_texture *)malloc(sizeof(t_new_texture) * pl->textures_nb)))
 	{
 		ft_putstr_fd("Can't allocate memory for textures array.\n", 2);
@@ -40,5 +40,10 @@ t_new_texture			*load_textures(t_new_player *pl)
 	t_arr[8] = texture_parse("Img_tga/revolver0.tga");
 	t_arr[9] = texture_parse("Img_tga/revolver1.tga");
 	t_arr[10] = texture_parse("Img_tga/revolver2.tga");
+	t_arr[11] = texture_parse("Img_tga/wall_orange.tga");
+	t_arr[12] = texture_parse("Img_tga/venom_face.tga");
+	t_arr[13] = texture_parse("Img_tga/graffiti.tga");
+	t_arr[14] = texture_parse("Img_tga/venom_face.tga");
+
 	return (t_arr);
 }

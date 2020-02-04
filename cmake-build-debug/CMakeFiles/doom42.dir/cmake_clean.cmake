@@ -39,6 +39,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/doom42.dir/src/func/func_fpc.c.o"
   "CMakeFiles/doom42.dir/src/func/func_help.c.o"
   "CMakeFiles/doom42.dir/src/func/func_sdl.c.o"
+  "CMakeFiles/doom42.dir/src/func/func_sound.c.o"
   "CMakeFiles/doom42.dir/src/func/func_wu.c.o"
   "CMakeFiles/doom42.dir/src/func/func_wu_color.c.o"
   "CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o"
