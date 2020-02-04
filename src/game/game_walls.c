@@ -96,20 +96,24 @@ void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
 	unsigned int 		p;
 	int hex;
 
+
 	draw_limits_for_walls(wall_type, pl, img);
+
 	if(pl->y2 >= pl->y1)
 	{
 		while (pl->y <= pl->y2)
 		{
 			++pl->y;
-			txty = scr_nxt(&pl->ty);
-
-			p = (-txty % (pl->tex[img].h - 300)) * pl->tex[img].w + (-pl->txtx % (pl->tex[img].w + 300));
+			txty = -(scr_nxt(&pl->ty) + 220);
+			p = (txty % (pl->tex[img].h)) * pl->tex[img].w + (pl->txtx % (pl->tex[img].w));
 			hex = color_transoform(hexcolor(pl->tex[img].pixels[p].r, pl->tex[img].pixels[p].g, pl->tex[img].pixels[p].b), pl->light);
-			if (hex < 16000000)
+			if (hex >= 16000000)
 			{
-				pl->pix[pl->y * WIN_W + x] = hex;
+				pl->tex[img].pixels[p].a = 0;
+				//printf("%d\n", pl->light);
 			}
+			if (pl->tex[img].pixels[p].a != 0)
+				pl->pix[pl->y * WIN_W + x] = hex;
 		}
 	}
 }
