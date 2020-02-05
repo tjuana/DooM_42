@@ -130,7 +130,7 @@ void	ft_game_redraw(void *d, t_list *dom)
 	data->se.ground = !data->se.falling;
 	events_jumps(&data->se, &data->pl, &data->op, &data->ot);
 	motion_chk(&data->op, &data->pl, &data->ot, &data->se);
-	motion_move_pl(0, 0, &data->pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+	motion_move_pl(&(t_new_xy){0, 0}, &data->pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
 	events_new_mouse_move(&data->ms, &data->pl);//mouse aiming
 	events_vel(&data->pl, &data->se, &data->ot);
 	if (!events(&data->se, &data->pl))
