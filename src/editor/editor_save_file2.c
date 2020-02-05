@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/03 18:34:46 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/05 13:28:17 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void		ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 	{
 		str = ft_space(1, sector->vertex[j]->w);
 		ft_putstr_fd(str, w->file.fd);
+		ft_strdel(&str);
 	}
 	ft_putstr_fd("\t", w->file.fd);
 	ft_save_neighbour(sector, w->file.fd);
