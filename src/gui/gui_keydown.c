@@ -6,17 +6,20 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 21:01:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:39:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
 /*
+** **************************************************************************
 **	void ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
-**	
+**
 **	Function that set map name.
+** **************************************************************************
 */
+
 void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
 {
 	char	c;
@@ -26,14 +29,11 @@ void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
 
 	w->gui.search_elem = GUI_EVENT_ON;
 	elem = dom->content;
-	// if (elem)
-		// return ;
 	if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
 		e.key.keysym.scancode <= SDL_SCANCODE_0)
 	{
 		if (ft_strlen(elem->str) > 20)
 			return ;
-		// Выделить в отдельную функцию (набор текста в input)
 		if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
 			e.key.keysym.scancode <= SDL_SCANCODE_Z)
 			c = 'a' + e.key.keysym.scancode - 4;

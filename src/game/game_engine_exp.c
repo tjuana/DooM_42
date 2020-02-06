@@ -74,9 +74,6 @@ int			engine_cross(t_new_player *pl)
 	t_new_xy	v_start;
 	t_new_xy	v_end;
 
-	t_vector3	fov_vec1;
-	t_vector3	fov_vec2;
-
 	xy_vertex_of_sectors(&v_start, &v_end, pl);
 	//Is the wall at least partially in front of the player?
 	if((pl->t1.y <= 0) && (pl->t2.y <= 0))
@@ -86,11 +83,16 @@ int			engine_cross(t_new_player *pl)
 	//If it's partially behind the player, cut it against player's view
 	if((pl->t1.y <= 0) || (pl->t2.y <= 0))
 	{
-		fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST * 2));
-		fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST * 2));
+		// Проверяем, не параллельны ли какие-то прямые
+		// if (Intersect_divider(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz))
+		// {
+			// printf("ZERO-O-O!\n");
+		// }
+		i1 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
+		i2 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
 
-		i1 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec1.x, fov_vec1.y);
-		i2 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec2.x, fov_vec2.y);
+		// if (i1.x == NAN || i1.y == NAN || i2.x == NAN || i2.y == NAN)
+			// printf("hmm...\n");
 
 		pl->org1.x = pl->t1.x;
 		pl->org1.y = pl->t1.y;

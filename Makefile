@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/28 21:49:45 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/06 17:51:20 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,7 +166,15 @@ gui_elem_button.c \
 gui_fonts.c \
 gui_elem_input.c \
 gui_keydown.c \
-gui_init.c
+gui_init.c \
+gui_elem_set_func.c \
+gui_elem_set_status.c \
+gui_elem_set_style.c \
+gui_elem_set_type.c \
+gui_redraw_fill.c \
+gui_redraw_font.c \
+gui_redraw_image.c \
+gui_mouse_actions.c
 
 
 

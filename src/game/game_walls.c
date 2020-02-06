@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 12:14:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/04 13:17:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void draw_walls(int x, t_new_player *pl, int wall, int n)
 			// // hex = 0xff0000;
 			// pix[y * WIN_W + x] = hex;//color;
 
-			pix[y * WIN_W + x] = 0xca3a27;
+			pix[y * WIN_W + x] = 0x4b0082;
 		}
 	}
 

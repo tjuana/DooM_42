@@ -25,7 +25,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->nearz = 1e-4f;
 	pl->farz = 5.0f;
 	pl->nearside = 1e-5f;
-	pl->farside = 20.0f;
+	pl->farside = 60.0f;
 
 	//
 	pl->door_all = -1;
@@ -177,6 +177,12 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	// data->pl.srf = NULL;
 
 	data->pl.srf = w->sdl->srf;
+
+	// init. camera vertex
+	data->pl.fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST));
+	data->pl.fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST));
+	printf("VERTEX: %s: x:%6.2f   y:%6.2f   z:%6.2f\n", "fov_vec1", data->pl.fov_vec1.x, data->pl.fov_vec1.y, data->pl.fov_vec1.z);
+	printf("VERTEX: %s: x:%6.2f   y:%6.2f   z:%6.2f\n", "fov_vec2", data->pl.fov_vec2.x, data->pl.fov_vec2.y, data->pl.fov_vec2.z);
 }
 
 void	ft_game_gui_init_menu(t_list *head)

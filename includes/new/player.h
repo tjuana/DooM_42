@@ -87,6 +87,9 @@ typedef struct	s_new_player
 	float         u1;
 	int			txtx;
 
+	// camera vertex
+	t_vector3	fov_vec1;
+	t_vector3	fov_vec2;
 }				t_new_player;
 
 #endif

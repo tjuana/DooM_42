@@ -6,17 +6,20 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:58:53 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:50:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
 /*
+** **************************************************************************
 **	int ft_gui_check_event_elem_area(t_gui_coord v, t_gui_elem *c)
-**	
+**
 **	Function that check event area.
+** **************************************************************************
 */
+
 int		ft_gui_check_event_area(t_gui_coord v, t_gui_coord v1, t_gui_coord v2)
 {
 	return (v.x >= v1.x && v.x < v2.x \
@@ -24,10 +27,13 @@ int		ft_gui_check_event_area(t_gui_coord v, t_gui_coord v1, t_gui_coord v2)
 }
 
 /*
+** **************************************************************************
 **	int ft_gui_check_event_elem_area(t_gui_coord v, t_gui_elem *c)
-**	
+**
 **	Function that check event area.
+** **************************************************************************
 */
+
 int		ft_gui_check_event_elem_area(t_gui_coord v, t_gui_elem *c)
 {
 	return (v.x >= c->v1.x && v.x < c->v2.x \
@@ -35,10 +41,13 @@ int		ft_gui_check_event_elem_area(t_gui_coord v, t_gui_elem *c)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_init_mouse_pos(t_wolf3d *w)
-**	
+**
 **	Function that initialize mouse position.
+** **************************************************************************
 */
+
 void	ft_gui_init_mouse_pos(t_wolf3d *w)
 {
 	int			x;
@@ -51,11 +60,14 @@ void	ft_gui_init_mouse_pos(t_wolf3d *w)
 }
 
 /*
+** **************************************************************************
 **	int ft_gui_event_call_func(t_wolf3d *w, SDL_Event e,
 **		t_gui_event *event, int type)
-**	
+**
 **	Function that call event function.
+** **************************************************************************
 */
+
 int		ft_gui_event_call_func(t_wolf3d *w, SDL_Event e, \
 			t_gui_event *event, int type)
 {
@@ -64,10 +76,13 @@ int		ft_gui_event_call_func(t_wolf3d *w, SDL_Event e, \
 }
 
 /*
+** **************************************************************************
 **	int ft_gui_event_action(t_wolf3d *w, SDL_Event e, t_list *dom)
-**	
+**
 **	Function that set status for gui hover element for mouse_move event.
+** **************************************************************************
 */
+
 int		ft_gui_event_action(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 {
 	t_gui_elem	*elem;
@@ -87,11 +102,15 @@ int		ft_gui_event_action(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom)
-**	
+**
 **	Function that search elem for mouse_move event action.
+** **************************************************************************
 */
-int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
+
+int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_list		*list;
 	t_gui_elem	*elem;
@@ -101,7 +120,8 @@ int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 	{
 		elem = list->content;
 
-		if (ft_gui_check_event_elem_area(w->gui.mouse_pos, elem) && elem->status & GUI_ELEM_VISIBLE)
+		if (ft_gui_check_event_elem_area(w->gui.mouse_pos, elem) && \
+			elem->status & GUI_ELEM_VISIBLE)
 		{
 			ft_gui_event_search_elem(w, e, elem->child, type);
 			if (w->gui.search_elem == GUI_EVENT_SEARCH)
@@ -118,39 +138,4 @@ int		ft_gui_event_search_elem(t_wolf3d *w, SDL_Event e, t_list *dom, int type)
 		ft_gui_event_search_elem(w, e, list->next, type);
 	}
 	return (0);
-}
-
-/*
-**	Однотипные функции, возможно объединение
-**	
-**	void ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom)
-**	
-**	Function that search mouse position area.
-*/
-void	ft_gui_mousemotion(t_wolf3d *w, SDL_Event e, t_list *dom)
-{
-	ft_gui_init_mouse_pos(w);
-	w->gui.search_elem = GUI_EVENT_SEARCH;
-	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEMOTION);
-}
-
-void	ft_gui_mousebuttondown(t_wolf3d *w, SDL_Event e, t_list *dom)
-{
-	ft_gui_init_mouse_pos(w);
-	w->gui.search_elem = GUI_EVENT_SEARCH;
-	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEBUTTONDOWN);
-}
-
-void	ft_gui_mousebuttonup(t_wolf3d *w, SDL_Event e, t_list *dom)
-{
-	ft_gui_init_mouse_pos(w);
-	w->gui.search_elem = GUI_EVENT_SEARCH;
-	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEBUTTONUP);
-}
-
-void	ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, t_list *dom)
-{
-	ft_gui_init_mouse_pos(w);
-	w->gui.search_elem = GUI_EVENT_SEARCH;
-	ft_gui_event_search_elem(w, e, dom, SDL_MOUSEWHEEL);
 }
