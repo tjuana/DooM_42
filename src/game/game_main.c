@@ -23,9 +23,9 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
 	pl->nearz = 1e-4f;
-	pl->farz = 5;
+	pl->farz = 50;
 	pl->nearside = 1e-5f;
-	pl->farside = 20.f;
+	pl->farside = 200.f;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;

@@ -812,7 +812,7 @@ stdlib.h
 unistd.h
 -
 
-/Users/nshelly/CLionProjects/doom42/src/game/game_walls.c
+/Users/nshelly/CLionProjects/doom42/src/game/game_main.c
 doom.h
 /Users/nshelly/CLionProjects/doom42/src/game/doom.h
 

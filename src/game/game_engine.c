@@ -142,7 +142,7 @@ void	engine_begin(t_new_player *pl)
 				continue; // Only render if it's visible
             pl->f = GREEN;//floor and ceiling
    			pl->n = ROCK1;
-   			if (s==1)
+   			if (s==0)
    				pl->n = FENCE;
    			if (s==2)
    				pl->n = 11;
