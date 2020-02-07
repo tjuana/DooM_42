@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:44:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:25:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,8 @@ int					ft_gui_redraw(t_wolf3d *w);
 ** **************************************************************************
 */
 void				ft_gui_init(t_wolf3d *w);
+
+SDL_Rect			*ft_gui_create_sdl_rect(int w, int h, int x, int y);
+void				ft_gui_set_sdl_color(SDL_Color *sdl_color, int color);
 
 #endif

@@ -6,11 +6,20 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:40:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:56:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 15:58:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+int		ft_gui_check_special_lightness(int color)
+{
+	if ((((color & C_R) >> 16) + \
+		((color & C_G) >> 8) + \
+		(color & C_B)) / 3 > 128)
+		return (1);
+	return (0);
+}
 
 /*
 ** **************************************************************************
@@ -35,23 +44,15 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 			color = ft_fdf_get_color(color, 0xffffff, 0.5);
 		if (elem->status & GUI_ELEM_ACTIVE)
 			color = ft_fdf_get_color(color, 0x000000, 0.5);
-		if ((((color & C_R) >> 16) + ((color & C_G) >> 8) + (color & C_B)) / 3 > 128)
-			color = 0x000000;
-		else
-			color = 0xffffff;
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
-		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		color = ft_gui_check_special_lightness(color) ? 0x0 : 0xffffff;
 	}
-
-	if (elem->type == GUI_TEXT)
+	if (elem->type == GUI_BUTTON || elem->type == GUI_TEXT || \
+		elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 	{
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
-		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
-	}
-	if (elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
-	{
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", elem->fs, color);
-		ft_gui_font_putstr_sdl(w, elem->str, (t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
+		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", \
+			elem->fs, color);
+		ft_gui_font_putstr_sdl(w, elem->str, \
+			(t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:48:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 15:29:16 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, \
 		d = (double)((color & C_A) >> 24) / 255;
 	else
 		d = 0.0;
-
 	y = v1.y >= 0 ? v1.y : 0;
 	while (y <= v2.y && y < w->gui.win_h)
 	{
@@ -76,7 +75,6 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, \
 		(t_gui_coord){elem->v1.x + border_width, elem->v2.y, 0}, color);
 	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x, elem->v1.y, 0}, \
 		(t_gui_coord){elem->v2.x, elem->v1.y + border_width, 0}, color);
-
 	ft_gui_fill_area(w, (t_gui_coord){elem->v1.x + border_width, \
 		elem->v2.y - border_width, 0}, \
 		(t_gui_coord){elem->v2.x, elem->v2.y, 0}, color);
