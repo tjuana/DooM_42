@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/07 15:14:19 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/07 16:36:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void		ft_save_the_file(t_wolf3d *w)
 {
+	char	*strdup;
+	char	*join;
+
+	strdup = ft_strdup("maps/");
+	join = ft_strjoin(strdup, w->file.name);
+	w->file.name = join;
 	if ((w->file.fd = open(w->file.name, O_CREAT | O_TRUNC | O_WRONLY, 0777)) \
 			== -1)
 		ft_error("open failed on output file");
@@ -24,6 +30,8 @@ void		ft_save_the_file(t_wolf3d *w)
 	ft_putstr_fd("\n", w->file.fd);
 	ft_player_string(w);
 	ft_free_mf(w);
+	ft_strdel(&join);
+	ft_strdel(&strdup);
 }
 
 /*
