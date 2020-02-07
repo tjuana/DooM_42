@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 18:22:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:17:18 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** **************************************************************************
 */
 
-void	ft_editor_sector_create(t_wolf3d *w)
+void		ft_editor_sector_create(t_wolf3d *w)
 {
 	t_sector	sector;
 	t_list		*list_item;
@@ -48,19 +48,17 @@ void	ft_editor_sector_create(t_wolf3d *w)
 ** **************************************************************************
 */
 
-void	ft_delete_sector(t_wolf3d *w)
+void		ft_delete_sector(t_wolf3d *w)
 {
 	t_list		*list;
 	t_sector	*s;
-	int		i;
+	int			i;
 
 	if (w->sector == NULL)
 		return ;
 	list = w->sector;
 	w->sector = w->sector->next;
 	s = list->content;
-
-	// free vertexes
 	i = 0;
 	while (i < s->vertex_count)
 	{
@@ -68,11 +66,8 @@ void	ft_delete_sector(t_wolf3d *w)
 		i++;
 	}
 	free(s->vertex);
-
-	// free neighbords
 	if (s->neighbors != NULL)
 		free(s->neighbors);
-
 	free(list->content);
 	free(list);
 }
@@ -88,6 +83,7 @@ void	ft_delete_sector(t_wolf3d *w)
 t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
 {
 	t_sector	*sector;
+
 	while (list)
 	{
 		sector = list->content;

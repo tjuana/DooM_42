@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:40:11 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:27:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 **	Check vertexes compare
 **	
-**	ft_editor_sector_compare_vertexes -> ft_compare_vertexes
+**	ft_compare_vertexes -> ft_compare_vertexes
 */
 int		ft_compare_vertexes(t_vector3 v1, t_vector3 v2)
 {

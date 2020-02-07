@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 21:27:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:27:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,7 @@ int					ft_check_point_in_sector(t_wolf3d *w, t_sector *s, \
 						t_vector3 v);
 int					ft_search_point_in_sector(void *a, t_vector3 v);
 int					ft_new_editor_map_check_area(t_wolf3d *w);
-int					ft_editor_sector_compare_vertexes(t_vector3 v1, \
+int					ft_compare_vertexes(t_vector3 v1, \
 						t_vector3 v2);
 
 /*
