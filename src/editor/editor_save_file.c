@@ -6,35 +6,14 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/05 15:41:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/07 15:14:19 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-void		ft_allocate_int2darr(t_wolf3d *w)
-{
-	int	i = -1;
-	int count = 0;
-	int j = 0;
-
-	w->file.map = NULL;
-	w->file.map = ft_my_malloc(VER_HEIGHT * sizeof(int *));
-	while (++i < VER_HEIGHT)
-		w->file.map[i] = ft_my_malloc(sizeof(int) * VER_WIDTH);
-	i = -1;
-	j = -1;
-	while (++i <  VER_HEIGHT)
-		while (++j < VER_WIDTH)
-		w->file.map[i][j] = 0;
-}
-
 void		ft_save_the_file(t_wolf3d *w)
 {
-	int	k;
-	int	i = -1;
-
-	k = -1;
 	if ((w->file.fd = open(w->file.name, O_CREAT | O_TRUNC | O_WRONLY, 0777)) \
 			== -1)
 		ft_error("open failed on output file");
@@ -44,14 +23,8 @@ void		ft_save_the_file(t_wolf3d *w)
 	ft_print_sectors_to_file(w, w->sector);
 	ft_putstr_fd("\n", w->file.fd);
 	ft_player_string(w);
-	ft_lstdel(&w->vertex, ft_bzero);
-	w->vertex = NULL;
-	while (++i < VER_HEIGHT)
-		free(w->file.map[i]);
-	free(w->file.map);
-	w->file.map = NULL;
+	ft_free_mf(w);
 }
-
 
 /*
 **	void	ft_editor_take_vertex(t_wolf3d *w)
@@ -69,7 +42,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 	int			j;
 	int			tmp;
 	int			b;
-	
+
 	p_lst = w->sector;
 	while (p_lst != NULL)
 	{
@@ -103,7 +76,6 @@ void		ft_count_origin_vertexes(t_wolf3d *w)
 	w->file.count = 0;
 	w->file.i = -1;
 	w->vertex = NULL;
-
 	while (++w->file.i < VER_HEIGHT)
 	{
 		w->file.j = -1;
@@ -134,21 +106,16 @@ void		ft_count_origin_vertexes(t_wolf3d *w)
 void		ft_create_list_of_vertexes(t_wolf3d *w)
 {
 	t_vector3	vertexes;
-	t_list		*lst;
 	t_list		*ptr_list;
-	int			f;
 
-	lst = NULL;
 	ptr_list = w->sector;
-	// vertexes = ft_my_malloc(sizeof(t_vector3 *));
 	vertexes.x = w->file.j;
 	vertexes.y = w->file.i;
 	vertexes.w = w->file.count;
-	lst = ft_lstnew(&vertexes, sizeof(t_vector3 *));
 	if (w->vertex == NULL)
-		w->vertex = lst;
+		w->vertex = ft_lstnew(&vertexes, sizeof(t_vector3*));
 	else
-		ft_lstadd(&w->vertex, lst);
+		ft_lstadd(&w->vertex, ft_lstnew(&vertexes, sizeof(t_vector3*)));
 	ft_sector_num_vertex(ptr_list, &vertexes);
 }
 

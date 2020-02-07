@@ -41,6 +41,7 @@
 		"tuple": "cpp",
 		"type_traits": "cpp",
 		"utility": "cpp",
-		"animations.h": "c"
+		"animations.h": "c",
+		"libft.h": "c"
 	},
 }

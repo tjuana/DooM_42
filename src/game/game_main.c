@@ -154,8 +154,8 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	//ft_init_anim(&w);//gun
 	// SDL_Window* window = NULL;
 	// data->window = NULL;
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-		ft_error( "SDL could not initialize! SDL_Error: %s\n");
+	// if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	// 	ft_error( "SDL could not initialize! SDL_Error: %s\n");
 	// data->window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_W, WIN_H, SDL_WINDOW_SHOWN );
 
 	// if(data->window == NULL)

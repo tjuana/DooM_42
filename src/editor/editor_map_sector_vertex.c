@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector_vertex.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 18:14:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/05 15:49:19 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
 	{
 		if (i == pos)
 		{
-			p = malloc(sizeof(t_vector3)); // и тут течёт
-			ft_bzero_char(p, sizeof(t_vector3));
+			p = ft_my_malloc(sizeof(t_vector3)); // и тут течёт
+			ft_bzero(p, sizeof(t_vector3));
 			*p = v;
 			vertex[i] = p;
 		}

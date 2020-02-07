@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 17:47:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/05 17:53:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,28 @@
 #include "doom.h"
 
 // delete
-void load_imgs(SDL_Surface *img[10])
-{
-    img[0]= IMG_Load("Textures/wall1.png");
-    img[0]= SDL_ConvertSurfaceFormat(img[0], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[1]= IMG_Load("Textures/wood.png");
-    img[1]= SDL_ConvertSurfaceFormat(img[1], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[2]= IMG_Load("Textures/wall2.png");
-    img[2]= SDL_ConvertSurfaceFormat(img[2], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[3]= IMG_Load("Textures/cosmos.png");
-    img[3]= SDL_ConvertSurfaceFormat(img[3], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[4]= IMG_Load("Textures/bloody_game.jpg");
-    img[4]= SDL_ConvertSurfaceFormat(img[4], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[5]= IMG_Load("Textures/graffiti.png");
-    img[5]= SDL_ConvertSurfaceFormat(img[5], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[6]= IMG_Load("Textures/green.png");
-    img[6]= SDL_ConvertSurfaceFormat(img[6], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[7]= IMG_Load("Textures/red.png");
-    img[7]= SDL_ConvertSurfaceFormat(img[7], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[8]= IMG_Load("Textures/met.png");
-    img[8]= SDL_ConvertSurfaceFormat(img[8], SDL_PIXELFORMAT_ARGB8888, 0);
-    img[9]= IMG_Load("Textures/wood.png");
-}
+// void load_imgs(SDL_Surface *img[10])
+// {
+//     img[0]= IMG_Load("Textures/wall1.png");
+//     img[0]= SDL_ConvertSurfaceFormat(img[0], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[1]= IMG_Load("Textures/wood.png");
+//     img[1]= SDL_ConvertSurfaceFormat(img[1], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[2]= IMG_Load("Textures/wall2.png");
+//     img[2]= SDL_ConvertSurfaceFormat(img[2], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[3]= IMG_Load("Textures/cosmos.png");
+//     img[3]= SDL_ConvertSurfaceFormat(img[3], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[4]= IMG_Load("Textures/bloody_game.jpg");
+//     img[4]= SDL_ConvertSurfaceFormat(img[4], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[5]= IMG_Load("Textures/graffiti.png");
+//     img[5]= SDL_ConvertSurfaceFormat(img[5], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[6]= IMG_Load("Textures/green.png");
+//     img[6]= SDL_ConvertSurfaceFormat(img[6], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[7]= IMG_Load("Textures/red.png");
+//     img[7]= SDL_ConvertSurfaceFormat(img[7], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[8]= IMG_Load("Textures/met.png");
+//     img[8]= SDL_ConvertSurfaceFormat(img[8], SDL_PIXELFORMAT_ARGB8888, 0);
+//     img[9]= IMG_Load("Textures/wood.png");
+// }
 
 t_scaler	scalar_create(int a, int b, int c, int d, int f)
 {
