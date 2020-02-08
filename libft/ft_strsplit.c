@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:20:21 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 18:00:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:35 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char			**ft_strsplit(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	nb_word = ft_n_words((const char *)s, c);
-	dst = (char **)ft_memalloc(sizeof(*dst) * (ft_n_words((const char *)s, c) + 1));
+	dst = (char **)malloc(sizeof(*dst) * (ft_n_words((const char *)s, c) + 1));
 	if (dst == NULL)
 		return (NULL);
 	while (nb_word--)
