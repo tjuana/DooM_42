@@ -149,8 +149,8 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 				}
 				if (se->ev.button.button == SDL_BUTTON_RIGHT)
 				{
-					if (pl->light == 0.5)
-						pl->light = 1;
+					if (pl->light == 0.5f)
+						pl->light = 1.0f;
 					else
 						pl->light = 0.5f;
 				}

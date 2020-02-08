@@ -6,39 +6,11 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/05 17:53:16 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 12:09:09 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//
-// Created by Nymphadora Shelly on 20/01/2020.
-//
-
 #include "doom.h"
-
-// delete
-// void load_imgs(SDL_Surface *img[10])
-// {
-//     img[0]= IMG_Load("Textures/wall1.png");
-//     img[0]= SDL_ConvertSurfaceFormat(img[0], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[1]= IMG_Load("Textures/wood.png");
-//     img[1]= SDL_ConvertSurfaceFormat(img[1], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[2]= IMG_Load("Textures/wall2.png");
-//     img[2]= SDL_ConvertSurfaceFormat(img[2], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[3]= IMG_Load("Textures/cosmos.png");
-//     img[3]= SDL_ConvertSurfaceFormat(img[3], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[4]= IMG_Load("Textures/bloody_game.jpg");
-//     img[4]= SDL_ConvertSurfaceFormat(img[4], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[5]= IMG_Load("Textures/graffiti.png");
-//     img[5]= SDL_ConvertSurfaceFormat(img[5], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[6]= IMG_Load("Textures/green.png");
-//     img[6]= SDL_ConvertSurfaceFormat(img[6], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[7]= IMG_Load("Textures/red.png");
-//     img[7]= SDL_ConvertSurfaceFormat(img[7], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[8]= IMG_Load("Textures/met.png");
-//     img[8]= SDL_ConvertSurfaceFormat(img[8], SDL_PIXELFORMAT_ARGB8888, 0);
-//     img[9]= IMG_Load("Textures/wood.png");
-// }
 
 t_scaler	scalar_create(int a, int b, int c, int d, int f)
 {
@@ -69,79 +41,84 @@ int hexcolor( int r, int g, int b)
 	return ((r<<16) | (g<<8) | b);
 }
 
-void draw_walls(int x, t_new_player *pl, int wall, int n)
+
+static void draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 {
-	unsigned	txty;
-	int			y;
-	int		*pix;
-	int 		hex;
-	unsigned int 		p;
-	t_scaler	ty;
-
-	if(wall == 0)
+	if(wall_type == 0)
 	{
 		pl->y1 = pl->ceil.cya;
-		pl->y2 = pl->ceil.cnya;
+		pl->y2 = pl->ceil.cnya - 1;
 	}
-	if(wall == 1)
+	else if(wall_type == 1)
 	{
-		pl->y1 = pl->ceil.cnyb;
+		pl->y1 = pl->ceil.cnyb + 1;
 		pl->y2 = pl->ceil.cyb;
 	}
-	if(wall == 2)
+	else if(wall_type == 2)
 	{
 		pl->y1 = pl->ceil.cya;
 		pl->y2 = pl->ceil.cyb;
 	}
-	ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[0].w - 1);
-	y = pl->y1;
-	pix = (int *)pl->srf->pixels;
-	// pix = (int*)pl->srf->pixels;
-	pl->y1 = clamp(pl->y1, 0, WIN_H-1);//??
-	pl->y2 = clamp(pl->y2, 0, WIN_H-1);//??
-	if(pl->y2 >= pl->y1 && wall)
-	{
-		// if(pl->y2 == pl->y1)
-			// pix[pl->y1*WIN_W+x] = pl->sky_pix[pl->y1][x];
-		while (y < pl->y2)
-		{
-			++y;
-			txty = scr_nxt(&ty);
-			p = ((txty % pl->srf->h) * pl->tex[n].w + (pl->txtx % pl->srf->w)% pl->tex[n].w);//formula = y*w + x
-			hex = hexcolor(pl->tex[n].pixels[p].r, pl->tex[n].pixels[p].g, pl->tex[n].pixels[p].b);
-			if (pl->tex[n].pixels[p].a == 0)//hex == 0x000000)
-			{
-				p = (y%pl->tex[5].h) * pl->tex[5].w + x%pl->tex[5].w ;//formula = y*w + x
-				hex = hexcolor(pl->tex[5].pixels[p].r, pl->tex[5].pixels[p].g, pl->tex[5].pixels[p].b);
-			}
-			// hex = 0xff0000;
-			pix[y * WIN_W + x] = hex;//color;
-
-			// pix[y * WIN_W + x] = 0xca3a27;
-		}
-	}
-
+	pl->ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb, 0, pl->tex[n].w - 1);
+	pl->y = pl->y1;
+	pl->y1 = clamp(pl->y1, 0, WIN_H-1);
+	pl->y2 = clamp(pl->y2, 0, WIN_H-1);
 }
 
-void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n)
+void draw_walls(int x, t_new_player *pl, int wall_type, int img)
 {
     unsigned	txty;
-    int			y;
-    int         *pix;
-    int         color;
+    int 		hex;
+    unsigned int 		p;
 
-    y = pl->y1;
-    pix = (int*)pl->srf->pixels;
-    pl->y1 = clamp(pl->y1, 0, WIN_H);
-    pl->y2 = clamp(pl->y2 , 0, WIN_H);
-    pix += pl->y1  * WIN_W + x ;
-    while (y <= pl->y2)
+	draw_limits_for_walls(wall_type, pl, img);
+    if(pl->y2 >= pl->y1)
     {
-        ++y;
-        txty = scr_nxt(&ty);
-        color = ft_get_pixel(pl->img[n], pl->txtx % (pl->img[n]->w + 200), txty % pl->img[n]->h);
-        if (color != 0x000000)
-         *pix = color_transoform(color, pl->light);
-        pix += WIN_W ;
+        while (pl->y <= pl->y2)
+        {
+        	++pl->y;
+            txty = scr_nxt(&pl->ty);
+			p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);
+            hex = color_transoform(hexcolor(pl->tex[img].pixels[p].r, pl->tex[img].pixels[p].g, pl->tex[img].pixels[p].b), pl->light);
+            if (pl->tex[img].pixels[p].a == 0)
+			{
+				p = (pl->y%pl->tex[SKY].h) * pl->tex[SKY].w + x%pl->tex[SKY].w ;
+				hex = hexcolor(pl->tex[SKY].pixels[p].r, pl->tex[SKY].pixels[p].g, pl->tex[SKY].pixels[p].b);
+			}
+            pl->pix[pl->y * WIN_W + x] = hex;
+        }
     }
 }
+
+void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+{
+	unsigned	txty;
+	unsigned int 		p;
+	int hex;
+
+
+	draw_limits_for_walls(wall_type, pl, img);
+
+	if(pl->y2 >= pl->y1)
+	{
+		while (pl->y <= pl->y2)
+		{
+			++pl->y;
+			txty = -(scr_nxt(&pl->ty) + 220);
+			p = (txty % (pl->tex[img].h)) * pl->tex[img].w + (pl->txtx % (pl->tex[img].w));
+			hex = color_transoform(hexcolor(pl->tex[img].pixels[p].r, pl->tex[img].pixels[p].g, pl->tex[img].pixels[p].b), pl->light);
+			if (hex >= 16000000)
+			{
+				pl->tex[img].pixels[p].a = 0;
+				//printf("%d\n", pl->light);
+			}
+			if (pl->tex[img].pixels[p].a != 0)
+				pl->pix[pl->y * WIN_W + x] = hex;
+		}
+	}
+}
+
+/*
+ * draw_graffiti, we just draw over an already drawn wall, so we can draw in every wall we want,
+ * with this logic we also can draw on floors and ceilings
+ */

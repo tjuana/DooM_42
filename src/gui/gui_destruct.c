@@ -35,9 +35,9 @@ void	ft_gui_desctuct(t_list *dom)
 	list = dom;
 	if (list != NULL)
 	{
-		ft_gui_desctuct(list->next);
+		ft_gui_desctuct(list->next);//BAD CLOSING!
 		elem = list->content;
-		ft_gui_desctuct(elem->child);
+		ft_gui_desctuct(elem->child);//BAD CLOSING!
 		ft_gui_desctuct_events(elem->events);
 		// free(elem->surf); // How to close?
 		free(elem->name);

@@ -22,12 +22,31 @@
 # define COLOR_MAP 1
 # define ID_LENGTH 0
 # define FLOOR  1
-# define WALL_FULL 2
 # define WALL_TOP  0
 # define WALL_BOTT 1
+# define WALL_FULL 2
+
+# define	LEAF 0
+# define	GREEN 1
+# define	MARBLE 2
+# define 	ROCK1	3
+# define 	ROCK2	4
+# define 	SKY		5
+# define 	FENCE	7
+# define 	GUN		9
 
 
 
+typedef struct s_draw_gun
+{
+	unsigned int		x;
+	unsigned int		y;
+	int		x_img;
+	float	x_num;
+	float	y_num;
+	unsigned int p;
+	int hex;
+}				t_draw_gun;
 
 typedef struct s_textures
 {
@@ -58,14 +77,11 @@ typedef struct		s_new_texture
 
 typedef	struct			s_gun
 {
-	int					pistol_sprite[6][128][128];
 	int					type;
 	double				sprite_counter;
 	int                 w;
 	int                 h;
 }						t_gun;
-
-
 
 typedef struct			s_scaler
 {
