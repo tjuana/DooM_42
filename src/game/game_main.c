@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 14:25:35 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 19:28:45 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	//If it's partially behind the player, clip it against player's view frustrum
 	pl->nearz = 1e-4f;
 	pl->farz = 5;
-	pl->nearside = 1e-5f;
+	pl->nearside = 1e-4f;
 	pl->farside = 60;
 	pl->door_all = -1;
 	pl->but_all = -1;

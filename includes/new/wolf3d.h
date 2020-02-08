@@ -108,7 +108,9 @@ double		to_deg(double radians);
 
 /*			motion.c			*/
 void		motion_chk(t_new_sect_ops *op, t_new_player *player, t_new_others *ot, t_new_sub_ev *se);
-void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
+/*			motion_2.c			*/
+int			motion_dist(t_new_xy *dist, t_new_player *pl, int i);
+
 
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);

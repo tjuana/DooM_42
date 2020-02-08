@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/28 21:49:45 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/08 17:37:55 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -195,6 +195,7 @@ game_map_parse.c \
 game_map_parse2.c \
 game_math_functions.c \
 game_motion.c \
+game_motion_2.c \
 game_sdl_addons.c \
 game_skybox.c \
 game_texture_parser.c \
