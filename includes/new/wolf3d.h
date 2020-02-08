@@ -46,11 +46,6 @@ typedef	struct		s_new_temp
 	t_new_wolf3d		w;
 }					t_new_temp;
 
-/*			animations.c			*/
-int			ft_init_anim(t_new_wolf3d *wolf);
-void		ft_draw_animation(t_new_wolf3d *w);
-void		ft_animation_play(t_new_wolf3d *w);
-
 /*			but_detect.c			*/
 int			but_detect(t_new_player *pl);//return sec_nb of button
 
@@ -104,7 +99,7 @@ float		vxs(float x0, float y0, float x1, float y1);
 int			Overlap(float a0, float a1, float b0, float b1);
 int			IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, float x3, float y3);
 float		PointSide(float px, float py, float x0, float y0,float x1, float y1);
-t_new_xy		Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
+t_new_xy		intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		UnloadData();
 void		MovePlayer(float dx, float dy, t_new_player *player);
@@ -113,7 +108,7 @@ double		to_deg(double radians);
 
 /*			motion.c			*/
 void		motion_chk(t_new_sect_ops *op, t_new_player *player, t_new_others *ot, t_new_sub_ev *se);
-void		motion_move_pl(float dx, float dy, t_new_player *pl);
+void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
 
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
@@ -179,12 +174,12 @@ int			load_pistol_sprite(t_gun *wpn, int sprite_count);
 SDL_Surface		*load_pistol_part(int sprite);
 void			draw_pistol(t_gun *wpn, t_new_player *pl);
 
-void draw_walls(int x, t_new_player *pl, int wall, int n);
+void draw_walls(int x, t_new_player *pl, int wall, int img);
 t_scaler	scalar_create(int a, int b, int c, int d, int f);
 int			scr_nxt(t_scaler *i);
 int			color_transoform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
-void		pix1(t_new_player *pl);
+void		pix1(t_new_player *pl, int image);
 void        load_imgs(SDL_Surface *img[10]);//load images
 void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n);
 void    draw_ceil_floor(int x, t_new_player *pl);
@@ -195,5 +190,6 @@ void		pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
 int				hexcolor( int r, int g, int b);
+void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 
 #endif

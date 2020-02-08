@@ -1,14 +1,3 @@
-# My temp ignore file
-SDL2/build/
-bin/
-lib/
-share/
-objects/
-obj_parser/
-obj_editor/
-obj_main/
-map_editor
-
 # Prerequisites
 *.d
 
@@ -62,7 +51,12 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .DS_Store
+<<<<<<< HEAD
 DooM_nuKem
 wolf3d
 *.txt
 gui_test
+=======
+WOLF
+wolf3d
+>>>>>>> 7573c3366f4153d317bd5fc61c4903499e451dcc

@@ -86,6 +86,10 @@ typedef struct	s_new_player
 	float         u0;// "
 	float         u1;
 	int			txtx;
+	int        *pix;
+	int 		y;
+	t_scaler    ty;
+
 
 	// camera vertex
 	t_vector3	fov_vec1;

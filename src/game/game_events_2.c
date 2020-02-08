@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 15:11:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 14:27:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,33 @@ static void	events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 
 void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 {
+	float	speed;
+
+	speed = 0.37;
 	ot->move_vec[0] = 0;
 	ot->move_vec[1] = 0;
 	if (se->wsad[0])
 	{
-		ot->move_vec[0] += pl->anglecos * (0.2 + 0.2 * se->wsad[6]);
-		ot->move_vec[1] += pl->anglesin * (0.2 + 0.2 * se->wsad[6]);
+		ot->move_vec[0] += pl->anglecos * (speed + speed * se->wsad[6]);
+		ot->move_vec[1] += pl->anglesin * (speed + speed * se->wsad[6]);
 		// se->wsad[0] = 0;
 	}
 	if (se->wsad[1])
 	{
-		ot->move_vec[0] -= pl->anglecos * 0.2;
-		ot->move_vec[1] -= pl->anglesin * 0.2;
+		ot->move_vec[0] -= pl->anglecos * speed;
+		ot->move_vec[1] -= pl->anglesin * speed;
 		// se->wsad[1] = 0;
 	}
 	if (se->wsad[2])
 	{
-		ot->move_vec[0] += pl->anglesin * 0.2;
-		ot->move_vec[1] -= pl->anglecos * 0.2;
+		ot->move_vec[0] += pl->anglesin * speed;
+		ot->move_vec[1] -= pl->anglecos * speed;
 		// se->wsad[2] = 0;
 	}
 	if (se->wsad[3])
 	{
-		ot->move_vec[0] -= pl->anglesin * 0.2;
-		ot->move_vec[1] += pl->anglecos * 0.2;
+		ot->move_vec[0] -= pl->anglesin * speed;
+		ot->move_vec[1] += pl->anglecos * speed;
 		// se->wsad[3] = 0;
 	}
 	events_vel_2(pl, se, ot);
@@ -119,4 +122,6 @@ void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
 	pl->angle += ms->x * 0.03f;
 	ms->yaw = clamp(ms->yaw + ms->y * 0.05f, -5, 5);
 	pl->yaw = ms->yaw - pl->velocity.z * 0.5f;
+	pl->anglesin = sinf(pl->angle);
+	pl->anglecos = cosf(pl->angle);
 }

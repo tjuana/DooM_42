@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 21:56:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,31 @@
 # define COLOR_MAP 1
 # define ID_LENGTH 0
 # define FLOOR  1
+# define WALL_TOP  0
+# define WALL_BOTT 1
+# define WALL_FULL 2
+
+# define	LEAF 0
+# define	GREEN 1
+# define	MARBLE 2
+# define 	ROCK1	3
+# define 	ROCK2	4
+# define 	SKY		5
+# define 	FENCE	7
+# define 	GUN		9
+
+
+
+typedef struct s_draw_gun
+{
+	unsigned int		x;
+	unsigned int		y;
+	int		x_img;
+	float	x_num;
+	float	y_num;
+	unsigned int p;
+	int hex;
+}				t_draw_gun;
 # define WALL_FULL 2
 # define WALL_TOP  0
 # define WALL_BOTT 1
