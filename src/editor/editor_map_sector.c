@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:25 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,29 @@ void	ft_editor_sector_create(t_wolf3d *w)
 
 void	ft_delete_sector(t_wolf3d *w)
 {
-	t_list	*list;
+	t_list		*list;
+	t_sector	*s;
+	int		i;
 
 	if (w->sector == NULL)
 		return ;
 	list = w->sector;
 	w->sector = w->sector->next;
+	s = list->content;
+
+	// free vertexes
+	i = 0;
+	while (i < s->vertex_count)
+	{
+		free(s->vertex[i]);
+		i++;
+	}
+	free(s->vertex);
+
+	// free neighbords
+	if (s->neighbors != NULL)
+		free(s->neighbors);
+
 	free(list->content);
 	free(list);
 }

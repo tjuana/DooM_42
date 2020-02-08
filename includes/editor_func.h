@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 21:27:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:43 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,5 +383,6 @@ void				ft_print_sectors_to_file(t_wolf3d *w, t_list *list);
 static char			*ft_space_only_join(int j);
 void				ft_player_string(t_wolf3d *w);
 void				ft_save_neighbour(t_sector *sector, int fd);
+void				ft_free_mf(t_wolf3d *w);
 
 #endif

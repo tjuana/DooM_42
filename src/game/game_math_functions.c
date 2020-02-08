@@ -55,12 +55,27 @@ float PointSide(float px, float py, float x0, float y0,float x1, float y1)
 /*
  * Intersect: Calculate the point of intersection between two lines.
  */
-t_new_xy Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4)
+t_new_xy intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4)
 {
-    t_new_xy xy;
-    xy.x = vxs(vxs(x1,y1, x2,y2), (x1)-(x2), vxs(x3,y3, x4,y4), (x3)-(x4)) / vxs((x1)-(x2), (y1)-(y2), (x3)-(x4), (y3)-(y4));
-    xy.y = vxs(vxs(x1,y1, x2,y2), (y1)-(y2), vxs(x3,y3, x4,y4), (y3)-(y4)) / vxs((x1)-(x2), (y1)-(y2), (x3)-(x4), (y3)-(y4));
-    return (xy);
+	float		u_x;
+	float		u_y;
+	float		denom;
+	float		num_x;
+	float		num_y;
+
+	denom  = (y4-y3) * (x2-x1) - (x4-x3) * (y2-y1);
+	num_x = (x4-x3) * (y1-y3) - (y4-y3) * (x1-x3);
+	num_y = (x2-x1) * (y1-y3) - (y2-y1) * (x1-x3);
+	if (fabs(num_x) < FLT_EPSILON && fabs(num_y) < \
+	FLT_EPSILON && fabs(denom) < FLT_EPSILON)
+		return((t_new_xy){(x1 + x2) / 2, (y1 + y2) / 2});
+	if (ABS(denom) < FLT_EPSILON)
+		return((t_new_xy){-1, -1});
+	u_x = num_x / denom;
+	u_y = num_y	 / denom;
+	if (u_x < 0 || u_x > 1 || u_y < 0 || u_y > 1)
+		return((t_new_xy){ -1, -1});
+	return((t_new_xy){x1 + u_x * (x2 - x1), y1 + u_x * (y2 - y1)});
 }
 
 float Yaw(float y, float z, t_new_player *player)

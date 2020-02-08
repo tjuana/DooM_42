@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/29 14:54:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/03 15:56:08 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ void	ft_gui_desctuct(t_list *dom)
 	list = dom;
 	if (list != NULL)
 	{
-		ft_gui_desctuct(list->next);
+		ft_gui_desctuct(list->next);//BAD CLOSING!
 		elem = list->content;
-		ft_gui_desctuct(elem->child);
+		ft_gui_desctuct(elem->child);//BAD CLOSING!
 		ft_gui_desctuct_events(elem->events);
 		// free(elem->surf); // How to close?
 		free(elem->name);
 		free(elem->str);
 		free(elem);
-		// ft_lstdel(list, ft_bzero);
 		free(list);
 	}
+	dom = NULL;
 }
 
 /*
@@ -61,9 +61,10 @@ void	ft_gui_desctuct_fonts(t_list *fonts_list)
 	list = fonts_list;
 	if (list != NULL)
 	{
-		ft_gui_desctuct(list->next);
+		// ft_gui_desctuct(list->next);
 		font = list->content;
 		TTF_CloseFont(font->ptr);
+		font->ptr = NULL;
 		free(font->path);
 	}
 }

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 22:27:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:34:57 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "doom.h"
 
@@ -21,12 +22,15 @@
 
 static int	engine_pick_sec(t_new_player *pl)
 {
+	static int i;
 	//Pick a sector & slice from the queue to draw
 	pl->cycle.current = pl->cycle.tail;//const struct item now = *cycle.tail;
 	if(++pl->cycle.tail == pl->cycle.queue + MAX_QUEUE)
 		pl->cycle.tail = pl->cycle.queue;
 	if(pl->cycle.rend_sec[pl->cycle.current->sec_nb] & 0x21)
+	{
 		return (-2); // Odd = still rendering, 0x20 = give up
+	}
 	++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
 	pl->sect = &pl->sectors[pl->cycle.current->sec_nb];//SECT CREATED
 	return (-1);
@@ -44,11 +48,9 @@ static void	engine_preset(t_new_player *pl)
 	int	i;
 	int	*rend_sec;
 
-	if ((i = -1) && !(rend_sec = (int *)malloc(sizeof(int) * (pl->sectors_nb + 1))))
-	{
-		ft_putstr_fd("engine_preset - malloc error.\n", 2);
-		exit (EXIT_FAILURE);
-	}
+	i = -1;
+	rend_sec = (int *)ft_my_malloc(sizeof(int) * (pl->sectors_nb + 1));
+
 	while(++i < pl->sectors_nb)
 		rend_sec[i] = 0;
 	pl->cycle.rend_sec = rend_sec;
@@ -109,7 +111,9 @@ void	engine_begin(t_new_player *pl)
 {
 	int			neib;
 	int			s;
+	int 		sector_number;
 
+	sector_number = 0;
 	engine_preset(pl);
     while(pl->cycle.head != pl->cycle.tail)
 	{
@@ -117,10 +121,12 @@ void	engine_begin(t_new_player *pl)
 			continue;
 		while (++s < pl->sect->npoints)
 		{
+			if(s == 0) {
+				sector_number += 1;
+			}
 		    pl->s = s;
 			if (engine_cross(pl) == 0)
 				continue;
-
 			//Acquire the floor and ceiling heights, relative to where the player's view is
 			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
 			pl->floor.yfloor = pl->sect->floor - pl->where.z;
@@ -131,22 +137,17 @@ void	engine_begin(t_new_player *pl)
 				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
 				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
 			}
-
 			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
 				continue; // Only render if it's visible
-            pl->f = 0;
-            if ( s < 1 && pl->sect->floor == 0)
-            {
-                pl->n = 0;
-            }
-            else if (pl->sect->floor == 6 && pl->sect->ceil == 10)
-                pl->n = 7;
-			else if (s == 4 && pl->sect->floor == 0)// && pl->sect->floor == 0)
-                pl->n = 10;
-                else
-                pl->n = 2;
+            pl->f = GREEN;//floor and ceiling
+   			pl->n = ROCK1;
+   			if (s==0)
+   				pl->n = FENCE;
+   			if (s==2)
+   				pl->n = 11;
             engine_put_lines(pl, neib);//Render all.
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
     }
+	free(pl->cycle.rend_sec); 
 }

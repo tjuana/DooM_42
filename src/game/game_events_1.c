@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/28 21:50:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:34:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 				}
 				if (se->ev.button.button == SDL_BUTTON_RIGHT)
 				{
-					if (pl->light == 0.5)
-						pl->light = 1;
+					if (pl->light == 0.5f)
+						pl->light = 1.0f;
 					else
 						pl->light = 0.5f;
 				}

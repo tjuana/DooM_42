@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 16:06:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 13:34:39 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void		ft_vertex_count(t_new_player *pl)
 	int	i;
 
 	i = 2;
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
+		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[i++] != NULL)
 		pl->file.vertex_count++;
 	ft_2arrclean(&pl->file.split);
@@ -54,7 +55,8 @@ void		ft_sector_count(t_new_player *pl)
 
 	pl->file.count_sector_vertex = 0;
 	count = 3;
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
+		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[count] != NULL)
 	{
 		pl->file.count_sector_vertex++;
@@ -64,6 +66,19 @@ void		ft_sector_count(t_new_player *pl)
 	pl->file.count_sectors++;
 	pl->file.tmp[pl->file.count_sectors] = pl->file.count_sector_vertex;
 	ft_2arrclean(&pl->file.split);
+}
+
+t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)
+{
+	t_new_xy		*vertex;
+
+	if ((pl->file.fd = open(v, O_RDONLY)) < 0)
+		perror("Error: bad file");
+	vertex = ft_my_malloc(sizeof(t_new_xy) * (pl->file.vertex_count));
+	pl->sectors = ft_my_malloc(sizeof(t_new_sector) * \
+			(pl->file.count_sectors + 1));
+	pl->sectors_nb = pl->file.count_sectors + 1;
+	return (vertex);
 }
 
 void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
@@ -88,17 +103,5 @@ void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
 	}
 	free(pl->file.line);
 	free(vertex);
-}
-
-t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)
-{
-	t_new_xy		*vertex;
-
-	if ((pl->file.fd = open(v, O_RDONLY)) < 0)
-		perror("Error: bad file");
-	vertex = ft_my_malloc(sizeof(t_new_xy) * (pl->file.vertex_count));
-	pl->sectors = ft_my_malloc(sizeof(t_new_sector) * \
-			(pl->file.count_sectors + 1));
-	pl->sectors_nb = pl->file.count_sectors + 1;
-	return (vertex);
+	close(pl->file.fd);
 }

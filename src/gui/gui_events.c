@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 00:48:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:33:38 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_gui_events(t_wolf3d *w)
 			ft_gui_mousewheel(w, e, w->gui.dom);
 		if (e.type == SDL_MOUSEBUTTONUP)
 			ft_gui_mousebuttonup(w, e, w->gui.dom);
-		if (e.type == SDL_MOUSEMOTION)
-			ft_gui_mousemotion(w, e, w->gui.dom);
+		// if (e.type == SDL_MOUSEMOTION)
+		// 	ft_gui_mousemotion(w, e, w->gui.dom);
 	}
 	if (w->gui.search_elem == GUI_EVENT_ON || \
 		w->gui.search_elem == GUI_EVENT_SEARCH)

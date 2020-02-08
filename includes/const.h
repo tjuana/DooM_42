@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:47:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 22:16:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,18 @@
 
 # define H_FOV					(1.0 * 0.73f * WIN_H / WIN_W)
 # define V_FOV					(1.0 * .2f)
+
+/*
+ *
+ * TEXTURES
+ */
+
+# define	LEAF 0
+# define	GREEN 1
+# define	MARBLE 2
+# define 	ROCK1	3
+# define 	ROCK2	4
+# define 	SKY		5
+# define 	FENCE	7
 
 #endif

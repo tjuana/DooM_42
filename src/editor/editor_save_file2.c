@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 16:08:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,13 @@ void		ft_print_sectors_to_file(t_wolf3d *w, t_list *list)
 	sector = (t_sector*)ptr_list->content;
 	str = ft_my_join_baby(sector->height, sector->floor);
 	ft_putstr_fd(str, w->file.fd);
-	// ft_strdel(&str);
+	ft_strdel(&str);
 	j = -1;
 	while (++j < sector->vertex_count)
 	{
 		str = ft_space(1, sector->vertex[j]->w);
 		ft_putstr_fd(str, w->file.fd);
+		ft_strdel(&str);
 	}
 	ft_putstr_fd("\t", w->file.fd);
 	ft_save_neighbour(sector, w->file.fd);

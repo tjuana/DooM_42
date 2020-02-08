@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_motion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/05 17:07:44 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/08 13:53:49 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
 	return (1);
 }
 
+/*
+** **************************************************************************
+**	void motion_move_pl(float dx, float dy, t_new_player *pl)
+**	Function to move player and update anglesin/anglecos/sector
+** **************************************************************************
+*/
+
 void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 {
 	t_new_sector	*sect;
@@ -81,12 +88,11 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 	}
 	pl->where.x += delt->x;
 	pl->where.y += delt->y;
-	return ;
 }
 
 /*
 ** **************************************************************************
-**	void motion_check(t_sect_ops *op, t_player *pl, t_others *ot, t_sub_ev *se)
+**	void motion_check(t_new_sect_ops *op, t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 **	Function to detect collisions when player move
 ** **************************************************************************
 */
@@ -118,10 +124,12 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 
 /*
 ** **************************************************************************
-**	void motion_check(t_sect_ops *op, t_player *pl, t_others *ot, t_sub_ev *se)
+**	void motion_check(t_new_sect_ops *op, t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 **	Function to detect collisions when player move
 ** **************************************************************************
 */
+
+// Фиксим, чо
 
 void		motion_chk(t_new_sect_ops *op, t_new_player *pl, \
 t_new_others *ot, t_new_sub_ev *se)
@@ -149,5 +157,4 @@ t_new_others *ot, t_new_sub_ev *se)
 	}
 	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl);
 	se->falling = 1;
-	return ;
 }
