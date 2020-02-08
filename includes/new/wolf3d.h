@@ -99,7 +99,7 @@ float		vxs(float x0, float y0, float x1, float y1);
 int			Overlap(float a0, float a1, float b0, float b1);
 int			IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, float x3, float y3);
 float		PointSide(float px, float py, float x0, float y0,float x1, float y1);
-t_new_xy		Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
+t_new_xy		intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		UnloadData();
 void		MovePlayer(float dx, float dy, t_new_player *player);
@@ -108,7 +108,7 @@ double		to_deg(double radians);
 
 /*			motion.c			*/
 void		motion_chk(t_new_sect_ops *op, t_new_player *player, t_new_others *ot, t_new_sub_ev *se);
-void		motion_move_pl(float dx, float dy, t_new_player *pl);
+void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
 
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);

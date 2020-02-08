@@ -74,8 +74,8 @@ int			engine_cross(t_new_player *pl)
 	t_new_xy	v_start;
 	t_new_xy	v_end;
 
-	t_vector3	fov_vec1;
-	t_vector3	fov_vec2;
+	// t_vector3	fov_vec1;
+	// t_vector3	fov_vec2;
 
 	xy_vertex_of_sectors(&v_start, &v_end, pl);
 	//Is the wall at least partially in front of the player?
@@ -86,12 +86,15 @@ int			engine_cross(t_new_player *pl)
 	//If it's partially behind the player, cut it against player's view
 	if((pl->t1.y <= 0) || (pl->t2.y <= 0))
 	{
-		fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST * 2));
-		fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST * 2));
+		// fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST * 2));
+		// fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST * 2));
 
-		i1 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec1.x, fov_vec1.y);
-		i2 = Intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec2.x, fov_vec2.y);
-
+		// i1 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec1.x, fov_vec1.y);
+		// i2 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec2.x, fov_vec2.y);
+		i1 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
+		i2 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
+		if (i1.y < 0 && i2.y < 0)
+			return (0);
 		pl->org1.x = pl->t1.x;
 		pl->org1.y = pl->t1.y;
 		pl->org2.x = pl->t2.x;

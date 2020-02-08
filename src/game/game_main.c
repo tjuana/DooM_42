@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 12:08:49 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 14:25:35 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
 	pl->nearz = 1e-4f;
-	pl->farz = 50;
+	pl->farz = 5;
 	pl->nearside = 1e-5f;
-	pl->farside = 200.f;
+	pl->farside = 60;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;
@@ -93,7 +93,7 @@ void	ft_game_redraw(void *d, t_list *dom)
 	data->se.ground = !data->se.falling;
 	events_jumps(&data->se, &data->pl, &data->op, &data->ot);
 	motion_chk(&data->op, &data->pl, &data->ot, &data->se);
-	motion_move_pl(0, 0, &data->pl);//Refresh Vectors. start movement in 0//if this line is in vectors_vel_dir slomaet programmy whe is running, is needed here
+	//motion_move_pl(0, 0, &data->pl);
 	events_new_mouse_move(&data->ms, &data->pl);//mouse aiming
 	events_vel(&data->pl, &data->se, &data->ot);
 	if (!events(&data->se, &data->pl))

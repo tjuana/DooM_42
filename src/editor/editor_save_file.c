@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/07 16:36:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:22 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 	int			j;
 	int			tmp;
 	int			b;
-
 	p_lst = w->sector;
 	while (p_lst != NULL)
 	{
