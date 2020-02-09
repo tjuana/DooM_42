@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/07 16:24:57 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/08 19:26:54 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,8 @@ func_help.c \
 func_sdl.c \
 func_wu_color.c \
 func_wu_draw.c \
+func_wu_init.c \
+func_wu_line.c \
 func_wu.c
 
 FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
