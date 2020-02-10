@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:35:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/10 15:31:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 			return ;
 		ft_editor_sector_set_vertex(w, w->sector->content, \
 			ft_gui_map_coord_to_vertex(w, coord), sector->vertex_count);
-
 		if (sector->vertex_count > 1 && \
 			ft_compare_vertexes(*sector->vertex[0], \
 				*sector->vertex[sector->vertex_count - 1]))
 		{
+			// проверить добавление точек к соответствующим секторам (?)
 			ft_editor_delete_last_vertex(w);
+			ft_editor_check_turn_vertexes(w);
 			sector->neighbors = ft_my_malloc(sizeof(int) * \
 				sector->vertex_count);
 			ft_bzero(sector->neighbors, sizeof(int) * \

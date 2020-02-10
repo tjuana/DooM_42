@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 16:40:31 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/10 15:01:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,6 +313,8 @@ t_gui_coord			ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, \
 **	editor/editor_map_sector.c
 ** **************************************************************************
 */
+void				ft_editor_turn_vertexes(t_sector *s, int numb);
+void				ft_editor_check_turn_vertexes(t_wolf3d *w);
 void				ft_editor_sector_create(t_wolf3d *w);
 void				ft_delete_sector(t_wolf3d *w);
 t_sector			*ft_editor_search_sector_by_id(t_wolf3d *w, \

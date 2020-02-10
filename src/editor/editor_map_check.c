@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:27:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:40:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,58 @@ int		ft_search_point_in_sector(void *a, t_vector3 v)
 	return (0);
 }
 
+int		ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
+			t_vector3 v1, t_vector3 v2)
+{
+	int				i;
+	int				vtx1_n;
+	int				vtx2_n;
+	int				count;
+	t_vector3		c;
+
+	i = 0;
+	count = 0;
+	while (i < s->vertex_count)
+	{
+		vtx1_n = i;
+		vtx2_n = (i + 1) % s->vertex_count;
+		c = ft_find_line_intersect(v1, v2, *s->vertex[vtx1_n], \
+			*s->vertex[vtx2_n]);
+		if ((ft_check_point_in_line_segment(c, *s->vertex[vtx1_n], \
+			*s->vertex[vtx2_n]) || \
+			ft_check_point_in_line_segment(c, v1, v2)) && \
+			!(ft_compare_vertexes(v2, *s->vertex[vtx1_n]) || \
+			ft_compare_vertexes(v2, *s->vertex[vtx2_n])))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		ft_search_sectors_cross(void *a, t_vector3 v1, t_vector3 v2)
+{
+	t_wolf3d	*w;
+	t_list		*list;
+	t_sector	*sector;
+	int			i;
+
+	w = (t_wolf3d*)a;
+	list = w->sector;
+	i = 0;
+	while (list)
+	{
+		sector = list->content;
+		if (sector->status == 1)
+		{
+			if (ft_check_sector_cross(w, sector, v1, v2))
+				return (sector->id);
+		}
+		list = list->next;
+		i++;
+	}
+	return (0);
+}
+
 /*
 ** **************************************************************************
 **	int ft_new_editor_map_check_area(t_wolf3d *w)
@@ -168,6 +220,11 @@ int		ft_new_editor_map_check_area(t_wolf3d *w)
 	if (ft_search_point_in_sector(w, pos))
 		return (0);
 	s = w->sector->content;
+	if (s->vertex_count == 0)
+		return (1);
+	// Проверка на пересечение последней точки и позиции мышки
+	if (ft_search_sectors_cross(w, *s->vertex[s->vertex_count - 1], pos))
+		return (0);
 	if (s->status == 1 || s->vertex_count < 3)
 		return (1);
 	vec1 = ft_vec3_create(s->vertex[s->vertex_count - 1], &pos);

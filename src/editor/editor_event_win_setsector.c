@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:17:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:30:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/10 15:46:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, \
 		ft_gui_elem_get_value(\
 		ft_gui_search_elem_by_name(w->gui.dom, \
 			"win_editor_setsector_inputfloor")));
-	ft_map_set_new_sector(w, s);
+	ft_map_set_new_sector(w, s); // точки-то должны создаваться...
 }
 
 void	ft_gui_mousebuttonup_win_setsector_btncancel(void *data, SDL_Event e, \

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/09 16:19:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/10 17:19:16 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,11 @@ void	ft_gui_elem_set_map(t_list *list)
 		SDL_MOUSEWHEEL, 0);
 }
 
-void	ft_gui_init_win_menu(t_list *head)
+void	ft_gui_init_win_menu_add(t_list *head)
 {
 	t_gui_elem	*elem;
 
 	elem = head->content;
-	ft_gui_elem_init(&elem->child, "win_editor_menu_title", \
-		(t_gui_coord){WIN_WIDTH - 300 + 20, 5, 0}, \
-		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
-	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "M A P   E D I T O R", 16);
-	ft_gui_elem_set_parent(head, elem->child);
-
-	ft_gui_elem_init(&elem->child, "win_editor_menu_hr", \
-		(t_gui_coord){WIN_WIDTH - 300 + 20, 47, 0}, \
-		(t_gui_coord){WIN_WIDTH - 20, 48, 0});
-	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_block(elem->child);
-	ft_gui_elem_set_parent(head, elem->child);
-
 	ft_gui_elem_init(&elem->child, "win_editor_menu_title", \
 		(t_gui_coord){WIN_WIDTH - 300 + 20, 60, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 110, 0});
@@ -106,7 +92,13 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_event(elem->child, \
 		ft_gui_mousebuttonup_win_menu_btnenemy, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
+}
 
+void	ft_gui_init_win_menu_set(t_list *head)
+{
+	t_gui_elem	*elem;
+
+	elem = head->content;
 	ft_gui_elem_init(&elem->child, "win_editor_menu_title", \
 		(t_gui_coord){WIN_WIDTH - 300 + 20, 280, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, 320, 0});
@@ -137,7 +129,13 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_button(elem->child, "Point to end game");
 	// ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnendplace, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
+}
 
+void	ft_gui_init_win_menu_save(t_list *head)
+{
+	t_gui_elem	*elem;
+
+	elem = head->content;
 	ft_gui_elem_init(&elem->child, "win_editor_menu_titleinput", \
 		(t_gui_coord){WIN_WIDTH - 300 + 20, WIN_HEIGHT - 200, 0}, \
 		(t_gui_coord){WIN_WIDTH - 20, WIN_HEIGHT - 160, 0});
@@ -171,6 +169,30 @@ void	ft_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_parent(head, elem->child);
 }
 
+void	ft_gui_init_win_menu(t_list *head)
+{
+	t_gui_elem	*elem;
+
+	elem = head->content;
+	ft_gui_elem_init(&elem->child, "win_editor_menu_title", \
+		(t_gui_coord){WIN_WIDTH - 300 + 20, 5, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 45, 0});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_text(elem->child, "M A P   E D I T O R", 16);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_editor_menu_hr", \
+		(t_gui_coord){WIN_WIDTH - 300 + 20, 47, 0}, \
+		(t_gui_coord){WIN_WIDTH - 20, 48, 0});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_block(elem->child);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_init_win_menu_add(head);
+	ft_gui_init_win_menu_set(head);
+	ft_gui_init_win_menu_save(head);
+}
+
 void	ft_gui_init_win_setsector(t_list *head)
 {
 	t_gui_elem	*elem;
@@ -183,6 +205,7 @@ void	ft_gui_init_win_setsector(t_list *head)
 	ft_gui_elem_set_text(elem->child, "Set sector", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 
+	// Установка текстур (будем ли реализовывать?)
 	// ft_gui_elem_init(&elem->child, "win_setsector_walltxtr",
 	//	(t_gui_coord){WIN_WIDTH - 300 + 20, 50, 0},
 	// 	(t_gui_coord){WIN_WIDTH - 20, 310, 0});
