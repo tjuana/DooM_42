@@ -91,6 +91,9 @@ typedef struct	s_new_player
 	t_scaler    ty;
 
 
+	// camera vertex
+	t_vector3	fov_vec1;
+	t_vector3	fov_vec2;
 }				t_new_player;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 18:00:23 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/11 15:44:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
     pl->velocity.x = 0;
     pl->velocity.y = 0;
     pl->velocity.z = 0;
-    pl->angle = M_PI;
+    pl->angle = M_PI_2;
     pl->anglesin = 0;
     pl->anglecos = 0;
     pl->yaw = 0;
@@ -31,8 +31,8 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
 	//If it's partially behind the player, clip it against player's view frustrum
 	pl->nearz = 1e-4f;
 	pl->farz = 5;
-	pl->nearside = 1e-5f;
-	pl->farside = 100;
+	pl->nearside = 1e-4f;
+	pl->farside = 1000;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;
@@ -123,7 +123,17 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	//data->pl.srf = w->sdl->srf;
+	//load_weapons(&wpn);
+
+	// data->pl.srf = NULL;
+
+	data->pl.srf = w->sdl->srf;
+
+	// init. camera vertex
+	// data->pl.fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST));
+	// data->pl.fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST));
+	// printf("VERTEX: %s: x:%6.2f   y:%6.2f   z:%6.2f\n", "fov_vec1", data->pl.fov_vec1.x, data->pl.fov_vec1.y, data->pl.fov_vec1.z);
+	// printf("VERTEX: %s: x:%6.2f   y:%6.2f   z:%6.2f\n", "fov_vec2", data->pl.fov_vec2.x, data->pl.fov_vec2.y, data->pl.fov_vec2.z);
 }
 
 void	ft_game_gui_init_menu(t_list *head)

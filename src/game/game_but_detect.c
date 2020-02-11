@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but_detect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:13:51 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 22:49:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/08 16:24:18 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 static int	but_bool(int dist, float degree, float yaw)
 {
+	degree = (int)degree % 360;
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \

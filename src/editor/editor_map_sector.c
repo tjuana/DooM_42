@@ -6,11 +6,73 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:25 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/11 16:52:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+/*
+** **************************************************************************
+**	void ft_editor_turn_vertexes(t_sector *s, int numb)
+** **************************************************************************
+*/
+
+void		ft_editor_turn_vertexes(t_sector *s, int numb)
+{
+	t_vector3	**vertex;
+	int			i;
+
+	vertex = ft_my_malloc(sizeof(void*) * (s->vertex_count));
+	i = 0;
+	while (numb < s->vertex_count)
+	{
+		vertex[i] = s->vertex[numb];
+		printf("%d -> %d: [%.0f, %.0f]\n", numb, i, vertex[i]->x, vertex[i]->y);
+		i++;
+		numb++;
+	}
+	numb = 0;
+	while (i < s->vertex_count)
+	{
+		vertex[i] = s->vertex[numb];
+		printf("%d -> %d: [%.0f, %.0f]\n", numb, i, vertex[i]->x, vertex[i]->y);
+		i++;
+		numb++;
+	}
+	free(s->vertex);
+	s->vertex = vertex;
+}
+
+/*
+** **************************************************************************
+**	void ft_editor_check_turn_vertexes(t_wolf3d *w)
+** **************************************************************************
+*/
+
+void		ft_editor_check_turn_vertexes(t_wolf3d *w)
+{
+	t_sector	*s;
+	int			numb;
+	int			i;
+
+	s = w->sector->content;
+	numb = 0;
+	i = 1;
+	while (i < s->vertex_count)
+	{
+		if (s->vertex[numb]->x > s->vertex[i]->x && \
+			s->vertex[numb]->y > s->vertex[i]->y)
+		{
+			numb = i;
+			i = 0;
+		}
+		else
+			i++;
+	}
+	if (numb != 0)
+		ft_editor_turn_vertexes(s, numb);
+}
 
 /*
 ** **************************************************************************
@@ -20,7 +82,7 @@
 ** **************************************************************************
 */
 
-void	ft_editor_sector_create(t_wolf3d *w)
+void		ft_editor_sector_create(t_wolf3d *w)
 {
 	t_sector	sector;
 	t_list		*list_item;
@@ -48,19 +110,17 @@ void	ft_editor_sector_create(t_wolf3d *w)
 ** **************************************************************************
 */
 
-void	ft_delete_sector(t_wolf3d *w)
+void		ft_delete_sector(t_wolf3d *w)
 {
 	t_list		*list;
 	t_sector	*s;
-	int		i;
+	int			i;
 
 	if (w->sector == NULL)
 		return ;
 	list = w->sector;
 	w->sector = w->sector->next;
 	s = list->content;
-
-	// free vertexes
 	i = 0;
 	while (i < s->vertex_count)
 	{
@@ -68,11 +128,8 @@ void	ft_delete_sector(t_wolf3d *w)
 		i++;
 	}
 	free(s->vertex);
-
-	// free neighbords
 	if (s->neighbors != NULL)
 		free(s->neighbors);
-
 	free(list->content);
 	free(list);
 }
@@ -88,6 +145,7 @@ void	ft_delete_sector(t_wolf3d *w)
 t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
 {
 	t_sector	*sector;
+
 	while (list)
 	{
 		sector = list->content;

@@ -6,18 +6,23 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:39:41 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:08:56 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
 /*
-**	void ft_gui_mousemotion_button(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousemotion_button(void *data, SDL_Event e,
+**		t_list *dom, int type)
+**
 **	Function that transform button status for mousemotuin event.
+** **************************************************************************
 */
-void	ft_gui_mousemotion_button(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousemotion_button(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 	t_gui_elem	*elem;
@@ -28,11 +33,16 @@ void	ft_gui_mousemotion_button(void *data, SDL_Event e, t_list *dom, int type)
 }
 
 /*
-**	void ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousebuttondown_button(void *data, SDL_Event e,
+**	t_list *dom, int type)
+**
 **	Function that transform button status for mousebuttondown event.
+** **************************************************************************
 */
-void	ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousebuttondown_button(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 
@@ -41,11 +51,16 @@ void	ft_gui_mousebuttondown_button(void *data, SDL_Event e, t_list *dom, int typ
 }
 
 /*
-**	void ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousebuttonup_button(void *data, SDL_Event e,
+**	t_list *dom, int type)
+**
 **	Function that transform button status for mousebuttonup event.
+** **************************************************************************
 */
-void	ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousebuttonup_button(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 
@@ -56,11 +71,16 @@ void	ft_gui_mousebuttonup_button(void *data, SDL_Event e, t_list *dom, int type)
 }
 
 /*
-**	void ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousebuttonup_block(void *data, SDL_Event e,
+**	t_list *dom, int type)
+**
 **	Function that transform block status for mousemotuin event.
+** **************************************************************************
 */
-void	ft_gui_mousebuttonup_block(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousebuttonup_block(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 19:18:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:25:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ void				ft_gui_draw_border(t_wolf3d *w, t_list *list, \
 						int color, int border_width);
 void				ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color);
 void				ft_gui_redraw_elem(t_wolf3d *w, t_list *dom);
-int					ft_gui_redraw_frame(t_wolf3d *w);
 void				ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, \
 						int color);
 void				ft_gui_redraw_elem_font(t_wolf3d *w, t_list *dom);
@@ -161,5 +160,8 @@ int					ft_gui_redraw(t_wolf3d *w);
 ** **************************************************************************
 */
 void				ft_gui_init(t_wolf3d *w);
+
+SDL_Rect			*ft_gui_create_sdl_rect(int w, int h, int x, int y);
+void				ft_gui_set_sdl_color(SDL_Color *sdl_color, int color);
 
 #endif

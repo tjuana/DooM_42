@@ -42,6 +42,6 @@
 		"type_traits": "cpp",
 		"utility": "cpp",
 		"animations.h": "c",
-		"libft.h": "c"
+		"sstream": "c"
 	},
 }
