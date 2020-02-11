@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/10 16:40:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:41:18 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,12 @@ int		ft_search_point_in_sector(void *a, t_vector3 v)
 	return (0);
 }
 
+/*
+** **************************************************************************
+**	int ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
+**		t_vector3 v1, t_vector3 v2)
+** **************************************************************************
+*/
 int		ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
 			t_vector3 v1, t_vector3 v2)
 {
@@ -164,11 +170,8 @@ int		ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
 		vtx2_n = (i + 1) % s->vertex_count;
 		c = ft_find_line_intersect(v1, v2, *s->vertex[vtx1_n], \
 			*s->vertex[vtx2_n]);
-		if ((ft_check_point_in_line_segment(c, *s->vertex[vtx1_n], \
-			*s->vertex[vtx2_n]) || \
-			ft_check_point_in_line_segment(c, v1, v2)) && \
-			!(ft_compare_vertexes(v2, *s->vertex[vtx1_n]) || \
-			ft_compare_vertexes(v2, *s->vertex[vtx2_n])))
+		if (ft_check_point_in_line_segment(c, v1, v2) && \
+			ft_check_point_in_line_segment(c, *s->vertex[vtx1_n], *s->vertex[vtx2_n]))
 			return (1);
 		i++;
 	}
