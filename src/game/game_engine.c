@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:57 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/11 16:42:41 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 static int	engine_pick_sec(t_new_player *pl)
 {
-	static int i;
-	//Pick a sector & slice from the queue to draw
 	pl->cycle.current = pl->cycle.tail;//const struct item now = *cycle.tail;
 	if(++pl->cycle.tail == pl->cycle.queue + MAX_QUEUE)
 		pl->cycle.tail = pl->cycle.queue;
@@ -82,15 +80,12 @@ int		engine_scale(t_new_player *pl, int sx1, int sx2)/*perspective*/
 	pl->scale_1.y = vfov / pl->t1.y;
 	pl->scale_2.x = hfov / pl->t2.y;
 	pl->scale_2.y = vfov / pl->t2.y;
-	//Do perspective transformation
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
-	//Project our ceiling & floor heights into screen coordinates (Y coordinate)
 	pl->ceil.y1a = WIN_H / 2 - (int)(Yaw(pl->ceil.yceil, pl->t1.y, pl) * pl->scale_1.y);
 	pl->floor.y1b = WIN_H / 2 - (int)(Yaw(pl->floor.yfloor, pl->t1.y, pl) * pl->scale_1.y);
 	pl->ceil.y2a = WIN_H / 2 - (int)(Yaw(pl->ceil.yceil, pl->t2.y, pl) * pl->scale_2.y);
 	pl->floor.y2b = WIN_H / 2 - (int)(Yaw(pl->floor.yfloor, pl->t2.y, pl) * pl->scale_2.y);
-	//The same for the neighboring sector
 	pl->ceil.ny1a = WIN_H / 2 - (int)(Yaw(pl->ceil.nyceil, pl->t1.y, pl) * pl->scale_1.y);
 	pl->floor.ny1b = WIN_H / 2 - (int)(Yaw(pl->floor.nyfloor, pl->t1.y, pl) * pl->scale_1.y);
 	pl->ceil.ny2a = WIN_H / 2 - (int)(Yaw(pl->ceil.nyceil, pl->t2.y, pl) * pl->scale_2.y);
@@ -111,9 +106,7 @@ void	engine_begin(t_new_player *pl)
 {
 	int			neib;
 	int			s;
-	int 		sector_number;
 
-	sector_number = 0;
 	engine_preset(pl);
     while(pl->cycle.head != pl->cycle.tail)
 	{
@@ -121,31 +114,27 @@ void	engine_begin(t_new_player *pl)
 			continue;
 		while (++s < pl->sect->npoints)
 		{
-			if(s == 0) {
-				sector_number += 1;
-			}
 		    pl->s = s;
-			if (engine_cross(pl) == 0)
-				continue;
-			//Acquire the floor and ceiling heights, relative to where the player's view is
-			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
-			pl->floor.yfloor = pl->sect->floor - pl->where.z;
-			//Check the edge type. neighbor=-1 means wall, other=boundary between two sectors.
-			neib = pl->sect->neighbors[s];
-			if(neib >= 0) // Is another sector showing through this portal? This permit us draw other sectors after the one where we are
-			{
-				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
-				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
-			}
-			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
-				continue; // Only render if it's visible
-            pl->f = GREEN;//floor and ceiling
+			pl->f = GREEN;
    			pl->n = ROCK1;
    			if (s==0)
    				pl->n = FENCE;
    			if (s==2)
    				pl->n = 11;
-            engine_put_lines(pl, neib);//Render all.
+			if (engine_cross(pl) == 0)
+				continue;
+			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
+			pl->floor.yfloor = pl->sect->floor - pl->where.z;
+			neib = pl->sect->neighbors[s];
+			if(neib >= 0)
+			{
+				pl->ceil.nyceil  = pl->sectors[neib].ceil  - pl->where.z;
+				pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
+			}
+			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
+				continue;
+
+            engine_put_lines(pl, neib);
 		}
         ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
     }

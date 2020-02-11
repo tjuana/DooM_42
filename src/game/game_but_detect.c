@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:13:51 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 16:24:18 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/11 16:35:14 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 static int	but_bool(int dist, float degree, float yaw)
 {
-	degree = (int)degree % 360;
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
@@ -46,7 +45,7 @@ static int	but_dist(t_new_player *pl, int s_nb)
 {
 	t_new_vector3	vec;
 	t_new_vector3	vec2;
-	int			tmp_dist;
+	int				tmp_dist;
 
 	tmp_dist = 3;
 	vec.x = (pl->sectors[s_nb].vertex[1].x + pl->sectors[s_nb].vertex[0].x) / 2;
@@ -72,11 +71,11 @@ static int	but_dist(t_new_player *pl, int s_nb)
 
 int			but_detect(t_new_player *pl)
 {
-	int		i;
-	int		s_nb;
-	int		dist;
-	int		tmp_dist;
-	int		but_sec_nb;
+	int	i;
+	int	s_nb;
+	int	dist;
+	int	tmp_dist;
+	int	but_sec_nb;
 
 	i = -1;
 	s_nb = -1;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 19:28:45 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/08 18:00:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data for LoadData function
+void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData function
 {
     //player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
     pl->where.x = v->x;
@@ -21,7 +21,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
     pl->velocity.x = 0;
     pl->velocity.y = 0;
     pl->velocity.z = 0;
-    pl->angle = *angle;
+    pl->angle = M_PI;
     pl->anglesin = 0;
     pl->anglecos = 0;
     pl->yaw = 0;
@@ -31,8 +31,8 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	//If it's partially behind the player, clip it against player's view frustrum
 	pl->nearz = 1e-4f;
 	pl->farz = 5;
-	pl->nearside = 1e-4f;
-	pl->farside = 60;
+	pl->nearside = 1e-5f;
+	pl->farside = 100;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_texture_parser.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 14:39:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/11 17:12:26 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 static t_new_color	*texture_parse_3(unsigned char *src, size_t i, unsigned bpp)
 {
 	t_new_color	*res;
-	size_t	j;
+	size_t		j;
 
 	j = 0;
 	if (!(res = (t_new_color *)malloc(sizeof(t_new_color) * i + 1)))
@@ -58,7 +58,7 @@ static t_new_color	*texture_parse_3(unsigned char *src, size_t i, unsigned bpp)
 
 t_new_texture		texture_parse_2(size_t f_size, int fd, unsigned char *head)
 {
-	t_new_texture		res;
+	t_new_texture	res;
 	unsigned char	*pix_raw;
 	size_t			i;
 
@@ -87,7 +87,7 @@ t_new_texture		texture_parse_2(size_t f_size, int fd, unsigned char *head)
 ** **************************************************************************
 */
 
-static void		texture_header_chk(const char *fp, int fd, unsigned char *head)
+static void			texture_header_chk(char *fp, int fd, unsigned char *head)
 {
 	if (!fp || (fd < 0) || (fd > 10240) || (access(fp, F_OK) == -1))
 	{
@@ -118,12 +118,12 @@ static void		texture_header_chk(const char *fp, int fd, unsigned char *head)
 ** **************************************************************************
 */
 
-t_new_texture		texture_parse(const char *fp)
+t_new_texture		texture_parse(char *fp)
 {
-	t_new_texture		res;
+	t_new_texture	res;
 	struct stat		st_inf;
-	int				fd;
 	unsigned char	head[18];
+	int				fd;
 
 	fd = 0;
 	fd = open(fp, O_RDONLY);

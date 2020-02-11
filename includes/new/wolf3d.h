@@ -24,10 +24,6 @@
 # include "player.h"
 # include "sky.h"
 
-
-
-//static unsigned NumSectors = 0;
-
 typedef struct	s_new_wolf3d
 {	
 	SDL_Surface	*weapon_texture;
@@ -99,18 +95,16 @@ float		vxs(float x0, float y0, float x1, float y1);
 int			Overlap(float a0, float a1, float b0, float b1);
 int			IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, float x3, float y3);
 float		PointSide(float px, float py, float x0, float y0,float x1, float y1);
-t_new_xy		intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
+t_new_xy	intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		UnloadData();
 void		MovePlayer(float dx, float dy, t_new_player *player);
 float		Yaw(float y, float z, t_new_player *player);
-double		to_deg(double radians);
+float		to_deg(float radians);
 
 /*			motion.c			*/
 void		motion_chk(t_new_sect_ops *op, t_new_player *player, t_new_others *ot, t_new_sub_ev *se);
-/*			motion_2.c			*/
-int			motion_dist(t_new_xy *dist, t_new_player *pl, int i);
-
+void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
 
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
@@ -119,41 +113,35 @@ void		ft_sdl_error();
 
 
 /*			texture_parser.c			*/
-t_new_texture	texture_parse(const char *fp);
+t_new_texture	texture_parse(char *fp);
 
 
 
 
 /*			vector_1.c			*/
 t_new_vector3	ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest);
-double		ft_new_vec3_magnitude(t_new_vector3 this);
+float			ft_new_vec3_magnitude(t_new_vector3 this);
 t_new_vector3	ft_new_vec3_add(t_new_vector3 this, t_new_vector3 rhs);
 t_new_vector3	ft_new_vec3_sub(t_new_vector3 this, t_new_vector3 rhs);
 t_new_vector3	ft_new_vec3_cross_product(t_new_vector3 this, t_new_vector3 rhs);
 
 /*			vector_2.c			*/
-double		ft_new_vec3_dot_product(t_new_vector3 this, t_new_vector3 rhs);
-double		ft_new_vec3_cosinus(t_new_vector3 this, t_new_vector3 rhs);
+float			ft_new_vec3_dot_product(t_new_vector3 this, t_new_vector3 rhs);
+float			ft_new_vec3_cosinus(t_new_vector3 this, t_new_vector3 rhs);
 t_new_vector3	ft_new_vec3_opposite(t_new_vector3 this);
-t_new_vector3	ft_new_vec3_scalar_product(t_new_vector3 this, double k);
+t_new_vector3	ft_new_vec3_scalar_product(t_new_vector3 this, float k);
 t_new_vector3	ft_new_vec3_normalize(t_new_vector3 vtc);
 
 /*			vector_3.c			*/
-float		vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2);
+float			vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2);
 
 // void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
-void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
+void			vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
-static void	nearz_change(t_new_player *pl);
-static void	nearside_change(t_new_player *pl);
-static void	farz_change(t_new_player *pl);
-static void	farside_change(t_new_player *pl);
-static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl);
-static int	sub_events(t_new_sub_ev *se, t_new_player *pl);
-int			events(t_new_sub_ev *se, t_new_player *pl);
-void		ft_game_events(t_new_temp *data);
+int				events(t_new_sub_ev *se, t_new_player *pl);
+void			ft_game_events(t_new_temp *data);
 
-void		ft_game_init(t_wolf3d *w, char *path);
+void			ft_game_init(t_wolf3d *w, char *path);
 
 ///parse map for game
 void			ft_my_parse_map(t_new_player *pl, char *ag);
@@ -166,19 +154,19 @@ t_new_xy		*ft_malloc_sec_vertex(t_new_player *pl, char *v);
 void			ft_fill_the_sector(t_new_sector *sector, int number, \
 					t_file_read file, t_new_xy *vertex);
 void			ft_player_save(t_new_player *pl);
-void			player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n);
+void			player_init(t_new_player *pl, t_new_xy *v, int *n);
 void			ft_level_save(t_new_player *pl);
 
 // texture.h
-void		draw_cur_pistol_sprite(t_gun *wpn, int width, int height, int cur_sprite, SDL_Surface *surface);
-void		load_pistol(t_gun *wpn);
-int			load_pistol_sprite(t_gun *wpn, int sprite_count);
+void			draw_cur_pistol_sprite(t_gun *wpn, int width, int height, int cur_sprite, SDL_Surface *surface);
+void			load_pistol(t_gun *wpn);
+int				load_pistol_sprite(t_gun *wpn, int sprite_count);
 SDL_Surface		*load_pistol_part(int sprite);
 void			draw_pistol(t_gun *wpn, t_new_player *pl);
 
-void draw_walls(int x, t_new_player *pl, int wall, int img);
-t_scaler	scalar_create(int a, int b, int c, int d, int f);
-int			scr_nxt(t_scaler *i);
+void			draw_walls(int x, t_new_player *pl, int wall, int img);
+t_scaler		scalar_create(int a, int b, int c, int d, int f);
+int				scr_nxt(t_scaler *i);
 int			color_transoform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
 void		pix1(t_new_player *pl, int image);

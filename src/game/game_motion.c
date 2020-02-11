@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 20:44:08 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/11 17:09:03 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ t_new_xy *delt, int i, t_new_xy *pt)
 
 static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
 {
-	float	len;
-	float	len2;
-	float	x;
-	float	y;
+	float		len;
+	float		len2;
+	float		x;
+	float		y;
 	t_new_xy	*vert;
 
 	vert = sect->vertex;
@@ -48,7 +48,8 @@ static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
 	len2 = sqrt(pow(vert[i + 1].x - x, 2) + pow(vert[i + 1].y - y, 2));
 	if (len < 0.3 || len2 < 0.3)
 	{
- 
+		pl->velocity.x = 0;
+		pl->velocity.y = 0;
 		return (0);
 	}
 	return (1);
@@ -61,12 +62,12 @@ static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
 ** **************************************************************************
 */
 
-static void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
+void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 {
 	t_new_sector	*sect;
 	t_new_xy		pt;
-	int			res;
-	int			i;
+	int				res;
+	int				i;
 
 	pt.x = pl->where.x;
 	pt.y = pl->where.y;
@@ -91,7 +92,8 @@ static void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	void motion_check(t_new_sect_ops *op, t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
+**	void motion_check(t_new_sect_ops *op, t_new_player *pl,
+**	t_new_others *ot, t_new_sub_ev *se)
 **	Function to detect collisions when player move
 ** **************************************************************************
 */
@@ -116,7 +118,6 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 		op->xd * op->xd + op->yd * op->yd));
 		pl->velocity.y = op->yd * ((op->dx * op->xd + op->dy * op->yd) / (\
 		op->xd * op->xd + op->yd * op->yd));
-		//motion_dist(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl, i);
 		return (0);
 	}
 	return (1);
@@ -124,7 +125,8 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 
 /*
 ** **************************************************************************
-**	void motion_check(t_new_sect_ops *op, t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
+**	void motion_check(t_new_sect_ops *op, t_new_player *pl,
+**	t_new_others *ot, t_new_sub_ev *se)
 **	Function to detect collisions when player move
 ** **************************************************************************
 */
@@ -137,7 +139,6 @@ t_new_others *ot, t_new_sub_ev *se)
 	i = -1;
 	if (ot->moving != 1)
 		return ;
-	pl->w_dist = 1;
 	op->px = pl->where.x;
 	op->py = pl->where.y;
 	op->dx = pl->velocity.x;
@@ -148,8 +149,6 @@ t_new_others *ot, t_new_sub_ev *se)
 	{
 		if (!motion_corner(&pl->sectors[pl->sector], i, pl))
 			return ;
-		if (!motion_dist(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl, i))
-			return ;	
 		if ((IntersectBox(op->px, op->py, op->px + op->dx, op->py + op->dy, \
 		op->vert[i].x, op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) \
 		&& PointSide(op->px + op->dx, op->py + op->dy, op->vert[i].x, \

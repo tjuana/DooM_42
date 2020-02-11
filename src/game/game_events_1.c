@@ -3,70 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/11 16:52:00 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-static void	nearz_change(t_new_player *pl)
-{
-	printf(" 1 - nearz_change\n\
-	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f) \n\
-	pl->farz==%f (5) ||pl->farside==%f (20)\
-	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
-	pl->nearz += 1;//1e-5f
-
-	/*	pl->nearz = 0;//1e-4f 
-    pl->nearside = 0;//1e-5f
-	pl->farz = 0;//5
-	pl->farside = 0;//20*/
-}
-
-static void	nearside_change(t_new_player *pl)
-{
-	printf(" 2 - nearside_change\n\
-	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f) \n\
-	pl->farz==%f (5) ||pl->farside==%f (20)\
-	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
-	pl->nearside += 1;
-
-	/*	pl->nearz = 0;//1e-4f
-    pl->nearside = 0;//1e-5f
-	pl->farz = 0;//5
-	pl->farside = 0;//20*/
-}
-
-static void	farz_change(t_new_player *pl)
-{
-	printf(" 3 - farz_change\n\
-	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f)  \n\
-	pl->farz==%f (5) ||pl->farside==%f (20)\
-	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
-	pl->farz += 1;
-
-	/*	pl->nearz = 0;//1e-4f
-    pl->nearside = 0;//1e-5f
-	pl->farz = 0;//5
-	pl->farside = 0;//20*/
-}
-
-static void	farside_change(t_new_player *pl)
-{
-	printf(" 4 - farside_change\n\
-	pl->nearz==%f (1e-4f) || pl->nearside==%f (1e-5f)  \n\
-	pl->farz==%f (5) ||pl->farside==%f (20)\
-	\n", pl->nearz, pl->nearside, pl->farz, pl->farside);
-	pl->farside += 1;
-	
-	/*	pl->nearz = 0;//1e-4f
-    pl->nearside = 0;//1e-5f
-	pl->farz = 0;//5
-	pl->farside = 0;//20*/
-}
 
 /*
 ** **************************************************************************
@@ -102,8 +46,6 @@ static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
-		// UnloadData(pl);
-		// SDL_Quit();
 		se->quit = 1;
 		return (0);
 	}
@@ -141,25 +83,22 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 					if (!sub_events(se, pl))
 						return (0);
 			}
-			if(se->ev.type == SDL_MOUSEBUTTONDOWN)// || se->ev.type == SDL_MOUSEBUTTONUP)
+			if (se->ev.type == SDL_MOUSEBUTTONDOWN)
 			{
 				if (se->ev.button.button == SDL_BUTTON_LEFT)
-				{
 					pl->count_sprite = 10;
-				}
 				if (se->ev.button.button == SDL_BUTTON_RIGHT)
 				{
-					if (pl->light == 0.5f)
-						pl->light = 1.0f;
-					else
-						pl->light = 0.5f;
+					pl->light == 0.5f ? pl->light = 1.0f : 0;
+					pl->light != 0.5f ? pl->light = 0.5f : 0;
 				}
 			}
 		}
 	}
 	return (1);
 }
-void	ft_game_events(t_new_temp *data)
+
+void		ft_game_events(t_new_temp *data)
 {
 	events(&data->se, &data->pl);
 }

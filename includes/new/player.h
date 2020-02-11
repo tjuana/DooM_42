@@ -90,7 +90,7 @@ typedef struct	s_new_player
 	int 		y;
 	t_scaler    ty;
 
-	float		w_dist;
+
 }				t_new_player;
 
 #endif
