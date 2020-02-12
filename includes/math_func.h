@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:41:23 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 19:19:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/09 14:09:01 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ double			ft_vxs_vector(t_vector3 v1, t_vector3 v2);
 double			ft_vxs_double(double x1, double y1, double x2, double y2);
 int				ft_check_div_vector(t_vector3 v1, t_vector3 v2, \
 					t_vector3 v3, t_vector3 v4);
-int				ft_check_div(double x1, double y1, double x2, double y2, \
-					double x3, double y3, double x4, double y4);
-int				ft_check_point(t_vector3 p, t_vector3 p1, t_vector3 p2, \
-					t_vector3 p1_pl, t_vector3 p2_pl);
 double			ft_math_vxs(double x0, double y0, double x1, double y1);
-t_vector3		ft_find_intersect(double x1, double y1, double x2, \
-					double y2, double x3, double y3, double x4, double y4);
 
 #endif

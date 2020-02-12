@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:51:11 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 20:32:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 13:31:43 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	ft_main_events(t_wolf3d *w)
 	}
 	else
 		ft_gui_events(w);
+	// usleep(500);
 }

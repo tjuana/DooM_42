@@ -15,7 +15,7 @@
 #define MAX_DOORS 100 //maximum number of doors
 #define MAX_BUT 100 //maximum number of buttons
 
-#define FOV_CONST	0.88f
+#define FOV_CONST	0.88888f
 
 #endif
 

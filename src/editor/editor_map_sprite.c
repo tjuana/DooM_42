@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:05:37 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:18:01 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ void	ft_set_sprite(t_wolf3d *w, t_vector3 pos, int type)
 
 	sprite = ft_my_malloc(sizeof(t_sprite));
 	ft_bzero_char(sprite, sizeof(t_sprite));
-
 	sprite->id = w->sprite_count + 1;
 	sprite->pos = pos;
 	sprite->texture = type;
-
 	list = ft_lstnew(sprite, sizeof(t_sprite));
 	if (w->sprite == NULL)
 		w->sprite = list;

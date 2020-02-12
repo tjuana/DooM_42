@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 15:59:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:31:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,7 @@ int					ft_check_point_in_sector(t_wolf3d *w, t_sector *s, \
 						t_vector3 v);
 int					ft_search_point_in_sector(void *a, t_vector3 v);
 int					ft_new_editor_map_check_area(t_wolf3d *w);
-int					ft_editor_sector_compare_vertexes(t_vector3 v1, \
+int					ft_compare_vertexes(t_vector3 v1, \
 						t_vector3 v2);
 
 /*
@@ -313,6 +313,8 @@ t_gui_coord			ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, \
 **	editor/editor_map_sector.c
 ** **************************************************************************
 */
+void				ft_editor_turn_vertexes(t_sector *s, int numb);
+void				ft_editor_check_turn_vertexes(t_wolf3d *w);
 void				ft_editor_sector_create(t_wolf3d *w);
 void				ft_delete_sector(t_wolf3d *w);
 t_sector			*ft_editor_search_sector_by_id(t_wolf3d *w, \

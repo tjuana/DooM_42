@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   gui_destruct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/03 15:56:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:26:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+/*
+** **************************************************************************
+**	void ft_gui_desctuct_events(t_list *events)
+**
+**	Function that destruct all element events.
+** **************************************************************************
+*/
 
 void	ft_gui_desctuct_events(t_list *events)
 {
@@ -23,10 +31,13 @@ void	ft_gui_desctuct_events(t_list *events)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_desctuct(t_list *dom)
-**	
+**
 **	Function that destruct all gui values.
+** **************************************************************************
 */
+
 void	ft_gui_desctuct(t_list *dom)
 {
 	t_list		*list;
@@ -39,7 +50,6 @@ void	ft_gui_desctuct(t_list *dom)
 		elem = list->content;
 		ft_gui_desctuct(elem->child);//BAD CLOSING!
 		ft_gui_desctuct_events(elem->events);
-		// free(elem->surf); // How to close?
 		free(elem->name);
 		free(elem->str);
 		free(elem);
@@ -49,10 +59,13 @@ void	ft_gui_desctuct(t_list *dom)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_desctuct_fonts(t_list *fonts_list)
-**	
+**
 **	Function that desctuct all fonts.
+** **************************************************************************
 */
+
 void	ft_gui_desctuct_fonts(t_list *fonts_list)
 {
 	t_list		*list;
@@ -61,7 +74,6 @@ void	ft_gui_desctuct_fonts(t_list *fonts_list)
 	list = fonts_list;
 	if (list != NULL)
 	{
-		// ft_gui_desctuct(list->next);
 		font = list->content;
 		TTF_CloseFont(font->ptr);
 		font->ptr = NULL;

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:33:46 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:48:51 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 ** **************************************************************************
 */
 
-void	ft_draw_area_hatch(t_wolf3d *w, t_gui_rect rect, int color)
+void		ft_draw_area_hatch(t_wolf3d *w, t_gui_rect rect, int color)
 {
 	t_gui_coord	v;
 	t_gui_coord	c;
 	t_vector3	vec;
+
 	vec = (t_vector3){1, 0, 0, 0};
 	vec = ft_transform_vertex(vec, \
 		ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -M_PI_4));
@@ -87,7 +88,7 @@ t_gui_rect	ft_sector_get_rect(t_wolf3d *w, t_sector *s)
 ** **************************************************************************
 */
 
-void	ft_editor_draw_door(t_wolf3d *w, t_sector *s)
+void		ft_editor_draw_door(t_wolf3d *w, t_sector *s)
 {
 	if (s->status == SECTOR_STATUS_READY || \
 		s->status == SECTOR_STATUS_PRESET ||

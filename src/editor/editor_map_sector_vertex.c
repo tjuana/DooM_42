@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector_vertex.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:28 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:23:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,15 @@ void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
 	{
 		if (i == pos)
 		{
-			p = ft_my_malloc(sizeof(t_vector3)); // и тут течёт
+			p = ft_my_malloc(sizeof(t_vector3));
 			ft_bzero(p, sizeof(t_vector3));
 			*p = v;
 			vertex[i] = p;
 		}
 		else
-		{
-			vertex[i] = sector->vertex[j];
-			j++;
-		}
+			vertex[i] = sector->vertex[j++];
 		i++;
 	}
-
 	free(sector->vertex);
 	sector->vertex = vertex;
 	sector->vertex_count++;
@@ -98,7 +94,7 @@ void	ft_editor_sector_del_last_vertex(t_wolf3d *w, t_sector *sector)
 /*
 ** **************************************************************************
 **	[DEPRECATED]
-**	
+**
 **	void ft_editor_delete_last_vertex(t_wolf3d *w)
 **
 **	Function that delete last vertex.
@@ -108,7 +104,7 @@ void	ft_editor_sector_del_last_vertex(t_wolf3d *w, t_sector *sector)
 ** **************************************************************************
 */
 
-void		ft_editor_delete_last_vertex(t_wolf3d *w)
+void	ft_editor_delete_last_vertex(t_wolf3d *w)
 {
 	t_sector	*sector;
 
@@ -123,13 +119,11 @@ void		ft_editor_delete_last_vertex(t_wolf3d *w)
 		w->sector_status = 1;
 	}
 	else
-	{
 		ft_editor_sector_del_last_vertex(w, sector);
-	}
 	if (sector->vertex_count == 0)
 	{
 		w->sector_count--;
-	 	w->sector = w->sector->next;
+		w->sector = w->sector->next;
 		w->sector_status = 0;
 	}
 	else
