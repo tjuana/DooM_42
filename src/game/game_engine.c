@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:24:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 18:11:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,9 @@ void	engine_begin(t_new_player *pl)
 	int			s;
 	int 		sector_number;
 
-	printf("=== player_pos: [%f, %f]\n", pl->where.x, pl->where.y);
 	sector_number = 0;
 	engine_preset(pl);
-    while(pl->cycle.head != pl->cycle.tail)
+	while(pl->cycle.head != pl->cycle.tail)
 	{
 		if ((s = engine_pick_sec(pl)) == -2)
 			continue;
@@ -120,13 +119,13 @@ void	engine_begin(t_new_player *pl)
 			if(s == 0) {
 				sector_number += 1;
 			}
-		    pl->s = s;
+			pl->s = s;
 			pl->f = GREEN;
-   			pl->n = ROCK1;
-   			if (s==0)
-   				pl->n = FENCE;
-   			if (s==2)
-   				pl->n = 11;
+			pl->n = ROCK1;
+			if (s==0)
+			pl->n = FENCE;
+			if (s==2)
+				pl->n = 11;
 			if (engine_cross(pl) == 0)
 				continue;
 			pl->ceil.yceil = pl->sect->ceil - pl->where.z;
@@ -140,9 +139,9 @@ void	engine_begin(t_new_player *pl)
 			if (engine_scale(pl, pl->cycle.current->sx1, pl->cycle.current->sx2) == 0)
 				continue;
 
-            engine_put_lines(pl, neib);
+			engine_put_lines(pl, neib);
 		}
-        ++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
-    }
+		++pl->cycle.rend_sec[pl->cycle.current->sec_nb];
+	}
 	free(pl->cycle.rend_sec); 
 }

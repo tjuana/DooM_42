@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 16:12:34 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 18:36:05 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 void			end_game(t_new_player *pl)
 {
+	int i;
+
+	i = -1;
+	//better use free(pl);
 	SDL_Delay(777);
 	if (pl)
 		free(pl);

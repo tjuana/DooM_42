@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 16:31:34 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 18:21:31 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,6 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
 	pl->lvl = NULL;
 	pl->light = 1.0f;
 	pl->pix = (int *)pl->srf->pixels;
-}
-
-void UnloadData(t_new_player *pl)
-{
-	int i;
-
-	i = -1;
-	//better use free(pl);
-	while (++i < pl->sectors_nb)
-		free(pl->sectors[i].vertex);
-	i == 2 ? i = 3 : i;
-	while (++i < pl->sectors_nb)
-		free(pl->sectors[i].neighbors);
-    free(pl->sectors);
-    pl->sectors = NULL;
-    pl->sectors_nb = 0;
 }
 
 void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface)
