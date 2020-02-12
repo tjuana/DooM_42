@@ -17,4 +17,4 @@ sector		6	10								16	17															-1	-4
 
 player		10	18	1				1
 
-map	maps/test.txt
+map	maps/test
