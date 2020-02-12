@@ -84,7 +84,7 @@ float Yaw(float y, float z, t_new_player *player)
     return(y + z * player->yaw);
 }
 
-double to_deg(double radians)
+float to_deg(float radians)
 {
     return radians * (180.0 / M_PI);
 }

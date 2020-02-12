@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 15:34:56 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:32:56 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static void	door_total(t_new_player *pl)
 		}
 	}
 	if (pl->door_all > 0)
-		if (!(pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * pl->door_all)))
+		if (!(pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * \
+		pl->door_all)))
 			exit(EXIT_FAILURE);
 	door_init(pl, sec_arr);
 }

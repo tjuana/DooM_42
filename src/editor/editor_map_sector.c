@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/11 16:52:53 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:32:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,13 @@ void		ft_editor_check_turn_vertexes(t_wolf3d *w)
 	i = 1;
 	while (i < s->vertex_count)
 	{
-		if (s->vertex[numb]->x > s->vertex[i]->x && \
-			s->vertex[numb]->y > s->vertex[i]->y)
+		if (s->vertex[numb]->y > s->vertex[i]->y)
+		{
+			numb = i;
+			i = 0;
+		}
+		else if (s->vertex[numb]->y == s->vertex[i]->y && \
+			s->vertex[numb]->x > s->vertex[i]->x)
 		{
 			numb = i;
 			i = 0;

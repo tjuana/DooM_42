@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 16:40:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:23:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
 	int			i;
 	int			j;
 
-	vertex = ft_my_malloc(sizeof(void*) * sector->vertex_count + 1);
+	vertex = ft_my_malloc(sizeof(void*) * sector->vertex_count + 1); // тут течёт
 	i = 0;
 	j = 0;
 	while (i < sector->vertex_count + 1)

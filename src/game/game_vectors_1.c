@@ -6,13 +6,13 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/26 22:52:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:35:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_new_vector3		ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest)
+t_new_vector3	ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest)
 {
 	t_new_vector3	this;
 	t_new_vector3	orig2;
@@ -35,40 +35,40 @@ t_new_vector3		ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest)
 	return (this);
 }
 
-double			ft_new_vec3_magnitude(t_new_vector3 this)
+float			ft_new_vec3_magnitude(t_new_vector3 this)
 {
-	return ((double)(sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2))));
+	return ((float)(sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2))));
 }
 
-t_new_vector3		ft_new_vec3_add(t_new_vector3 this, t_new_vector3 rhs)
+t_new_vector3	ft_new_vec3_add(t_new_vector3 this, t_new_vector3 rhs)
 {
 	t_new_vector3	res;
 
 	res.x = this.x + rhs.x;
 	res.y = this.y + rhs.y;
 	res.z = this.z + rhs.z;
-	res.w = 0;//вот тут хз чей коэф брать
+	res.w = 0;
 	return (res);
 }
 
-t_new_vector3		ft_new_vec3_sub(t_new_vector3 this, t_new_vector3 rhs)
+t_new_vector3	ft_new_vec3_sub(t_new_vector3 this, t_new_vector3 rhs)
 {
 	t_new_vector3	res;
 
 	res.x = this.x - rhs.x;
 	res.y = this.y - rhs.y;
 	res.z = this.z - rhs.z;
-	res.w = 0;//вот тут хз чей коэф брать
+	res.w = 0;
 	return (res);
 }
 
-t_new_vector3		ft_new_vec3_cross_product(t_new_vector3 this, t_new_vector3 rhs)
+t_new_vector3	ft_new_vec3_cross_product(t_new_vector3 this, t_new_vector3 rhs)
 {
 	t_new_vector3	res;
 
 	res.x = this.y * rhs.z - this.z * rhs.y;
 	res.y = this.z * rhs.x - this.x * rhs.z;
 	res.z = this.x * rhs.y - this.y * rhs.x;
-	res.w = 0;//вот тут хз чей коэф брать
+	res.w = 0;
 	return (res);
 }
