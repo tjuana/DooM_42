@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 16:42:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 14:49:49 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 int		ft_gui_redraw(t_wolf3d *w)
 {
 	ft_bzero(w->sdl->srf->pixels, 4 * w->gui.win_w * w->gui.win_h);
+	SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0xff, 0xff, 0xff);
 	SDL_RenderClear(w->sdl->renderer);
 	ft_gui_redraw_elem(w, w->gui.dom);
-	w->sdl->text = SDL_CreateTextureFromSurface(\
-		w->sdl->renderer, w->sdl->srf);
-	w->sdl->text == NULL ? ft_putstr_fd(SDL_GetError(), 2) : 0;
+	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->srf->pixels, WIN_WIDTH * 4);
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, 0, 0) != 0 ? \
 		ft_putstr_fd(SDL_GetError(), 2) : 0;
 	ft_gui_redraw_elem_font(w, w->gui.dom);

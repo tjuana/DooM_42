@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/11 14:59:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 14:50:33 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	ft_gui_events(t_wolf3d *w)
 			ft_gui_mousewheel(w, e, w->gui.dom);
 		if (e.type == SDL_MOUSEBUTTONUP)
 			ft_gui_mousebuttonup(w, e, w->gui.dom);
-		// if (e.type == SDL_MOUSEMOTION)
-		// 	ft_gui_mousemotion(w, e, w->gui.dom);
+		if (e.type == SDL_MOUSEMOTION)
+			ft_gui_mousemotion(w, e, w->gui.dom);
 	}
 	if (w->gui.search_elem == GUI_EVENT_ON || \
 		w->gui.search_elem == GUI_EVENT_SEARCH)
