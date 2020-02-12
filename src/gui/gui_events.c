@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 15:34:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 20:36:51 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ void	ft_gui_events(t_wolf3d *w)
 		e.type == SDL_QUIT ? w->sdl->running = 0 : 0;
 		if (e.type == SDL_KEYDOWN)
 		{
+			if (w->gui.mode == GUI_MD_ME)
+			{
+				(e.key.keysym.scancode == SDL_SCANCODE_S) ? \
+					ft_gui_mousebuttonup_win_menu_btnsector(w, e, w->gui.dom, 0) : 0;
+				ft_gui_redraw(w);
+			}
+			else if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
+			{
+				(e.key.keysym.scancode == SDL_SCANCODE_SPACE) ? \
+					ft_gui_mousebuttonup_win_setsector_btnsavemap(w, e, w->gui.dom, 0) : 0;
+				ft_gui_redraw(w);
+			}
 			(e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) ? \
 				w->sdl->running = 0 : 0;
 			if (w->gui.focus_elem != NULL)

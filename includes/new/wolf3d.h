@@ -53,6 +53,7 @@ int			but_script(t_new_player *pl, int but_nb, t_new_sub_ev *se);//choose but ta
 int			door_detect(t_new_player *pl);//return sec_nb of door
 
 /*			door.c			*/
+void		door_total(t_new_player *pl);
 void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se);//when you press E key or button
 void		door(t_new_player *pl, t_new_sub_ev *se);//cycle for open door
 

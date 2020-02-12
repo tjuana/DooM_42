@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 20:12:05 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 20:38:58 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
     pl->velocity.x = 0;
     pl->velocity.y = 0;
     pl->velocity.z = 0;
-    pl->angle = M_PI;
+    pl->angle = 0;
     pl->anglesin = 0;
     pl->anglecos = 0;
     pl->yaw = 0;
@@ -34,7 +34,9 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
 	pl->nearside = 0.00001;
 	pl->farside = 1000;
 	pl->door_all = -1;
+	pl->door_nb = -1;
 	pl->but_all = -1;
+	pl->but_nb = -1;
 	pl->lvl = NULL;
 	pl->light = 1.0f;
 	pl->pix = (int *)pl->srf->pixels;
@@ -63,6 +65,7 @@ void	ft_game_redraw(void *d, t_list *dom)
 	t_wolf3d	*w;
 	t_new_temp	*data;
 	t_gun	wpn;
+
 	w = (t_wolf3d*)d;
 	data = w->new_data;
 	wpn.sprite_counter = 1;
@@ -72,6 +75,7 @@ void	ft_game_redraw(void *d, t_list *dom)
  		wpn.sprite_counter = 2;
 		data->pl.count_sprite = 1;
 	}
+
 	draw_pistol(&wpn, &data->pl);
 	data->op.eye_h = data->se.ducking ? CROUCH_H : EYE_H;
 	data->se.ground = !data->se.falling;

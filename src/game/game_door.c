@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:32:56 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 20:35:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	door_init(t_new_player *pl, int *sec_arr)
 ** **************************************************************************
 */
 
-static void	door_total(t_new_player *pl)
+void		door_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_DOORS];
@@ -61,9 +61,8 @@ static void	door_total(t_new_player *pl)
 		}
 	}
 	if (pl->door_all > 0)
-		if (!(pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * \
-		pl->door_all)))
-			exit(EXIT_FAILURE);
+		pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * \
+		pl->door_all);
 	door_init(pl, sec_arr);
 }
 
@@ -116,7 +115,7 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 
 	d_nb = pl->door_nb;
 	d_sec_nb = 0;
-	if ((pl->door_all < 1) || (d_nb > pl->door_all))
+	if (pl->door_all < 1 || (d_nb > pl->door_all))
 		return ;
 	d_sec_nb = pl->doors[d_nb].s_nb;
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \

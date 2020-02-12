@@ -9,13 +9,14 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/wolf3d",
-			"args": ["${workspaceRoot}/maps/map.txt"],
+			"args": ["${workspaceRoot}/maps/button"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb",
 			//"preLaunchTask": "gcc build active file"
+<<<<<<< HEAD
 		},
 		{
 			"name": "debug doom_nukem with new map",
@@ -88,6 +89,8 @@
 			"externalConsole": false,
 			"MIMode": "lldb",
 			"preLaunchTask": "gcc build active file"
+=======
+>>>>>>> 00b98142740f0453c22b00d4d4679a4ecf58a2a2
 		}
 	]
 }

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 18:11:02 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 20:36:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	engine_begin(t_new_player *pl)
 			if(s == 0) {
 				sector_number += 1;
 			}
-			pl->s = s;
+		    pl->s = s;
 			pl->f = GREEN;
 			pl->n = ROCK1;
 			if (s==0)
