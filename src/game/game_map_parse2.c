@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 15:33:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 20:30:00 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,11 @@ void		ft_player_save(t_new_player *pl)
 
 void		ft_level_save(t_new_player *pl)
 {
-	t_new_xy	v;
-	int			angle;
-	int			n;
-
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	pl->lvl = pl->file.split[1];
+	printf("0==|%s| 1==|%s|\n", pl->file.split[0], pl->file.split[1]);
+		pl->lvl = ft_strcpy(ft_strnew(ft_strlen(pl->file.split[1])), pl->file.split[1]);
+
+//	pl->lvl = pl->file.split[1];
 	ft_2arrclean(&pl->file.split);
 }

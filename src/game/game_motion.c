@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_motion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:26:04 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 17:18:05 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
 	y = pl->where.y + pl->velocity.y;
 	len = sqrt(pow(vert[i].x - x, 2) + pow(vert[i].y - y, 2));
 	len2 = sqrt(pow(vert[i + 1].x - x, 2) + pow(vert[i + 1].y - y, 2));
-	if (len < 0.3 || len2 < 0.3)
+	if (len < 0.1 || len2 < 0.1)
 	{
 		pl->velocity.x = 0;
 		pl->velocity.y = 0;

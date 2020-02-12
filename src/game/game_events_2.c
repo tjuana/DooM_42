@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:33:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 17:05:21 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 	z = 0;
 	if (se->falling == 0)
 		return ;
-	pl->velocity.z -= 0.015f;
+	pl->velocity.z -= 0.03;//0.0005;//0.015;
 	z = pl->where.z + pl->velocity.z;
 	if (pl->velocity.z < 0 && z < pl->sectors[pl->sector].floor + op->eye_h)
 	{
@@ -115,8 +115,8 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 
 void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
 {
-	SDL_SetRelativeMouseMode(1);
 	SDL_GetRelativeMouseState(&ms->x, &ms->y);
+	SDL_SetRelativeMouseMode(1);
 	pl->angle += ms->x * 0.03f;
 	ms->yaw = clamp(ms->yaw + ms->y * 0.05f, -5, 5);
 	pl->yaw = ms->yaw - pl->velocity.z * 0.5f;

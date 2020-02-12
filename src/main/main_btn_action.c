@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_btn_action.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 21:48:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/10 13:43:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 18:03:25 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_gui_mousebuttonup_win_menu_btneditor(void *data, SDL_Event e, \
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_editor"), \
 		GUI_ELEM_VISIBLE);
-	w->gui.mode = GUI_MD_ME_SET_PLAYER;
+	w->gui.mode = GUI_MD_ME;
 	w->player_status = 0;
 }
 

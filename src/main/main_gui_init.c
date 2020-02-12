@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_gui_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:36:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 15:27:01 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 17:49:40 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,7 @@ void	ft_main_gui_init_win_menu(t_list *head)
 
 	ft_gui_elem_init(&elem->child, "win_menu_image", \
 		(t_gui_coord){0, 0, 0}, \
-		(t_gui_coord){1400, 740, 0});
-	ft_gui_elem_set_image(elem->child, "/Textures/bloody_game.jpg");
-	ft_gui_elem_set_parent(head, elem->child);
-
-	ft_gui_elem_init(&elem->child, "win_menu_image", \
-		(t_gui_coord){0, 0, 0}, \
-		(t_gui_coord){1400, 740, 0});
+		(t_gui_coord){WIN_W, WIN_H, 0});
 	ft_gui_elem_set_image(elem->child, "/Textures/bloody_game.jpg");
 	ft_gui_elem_set_parent(head, elem->child);
 }
