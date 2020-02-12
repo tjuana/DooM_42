@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/10 15:01:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/11 17:00:12 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** **************************************************************************
 */
 
-void	ft_editor_turn_vertexes(t_sector *s, int numb)
+void		ft_editor_turn_vertexes(t_sector *s, int numb)
 {
 	t_vector3	**vertex;
 	int			i;
@@ -50,7 +50,7 @@ void	ft_editor_turn_vertexes(t_sector *s, int numb)
 ** **************************************************************************
 */
 
-void	ft_editor_check_turn_vertexes(t_wolf3d *w)
+void		ft_editor_check_turn_vertexes(t_wolf3d *w)
 {
 	t_sector	*s;
 	int			numb;
@@ -61,8 +61,13 @@ void	ft_editor_check_turn_vertexes(t_wolf3d *w)
 	i = 1;
 	while (i < s->vertex_count)
 	{
-		if (s->vertex[numb]->x > s->vertex[i]->x && \
-			s->vertex[numb]->y > s->vertex[i]->y)
+		if (s->vertex[numb]->y > s->vertex[i]->y)
+		{
+			numb = i;
+			i = 0;
+		}
+		else if (s->vertex[numb]->y == s->vertex[i]->y && \
+			s->vertex[numb]->x > s->vertex[i]->x)
 		{
 			numb = i;
 			i = 0;
