@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 15:25:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:39:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
-	pl->nearz = 1e-4f;
+	pl->nearz = 0.0001;
 	pl->farz = 5;
-	pl->nearside = 1e-5f;
-	pl->farside = 100;
+	pl->nearside = 0.00001;
+	pl->farside = 1000;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;

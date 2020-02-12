@@ -38,7 +38,7 @@
 			"program": "${workspaceRoot}/doom_nukem",
 			//"args": ["${workspaceRoot}/maps/map.txt"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
-			"args": ["${workspaceRoot}/maps/123"],
+			"args": ["${workspaceRoot}/maps/test"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

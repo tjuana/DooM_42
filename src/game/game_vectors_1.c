@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_vectors_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/11 17:14:39 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/12 15:35:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ t_new_vector3	ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest)
 	return (this);
 }
 
-double			ft_new_vec3_magnitude(t_new_vector3 this)
+float			ft_new_vec3_magnitude(t_new_vector3 this)
 {
-	return ((double)(sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2))));
+	return ((float)(sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2))));
 }
 
 t_new_vector3	ft_new_vec3_add(t_new_vector3 this, t_new_vector3 rhs)

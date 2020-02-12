@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_draw_map_sector.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 22:28:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:53:31 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/11 18:11:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s)
 	i = 0;
 	while (i < s->vertex_count)
 	{
-		c1 = ft_gui_map_vertex_to_coord(w, *s->vertex[i]);
+		c1 = ft_gui_map_vertex_to_coord(w, *s->vertex[i++]);
 		ft_gui_draw_point(w, c1, s->color);
-		i++;
 	}
 }

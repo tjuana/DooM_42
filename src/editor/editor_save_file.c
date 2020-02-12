@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:46:49 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 15:23:53 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:32:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		ft_editor_take_vertex(t_wolf3d *w)
 	int			j;
 	int			tmp;
 	int			b;
+
 	p_lst = w->sector;
 	while (p_lst != NULL)
 	{
