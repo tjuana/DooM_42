@@ -79,8 +79,11 @@ int			engine_cross(t_new_player *pl)
 
 	xy_vertex_of_sectors(&v_start, &v_end, pl);
 	//Is the wall at least partially in front of the player?
+	printf("start: [%f, %f]   end: [%f, %f]\n", v_start.x, v_start.y, v_end.x, v_end.y);
 	if((pl->t1.y <= 0) && (pl->t2.y <= 0))
+	{
 		return (0);//continue
+	}
 	pl->u0 = 0;
 	pl->u1 = 1000;//if the number is higher, the number or images in walls is going to be more
 	//If it's partially behind the player, cut it against player's view

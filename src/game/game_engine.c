@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:57 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:07:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	engine_begin(t_new_player *pl)
 	int			s;
 	int 		sector_number;
 
+	printf("=== player_pos: [%f, %f]\n", pl->where.x, pl->where.y);
 	sector_number = 0;
 	engine_preset(pl);
     while(pl->cycle.head != pl->cycle.tail)
