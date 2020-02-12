@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:36:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/09 16:06:56 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:27:01 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ void	ft_main_gui_init_win_menu(t_list *head)
 	ft_gui_elem_set_button(elem->child, "Exit");
 	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnexit, \
 		SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_menu_image", \
+		(t_gui_coord){0, 0, 0}, \
+		(t_gui_coord){1400, 740, 0});
+	ft_gui_elem_set_image(elem->child, "/Textures/bloody_game.jpg");
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_image", \

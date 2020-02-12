@@ -6,13 +6,13 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 16:41:56 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:25:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data for LoadData function
+void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData function
 {
     //player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
     pl->where.x = v->x;
@@ -21,7 +21,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
     pl->velocity.x = 0;
     pl->velocity.y = 0;
     pl->velocity.z = 0;
-    pl->angle = *angle;
+    pl->angle = M_PI;
     pl->anglesin = 0;
     pl->anglecos = 0;
     pl->yaw = 0;
@@ -32,9 +32,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->nearz = 1e-4f;
 	pl->farz = 5;
 	pl->nearside = 1e-5f;
-	pl->farside = 60.0f;
-
-	//
+	pl->farside = 100;
 	pl->door_all = -1;
 	pl->but_all = -1;
 	pl->lvl = NULL;
@@ -125,17 +123,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	//load_weapons(&wpn);
-
-	// data->pl.srf = NULL;
-
-	data->pl.srf = w->sdl->srf;
-
-	// init. camera vertex
-	// data->pl.fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST));
-	// data->pl.fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST));
-	// printf("VERTEX: %s: x:%6.2f   y:%6.2f   z:%6.2f\n", "fov_vec1", data->pl.fov_vec1.x, data->pl.fov_vec1.y, data->pl.fov_vec1.z);
-	// printf("VERTEX: %s: x:%6.2f   y:%6.2f   z:%6.2f\n", "fov_vec2", data->pl.fov_vec2.x, data->pl.fov_vec2.y, data->pl.fov_vec2.z);
+	//data->pl.srf = w->sdl->srf;
 }
 
 void	ft_game_gui_init_menu(t_list *head)

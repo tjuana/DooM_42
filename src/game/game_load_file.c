@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_load_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:51 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:25:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 ** **************************************************************************
 */
 
-void	end_game(t_new_player *pl)
-{	
-	//// printf "END OF GAME!!!"
+void			end_game(t_new_player *pl)
+{
 	SDL_Delay(50);
-	//free and clean all old stuff
 	if (pl)
 		free(pl);
 	exit(EXIT_SUCCESS);
@@ -36,7 +34,7 @@ void	end_game(t_new_player *pl)
 ** **************************************************************************
 */
 
-t_new_player		*load_next(t_new_player *pl)
+t_new_player	*load_next(t_new_player *pl)
 {
 	t_new_player	*pl_next;
 
@@ -50,7 +48,6 @@ t_new_player		*load_next(t_new_player *pl)
 	}
 	pl_next->sectors_nb = 0;
 	pl_next->win = pl->win;
-	// load_file(pl->lvl, pl_next);
 	ft_my_parse_map(pl_next, pl->lvl);
 	pl->srf ? SDL_FreeSurface(pl->srf) : 0;
 	pl->srf = NULL;
@@ -61,12 +58,5 @@ t_new_player		*load_next(t_new_player *pl)
 	!pl->srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 	pl->rend = SDL_GetRenderer(pl->win);
 	!pl->rend ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	return(pl);
+	return (pl);
 }
-
-/*
-** **************************************************************************
-**	int but_script(t_new_player *pl, int sec_nb, t_subevents *se)
-**	Function to do button scipts
-** **************************************************************************
-*/

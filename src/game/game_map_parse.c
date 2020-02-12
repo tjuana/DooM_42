@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:39 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:25:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void		ft_my_parse_map(t_new_player *pl, char *ag)
 	while ((pl->file.res = get_next_line(pl->file.fd, &pl->file.line)) > 0)
 	{
 		pl->file.i = 1;
+		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)' ')) != NULL)
+			ft_error("BAD FILE, ONLY TAB ,MAN!");
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
 			ft_vertex_count(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)

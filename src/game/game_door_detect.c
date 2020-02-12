@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door_detect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 16:22:47 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/12 15:24:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	door_dist(t_new_player *pl, int s_nb)
 {
 	t_new_vector3	vec;
 	t_new_vector3	vec2;
-	int			tmp_dist;
+	int				tmp_dist;
 
 	tmp_dist = 6;
 	tmp_dist = door_vert_find(pl, &vec, s_nb);

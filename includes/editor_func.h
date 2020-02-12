@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/10 15:01:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:27:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,8 +248,8 @@ void				*ft_editor_redraw_txtr(void *data, t_list *dom);
 **	editor/editor_init.c
 ** **************************************************************************
 */
-void				ft_editor_add_new_txtr(t_wolf3d *w, char *path);
-void				ft_editor_init_txtr_list(t_wolf3d *w);
+// void				ft_editor_add_new_txtr(t_wolf3d *w, char *path);
+// void				ft_editor_init_txtr_list(t_wolf3d *w);
 void				ft_editor_init(t_wolf3d *w);
 
 /*
