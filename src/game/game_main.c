@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 15:20:02 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 15:53:43 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
     pl->velocity.x = 0;
     pl->velocity.y = 0;
     pl->velocity.z = 0;
-    pl->angle = M_PI_2;
+    pl->angle = M_PI;
     pl->anglesin = 0;
     pl->anglecos = 0;
     pl->yaw = 0;
