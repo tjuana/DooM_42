@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 15:55:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 16:31:34 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,6 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->se.quit = 0;
 	data->pl.srf = w->sdl->srf;
 	ft_my_parse_map(&data->pl, path);
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-		ft_error( "SDL could not initialize! SDL_Error: %s\n");
-
 	SDL_ShowCursor(SDL_ENABLE);//NOT SHOW MOUSE CURSOR
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
@@ -123,7 +120,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	//data->pl.srf = w->sdl->srf;
+	//data->pl.srf = w->sdl->srf;??
 }
 
 void	ft_game_gui_init_menu(t_list *head)
