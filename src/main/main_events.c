@@ -6,14 +6,12 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:51:11 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 13:31:43 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 16:21:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-// Особенность: при отрисовке по событию нет динамических объектов.
-// Фиксится добавлением в специальный цикл events и gui_redraw для game.
 void	ft_main_events(t_wolf3d *w)
 {
 	t_new_temp	*data;
@@ -38,5 +36,4 @@ void	ft_main_events(t_wolf3d *w)
 	}
 	else
 		ft_gui_events(w);
-	// usleep(500);
 }
