@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 15:39:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 18:31:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,33 @@ void	ft_create_sector_door(t_wolf3d *w)
 
 /*
 ** **************************************************************************
+**	void	ft_transform_door_vertex(t_vector3 *v1,
+**		t_vector3 *v2, t_vector3 pos)
+**
+**	Function that calculate door vertex.
+** **************************************************************************
+*/
+
+void	ft_transform_door_vertex(t_vector3 *v1, t_vector3 *v2, t_vector3 pos)
+{
+	int	i;
+
+	if (v1->x == v2->x)
+	{
+		i = (v1->y > v2->y) ? 1 : 0;
+		v1->y = (double)((int)pos.y) + i;
+		v2->y = v1->y + (i ? 1 : -1);
+	}
+	else
+	{
+		i = (v1->x > v2->x) ? 1 : 0;
+		v1->x = (double)((int)pos.x) + i;
+		v2->x = v1->x + (i ? 1 : -1);
+	}
+}
+
+/*
+** **************************************************************************
 **	void	ft_change_door_vertex(t_wolf3d *w, t_vector3 v1, \
 **				t_vector3 v2, t_vector3 pos)
 **
@@ -55,32 +82,7 @@ void	ft_change_door_vertex(t_wolf3d *w, t_vector3 v1, \
 	t_sector	*sector;
 	t_vector3	vec;
 
-	if (v1.x == v2.x)
-	{
-		if (v1.y > v2.y)
-		{
-			v1.y = (double)((int)pos.y);
-			v2.y = v1.y + 1;
-		}
-		else
-		{
-			v1.y = (double)((int)pos.y) + 1;
-			v2.y = v1.y - 1;
-		}
-	}
-	else
-	{
-		if (v1.x > v2.x)
-		{
-			v1.x = (double)((int)pos.x);
-			v2.x = v1.x + 1;
-		}
-		else
-		{
-			v1.x = (double)((int)pos.x) + 1;
-			v2.x = v1.x - 1;
-		}
-	}
+	ft_transform_door_vertex(&v1, &v2, pos);
 	vec = ft_vec3_create(&v2, &v1);
 	vec = ft_vec3_normalize(vec);
 	vec = ft_transform_vertex(vec, \
@@ -128,48 +130,27 @@ void	ft_set_new_vertex_for_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 
 int		ft_set_new_vertex_for_sector_list(void *a, t_vector3 **v, int count)
 {
-	t_wolf3d	*w;
 	t_list		*list;
-	t_sector	*sector;
+	t_sector	*s;
 	int			i;
 	int			j;
 
-	w = (t_wolf3d*)a;
-	list = w->sector;
+	list = ((t_wolf3d*)a)->sector;
 	i = 0;
 	while (list)
 	{
-		sector = list->content;
-		if (sector->status == 1 && sector->type == SECTOR_TYPE_SECTOR)
+		s = list->content;
+		if (s->status == 1 && s->type == SECTOR_TYPE_SECTOR)
 		{
-			j = 0;
-			while (j < count)
-			{
-				ft_set_new_vertex_for_sector(w, sector, *v[j]);
-				j++;
-			}
-			free(sector->neighbors);
-			sector->neighbors = ft_my_malloc(sizeof(void*) * \
-				sector->vertex_count);
-			ft_bzero(sector->neighbors, sizeof(void*) * \
-				sector->vertex_count);
+			j = -1;
+			while (++j < count)
+				ft_set_new_vertex_for_sector((t_wolf3d*)a, s, *v[j]);
+			free(s->neighbors);
+			s->neighbors = ft_my_malloc(sizeof(void*) * s->vertex_count);
+			ft_bzero(s->neighbors, sizeof(void*) * s->vertex_count);
 		}
 		list = list->next;
 		i++;
 	}
 	return (0);
-}
-
-/*
-** **************************************************************************
-**	void ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
-**
-**
-** **************************************************************************
-*/
-
-void	ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
-{
-	ft_set_new_vertex_for_sector_list(w, s->vertex, s->vertex_count);
-	ft_sectors_set_all_neighbors(w);
 }

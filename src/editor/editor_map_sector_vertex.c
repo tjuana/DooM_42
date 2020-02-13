@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector_vertex.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 14:18:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 18:32:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,4 +131,18 @@ void	ft_editor_delete_last_vertex(t_wolf3d *w)
 		sector->status = 0;
 		w->sector_status = 1;
 	}
+}
+
+/*
+** **************************************************************************
+**	void ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
+**
+**
+** **************************************************************************
+*/
+
+void	ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
+{
+	ft_set_new_vertex_for_sector_list(w, s->vertex, s->vertex_count);
+	ft_sectors_set_all_neighbors(w);
 }

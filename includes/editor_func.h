@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 17:03:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 19:00:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,15 +230,8 @@ void				ft_gui_init_win_setplayer(t_list *head);
 void				ft_gui_init_win_setsprite(t_list *head);
 void				ft_gui_init_win_setenemy(t_list *head);
 void				ft_gui_init_win_setdoor(t_list *head);
-void				ft_editor_gui_init_win_editor(t_list *head);
+void				ft_editor_gui_init_win_me(t_list *head);
 void				ft_editor_gui_init(t_wolf3d *w);
-
-/*
-** **************************************************************************
-**	editor/editor_gui_txtr.c
-** **************************************************************************
-*/
-void				*ft_editor_redraw_txtr(void *data, t_list *dom);
 
 /*
 ** **************************************************************************
@@ -383,5 +376,33 @@ static char			*ft_space_only_join(int j);
 void				ft_player_string(t_wolf3d *w);
 void				ft_save_neighbour(t_sector *sector, int fd);
 void				ft_free_mf(t_wolf3d *w);
+
+int					ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
+						t_vector3 v1, t_vector3 v2);
+int					ft_search_sectors_cross(void *a, t_vector3 v1, \
+						t_vector3 v2);
+int					ft_new_editor_map_check_halfplanes(t_sector *s, \
+						t_vector3 pos);
+
+int					ft_check_point_in_sector_line_diameter(t_sector *s, \
+						t_vector3 v, double d);
+int					ft_search_point_in_sector_line_diameter(void *a, \
+						t_vector3 v, double d);
+
+void				ft_gui_elem_set_map(t_list *list);
+void				ft_gui_init_win_menu_add_1(t_list *head);
+void				ft_gui_init_win_menu_add(t_list *head);
+void				ft_gui_init_win_menu_set(t_list *head);
+void				ft_gui_init_win_menu_save(t_list *head);
+void				ft_gui_init_win_menu(t_list *head);
+void				ft_gui_init_win_setsector_1(t_list *head);
+void				ft_gui_init_win_setsector(t_list *head);
+void				ft_gui_init_win_setplayer(t_list *head);
+void				ft_gui_init_win_setsprite(t_list *head);
+void				ft_gui_init_win_setenemy(t_list *head);
+void				ft_gui_init_win_setdoor(t_list *head);
+void				ft_editor_gui_init_win_me_1(t_list *head);
+void				ft_editor_gui_init_win_me(t_list *head);
+void				ft_editor_gui_init(t_wolf3d *w);
 
 #endif

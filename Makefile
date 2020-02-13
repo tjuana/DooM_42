@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/13 16:54:10 by tjuana           ###   ########.fr        #
+#    Updated: 2020/02/13 19:03:17 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,7 +134,8 @@ editor_event_win_setplayer.c \
 editor_event_win_setsector.c \
 editor_event_win_setsprite.c \
 editor_gui_init.c \
-editor_gui_txtr.c \
+editor_gui_init2.c \
+editor_gui_init3.c \
 editor_init.c \
 editor_map_check.c \
 editor_map_door.c \
@@ -146,7 +147,9 @@ editor_map_sector_vertex.c \
 editor_map_sprite.c \
 editor_save_file.c \
 editor_save_file2.c \
-editor_save_file3.c
+editor_save_file3.c \
+editor_map_check_line.c \
+editor_map_check2.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))
