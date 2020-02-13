@@ -1,8 +1,8 @@
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 /* Define window size */
-# define WIN_W 1920
-# define WIN_H 1080
+# define WIN_W 1280
+# define WIN_H 720
 /* Define various vision related constants */
 #define EYE_H  6    //Camera height from floor when standing
 #define CROUCH_H 2.5  //And when crouching
