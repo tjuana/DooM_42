@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 20:37:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 18:30:48 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 		return (but_open_door(pl, but_nb, se));
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -4))
 		*pl = *load_next(pl);
-	ft_strdel(&pl->lvl);
 	return (0);
 }
 

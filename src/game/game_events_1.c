@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:33:02 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 18:45:36 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 			if (se->ev.type == SDL_MOUSEBUTTONDOWN)
 			{
 				if (se->ev.button.button == SDL_BUTTON_LEFT)
-					pl->count_sprite = 10;
+					pl->count_sprite = 10;//sega
 				if (se->ev.button.button == SDL_BUTTON_RIGHT)
 				{
 					pl->light == 0.5f ? pl->light = 1.0f : 0;
@@ -100,5 +100,5 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 
 void		ft_game_events(t_new_temp *data)
 {
-	events(&data->se, &data->pl);
+	events(&data->se, data->pl);
 }

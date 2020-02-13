@@ -51,7 +51,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/maps/777"],
+			"args": ["${workspaceRoot}/maps/button"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
 			// "args": [],
 			"stopAtEntry": false,

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 20:35:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:44:06 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 
 	d_nb = pl->door_nb;
 	d_sec_nb = 0;
-	if (pl->door_all < 1 || (d_nb > pl->door_all))
+	if (pl->door_all < 1 || (d_nb > pl->door_all) || d_nb < 0)
 		return ;
 	d_sec_nb = pl->doors[d_nb].s_nb;
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \

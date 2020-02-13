@@ -36,7 +36,7 @@ typedef	struct		s_new_temp
 {
     t_new_sub_ev		se;
     t_new_mouse			ms;
-    t_new_player		pl;
+    t_new_player		*pl;
     t_new_others		ot;
     t_new_sect_ops		op;
 	t_new_wolf3d		w;

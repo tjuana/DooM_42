@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 20:38:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:54:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,24 @@ void	ft_game_redraw(void *d, t_list *dom)
 	w = (t_wolf3d*)d;
 	data = w->new_data;
 	wpn.sprite_counter = 1;
-	engine_begin(&data->pl);
-	if (data->pl.count_sprite == 10)// this for the event shoot
+	engine_begin(data->pl);
+	if (data->pl->count_sprite == 10)// this for the event shoot
  	{
  		wpn.sprite_counter = 2;
-		data->pl.count_sprite = 1;
+		data->pl->count_sprite = 1;
 	}
 
-	draw_pistol(&wpn, &data->pl);
+	draw_pistol(&wpn, data->pl);
 	data->op.eye_h = data->se.ducking ? CROUCH_H : EYE_H;
 	data->se.ground = !data->se.falling;
-	events_jumps(&data->se, &data->pl, &data->op, &data->ot);
-	motion_chk(&data->op, &data->pl, &data->ot, &data->se);
-	//motion_move_pl(0, 0, &data->pl);
-	events_new_mouse_move(&data->ms, &data->pl);//mouse aiming
-	events_vel(&data->pl, &data->se, &data->ot);
-	if (!events(&data->se, &data->pl))
+	events_jumps(&data->se, data->pl, &data->op, &data->ot);
+	motion_chk(&data->op, data->pl, &data->ot, &data->se);
+	//motion_move_pl(0, 0, data->pl);
+	events_new_mouse_move(&data->ms, data->pl);//mouse aiming
+	events_vel(data->pl, &data->se, &data->ot);
+	if (!events(&data->se, data->pl))
 		return ;
-	door(&data->pl, &data->se);
+	door(data->pl, &data->se);
 }
 
 void	ft_game_init(t_wolf3d *w, char *path)
@@ -94,10 +94,10 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	t_new_temp	*data;
 
 	data = (t_new_temp*)w->new_data;
-	data->pl.sectors_nb = 0;
+	data->pl->sectors_nb = 0;
 	data->se.quit = 0;
-	data->pl.srf = w->sdl->srf;
-	ft_my_parse_map(&data->pl, path);
+	data->pl->srf = w->sdl->srf;
+	ft_my_parse_map(data->pl, path);
 	SDL_ShowCursor(SDL_ENABLE);//NOT SHOW MOUSE CURSOR
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
@@ -108,7 +108,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	//data->pl.srf = w->sdl->srf;??
+	//data->pl->srf = w->sdl->srf;??
 }
 
 void	ft_game_gui_init_menu(t_list *head)
