@@ -9,7 +9,7 @@
 			"name": "gcc build and debug active file",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/wolf3d",
+			"program": "${workspaceRoot}/doom_nukem",
 			"args": ["${workspaceRoot}/maps/button"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
