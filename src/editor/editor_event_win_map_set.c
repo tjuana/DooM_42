@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/11 16:09:14 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:03:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_sector	*sector;
 
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, \
+	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	sector = w->sector->content;
 	if (coord.w && sector->status != SECTOR_STATUS_POLYGON)
@@ -46,7 +46,6 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 			if (ft_editor_sector_search_neighbors(w, sector))
 				sector->status = SECTOR_STATUS_POLYGON;
 		}
-		ft_editor_sector_special_debug(w->sector);
 	}
 }
 
@@ -61,7 +60,7 @@ void	ft_gui_event_set_player(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_vector3	v;
 
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, \
+	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	if (coord.w)
 	{
@@ -85,7 +84,7 @@ void	ft_gui_event_set_sprite(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_vector3	v;
 
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, \
+	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	if (coord.w)
 	{
@@ -109,7 +108,7 @@ void	ft_gui_event_set_enemy(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_vector3	v;
 
-	coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, \
+	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	if (coord.w)
 	{

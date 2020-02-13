@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/08 19:26:54 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/13 16:54:10 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,7 +114,6 @@ FUNC_OBJS = $(addprefix $(FUNC_OBJS_DIRECTORY), $(FUNC_OBJS_LIST))
 # EDITOR WITH MAIN FILE
 EDITOR_SRCS_DIRECTORY = $(SRCS_PATH)editor/
 EDITOR_SRCS_LIST = \
-editor_debug.c \
 editor_desctuct.c \
 editor_draw_map.c \
 editor_draw_map_door.c \

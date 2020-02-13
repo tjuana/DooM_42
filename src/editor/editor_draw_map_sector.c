@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 22:28:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 14:29:21 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:00:12 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s)
 	int				vtx1_n;
 	int				vtx2_n;
 
-	i = 0;
+	i = -1;
 	s->color = (s->status == 0) ? 0x7b68ee : 0xf8f32b;
-	while (i < s->vertex_count)
+	while (++i < s->vertex_count)
 	{
 		vtx1_n = i;
 		vtx2_n = (i + 1) % s->vertex_count;
@@ -71,7 +71,6 @@ void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s)
 		c2 = ft_gui_map_vertex_to_coord(w, *s->vertex[vtx2_n]);
 		ft_fdf_wu_color(&(t_vector3){c1.x, c1.y, 0, 0}, \
 			&(t_vector3){c2.x, c2.y, 0, 0}, w, s->color);
-		i++;
 	}
 	i = 0;
 	while (i < s->vertex_count)

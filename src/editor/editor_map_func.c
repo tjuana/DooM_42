@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:36:39 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 16:25:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:03:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ t_gui_coord	ft_gui_map_vertex_to_coord(t_wolf3d *w, t_vector3 v)
 
 /*
 ** **************************************************************************
-**	t_gui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_gui_coord c, \
+**	t_gui_coord	ft_gui_map_check_mouse(t_wolf3d *w, t_gui_coord c, \
 **	t_gui_elem *elem)
 **
 **	Function that check mouse position (for map!!!)
 ** **************************************************************************
 */
 
-t_gui_coord	ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, t_gui_coord c, \
+t_gui_coord	ft_gui_map_check_mouse(t_wolf3d *w, t_gui_coord c, \
 	t_gui_elem *elem)
 {
 	t_vector3	mp_vertex;
