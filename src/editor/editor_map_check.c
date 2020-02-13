@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/11 19:30:21 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:07:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,8 @@ int		ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
 			*s->vertex[vtx2_n]);
 		if (\
 			(ft_check_point_in_line_segment(c, v1, v2) && \
-			ft_check_point_in_line_segment(c, *s->vertex[vtx1_n], *s->vertex[vtx2_n]))// &&
+			ft_check_point_in_line_segment(c, *s->vertex[vtx1_n], *s->vertex[vtx2_n]))
+			// &&
 			// не совпадают точки (вершины) [почему-то не работает]
 			// !(ft_compare_vertexes(c, *s->vertex[vtx1_n]) || ft_compare_vertexes(c, *s->vertex[vtx2_n]))
 			)

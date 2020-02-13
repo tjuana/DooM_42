@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 19:09:18 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 20:14:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	ft_gui_elem_init_grid(t_list *parent, char *name, \
 	pos--;
 	parent_elem = parent->content;
 	grid = &parent_elem->grid;
-	v1.x = parent_elem->v1.x + grid->margin + \
+	v1.x = parent_elem->v1.x + 2 * grid->margin + \
 		(pos % grid->count.x) * (grid->elem_w + grid->margin);
-	v1.y = parent_elem->v1.y + grid->margin + \
+	v1.y = parent_elem->v1.y + 2 * grid->margin + \
 		(pos / grid->count.x) * (grid->elem_h + grid->margin);
 	v2.x = v1.x + (grid->elem_w + grid->margin) * count.x - grid->margin;
 	v2.y = v1.y + (grid->elem_h + grid->margin) * count.y - grid->margin;
@@ -100,10 +100,10 @@ void	ft_gui_elem_set_grid(t_list *dom, t_gui_coord count, int margin)
 	grid->area.h = grid->area.v2.y - grid->area.v1.y;
 	grid->margin = margin;
 	grid->count = count;
-	grid->elem_w = (grid->area.w - margin * \
-		(grid->count.x + 1)) / grid->count.x;
-	grid->elem_h = (grid->area.h - margin * \
-		(grid->count.y + 1)) / grid->count.y;
+	grid->elem_w = (grid->area.w - grid->margin * \
+		(grid->count.x + 3)) / grid->count.x;
+	grid->elem_h = (grid->area.h - grid->margin * \
+		(grid->count.y + 3)) / grid->count.y;
 }
 
 /*
