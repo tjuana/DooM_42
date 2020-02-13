@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 15:33:44 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 20:35:00 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_my_parse_map(t_new_player *pl, char *ag)
 		pl->file.i = 1;
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)' ')) != NULL)
 			ft_error("BAD FILE, ONLY TAB , MAN!");
-		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
+		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
 			ft_vertex_count(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
 			ft_sector_count(pl);
@@ -93,12 +93,12 @@ void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
 	{
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
 			vertex = ft_vertex_save(pl, vertex);
+		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'m')) != NULL)
+			ft_level_save(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
 			ft_sector_save(pl, vertex);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'p')) != NULL)
 			ft_player_save(pl);
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'l')) != NULL)
-			ft_level_save(pl);
 		ft_strdel(&pl->file.line);
 		free(pl->file.line);
 	}

@@ -53,6 +53,7 @@ int			but_script(t_new_player *pl, int but_nb, t_new_sub_ev *se);//choose but ta
 int			door_detect(t_new_player *pl);//return sec_nb of door
 
 /*			door.c			*/
+void		door_total(t_new_player *pl);
 void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se);//when you press E key or button
 void		door(t_new_player *pl, t_new_sub_ev *se);//cycle for open door
 
@@ -97,7 +98,6 @@ int			IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, fl
 float		PointSide(float px, float py, float x0, float y0,float x1, float y1);
 t_new_xy	intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
-void		UnloadData();
 void		MovePlayer(float dx, float dy, t_new_player *player);
 float		Yaw(float y, float z, t_new_player *player);
 float		to_deg(float radians);

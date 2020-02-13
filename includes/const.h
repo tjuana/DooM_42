@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:47:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:47 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:07:24 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 **	General
 ** **************************************************************************
 */
-# define WIN_WIDTH				1280
-# define WIN_HEIGHT				720
+# define WIN_WIDTH				1920
+# define WIN_HEIGHT				1080
 # define VER_WIDTH				54
 # define VER_HEIGHT				33
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/11 16:36:35 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/12 20:37:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 		return (but_open_door(pl, but_nb, se));
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -4))
 		*pl = *load_next(pl);
+	ft_strdel(&pl->lvl);
 	return (0);
 }
 
@@ -133,9 +134,9 @@ static void	but_init(t_new_player *pl, int *sec_arr)
 
 void		but_total(t_new_player *pl)
 {
-	int	sec_arr[MAX_BUT];
 	int	i;
-
+	int	sec_arr[MAX_BUT];
+	
 	pl->but_all = 0;
 	i = -1;
 	while (++i < pl->sectors_nb)
@@ -151,11 +152,7 @@ void		but_total(t_new_player *pl)
 		}
 	}
 	if (pl->but_all > 0)
-		if (!(pl->buttons = (t_new_but *)malloc(sizeof(t_new_but) * \
-		pl->but_all)))
-		{
-			ft_putstr_fd("Buttons malloc.\n", 2);
-			exit(EXIT_FAILURE);
-		}
+		pl->buttons = (t_new_but *)ft_my_malloc(sizeof(t_new_but) * \
+		pl->but_all);
 	but_init(pl, sec_arr);
 }

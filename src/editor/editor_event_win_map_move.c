@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:38:48 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 14:18:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:03:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
 		ft_gui_mousemotion_win_map_door(w, e, dom);
 	else
 	{
-		coord = ft_gui_map_check_mouse_vertex_pos(w, \
+		coord = ft_gui_map_check_mouse(w, \
 			w->gui.mouse_pos, dom->content);
 		if (coord.w && ft_new_editor_map_check_area(w))
 		{

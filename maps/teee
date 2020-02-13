@@ -1,0 +1,13 @@
+vertex	0	17
+vertex	1	1	7
+vertex	3	9
+vertex	4	9	10
+vertex	5	9	10
+vertex	8	9
+vertex	10	1	7	10	19
+
+sector	123	232		1	2	3	4	6	8	10	9		-1	-1	-1	2	2	-1	-1	-1
+sector	0	10		6	4	5	7	
+sector	123	232		0	12	11	6	4	3		-1	-1	-1	-1	0	0
+
+player	0	0	1	0
