@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 15:31:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 15:48:26 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,7 @@ t_vector3			ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_coord c);
 t_gui_coord			ft_gui_map_vertex_to_coord(t_wolf3d *w, t_vector3 v);
 t_gui_coord			ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, \
 						t_gui_coord c, t_gui_elem *elem);
-
+void				ft_help_check_mouse_ver(t_wolf3d *w, t_gui_coord c);
 /*
 ** **************************************************************************
 **	editor/editor_map_sector.c

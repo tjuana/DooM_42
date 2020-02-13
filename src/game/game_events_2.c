@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 20:36:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 15:22:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 	z = 0;
 	if (se->falling == 0)
 		return ;
-	pl->velocity.z -= 0.03;//0.0005;//0.015;
+	pl->velocity.z -= 0.005;//0.0005;//0.015;
 	z = pl->where.z + pl->velocity.z;
 	if (pl->velocity.z < 0 && z < pl->sectors[pl->sector].floor + op->eye_h)
 	{

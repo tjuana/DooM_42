@@ -16,7 +16,6 @@
 			"externalConsole": false,
 			"MIMode": "lldb",
 			//"preLaunchTask": "gcc build active file"
-<<<<<<< HEAD
 		},
 		{
 			"name": "debug doom_nukem with new map",
@@ -52,7 +51,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/maps/button"],
+			"args": ["${workspaceRoot}/maps/777"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
 			// "args": [],
 			"stopAtEntry": false,
@@ -89,8 +88,6 @@
 			"externalConsole": false,
 			"MIMode": "lldb",
 			"preLaunchTask": "gcc build active file"
-=======
->>>>>>> 00b98142740f0453c22b00d4d4679a4ecf58a2a2
 		}
 	]
 }

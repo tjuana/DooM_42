@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 20:36:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 14:34:25 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
 	y = pl->where.y + pl->velocity.y;
 	len = sqrt(pow(vert[i].x - x, 2) + pow(vert[i].y - y, 2));
 	len2 = sqrt(pow(vert[i + 1].x - x, 2) + pow(vert[i + 1].y - y, 2));
-	if (len < 0.1 || len2 < 0.1)
+	if (len <= 0.1777 || len2 <= 0.1777)
 	{
 		pl->velocity.x = 0;
 		pl->velocity.y = 0;
