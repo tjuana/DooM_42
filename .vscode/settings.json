@@ -19,7 +19,6 @@
 		"gui_func.h": "c",
 		"func_struct.h": "c",
 		"editor_func.h": "c",
-		"math_func.h": "c",
 		"func_func.h": "c",
 		"const.h": "c",
 		"sdl_ttf.h": "c",

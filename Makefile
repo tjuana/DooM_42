@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/14 15:38:22 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/14 15:43:39 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@
 #		func/		?
 #		game/		Function for game
 #		gui/		Function for gui-interface
-#		math/		Mathematic functions for calculations
 
 # Project name
 NAME = DooM_nuKem
@@ -71,25 +70,17 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 ALGEBRA_SRCS_DIRECTORY = $(SRCS_PATH)algebra/
 ALGEBRA_LIST = \
 algebra_camera.c \
+algebra_intersect.c \
 algebra_matrix_transform.c \
 algebra_matrix.c \
 algebra_vectors_1.c \
 algebra_vectors_2.c \
-algebra_vectors_3.c
+algebra_vectors_3.c \
+algebra_vectors_func.c
 
 ALGEBRA_OBJS_DIRECTORY = $(OBJS_PATH)
 ALGEBRA_OBJS_LIST = $(patsubst %.c, %.o, $(ALGEBRA_LIST))
 ALGEBRA_OBJS = $(addprefix $(ALGEBRA_OBJS_DIRECTORY), $(ALGEBRA_OBJS_LIST))
-
-# MATH FUNCTIONS
-MATH_SRCS_DIRECTORY = $(SRCS_PATH)math/
-MATH_LIST = \
-math_intersect.c \
-math_vectors.c
-
-MATH_OBJS_DIRECTORY = $(OBJS_PATH)
-MATH_OBJS_LIST = $(patsubst %.c, %.o, $(MATH_LIST))
-MATH_OBJS = $(addprefix $(MATH_OBJS_DIRECTORY), $(MATH_OBJS_LIST))
 
 
 
@@ -262,32 +253,13 @@ $(MAIN_OBJS) \
 $(GAME_OBJS) \
 $(EDITOR_OBJS) \
 $(ALGEBRA_OBJS) \
-$(MATH_OBJS) \
 $(GUI_OBJS) \
 $(FUNC_OBJS) \
-
-# file for game
-# GAME_OBJS_COMPILE = \
-# $(MATH_OBJS) \
-# $(ALGEBRA_OBJS) \
-# $(FUNC_OBJS) \
-# $(GUI_OBJS) \
-# $(GAME_OBJS)
-
-# # file for editor
-# EDITOR_OBJS_COMPILE = \
-# $(EDITOR_OBJS) \
-# $(GUI_OBJS) \
-# $(MATH_OBJS) \
-# $(FUNC_OBJS) \
-# $(ALGEBRA_OBJS)
 
 $(NAME): $(LIBFT) $(OBJS_COMPILE)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJS_COMPILE) -o $(GAME_NAME)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
-	# @$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS_COMPILE) -o $(EDITOR_NAME)
-	# @echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
 
 
 
@@ -308,11 +280,6 @@ $(GUI_OBJS_DIRECTORY)%.o : $(GUI_SRCS_DIRECTORY)%.c $(HEADERS)
 
 $(ALGEBRA_OBJS_DIRECTORY)%.o : $(ALGEBRA_SRCS_DIRECTORY)%.c $(HEADERS)
 	@mkdir -p $(ALGEBRA_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(C_TX_GREY).$(RESET)\c"
-
-$(MATH_OBJS_DIRECTORY)%.o : $(MATH_SRCS_DIRECTORY)%.c $(HEADERS)
-	@mkdir -p $(MATH_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(C_TX_GREY).$(RESET)\c"
 
