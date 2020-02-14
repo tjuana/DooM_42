@@ -12,36 +12,6 @@
 
 #include "doom.h"
 
-int	ft_check_segment_line_to_fov(t_new_player *pl, t_new_xy v1, t_new_xy v2)
-{
-	// if((pl->t1.y <= 0) && (pl->t2.y <= 0))
-	// 	return (0);//continue
-
-	t_vector3	vec1;
-	t_vector3	vec2;
-	t_vector3	vtx1;
-	t_vector3	vtx2;
-
-	// t_vector3	fov_vec;
-	// t_vector3	fov_vec1;
-	// t_vector3	fov_vec2;
-
-	vtx1 = (t_vector3){v1.x, v1.y, 0, 0};
-	vtx2 = (t_vector3){v2.x, v2.y, 0, 0};
-	vec1 = vtx1;
-	vec2 = vtx2;
-
-	// fov_vec = (t_vector3){pl->anglecos, pl->anglesin, 0, 0};
-	// fov_vec1 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST / 2));
-	// fov_vec2 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST / 2));
-
-	// if ((ft_vxs_vector(fov_vec1, vec1) < 0.0 && ft_vxs_vector(fov_vec2, vec1) > 0.0) &&
-	// 	(ft_vxs_vector(fov_vec1, vec2) < 0.0 && ft_vxs_vector(fov_vec2, vec2) > 0.0))
-	// 	return (0);
-
-	return (1);
-}
-
 /*
 ** **************************************************************************
 **	int engine_cross(t_new_player *pl, int sec_n, unsigned s)
@@ -122,8 +92,7 @@ int			engine_cross(t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	static void engine_ceil_floor(t_new_player *pl, int x, int *z, int neib)
-**	Function to draw ceil and floor lines and lines betwen them
+**	void engine_calcs(int x, t_new_player *pl, int operation)
 ** **************************************************************************
 */
 
@@ -137,21 +106,20 @@ void engine_calcs(int x, t_new_player *pl, int operation)
 		pl->floor.yb = (x - pl->x1) * (pl->floor.y2b - pl->floor.y1b) / (pl->x2 - pl->x1) + pl->floor.y1b;
 		pl->ceil.cyb = clamp(pl->floor.yb, pl->y_top[x], pl->y_bot[x]);// bottom
 	}
-	if (operation == 1)
+	else if (operation == 1)
 	{
 		pl->t.hei = pl->t.y < pl->ceil.cya ? pl->ceil.yceil : pl->floor.yfloor;
 		pl->t.mapz = pl->t.hei * WIN_H * V_FOV / ((WIN_H / 2 - (float)pl->t.y) - pl->yaw * WIN_H * V_FOV);
-		pl->t.mapx = pl->t.mapz * (WIN_W/2 - (float)pl->t.x) / (WIN_W * (H_FOV));
+		pl->t.mapx = pl->t.mapz * (WIN_W / 2 - (float)pl->t.x) / (WIN_W * (H_FOV));
 		pl->t.txtx1 = (unsigned int)(((pl->t.mapz * pl->anglecos + pl->t.mapx * pl->anglesin) + pl->where.x) * 256);
 		pl->t.txtz = (unsigned int)(((pl->t.mapz * pl->anglesin - pl->t.mapx * pl->anglecos) + pl->where.y) * 256);
 	}
-	if (operation == 2)
+	else if (operation == 2)
 	{
 		pl->floor.nya = (x - pl->x1) * (pl->ceil.ny2a - pl->ceil.ny1a) / (pl->x2 - pl->x1) + pl->ceil.ny1a;
 		pl->ceil.cnya = clamp(pl->floor.nya, pl->y_top[x], pl->y_bot[x]);
 		pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b) / (pl->x2 - pl->x1) + pl->floor.ny1b;
 		pl->ceil.cnyb = clamp(pl->floor.nyb, pl->y_top[x], pl->y_bot[x]);
-
 	}
 }
 
@@ -166,29 +134,34 @@ void draw_ceil_floor(int x, t_new_player *pl)
 			pl->t.y = pl->ceil.cyb;
 			continue;
 		}
+		// continue;
 		engine_calcs(x, pl, 1);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil != 20)//pl->s != 0)// && pl->s != 1)
 			pix1(pl, ROCK2);
+			// ft_put_pixel_to_surface(pl, &pl->t, ROCK2);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil == 20)//if the heigh is 20 so we draw skybox
 			pix_sky(&pl->t, pl);
+			// ft_put_pixel_to_surface(pl, &pl->t, SKY);
 		if (pl->t.y >= pl->ceil.cya)
 			pix1(pl, GREEN);
+			// ft_put_pixel_to_surface(pl, &pl->t, GREEN);
 	}
 }
 
 static void	engine_ceil_floor(t_new_player *pl, int x, int neib)
 {
 	engine_calcs(x, pl, 0);
-    draw_ceil_floor(x, pl);
-	if(neib >= 0)
+	draw_ceil_floor(x, pl);
+	if (neib >= 0)
 	{
 		engine_calcs(x, pl, 2);
-        draw_walls(x, pl, WALL_TOP, pl->n);
-		pl->y_top[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya), pl->y_top[x], WIN_H-1);   // Shrink the remaining window below these ceilings
+		draw_walls(x, pl, WALL_TOP, pl->n);
+		pl->y_top[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya), pl->y_top[x], WIN_H - 1);
 		draw_walls(x, pl, WALL_BOTT, pl->n);
-		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]); // Shrink the remaining window above these floors
+		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]);
 	}
-	else {
+	else
+	{
 		draw_walls(x, pl, WALL_FULL, pl->n);
 		draw_graffiti(x, pl, WALL_FULL, 14);
 	}

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/14 15:52:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 19:30:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData function
 {
-    //player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
-    pl->where.x = v->x;
-    pl->where.y = v->y;
-    pl->where.z = 0;
-    pl->velocity.x = 0;
-    pl->velocity.y = 0;
-    pl->velocity.z = 0;
-    pl->angle = 0;
-    pl->anglesin = 0;
-    pl->anglecos = 0;
-    pl->yaw = 0;
-    pl->sector = *n;
+	//player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
+	pl->where.x = v->x;
+	pl->where.y = v->y;
+	pl->where.z = 0;
+	pl->velocity.x = 0;
+	pl->velocity.y = 0;
+	pl->velocity.z = 0;
+	pl->angle = 0;
+	pl->anglesin = 0;
+	pl->anglecos = 0;
+	pl->yaw = 0;
+	pl->sector = *n;
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
@@ -40,24 +40,6 @@ void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData 
 	pl->lvl = NULL;
 	pl->light = 1.0f;
 	pl->pix = (int *)pl->srf->pixels;
-}
-
-void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface)
-{
-    int	*pix;
-
-	pix = (int*)surface->pixels;
-    y1 = clamp(y1, 0, WIN_H - 1);
-    y2 = clamp(y2, 0, WIN_H - 1);
-    if(y2 == y1)
-        pix[y1* WIN_W + x] = middle;
-    else if(y2 > y1)
-    {
-        pix[y1 * WIN_W + x] = top;
-        for(int y= y1 + 1; y < y2; ++y)
-            pix[y * WIN_W + x] = middle;
-        pix[y2 * WIN_W + x] = bottom;
-    }
 }
 
 void	ft_game_redraw(void *d, t_list *dom)

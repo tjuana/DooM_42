@@ -6,11 +6,19 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/14 18:20:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 18:44:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+/*
+** **************************************************************************
+**	t_scaler scalar_create(int a, int b, int c, int d, int f)
+**
+**	Function that create difficult scaler for some calculations.
+** **************************************************************************
+*/
 
 t_scaler	scalar_create(int a, int b, int c, int d, int f)
 {
@@ -25,16 +33,32 @@ t_scaler	scalar_create(int a, int b, int c, int d, int f)
     return (s);
 }
 
+/*
+** **************************************************************************
+**	int scr_nxt(t_scaler *i)
+**
+**	Function that return next pixel position.
+** **************************************************************************
+*/
+
 int			scr_nxt(t_scaler *i)
 {
-    i->cache += i->fd;
-    while (i->cache >= i->ca)
-    {
-        i->result += i->bop;
-        i->cache -= i->ca;
-    }
-    return (i->result);
+	i->cache += i->fd;
+	while (i->cache >= i->ca)
+	{
+		i->result += i->bop;
+		i->cache -= i->ca;
+	}
+	return (i->result);
 }
+
+/*
+** **************************************************************************
+**	static void draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
+**
+**	Function that calculate draw limits for walls.
+** **************************************************************************
+*/
 
 static void draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 {
@@ -58,6 +82,14 @@ static void draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 	pl->y1 = clamp(pl->y1, 0, WIN_H-1);
 	pl->y2 = clamp(pl->y2, 0, WIN_H-1);
 }
+
+/*
+** **************************************************************************
+**	void draw_walls(int x, t_new_player *pl, int wall_type, int img)
+**
+**	Function that draw walls.
+** **************************************************************************
+*/
 
 void draw_walls(int x, t_new_player *pl, int wall_type, int img)
 {

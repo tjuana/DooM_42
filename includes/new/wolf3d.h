@@ -112,7 +112,6 @@ int			motion_chk_sec(t_new_sector *sect, t_new_xy *delt, \
 			int i, t_new_player *pl);
 
 /*			sdl_addons.c			*/
-SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
 void		ft_sdl_error();
 
 
@@ -139,9 +138,6 @@ t_new_texture	texture_parse(char *fp);
 
 /*			vector_3.c			*/
 float			ft_vec2_cos(t_vector3 vec1, t_vector3 vec2);
-
-// void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
-void			vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
 
 int				events(t_new_sub_ev *se, t_new_player *pl);
 void			ft_game_events(t_new_temp *data);
@@ -172,11 +168,10 @@ void			draw_pistol(t_gun *wpn, t_new_player *pl);
 void			draw_walls(int x, t_new_player *pl, int wall, int img);
 t_scaler		scalar_create(int a, int b, int c, int d, int f);
 int				scr_nxt(t_scaler *i);
-int			color_transoform(int color, float percent);
+int			ft_hex_transform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
 void		pix1(t_new_player *pl, int img);
 void        load_imgs(SDL_Surface *img[10]);//load images
-void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n);
 void    draw_ceil_floor(int x, t_new_player *pl);
 
 // sky
@@ -192,6 +187,8 @@ void		ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
 
 int		ft_rgb_to_hex(int r, int g, int b);
 int		ft_color_struct_to_hex(t_new_color color);
-int		color_transoform(int color, float percent);
+int		ft_hex_transform(int color, float percent);
+
+void	ft_put_pixel_to_surface(t_new_player *pl, int x, int y, int img, float light);
 
 #endif

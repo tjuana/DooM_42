@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 17:53:48 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/14 18:28:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 18:41:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		draw_gun(t_new_player *pl, int width, int height, int n)
 			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w ;
 			g.hex = ft_color_struct_to_hex(pl->tex[n].pixels[g.p]);
 			if (pl->tex[n].pixels[g.p].a != 0)
-				pl->pix[height * WIN_W + g.x_img] = color_transoform(g.hex, pl->light);
+				pl->pix[height * WIN_W + g.x_img] = ft_hex_transform(g.hex, pl->light);
 			g.x_img++;
 		}
 		g.y_num += 1;

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:20:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/14 18:35:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 18:41:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_color_struct_to_hex(t_new_color color)
 	return (ft_rgb_to_hex(color.r, color.g, color.b));
 }
 
-int		color_transoform(int color, float percent)
+int		ft_hex_transform(int color, float percent)
 {
 	t_new_color	rgb;
 
