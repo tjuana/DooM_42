@@ -1,6 +1,15 @@
-//
-// Created by Nymphadora Shelly on 13/01/2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_gun.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/13 17:53:48 by nshelly           #+#    #+#             */
+/*   Updated: 2020/02/14 18:28:09 by dorange-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "doom.h"
 
 static void		draw_gun(t_new_player *pl, int width, int height, int n)
@@ -17,13 +26,12 @@ static void		draw_gun(t_new_player *pl, int width, int height, int n)
 		g.x_img = width - 200;
 		while (g.x < pl->tex[n].w - 1 && g.x_img < WIN_W)
 		{
-			g.x_num += 0.8;//width of the gun and hand
+			g.x_num += 0.8; //width of the gun and hand
 			g.x = (int)g.x_num;
-			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w ;//formula = y*w + x
-			g.hex = hexcolor(pl->tex[n].pixels[g.p].r, pl->tex[n].pixels[g.p].g, pl->tex[n].pixels[g.p].b);
+			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w ;
+			g.hex = ft_color_struct_to_hex(pl->tex[n].pixels[g.p]);
 			if (pl->tex[n].pixels[g.p].a != 0)
-				pl->pix[height * WIN_W + g.x_img] =
-						color_transoform(g.hex, pl->light);
+				pl->pix[height * WIN_W + g.x_img] = color_transoform(g.hex, pl->light);
 			g.x_img++;
 		}
 		g.y_num += 1;

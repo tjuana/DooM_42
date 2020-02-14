@@ -174,7 +174,7 @@ t_scaler		scalar_create(int a, int b, int c, int d, int f);
 int				scr_nxt(t_scaler *i);
 int			color_transoform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
-void		pix1(t_new_player *pl, int image);
+void		pix1(t_new_player *pl, int img);
 void        load_imgs(SDL_Surface *img[10]);//load images
 void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n);
 void    draw_ceil_floor(int x, t_new_player *pl);
@@ -184,7 +184,14 @@ int			load_sky(t_new_player * pl);
 void		pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
-int				hexcolor( int r, int g, int b);
+int				ft_rgb_to_hex( int r, int g, int b);
 void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
+
+void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
+void		ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
+
+int		ft_rgb_to_hex(int r, int g, int b);
+int		ft_color_struct_to_hex(t_new_color color);
+int		color_transoform(int color, float percent);
 
 #endif

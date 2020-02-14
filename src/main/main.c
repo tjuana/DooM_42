@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 16:20:04 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 17:33:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ void	ft_main(int c, char **v)
 	ft_game_init(&w, v[1]);
 	ft_gui_redraw(&w);
 	data.pl.tex = load_textures(&data.pl);
+	fpsinit();
 	while (w.sdl->running)
+	{
 		ft_main_events(&w);
+		fpsthink();
+	}
 	ft_editor_desctuct(&w);
 }
 

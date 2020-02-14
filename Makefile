@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/14 17:26:34 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/14 18:29:49 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -205,10 +205,10 @@ game_math_functions.c \
 game_motion.c\
 game_motion_2.c\
 game_sdl_addons.c \
-game_skybox.c \
 game_texture_parser.c \
 game_textures.c \
-game_walls.c
+game_walls.c \
+game_color.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

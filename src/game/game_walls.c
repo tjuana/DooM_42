@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 15:26:17 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 18:20:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ int			scr_nxt(t_scaler *i)
     return (i->result);
 }
 
-int hexcolor( int r, int g, int b)
-{
-	return ((r<<16) | (g<<8) | b);
-}
-
-
 static void draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 {
 	if(wall_type == 0)
@@ -67,58 +61,27 @@ static void draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 
 void draw_walls(int x, t_new_player *pl, int wall_type, int img)
 {
-    unsigned	txty;
-    int 		hex;
-    unsigned int 		p;
-
 	draw_limits_for_walls(wall_type, pl, img);
-    if(pl->y2 >= pl->y1)
-    {
-        while (pl->y <= pl->y2)
-        {
-        	++pl->y;
-            txty = scr_nxt(&pl->ty);
-			p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);
-            hex = color_transoform(hexcolor(pl->tex[img].pixels[p].r, pl->tex[img].pixels[p].g, pl->tex[img].pixels[p].b), pl->light);
-            if (pl->tex[img].pixels[p].a == 0)
-			{
-				p = (pl->y%pl->tex[SKY].h) * pl->tex[SKY].w + x%pl->tex[SKY].w ;
-				hex = hexcolor(pl->tex[SKY].pixels[p].r, pl->tex[SKY].pixels[p].g, pl->tex[SKY].pixels[p].b);
-			}
-            pl->pix[pl->y * WIN_W + x] = hex;
-        }
-    }
-}
-
-void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
-{
-	unsigned	txty;
-	unsigned int 		p;
-	int hex;
-
-
-	draw_limits_for_walls(wall_type, pl, img);
-
-	if(pl->y2 >= pl->y1)
-	{
-		while (pl->y <= pl->y2)
-		{
-			++pl->y;
-			txty = -(scr_nxt(&pl->ty) + 220);
-			p = (txty % (pl->tex[img].h)) * pl->tex[img].w + (pl->txtx % (pl->tex[img].w));
-			hex = color_transoform(hexcolor(pl->tex[img].pixels[p].r, pl->tex[img].pixels[p].g, pl->tex[img].pixels[p].b), pl->light);
-			if (hex >= 16000000)
-			{
-				pl->tex[img].pixels[p].a = 0;
-				//printf("%d\n", pl->light);
-			}
-			if (pl->tex[img].pixels[p].a != 0)
-				pl->pix[pl->y * WIN_W + x] = hex;
-		}
-	}
+	if (pl->y2 >= pl->y1)
+		while (pl->y++ <= pl->y2)
+			ft_draw_walls_put_pixel_to_surface(x, pl, img);
 }
 
 /*
- * draw_graffiti, we just draw over an already drawn wall, so we can draw in every wall we want,
- * with this logic we also can draw on floors and ceilings
- */
+** **************************************************************************
+**	void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+**
+**	>
+**	draw_graffiti, we just draw over an already drawn wall, so we can draw
+**	in every wall we want, with this logic we also can draw on floors
+**	and ceilings.
+** **************************************************************************
+*/
+
+void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+{
+	draw_limits_for_walls(wall_type, pl, img);
+	if (pl->y2 >= pl->y1)
+		while (pl->y++ <= pl->y2)
+			ft_draw_graffiti_put_pixel_to_surface(x, pl, img);
+}
