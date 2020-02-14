@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 20:35:24 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/14 14:49:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, \
 	0, &sdl->win, &sdl->renderer) < 0)
 		ft_sdl_error(sdl);
-	if (!(sdl->srf = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, 32, 0, 0, 0, 0)))
+	if (!(sdl->srf = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, \
+		32, 0, 0, 0, 0)))
 		ft_sdl_error(sdl);
 	if (!(sdl->text = SDL_CreateTexture(sdl->renderer, \
 		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, \

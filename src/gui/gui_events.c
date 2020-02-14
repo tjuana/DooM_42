@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 19:32:48 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:51:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,31 @@ void	ft_gui_events_mouse(t_wolf3d *w, SDL_Event *e)
 		ft_gui_mousemotion(w, *e, w->gui.dom);
 }
 
+void	ft_gui_events_keydown(t_wolf3d *w, SDL_Event *e)
+{
+	if (e->type == SDL_KEYDOWN)
+	{
+		if (w->gui.mode == GUI_MD_ME)
+		{
+			(e->key.keysym.scancode == SDL_SCANCODE_S) ? \
+				ft_gui_mousebuttonup_win_menu_btnsector(w, *e, \
+				w->gui.dom, 0) : 0;
+			ft_gui_redraw(w);
+		}
+		else if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
+		{
+			(e->key.keysym.scancode == SDL_SCANCODE_SPACE) ? \
+				ft_gui_mousebuttonup_win_setsector_btnsavemap(w, *e, \
+				w->gui.dom, 0) : 0;
+			ft_gui_redraw(w);
+		}
+		(e->key.keysym.scancode == SDL_SCANCODE_ESCAPE) ? \
+			w->sdl->running = 0 : 0;
+		if (w->gui.focus_elem != NULL)
+			ft_gui_focus_keydown(w, *e, w->gui.focus_elem);
+	}
+}
+
 /*
 ** **************************************************************************
 **	void ft_gui_events(t_wolf3d *w)
@@ -50,25 +75,7 @@ void	ft_gui_events(t_wolf3d *w)
 	while (SDL_PollEvent(&e))
 	{
 		e.type == SDL_QUIT ? w->sdl->running = 0 : 0;
-		if (e.type == SDL_KEYDOWN)
-		{
-			if (w->gui.mode == GUI_MD_ME)
-			{
-				(e.key.keysym.scancode == SDL_SCANCODE_S) ? \
-					ft_gui_mousebuttonup_win_menu_btnsector(w, e, w->gui.dom, 0) : 0;
-				ft_gui_redraw(w);
-			}
-			else if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
-			{
-				(e.key.keysym.scancode == SDL_SCANCODE_SPACE) ? \
-					ft_gui_mousebuttonup_win_setsector_btnsavemap(w, e, w->gui.dom, 0) : 0;
-				ft_gui_redraw(w);
-			}
-			(e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) ? \
-				w->sdl->running = 0 : 0;
-			if (w->gui.focus_elem != NULL)
-				ft_gui_focus_keydown(w, e, w->gui.focus_elem);
-		}
+		ft_gui_events_keydown(w, &e);
 		ft_gui_events_mouse(w, &e);
 	}
 	if (w->gui.search_elem == GUI_EVENT_ON || \
