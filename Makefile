@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/14 15:43:39 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/14 17:26:34 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -192,7 +192,7 @@ game_but_detect.c \
 game_door.c \
 game_door_detect.c \
 game_engine.c \
-game_engine_exp.c \
+game_engine_2.c \
 game_events_1.c \
 game_events_2.c \
 game_gun.c \
@@ -200,9 +200,10 @@ game_load_file.c \
 game_load_textures.c \
 game_main.c \
 game_map_parse.c \
-game_map_parse2.c \
+game_map_parse_2.c \
 game_math_functions.c \
-game_motion.c \
+game_motion.c\
+game_motion_2.c\
 game_sdl_addons.c \
 game_skybox.c \
 game_texture_parser.c \

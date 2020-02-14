@@ -103,8 +103,13 @@ float		Yaw(float y, float z, t_new_player *player);
 float		to_deg(float radians);
 
 /*			motion.c			*/
-void		motion_chk(t_new_sect_ops *op, t_new_player *player, t_new_others *ot, t_new_sub_ev *se);
+void		motion_chk(t_new_sect_ops *op, t_new_player *player, \
+			t_new_others *ot, t_new_sub_ev *se);
 void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
+
+/*			motion2.c			*/
+int			motion_chk_sec(t_new_sector *sect, t_new_xy *delt, \
+			int i, t_new_player *pl);
 
 /*			sdl_addons.c			*/
 SDL_Rect	*ft_create_rect(int w, int h, int x, int y);

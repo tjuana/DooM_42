@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_load_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 20:57:00 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/14 17:26:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,20 @@ t_new_player	*load_next(t_new_player *pl)
 	pl_next->tex = pl->tex;
 	pl_next->textures_nb = 15;
 	pl_next->sectors_nb = 0;
+	pl_next->lvl = pl->lvl;
+	pl_next->win = pl->win;
+	pl->srf ? SDL_FreeSurface(pl->srf) : 0;
+	pl->srf = NULL;
+	pl_next->srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
+	!pl_next->srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 	ft_my_parse_map(pl_next, pl->lvl);
+	
 
+	//free(pl);
 	pl = NULL;
 	pl = pl_next;
-	free(pl_next);
-	// 
-	// pl_next->lvl = pl->lvl;
-	// pl_next->win = pl->win;
-	// pl->srf ? SDL_FreeSurface(pl->srf) : 0;
-	// pl->srf = NULL;
-	// // free(pl);
-	// pl = NULL;
-	// pl = pl_next;
-	// pl->srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
-	// !pl->srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	// pl->rend = SDL_GetRenderer(pl->win);
-	// !pl->rend ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 
-
+	pl->rend = SDL_GetRenderer(pl->win);
+	!pl->rend ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 	return (pl);
 }

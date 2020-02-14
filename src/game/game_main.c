@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 20:38:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/14 15:52:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,40 +111,35 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	//data->pl.srf = w->sdl->srf;??
 }
 
+/*
+** **************************************************************************
+**	void ft_game_gui_init_menu(t_list *head)
+**	Function that init gui elements for hud.
+** **************************************************************************
+*/
+
 void	ft_game_gui_init_menu(t_list *head)
 {
 	t_gui_elem	*elem;
 
 	elem = head->content;
-
 	ft_gui_elem_init(&elem->child, "win_game_hud_live", \
-		(t_gui_coord){118, 18, 0}, \
-	 	(t_gui_coord){144, 44, 0});
-	// ft_gui_elem_init(&elem->child, "win_hud_live", (t_gui_coord){116, 16, 0}, \
-	//  	(t_gui_coord){516, 416, 0});
+		(t_gui_coord){118, 18, 0}, (t_gui_coord){144, 44, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_image(elem->child, "img/like.png");
 	ft_gui_elem_set_parent(head, elem->child);
-
 	ft_gui_elem_init(&elem->child, "win_game_hud_livescount", \
-		(t_gui_coord){150, 10, 0}, \
-		(t_gui_coord){254, 50, 0});
+		(t_gui_coord){150, 10, 0}, (t_gui_coord){254, 50, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "100", 16);
 	ft_gui_elem_set_parent(head, elem->child);
-
 	ft_gui_elem_init(&elem->child, "win_game_hud_pistol", \
-		(t_gui_coord){216, 16, 0}, \
-	 	(t_gui_coord){248, 48, 0});
-	// ft_gui_elem_init(&elem->child, "win_hud_live", (t_gui_coord){116, 16, 0}, \
-	//  	(t_gui_coord){516, 416, 0});
+		(t_gui_coord){216, 16, 0}, (t_gui_coord){248, 48, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_image(elem->child, "img/pistol.png");
 	ft_gui_elem_set_parent(head, elem->child);
-
 	ft_gui_elem_init(&elem->child, "win_game_hud_pistolcount", \
-		(t_gui_coord){250, 10, 0}, \
-		(t_gui_coord){354, 50, 0});
+		(t_gui_coord){250, 10, 0}, (t_gui_coord){354, 50, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "100", 16);
 	ft_gui_elem_set_parent(head, elem->child);
