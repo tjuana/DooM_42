@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/13 19:03:17 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/14 15:38:22 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,9 +70,12 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 # ALGEBRA FUNCTIONS
 ALGEBRA_SRCS_DIRECTORY = $(SRCS_PATH)algebra/
 ALGEBRA_LIST = \
+algebra_camera.c \
+algebra_matrix_transform.c \
 algebra_matrix.c \
 algebra_vectors_1.c \
-algebra_vectors_2.c
+algebra_vectors_2.c \
+algebra_vectors_3.c
 
 ALGEBRA_OBJS_DIRECTORY = $(OBJS_PATH)
 ALGEBRA_OBJS_LIST = $(patsubst %.c, %.o, $(ALGEBRA_LIST))
@@ -213,9 +216,6 @@ game_sdl_addons.c \
 game_skybox.c \
 game_texture_parser.c \
 game_textures.c \
-game_vectors_1.c \
-game_vectors_2.c \
-game_vectors_3.c \
 game_walls.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)

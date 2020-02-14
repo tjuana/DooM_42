@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:24:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:09:27 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	door_bool(int dist, float degree)
 ** **************************************************************************
 */
 
-static int	door_vert_find(t_new_player *pl, t_new_vector3 *vec, int s_nb)
+static int	door_vert_find(t_new_player *pl, t_vector3 *vec, int s_nb)
 {
 	int	dist;
 	int	tmp_dist;
@@ -73,24 +73,24 @@ static int	door_vert_find(t_new_player *pl, t_new_vector3 *vec, int s_nb)
 
 /*
 ** **************************************************************************
-**	static int door_dist(t_new_vector3 vec1, t_new_vector3 vec2)
+**	static int door_dist(t_vector3 vec1, t_vector3 vec2)
 **	Function to define distance to door
 ** **************************************************************************
 */
 
 static int	door_dist(t_new_player *pl, int s_nb)
 {
-	t_new_vector3	vec;
-	t_new_vector3	vec2;
+	t_vector3	vec;
+	t_vector3	vec2;
 	int				tmp_dist;
 
 	tmp_dist = 6;
 	tmp_dist = door_vert_find(pl, &vec, s_nb);
 	vec2.x = pl->anglecos;
 	vec2.y = pl->anglesin;
-	vec = ft_new_vec3_normalize(vec);
-	vec2 = ft_new_vec3_normalize(vec2);
-	if (door_bool(tmp_dist, to_deg(acos(vec2_cos(vec, vec2)))) == -1)
+	vec = ft_vec3_normalize(vec);
+	vec2 = ft_vec3_normalize(vec2);
+	if (door_bool(tmp_dist, to_deg(acos(ft_vec2_cos(vec, vec2)))) == -1)
 		return (6);
 	return (tmp_dist);
 }

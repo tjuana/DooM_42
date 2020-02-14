@@ -119,21 +119,21 @@ t_new_texture	texture_parse(char *fp);
 
 
 /*			vector_1.c			*/
-t_new_vector3	ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest);
-float			ft_new_vec3_magnitude(t_new_vector3 this);
-t_new_vector3	ft_new_vec3_add(t_new_vector3 this, t_new_vector3 rhs);
-t_new_vector3	ft_new_vec3_sub(t_new_vector3 this, t_new_vector3 rhs);
-t_new_vector3	ft_new_vec3_cross_product(t_new_vector3 this, t_new_vector3 rhs);
+// t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
+// float			ft_vec3_magnitude(t_vector3 this);
+// t_vector3	ft_vec3_add(t_vector3 this, t_vector3 rhs);
+// t_vector3	ft_vec3_sub(t_vector3 this, t_vector3 rhs);
+// t_vector3	ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
 
-/*			vector_2.c			*/
-float			ft_new_vec3_dot_product(t_new_vector3 this, t_new_vector3 rhs);
-float			ft_new_vec3_cosinus(t_new_vector3 this, t_new_vector3 rhs);
-t_new_vector3	ft_new_vec3_opposite(t_new_vector3 this);
-t_new_vector3	ft_new_vec3_scalar_product(t_new_vector3 this, float k);
-t_new_vector3	ft_new_vec3_normalize(t_new_vector3 vtc);
+// /*			vector_2.c			*/
+// float			ft_vec3_dot_product(t_vector3 this, t_vector3 rhs);
+// float			ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
+// t_vector3	ft_vec3_opposite(t_vector3 this);
+// t_vector3	ft_vec3_scalar_product(t_vector3 this, float k);
+// t_vector3	ft_vec3_normalize(t_vector3 vtc);
 
 /*			vector_3.c			*/
-float			vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2);
+float			ft_vec2_cos(t_vector3 vec1, t_vector3 vec2);
 
 // void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
 void			vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
