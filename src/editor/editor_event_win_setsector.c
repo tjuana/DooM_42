@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:17:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 18:11:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:26:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, \
 	t_sector	*s;
 
 	w = (t_wolf3d*)data;
+	s = w->sector->content;
+	if (s->status != SECTOR_STATUS_POLYGON && s->status != SECTOR_STATUS_READY)
+		return ;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_sctr"), \
 		GUI_ELEM_HIDDEN);
@@ -28,13 +31,10 @@ void	ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, \
 		GUI_ELEM_VISIBLE);
 	w->gui.mode = GUI_MD_ME;
 	w->sector_status = 0;
-	s = w->sector->content;
-	s->height = ft_atoi(\
-		ft_gui_elem_get_value(\
+	s->height = ft_atoi(ft_gui_elem_get_value(\
 		ft_gui_search_elem_by_name(w->gui.dom, \
 			"win_me_sctr_inputh")));
-	s->floor = ft_atoi(\
-		ft_gui_elem_get_value(\
+	s->floor = ft_atoi(ft_gui_elem_get_value(\
 		ft_gui_search_elem_by_name(w->gui.dom, \
 			"win_me_sctr_inputf")));
 	ft_map_set_new_sector(w, s);
