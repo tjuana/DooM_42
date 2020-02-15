@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:44:06 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	door_init(t_new_player *pl, int *sec_arr)
 	while (++i < pl->door_all)
 	{
 		pl->doors[i].s_nb = sec_arr[i];
-		pl->doors[i].spd = 0.1;
+		pl->doors[i].spd = 0.5;
 		pl->doors[i].max_d = 20;
 		pl->doors[i].min_d = 0;
 		pl->doors[i].state = 0;
@@ -41,7 +41,7 @@ static void	door_init(t_new_player *pl, int *sec_arr)
 ** **************************************************************************
 */
 
-static void	door_total(t_new_player *pl)
+void		door_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_DOORS];
@@ -61,8 +61,8 @@ static void	door_total(t_new_player *pl)
 		}
 	}
 	if (pl->door_all > 0)
-		if (!(pl->doors = (t_new_door *)malloc(sizeof(t_new_door) * pl->door_all)))
-			exit(EXIT_FAILURE);
+		pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * \
+		pl->door_all);
 	door_init(pl, sec_arr);
 }
 
@@ -115,7 +115,7 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 
 	d_nb = pl->door_nb;
 	d_sec_nb = 0;
-	if ((pl->door_all < 1) || (d_nb > pl->door_all))
+	if (pl->door_all < 1 || (d_nb > pl->door_all) || d_nb < 0)
 		return ;
 	d_sec_nb = pl->doors[d_nb].s_nb;
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \

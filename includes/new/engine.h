@@ -27,6 +27,8 @@ typedef struct s_new_sect_ops
 {
 	const t_new_sector	*sect;
     const t_new_xy		*vert;
+    t_new_xy 			p;
+    t_new_xy			d;
     float			px;
     float			dx;
     float			py;

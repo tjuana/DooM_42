@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/nshelly/CLionProjects/doom42
+CMAKE_SOURCE_DIR = /Users/nshelly/CLionProjects/free
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/nshelly/CLionProjects/doom42/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/nshelly/CLionProjects/free/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles /Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles /Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nshelly/CLionProjects/doom42/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named doom42
+# Target rules for targets named free
 
 # Build rule for target.
-doom42: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 doom42
-.PHONY : doom42
+free: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 free
+.PHONY : free
 
 # fast build rule for target.
-doom42/fast:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/build
-.PHONY : doom42/fast
+free/fast:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/build
+.PHONY : free/fast
 
 src/algebra/algebra_matrix.o: src/algebra/algebra_matrix.c.o
 
@@ -129,7 +129,7 @@ src/algebra/algebra_matrix.o: src/algebra/algebra_matrix.c.o
 
 # target to build an object file
 src/algebra/algebra_matrix.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_matrix.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_matrix.c.o
 .PHONY : src/algebra/algebra_matrix.c.o
 
 src/algebra/algebra_matrix.i: src/algebra/algebra_matrix.c.i
@@ -138,7 +138,7 @@ src/algebra/algebra_matrix.i: src/algebra/algebra_matrix.c.i
 
 # target to preprocess a source file
 src/algebra/algebra_matrix.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_matrix.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_matrix.c.i
 .PHONY : src/algebra/algebra_matrix.c.i
 
 src/algebra/algebra_matrix.s: src/algebra/algebra_matrix.c.s
@@ -147,7 +147,7 @@ src/algebra/algebra_matrix.s: src/algebra/algebra_matrix.c.s
 
 # target to generate assembly for a file
 src/algebra/algebra_matrix.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_matrix.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_matrix.c.s
 .PHONY : src/algebra/algebra_matrix.c.s
 
 src/algebra/algebra_vectors_1.o: src/algebra/algebra_vectors_1.c.o
@@ -156,7 +156,7 @@ src/algebra/algebra_vectors_1.o: src/algebra/algebra_vectors_1.c.o
 
 # target to build an object file
 src/algebra/algebra_vectors_1.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_vectors_1.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_vectors_1.c.o
 .PHONY : src/algebra/algebra_vectors_1.c.o
 
 src/algebra/algebra_vectors_1.i: src/algebra/algebra_vectors_1.c.i
@@ -165,7 +165,7 @@ src/algebra/algebra_vectors_1.i: src/algebra/algebra_vectors_1.c.i
 
 # target to preprocess a source file
 src/algebra/algebra_vectors_1.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_vectors_1.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_vectors_1.c.i
 .PHONY : src/algebra/algebra_vectors_1.c.i
 
 src/algebra/algebra_vectors_1.s: src/algebra/algebra_vectors_1.c.s
@@ -174,7 +174,7 @@ src/algebra/algebra_vectors_1.s: src/algebra/algebra_vectors_1.c.s
 
 # target to generate assembly for a file
 src/algebra/algebra_vectors_1.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_vectors_1.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_vectors_1.c.s
 .PHONY : src/algebra/algebra_vectors_1.c.s
 
 src/algebra/algebra_vectors_2.o: src/algebra/algebra_vectors_2.c.o
@@ -183,7 +183,7 @@ src/algebra/algebra_vectors_2.o: src/algebra/algebra_vectors_2.c.o
 
 # target to build an object file
 src/algebra/algebra_vectors_2.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_vectors_2.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_vectors_2.c.o
 .PHONY : src/algebra/algebra_vectors_2.c.o
 
 src/algebra/algebra_vectors_2.i: src/algebra/algebra_vectors_2.c.i
@@ -192,7 +192,7 @@ src/algebra/algebra_vectors_2.i: src/algebra/algebra_vectors_2.c.i
 
 # target to preprocess a source file
 src/algebra/algebra_vectors_2.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_vectors_2.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_vectors_2.c.i
 .PHONY : src/algebra/algebra_vectors_2.c.i
 
 src/algebra/algebra_vectors_2.s: src/algebra/algebra_vectors_2.c.s
@@ -201,35 +201,8 @@ src/algebra/algebra_vectors_2.s: src/algebra/algebra_vectors_2.c.s
 
 # target to generate assembly for a file
 src/algebra/algebra_vectors_2.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/algebra/algebra_vectors_2.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/algebra/algebra_vectors_2.c.s
 .PHONY : src/algebra/algebra_vectors_2.c.s
-
-src/editor/editor_debug.o: src/editor/editor_debug.c.o
-
-.PHONY : src/editor/editor_debug.o
-
-# target to build an object file
-src/editor/editor_debug.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_debug.c.o
-.PHONY : src/editor/editor_debug.c.o
-
-src/editor/editor_debug.i: src/editor/editor_debug.c.i
-
-.PHONY : src/editor/editor_debug.i
-
-# target to preprocess a source file
-src/editor/editor_debug.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_debug.c.i
-.PHONY : src/editor/editor_debug.c.i
-
-src/editor/editor_debug.s: src/editor/editor_debug.c.s
-
-.PHONY : src/editor/editor_debug.s
-
-# target to generate assembly for a file
-src/editor/editor_debug.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_debug.c.s
-.PHONY : src/editor/editor_debug.c.s
 
 src/editor/editor_desctuct.o: src/editor/editor_desctuct.c.o
 
@@ -237,7 +210,7 @@ src/editor/editor_desctuct.o: src/editor/editor_desctuct.c.o
 
 # target to build an object file
 src/editor/editor_desctuct.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_desctuct.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_desctuct.c.o
 .PHONY : src/editor/editor_desctuct.c.o
 
 src/editor/editor_desctuct.i: src/editor/editor_desctuct.c.i
@@ -246,7 +219,7 @@ src/editor/editor_desctuct.i: src/editor/editor_desctuct.c.i
 
 # target to preprocess a source file
 src/editor/editor_desctuct.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_desctuct.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_desctuct.c.i
 .PHONY : src/editor/editor_desctuct.c.i
 
 src/editor/editor_desctuct.s: src/editor/editor_desctuct.c.s
@@ -255,7 +228,7 @@ src/editor/editor_desctuct.s: src/editor/editor_desctuct.c.s
 
 # target to generate assembly for a file
 src/editor/editor_desctuct.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_desctuct.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_desctuct.c.s
 .PHONY : src/editor/editor_desctuct.c.s
 
 src/editor/editor_draw_map.o: src/editor/editor_draw_map.c.o
@@ -264,7 +237,7 @@ src/editor/editor_draw_map.o: src/editor/editor_draw_map.c.o
 
 # target to build an object file
 src/editor/editor_draw_map.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map.c.o
 .PHONY : src/editor/editor_draw_map.c.o
 
 src/editor/editor_draw_map.i: src/editor/editor_draw_map.c.i
@@ -273,7 +246,7 @@ src/editor/editor_draw_map.i: src/editor/editor_draw_map.c.i
 
 # target to preprocess a source file
 src/editor/editor_draw_map.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map.c.i
 .PHONY : src/editor/editor_draw_map.c.i
 
 src/editor/editor_draw_map.s: src/editor/editor_draw_map.c.s
@@ -282,7 +255,7 @@ src/editor/editor_draw_map.s: src/editor/editor_draw_map.c.s
 
 # target to generate assembly for a file
 src/editor/editor_draw_map.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map.c.s
 .PHONY : src/editor/editor_draw_map.c.s
 
 src/editor/editor_draw_map_door.o: src/editor/editor_draw_map_door.c.o
@@ -291,7 +264,7 @@ src/editor/editor_draw_map_door.o: src/editor/editor_draw_map_door.c.o
 
 # target to build an object file
 src/editor/editor_draw_map_door.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_door.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_door.c.o
 .PHONY : src/editor/editor_draw_map_door.c.o
 
 src/editor/editor_draw_map_door.i: src/editor/editor_draw_map_door.c.i
@@ -300,7 +273,7 @@ src/editor/editor_draw_map_door.i: src/editor/editor_draw_map_door.c.i
 
 # target to preprocess a source file
 src/editor/editor_draw_map_door.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_door.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_door.c.i
 .PHONY : src/editor/editor_draw_map_door.c.i
 
 src/editor/editor_draw_map_door.s: src/editor/editor_draw_map_door.c.s
@@ -309,7 +282,7 @@ src/editor/editor_draw_map_door.s: src/editor/editor_draw_map_door.c.s
 
 # target to generate assembly for a file
 src/editor/editor_draw_map_door.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_door.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_door.c.s
 .PHONY : src/editor/editor_draw_map_door.c.s
 
 src/editor/editor_draw_map_grid.o: src/editor/editor_draw_map_grid.c.o
@@ -318,7 +291,7 @@ src/editor/editor_draw_map_grid.o: src/editor/editor_draw_map_grid.c.o
 
 # target to build an object file
 src/editor/editor_draw_map_grid.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_grid.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_grid.c.o
 .PHONY : src/editor/editor_draw_map_grid.c.o
 
 src/editor/editor_draw_map_grid.i: src/editor/editor_draw_map_grid.c.i
@@ -327,7 +300,7 @@ src/editor/editor_draw_map_grid.i: src/editor/editor_draw_map_grid.c.i
 
 # target to preprocess a source file
 src/editor/editor_draw_map_grid.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_grid.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_grid.c.i
 .PHONY : src/editor/editor_draw_map_grid.c.i
 
 src/editor/editor_draw_map_grid.s: src/editor/editor_draw_map_grid.c.s
@@ -336,7 +309,7 @@ src/editor/editor_draw_map_grid.s: src/editor/editor_draw_map_grid.c.s
 
 # target to generate assembly for a file
 src/editor/editor_draw_map_grid.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_grid.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_grid.c.s
 .PHONY : src/editor/editor_draw_map_grid.c.s
 
 src/editor/editor_draw_map_objects.o: src/editor/editor_draw_map_objects.c.o
@@ -345,7 +318,7 @@ src/editor/editor_draw_map_objects.o: src/editor/editor_draw_map_objects.c.o
 
 # target to build an object file
 src/editor/editor_draw_map_objects.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_objects.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_objects.c.o
 .PHONY : src/editor/editor_draw_map_objects.c.o
 
 src/editor/editor_draw_map_objects.i: src/editor/editor_draw_map_objects.c.i
@@ -354,7 +327,7 @@ src/editor/editor_draw_map_objects.i: src/editor/editor_draw_map_objects.c.i
 
 # target to preprocess a source file
 src/editor/editor_draw_map_objects.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_objects.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_objects.c.i
 .PHONY : src/editor/editor_draw_map_objects.c.i
 
 src/editor/editor_draw_map_objects.s: src/editor/editor_draw_map_objects.c.s
@@ -363,7 +336,7 @@ src/editor/editor_draw_map_objects.s: src/editor/editor_draw_map_objects.c.s
 
 # target to generate assembly for a file
 src/editor/editor_draw_map_objects.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_objects.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_objects.c.s
 .PHONY : src/editor/editor_draw_map_objects.c.s
 
 src/editor/editor_draw_map_sector.o: src/editor/editor_draw_map_sector.c.o
@@ -372,7 +345,7 @@ src/editor/editor_draw_map_sector.o: src/editor/editor_draw_map_sector.c.o
 
 # target to build an object file
 src/editor/editor_draw_map_sector.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_sector.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_sector.c.o
 .PHONY : src/editor/editor_draw_map_sector.c.o
 
 src/editor/editor_draw_map_sector.i: src/editor/editor_draw_map_sector.c.i
@@ -381,7 +354,7 @@ src/editor/editor_draw_map_sector.i: src/editor/editor_draw_map_sector.c.i
 
 # target to preprocess a source file
 src/editor/editor_draw_map_sector.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_sector.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_sector.c.i
 .PHONY : src/editor/editor_draw_map_sector.c.i
 
 src/editor/editor_draw_map_sector.s: src/editor/editor_draw_map_sector.c.s
@@ -390,7 +363,7 @@ src/editor/editor_draw_map_sector.s: src/editor/editor_draw_map_sector.c.s
 
 # target to generate assembly for a file
 src/editor/editor_draw_map_sector.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_sector.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_sector.c.s
 .PHONY : src/editor/editor_draw_map_sector.c.s
 
 src/editor/editor_draw_map_vertex.o: src/editor/editor_draw_map_vertex.c.o
@@ -399,7 +372,7 @@ src/editor/editor_draw_map_vertex.o: src/editor/editor_draw_map_vertex.c.o
 
 # target to build an object file
 src/editor/editor_draw_map_vertex.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_vertex.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_vertex.c.o
 .PHONY : src/editor/editor_draw_map_vertex.c.o
 
 src/editor/editor_draw_map_vertex.i: src/editor/editor_draw_map_vertex.c.i
@@ -408,7 +381,7 @@ src/editor/editor_draw_map_vertex.i: src/editor/editor_draw_map_vertex.c.i
 
 # target to preprocess a source file
 src/editor/editor_draw_map_vertex.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_vertex.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_vertex.c.i
 .PHONY : src/editor/editor_draw_map_vertex.c.i
 
 src/editor/editor_draw_map_vertex.s: src/editor/editor_draw_map_vertex.c.s
@@ -417,7 +390,7 @@ src/editor/editor_draw_map_vertex.s: src/editor/editor_draw_map_vertex.c.s
 
 # target to generate assembly for a file
 src/editor/editor_draw_map_vertex.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_draw_map_vertex.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_draw_map_vertex.c.s
 .PHONY : src/editor/editor_draw_map_vertex.c.s
 
 src/editor/editor_event_win_map_click.o: src/editor/editor_event_win_map_click.c.o
@@ -426,7 +399,7 @@ src/editor/editor_event_win_map_click.o: src/editor/editor_event_win_map_click.c
 
 # target to build an object file
 src/editor/editor_event_win_map_click.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_click.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_click.c.o
 .PHONY : src/editor/editor_event_win_map_click.c.o
 
 src/editor/editor_event_win_map_click.i: src/editor/editor_event_win_map_click.c.i
@@ -435,7 +408,7 @@ src/editor/editor_event_win_map_click.i: src/editor/editor_event_win_map_click.c
 
 # target to preprocess a source file
 src/editor/editor_event_win_map_click.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_click.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_click.c.i
 .PHONY : src/editor/editor_event_win_map_click.c.i
 
 src/editor/editor_event_win_map_click.s: src/editor/editor_event_win_map_click.c.s
@@ -444,7 +417,7 @@ src/editor/editor_event_win_map_click.s: src/editor/editor_event_win_map_click.c
 
 # target to generate assembly for a file
 src/editor/editor_event_win_map_click.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_click.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_click.c.s
 .PHONY : src/editor/editor_event_win_map_click.c.s
 
 src/editor/editor_event_win_map_door.o: src/editor/editor_event_win_map_door.c.o
@@ -453,7 +426,7 @@ src/editor/editor_event_win_map_door.o: src/editor/editor_event_win_map_door.c.o
 
 # target to build an object file
 src/editor/editor_event_win_map_door.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_door.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_door.c.o
 .PHONY : src/editor/editor_event_win_map_door.c.o
 
 src/editor/editor_event_win_map_door.i: src/editor/editor_event_win_map_door.c.i
@@ -462,7 +435,7 @@ src/editor/editor_event_win_map_door.i: src/editor/editor_event_win_map_door.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_map_door.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_door.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_door.c.i
 .PHONY : src/editor/editor_event_win_map_door.c.i
 
 src/editor/editor_event_win_map_door.s: src/editor/editor_event_win_map_door.c.s
@@ -471,7 +444,7 @@ src/editor/editor_event_win_map_door.s: src/editor/editor_event_win_map_door.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_map_door.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_door.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_door.c.s
 .PHONY : src/editor/editor_event_win_map_door.c.s
 
 src/editor/editor_event_win_map_move.o: src/editor/editor_event_win_map_move.c.o
@@ -480,7 +453,7 @@ src/editor/editor_event_win_map_move.o: src/editor/editor_event_win_map_move.c.o
 
 # target to build an object file
 src/editor/editor_event_win_map_move.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_move.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_move.c.o
 .PHONY : src/editor/editor_event_win_map_move.c.o
 
 src/editor/editor_event_win_map_move.i: src/editor/editor_event_win_map_move.c.i
@@ -489,7 +462,7 @@ src/editor/editor_event_win_map_move.i: src/editor/editor_event_win_map_move.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_map_move.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_move.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_move.c.i
 .PHONY : src/editor/editor_event_win_map_move.c.i
 
 src/editor/editor_event_win_map_move.s: src/editor/editor_event_win_map_move.c.s
@@ -498,7 +471,7 @@ src/editor/editor_event_win_map_move.s: src/editor/editor_event_win_map_move.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_map_move.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_move.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_move.c.s
 .PHONY : src/editor/editor_event_win_map_move.c.s
 
 src/editor/editor_event_win_map_set.o: src/editor/editor_event_win_map_set.c.o
@@ -507,7 +480,7 @@ src/editor/editor_event_win_map_set.o: src/editor/editor_event_win_map_set.c.o
 
 # target to build an object file
 src/editor/editor_event_win_map_set.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_set.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_set.c.o
 .PHONY : src/editor/editor_event_win_map_set.c.o
 
 src/editor/editor_event_win_map_set.i: src/editor/editor_event_win_map_set.c.i
@@ -516,7 +489,7 @@ src/editor/editor_event_win_map_set.i: src/editor/editor_event_win_map_set.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_map_set.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_set.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_set.c.i
 .PHONY : src/editor/editor_event_win_map_set.c.i
 
 src/editor/editor_event_win_map_set.s: src/editor/editor_event_win_map_set.c.s
@@ -525,7 +498,7 @@ src/editor/editor_event_win_map_set.s: src/editor/editor_event_win_map_set.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_map_set.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_set.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_set.c.s
 .PHONY : src/editor/editor_event_win_map_set.c.s
 
 src/editor/editor_event_win_map_zoom.o: src/editor/editor_event_win_map_zoom.c.o
@@ -534,7 +507,7 @@ src/editor/editor_event_win_map_zoom.o: src/editor/editor_event_win_map_zoom.c.o
 
 # target to build an object file
 src/editor/editor_event_win_map_zoom.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_zoom.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_zoom.c.o
 .PHONY : src/editor/editor_event_win_map_zoom.c.o
 
 src/editor/editor_event_win_map_zoom.i: src/editor/editor_event_win_map_zoom.c.i
@@ -543,7 +516,7 @@ src/editor/editor_event_win_map_zoom.i: src/editor/editor_event_win_map_zoom.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_map_zoom.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_zoom.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_zoom.c.i
 .PHONY : src/editor/editor_event_win_map_zoom.c.i
 
 src/editor/editor_event_win_map_zoom.s: src/editor/editor_event_win_map_zoom.c.s
@@ -552,7 +525,7 @@ src/editor/editor_event_win_map_zoom.s: src/editor/editor_event_win_map_zoom.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_map_zoom.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_map_zoom.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_map_zoom.c.s
 .PHONY : src/editor/editor_event_win_map_zoom.c.s
 
 src/editor/editor_event_win_menu.o: src/editor/editor_event_win_menu.c.o
@@ -561,7 +534,7 @@ src/editor/editor_event_win_menu.o: src/editor/editor_event_win_menu.c.o
 
 # target to build an object file
 src/editor/editor_event_win_menu.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_menu.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_menu.c.o
 .PHONY : src/editor/editor_event_win_menu.c.o
 
 src/editor/editor_event_win_menu.i: src/editor/editor_event_win_menu.c.i
@@ -570,7 +543,7 @@ src/editor/editor_event_win_menu.i: src/editor/editor_event_win_menu.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_menu.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_menu.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_menu.c.i
 .PHONY : src/editor/editor_event_win_menu.c.i
 
 src/editor/editor_event_win_menu.s: src/editor/editor_event_win_menu.c.s
@@ -579,7 +552,7 @@ src/editor/editor_event_win_menu.s: src/editor/editor_event_win_menu.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_menu.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_menu.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_menu.c.s
 .PHONY : src/editor/editor_event_win_menu.c.s
 
 src/editor/editor_event_win_menu2.o: src/editor/editor_event_win_menu2.c.o
@@ -588,7 +561,7 @@ src/editor/editor_event_win_menu2.o: src/editor/editor_event_win_menu2.c.o
 
 # target to build an object file
 src/editor/editor_event_win_menu2.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_menu2.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_menu2.c.o
 .PHONY : src/editor/editor_event_win_menu2.c.o
 
 src/editor/editor_event_win_menu2.i: src/editor/editor_event_win_menu2.c.i
@@ -597,7 +570,7 @@ src/editor/editor_event_win_menu2.i: src/editor/editor_event_win_menu2.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_menu2.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_menu2.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_menu2.c.i
 .PHONY : src/editor/editor_event_win_menu2.c.i
 
 src/editor/editor_event_win_menu2.s: src/editor/editor_event_win_menu2.c.s
@@ -606,7 +579,7 @@ src/editor/editor_event_win_menu2.s: src/editor/editor_event_win_menu2.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_menu2.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_menu2.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_menu2.c.s
 .PHONY : src/editor/editor_event_win_menu2.c.s
 
 src/editor/editor_event_win_setdoor.o: src/editor/editor_event_win_setdoor.c.o
@@ -615,7 +588,7 @@ src/editor/editor_event_win_setdoor.o: src/editor/editor_event_win_setdoor.c.o
 
 # target to build an object file
 src/editor/editor_event_win_setdoor.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setdoor.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setdoor.c.o
 .PHONY : src/editor/editor_event_win_setdoor.c.o
 
 src/editor/editor_event_win_setdoor.i: src/editor/editor_event_win_setdoor.c.i
@@ -624,7 +597,7 @@ src/editor/editor_event_win_setdoor.i: src/editor/editor_event_win_setdoor.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_setdoor.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setdoor.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setdoor.c.i
 .PHONY : src/editor/editor_event_win_setdoor.c.i
 
 src/editor/editor_event_win_setdoor.s: src/editor/editor_event_win_setdoor.c.s
@@ -633,7 +606,7 @@ src/editor/editor_event_win_setdoor.s: src/editor/editor_event_win_setdoor.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_setdoor.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setdoor.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setdoor.c.s
 .PHONY : src/editor/editor_event_win_setdoor.c.s
 
 src/editor/editor_event_win_setenemy.o: src/editor/editor_event_win_setenemy.c.o
@@ -642,7 +615,7 @@ src/editor/editor_event_win_setenemy.o: src/editor/editor_event_win_setenemy.c.o
 
 # target to build an object file
 src/editor/editor_event_win_setenemy.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setenemy.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setenemy.c.o
 .PHONY : src/editor/editor_event_win_setenemy.c.o
 
 src/editor/editor_event_win_setenemy.i: src/editor/editor_event_win_setenemy.c.i
@@ -651,7 +624,7 @@ src/editor/editor_event_win_setenemy.i: src/editor/editor_event_win_setenemy.c.i
 
 # target to preprocess a source file
 src/editor/editor_event_win_setenemy.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setenemy.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setenemy.c.i
 .PHONY : src/editor/editor_event_win_setenemy.c.i
 
 src/editor/editor_event_win_setenemy.s: src/editor/editor_event_win_setenemy.c.s
@@ -660,7 +633,7 @@ src/editor/editor_event_win_setenemy.s: src/editor/editor_event_win_setenemy.c.s
 
 # target to generate assembly for a file
 src/editor/editor_event_win_setenemy.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setenemy.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setenemy.c.s
 .PHONY : src/editor/editor_event_win_setenemy.c.s
 
 src/editor/editor_event_win_setplayer.o: src/editor/editor_event_win_setplayer.c.o
@@ -669,7 +642,7 @@ src/editor/editor_event_win_setplayer.o: src/editor/editor_event_win_setplayer.c
 
 # target to build an object file
 src/editor/editor_event_win_setplayer.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setplayer.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setplayer.c.o
 .PHONY : src/editor/editor_event_win_setplayer.c.o
 
 src/editor/editor_event_win_setplayer.i: src/editor/editor_event_win_setplayer.c.i
@@ -678,7 +651,7 @@ src/editor/editor_event_win_setplayer.i: src/editor/editor_event_win_setplayer.c
 
 # target to preprocess a source file
 src/editor/editor_event_win_setplayer.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setplayer.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setplayer.c.i
 .PHONY : src/editor/editor_event_win_setplayer.c.i
 
 src/editor/editor_event_win_setplayer.s: src/editor/editor_event_win_setplayer.c.s
@@ -687,7 +660,7 @@ src/editor/editor_event_win_setplayer.s: src/editor/editor_event_win_setplayer.c
 
 # target to generate assembly for a file
 src/editor/editor_event_win_setplayer.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setplayer.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setplayer.c.s
 .PHONY : src/editor/editor_event_win_setplayer.c.s
 
 src/editor/editor_event_win_setsector.o: src/editor/editor_event_win_setsector.c.o
@@ -696,7 +669,7 @@ src/editor/editor_event_win_setsector.o: src/editor/editor_event_win_setsector.c
 
 # target to build an object file
 src/editor/editor_event_win_setsector.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setsector.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setsector.c.o
 .PHONY : src/editor/editor_event_win_setsector.c.o
 
 src/editor/editor_event_win_setsector.i: src/editor/editor_event_win_setsector.c.i
@@ -705,7 +678,7 @@ src/editor/editor_event_win_setsector.i: src/editor/editor_event_win_setsector.c
 
 # target to preprocess a source file
 src/editor/editor_event_win_setsector.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setsector.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setsector.c.i
 .PHONY : src/editor/editor_event_win_setsector.c.i
 
 src/editor/editor_event_win_setsector.s: src/editor/editor_event_win_setsector.c.s
@@ -714,7 +687,7 @@ src/editor/editor_event_win_setsector.s: src/editor/editor_event_win_setsector.c
 
 # target to generate assembly for a file
 src/editor/editor_event_win_setsector.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setsector.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setsector.c.s
 .PHONY : src/editor/editor_event_win_setsector.c.s
 
 src/editor/editor_event_win_setsprite.o: src/editor/editor_event_win_setsprite.c.o
@@ -723,7 +696,7 @@ src/editor/editor_event_win_setsprite.o: src/editor/editor_event_win_setsprite.c
 
 # target to build an object file
 src/editor/editor_event_win_setsprite.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setsprite.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setsprite.c.o
 .PHONY : src/editor/editor_event_win_setsprite.c.o
 
 src/editor/editor_event_win_setsprite.i: src/editor/editor_event_win_setsprite.c.i
@@ -732,7 +705,7 @@ src/editor/editor_event_win_setsprite.i: src/editor/editor_event_win_setsprite.c
 
 # target to preprocess a source file
 src/editor/editor_event_win_setsprite.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setsprite.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setsprite.c.i
 .PHONY : src/editor/editor_event_win_setsprite.c.i
 
 src/editor/editor_event_win_setsprite.s: src/editor/editor_event_win_setsprite.c.s
@@ -741,7 +714,7 @@ src/editor/editor_event_win_setsprite.s: src/editor/editor_event_win_setsprite.c
 
 # target to generate assembly for a file
 src/editor/editor_event_win_setsprite.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_event_win_setsprite.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_event_win_setsprite.c.s
 .PHONY : src/editor/editor_event_win_setsprite.c.s
 
 src/editor/editor_gui_init.o: src/editor/editor_gui_init.c.o
@@ -750,7 +723,7 @@ src/editor/editor_gui_init.o: src/editor/editor_gui_init.c.o
 
 # target to build an object file
 src/editor/editor_gui_init.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_gui_init.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_gui_init.c.o
 .PHONY : src/editor/editor_gui_init.c.o
 
 src/editor/editor_gui_init.i: src/editor/editor_gui_init.c.i
@@ -759,7 +732,7 @@ src/editor/editor_gui_init.i: src/editor/editor_gui_init.c.i
 
 # target to preprocess a source file
 src/editor/editor_gui_init.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_gui_init.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_gui_init.c.i
 .PHONY : src/editor/editor_gui_init.c.i
 
 src/editor/editor_gui_init.s: src/editor/editor_gui_init.c.s
@@ -768,7 +741,7 @@ src/editor/editor_gui_init.s: src/editor/editor_gui_init.c.s
 
 # target to generate assembly for a file
 src/editor/editor_gui_init.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_gui_init.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_gui_init.c.s
 .PHONY : src/editor/editor_gui_init.c.s
 
 src/editor/editor_gui_txtr.o: src/editor/editor_gui_txtr.c.o
@@ -777,7 +750,7 @@ src/editor/editor_gui_txtr.o: src/editor/editor_gui_txtr.c.o
 
 # target to build an object file
 src/editor/editor_gui_txtr.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_gui_txtr.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_gui_txtr.c.o
 .PHONY : src/editor/editor_gui_txtr.c.o
 
 src/editor/editor_gui_txtr.i: src/editor/editor_gui_txtr.c.i
@@ -786,7 +759,7 @@ src/editor/editor_gui_txtr.i: src/editor/editor_gui_txtr.c.i
 
 # target to preprocess a source file
 src/editor/editor_gui_txtr.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_gui_txtr.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_gui_txtr.c.i
 .PHONY : src/editor/editor_gui_txtr.c.i
 
 src/editor/editor_gui_txtr.s: src/editor/editor_gui_txtr.c.s
@@ -795,7 +768,7 @@ src/editor/editor_gui_txtr.s: src/editor/editor_gui_txtr.c.s
 
 # target to generate assembly for a file
 src/editor/editor_gui_txtr.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_gui_txtr.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_gui_txtr.c.s
 .PHONY : src/editor/editor_gui_txtr.c.s
 
 src/editor/editor_init.o: src/editor/editor_init.c.o
@@ -804,7 +777,7 @@ src/editor/editor_init.o: src/editor/editor_init.c.o
 
 # target to build an object file
 src/editor/editor_init.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_init.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_init.c.o
 .PHONY : src/editor/editor_init.c.o
 
 src/editor/editor_init.i: src/editor/editor_init.c.i
@@ -813,7 +786,7 @@ src/editor/editor_init.i: src/editor/editor_init.c.i
 
 # target to preprocess a source file
 src/editor/editor_init.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_init.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_init.c.i
 .PHONY : src/editor/editor_init.c.i
 
 src/editor/editor_init.s: src/editor/editor_init.c.s
@@ -822,7 +795,7 @@ src/editor/editor_init.s: src/editor/editor_init.c.s
 
 # target to generate assembly for a file
 src/editor/editor_init.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_init.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_init.c.s
 .PHONY : src/editor/editor_init.c.s
 
 src/editor/editor_map_check.o: src/editor/editor_map_check.c.o
@@ -831,7 +804,7 @@ src/editor/editor_map_check.o: src/editor/editor_map_check.c.o
 
 # target to build an object file
 src/editor/editor_map_check.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_check.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_check.c.o
 .PHONY : src/editor/editor_map_check.c.o
 
 src/editor/editor_map_check.i: src/editor/editor_map_check.c.i
@@ -840,7 +813,7 @@ src/editor/editor_map_check.i: src/editor/editor_map_check.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_check.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_check.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_check.c.i
 .PHONY : src/editor/editor_map_check.c.i
 
 src/editor/editor_map_check.s: src/editor/editor_map_check.c.s
@@ -849,7 +822,7 @@ src/editor/editor_map_check.s: src/editor/editor_map_check.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_check.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_check.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_check.c.s
 .PHONY : src/editor/editor_map_check.c.s
 
 src/editor/editor_map_door.o: src/editor/editor_map_door.c.o
@@ -858,7 +831,7 @@ src/editor/editor_map_door.o: src/editor/editor_map_door.c.o
 
 # target to build an object file
 src/editor/editor_map_door.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_door.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_door.c.o
 .PHONY : src/editor/editor_map_door.c.o
 
 src/editor/editor_map_door.i: src/editor/editor_map_door.c.i
@@ -867,7 +840,7 @@ src/editor/editor_map_door.i: src/editor/editor_map_door.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_door.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_door.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_door.c.i
 .PHONY : src/editor/editor_map_door.c.i
 
 src/editor/editor_map_door.s: src/editor/editor_map_door.c.s
@@ -876,7 +849,7 @@ src/editor/editor_map_door.s: src/editor/editor_map_door.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_door.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_door.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_door.c.s
 .PHONY : src/editor/editor_map_door.c.s
 
 src/editor/editor_map_enemy.o: src/editor/editor_map_enemy.c.o
@@ -885,7 +858,7 @@ src/editor/editor_map_enemy.o: src/editor/editor_map_enemy.c.o
 
 # target to build an object file
 src/editor/editor_map_enemy.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_enemy.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_enemy.c.o
 .PHONY : src/editor/editor_map_enemy.c.o
 
 src/editor/editor_map_enemy.i: src/editor/editor_map_enemy.c.i
@@ -894,7 +867,7 @@ src/editor/editor_map_enemy.i: src/editor/editor_map_enemy.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_enemy.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_enemy.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_enemy.c.i
 .PHONY : src/editor/editor_map_enemy.c.i
 
 src/editor/editor_map_enemy.s: src/editor/editor_map_enemy.c.s
@@ -903,7 +876,7 @@ src/editor/editor_map_enemy.s: src/editor/editor_map_enemy.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_enemy.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_enemy.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_enemy.c.s
 .PHONY : src/editor/editor_map_enemy.c.s
 
 src/editor/editor_map_func.o: src/editor/editor_map_func.c.o
@@ -912,7 +885,7 @@ src/editor/editor_map_func.o: src/editor/editor_map_func.c.o
 
 # target to build an object file
 src/editor/editor_map_func.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_func.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_func.c.o
 .PHONY : src/editor/editor_map_func.c.o
 
 src/editor/editor_map_func.i: src/editor/editor_map_func.c.i
@@ -921,7 +894,7 @@ src/editor/editor_map_func.i: src/editor/editor_map_func.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_func.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_func.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_func.c.i
 .PHONY : src/editor/editor_map_func.c.i
 
 src/editor/editor_map_func.s: src/editor/editor_map_func.c.s
@@ -930,7 +903,7 @@ src/editor/editor_map_func.s: src/editor/editor_map_func.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_func.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_func.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_func.c.s
 .PHONY : src/editor/editor_map_func.c.s
 
 src/editor/editor_map_sector.o: src/editor/editor_map_sector.c.o
@@ -939,7 +912,7 @@ src/editor/editor_map_sector.o: src/editor/editor_map_sector.c.o
 
 # target to build an object file
 src/editor/editor_map_sector.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector.c.o
 .PHONY : src/editor/editor_map_sector.c.o
 
 src/editor/editor_map_sector.i: src/editor/editor_map_sector.c.i
@@ -948,7 +921,7 @@ src/editor/editor_map_sector.i: src/editor/editor_map_sector.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_sector.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector.c.i
 .PHONY : src/editor/editor_map_sector.c.i
 
 src/editor/editor_map_sector.s: src/editor/editor_map_sector.c.s
@@ -957,7 +930,7 @@ src/editor/editor_map_sector.s: src/editor/editor_map_sector.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_sector.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector.c.s
 .PHONY : src/editor/editor_map_sector.c.s
 
 src/editor/editor_map_sector_neighbors.o: src/editor/editor_map_sector_neighbors.c.o
@@ -966,7 +939,7 @@ src/editor/editor_map_sector_neighbors.o: src/editor/editor_map_sector_neighbors
 
 # target to build an object file
 src/editor/editor_map_sector_neighbors.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector_neighbors.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector_neighbors.c.o
 .PHONY : src/editor/editor_map_sector_neighbors.c.o
 
 src/editor/editor_map_sector_neighbors.i: src/editor/editor_map_sector_neighbors.c.i
@@ -975,7 +948,7 @@ src/editor/editor_map_sector_neighbors.i: src/editor/editor_map_sector_neighbors
 
 # target to preprocess a source file
 src/editor/editor_map_sector_neighbors.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector_neighbors.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector_neighbors.c.i
 .PHONY : src/editor/editor_map_sector_neighbors.c.i
 
 src/editor/editor_map_sector_neighbors.s: src/editor/editor_map_sector_neighbors.c.s
@@ -984,7 +957,7 @@ src/editor/editor_map_sector_neighbors.s: src/editor/editor_map_sector_neighbors
 
 # target to generate assembly for a file
 src/editor/editor_map_sector_neighbors.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector_neighbors.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector_neighbors.c.s
 .PHONY : src/editor/editor_map_sector_neighbors.c.s
 
 src/editor/editor_map_sector_vertex.o: src/editor/editor_map_sector_vertex.c.o
@@ -993,7 +966,7 @@ src/editor/editor_map_sector_vertex.o: src/editor/editor_map_sector_vertex.c.o
 
 # target to build an object file
 src/editor/editor_map_sector_vertex.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector_vertex.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector_vertex.c.o
 .PHONY : src/editor/editor_map_sector_vertex.c.o
 
 src/editor/editor_map_sector_vertex.i: src/editor/editor_map_sector_vertex.c.i
@@ -1002,7 +975,7 @@ src/editor/editor_map_sector_vertex.i: src/editor/editor_map_sector_vertex.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_sector_vertex.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector_vertex.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector_vertex.c.i
 .PHONY : src/editor/editor_map_sector_vertex.c.i
 
 src/editor/editor_map_sector_vertex.s: src/editor/editor_map_sector_vertex.c.s
@@ -1011,7 +984,7 @@ src/editor/editor_map_sector_vertex.s: src/editor/editor_map_sector_vertex.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_sector_vertex.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sector_vertex.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sector_vertex.c.s
 .PHONY : src/editor/editor_map_sector_vertex.c.s
 
 src/editor/editor_map_sprite.o: src/editor/editor_map_sprite.c.o
@@ -1020,7 +993,7 @@ src/editor/editor_map_sprite.o: src/editor/editor_map_sprite.c.o
 
 # target to build an object file
 src/editor/editor_map_sprite.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sprite.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sprite.c.o
 .PHONY : src/editor/editor_map_sprite.c.o
 
 src/editor/editor_map_sprite.i: src/editor/editor_map_sprite.c.i
@@ -1029,7 +1002,7 @@ src/editor/editor_map_sprite.i: src/editor/editor_map_sprite.c.i
 
 # target to preprocess a source file
 src/editor/editor_map_sprite.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sprite.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sprite.c.i
 .PHONY : src/editor/editor_map_sprite.c.i
 
 src/editor/editor_map_sprite.s: src/editor/editor_map_sprite.c.s
@@ -1038,7 +1011,7 @@ src/editor/editor_map_sprite.s: src/editor/editor_map_sprite.c.s
 
 # target to generate assembly for a file
 src/editor/editor_map_sprite.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_map_sprite.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_map_sprite.c.s
 .PHONY : src/editor/editor_map_sprite.c.s
 
 src/editor/editor_save_file.o: src/editor/editor_save_file.c.o
@@ -1047,7 +1020,7 @@ src/editor/editor_save_file.o: src/editor/editor_save_file.c.o
 
 # target to build an object file
 src/editor/editor_save_file.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file.c.o
 .PHONY : src/editor/editor_save_file.c.o
 
 src/editor/editor_save_file.i: src/editor/editor_save_file.c.i
@@ -1056,7 +1029,7 @@ src/editor/editor_save_file.i: src/editor/editor_save_file.c.i
 
 # target to preprocess a source file
 src/editor/editor_save_file.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file.c.i
 .PHONY : src/editor/editor_save_file.c.i
 
 src/editor/editor_save_file.s: src/editor/editor_save_file.c.s
@@ -1065,7 +1038,7 @@ src/editor/editor_save_file.s: src/editor/editor_save_file.c.s
 
 # target to generate assembly for a file
 src/editor/editor_save_file.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file.c.s
 .PHONY : src/editor/editor_save_file.c.s
 
 src/editor/editor_save_file2.o: src/editor/editor_save_file2.c.o
@@ -1074,7 +1047,7 @@ src/editor/editor_save_file2.o: src/editor/editor_save_file2.c.o
 
 # target to build an object file
 src/editor/editor_save_file2.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file2.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file2.c.o
 .PHONY : src/editor/editor_save_file2.c.o
 
 src/editor/editor_save_file2.i: src/editor/editor_save_file2.c.i
@@ -1083,7 +1056,7 @@ src/editor/editor_save_file2.i: src/editor/editor_save_file2.c.i
 
 # target to preprocess a source file
 src/editor/editor_save_file2.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file2.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file2.c.i
 .PHONY : src/editor/editor_save_file2.c.i
 
 src/editor/editor_save_file2.s: src/editor/editor_save_file2.c.s
@@ -1092,7 +1065,7 @@ src/editor/editor_save_file2.s: src/editor/editor_save_file2.c.s
 
 # target to generate assembly for a file
 src/editor/editor_save_file2.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file2.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file2.c.s
 .PHONY : src/editor/editor_save_file2.c.s
 
 src/editor/editor_save_file3.o: src/editor/editor_save_file3.c.o
@@ -1101,7 +1074,7 @@ src/editor/editor_save_file3.o: src/editor/editor_save_file3.c.o
 
 # target to build an object file
 src/editor/editor_save_file3.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file3.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file3.c.o
 .PHONY : src/editor/editor_save_file3.c.o
 
 src/editor/editor_save_file3.i: src/editor/editor_save_file3.c.i
@@ -1110,7 +1083,7 @@ src/editor/editor_save_file3.i: src/editor/editor_save_file3.c.i
 
 # target to preprocess a source file
 src/editor/editor_save_file3.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file3.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file3.c.i
 .PHONY : src/editor/editor_save_file3.c.i
 
 src/editor/editor_save_file3.s: src/editor/editor_save_file3.c.s
@@ -1119,7 +1092,7 @@ src/editor/editor_save_file3.s: src/editor/editor_save_file3.c.s
 
 # target to generate assembly for a file
 src/editor/editor_save_file3.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/editor/editor_save_file3.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/editor/editor_save_file3.c.s
 .PHONY : src/editor/editor_save_file3.c.s
 
 src/func/func_fpc.o: src/func/func_fpc.c.o
@@ -1128,7 +1101,7 @@ src/func/func_fpc.o: src/func/func_fpc.c.o
 
 # target to build an object file
 src/func/func_fpc.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_fpc.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_fpc.c.o
 .PHONY : src/func/func_fpc.c.o
 
 src/func/func_fpc.i: src/func/func_fpc.c.i
@@ -1137,7 +1110,7 @@ src/func/func_fpc.i: src/func/func_fpc.c.i
 
 # target to preprocess a source file
 src/func/func_fpc.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_fpc.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_fpc.c.i
 .PHONY : src/func/func_fpc.c.i
 
 src/func/func_fpc.s: src/func/func_fpc.c.s
@@ -1146,7 +1119,7 @@ src/func/func_fpc.s: src/func/func_fpc.c.s
 
 # target to generate assembly for a file
 src/func/func_fpc.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_fpc.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_fpc.c.s
 .PHONY : src/func/func_fpc.c.s
 
 src/func/func_help.o: src/func/func_help.c.o
@@ -1155,7 +1128,7 @@ src/func/func_help.o: src/func/func_help.c.o
 
 # target to build an object file
 src/func/func_help.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_help.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_help.c.o
 .PHONY : src/func/func_help.c.o
 
 src/func/func_help.i: src/func/func_help.c.i
@@ -1164,7 +1137,7 @@ src/func/func_help.i: src/func/func_help.c.i
 
 # target to preprocess a source file
 src/func/func_help.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_help.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_help.c.i
 .PHONY : src/func/func_help.c.i
 
 src/func/func_help.s: src/func/func_help.c.s
@@ -1173,7 +1146,7 @@ src/func/func_help.s: src/func/func_help.c.s
 
 # target to generate assembly for a file
 src/func/func_help.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_help.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_help.c.s
 .PHONY : src/func/func_help.c.s
 
 src/func/func_sdl.o: src/func/func_sdl.c.o
@@ -1182,7 +1155,7 @@ src/func/func_sdl.o: src/func/func_sdl.c.o
 
 # target to build an object file
 src/func/func_sdl.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sdl.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_sdl.c.o
 .PHONY : src/func/func_sdl.c.o
 
 src/func/func_sdl.i: src/func/func_sdl.c.i
@@ -1191,7 +1164,7 @@ src/func/func_sdl.i: src/func/func_sdl.c.i
 
 # target to preprocess a source file
 src/func/func_sdl.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sdl.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_sdl.c.i
 .PHONY : src/func/func_sdl.c.i
 
 src/func/func_sdl.s: src/func/func_sdl.c.s
@@ -1200,7 +1173,7 @@ src/func/func_sdl.s: src/func/func_sdl.c.s
 
 # target to generate assembly for a file
 src/func/func_sdl.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sdl.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_sdl.c.s
 .PHONY : src/func/func_sdl.c.s
 
 src/func/func_sound.o: src/func/func_sound.c.o
@@ -1209,7 +1182,7 @@ src/func/func_sound.o: src/func/func_sound.c.o
 
 # target to build an object file
 src/func/func_sound.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sound.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_sound.c.o
 .PHONY : src/func/func_sound.c.o
 
 src/func/func_sound.i: src/func/func_sound.c.i
@@ -1218,7 +1191,7 @@ src/func/func_sound.i: src/func/func_sound.c.i
 
 # target to preprocess a source file
 src/func/func_sound.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sound.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_sound.c.i
 .PHONY : src/func/func_sound.c.i
 
 src/func/func_sound.s: src/func/func_sound.c.s
@@ -1227,7 +1200,7 @@ src/func/func_sound.s: src/func/func_sound.c.s
 
 # target to generate assembly for a file
 src/func/func_sound.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_sound.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_sound.c.s
 .PHONY : src/func/func_sound.c.s
 
 src/func/func_wu.o: src/func/func_wu.c.o
@@ -1236,7 +1209,7 @@ src/func/func_wu.o: src/func/func_wu.c.o
 
 # target to build an object file
 src/func/func_wu.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu.c.o
 .PHONY : src/func/func_wu.c.o
 
 src/func/func_wu.i: src/func/func_wu.c.i
@@ -1245,7 +1218,7 @@ src/func/func_wu.i: src/func/func_wu.c.i
 
 # target to preprocess a source file
 src/func/func_wu.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu.c.i
 .PHONY : src/func/func_wu.c.i
 
 src/func/func_wu.s: src/func/func_wu.c.s
@@ -1254,7 +1227,7 @@ src/func/func_wu.s: src/func/func_wu.c.s
 
 # target to generate assembly for a file
 src/func/func_wu.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu.c.s
 .PHONY : src/func/func_wu.c.s
 
 src/func/func_wu_color.o: src/func/func_wu_color.c.o
@@ -1263,7 +1236,7 @@ src/func/func_wu_color.o: src/func/func_wu_color.c.o
 
 # target to build an object file
 src/func/func_wu_color.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu_color.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_color.c.o
 .PHONY : src/func/func_wu_color.c.o
 
 src/func/func_wu_color.i: src/func/func_wu_color.c.i
@@ -1272,7 +1245,7 @@ src/func/func_wu_color.i: src/func/func_wu_color.c.i
 
 # target to preprocess a source file
 src/func/func_wu_color.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu_color.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_color.c.i
 .PHONY : src/func/func_wu_color.c.i
 
 src/func/func_wu_color.s: src/func/func_wu_color.c.s
@@ -1281,7 +1254,7 @@ src/func/func_wu_color.s: src/func/func_wu_color.c.s
 
 # target to generate assembly for a file
 src/func/func_wu_color.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu_color.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_color.c.s
 .PHONY : src/func/func_wu_color.c.s
 
 src/func/func_wu_draw.o: src/func/func_wu_draw.c.o
@@ -1290,7 +1263,7 @@ src/func/func_wu_draw.o: src/func/func_wu_draw.c.o
 
 # target to build an object file
 src/func/func_wu_draw.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu_draw.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_draw.c.o
 .PHONY : src/func/func_wu_draw.c.o
 
 src/func/func_wu_draw.i: src/func/func_wu_draw.c.i
@@ -1299,7 +1272,7 @@ src/func/func_wu_draw.i: src/func/func_wu_draw.c.i
 
 # target to preprocess a source file
 src/func/func_wu_draw.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu_draw.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_draw.c.i
 .PHONY : src/func/func_wu_draw.c.i
 
 src/func/func_wu_draw.s: src/func/func_wu_draw.c.s
@@ -1308,8 +1281,89 @@ src/func/func_wu_draw.s: src/func/func_wu_draw.c.s
 
 # target to generate assembly for a file
 src/func/func_wu_draw.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/func/func_wu_draw.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_draw.c.s
 .PHONY : src/func/func_wu_draw.c.s
+
+src/func/func_wu_func.o: src/func/func_wu_func.c.o
+
+.PHONY : src/func/func_wu_func.o
+
+# target to build an object file
+src/func/func_wu_func.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_func.c.o
+.PHONY : src/func/func_wu_func.c.o
+
+src/func/func_wu_func.i: src/func/func_wu_func.c.i
+
+.PHONY : src/func/func_wu_func.i
+
+# target to preprocess a source file
+src/func/func_wu_func.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_func.c.i
+.PHONY : src/func/func_wu_func.c.i
+
+src/func/func_wu_func.s: src/func/func_wu_func.c.s
+
+.PHONY : src/func/func_wu_func.s
+
+# target to generate assembly for a file
+src/func/func_wu_func.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_func.c.s
+.PHONY : src/func/func_wu_func.c.s
+
+src/func/func_wu_init.o: src/func/func_wu_init.c.o
+
+.PHONY : src/func/func_wu_init.o
+
+# target to build an object file
+src/func/func_wu_init.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_init.c.o
+.PHONY : src/func/func_wu_init.c.o
+
+src/func/func_wu_init.i: src/func/func_wu_init.c.i
+
+.PHONY : src/func/func_wu_init.i
+
+# target to preprocess a source file
+src/func/func_wu_init.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_init.c.i
+.PHONY : src/func/func_wu_init.c.i
+
+src/func/func_wu_init.s: src/func/func_wu_init.c.s
+
+.PHONY : src/func/func_wu_init.s
+
+# target to generate assembly for a file
+src/func/func_wu_init.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_init.c.s
+.PHONY : src/func/func_wu_init.c.s
+
+src/func/func_wu_line.o: src/func/func_wu_line.c.o
+
+.PHONY : src/func/func_wu_line.o
+
+# target to build an object file
+src/func/func_wu_line.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_line.c.o
+.PHONY : src/func/func_wu_line.c.o
+
+src/func/func_wu_line.i: src/func/func_wu_line.c.i
+
+.PHONY : src/func/func_wu_line.i
+
+# target to preprocess a source file
+src/func/func_wu_line.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_line.c.i
+.PHONY : src/func/func_wu_line.c.i
+
+src/func/func_wu_line.s: src/func/func_wu_line.c.s
+
+.PHONY : src/func/func_wu_line.s
+
+# target to generate assembly for a file
+src/func/func_wu_line.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/func/func_wu_line.c.s
+.PHONY : src/func/func_wu_line.c.s
 
 src/game/game_but.o: src/game/game_but.c.o
 
@@ -1317,7 +1371,7 @@ src/game/game_but.o: src/game/game_but.c.o
 
 # target to build an object file
 src/game/game_but.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_but.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_but.c.o
 .PHONY : src/game/game_but.c.o
 
 src/game/game_but.i: src/game/game_but.c.i
@@ -1326,7 +1380,7 @@ src/game/game_but.i: src/game/game_but.c.i
 
 # target to preprocess a source file
 src/game/game_but.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_but.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_but.c.i
 .PHONY : src/game/game_but.c.i
 
 src/game/game_but.s: src/game/game_but.c.s
@@ -1335,7 +1389,7 @@ src/game/game_but.s: src/game/game_but.c.s
 
 # target to generate assembly for a file
 src/game/game_but.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_but.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_but.c.s
 .PHONY : src/game/game_but.c.s
 
 src/game/game_but_detect.o: src/game/game_but_detect.c.o
@@ -1344,7 +1398,7 @@ src/game/game_but_detect.o: src/game/game_but_detect.c.o
 
 # target to build an object file
 src/game/game_but_detect.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_but_detect.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_but_detect.c.o
 .PHONY : src/game/game_but_detect.c.o
 
 src/game/game_but_detect.i: src/game/game_but_detect.c.i
@@ -1353,7 +1407,7 @@ src/game/game_but_detect.i: src/game/game_but_detect.c.i
 
 # target to preprocess a source file
 src/game/game_but_detect.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_but_detect.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_but_detect.c.i
 .PHONY : src/game/game_but_detect.c.i
 
 src/game/game_but_detect.s: src/game/game_but_detect.c.s
@@ -1362,7 +1416,7 @@ src/game/game_but_detect.s: src/game/game_but_detect.c.s
 
 # target to generate assembly for a file
 src/game/game_but_detect.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_but_detect.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_but_detect.c.s
 .PHONY : src/game/game_but_detect.c.s
 
 src/game/game_door.o: src/game/game_door.c.o
@@ -1371,7 +1425,7 @@ src/game/game_door.o: src/game/game_door.c.o
 
 # target to build an object file
 src/game/game_door.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_door.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_door.c.o
 .PHONY : src/game/game_door.c.o
 
 src/game/game_door.i: src/game/game_door.c.i
@@ -1380,7 +1434,7 @@ src/game/game_door.i: src/game/game_door.c.i
 
 # target to preprocess a source file
 src/game/game_door.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_door.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_door.c.i
 .PHONY : src/game/game_door.c.i
 
 src/game/game_door.s: src/game/game_door.c.s
@@ -1389,7 +1443,7 @@ src/game/game_door.s: src/game/game_door.c.s
 
 # target to generate assembly for a file
 src/game/game_door.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_door.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_door.c.s
 .PHONY : src/game/game_door.c.s
 
 src/game/game_door_detect.o: src/game/game_door_detect.c.o
@@ -1398,7 +1452,7 @@ src/game/game_door_detect.o: src/game/game_door_detect.c.o
 
 # target to build an object file
 src/game/game_door_detect.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_door_detect.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_door_detect.c.o
 .PHONY : src/game/game_door_detect.c.o
 
 src/game/game_door_detect.i: src/game/game_door_detect.c.i
@@ -1407,7 +1461,7 @@ src/game/game_door_detect.i: src/game/game_door_detect.c.i
 
 # target to preprocess a source file
 src/game/game_door_detect.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_door_detect.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_door_detect.c.i
 .PHONY : src/game/game_door_detect.c.i
 
 src/game/game_door_detect.s: src/game/game_door_detect.c.s
@@ -1416,7 +1470,7 @@ src/game/game_door_detect.s: src/game/game_door_detect.c.s
 
 # target to generate assembly for a file
 src/game/game_door_detect.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_door_detect.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_door_detect.c.s
 .PHONY : src/game/game_door_detect.c.s
 
 src/game/game_engine.o: src/game/game_engine.c.o
@@ -1425,7 +1479,7 @@ src/game/game_engine.o: src/game/game_engine.c.o
 
 # target to build an object file
 src/game/game_engine.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_engine.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine.c.o
 .PHONY : src/game/game_engine.c.o
 
 src/game/game_engine.i: src/game/game_engine.c.i
@@ -1434,7 +1488,7 @@ src/game/game_engine.i: src/game/game_engine.c.i
 
 # target to preprocess a source file
 src/game/game_engine.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_engine.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine.c.i
 .PHONY : src/game/game_engine.c.i
 
 src/game/game_engine.s: src/game/game_engine.c.s
@@ -1443,7 +1497,7 @@ src/game/game_engine.s: src/game/game_engine.c.s
 
 # target to generate assembly for a file
 src/game/game_engine.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_engine.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine.c.s
 .PHONY : src/game/game_engine.c.s
 
 src/game/game_engine_exp.o: src/game/game_engine_exp.c.o
@@ -1452,7 +1506,7 @@ src/game/game_engine_exp.o: src/game/game_engine_exp.c.o
 
 # target to build an object file
 src/game/game_engine_exp.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_engine_exp.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine_exp.c.o
 .PHONY : src/game/game_engine_exp.c.o
 
 src/game/game_engine_exp.i: src/game/game_engine_exp.c.i
@@ -1461,7 +1515,7 @@ src/game/game_engine_exp.i: src/game/game_engine_exp.c.i
 
 # target to preprocess a source file
 src/game/game_engine_exp.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_engine_exp.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine_exp.c.i
 .PHONY : src/game/game_engine_exp.c.i
 
 src/game/game_engine_exp.s: src/game/game_engine_exp.c.s
@@ -1470,7 +1524,7 @@ src/game/game_engine_exp.s: src/game/game_engine_exp.c.s
 
 # target to generate assembly for a file
 src/game/game_engine_exp.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_engine_exp.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine_exp.c.s
 .PHONY : src/game/game_engine_exp.c.s
 
 src/game/game_events_1.o: src/game/game_events_1.c.o
@@ -1479,7 +1533,7 @@ src/game/game_events_1.o: src/game/game_events_1.c.o
 
 # target to build an object file
 src/game/game_events_1.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_events_1.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_events_1.c.o
 .PHONY : src/game/game_events_1.c.o
 
 src/game/game_events_1.i: src/game/game_events_1.c.i
@@ -1488,7 +1542,7 @@ src/game/game_events_1.i: src/game/game_events_1.c.i
 
 # target to preprocess a source file
 src/game/game_events_1.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_events_1.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_events_1.c.i
 .PHONY : src/game/game_events_1.c.i
 
 src/game/game_events_1.s: src/game/game_events_1.c.s
@@ -1497,7 +1551,7 @@ src/game/game_events_1.s: src/game/game_events_1.c.s
 
 # target to generate assembly for a file
 src/game/game_events_1.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_events_1.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_events_1.c.s
 .PHONY : src/game/game_events_1.c.s
 
 src/game/game_events_2.o: src/game/game_events_2.c.o
@@ -1506,7 +1560,7 @@ src/game/game_events_2.o: src/game/game_events_2.c.o
 
 # target to build an object file
 src/game/game_events_2.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_events_2.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_events_2.c.o
 .PHONY : src/game/game_events_2.c.o
 
 src/game/game_events_2.i: src/game/game_events_2.c.i
@@ -1515,7 +1569,7 @@ src/game/game_events_2.i: src/game/game_events_2.c.i
 
 # target to preprocess a source file
 src/game/game_events_2.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_events_2.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_events_2.c.i
 .PHONY : src/game/game_events_2.c.i
 
 src/game/game_events_2.s: src/game/game_events_2.c.s
@@ -1524,7 +1578,7 @@ src/game/game_events_2.s: src/game/game_events_2.c.s
 
 # target to generate assembly for a file
 src/game/game_events_2.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_events_2.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_events_2.c.s
 .PHONY : src/game/game_events_2.c.s
 
 src/game/game_gun.o: src/game/game_gun.c.o
@@ -1533,7 +1587,7 @@ src/game/game_gun.o: src/game/game_gun.c.o
 
 # target to build an object file
 src/game/game_gun.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_gun.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_gun.c.o
 .PHONY : src/game/game_gun.c.o
 
 src/game/game_gun.i: src/game/game_gun.c.i
@@ -1542,7 +1596,7 @@ src/game/game_gun.i: src/game/game_gun.c.i
 
 # target to preprocess a source file
 src/game/game_gun.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_gun.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_gun.c.i
 .PHONY : src/game/game_gun.c.i
 
 src/game/game_gun.s: src/game/game_gun.c.s
@@ -1551,7 +1605,7 @@ src/game/game_gun.s: src/game/game_gun.c.s
 
 # target to generate assembly for a file
 src/game/game_gun.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_gun.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_gun.c.s
 .PHONY : src/game/game_gun.c.s
 
 src/game/game_load_file.o: src/game/game_load_file.c.o
@@ -1560,7 +1614,7 @@ src/game/game_load_file.o: src/game/game_load_file.c.o
 
 # target to build an object file
 src/game/game_load_file.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_load_file.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_load_file.c.o
 .PHONY : src/game/game_load_file.c.o
 
 src/game/game_load_file.i: src/game/game_load_file.c.i
@@ -1569,7 +1623,7 @@ src/game/game_load_file.i: src/game/game_load_file.c.i
 
 # target to preprocess a source file
 src/game/game_load_file.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_load_file.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_load_file.c.i
 .PHONY : src/game/game_load_file.c.i
 
 src/game/game_load_file.s: src/game/game_load_file.c.s
@@ -1578,7 +1632,7 @@ src/game/game_load_file.s: src/game/game_load_file.c.s
 
 # target to generate assembly for a file
 src/game/game_load_file.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_load_file.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_load_file.c.s
 .PHONY : src/game/game_load_file.c.s
 
 src/game/game_load_textures.o: src/game/game_load_textures.c.o
@@ -1587,7 +1641,7 @@ src/game/game_load_textures.o: src/game/game_load_textures.c.o
 
 # target to build an object file
 src/game/game_load_textures.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_load_textures.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_load_textures.c.o
 .PHONY : src/game/game_load_textures.c.o
 
 src/game/game_load_textures.i: src/game/game_load_textures.c.i
@@ -1596,7 +1650,7 @@ src/game/game_load_textures.i: src/game/game_load_textures.c.i
 
 # target to preprocess a source file
 src/game/game_load_textures.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_load_textures.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_load_textures.c.i
 .PHONY : src/game/game_load_textures.c.i
 
 src/game/game_load_textures.s: src/game/game_load_textures.c.s
@@ -1605,7 +1659,7 @@ src/game/game_load_textures.s: src/game/game_load_textures.c.s
 
 # target to generate assembly for a file
 src/game/game_load_textures.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_load_textures.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_load_textures.c.s
 .PHONY : src/game/game_load_textures.c.s
 
 src/game/game_main.o: src/game/game_main.c.o
@@ -1614,7 +1668,7 @@ src/game/game_main.o: src/game/game_main.c.o
 
 # target to build an object file
 src/game/game_main.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_main.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_main.c.o
 .PHONY : src/game/game_main.c.o
 
 src/game/game_main.i: src/game/game_main.c.i
@@ -1623,7 +1677,7 @@ src/game/game_main.i: src/game/game_main.c.i
 
 # target to preprocess a source file
 src/game/game_main.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_main.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_main.c.i
 .PHONY : src/game/game_main.c.i
 
 src/game/game_main.s: src/game/game_main.c.s
@@ -1632,7 +1686,7 @@ src/game/game_main.s: src/game/game_main.c.s
 
 # target to generate assembly for a file
 src/game/game_main.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_main.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_main.c.s
 .PHONY : src/game/game_main.c.s
 
 src/game/game_map_parse.o: src/game/game_map_parse.c.o
@@ -1641,7 +1695,7 @@ src/game/game_map_parse.o: src/game/game_map_parse.c.o
 
 # target to build an object file
 src/game/game_map_parse.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_map_parse.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_map_parse.c.o
 .PHONY : src/game/game_map_parse.c.o
 
 src/game/game_map_parse.i: src/game/game_map_parse.c.i
@@ -1650,7 +1704,7 @@ src/game/game_map_parse.i: src/game/game_map_parse.c.i
 
 # target to preprocess a source file
 src/game/game_map_parse.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_map_parse.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_map_parse.c.i
 .PHONY : src/game/game_map_parse.c.i
 
 src/game/game_map_parse.s: src/game/game_map_parse.c.s
@@ -1659,7 +1713,7 @@ src/game/game_map_parse.s: src/game/game_map_parse.c.s
 
 # target to generate assembly for a file
 src/game/game_map_parse.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_map_parse.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_map_parse.c.s
 .PHONY : src/game/game_map_parse.c.s
 
 src/game/game_map_parse2.o: src/game/game_map_parse2.c.o
@@ -1668,7 +1722,7 @@ src/game/game_map_parse2.o: src/game/game_map_parse2.c.o
 
 # target to build an object file
 src/game/game_map_parse2.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_map_parse2.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_map_parse2.c.o
 .PHONY : src/game/game_map_parse2.c.o
 
 src/game/game_map_parse2.i: src/game/game_map_parse2.c.i
@@ -1677,7 +1731,7 @@ src/game/game_map_parse2.i: src/game/game_map_parse2.c.i
 
 # target to preprocess a source file
 src/game/game_map_parse2.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_map_parse2.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_map_parse2.c.i
 .PHONY : src/game/game_map_parse2.c.i
 
 src/game/game_map_parse2.s: src/game/game_map_parse2.c.s
@@ -1686,7 +1740,7 @@ src/game/game_map_parse2.s: src/game/game_map_parse2.c.s
 
 # target to generate assembly for a file
 src/game/game_map_parse2.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_map_parse2.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_map_parse2.c.s
 .PHONY : src/game/game_map_parse2.c.s
 
 src/game/game_math_functions.o: src/game/game_math_functions.c.o
@@ -1695,7 +1749,7 @@ src/game/game_math_functions.o: src/game/game_math_functions.c.o
 
 # target to build an object file
 src/game/game_math_functions.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_math_functions.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions.c.o
 .PHONY : src/game/game_math_functions.c.o
 
 src/game/game_math_functions.i: src/game/game_math_functions.c.i
@@ -1704,7 +1758,7 @@ src/game/game_math_functions.i: src/game/game_math_functions.c.i
 
 # target to preprocess a source file
 src/game/game_math_functions.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_math_functions.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions.c.i
 .PHONY : src/game/game_math_functions.c.i
 
 src/game/game_math_functions.s: src/game/game_math_functions.c.s
@@ -1713,8 +1767,62 @@ src/game/game_math_functions.s: src/game/game_math_functions.c.s
 
 # target to generate assembly for a file
 src/game/game_math_functions.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_math_functions.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions.c.s
 .PHONY : src/game/game_math_functions.c.s
+
+src/game/game_math_functions2.o: src/game/game_math_functions2.c.o
+
+.PHONY : src/game/game_math_functions2.o
+
+# target to build an object file
+src/game/game_math_functions2.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions2.c.o
+.PHONY : src/game/game_math_functions2.c.o
+
+src/game/game_math_functions2.i: src/game/game_math_functions2.c.i
+
+.PHONY : src/game/game_math_functions2.i
+
+# target to preprocess a source file
+src/game/game_math_functions2.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions2.c.i
+.PHONY : src/game/game_math_functions2.c.i
+
+src/game/game_math_functions2.s: src/game/game_math_functions2.c.s
+
+.PHONY : src/game/game_math_functions2.s
+
+# target to generate assembly for a file
+src/game/game_math_functions2.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions2.c.s
+.PHONY : src/game/game_math_functions2.c.s
+
+src/game/game_math_functions3.o: src/game/game_math_functions3.c.o
+
+.PHONY : src/game/game_math_functions3.o
+
+# target to build an object file
+src/game/game_math_functions3.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions3.c.o
+.PHONY : src/game/game_math_functions3.c.o
+
+src/game/game_math_functions3.i: src/game/game_math_functions3.c.i
+
+.PHONY : src/game/game_math_functions3.i
+
+# target to preprocess a source file
+src/game/game_math_functions3.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions3.c.i
+.PHONY : src/game/game_math_functions3.c.i
+
+src/game/game_math_functions3.s: src/game/game_math_functions3.c.s
+
+.PHONY : src/game/game_math_functions3.s
+
+# target to generate assembly for a file
+src/game/game_math_functions3.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_math_functions3.c.s
+.PHONY : src/game/game_math_functions3.c.s
 
 src/game/game_motion.o: src/game/game_motion.c.o
 
@@ -1722,7 +1830,7 @@ src/game/game_motion.o: src/game/game_motion.c.o
 
 # target to build an object file
 src/game/game_motion.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_motion.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_motion.c.o
 .PHONY : src/game/game_motion.c.o
 
 src/game/game_motion.i: src/game/game_motion.c.i
@@ -1731,7 +1839,7 @@ src/game/game_motion.i: src/game/game_motion.c.i
 
 # target to preprocess a source file
 src/game/game_motion.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_motion.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_motion.c.i
 .PHONY : src/game/game_motion.c.i
 
 src/game/game_motion.s: src/game/game_motion.c.s
@@ -1740,7 +1848,7 @@ src/game/game_motion.s: src/game/game_motion.c.s
 
 # target to generate assembly for a file
 src/game/game_motion.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_motion.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_motion.c.s
 .PHONY : src/game/game_motion.c.s
 
 src/game/game_sdl_addons.o: src/game/game_sdl_addons.c.o
@@ -1749,7 +1857,7 @@ src/game/game_sdl_addons.o: src/game/game_sdl_addons.c.o
 
 # target to build an object file
 src/game/game_sdl_addons.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_sdl_addons.c.o
 .PHONY : src/game/game_sdl_addons.c.o
 
 src/game/game_sdl_addons.i: src/game/game_sdl_addons.c.i
@@ -1758,7 +1866,7 @@ src/game/game_sdl_addons.i: src/game/game_sdl_addons.c.i
 
 # target to preprocess a source file
 src/game/game_sdl_addons.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_sdl_addons.c.i
 .PHONY : src/game/game_sdl_addons.c.i
 
 src/game/game_sdl_addons.s: src/game/game_sdl_addons.c.s
@@ -1767,7 +1875,7 @@ src/game/game_sdl_addons.s: src/game/game_sdl_addons.c.s
 
 # target to generate assembly for a file
 src/game/game_sdl_addons.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_sdl_addons.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_sdl_addons.c.s
 .PHONY : src/game/game_sdl_addons.c.s
 
 src/game/game_skybox.o: src/game/game_skybox.c.o
@@ -1776,7 +1884,7 @@ src/game/game_skybox.o: src/game/game_skybox.c.o
 
 # target to build an object file
 src/game/game_skybox.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_skybox.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_skybox.c.o
 .PHONY : src/game/game_skybox.c.o
 
 src/game/game_skybox.i: src/game/game_skybox.c.i
@@ -1785,7 +1893,7 @@ src/game/game_skybox.i: src/game/game_skybox.c.i
 
 # target to preprocess a source file
 src/game/game_skybox.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_skybox.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_skybox.c.i
 .PHONY : src/game/game_skybox.c.i
 
 src/game/game_skybox.s: src/game/game_skybox.c.s
@@ -1794,7 +1902,7 @@ src/game/game_skybox.s: src/game/game_skybox.c.s
 
 # target to generate assembly for a file
 src/game/game_skybox.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_skybox.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_skybox.c.s
 .PHONY : src/game/game_skybox.c.s
 
 src/game/game_texture_parser.o: src/game/game_texture_parser.c.o
@@ -1803,7 +1911,7 @@ src/game/game_texture_parser.o: src/game/game_texture_parser.c.o
 
 # target to build an object file
 src/game/game_texture_parser.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_texture_parser.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_texture_parser.c.o
 .PHONY : src/game/game_texture_parser.c.o
 
 src/game/game_texture_parser.i: src/game/game_texture_parser.c.i
@@ -1812,7 +1920,7 @@ src/game/game_texture_parser.i: src/game/game_texture_parser.c.i
 
 # target to preprocess a source file
 src/game/game_texture_parser.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_texture_parser.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_texture_parser.c.i
 .PHONY : src/game/game_texture_parser.c.i
 
 src/game/game_texture_parser.s: src/game/game_texture_parser.c.s
@@ -1821,7 +1929,7 @@ src/game/game_texture_parser.s: src/game/game_texture_parser.c.s
 
 # target to generate assembly for a file
 src/game/game_texture_parser.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_texture_parser.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_texture_parser.c.s
 .PHONY : src/game/game_texture_parser.c.s
 
 src/game/game_textures.o: src/game/game_textures.c.o
@@ -1830,7 +1938,7 @@ src/game/game_textures.o: src/game/game_textures.c.o
 
 # target to build an object file
 src/game/game_textures.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_textures.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_textures.c.o
 .PHONY : src/game/game_textures.c.o
 
 src/game/game_textures.i: src/game/game_textures.c.i
@@ -1839,7 +1947,7 @@ src/game/game_textures.i: src/game/game_textures.c.i
 
 # target to preprocess a source file
 src/game/game_textures.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_textures.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_textures.c.i
 .PHONY : src/game/game_textures.c.i
 
 src/game/game_textures.s: src/game/game_textures.c.s
@@ -1848,7 +1956,7 @@ src/game/game_textures.s: src/game/game_textures.c.s
 
 # target to generate assembly for a file
 src/game/game_textures.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_textures.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_textures.c.s
 .PHONY : src/game/game_textures.c.s
 
 src/game/game_vectors_1.o: src/game/game_vectors_1.c.o
@@ -1857,7 +1965,7 @@ src/game/game_vectors_1.o: src/game/game_vectors_1.c.o
 
 # target to build an object file
 src/game/game_vectors_1.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_1.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_1.c.o
 .PHONY : src/game/game_vectors_1.c.o
 
 src/game/game_vectors_1.i: src/game/game_vectors_1.c.i
@@ -1866,7 +1974,7 @@ src/game/game_vectors_1.i: src/game/game_vectors_1.c.i
 
 # target to preprocess a source file
 src/game/game_vectors_1.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_1.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_1.c.i
 .PHONY : src/game/game_vectors_1.c.i
 
 src/game/game_vectors_1.s: src/game/game_vectors_1.c.s
@@ -1875,7 +1983,7 @@ src/game/game_vectors_1.s: src/game/game_vectors_1.c.s
 
 # target to generate assembly for a file
 src/game/game_vectors_1.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_1.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_1.c.s
 .PHONY : src/game/game_vectors_1.c.s
 
 src/game/game_vectors_2.o: src/game/game_vectors_2.c.o
@@ -1884,7 +1992,7 @@ src/game/game_vectors_2.o: src/game/game_vectors_2.c.o
 
 # target to build an object file
 src/game/game_vectors_2.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_2.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_2.c.o
 .PHONY : src/game/game_vectors_2.c.o
 
 src/game/game_vectors_2.i: src/game/game_vectors_2.c.i
@@ -1893,7 +2001,7 @@ src/game/game_vectors_2.i: src/game/game_vectors_2.c.i
 
 # target to preprocess a source file
 src/game/game_vectors_2.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_2.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_2.c.i
 .PHONY : src/game/game_vectors_2.c.i
 
 src/game/game_vectors_2.s: src/game/game_vectors_2.c.s
@@ -1902,7 +2010,7 @@ src/game/game_vectors_2.s: src/game/game_vectors_2.c.s
 
 # target to generate assembly for a file
 src/game/game_vectors_2.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_2.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_2.c.s
 .PHONY : src/game/game_vectors_2.c.s
 
 src/game/game_vectors_3.o: src/game/game_vectors_3.c.o
@@ -1911,7 +2019,7 @@ src/game/game_vectors_3.o: src/game/game_vectors_3.c.o
 
 # target to build an object file
 src/game/game_vectors_3.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_3.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_3.c.o
 .PHONY : src/game/game_vectors_3.c.o
 
 src/game/game_vectors_3.i: src/game/game_vectors_3.c.i
@@ -1920,7 +2028,7 @@ src/game/game_vectors_3.i: src/game/game_vectors_3.c.i
 
 # target to preprocess a source file
 src/game/game_vectors_3.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_3.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_3.c.i
 .PHONY : src/game/game_vectors_3.c.i
 
 src/game/game_vectors_3.s: src/game/game_vectors_3.c.s
@@ -1929,7 +2037,7 @@ src/game/game_vectors_3.s: src/game/game_vectors_3.c.s
 
 # target to generate assembly for a file
 src/game/game_vectors_3.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_vectors_3.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_vectors_3.c.s
 .PHONY : src/game/game_vectors_3.c.s
 
 src/game/game_walls.o: src/game/game_walls.c.o
@@ -1938,7 +2046,7 @@ src/game/game_walls.o: src/game/game_walls.c.o
 
 # target to build an object file
 src/game/game_walls.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_walls.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_walls.c.o
 .PHONY : src/game/game_walls.c.o
 
 src/game/game_walls.i: src/game/game_walls.c.i
@@ -1947,7 +2055,7 @@ src/game/game_walls.i: src/game/game_walls.c.i
 
 # target to preprocess a source file
 src/game/game_walls.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_walls.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_walls.c.i
 .PHONY : src/game/game_walls.c.i
 
 src/game/game_walls.s: src/game/game_walls.c.s
@@ -1956,7 +2064,7 @@ src/game/game_walls.s: src/game/game_walls.c.s
 
 # target to generate assembly for a file
 src/game/game_walls.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/game/game_walls.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_walls.c.s
 .PHONY : src/game/game_walls.c.s
 
 src/gui/gui_debug.o: src/gui/gui_debug.c.o
@@ -1965,7 +2073,7 @@ src/gui/gui_debug.o: src/gui/gui_debug.c.o
 
 # target to build an object file
 src/gui/gui_debug.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_debug.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_debug.c.o
 .PHONY : src/gui/gui_debug.c.o
 
 src/gui/gui_debug.i: src/gui/gui_debug.c.i
@@ -1974,7 +2082,7 @@ src/gui/gui_debug.i: src/gui/gui_debug.c.i
 
 # target to preprocess a source file
 src/gui/gui_debug.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_debug.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_debug.c.i
 .PHONY : src/gui/gui_debug.c.i
 
 src/gui/gui_debug.s: src/gui/gui_debug.c.s
@@ -1983,7 +2091,7 @@ src/gui/gui_debug.s: src/gui/gui_debug.c.s
 
 # target to generate assembly for a file
 src/gui/gui_debug.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_debug.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_debug.c.s
 .PHONY : src/gui/gui_debug.c.s
 
 src/gui/gui_destruct.o: src/gui/gui_destruct.c.o
@@ -1992,7 +2100,7 @@ src/gui/gui_destruct.o: src/gui/gui_destruct.c.o
 
 # target to build an object file
 src/gui/gui_destruct.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_destruct.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_destruct.c.o
 .PHONY : src/gui/gui_destruct.c.o
 
 src/gui/gui_destruct.i: src/gui/gui_destruct.c.i
@@ -2001,7 +2109,7 @@ src/gui/gui_destruct.i: src/gui/gui_destruct.c.i
 
 # target to preprocess a source file
 src/gui/gui_destruct.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_destruct.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_destruct.c.i
 .PHONY : src/gui/gui_destruct.c.i
 
 src/gui/gui_destruct.s: src/gui/gui_destruct.c.s
@@ -2010,7 +2118,7 @@ src/gui/gui_destruct.s: src/gui/gui_destruct.c.s
 
 # target to generate assembly for a file
 src/gui/gui_destruct.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_destruct.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_destruct.c.s
 .PHONY : src/gui/gui_destruct.c.s
 
 src/gui/gui_elem_button.o: src/gui/gui_elem_button.c.o
@@ -2019,7 +2127,7 @@ src/gui/gui_elem_button.o: src/gui/gui_elem_button.c.o
 
 # target to build an object file
 src/gui/gui_elem_button.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_button.c.o
 .PHONY : src/gui/gui_elem_button.c.o
 
 src/gui/gui_elem_button.i: src/gui/gui_elem_button.c.i
@@ -2028,7 +2136,7 @@ src/gui/gui_elem_button.i: src/gui/gui_elem_button.c.i
 
 # target to preprocess a source file
 src/gui/gui_elem_button.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_button.c.i
 .PHONY : src/gui/gui_elem_button.c.i
 
 src/gui/gui_elem_button.s: src/gui/gui_elem_button.c.s
@@ -2037,7 +2145,7 @@ src/gui/gui_elem_button.s: src/gui/gui_elem_button.c.s
 
 # target to generate assembly for a file
 src/gui/gui_elem_button.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_button.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_button.c.s
 .PHONY : src/gui/gui_elem_button.c.s
 
 src/gui/gui_elem_init.o: src/gui/gui_elem_init.c.o
@@ -2046,7 +2154,7 @@ src/gui/gui_elem_init.o: src/gui/gui_elem_init.c.o
 
 # target to build an object file
 src/gui/gui_elem_init.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_init.c.o
 .PHONY : src/gui/gui_elem_init.c.o
 
 src/gui/gui_elem_init.i: src/gui/gui_elem_init.c.i
@@ -2055,7 +2163,7 @@ src/gui/gui_elem_init.i: src/gui/gui_elem_init.c.i
 
 # target to preprocess a source file
 src/gui/gui_elem_init.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_init.c.i
 .PHONY : src/gui/gui_elem_init.c.i
 
 src/gui/gui_elem_init.s: src/gui/gui_elem_init.c.s
@@ -2064,7 +2172,7 @@ src/gui/gui_elem_init.s: src/gui/gui_elem_init.c.s
 
 # target to generate assembly for a file
 src/gui/gui_elem_init.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_init.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_init.c.s
 .PHONY : src/gui/gui_elem_init.c.s
 
 src/gui/gui_elem_input.o: src/gui/gui_elem_input.c.o
@@ -2073,7 +2181,7 @@ src/gui/gui_elem_input.o: src/gui/gui_elem_input.c.o
 
 # target to build an object file
 src/gui/gui_elem_input.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_input.c.o
 .PHONY : src/gui/gui_elem_input.c.o
 
 src/gui/gui_elem_input.i: src/gui/gui_elem_input.c.i
@@ -2082,7 +2190,7 @@ src/gui/gui_elem_input.i: src/gui/gui_elem_input.c.i
 
 # target to preprocess a source file
 src/gui/gui_elem_input.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_input.c.i
 .PHONY : src/gui/gui_elem_input.c.i
 
 src/gui/gui_elem_input.s: src/gui/gui_elem_input.c.s
@@ -2091,8 +2199,116 @@ src/gui/gui_elem_input.s: src/gui/gui_elem_input.c.s
 
 # target to generate assembly for a file
 src/gui/gui_elem_input.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_elem_input.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_input.c.s
 .PHONY : src/gui/gui_elem_input.c.s
+
+src/gui/gui_elem_set_func.o: src/gui/gui_elem_set_func.c.o
+
+.PHONY : src/gui/gui_elem_set_func.o
+
+# target to build an object file
+src/gui/gui_elem_set_func.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.o
+.PHONY : src/gui/gui_elem_set_func.c.o
+
+src/gui/gui_elem_set_func.i: src/gui/gui_elem_set_func.c.i
+
+.PHONY : src/gui/gui_elem_set_func.i
+
+# target to preprocess a source file
+src/gui/gui_elem_set_func.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.i
+.PHONY : src/gui/gui_elem_set_func.c.i
+
+src/gui/gui_elem_set_func.s: src/gui/gui_elem_set_func.c.s
+
+.PHONY : src/gui/gui_elem_set_func.s
+
+# target to generate assembly for a file
+src/gui/gui_elem_set_func.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.s
+.PHONY : src/gui/gui_elem_set_func.c.s
+
+src/gui/gui_elem_set_status.o: src/gui/gui_elem_set_status.c.o
+
+.PHONY : src/gui/gui_elem_set_status.o
+
+# target to build an object file
+src/gui/gui_elem_set_status.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.o
+.PHONY : src/gui/gui_elem_set_status.c.o
+
+src/gui/gui_elem_set_status.i: src/gui/gui_elem_set_status.c.i
+
+.PHONY : src/gui/gui_elem_set_status.i
+
+# target to preprocess a source file
+src/gui/gui_elem_set_status.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.i
+.PHONY : src/gui/gui_elem_set_status.c.i
+
+src/gui/gui_elem_set_status.s: src/gui/gui_elem_set_status.c.s
+
+.PHONY : src/gui/gui_elem_set_status.s
+
+# target to generate assembly for a file
+src/gui/gui_elem_set_status.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.s
+.PHONY : src/gui/gui_elem_set_status.c.s
+
+src/gui/gui_elem_set_style.o: src/gui/gui_elem_set_style.c.o
+
+.PHONY : src/gui/gui_elem_set_style.o
+
+# target to build an object file
+src/gui/gui_elem_set_style.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.o
+.PHONY : src/gui/gui_elem_set_style.c.o
+
+src/gui/gui_elem_set_style.i: src/gui/gui_elem_set_style.c.i
+
+.PHONY : src/gui/gui_elem_set_style.i
+
+# target to preprocess a source file
+src/gui/gui_elem_set_style.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.i
+.PHONY : src/gui/gui_elem_set_style.c.i
+
+src/gui/gui_elem_set_style.s: src/gui/gui_elem_set_style.c.s
+
+.PHONY : src/gui/gui_elem_set_style.s
+
+# target to generate assembly for a file
+src/gui/gui_elem_set_style.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.s
+.PHONY : src/gui/gui_elem_set_style.c.s
+
+src/gui/gui_elem_set_type.o: src/gui/gui_elem_set_type.c.o
+
+.PHONY : src/gui/gui_elem_set_type.o
+
+# target to build an object file
+src/gui/gui_elem_set_type.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.o
+.PHONY : src/gui/gui_elem_set_type.c.o
+
+src/gui/gui_elem_set_type.i: src/gui/gui_elem_set_type.c.i
+
+.PHONY : src/gui/gui_elem_set_type.i
+
+# target to preprocess a source file
+src/gui/gui_elem_set_type.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.i
+.PHONY : src/gui/gui_elem_set_type.c.i
+
+src/gui/gui_elem_set_type.s: src/gui/gui_elem_set_type.c.s
+
+.PHONY : src/gui/gui_elem_set_type.s
+
+# target to generate assembly for a file
+src/gui/gui_elem_set_type.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.s
+.PHONY : src/gui/gui_elem_set_type.c.s
 
 src/gui/gui_events.o: src/gui/gui_events.c.o
 
@@ -2100,7 +2316,7 @@ src/gui/gui_events.o: src/gui/gui_events.c.o
 
 # target to build an object file
 src/gui/gui_events.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_events.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_events.c.o
 .PHONY : src/gui/gui_events.c.o
 
 src/gui/gui_events.i: src/gui/gui_events.c.i
@@ -2109,7 +2325,7 @@ src/gui/gui_events.i: src/gui/gui_events.c.i
 
 # target to preprocess a source file
 src/gui/gui_events.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_events.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_events.c.i
 .PHONY : src/gui/gui_events.c.i
 
 src/gui/gui_events.s: src/gui/gui_events.c.s
@@ -2118,7 +2334,7 @@ src/gui/gui_events.s: src/gui/gui_events.c.s
 
 # target to generate assembly for a file
 src/gui/gui_events.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_events.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_events.c.s
 .PHONY : src/gui/gui_events.c.s
 
 src/gui/gui_fonts.o: src/gui/gui_fonts.c.o
@@ -2127,7 +2343,7 @@ src/gui/gui_fonts.o: src/gui/gui_fonts.c.o
 
 # target to build an object file
 src/gui/gui_fonts.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_fonts.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_fonts.c.o
 .PHONY : src/gui/gui_fonts.c.o
 
 src/gui/gui_fonts.i: src/gui/gui_fonts.c.i
@@ -2136,7 +2352,7 @@ src/gui/gui_fonts.i: src/gui/gui_fonts.c.i
 
 # target to preprocess a source file
 src/gui/gui_fonts.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_fonts.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_fonts.c.i
 .PHONY : src/gui/gui_fonts.c.i
 
 src/gui/gui_fonts.s: src/gui/gui_fonts.c.s
@@ -2145,7 +2361,7 @@ src/gui/gui_fonts.s: src/gui/gui_fonts.c.s
 
 # target to generate assembly for a file
 src/gui/gui_fonts.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_fonts.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_fonts.c.s
 .PHONY : src/gui/gui_fonts.c.s
 
 src/gui/gui_init.o: src/gui/gui_init.c.o
@@ -2154,7 +2370,7 @@ src/gui/gui_init.o: src/gui/gui_init.c.o
 
 # target to build an object file
 src/gui/gui_init.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_init.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_init.c.o
 .PHONY : src/gui/gui_init.c.o
 
 src/gui/gui_init.i: src/gui/gui_init.c.i
@@ -2163,7 +2379,7 @@ src/gui/gui_init.i: src/gui/gui_init.c.i
 
 # target to preprocess a source file
 src/gui/gui_init.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_init.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_init.c.i
 .PHONY : src/gui/gui_init.c.i
 
 src/gui/gui_init.s: src/gui/gui_init.c.s
@@ -2172,7 +2388,7 @@ src/gui/gui_init.s: src/gui/gui_init.c.s
 
 # target to generate assembly for a file
 src/gui/gui_init.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_init.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_init.c.s
 .PHONY : src/gui/gui_init.c.s
 
 src/gui/gui_keydown.o: src/gui/gui_keydown.c.o
@@ -2181,7 +2397,7 @@ src/gui/gui_keydown.o: src/gui/gui_keydown.c.o
 
 # target to build an object file
 src/gui/gui_keydown.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_keydown.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_keydown.c.o
 .PHONY : src/gui/gui_keydown.c.o
 
 src/gui/gui_keydown.i: src/gui/gui_keydown.c.i
@@ -2190,7 +2406,7 @@ src/gui/gui_keydown.i: src/gui/gui_keydown.c.i
 
 # target to preprocess a source file
 src/gui/gui_keydown.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_keydown.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_keydown.c.i
 .PHONY : src/gui/gui_keydown.c.i
 
 src/gui/gui_keydown.s: src/gui/gui_keydown.c.s
@@ -2199,7 +2415,7 @@ src/gui/gui_keydown.s: src/gui/gui_keydown.c.s
 
 # target to generate assembly for a file
 src/gui/gui_keydown.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_keydown.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_keydown.c.s
 .PHONY : src/gui/gui_keydown.c.s
 
 src/gui/gui_mouse.o: src/gui/gui_mouse.c.o
@@ -2208,7 +2424,7 @@ src/gui/gui_mouse.o: src/gui/gui_mouse.c.o
 
 # target to build an object file
 src/gui/gui_mouse.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_mouse.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse.c.o
 .PHONY : src/gui/gui_mouse.c.o
 
 src/gui/gui_mouse.i: src/gui/gui_mouse.c.i
@@ -2217,7 +2433,7 @@ src/gui/gui_mouse.i: src/gui/gui_mouse.c.i
 
 # target to preprocess a source file
 src/gui/gui_mouse.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_mouse.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse.c.i
 .PHONY : src/gui/gui_mouse.c.i
 
 src/gui/gui_mouse.s: src/gui/gui_mouse.c.s
@@ -2226,8 +2442,62 @@ src/gui/gui_mouse.s: src/gui/gui_mouse.c.s
 
 # target to generate assembly for a file
 src/gui/gui_mouse.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_mouse.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse.c.s
 .PHONY : src/gui/gui_mouse.c.s
+
+src/gui/gui_mouse_actions.o: src/gui/gui_mouse_actions.c.o
+
+.PHONY : src/gui/gui_mouse_actions.o
+
+# target to build an object file
+src/gui/gui_mouse_actions.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.o
+.PHONY : src/gui/gui_mouse_actions.c.o
+
+src/gui/gui_mouse_actions.i: src/gui/gui_mouse_actions.c.i
+
+.PHONY : src/gui/gui_mouse_actions.i
+
+# target to preprocess a source file
+src/gui/gui_mouse_actions.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.i
+.PHONY : src/gui/gui_mouse_actions.c.i
+
+src/gui/gui_mouse_actions.s: src/gui/gui_mouse_actions.c.s
+
+.PHONY : src/gui/gui_mouse_actions.s
+
+# target to generate assembly for a file
+src/gui/gui_mouse_actions.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.s
+.PHONY : src/gui/gui_mouse_actions.c.s
+
+src/gui/gui_mouse_event.o: src/gui/gui_mouse_event.c.o
+
+.PHONY : src/gui/gui_mouse_event.o
+
+# target to build an object file
+src/gui/gui_mouse_event.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse_event.c.o
+.PHONY : src/gui/gui_mouse_event.c.o
+
+src/gui/gui_mouse_event.i: src/gui/gui_mouse_event.c.i
+
+.PHONY : src/gui/gui_mouse_event.i
+
+# target to preprocess a source file
+src/gui/gui_mouse_event.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse_event.c.i
+.PHONY : src/gui/gui_mouse_event.c.i
+
+src/gui/gui_mouse_event.s: src/gui/gui_mouse_event.c.s
+
+.PHONY : src/gui/gui_mouse_event.s
+
+# target to generate assembly for a file
+src/gui/gui_mouse_event.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_mouse_event.c.s
+.PHONY : src/gui/gui_mouse_event.c.s
 
 src/gui/gui_redraw.o: src/gui/gui_redraw.c.o
 
@@ -2235,7 +2505,7 @@ src/gui/gui_redraw.o: src/gui/gui_redraw.c.o
 
 # target to build an object file
 src/gui/gui_redraw.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_redraw.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw.c.o
 .PHONY : src/gui/gui_redraw.c.o
 
 src/gui/gui_redraw.i: src/gui/gui_redraw.c.i
@@ -2244,7 +2514,7 @@ src/gui/gui_redraw.i: src/gui/gui_redraw.c.i
 
 # target to preprocess a source file
 src/gui/gui_redraw.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_redraw.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw.c.i
 .PHONY : src/gui/gui_redraw.c.i
 
 src/gui/gui_redraw.s: src/gui/gui_redraw.c.s
@@ -2253,8 +2523,116 @@ src/gui/gui_redraw.s: src/gui/gui_redraw.c.s
 
 # target to generate assembly for a file
 src/gui/gui_redraw.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/gui/gui_redraw.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw.c.s
 .PHONY : src/gui/gui_redraw.c.s
+
+src/gui/gui_redraw_fill.o: src/gui/gui_redraw_fill.c.o
+
+.PHONY : src/gui/gui_redraw_fill.o
+
+# target to build an object file
+src/gui/gui_redraw_fill.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.o
+.PHONY : src/gui/gui_redraw_fill.c.o
+
+src/gui/gui_redraw_fill.i: src/gui/gui_redraw_fill.c.i
+
+.PHONY : src/gui/gui_redraw_fill.i
+
+# target to preprocess a source file
+src/gui/gui_redraw_fill.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.i
+.PHONY : src/gui/gui_redraw_fill.c.i
+
+src/gui/gui_redraw_fill.s: src/gui/gui_redraw_fill.c.s
+
+.PHONY : src/gui/gui_redraw_fill.s
+
+# target to generate assembly for a file
+src/gui/gui_redraw_fill.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.s
+.PHONY : src/gui/gui_redraw_fill.c.s
+
+src/gui/gui_redraw_font.o: src/gui/gui_redraw_font.c.o
+
+.PHONY : src/gui/gui_redraw_font.o
+
+# target to build an object file
+src/gui/gui_redraw_font.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_font.c.o
+.PHONY : src/gui/gui_redraw_font.c.o
+
+src/gui/gui_redraw_font.i: src/gui/gui_redraw_font.c.i
+
+.PHONY : src/gui/gui_redraw_font.i
+
+# target to preprocess a source file
+src/gui/gui_redraw_font.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_font.c.i
+.PHONY : src/gui/gui_redraw_font.c.i
+
+src/gui/gui_redraw_font.s: src/gui/gui_redraw_font.c.s
+
+.PHONY : src/gui/gui_redraw_font.s
+
+# target to generate assembly for a file
+src/gui/gui_redraw_font.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_font.c.s
+.PHONY : src/gui/gui_redraw_font.c.s
+
+src/gui/gui_redraw_image.o: src/gui/gui_redraw_image.c.o
+
+.PHONY : src/gui/gui_redraw_image.o
+
+# target to build an object file
+src/gui/gui_redraw_image.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_image.c.o
+.PHONY : src/gui/gui_redraw_image.c.o
+
+src/gui/gui_redraw_image.i: src/gui/gui_redraw_image.c.i
+
+.PHONY : src/gui/gui_redraw_image.i
+
+# target to preprocess a source file
+src/gui/gui_redraw_image.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_image.c.i
+.PHONY : src/gui/gui_redraw_image.c.i
+
+src/gui/gui_redraw_image.s: src/gui/gui_redraw_image.c.s
+
+.PHONY : src/gui/gui_redraw_image.s
+
+# target to generate assembly for a file
+src/gui/gui_redraw_image.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_redraw_image.c.s
+.PHONY : src/gui/gui_redraw_image.c.s
+
+src/gui/gui_sdl_func.o: src/gui/gui_sdl_func.c.o
+
+.PHONY : src/gui/gui_sdl_func.o
+
+# target to build an object file
+src/gui/gui_sdl_func.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_sdl_func.c.o
+.PHONY : src/gui/gui_sdl_func.c.o
+
+src/gui/gui_sdl_func.i: src/gui/gui_sdl_func.c.i
+
+.PHONY : src/gui/gui_sdl_func.i
+
+# target to preprocess a source file
+src/gui/gui_sdl_func.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_sdl_func.c.i
+.PHONY : src/gui/gui_sdl_func.c.i
+
+src/gui/gui_sdl_func.s: src/gui/gui_sdl_func.c.s
+
+.PHONY : src/gui/gui_sdl_func.s
+
+# target to generate assembly for a file
+src/gui/gui_sdl_func.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/gui/gui_sdl_func.c.s
+.PHONY : src/gui/gui_sdl_func.c.s
 
 src/main/main.o: src/main/main.c.o
 
@@ -2262,7 +2640,7 @@ src/main/main.o: src/main/main.c.o
 
 # target to build an object file
 src/main/main.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main.c.o
 .PHONY : src/main/main.c.o
 
 src/main/main.i: src/main/main.c.i
@@ -2271,7 +2649,7 @@ src/main/main.i: src/main/main.c.i
 
 # target to preprocess a source file
 src/main/main.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main.c.i
 .PHONY : src/main/main.c.i
 
 src/main/main.s: src/main/main.c.s
@@ -2280,7 +2658,7 @@ src/main/main.s: src/main/main.c.s
 
 # target to generate assembly for a file
 src/main/main.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main.c.s
 .PHONY : src/main/main.c.s
 
 src/main/main_btn_action.o: src/main/main_btn_action.c.o
@@ -2289,7 +2667,7 @@ src/main/main_btn_action.o: src/main/main_btn_action.c.o
 
 # target to build an object file
 src/main/main_btn_action.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_btn_action.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_btn_action.c.o
 .PHONY : src/main/main_btn_action.c.o
 
 src/main/main_btn_action.i: src/main/main_btn_action.c.i
@@ -2298,7 +2676,7 @@ src/main/main_btn_action.i: src/main/main_btn_action.c.i
 
 # target to preprocess a source file
 src/main/main_btn_action.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_btn_action.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_btn_action.c.i
 .PHONY : src/main/main_btn_action.c.i
 
 src/main/main_btn_action.s: src/main/main_btn_action.c.s
@@ -2307,7 +2685,7 @@ src/main/main_btn_action.s: src/main/main_btn_action.c.s
 
 # target to generate assembly for a file
 src/main/main_btn_action.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_btn_action.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_btn_action.c.s
 .PHONY : src/main/main_btn_action.c.s
 
 src/main/main_events.o: src/main/main_events.c.o
@@ -2316,7 +2694,7 @@ src/main/main_events.o: src/main/main_events.c.o
 
 # target to build an object file
 src/main/main_events.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_events.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_events.c.o
 .PHONY : src/main/main_events.c.o
 
 src/main/main_events.i: src/main/main_events.c.i
@@ -2325,7 +2703,7 @@ src/main/main_events.i: src/main/main_events.c.i
 
 # target to preprocess a source file
 src/main/main_events.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_events.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_events.c.i
 .PHONY : src/main/main_events.c.i
 
 src/main/main_events.s: src/main/main_events.c.s
@@ -2334,7 +2712,7 @@ src/main/main_events.s: src/main/main_events.c.s
 
 # target to generate assembly for a file
 src/main/main_events.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_events.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_events.c.s
 .PHONY : src/main/main_events.c.s
 
 src/main/main_gui_init.o: src/main/main_gui_init.c.o
@@ -2343,7 +2721,7 @@ src/main/main_gui_init.o: src/main/main_gui_init.c.o
 
 # target to build an object file
 src/main/main_gui_init.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_gui_init.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_gui_init.c.o
 .PHONY : src/main/main_gui_init.c.o
 
 src/main/main_gui_init.i: src/main/main_gui_init.c.i
@@ -2352,7 +2730,7 @@ src/main/main_gui_init.i: src/main/main_gui_init.c.i
 
 # target to preprocess a source file
 src/main/main_gui_init.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_gui_init.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_gui_init.c.i
 .PHONY : src/main/main_gui_init.c.i
 
 src/main/main_gui_init.s: src/main/main_gui_init.c.s
@@ -2361,7 +2739,7 @@ src/main/main_gui_init.s: src/main/main_gui_init.c.s
 
 # target to generate assembly for a file
 src/main/main_gui_init.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/main/main_gui_init.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/main/main_gui_init.c.s
 .PHONY : src/main/main_gui_init.c.s
 
 src/math/math_intersect.o: src/math/math_intersect.c.o
@@ -2370,7 +2748,7 @@ src/math/math_intersect.o: src/math/math_intersect.c.o
 
 # target to build an object file
 src/math/math_intersect.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/math/math_intersect.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/math/math_intersect.c.o
 .PHONY : src/math/math_intersect.c.o
 
 src/math/math_intersect.i: src/math/math_intersect.c.i
@@ -2379,7 +2757,7 @@ src/math/math_intersect.i: src/math/math_intersect.c.i
 
 # target to preprocess a source file
 src/math/math_intersect.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/math/math_intersect.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/math/math_intersect.c.i
 .PHONY : src/math/math_intersect.c.i
 
 src/math/math_intersect.s: src/math/math_intersect.c.s
@@ -2388,7 +2766,7 @@ src/math/math_intersect.s: src/math/math_intersect.c.s
 
 # target to generate assembly for a file
 src/math/math_intersect.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/math/math_intersect.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/math/math_intersect.c.s
 .PHONY : src/math/math_intersect.c.s
 
 src/math/math_vectors.o: src/math/math_vectors.c.o
@@ -2397,7 +2775,7 @@ src/math/math_vectors.o: src/math/math_vectors.c.o
 
 # target to build an object file
 src/math/math_vectors.c.o:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/math/math_vectors.c.o
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/math/math_vectors.c.o
 .PHONY : src/math/math_vectors.c.o
 
 src/math/math_vectors.i: src/math/math_vectors.c.i
@@ -2406,7 +2784,7 @@ src/math/math_vectors.i: src/math/math_vectors.c.i
 
 # target to preprocess a source file
 src/math/math_vectors.c.i:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/math/math_vectors.c.i
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/math/math_vectors.c.i
 .PHONY : src/math/math_vectors.c.i
 
 src/math/math_vectors.s: src/math/math_vectors.c.s
@@ -2415,7 +2793,7 @@ src/math/math_vectors.s: src/math/math_vectors.c.s
 
 # target to generate assembly for a file
 src/math/math_vectors.c.s:
-	$(MAKE) -f CMakeFiles/doom42.dir/build.make CMakeFiles/doom42.dir/src/math/math_vectors.c.s
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/math/math_vectors.c.s
 .PHONY : src/math/math_vectors.c.s
 
 # Help Target
@@ -2426,7 +2804,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... doom42"
+	@echo "... free"
 	@echo "... src/algebra/algebra_matrix.o"
 	@echo "... src/algebra/algebra_matrix.i"
 	@echo "... src/algebra/algebra_matrix.s"
@@ -2436,9 +2814,6 @@ help:
 	@echo "... src/algebra/algebra_vectors_2.o"
 	@echo "... src/algebra/algebra_vectors_2.i"
 	@echo "... src/algebra/algebra_vectors_2.s"
-	@echo "... src/editor/editor_debug.o"
-	@echo "... src/editor/editor_debug.i"
-	@echo "... src/editor/editor_debug.s"
 	@echo "... src/editor/editor_desctuct.o"
 	@echo "... src/editor/editor_desctuct.i"
 	@echo "... src/editor/editor_desctuct.s"
@@ -2559,6 +2934,15 @@ help:
 	@echo "... src/func/func_wu_draw.o"
 	@echo "... src/func/func_wu_draw.i"
 	@echo "... src/func/func_wu_draw.s"
+	@echo "... src/func/func_wu_func.o"
+	@echo "... src/func/func_wu_func.i"
+	@echo "... src/func/func_wu_func.s"
+	@echo "... src/func/func_wu_init.o"
+	@echo "... src/func/func_wu_init.i"
+	@echo "... src/func/func_wu_init.s"
+	@echo "... src/func/func_wu_line.o"
+	@echo "... src/func/func_wu_line.i"
+	@echo "... src/func/func_wu_line.s"
 	@echo "... src/game/game_but.o"
 	@echo "... src/game/game_but.i"
 	@echo "... src/game/game_but.s"
@@ -2604,6 +2988,12 @@ help:
 	@echo "... src/game/game_math_functions.o"
 	@echo "... src/game/game_math_functions.i"
 	@echo "... src/game/game_math_functions.s"
+	@echo "... src/game/game_math_functions2.o"
+	@echo "... src/game/game_math_functions2.i"
+	@echo "... src/game/game_math_functions2.s"
+	@echo "... src/game/game_math_functions3.o"
+	@echo "... src/game/game_math_functions3.i"
+	@echo "... src/game/game_math_functions3.s"
 	@echo "... src/game/game_motion.o"
 	@echo "... src/game/game_motion.i"
 	@echo "... src/game/game_motion.s"
@@ -2646,6 +3036,18 @@ help:
 	@echo "... src/gui/gui_elem_input.o"
 	@echo "... src/gui/gui_elem_input.i"
 	@echo "... src/gui/gui_elem_input.s"
+	@echo "... src/gui/gui_elem_set_func.o"
+	@echo "... src/gui/gui_elem_set_func.i"
+	@echo "... src/gui/gui_elem_set_func.s"
+	@echo "... src/gui/gui_elem_set_status.o"
+	@echo "... src/gui/gui_elem_set_status.i"
+	@echo "... src/gui/gui_elem_set_status.s"
+	@echo "... src/gui/gui_elem_set_style.o"
+	@echo "... src/gui/gui_elem_set_style.i"
+	@echo "... src/gui/gui_elem_set_style.s"
+	@echo "... src/gui/gui_elem_set_type.o"
+	@echo "... src/gui/gui_elem_set_type.i"
+	@echo "... src/gui/gui_elem_set_type.s"
 	@echo "... src/gui/gui_events.o"
 	@echo "... src/gui/gui_events.i"
 	@echo "... src/gui/gui_events.s"
@@ -2661,9 +3063,27 @@ help:
 	@echo "... src/gui/gui_mouse.o"
 	@echo "... src/gui/gui_mouse.i"
 	@echo "... src/gui/gui_mouse.s"
+	@echo "... src/gui/gui_mouse_actions.o"
+	@echo "... src/gui/gui_mouse_actions.i"
+	@echo "... src/gui/gui_mouse_actions.s"
+	@echo "... src/gui/gui_mouse_event.o"
+	@echo "... src/gui/gui_mouse_event.i"
+	@echo "... src/gui/gui_mouse_event.s"
 	@echo "... src/gui/gui_redraw.o"
 	@echo "... src/gui/gui_redraw.i"
 	@echo "... src/gui/gui_redraw.s"
+	@echo "... src/gui/gui_redraw_fill.o"
+	@echo "... src/gui/gui_redraw_fill.i"
+	@echo "... src/gui/gui_redraw_fill.s"
+	@echo "... src/gui/gui_redraw_font.o"
+	@echo "... src/gui/gui_redraw_font.i"
+	@echo "... src/gui/gui_redraw_font.s"
+	@echo "... src/gui/gui_redraw_image.o"
+	@echo "... src/gui/gui_redraw_image.i"
+	@echo "... src/gui/gui_redraw_image.s"
+	@echo "... src/gui/gui_sdl_func.o"
+	@echo "... src/gui/gui_sdl_func.i"
+	@echo "... src/gui/gui_sdl_func.s"
 	@echo "... src/main/main.o"
 	@echo "... src/main/main.i"
 	@echo "... src/main/main.s"

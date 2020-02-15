@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:39 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 19:23:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 void		ft_my_parse_map(t_new_player *pl, char *ag)
 {
 	pl->file.count_sectors = -1;
+	if (!ag)
+		ag = "maps/door";
 	if ((pl->file.fd = open(ag, O_RDONLY)) < 0)
-	{
-		perror("Error: bad file");
-		exit(EXIT_FAILURE);
-	}
+		ft_error("BAD FILE");
 	pl->file.vertex_count = 0;
 	while ((pl->file.res = get_next_line(pl->file.fd, &pl->file.line)) > 0)
 	{
 		pl->file.i = 1;
-		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
+		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)' ')) != NULL)
+			ft_error("BAD FILE, ONLY TAB , MAN!");
+		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
 			ft_vertex_count(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
 			ft_sector_count(pl);
@@ -92,12 +93,12 @@ void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
 	{
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
 			vertex = ft_vertex_save(pl, vertex);
+		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'m')) != NULL)
+			ft_level_save(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
 			ft_sector_save(pl, vertex);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'p')) != NULL)
 			ft_player_save(pl);
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'l')) != NULL)
-			ft_level_save(pl);
 		ft_strdel(&pl->file.line);
 		free(pl->file.line);
 	}

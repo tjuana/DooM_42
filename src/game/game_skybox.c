@@ -1,15 +1,25 @@
-//
-// Created by danny on 26.01.2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_skybox.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nshelly <nshelly@student.21school.>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 17:44:09 by nshelly           #+#    #+#             */
+/*   Updated: 2020/02/15 17:44:09 by nshelly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "doom.h"
 
-void		pix_sky(t_textures *t, t_new_player *pl)//guarda la textura gun
+void	pix_sky(t_textures *t, t_new_player *pl)
 {
-    int hex;
-    unsigned int p;
+	int				hex;
+	unsigned int	p;
 
-    pl->pix = (int *)pl->srf->pixels;
-	p = (t->y%pl->tex[SKY].h) * pl->tex[SKY].w + t->x%pl->tex[SKY].w ;//formula = y*w + x
-	hex = hexcolor(pl->tex[SKY].pixels[p].r, pl->tex[SKY].pixels[p].g, pl->tex[SKY].pixels[p].b);
-    pl->pix[t->y * WIN_W + t->x] = hex;//pl->sky_pix[t->y][t->x];
+	pl->pix = (int *)pl->srf->pixels;
+	p = (t->y % pl->tex[SKY].h) * pl->tex[SKY].w + t->x % pl->tex[SKY].w;
+	hex = hexcolor(pl->tex[SKY].pixels[p].r, pl->tex[SKY].pixels[p].g,\
+	pl->tex[SKY].pixels[p].b);
+	pl->pix[t->y * WIN_W + t->x] = hex;
 }

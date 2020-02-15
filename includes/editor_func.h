@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:43 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:03:17 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 **	editor/editor_debug.c
 ** **************************************************************************
 */
-void				ft_editor_sector_special_debug(t_list *ptr_list);
 void				ft_print_sectors(t_list *ptr_list);
 
 /*
@@ -204,8 +203,6 @@ void				ft_gui_mousebuttonup_win_setplayer_btncancel(\
 **	editor/editor_event_win_setsector.c
 ** **************************************************************************
 */
-void				ft_gui_mousebuttonup_win_setsector_walltxtr(\
-						void *data, SDL_Event e, t_list *dom, int type);
 void				ft_gui_mousebuttonup_win_setsector_btnsavemap(\
 						void *data, SDL_Event e, t_list *dom, int type);
 void				ft_gui_mousebuttonup_win_setsector_btncancel(\
@@ -248,8 +245,8 @@ void				*ft_editor_redraw_txtr(void *data, t_list *dom);
 **	editor/editor_init.c
 ** **************************************************************************
 */
-void				ft_editor_add_new_txtr(t_wolf3d *w, char *path);
-void				ft_editor_init_txtr_list(t_wolf3d *w);
+// void				ft_editor_add_new_txtr(t_wolf3d *w, char *path);
+// void				ft_editor_init_txtr_list(t_wolf3d *w);
 void				ft_editor_init(t_wolf3d *w);
 
 /*
@@ -272,7 +269,7 @@ int					ft_check_point_in_sector(t_wolf3d *w, t_sector *s, \
 						t_vector3 v);
 int					ft_search_point_in_sector(void *a, t_vector3 v);
 int					ft_new_editor_map_check_area(t_wolf3d *w);
-int					ft_editor_sector_compare_vertexes(t_vector3 v1, \
+int					ft_compare_vertexes(t_vector3 v1, \
 						t_vector3 v2);
 
 /*
@@ -305,14 +302,16 @@ void				ft_delete_enemy(t_wolf3d *w);
 int					ft_map_check_straight_line(t_vector3 v1, t_vector3 v2);
 t_vector3			ft_gui_map_coord_to_vertex(t_wolf3d *w, t_gui_coord c);
 t_gui_coord			ft_gui_map_vertex_to_coord(t_wolf3d *w, t_vector3 v);
-t_gui_coord			ft_gui_map_check_mouse_vertex_pos(t_wolf3d *w, \
+t_gui_coord			ft_gui_map_check_mouse(t_wolf3d *w, \
 						t_gui_coord c, t_gui_elem *elem);
-
+void				ft_help_check_mouse_ver(t_wolf3d *w, t_gui_coord c);
 /*
 ** **************************************************************************
 **	editor/editor_map_sector.c
 ** **************************************************************************
 */
+void				ft_editor_turn_vertexes(t_sector *s, int numb);
+void				ft_editor_check_turn_vertexes(t_wolf3d *w);
 void				ft_editor_sector_create(t_wolf3d *w);
 void				ft_delete_sector(t_wolf3d *w);
 t_sector			*ft_editor_search_sector_by_id(t_wolf3d *w, \

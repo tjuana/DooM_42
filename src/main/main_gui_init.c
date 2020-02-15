@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:36:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/08 13:33:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/12 20:37:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_main_gui_init_win_menu(t_list *head)
 		(t_gui_coord){140, 140, 0});
 	ft_gui_elem_set_color(elem->child, 0xffa500);
 	ft_gui_elem_set_button(elem->child, "Game");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btngame, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btngame, \
+		SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btneditor", \
@@ -31,7 +32,8 @@ void	ft_main_gui_init_win_menu(t_list *head)
 		(t_gui_coord){280, 140, 0});
 	ft_gui_elem_set_color(elem->child, 0xffa500);
 	ft_gui_elem_set_button(elem->child, "Editor");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btneditor, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btneditor, \
+		SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_btnexit", \
@@ -39,12 +41,13 @@ void	ft_main_gui_init_win_menu(t_list *head)
 		(t_gui_coord){420, 140, 0});
 	ft_gui_elem_set_color(elem->child, 0xffa500);
 	ft_gui_elem_set_button(elem->child, "Exit");
-	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnexit, SDL_MOUSEBUTTONUP, 0);
+	ft_gui_elem_set_event(elem->child, ft_gui_mousebuttonup_win_menu_btnexit, \
+		SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_set_parent(head, elem->child);
 
 	ft_gui_elem_init(&elem->child, "win_menu_image", \
 		(t_gui_coord){0, 0, 0}, \
-		(t_gui_coord){1400, 740, 0});
+		(t_gui_coord){WIN_W, WIN_H, 0});
 	ft_gui_elem_set_image(elem->child, "/Textures/bloody_game.jpg");
 	ft_gui_elem_set_parent(head, elem->child);
 }

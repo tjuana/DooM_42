@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:51 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 19:48:17 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@
 ** **************************************************************************
 */
 
-void	end_game(t_new_player *pl)
-{	
-	//// printf "END OF GAME!!!"
-	SDL_Delay(50);
-	//free and clean all old stuff
+void			end_game(t_new_player *pl)
+{
+	int i;
+	i = -1;
+	//better use free(pl);
+	SDL_Delay(777);
 	if (pl)
+	{
 		free(pl);
+		// pl = NULL;
+	}
 	exit(EXIT_SUCCESS);
 }
 
@@ -36,37 +40,30 @@ void	end_game(t_new_player *pl)
 ** **************************************************************************
 */
 
-t_new_player		*load_next(t_new_player *pl)
+t_new_player	*load_next(t_new_player *pl)
 {
-	t_new_player	*pl_next;
+	char *lvl;
+	int i = 0;
+	int j = -1;
+	t_new_sector	*sector;
 
-	pl_next = NULL;
-	if (pl->lvl == NULL)
-		end_game(pl);
-	if (!(pl_next = (t_new_player *)malloc(sizeof(t_new_player))))
+	while (j++ < pl->sectors->npoints)
 	{
-		ft_putstr_fd("load_next malloc error.\n", 2);
-		exit(EXIT_FAILURE);
+		sector = &pl->sectors[j];
+		free(sector->vertex);
+		sector->vertex = NULL;
+		free(sector->neighbors);
+		sector->neighbors = NULL;
 	}
-	pl_next->sectors_nb = 0;
-	pl_next->win = pl->win;
-	// load_file(pl->lvl, pl_next);
-	ft_my_parse_map(pl_next, pl->lvl);
-	pl->srf ? SDL_FreeSurface(pl->srf) : 0;
-	pl->srf = NULL;
-	free(pl);
-	pl = NULL;
-	pl = pl_next;
-	pl->srf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0);
-	!pl->srf ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	pl->rend = SDL_GetRenderer(pl->win);
-	!pl->rend ? ft_putstr_fd(SDL_GetError(), 2) : 0;
-	return(pl);
+	free(pl->sectors);
+	pl->sectors = NULL;
+	lvl = ft_strdup(pl->lvl);
+	ft_strdel(&pl->lvl);
+	ft_my_parse_map(pl, lvl);
+	ft_strdel(&lvl);
+	free(pl->doors);
+	pl->doors = NULL;
+	free(pl->buttons);
+	pl->buttons = NULL;
+	return (pl);
 }
-
-/*
-** **************************************************************************
-**	int but_script(t_new_player *pl, int sec_nb, t_subevents *se)
-**	Function to do button scipts
-** **************************************************************************
-*/

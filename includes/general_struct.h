@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general_struct.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:55:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 23:18:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 16:17:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ typedef struct			s_wolf3d
 	t_sdl				*sdl; //structe for handle sdl  stuff
 	t_time				t;
 	int					fd;
+
+	t_vector3			pos;
+	t_gui_coord			pos_start;
+	t_gui_coord			offset;
+	int					v_d;
 
 	t_gui_map			gui_map;
 	t_gui				gui;

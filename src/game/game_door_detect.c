@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 22:49:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:24:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 static int	door_bool(int dist, float degree)
 {
+	degree = (int)degree % 360;
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 67) && (dist == 1))
@@ -81,7 +82,7 @@ static int	door_dist(t_new_player *pl, int s_nb)
 {
 	t_new_vector3	vec;
 	t_new_vector3	vec2;
-	int			tmp_dist;
+	int				tmp_dist;
 
 	tmp_dist = 6;
 	tmp_dist = door_vert_find(pl, &vec, s_nb);

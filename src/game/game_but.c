@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 18:30:48 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 ** **************************************************************************
 **	static void but_init(t_new_player *pl, int *sec_arr)
 **	Function to init array of buttons
-**	state == -1 - do nothing, (-2) - open door in that sector,
-**	(-3) - move platform, (-4) - end lvl
+**	state == (-2) - open door in that sector, (-4) - end lvl
 ** **************************************************************************
 */
 
@@ -134,9 +133,9 @@ static void	but_init(t_new_player *pl, int *sec_arr)
 
 void		but_total(t_new_player *pl)
 {
-	int	sec_arr[MAX_BUT];
 	int	i;
-
+	int	sec_arr[MAX_BUT];
+	
 	pl->but_all = 0;
 	i = -1;
 	while (++i < pl->sectors_nb)
@@ -152,10 +151,7 @@ void		but_total(t_new_player *pl)
 		}
 	}
 	if (pl->but_all > 0)
-		if (!(pl->buttons = (t_new_but *)malloc(sizeof(t_new_but) * pl->but_all)))
-		{
-			ft_putstr_fd("Buttons malloc.\n", 2);
-			exit(EXIT_FAILURE);
-		}
+		pl->buttons = (t_new_but *)ft_my_malloc(sizeof(t_new_but) * \
+		pl->but_all);
 	but_init(pl, sec_arr);
 }

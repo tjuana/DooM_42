@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_sdl_addons.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/12 18:11:19 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ SDL_Rect	*ft_create_rect(int w, int h, int x, int y)
 {
 	SDL_Rect	*tmp;
 
-	if (!(tmp = (SDL_Rect*)malloc(sizeof(tmp))))
-		return (0);
+	tmp = (SDL_Rect*)ft_my_malloc(sizeof(tmp));
 	tmp->h = h;
 	tmp->w = w;
 	tmp->x = x;
@@ -32,25 +31,19 @@ SDL_Rect	*ft_create_rect(int w, int h, int x, int y)
 	return (tmp);
 }
 
-void		ft_sdl_error(t_new_wolf3d *w)
+void		ft_sdl_error(t_sdl *sdl)
 {
-	const char	*out;
-
-	out = SDL_GetError();
-	ft_putstr_fd("SDL_Error:", 2);
-	ft_putstr_fd(out, 2);
-	ft_putstr_fd("\n", 2);
-	/*if (w->sdl->text)
-		SDL_DestroyTexture(w->sdl->text);
-	if (w->surf)
-		SDL_FreeSurface(w->sdl->surf);
-	if (w->sdl->renderer)
-		SDL_DestroyRenderer(w->sdl->renderer);
-	if (w->sdl->win)
-		SDL_DestroyWindow(w->sdl->win);*/
+	SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, \
+	"Couldn't create window and renderer: %s", SDL_GetError());
+	if (sdl->text)
+		SDL_DestroyTexture(sdl->text);
+	if (sdl->srf)
+		SDL_FreeSurface(sdl->srf);
+	if (sdl->renderer)
+		SDL_DestroyRenderer(sdl->renderer);
+	if (sdl->win)
+		SDL_DestroyWindow(sdl->win);
+	IMG_Quit();
 	SDL_Quit();
-	if (w)
-		free(w);
-	w = NULL;
 	exit(EXIT_FAILURE);
 }

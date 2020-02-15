@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 11:58:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:19:47 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int		ft_editor_sector_search_neighbors_item(t_wolf3d *w, \
 {
 	t_list		*list;
 	t_sector	*s;
-	int			vtx1_n;
-	int			vtx2_n;
 	int			i;
 
 	list = w->sector;
@@ -36,15 +34,13 @@ int		ft_editor_sector_search_neighbors_item(t_wolf3d *w, \
 		s = list->content;
 		if (s->id != sector->id && s->status)
 		{
-			i = -1; // bad
+			i = -1;
 			while (++i < s->vertex_count)
 			{
-				vtx1_n = i;
-				vtx2_n = (i + 1) % s->vertex_count;
-				if (ft_check_general_segment_line(*s->vertex[vtx1_n], \
-					*s->vertex[vtx2_n], *v1, *v2))
+				if (ft_check_general_segment_line(*s->vertex[i], \
+					*s->vertex[(i + 1) % s->vertex_count], *v1, *v2))
 				{
-					s->neighbors[i] = sector->id; // ?!?!?
+					s->neighbors[i] = sector->id;
 					return (s->id);
 				}
 			}
@@ -140,7 +136,7 @@ int		ft_sectors_set_all_neighbors(t_wolf3d *w)
 int		ft_check_neighbors_sector_vertex(t_sector *s, t_vector3 v)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < s->vertex_count)
 	{

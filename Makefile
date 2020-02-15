@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/01/28 21:49:45 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/13 16:54:10 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,8 @@ func_help.c \
 func_sdl.c \
 func_wu_color.c \
 func_wu_draw.c \
+func_wu_init.c \
+func_wu_line.c \
 func_wu.c
 
 FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
@@ -112,7 +114,6 @@ FUNC_OBJS = $(addprefix $(FUNC_OBJS_DIRECTORY), $(FUNC_OBJS_LIST))
 # EDITOR WITH MAIN FILE
 EDITOR_SRCS_DIRECTORY = $(SRCS_PATH)editor/
 EDITOR_SRCS_LIST = \
-editor_debug.c \
 editor_desctuct.c \
 editor_draw_map.c \
 editor_draw_map_door.c \
@@ -162,11 +163,21 @@ gui_elem_init.c \
 gui_destruct.c \
 gui_debug.c \
 gui_mouse.c \
+gui_mouse_event.c \
 gui_elem_button.c \
 gui_fonts.c \
 gui_elem_input.c \
 gui_keydown.c \
-gui_init.c
+gui_init.c \
+gui_elem_set_func.c \
+gui_elem_set_status.c \
+gui_elem_set_style.c \
+gui_elem_set_type.c \
+gui_redraw_fill.c \
+gui_redraw_font.c \
+gui_redraw_image.c \
+gui_mouse_actions.c \
+gui_sdl_func.c
 
 
 
@@ -194,6 +205,8 @@ game_main.c \
 game_map_parse.c \
 game_map_parse2.c \
 game_math_functions.c \
+game_math_functions2.c \
+game_math_functions3.c \
 game_motion.c \
 game_sdl_addons.c \
 game_skybox.c \

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:12:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 21:00:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:36:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_gui_mousebuttonup_win_menu_btnsector(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
@@ -38,7 +38,7 @@ void	ft_gui_mousebuttonup_win_menu_btnplayer(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
@@ -55,7 +55,7 @@ void	ft_gui_mousebuttonup_win_menu_btnsprite(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
@@ -72,7 +72,7 @@ void	ft_gui_mousebuttonup_win_menu_btnenemy(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
@@ -89,7 +89,7 @@ void	ft_gui_mousebuttonup_win_menu_btndoor(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\

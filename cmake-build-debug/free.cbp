@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="free"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/nshelly/CLionProjects/free/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/nshelly/CLionProjects/free/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/nshelly/CLionProjects/free/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="free">
+				<Option output="/Users/nshelly/CLionProjects/free/cmake-build-debug/free" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/nshelly/CLionProjects/free/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/nshelly/CLionProjects/free/./include"/>
+					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_mixer/2.0.4/include/SDL2"/>
+					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_image/2.0.5/include/SDL2"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/./libft/includes"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/./src/algebra"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/./includes"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 free"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="free/fast">
+				<Option output="/Users/nshelly/CLionProjects/free/cmake-build-debug/free" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/nshelly/CLionProjects/free/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/nshelly/CLionProjects/free/./include"/>
+					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_mixer/2.0.4/include/SDL2"/>
+					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_image/2.0.5/include/SDL2"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/./libft/includes"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/./src/algebra"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/./includes"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 free/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/nshelly/CLionProjects/free/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/algebra.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/const.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/doom.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/editor_func.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/editor_struct.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/file.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/func_func.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/func_struct.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/general_struct.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/gui_func.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/gui_struct.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/includes/math_func.h">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_matrix.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_vectors_1.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_vectors_2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_desctuct.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_draw_map.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_draw_map_door.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_draw_map_grid.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_draw_map_objects.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_draw_map_sector.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_draw_map_vertex.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_map_click.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_map_door.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_map_move.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_map_set.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_map_zoom.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_menu.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_menu2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_setdoor.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_setenemy.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_setplayer.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_setsector.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_setsprite.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_gui_init.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_gui_txtr.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_init.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_check.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_door.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_enemy.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_func.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_sector.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_sector_neighbors.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_sector_vertex.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_sprite.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_save_file.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_save_file2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_save_file3.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_fpc.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_help.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_sdl.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_sound.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_color.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_draw.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_func.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_init.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_line.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_but.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_but_detect.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_door.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_door_detect.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_exp.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_events_1.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_events_2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_gun.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_load_file.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_load_textures.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_main.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_map_parse.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_map_parse2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_math_functions.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_math_functions2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_math_functions3.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_motion.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_sdl_addons.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_skybox.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_texture_parser.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_textures.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_vectors_1.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_vectors_2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_vectors_3.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_walls.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_debug.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_destruct.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_button.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_init.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_input.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_func.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_status.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_style.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_type.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_events.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_fonts.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_init.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_keydown.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_mouse.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_mouse_actions.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_mouse_event.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_redraw.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_redraw_fill.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_redraw_font.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_redraw_image.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/gui/gui_sdl_func.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/main/main.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/main/main_btn_action.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/main/main_events.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/main/main_gui_init.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/math/math_intersect.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/math/math_vectors.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

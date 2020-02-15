@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_event_win_map_click.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:02:36 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/13 17:03:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, \
 		ft_map_click_door(w, e, dom);
 	else
 	{
-		coord = ft_gui_map_check_mouse_vertex_pos(w, w->gui.mouse_pos, dom->content);
+		coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
+			dom->content);
 		if (coord.w)
 		{
 			w->gui.mouse_pos = coord;
@@ -65,7 +66,8 @@ void	ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, \
 
 /*
 ** **************************************************************************
-**	void ft_gui_mousebuttonup_map(void *data, SDL_Event e, t_list *dom, int type)
+**	void ft_gui_mousebuttonup_map(void *data, SDL_Event e,
+**		t_list *dom, int type)
 **
 **	Function that transform map status for mousebuttonup event.
 ** **************************************************************************

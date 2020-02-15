@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:21:06 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 20:59:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:37:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_gui_mousebuttonup_win_setenemy_btnsaveplayer(void *data, \
 			SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
@@ -32,7 +32,7 @@ void	ft_gui_mousebuttonup_win_setenemy_btncancel(void *data, \
 			SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list	*list;
+	t_list		*list;
 
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\

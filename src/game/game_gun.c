@@ -1,13 +1,21 @@
-//
-// Created by Nymphadora Shelly on 13/01/2020.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_gun.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nshelly <nshelly@student.21school.>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 17:40:12 by nshelly           #+#    #+#             */
+/*   Updated: 2020/02/15 17:40:12 by nshelly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "doom.h"
 
-static void		draw_gun(t_new_player *pl, int width, int height, int n)
+static void	draw_gun(t_new_player *pl, int width, int height, int n)
 {
 	t_draw_gun g;
 
-	g.y_num = 0;
 	g.y = 0;
 	(void)((g.y *= 0 | (int)(g.y_num *= 0)));
 	while (g.y < pl->tex[n].h && height < WIN_H)
@@ -17,13 +25,14 @@ static void		draw_gun(t_new_player *pl, int width, int height, int n)
 		g.x_img = width - 200;
 		while (g.x < pl->tex[n].w - 1 && g.x_img < WIN_W)
 		{
-			g.x_num += 0.8;//width of the gun and hand
+			g.x_num += 0.8;
 			g.x = (int)g.x_num;
-			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w ;//formula = y*w + x
-			g.hex = hexcolor(pl->tex[n].pixels[g.p].r, pl->tex[n].pixels[g.p].g, pl->tex[n].pixels[g.p].b);
+			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w;
+			g.hex = hexcolor(pl->tex[n].pixels[g.p].r, \
+			pl->tex[n].pixels[g.p].g, pl->tex[n].pixels[g.p].b);
 			if (pl->tex[n].pixels[g.p].a != 0)
-				pl->pix[height * WIN_W + g.x_img] =
-						color_transoform(g.hex, pl->light);
+				pl->pix[height * WIN_W + g.x_img] = \
+				color_transoform(g.hex, pl->light);
 			g.x_img++;
 		}
 		g.y_num += 1;
@@ -32,18 +41,18 @@ static void		draw_gun(t_new_player *pl, int width, int height, int n)
 	}
 }
 
-void			draw_pistol(t_gun *wpn, t_new_player *pl)
+void		draw_pistol(t_gun *wpn, t_new_player *pl)
 {
 	int n;
-	n = GUN;
-    if (wpn->sprite_counter == 1)
-		draw_gun(pl,WIN_W - 400, WIN_H - 310, n);
-    else if (wpn->sprite_counter > 1)
-    {
-            draw_gun(pl,WIN_W - 430 ,WIN_H - 340, n + 1);
-        wpn->sprite_counter += 1;
-    }
-    if (wpn->sprite_counter > 3)
-        wpn->sprite_counter = 1;
-}
 
+	n = GUN;
+	if (wpn->sprite_counter == 1)
+		draw_gun(pl, WIN_W - 400, WIN_H - 310, n);
+	else if (wpn->sprite_counter > 1)
+	{
+		draw_gun(pl, WIN_W - 430, WIN_H - 340, n + 1);
+		wpn->sprite_counter += 1;
+	}
+	if (wpn->sprite_counter > 3)
+		wpn->sprite_counter = 1;
+}

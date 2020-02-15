@@ -6,13 +6,13 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 14:25:35 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:54:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data for LoadData function
+void player_init(t_new_player *pl, t_new_xy *v, int *n)//init data for LoadData function
 {
     //player = (struct player) { {v->x, v->y, 0}, {0,0,0}, *angle,0,0,0, n };
     pl->where.x = v->x;
@@ -21,7 +21,7 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
     pl->velocity.x = 0;
     pl->velocity.y = 0;
     pl->velocity.z = 0;
-    pl->angle = *angle;
+    pl->angle = 0;
     pl->anglesin = 0;
     pl->anglecos = 0;
     pl->yaw = 0;
@@ -29,31 +29,17 @@ void player_init(t_new_player *pl, t_new_xy *v, int *angle, int *n)//init data f
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
 	//If it's partially behind the player, clip it against player's view frustrum
-	pl->nearz = 1e-4f;
-	pl->farz = 5;
-	pl->nearside = 1e-5f;
-	pl->farside = 60;
+	pl->near_point.y = 0.0001;
+	pl->far_point.y = 5;
+	pl->near_point.x = 0.00001;
+	pl->far_point.x = 1000;
 	pl->door_all = -1;
+	pl->door_nb = -1;
 	pl->but_all = -1;
+	pl->but_nb = -1;
 	pl->lvl = NULL;
 	pl->light = 1.0f;
 	pl->pix = (int *)pl->srf->pixels;
-}
-
-void UnloadData(t_new_player *pl)
-{
-	int i;
-
-	i = -1;
-	//better use free(pl);
-	while (++i < pl->sectors_nb)
-		free(pl->sectors[i].vertex);
-	i == 2 ? i = 3 : i;
-	while (++i < pl->sectors_nb)
-		free(pl->sectors[i].neighbors);
-    free(pl->sectors);
-    pl->sectors = NULL;
-    pl->sectors_nb = 0;
 }
 
 void vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface)
@@ -79,26 +65,28 @@ void	ft_game_redraw(void *d, t_list *dom)
 	t_wolf3d	*w;
 	t_new_temp	*data;
 	t_gun	wpn;
+
 	w = (t_wolf3d*)d;
 	data = w->new_data;
 	wpn.sprite_counter = 1;
-	engine_begin(&data->pl);
-	if (data->pl.count_sprite == 10)// this for the event shoot
+	engine_begin(data->pl);
+	if (data->pl->count_sprite == 10)// this for the event shoot
  	{
  		wpn.sprite_counter = 2;
-		data->pl.count_sprite = 1;
+		data->pl->count_sprite = 1;
 	}
-	draw_pistol(&wpn, &data->pl);
+
+	draw_pistol(&wpn, data->pl);
 	data->op.eye_h = data->se.ducking ? CROUCH_H : EYE_H;
 	data->se.ground = !data->se.falling;
-	events_jumps(&data->se, &data->pl, &data->op, &data->ot);
-	motion_chk(&data->op, &data->pl, &data->ot, &data->se);
-	//motion_move_pl(0, 0, &data->pl);
-	events_new_mouse_move(&data->ms, &data->pl);//mouse aiming
-	events_vel(&data->pl, &data->se, &data->ot);
-	if (!events(&data->se, &data->pl))
+	events_jumps(&data->se, data->pl, &data->op, &data->ot);
+	motion_chk(&data->op, data->pl, &data->ot, &data->se);
+	//motion_move_pl(0, 0, data->pl);
+	events_new_mouse_move(&data->ms, data->pl);//mouse aiming
+	events_vel(data->pl, &data->se, &data->ot);
+	if (!events(&data->se, data->pl))
 		return ;
-	door(&data->pl, &data->se);
+	door(data->pl, &data->se);
 }
 
 void	ft_game_init(t_wolf3d *w, char *path)
@@ -106,13 +94,10 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	t_new_temp	*data;
 
 	data = (t_new_temp*)w->new_data;
-	data->pl.sectors_nb = 0;
+	data->pl->sectors_nb = 0;
 	data->se.quit = 0;
-	data->pl.srf = w->sdl->srf;
-	ft_my_parse_map(&data->pl, path);
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-		ft_error( "SDL could not initialize! SDL_Error: %s\n");
-
+	data->pl->srf = w->sdl->srf;
+	ft_my_parse_map(data->pl, path);
 	SDL_ShowCursor(SDL_ENABLE);//NOT SHOW MOUSE CURSOR
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
@@ -123,7 +108,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->ot.moving = 0;
 	data->se.ducking = 0;
 	data->ms.yaw = 0;
-	//data->pl.srf = w->sdl->srf;
+	//data->pl->srf = w->sdl->srf;??
 }
 
 void	ft_game_gui_init_menu(t_list *head)

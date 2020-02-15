@@ -53,6 +53,8 @@ typedef struct	s_new_player
 	t_new_ceil		ceil;
 	t_new_floor		floor;
 
+	t_new_xy	near_point;
+	t_new_xy 	far_point;
 	float		nearz;
 	float		farz;
 	float		nearside;
@@ -89,8 +91,12 @@ typedef struct	s_new_player
 	int        *pix;
 	int 		y;
 	t_scaler    ty;
+	int 		fly;
 
 
+	// camera vertex
+	t_vector3	fov_vec1;
+	t_vector3	fov_vec2;
 }				t_new_player;
 
 #endif

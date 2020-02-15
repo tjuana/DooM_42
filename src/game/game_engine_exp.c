@@ -22,22 +22,22 @@ int	ft_check_segment_line_to_fov(t_new_player *pl, t_new_xy v1, t_new_xy v2)
 	t_vector3	vtx1;
 	t_vector3	vtx2;
 
-	t_vector3	fov_vec;
-	t_vector3	fov_vec1;
-	t_vector3	fov_vec2;
+	// t_vector3	fov_vec;
+	// t_vector3	fov_vec1;
+	// t_vector3	fov_vec2;
 
 	vtx1 = (t_vector3){v1.x, v1.y, 0, 0};
 	vtx2 = (t_vector3){v2.x, v2.y, 0, 0};
 	vec1 = vtx1;
 	vec2 = vtx2;
 
-	fov_vec = (t_vector3){pl->anglecos, pl->anglesin, 0, 0};
-	fov_vec1 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST / 2));
-	fov_vec2 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST / 2));
+	// fov_vec = (t_vector3){pl->anglecos, pl->anglesin, 0, 0};
+	// fov_vec1 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST / 2));
+	// fov_vec2 = ft_transform_vertex(fov_vec, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST / 2));
 
-	if ((ft_vxs_vector(fov_vec1, vec1) < 0.0 && ft_vxs_vector(fov_vec2, vec1) > 0.0) &&
-		(ft_vxs_vector(fov_vec1, vec2) < 0.0 && ft_vxs_vector(fov_vec2, vec2) > 0.0))
-		return (0);
+	// if ((ft_vxs_vector(fov_vec1, vec1) < 0.0 && ft_vxs_vector(fov_vec2, vec1) > 0.0) &&
+	// 	(ft_vxs_vector(fov_vec1, vec2) < 0.0 && ft_vxs_vector(fov_vec2, vec2) > 0.0))
+	// 	return (0);
 
 	return (1);
 }
@@ -74,25 +74,24 @@ int			engine_cross(t_new_player *pl)
 	t_new_xy	v_start;
 	t_new_xy	v_end;
 
-	// t_vector3	fov_vec1;
-	// t_vector3	fov_vec2;
-
 	xy_vertex_of_sectors(&v_start, &v_end, pl);
 	//Is the wall at least partially in front of the player?
+	// printf("start: [%f, %f]   end: [%f, %f]\n", v_start.x, v_start.y, v_end.x, v_end.y);
 	if((pl->t1.y <= 0) && (pl->t2.y <= 0))
+	{
 		return (0);//continue
+	}
 	pl->u0 = 0;
 	pl->u1 = 1000;//if the number is higher, the number or images in walls is going to be more
 	//If it's partially behind the player, cut it against player's view
 	if((pl->t1.y <= 0) || (pl->t2.y <= 0))
 	{
-		// fov_vec1 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, FOV_CONST * 2));
-		// fov_vec2 = ft_transform_vertex((t_vector3){0, 1, 0, 0}, ft_rz_matrix((t_matrix_4x4){1, 0, 0, 0}, -FOV_CONST * 2));
-
-		// i1 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec1.x, fov_vec1.y);
-		// i2 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, 0, 0, fov_vec2.x, fov_vec2.y);
-		i1 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, -pl->nearside, pl->nearz, -pl->farside, pl->farz);
-		i2 = intersect(pl->t1.x, pl->t1.y, pl->t2.x, pl->t2.y, pl->nearside, pl->nearz, pl->farside, pl->farz);
+		pl->near_point.x = pl->near_point.x * (-1);
+		pl->far_point.x = pl->far_point.x * (-1);
+		i1 = intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
+		pl->near_point.x = pl->near_point.x * (-1);
+		pl->far_point.x = pl->far_point.x * (-1);
+		i2 = intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
 		if (i1.y < 0 && i2.y < 0)
 			return (0);
 		pl->org1.x = pl->t1.x;
@@ -187,7 +186,7 @@ static void	engine_ceil_floor(t_new_player *pl, int x, int neib)
 	}
 	else {
 		draw_walls(x, pl, WALL_FULL, pl->n);
-		draw_graffiti(x, pl, WALL_FULL, 14);
+		draw_graffiti(x, pl, WALL_FULL, 12);
 	}
 }
 /*

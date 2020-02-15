@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 13:34:34 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/13 17:34:06 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,46 +60,37 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 	while (number--)
 	{
 		sector->vertex[v_c].x = vertex[ft_atoi(file.split[s_c])].x;
-		sector->vertex[v_c].y = vertex[ft_atoi(file.split[s_c])].y;
-		v_c++;
-		s_c++;
+		sector->vertex[v_c++].y = vertex[ft_atoi(file.split[s_c++])].y;
 	}
 	sector->vertex[0] = vertex[ft_atoi(file.split[s_c - 1])];
 	number = file.tmp[file.count_sectors];
 	v_c = 0;
 	while (number--)
-	{
-		sector->neighbors[v_c] = ft_atoi(file.split[s_c]);
-		s_c++;
-		v_c++;
-	}
+		sector->neighbors[v_c++] = ft_atoi(file.split[s_c++]);
 	ft_2arrclean(&file.split);
 }
 
 void		ft_player_save(t_new_player *pl)
 {
 	t_new_xy	v;
-	int			angle;
 	int			n;
 
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	v.x = ft_atoi(pl->file.split[1]);
-	v.y = ft_atoi(pl->file.split[2]);
-	angle = 1;
+	v.x = (float)ft_atoi(pl->file.split[1]);
+	v.y = (float)ft_atoi(pl->file.split[2]);
 	n = ft_atoi(pl->file.split[4]);
-	player_init(pl, &v, &angle, &n);
-	pl->where.z = pl->sectors[pl->sector].floor + EYE_H;
+	player_init(pl, &v, &n);
+	pl->where.z = pl->sectors[pl->sector].floor + EYE_H * 2;
+	ft_2arrclean(&pl->file.split);
 }
 
 void		ft_level_save(t_new_player *pl)
 {
-	t_new_xy	v;
-	int			angle;
-	int			n;
+	char	*strdup;
 
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	pl->lvl = pl->file.split[1];
+	pl->lvl = ft_strdup(pl->file.split[1]);
 	ft_2arrclean(&pl->file.split);
 }
