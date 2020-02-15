@@ -6,43 +6,11 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 18:59:33 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/15 21:36:37 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-/*
-** **************************************************************************
-**	void motion_move_pl(float dx, float dy, t_new_player *pl)
-**	Function to move player and update anglesin/anglecos/sector
-** **************************************************************************
-*/
-
-void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
-{
-	t_new_sector	*sect;
-	int				res;
-	int				i;
-
-	sect = &pl->sectors[pl->sector];
-	i = -1;
-	res = -1;
-	while (++i < sect->npoints)
-	{
-		if ((res = motion_chk_sec(sect, delt, i, pl)) == -777)
-			continue ;
-		else if (res == -666)
-			return ;
-		else
-		{
-			pl->sector = res;
-			break ;
-		}
-	}
-	pl->where.x += delt->x;
-	pl->where.y += delt->y;
-}
 
 /*
 ** **************************************************************************
@@ -54,8 +22,8 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 
 static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 {
-	op->hole_low = 1000;
-	op->hole_high = -1000;
+	op->hole_low = 9e9;
+	op->hole_high = -9e9;
 	if (op->sect->neighbors[i] >= 0)
 	{
 		op->hole_low = max(op->sect->floor, \
@@ -78,6 +46,47 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 		printf("CASE:::2\n");
 	return (1);
 }
+
+/*
+** **************************************************************************
+**	void motion_move_pl(float dx, float dy, t_new_player *pl)
+**	Function to move player and update anglesin/anglecos/sector
+** **************************************************************************
+*/
+
+void		motion_move_pl(t_new_xy *delt, t_new_player *pl, t_new_sect_ops *op)
+{
+	t_new_sector	*sect;
+	int				res;
+	int				i;
+
+	sect = &pl->sectors[pl->sector];
+	i = -1;
+	res = -1;
+	while (++i < sect->npoints)
+	{
+		if ((res = motion_chk_sec(sect, delt, i, pl)) == -777)
+			continue ;
+		else if (res == -666)
+			return ;
+		else
+		{
+			pl->sector = res;
+			op->sect = &pl->sectors[res];
+			if (motion_chk_2(op, pl, i))
+			{
+				delt->x = pl->velocity.x;
+				delt->y = pl->velocity.y;
+			}
+			
+			break ;
+		}
+	}
+	pl->where.x += delt->x;
+	pl->where.y += delt->y;
+}
+
+
 
 /*
 ** **************************************************************************
@@ -109,6 +118,6 @@ t_new_others *ot, t_new_sub_ev *se)
 		op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) < 0))
 			ot->moving = motion_chk_2(op, pl, i);
 	}
-	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl);
+	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl, op);
 	se->falling = 1;
 }
