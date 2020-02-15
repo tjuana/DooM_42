@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:01:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 19:04:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:59:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,15 @@ void	ft_gui_init_win_menu_set(t_list *head)
 	ft_gui_elem_set_text(elem->child, "Set:", 16);
 	ft_gui_elem_init_grid(head, "win_me_menu_txtr", 13, (t_gui_coord){1, 1});
 	ft_gui_elem_set_color(elem->child, 0xcccccc);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_DISABLE);
 	ft_gui_elem_set_button(elem->child, "Textures");
 	ft_gui_elem_init_grid(head, "win_me_menu_sky", 14, (t_gui_coord){1, 1});
 	ft_gui_elem_set_color(elem->child, 0xcccccc);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_DISABLE);
 	ft_gui_elem_set_button(elem->child, "Skybox");
 	ft_gui_elem_init_grid(head, "win_me_menu_savep", 15, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0xcccccc);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_DISABLE);
 	ft_gui_elem_set_button(elem->child, "Point to end game");
 }
 
