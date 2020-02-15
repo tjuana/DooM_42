@@ -23,7 +23,7 @@
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
 			//"args": ["${workspaceRoot}/maps/map.txt"],
-			"args": ["${workspaceRoot}/maps/new_template.nnmp", "nmp"],
+			"args": ["${workspaceRoot}/maps/256"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

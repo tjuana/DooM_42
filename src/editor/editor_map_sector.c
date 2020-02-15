@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/15 13:21:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 20:19:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void		ft_editor_sector_create(t_wolf3d *w)
 	t_list		*list_item;
 
 	sector.id = w->sector_count + 1;
+	printf("sector id: %d\n", sector.id);
 	sector.vertex = NULL;
 	sector.neighbors = NULL;
 	sector.vertex_count = 0;
@@ -77,6 +78,7 @@ void		ft_delete_sector(t_wolf3d *w)
 		free(s->neighbors);
 	free(list->content);
 	free(list);
+	w->sector_count--;
 }
 
 /*

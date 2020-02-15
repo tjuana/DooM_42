@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:22:19 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/14 15:41:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 15:40:28 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ typedef struct	s_matrix_4x4
 ** **************************************************************************
 */
 
-t_vector3	ft_camera_get_screen_vertex(t_vector3 world_vertex, \
-				t_matrix_4x4 t_mult, t_matrix_4x4 t_proj);
-t_vector3	ft_camera(t_vector3 vtx_orig, t_matrix_4x4 orient, \
-				t_vector3 world_vertex);
+t_vector3		ft_camera_get_screen_vertex(t_vector3 world_vertex, \
+					t_matrix_4x4 t_mult, t_matrix_4x4 t_proj);
+t_vector3		ft_camera(t_vector3 vtx_orig, t_matrix_4x4 orient, \
+					t_vector3 world_vertex);
 
 /*
 ** **************************************************************************
@@ -86,11 +86,11 @@ t_matrix_4x4	ft_mult_matrix(t_matrix_4x4 this, t_matrix_4x4 rhs);
 ** **************************************************************************
 */
 
-t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
-double		ft_vec3_magnitude(t_vector3 this);
-t_vector3	ft_vec3_add(t_vector3 this, t_vector3 rhs);
-t_vector3	ft_vec3_sub(t_vector3 this, t_vector3 rhs);
-t_vector3	ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
+t_vector3		ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
+double			ft_vec3_magnitude(t_vector3 this);
+t_vector3		ft_vec3_add(t_vector3 this, t_vector3 rhs);
+t_vector3		ft_vec3_sub(t_vector3 this, t_vector3 rhs);
+t_vector3		ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
 
 /*
 ** **************************************************************************
@@ -98,11 +98,11 @@ t_vector3	ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
 ** **************************************************************************
 */
 
-double		ft_vec3_dot_product(t_vector3 this, t_vector3 rhs);
-double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
-t_vector3	ft_vec3_opposite(t_vector3 this);
-t_vector3	ft_vec3_scalar_product(t_vector3 this, double k);
-t_vector3	ft_vec3_normalize(t_vector3 vtc);
+double			ft_vec3_dot_product(t_vector3 this, t_vector3 rhs);
+double			ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
+t_vector3		ft_vec3_opposite(t_vector3 this);
+t_vector3		ft_vec3_scalar_product(t_vector3 this, double k);
+t_vector3		ft_vec3_normalize(t_vector3 vtc);
 
 /*
 ** **************************************************************************
@@ -110,7 +110,7 @@ t_vector3	ft_vec3_normalize(t_vector3 vtc);
 ** **************************************************************************
 */
 
-float	ft_vec2_cos(t_vector3 vec1, t_vector3 vec2);
+float			ft_vec2_cos(t_vector3 vec1, t_vector3 vec2);
 
 /*
 ** **************************************************************************
@@ -121,12 +121,16 @@ t_vector3		ft_find_line_intersect(t_vector3 v1, t_vector3 v2, \
 					t_vector3 v3, t_vector3 v4);
 int				ft_check_line_segment_intersect_vector(t_vector3 v1, \
 					t_vector3 v2, t_vector3 v3, t_vector3 v4);
+int				ft_check_intersect_line_and_line_segment(t_vector3 v1, \
+					t_vector3 v2, t_vector3 p1, t_vector3 p2);
 int				ft_check_point_in_line_segment(t_vector3 p, \
 					t_vector3 p1, t_vector3 p2);
 int				ft_check_point_in_line_segment_diameter(t_vector3 p, \
 					t_vector3 p1, t_vector3 p2, double diameter);
 int				ft_check_general_segment_line(t_vector3 v1, t_vector3 v2, \
 					t_vector3 v3, t_vector3 v4);
+int				ft_check_point_in_line(t_vector3 p, \
+					t_vector3 p1, t_vector3 p2);
 
 /*
 ** **************************************************************************

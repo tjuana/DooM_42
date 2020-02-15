@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/14 18:29:49 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/15 20:11:14 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,7 +143,8 @@ editor_save_file.c \
 editor_save_file2.c \
 editor_save_file3.c \
 editor_map_check_line.c \
-editor_map_check2.c
+editor_map_check2.c \
+editor_generate_triangles.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))

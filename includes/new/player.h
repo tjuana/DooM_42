@@ -7,7 +7,7 @@ typedef struct	s_file_read
 	int			fd;
 	int			res;
 	char		*line;
-	int			tmp[40];
+	int			tmp[201];
 	char		**split;
 	char		*ptr_my;
 	int			i;

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/15 13:34:18 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 15:46:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 ** **************************************************************************
 **	int ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 **
+**	Function that search point in the current sector.
 **
+**	Return:
+**	0		| Point lies on the segment vertex
+**			| or point don't lies inside the sector.
+**	1		| Point lies inside the sector.
+**	2		| Point lies on the segment conture (walls).
 ** **************************************************************************
 */
 
@@ -52,7 +58,11 @@ int		ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 ** **************************************************************************
 **	int ft_search_point_in_sector(void *a, t_vector3 v)
 **
+**	Function that search point in initialized sectors.
 **
+**	Return:
+**	sector->id	| Number of the sector
+**	0			| Point don't lies in initialized sectors.
 ** **************************************************************************
 */
 
@@ -100,7 +110,7 @@ int		ft_check_origin_vertex(t_sector *s, t_vector3 v)
 ** **************************************************************************
 **	int ft_new_editor_map_check_area(t_wolf3d *w)
 **
-**
+**	Function that check the validity of the new point (vertex).
 ** **************************************************************************
 */
 
@@ -117,6 +127,8 @@ int		ft_new_editor_map_check_area(t_wolf3d *w)
 	s = w->sector->content;
 	if (s->vertex_count == 0)
 		return (1);
+	if (ft_search_sector_in_sector(w, s))
+		return (0);
 	if (!ft_check_origin_vertex(w->sector->content, pos))
 		return (0);
 	if (ft_search_sectors_cross(w, *s->vertex[s->vertex_count - 1], pos))

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/14 17:26:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 20:50:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 	if ((op->hole_high < pl->where.z + HEAD_H || \
 	op->hole_low > pl->where.z - op->eye_h + NOT_JUMP_H))
 	{
-		op->xd = op->vert[i + 1].x - op->vert[i].x;
-		op->yd = op->vert[i + 1].y - op->vert[i].y;
-		pl->velocity.x = op->xd * ((op->dx * op->xd + op->dy * op->yd) / (\
-		op->xd * op->xd + op->yd * op->yd));
-		pl->velocity.y = op->yd * ((op->dx * op->xd + op->dy * op->yd) / (\
-		op->xd * op->xd + op->yd * op->yd));
+		// op->xd = op->vert[i + 1].x - op->vert[i].x;
+		// op->yd = op->vert[i + 1].y - op->vert[i].y;
+		// pl->velocity.x = op->xd * ((op->dx * op->xd + op->dy * op->yd) / (\
+		// op->xd * op->xd + op->yd * op->yd));
+		// pl->velocity.y = op->yd * ((op->dx * op->xd + op->dy * op->yd) / (\
+		// op->xd * op->xd + op->yd * op->yd));
 		printf("CASE:::1\n");
 		return (0);
 	}
@@ -109,6 +109,7 @@ t_new_others *ot, t_new_sub_ev *se)
 		op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) < 0))
 			ot->moving = motion_chk_2(op, pl, i);
 	}
-	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl);
+	if (ot->moving != 0)
+		motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl);
 	se->falling = 1;
 }

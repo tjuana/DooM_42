@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/14 17:29:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 20:43:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	motion_chk_next_sec(t_new_xy *delt, t_new_player *pl, int sec_nb)
 		vert[i + 1].y);
 		point_side = PointSide(pl->where.x + delt->x, pl->where.y + delt->y, \
 		vert[i].x, vert[i].y, vert[i + 1].x, vert[i + 1].y);
-		if (sect_next->neighbors[i] >= 0 && pl->sectors[sec_nb].floor - pl->where.z > -4.0)
-			return (-666);
+		// if (sect_next->neighbors[i] >= 0 && pl->sectors[sec_nb].floor - pl->where.z > -4.0)
+			// return (-666);
 		if (sect_next->neighbors[i] < 0 && inter && point_side < 0)
 			return (-666);
 		if (inter && point_side < 0)
