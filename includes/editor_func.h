@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 19:00:37 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:42:27 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -404,5 +404,7 @@ void				ft_gui_init_win_setdoor(t_list *head);
 void				ft_editor_gui_init_win_me_1(t_list *head);
 void				ft_editor_gui_init_win_me(t_list *head);
 void				ft_editor_gui_init(t_wolf3d *w);
+
+int					ft_search_sector_in_sector(t_wolf3d *w, t_sector *s);
 
 #endif

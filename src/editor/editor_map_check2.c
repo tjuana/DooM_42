@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:39:09 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 18:47:38 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:44:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,33 @@ int		ft_new_editor_map_check_halfplanes(t_sector *s, t_vector3 pos)
 			return (0);
 	}
 	return (1);
+}
+
+int		ft_search_sector_in_sector(t_wolf3d *w, t_sector *s)
+{
+	t_list		*list;
+	t_sector	*sector;
+	int			i;
+	int			j;
+
+	list = w->sector;
+	i = 0;
+	while (list)
+	{
+		sector = list->content;
+		if (sector->status == 1 && sector->id != s->id)
+		{
+			j = 0;
+			while (j < sector->vertex_count)
+			{
+				printf("[%f %f]\n", sector->vertex[j]->x, sector->vertex[j]->y);
+				if (ft_check_point_in_sector(w, s, *sector->vertex[j]))
+					return (sector->id);
+				j++;
+			}
+		}
+		list = list->next;
+		i++;
+	}
+	return (0);
 }

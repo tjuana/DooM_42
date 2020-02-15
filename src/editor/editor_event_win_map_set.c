@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 18:13:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:46:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 	if (coord.w && s->status != SECTOR_STATUS_POLYGON)
 	{
 		if (!ft_new_editor_map_check_area(w))
+			return ;
+		if (ft_search_sector_in_sector(w, s))
 			return ;
 		ft_editor_sector_set_vertex(w, w->sector->content, \
 			ft_gui_map_coord_to_vertex(w, coord), s->vertex_count);
