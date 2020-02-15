@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 19:04:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/15 14:11:12 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,12 @@ void	ft_gui_init_win_setsector_1(t_list *head)
 	ft_gui_elem_init_grid(head, "win_me_sctr_title", 1, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x000000);
 	ft_gui_elem_set_text(elem->child, "Set sector", 16);
+	ft_gui_elem_init_grid(head, "win_me_sctr_title", 5, (t_gui_coord){2, 1});
+	ft_gui_elem_set_color(elem->child, 0x333333);
+	ft_gui_elem_set_text(elem->child, "[Space] -> Save sector", 14);
+	ft_gui_elem_init_grid(head, "win_me_sctr_title", 7, (t_gui_coord){2, 1});
+	ft_gui_elem_set_color(elem->child, 0x333333);
+	ft_gui_elem_set_text(elem->child, "[ESC] -> Cancel", 14);
 	ft_gui_elem_init_grid(head, "win_me_sctr_titlef", 17, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x000000);
 	ft_gui_elem_set_text(elem->child, "Floor:", 16);
