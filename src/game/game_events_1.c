@@ -19,7 +19,7 @@
 ** **************************************************************************
 */
 
-static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
+static void		sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == 'w')
 		se->wsad[0] = se->ev.type == SDL_KEYDOWN;
@@ -42,7 +42,7 @@ static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 ** **************************************************************************
 */
 
-static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
+static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
@@ -55,10 +55,7 @@ static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
 		se->falling = 1;
 	}
 	if (se->ev.key.keysym.sym == SDLK_LCTRL)
-	{
 		se->ducking = se->ev.type == SDL_KEYDOWN;
-		//se->falling = 1;
-	}
 	sub_events_2(se, pl);
 	return (1);
 }
@@ -70,7 +67,26 @@ static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
 ** **************************************************************************
 */
 
-int			events(t_new_sub_ev *se, t_new_player *pl)
+static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
+{
+	if (se->ev.button.button == SDL_BUTTON_LEFT)
+		pl->count_sprite = 10;
+	if (se->ev.button.button == SDL_BUTTON_RIGHT)
+		pl->light = pl->light == 0.5f ? 1.0f : 0.5f;
+	if (se->ev.button.button == SDL_BUTTON_MIDDLE)
+	{
+		se->falling = 1;
+		if (pl->fly == 1)
+			pl->fly = 0;
+		else
+		{
+			pl->fly = 1;
+			pl->velocity.z = 1.3f;
+		}
+	}
+}
+
+int				events(t_new_sub_ev *se, t_new_player *pl)
 {
 	while (SDL_PollEvent(&se->ev))
 	{
@@ -84,30 +100,13 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 						return (0);
 			}
 			if (se->ev.type == SDL_MOUSEBUTTONDOWN)
-			{
-				if (se->ev.button.button == SDL_BUTTON_LEFT)
-					pl->count_sprite = 10;
-				if (se->ev.button.button == SDL_BUTTON_RIGHT)
-					pl->light == 0.5f ? (pl->light = 1.0f) : (pl->light = 0.5f);
-				if (se->ev.button.button == SDL_BUTTON_MIDDLE)
-				{
-
-					se->falling = 1;
-					if (pl->fly == 1)
-						pl->fly = 0;
-					else
-						{
-						pl->fly = 1;
-						pl->velocity.z = 1.3f;
-					}
-				}
-			}
+				mouse_events(se, pl);
 		}
 	}
 	return (1);
 }
 
-void		ft_game_events(t_new_temp *data)
+void			ft_game_events(t_new_temp *data)
 {
 	events(&data->se, data->pl);
 }

@@ -1500,6 +1500,33 @@ src/game/game_engine.c.s:
 	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine.c.s
 .PHONY : src/game/game_engine.c.s
 
+src/game/game_engine_cross.o: src/game/game_engine_cross.c.o
+
+.PHONY : src/game/game_engine_cross.o
+
+# target to build an object file
+src/game/game_engine_cross.c.o:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine_cross.c.o
+.PHONY : src/game/game_engine_cross.c.o
+
+src/game/game_engine_cross.i: src/game/game_engine_cross.c.i
+
+.PHONY : src/game/game_engine_cross.i
+
+# target to preprocess a source file
+src/game/game_engine_cross.c.i:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine_cross.c.i
+.PHONY : src/game/game_engine_cross.c.i
+
+src/game/game_engine_cross.s: src/game/game_engine_cross.c.s
+
+.PHONY : src/game/game_engine_cross.s
+
+# target to generate assembly for a file
+src/game/game_engine_cross.c.s:
+	$(MAKE) -f CMakeFiles/free.dir/build.make CMakeFiles/free.dir/src/game/game_engine_cross.c.s
+.PHONY : src/game/game_engine_cross.c.s
+
 src/game/game_engine_exp.o: src/game/game_engine_exp.c.o
 
 .PHONY : src/game/game_engine_exp.o
@@ -2958,6 +2985,9 @@ help:
 	@echo "... src/game/game_engine.o"
 	@echo "... src/game/game_engine.i"
 	@echo "... src/game/game_engine.s"
+	@echo "... src/game/game_engine_cross.o"
+	@echo "... src/game/game_engine_cross.i"
+	@echo "... src/game/game_engine_cross.s"
 	@echo "... src/game/game_engine_exp.o"
 	@echo "... src/game/game_engine_exp.i"
 	@echo "... src/game/game_engine_exp.s"

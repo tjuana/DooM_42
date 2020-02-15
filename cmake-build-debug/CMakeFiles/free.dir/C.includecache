@@ -812,7 +812,7 @@ stdlib.h
 unistd.h
 -
 
-/Users/nshelly/CLionProjects/free/src/game/game_motion.c
+/Users/nshelly/CLionProjects/free/src/gui/gui_redraw_image.c
 doom.h
-/Users/nshelly/CLionProjects/free/src/game/doom.h
+/Users/nshelly/CLionProjects/free/src/gui/doom.h
 

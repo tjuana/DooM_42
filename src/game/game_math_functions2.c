@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "doom.h"
+
 /*
 ** intersectbox: Determine whether two 2D-boxes intersect.
 */

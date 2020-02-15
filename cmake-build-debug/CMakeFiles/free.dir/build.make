@@ -720,9 +720,22 @@ CMakeFiles/free.dir/src/game/game_engine.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/free.dir/src/game/game_engine.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nshelly/CLionProjects/free/src/game/game_engine.c -o CMakeFiles/free.dir/src/game/game_engine.c.s
 
+CMakeFiles/free.dir/src/game/game_engine_cross.c.o: CMakeFiles/free.dir/flags.make
+CMakeFiles/free.dir/src/game/game_engine_cross.c.o: ../src/game/game_engine_cross.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/free.dir/src/game/game_engine_cross.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_engine_cross.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_engine_cross.c
+
+CMakeFiles/free.dir/src/game/game_engine_cross.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/free.dir/src/game/game_engine_cross.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nshelly/CLionProjects/free/src/game/game_engine_cross.c > CMakeFiles/free.dir/src/game/game_engine_cross.c.i
+
+CMakeFiles/free.dir/src/game/game_engine_cross.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/free.dir/src/game/game_engine_cross.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nshelly/CLionProjects/free/src/game/game_engine_cross.c -o CMakeFiles/free.dir/src/game/game_engine_cross.c.s
+
 CMakeFiles/free.dir/src/game/game_engine_exp.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_engine_exp.c.o: ../src/game/game_engine_exp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/free.dir/src/game/game_engine_exp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/free.dir/src/game/game_engine_exp.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_engine_exp.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_engine_exp.c
 
 CMakeFiles/free.dir/src/game/game_engine_exp.c.i: cmake_force
@@ -735,7 +748,7 @@ CMakeFiles/free.dir/src/game/game_engine_exp.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_events_1.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_events_1.c.o: ../src/game/game_events_1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/free.dir/src/game/game_events_1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/free.dir/src/game/game_events_1.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_events_1.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_events_1.c
 
 CMakeFiles/free.dir/src/game/game_events_1.c.i: cmake_force
@@ -748,7 +761,7 @@ CMakeFiles/free.dir/src/game/game_events_1.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_events_2.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_events_2.c.o: ../src/game/game_events_2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/free.dir/src/game/game_events_2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/free.dir/src/game/game_events_2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_events_2.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_events_2.c
 
 CMakeFiles/free.dir/src/game/game_events_2.c.i: cmake_force
@@ -761,7 +774,7 @@ CMakeFiles/free.dir/src/game/game_events_2.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_gun.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_gun.c.o: ../src/game/game_gun.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/free.dir/src/game/game_gun.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/free.dir/src/game/game_gun.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_gun.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_gun.c
 
 CMakeFiles/free.dir/src/game/game_gun.c.i: cmake_force
@@ -774,7 +787,7 @@ CMakeFiles/free.dir/src/game/game_gun.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_load_file.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_load_file.c.o: ../src/game/game_load_file.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/free.dir/src/game/game_load_file.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/free.dir/src/game/game_load_file.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_load_file.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_load_file.c
 
 CMakeFiles/free.dir/src/game/game_load_file.c.i: cmake_force
@@ -787,7 +800,7 @@ CMakeFiles/free.dir/src/game/game_load_file.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_load_textures.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_load_textures.c.o: ../src/game/game_load_textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/free.dir/src/game/game_load_textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/free.dir/src/game/game_load_textures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_load_textures.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_load_textures.c
 
 CMakeFiles/free.dir/src/game/game_load_textures.c.i: cmake_force
@@ -800,7 +813,7 @@ CMakeFiles/free.dir/src/game/game_load_textures.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_main.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_main.c.o: ../src/game/game_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/free.dir/src/game/game_main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/free.dir/src/game/game_main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_main.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_main.c
 
 CMakeFiles/free.dir/src/game/game_main.c.i: cmake_force
@@ -813,7 +826,7 @@ CMakeFiles/free.dir/src/game/game_main.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_map_parse.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_map_parse.c.o: ../src/game/game_map_parse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/free.dir/src/game/game_map_parse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/free.dir/src/game/game_map_parse.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_map_parse.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_map_parse.c
 
 CMakeFiles/free.dir/src/game/game_map_parse.c.i: cmake_force
@@ -826,7 +839,7 @@ CMakeFiles/free.dir/src/game/game_map_parse.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_map_parse2.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_map_parse2.c.o: ../src/game/game_map_parse2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/free.dir/src/game/game_map_parse2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/free.dir/src/game/game_map_parse2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_map_parse2.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_map_parse2.c
 
 CMakeFiles/free.dir/src/game/game_map_parse2.c.i: cmake_force
@@ -839,7 +852,7 @@ CMakeFiles/free.dir/src/game/game_map_parse2.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_math_functions.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_math_functions.c.o: ../src/game/game_math_functions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/free.dir/src/game/game_math_functions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/free.dir/src/game/game_math_functions.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_math_functions.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_math_functions.c
 
 CMakeFiles/free.dir/src/game/game_math_functions.c.i: cmake_force
@@ -852,7 +865,7 @@ CMakeFiles/free.dir/src/game/game_math_functions.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_math_functions2.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_math_functions2.c.o: ../src/game/game_math_functions2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/free.dir/src/game/game_math_functions2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/free.dir/src/game/game_math_functions2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_math_functions2.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_math_functions2.c
 
 CMakeFiles/free.dir/src/game/game_math_functions2.c.i: cmake_force
@@ -865,7 +878,7 @@ CMakeFiles/free.dir/src/game/game_math_functions2.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_math_functions3.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_math_functions3.c.o: ../src/game/game_math_functions3.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/free.dir/src/game/game_math_functions3.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/free.dir/src/game/game_math_functions3.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_math_functions3.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_math_functions3.c
 
 CMakeFiles/free.dir/src/game/game_math_functions3.c.i: cmake_force
@@ -878,7 +891,7 @@ CMakeFiles/free.dir/src/game/game_math_functions3.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_motion.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_motion.c.o: ../src/game/game_motion.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/free.dir/src/game/game_motion.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/free.dir/src/game/game_motion.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_motion.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_motion.c
 
 CMakeFiles/free.dir/src/game/game_motion.c.i: cmake_force
@@ -891,7 +904,7 @@ CMakeFiles/free.dir/src/game/game_motion.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_sdl_addons.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_sdl_addons.c.o: ../src/game/game_sdl_addons.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/free.dir/src/game/game_sdl_addons.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/free.dir/src/game/game_sdl_addons.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_sdl_addons.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_sdl_addons.c
 
 CMakeFiles/free.dir/src/game/game_sdl_addons.c.i: cmake_force
@@ -904,7 +917,7 @@ CMakeFiles/free.dir/src/game/game_sdl_addons.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_skybox.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_skybox.c.o: ../src/game/game_skybox.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/free.dir/src/game/game_skybox.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/free.dir/src/game/game_skybox.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_skybox.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_skybox.c
 
 CMakeFiles/free.dir/src/game/game_skybox.c.i: cmake_force
@@ -917,7 +930,7 @@ CMakeFiles/free.dir/src/game/game_skybox.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_texture_parser.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_texture_parser.c.o: ../src/game/game_texture_parser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/free.dir/src/game/game_texture_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/free.dir/src/game/game_texture_parser.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_texture_parser.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_texture_parser.c
 
 CMakeFiles/free.dir/src/game/game_texture_parser.c.i: cmake_force
@@ -930,7 +943,7 @@ CMakeFiles/free.dir/src/game/game_texture_parser.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_textures.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_textures.c.o: ../src/game/game_textures.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/free.dir/src/game/game_textures.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/free.dir/src/game/game_textures.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_textures.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_textures.c
 
 CMakeFiles/free.dir/src/game/game_textures.c.i: cmake_force
@@ -943,7 +956,7 @@ CMakeFiles/free.dir/src/game/game_textures.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_vectors_1.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_vectors_1.c.o: ../src/game/game_vectors_1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/free.dir/src/game/game_vectors_1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/free.dir/src/game/game_vectors_1.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_vectors_1.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_vectors_1.c
 
 CMakeFiles/free.dir/src/game/game_vectors_1.c.i: cmake_force
@@ -956,7 +969,7 @@ CMakeFiles/free.dir/src/game/game_vectors_1.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_vectors_2.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_vectors_2.c.o: ../src/game/game_vectors_2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/free.dir/src/game/game_vectors_2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/free.dir/src/game/game_vectors_2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_vectors_2.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_vectors_2.c
 
 CMakeFiles/free.dir/src/game/game_vectors_2.c.i: cmake_force
@@ -969,7 +982,7 @@ CMakeFiles/free.dir/src/game/game_vectors_2.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_vectors_3.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_vectors_3.c.o: ../src/game/game_vectors_3.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/free.dir/src/game/game_vectors_3.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/free.dir/src/game/game_vectors_3.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_vectors_3.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_vectors_3.c
 
 CMakeFiles/free.dir/src/game/game_vectors_3.c.i: cmake_force
@@ -982,7 +995,7 @@ CMakeFiles/free.dir/src/game/game_vectors_3.c.s: cmake_force
 
 CMakeFiles/free.dir/src/game/game_walls.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/game/game_walls.c.o: ../src/game/game_walls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/free.dir/src/game/game_walls.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/free.dir/src/game/game_walls.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/game/game_walls.c.o   -c /Users/nshelly/CLionProjects/free/src/game/game_walls.c
 
 CMakeFiles/free.dir/src/game/game_walls.c.i: cmake_force
@@ -995,7 +1008,7 @@ CMakeFiles/free.dir/src/game/game_walls.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_debug.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_debug.c.o: ../src/gui/gui_debug.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/free.dir/src/gui/gui_debug.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/free.dir/src/gui/gui_debug.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_debug.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_debug.c
 
 CMakeFiles/free.dir/src/gui/gui_debug.c.i: cmake_force
@@ -1008,7 +1021,7 @@ CMakeFiles/free.dir/src/gui/gui_debug.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_destruct.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_destruct.c.o: ../src/gui/gui_destruct.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/free.dir/src/gui/gui_destruct.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/free.dir/src/gui/gui_destruct.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_destruct.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_destruct.c
 
 CMakeFiles/free.dir/src/gui/gui_destruct.c.i: cmake_force
@@ -1021,7 +1034,7 @@ CMakeFiles/free.dir/src/gui/gui_destruct.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_button.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_button.c.o: ../src/gui/gui_elem_button.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_button.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_button.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_button.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_button.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_button.c.i: cmake_force
@@ -1034,7 +1047,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_button.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_init.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_init.c.o: ../src/gui/gui_elem_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_init.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_init.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_init.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_init.c.i: cmake_force
@@ -1047,7 +1060,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_init.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_input.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_input.c.o: ../src/gui/gui_elem_input.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_input.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_input.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_input.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_input.c.i: cmake_force
@@ -1060,7 +1073,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_input.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.o: ../src/gui/gui_elem_set_func.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_func.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.i: cmake_force
@@ -1073,7 +1086,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_set_func.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.o: ../src/gui/gui_elem_set_status.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_status.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.i: cmake_force
@@ -1086,7 +1099,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_set_status.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.o: ../src/gui/gui_elem_set_style.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_style.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.i: cmake_force
@@ -1099,7 +1112,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_set_style.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.o: ../src/gui/gui_elem_set_type.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_elem_set_type.c
 
 CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.i: cmake_force
@@ -1112,7 +1125,7 @@ CMakeFiles/free.dir/src/gui/gui_elem_set_type.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_events.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_events.c.o: ../src/gui/gui_events.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/free.dir/src/gui/gui_events.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/free.dir/src/gui/gui_events.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_events.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_events.c
 
 CMakeFiles/free.dir/src/gui/gui_events.c.i: cmake_force
@@ -1125,7 +1138,7 @@ CMakeFiles/free.dir/src/gui/gui_events.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_fonts.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_fonts.c.o: ../src/gui/gui_fonts.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/free.dir/src/gui/gui_fonts.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/free.dir/src/gui/gui_fonts.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_fonts.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_fonts.c
 
 CMakeFiles/free.dir/src/gui/gui_fonts.c.i: cmake_force
@@ -1138,7 +1151,7 @@ CMakeFiles/free.dir/src/gui/gui_fonts.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_init.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_init.c.o: ../src/gui/gui_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/free.dir/src/gui/gui_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/free.dir/src/gui/gui_init.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_init.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_init.c
 
 CMakeFiles/free.dir/src/gui/gui_init.c.i: cmake_force
@@ -1151,7 +1164,7 @@ CMakeFiles/free.dir/src/gui/gui_init.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_keydown.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_keydown.c.o: ../src/gui/gui_keydown.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/free.dir/src/gui/gui_keydown.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/free.dir/src/gui/gui_keydown.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_keydown.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_keydown.c
 
 CMakeFiles/free.dir/src/gui/gui_keydown.c.i: cmake_force
@@ -1164,7 +1177,7 @@ CMakeFiles/free.dir/src/gui/gui_keydown.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_mouse.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_mouse.c.o: ../src/gui/gui_mouse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/free.dir/src/gui/gui_mouse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/free.dir/src/gui/gui_mouse.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_mouse.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_mouse.c
 
 CMakeFiles/free.dir/src/gui/gui_mouse.c.i: cmake_force
@@ -1177,7 +1190,7 @@ CMakeFiles/free.dir/src/gui/gui_mouse.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.o: ../src/gui/gui_mouse_actions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_mouse_actions.c
 
 CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.i: cmake_force
@@ -1190,7 +1203,7 @@ CMakeFiles/free.dir/src/gui/gui_mouse_actions.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_mouse_event.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_mouse_event.c.o: ../src/gui/gui_mouse_event.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/free.dir/src/gui/gui_mouse_event.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/free.dir/src/gui/gui_mouse_event.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_mouse_event.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_mouse_event.c
 
 CMakeFiles/free.dir/src/gui/gui_mouse_event.c.i: cmake_force
@@ -1203,7 +1216,7 @@ CMakeFiles/free.dir/src/gui/gui_mouse_event.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_redraw.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_redraw.c.o: ../src/gui/gui_redraw.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_redraw.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_redraw.c
 
 CMakeFiles/free.dir/src/gui/gui_redraw.c.i: cmake_force
@@ -1216,7 +1229,7 @@ CMakeFiles/free.dir/src/gui/gui_redraw.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.o: ../src/gui/gui_redraw_fill.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_redraw_fill.c
 
 CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.i: cmake_force
@@ -1229,7 +1242,7 @@ CMakeFiles/free.dir/src/gui/gui_redraw_fill.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_redraw_font.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_redraw_font.c.o: ../src/gui/gui_redraw_font.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw_font.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw_font.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_redraw_font.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_redraw_font.c
 
 CMakeFiles/free.dir/src/gui/gui_redraw_font.c.i: cmake_force
@@ -1242,7 +1255,7 @@ CMakeFiles/free.dir/src/gui/gui_redraw_font.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_redraw_image.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_redraw_image.c.o: ../src/gui/gui_redraw_image.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw_image.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/free.dir/src/gui/gui_redraw_image.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_redraw_image.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_redraw_image.c
 
 CMakeFiles/free.dir/src/gui/gui_redraw_image.c.i: cmake_force
@@ -1255,7 +1268,7 @@ CMakeFiles/free.dir/src/gui/gui_redraw_image.c.s: cmake_force
 
 CMakeFiles/free.dir/src/gui/gui_sdl_func.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/gui/gui_sdl_func.c.o: ../src/gui/gui_sdl_func.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/free.dir/src/gui/gui_sdl_func.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/free.dir/src/gui/gui_sdl_func.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/gui/gui_sdl_func.c.o   -c /Users/nshelly/CLionProjects/free/src/gui/gui_sdl_func.c
 
 CMakeFiles/free.dir/src/gui/gui_sdl_func.c.i: cmake_force
@@ -1268,7 +1281,7 @@ CMakeFiles/free.dir/src/gui/gui_sdl_func.c.s: cmake_force
 
 CMakeFiles/free.dir/src/main/main.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/main/main.c.o: ../src/main/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/free.dir/src/main/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/free.dir/src/main/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/main/main.c.o   -c /Users/nshelly/CLionProjects/free/src/main/main.c
 
 CMakeFiles/free.dir/src/main/main.c.i: cmake_force
@@ -1281,7 +1294,7 @@ CMakeFiles/free.dir/src/main/main.c.s: cmake_force
 
 CMakeFiles/free.dir/src/main/main_btn_action.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/main/main_btn_action.c.o: ../src/main/main_btn_action.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/free.dir/src/main/main_btn_action.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/free.dir/src/main/main_btn_action.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/main/main_btn_action.c.o   -c /Users/nshelly/CLionProjects/free/src/main/main_btn_action.c
 
 CMakeFiles/free.dir/src/main/main_btn_action.c.i: cmake_force
@@ -1294,7 +1307,7 @@ CMakeFiles/free.dir/src/main/main_btn_action.c.s: cmake_force
 
 CMakeFiles/free.dir/src/main/main_events.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/main/main_events.c.o: ../src/main/main_events.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/free.dir/src/main/main_events.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/free.dir/src/main/main_events.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/main/main_events.c.o   -c /Users/nshelly/CLionProjects/free/src/main/main_events.c
 
 CMakeFiles/free.dir/src/main/main_events.c.i: cmake_force
@@ -1307,7 +1320,7 @@ CMakeFiles/free.dir/src/main/main_events.c.s: cmake_force
 
 CMakeFiles/free.dir/src/main/main_gui_init.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/main/main_gui_init.c.o: ../src/main/main_gui_init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/free.dir/src/main/main_gui_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/free.dir/src/main/main_gui_init.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/main/main_gui_init.c.o   -c /Users/nshelly/CLionProjects/free/src/main/main_gui_init.c
 
 CMakeFiles/free.dir/src/main/main_gui_init.c.i: cmake_force
@@ -1320,7 +1333,7 @@ CMakeFiles/free.dir/src/main/main_gui_init.c.s: cmake_force
 
 CMakeFiles/free.dir/src/math/math_intersect.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/math/math_intersect.c.o: ../src/math/math_intersect.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/free.dir/src/math/math_intersect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/free.dir/src/math/math_intersect.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/math/math_intersect.c.o   -c /Users/nshelly/CLionProjects/free/src/math/math_intersect.c
 
 CMakeFiles/free.dir/src/math/math_intersect.c.i: cmake_force
@@ -1333,7 +1346,7 @@ CMakeFiles/free.dir/src/math/math_intersect.c.s: cmake_force
 
 CMakeFiles/free.dir/src/math/math_vectors.c.o: CMakeFiles/free.dir/flags.make
 CMakeFiles/free.dir/src/math/math_vectors.c.o: ../src/math/math_vectors.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/free.dir/src/math/math_vectors.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/free.dir/src/math/math_vectors.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/free.dir/src/math/math_vectors.c.o   -c /Users/nshelly/CLionProjects/free/src/math/math_vectors.c
 
 CMakeFiles/free.dir/src/math/math_vectors.c.i: cmake_force
@@ -1397,6 +1410,7 @@ free_OBJECTS = \
 "CMakeFiles/free.dir/src/game/game_door.c.o" \
 "CMakeFiles/free.dir/src/game/game_door_detect.c.o" \
 "CMakeFiles/free.dir/src/game/game_engine.c.o" \
+"CMakeFiles/free.dir/src/game/game_engine_cross.c.o" \
 "CMakeFiles/free.dir/src/game/game_engine_exp.c.o" \
 "CMakeFiles/free.dir/src/game/game_events_1.c.o" \
 "CMakeFiles/free.dir/src/game/game_events_2.c.o" \
@@ -1500,6 +1514,7 @@ free: CMakeFiles/free.dir/src/game/game_but_detect.c.o
 free: CMakeFiles/free.dir/src/game/game_door.c.o
 free: CMakeFiles/free.dir/src/game/game_door_detect.c.o
 free: CMakeFiles/free.dir/src/game/game_engine.c.o
+free: CMakeFiles/free.dir/src/game/game_engine_cross.c.o
 free: CMakeFiles/free.dir/src/game/game_engine_exp.c.o
 free: CMakeFiles/free.dir/src/game/game_events_1.c.o
 free: CMakeFiles/free.dir/src/game/game_events_2.c.o
@@ -1550,7 +1565,7 @@ free: CMakeFiles/free.dir/src/math/math_intersect.c.o
 free: CMakeFiles/free.dir/src/math/math_vectors.c.o
 free: CMakeFiles/free.dir/build.make
 free: CMakeFiles/free.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Linking C executable free"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Linking C executable free"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/free.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

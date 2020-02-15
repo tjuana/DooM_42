@@ -50,6 +50,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/free.dir/src/game/game_door.c.o"
   "CMakeFiles/free.dir/src/game/game_door_detect.c.o"
   "CMakeFiles/free.dir/src/game/game_engine.c.o"
+  "CMakeFiles/free.dir/src/game/game_engine_cross.c.o"
   "CMakeFiles/free.dir/src/game/game_engine_exp.c.o"
   "CMakeFiles/free.dir/src/game/game_events_1.c.o"
   "CMakeFiles/free.dir/src/game/game_events_2.c.o"

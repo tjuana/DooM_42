@@ -79,21 +79,21 @@ int			engine_scale(t_new_player *pl, int sx1, int sx2)
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
 	pl->ceil.y1a = WIN_H / 2 - (int)(yaw(pl->ceil.yceil, \
-    pl->t1.y, pl) * pl->scale_1.y);
+	pl->t1.y, pl) * pl->scale_1.y);
 	pl->floor.y1b = WIN_H / 2 - (int)(yaw(pl->floor.yfloor, \
-    pl->t1.y, pl) * pl->scale_1.y);
+	pl->t1.y, pl) * pl->scale_1.y);
 	pl->ceil.y2a = WIN_H / 2 - (int)(yaw(pl->ceil.yceil, \
-    pl->t2.y, pl) * pl->scale_2.y);
+	pl->t2.y, pl) * pl->scale_2.y);
 	pl->floor.y2b = WIN_H / 2 - (int)(yaw(pl->floor.yfloor, \
-    pl->t2.y, pl) * pl->scale_2.y);
+	pl->t2.y, pl) * pl->scale_2.y);
 	pl->ceil.ny1a = WIN_H / 2 - (int)(yaw(pl->ceil.nyceil, \
-    pl->t1.y, pl) * pl->scale_1.y);
+	pl->t1.y, pl) * pl->scale_1.y);
 	pl->floor.ny1b = WIN_H / 2 - (int)(yaw(pl->floor.nyfloor, \
-    pl->t1.y, pl) * pl->scale_1.y);
+	pl->t1.y, pl) * pl->scale_1.y);
 	pl->ceil.ny2a = WIN_H / 2 - (int)(yaw(pl->ceil.nyceil, \
-    pl->t2.y, pl) * pl->scale_2.y);
+	pl->t2.y, pl) * pl->scale_2.y);
 	pl->floor.ny2b = WIN_H / 2 - (int)(yaw(pl->floor.nyfloor, \
-    pl->t2.y, pl) * pl->scale_2.y);
+	pl->t2.y, pl) * pl->scale_2.y);
 	if (pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
 		return (0);
 	return (1);

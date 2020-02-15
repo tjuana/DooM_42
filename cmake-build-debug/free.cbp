@@ -281,6 +281,9 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine.c">
 			<Option target="free"/>
 		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_cross.c">
+			<Option target="free"/>
+		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_exp.c">
 			<Option target="free"/>
 		</Unit>

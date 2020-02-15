@@ -16,10 +16,12 @@ static void		transform_venom(t_new_texture *venom)
 {
 	int i;
 	int hex;
+
 	i = 1;
 	while (i < venom->h * venom->w)
 	{
-		hex = hexcolor(venom->pixels[i].r, venom->pixels[i].g, venom->pixels[i].b);
+		hex = hexcolor(venom->pixels[i].r, venom->pixels[i].g, \
+		venom->pixels[i].b);
 		if (hex >= 15800000)
 		{
 			venom->pixels[i].a = 0;
@@ -30,7 +32,9 @@ static void		transform_venom(t_new_texture *venom)
 
 static void		load_textures_2(t_new_texture *t_arr)
 {
-	t_arr[14] = texture_parse("Img_tga/venom_face.tga");// WE DONT USE IT
+	t_arr[11] = texture_parse("Img_tga/wall_orange.tga");
+	t_arr[12] = texture_parse("Img_tga/venom_face.tga");
+	t_arr[13] = texture_parse("Img_tga/graffiti.tga");
 }
 
 /*
@@ -62,12 +66,7 @@ t_new_texture	*load_textures(t_new_player *pl)
 	t_arr[8] = texture_parse("Img_tga/revolver0.tga");
 	t_arr[9] = texture_parse("Img_tga/revolver1.tga");
 	t_arr[10] = texture_parse("Img_tga/revolver2.tga");
-	t_arr[11] = texture_parse("Img_tga/wall_orange.tga");
-	t_arr[12] = texture_parse("Img_tga/venom_face.tga");
-	t_arr[13] = texture_parse("Img_tga/graffiti.tga");
 	load_textures_2(t_arr);
 	transform_venom(&t_arr[12]);
-
-
 	return (t_arr);
 }

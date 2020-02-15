@@ -147,8 +147,9 @@ t_new_others *ot, t_new_sub_ev *se)
 	{
 		if (!motion_corner(&pl->sectors[pl->sector], i, pl))
 			return ;
-		if ((intersectbox(op->p, sum_vectors_xy(op->p, op->d), op->vert[i], op->vert[i + 1]) \
- && pointside(sum_vectors_xy(op->p, op->d), op->vert[i], op->vert[i + 1]) < 0))
+		if ((intersectbox(op->p, sum_vectors_xy(op->p, op->d), op->vert[i],\
+		op->vert[i + 1]) && pointside(sum_vectors_xy(op->p, op->d), \
+		op->vert[i], op->vert[i + 1]) < 0))
 			ot->moving = motion_chk_2(op, pl, i);
 	}
 	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl);

@@ -84,9 +84,8 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 
 	if (se->falling == 0)
 		return ;
-
 	pl->velocity.z -= 0.1f;
-	if(pl->fly == 1 && pl->velocity.z <= 0)
+	if (pl->fly == 1 && pl->velocity.z <= 0)
 		se->falling = 0;
 	z = pl->where.z + pl->velocity.z;
 	if (pl->velocity.z < 0 && z < pl->sectors[pl->sector].floor + op->eye_h)

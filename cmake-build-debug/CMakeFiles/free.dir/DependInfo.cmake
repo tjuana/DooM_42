@@ -55,6 +55,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/nshelly/CLionProjects/free/src/game/game_door.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_door.c.o"
   "/Users/nshelly/CLionProjects/free/src/game/game_door_detect.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_door_detect.c.o"
   "/Users/nshelly/CLionProjects/free/src/game/game_engine.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_engine.c.o"
+  "/Users/nshelly/CLionProjects/free/src/game/game_engine_cross.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_engine_cross.c.o"
   "/Users/nshelly/CLionProjects/free/src/game/game_engine_exp.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_engine_exp.c.o"
   "/Users/nshelly/CLionProjects/free/src/game/game_events_1.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_events_1.c.o"
   "/Users/nshelly/CLionProjects/free/src/game/game_events_2.c" "/Users/nshelly/CLionProjects/free/cmake-build-debug/CMakeFiles/free.dir/src/game/game_events_2.c.o"

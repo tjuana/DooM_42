@@ -135,7 +135,7 @@ void		but_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_BUT];
-	
+
 	pl->but_all = 0;
 	i = -1;
 	while (++i < pl->sectors_nb)

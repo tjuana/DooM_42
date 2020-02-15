@@ -196,6 +196,7 @@ game_door.c \
 game_door_detect.c \
 game_engine.c \
 game_engine_exp.c \
+game_engine_cross.c \
 game_events_1.c \
 game_events_2.c \
 game_gun.c \

@@ -133,13 +133,8 @@ t_new_vector3	ft_new_vec3_normalize(t_new_vector3 vtc);
 
 /*			vector_3.c			*/
 float			vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2);
-
-// void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
-void			vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
-
 int				events(t_new_sub_ev *se, t_new_player *pl);
 void			ft_game_events(t_new_temp *data);
-
 void			ft_game_init(t_wolf3d *w, char *path);
 
 ///parse map for game

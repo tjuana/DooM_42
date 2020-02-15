@@ -21,15 +21,9 @@
 
 void			end_game(t_new_player *pl)
 {
-	int i;
-	i = -1;
-	//better use free(pl);
 	SDL_Delay(777);
 	if (pl)
-	{
 		free(pl);
-		// pl = NULL;
-	}
 	exit(EXIT_SUCCESS);
 }
 
@@ -42,11 +36,11 @@ void			end_game(t_new_player *pl)
 
 t_new_player	*load_next(t_new_player *pl)
 {
-	char *lvl;
-	int i = 0;
-	int j = -1;
+	char			*lvl;
+	int				j;
 	t_new_sector	*sector;
 
+	j = -1;
 	while (j++ < pl->sectors->npoints)
 	{
 		sector = &pl->sectors[j];
