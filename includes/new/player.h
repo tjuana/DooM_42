@@ -7,7 +7,7 @@ typedef struct	s_file_read
 	int			fd;
 	int			res;
 	char		*line;
-	int			tmp[2000];
+	int			tmp[201];
 	char		**split;
 	char		*ptr_my;
 	int			i;
@@ -32,8 +32,9 @@ typedef struct	s_new_player
 	t_new_xy		t2;
 	t_new_xy		scale_1;
 	t_new_xy		scale_2;
-    t_new_xyz		where;      // Current position
-    t_new_xyz		velocity;   // Current motion vector
+    t_new_xyz		pos;      // Current position
+    t_new_xyz		velo;   // Current motion vector
+	t_new_xyz		hole;
     float		angle;
     float		anglesin;//player view sin
     float		anglecos;//player view cos
@@ -53,6 +54,8 @@ typedef struct	s_new_player
 	t_new_ceil		ceil;
 	t_new_floor		floor;
 
+	t_new_xy	near_point;
+	t_new_xy 	far_point;
 	float		nearz;
 	float		farz;
 	float		nearside;
@@ -89,6 +92,7 @@ typedef struct	s_new_player
 	int        *pix;
 	int 		y;
 	t_scaler    ty;
+	int 		fly;
 
 
 	// camera vertex

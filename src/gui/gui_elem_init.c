@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 15:26:37 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:52:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** **************************************************************************
-**	void	ft_gui_elem_init(t_list **dom, char *name, \
+**	void ft_gui_elem_init(t_list **dom, char *name, \
 **		t_gui_coord v1, t_gui_coord v2)
 **
 **	Function that initialize gui element.
@@ -46,6 +46,64 @@ void	ft_gui_elem_init(t_list **dom, char *name, \
 		*dom = list;
 	else
 		ft_lstadd(dom, list);
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_elem_init_grid(t_list *parent, char *name, \
+**		int pos, t_gui_coord count)
+**
+**	Function that initialize gui element (grid).
+** **************************************************************************
+*/
+
+void	ft_gui_elem_init_grid(t_list *parent, char *name, \
+			int pos, t_gui_coord count)
+{
+	t_list		*list;
+	t_gui_elem	*parent_elem;
+	t_gui_coord	v1;
+	t_gui_coord	v2;
+	t_gui_grid	*grid;
+
+	pos--;
+	parent_elem = parent->content;
+	grid = &parent_elem->grid;
+	v1.x = parent_elem->v1.x + 2 * grid->margin + \
+		(pos % grid->count.x) * (grid->elem_w + grid->margin);
+	v1.y = parent_elem->v1.y + 2 * grid->margin + \
+		(pos / grid->count.x) * (grid->elem_h + grid->margin);
+	v2.x = v1.x + (grid->elem_w + grid->margin) * count.x - grid->margin;
+	v2.y = v1.y + (grid->elem_h + grid->margin) * count.y - grid->margin;
+	ft_gui_elem_init(&parent_elem->child, name, v1, v2);
+	ft_gui_elem_set_parent(parent, parent_elem->child);
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_elem_set_grid(t_list *dom, t_gui_coord count, int margin)
+**
+**	Function that set grid for element.
+** **************************************************************************
+*/
+
+void	ft_gui_elem_set_grid(t_list *dom, t_gui_coord count, int margin)
+{
+	t_gui_elem	*elem;
+	t_gui_grid	*grid;
+
+	elem = dom->content;
+	grid = &elem->grid;
+	grid->area.v1 = elem->v1;
+	grid->area.v2 = elem->v2;
+	grid->area.w = grid->area.v2.x - grid->area.v1.x;
+	grid->area.h = grid->area.v2.y - grid->area.v1.y;
+	grid->margin = margin;
+	grid->count = count;
+	grid->elem_w = (grid->area.w - grid->margin * \
+		(grid->count.x + 3)) / grid->count.x;
+	grid->elem_h = (grid->area.h - grid->margin * \
+		(grid->count.y + 3)) / grid->count.y;
 }
 
 /*

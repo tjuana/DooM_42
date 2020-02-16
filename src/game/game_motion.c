@@ -6,46 +6,11 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/15 21:36:37 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 16:42:31 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-/*
-** **************************************************************************
-**	void motion_check(t_new_sect_ops *op, t_new_player *pl,
-**	t_new_others *ot, t_new_sub_ev *se)
-**	Function to detect collisions when player move
-** **************************************************************************
-*/
-
-static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
-{
-	op->hole_low = 9e9;
-	op->hole_high = -9e9;
-	if (op->sect->neighbors[i] >= 0)
-	{
-		op->hole_low = max(op->sect->floor, \
-		pl->sectors[op->sect->neighbors[i]].floor);
-		op->hole_high = min(op->sect->ceil, \
-		pl->sectors[op->sect->neighbors[i]].ceil);
-	}
-	if ((op->hole_high < pl->where.z + HEAD_H || \
-	op->hole_low > pl->where.z - op->eye_h + NOT_JUMP_H))
-	{
-		op->xd = op->vert[i + 1].x - op->vert[i].x;
-		op->yd = op->vert[i + 1].y - op->vert[i].y;
-		pl->velocity.x = op->xd * ((op->dx * op->xd + op->dy * op->yd) / (\
-		op->xd * op->xd + op->yd * op->yd));
-		pl->velocity.y = op->yd * ((op->dx * op->xd + op->dy * op->yd) / (\
-		op->xd * op->xd + op->yd * op->yd));
-		printf("CASE:::1\n");
-		return (0);
-	}
-		printf("CASE:::2\n");
-	return (1);
-}
 
 /*
 ** **************************************************************************
@@ -54,9 +19,10 @@ static int	motion_chk_2(t_new_sect_ops *op, t_new_player *pl, int i)
 ** **************************************************************************
 */
 
-void		motion_move_pl(t_new_xy *delt, t_new_player *pl, t_new_sect_ops *op)
+void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 {
 	t_new_sector	*sect;
+	t_new_xy		pt;
 	int				res;
 	int				i;
 
@@ -72,21 +38,48 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl, t_new_sect_ops *op)
 		else
 		{
 			pl->sector = res;
-			op->sect = &pl->sectors[res];
-			if (motion_chk_2(op, pl, i))
-			{
-				delt->x = pl->velocity.x;
-				delt->y = pl->velocity.y;
-			}
-			
 			break ;
 		}
 	}
-	pl->where.x += delt->x;
-	pl->where.y += delt->y;
+	pl->pos.x += delt->x;
+	pl->pos.y += delt->y;
 }
 
+/*
+** **************************************************************************
+**	void motion_check(t_new_player *pl, int i)
+**	Function to slip the player
+** **************************************************************************
+*/
 
+static int	motion_slide(t_new_player *pl, t_new_sector *sect, \
+	t_new_xy *vert, int i)
+{
+	float	wall_dx;
+	float	wall_dy;
+
+	pl->hole.x = 1000;
+	pl->hole.y = -1000;
+	if (sect->neighbors[i] >= 0)
+	{
+		pl->hole.x = max(sect->floor, \
+		pl->sectors[sect->neighbors[i]].floor);
+		pl->hole.y = min(sect->ceil, \
+		pl->sectors[sect->neighbors[i]].ceil);
+	}
+	if ((pl->hole.y < pl->pos.z + HEAD_H || \
+	pl->hole.x > pl->pos.z - pl->hole.z + NOT_JUMP_H))
+	{
+		wall_dx = vert[i + 1].x - vert[i].x;
+		wall_dy = vert[i + 1].y - vert[i].y;
+		pl->velo.x = wall_dx * ((wall_dx * pl->velo.x + wall_dy * \
+		pl->velo.y) / (pow(wall_dx, 2) + pow(wall_dy, 2)));
+		pl->velo.y = wall_dy * ((wall_dx * pl->velo.x + wall_dy * \
+		pl->velo.y) / (pow(wall_dx, 2) + pow(wall_dy, 2)));
+		return (0);
+	}
+	return (1);
+}
 
 /*
 ** **************************************************************************
@@ -96,28 +89,27 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl, t_new_sect_ops *op)
 ** **************************************************************************
 */
 
-void		motion_chk(t_new_sect_ops *op, t_new_player *pl, \
-t_new_others *ot, t_new_sub_ev *se)
+void		motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 {
-	int		i;
+	int				i;
+	int				inter;
+	float			point_side;
+	t_new_sector	*sect;
+	t_new_xy		*vert;
 
 	i = -1;
 	if (ot->moving != 1)
 		return ;
-	op->px = pl->where.x;
-	op->py = pl->where.y;
-	op->dx = pl->velocity.x;
-	op->dy = pl->velocity.y;
-	op->sect = &pl->sectors[pl->sector];
-	op->vert = op->sect->vertex;
-	while (++i < op->sect->npoints)
+	sect = &pl->sectors[pl->sector];
+	vert = sect->vertex;
+	while (++i < sect->npoints)
 	{
-		if ((IntersectBox(op->px, op->py, op->px + op->dx, op->py + op->dy, \
-		op->vert[i].x, op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) \
-		&& PointSide(op->px + op->dx, op->py + op->dy, op->vert[i].x, \
-		op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) < 0))
-			ot->moving = motion_chk_2(op, pl, i);
+		inter = intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy){\
+		pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
+		point_side = pointside((t_new_xy){pl->pos.x + pl->velo.x, \
+		pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
+		if (inter && point_side < 0)
+			ot->moving = motion_slide(pl, sect, vert, i);
 	}
-	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl, op);
-	se->falling = 1;
+	motion_move_pl(&(t_new_xy){pl->velo.x, pl->velo.y}, pl);
 }

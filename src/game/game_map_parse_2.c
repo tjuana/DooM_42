@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_map_parse2.c                                  :+:      :+:    :+:   */
+/*   game_map_parse_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 20:30:00 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 15:33:56 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 	while (number--)
 	{
 		sector->vertex[v_c].x = vertex[ft_atoi(file.split[s_c])].x;
-		sector->vertex[v_c].y = vertex[ft_atoi(file.split[s_c])].y;
-		v_c++;
-		s_c++;
+		sector->vertex[v_c++].y = vertex[ft_atoi(file.split[s_c++])].y;
 	}
 	sector->vertex[0] = vertex[ft_atoi(file.split[s_c - 1])];
 	number = file.tmp[file.count_sectors];
@@ -83,16 +81,16 @@ void		ft_player_save(t_new_player *pl)
 	v.y = (float)ft_atoi(pl->file.split[2]);
 	n = ft_atoi(pl->file.split[4]);
 	player_init(pl, &v, &n);
-	pl->where.z = pl->sectors[pl->sector].floor + EYE_H;
+	pl->pos.z = pl->sectors[pl->sector].floor + EYE_H * 2;
+	ft_2arrclean(&pl->file.split);
 }
 
 void		ft_level_save(t_new_player *pl)
 {
+	char	*strdup;
+
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	printf("0==|%s| 1==|%s|\n", pl->file.split[0], pl->file.split[1]);
-		pl->lvl = ft_strcpy(ft_strnew(ft_strlen(pl->file.split[1])), pl->file.split[1]);
-
-//	pl->lvl = pl->file.split[1];
+	pl->lvl = ft_strdup(pl->file.split[1]);
 	ft_2arrclean(&pl->file.split);
 }

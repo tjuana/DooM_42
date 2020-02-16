@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/09 14:08:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:42:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,7 @@ void			ft_play_shot(t_wolf3d *w);
 
 void			ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
 					t_gui_rect area, int color);
+
+void			ft_me_generate_triangles(t_wolf3d *w);
 
 #endif

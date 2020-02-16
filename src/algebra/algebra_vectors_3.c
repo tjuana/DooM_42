@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_vectors_3.c                                   :+:      :+:    :+:   */
+/*   algebra_vectors_3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 19:20:46 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/11 17:16:35 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 12:43:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	float vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2)
+**	float ft_vec2_cos(t_vector3 vec1, t_vector3 vec2)
 **	Function to define cos of two vec
 ** **************************************************************************
 */
 
-float	vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2)
+float	ft_vec2_cos(t_vector3 vec1, t_vector3 vec2)
 {
 	float	res;
 	float	tmp1;

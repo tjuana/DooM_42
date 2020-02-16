@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_btn_action.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 21:48:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 18:03:25 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 12:53:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_gui_mousebuttonup_win_menu_btneditor(void *data, SDL_Event e, \
 		ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), \
 		GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_status(\
-		ft_gui_search_elem_by_name(w->gui.dom, "win_editor"), \
+		ft_gui_search_elem_by_name(w->gui.dom, "win_me"), \
 		GUI_ELEM_VISIBLE);
 	w->gui.mode = GUI_MD_ME;
 	w->player_status = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 19:05:22 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 12:47:04 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 
 	i = -1;
 	d_nb = -1;
-	printf("pl.x==%f pl.y==%f sec==%d\n", pl->where.x, pl->where.y, pl->sector);
 	if ((pl->door_all == -1) || (pl->but_all == -1))
 	{
 		door_total(pl);
@@ -116,7 +115,7 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 
 	d_nb = pl->door_nb;
 	d_sec_nb = 0;
-	if (pl->door_all < 1 || (d_nb > pl->door_all))
+	if (pl->door_all < 1 || (d_nb > pl->door_all) || d_nb < 0)
 		return ;
 	d_sec_nb = pl->doors[d_nb].s_nb;
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \

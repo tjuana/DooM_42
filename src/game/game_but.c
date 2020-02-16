@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 19:26:49 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 12:46:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 		return (but_open_door(pl, but_nb, se));
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -4))
 		*pl = *load_next(pl);
+	ft_strdel(&pl->lvl);
 	return (0);
 }
 

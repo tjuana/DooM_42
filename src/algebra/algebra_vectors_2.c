@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 13:44:37 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:21:00 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ double		ft_vec3_dot_product(t_vector3 this, t_vector3 rhs)
 	return (res);
 }
 
-// ?
 double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs)
 {
 	double	res;
@@ -30,7 +29,13 @@ double		ft_vec3_cosinus(t_vector3 this, t_vector3 rhs)
 	return (res);
 }
 
-// invertion vector
+/*
+** **************************************************************************
+**	t_vector3 ft_vec3_scalar_product(t_vector3 this, double k)
+**	Function that return opposite vector.
+** **************************************************************************
+*/
+
 t_vector3	ft_vec3_opposite(t_vector3 this)
 {
 	t_vector3	res;
@@ -38,9 +43,16 @@ t_vector3	ft_vec3_opposite(t_vector3 this)
 	res.x = -this.x;
 	res.y = -this.y;
 	res.z = -this.z;
-	res.w = this.w;//вот тут хз чей коэф брать
+	res.w = this.w;
 	return (res);
 }
+
+/*
+** **************************************************************************
+**	t_vector3 ft_vec3_scalar_product(t_vector3 this, double k)
+**	Function that return scale vector.
+** **************************************************************************
+*/
 
 t_vector3	ft_vec3_scalar_product(t_vector3 this, double k)
 {
@@ -49,9 +61,16 @@ t_vector3	ft_vec3_scalar_product(t_vector3 this, double k)
 	res.x = this.x * k;
 	res.y = this.y * k;
 	res.z = this.z * k;
-	res.w = this.w;//вот тут хз чей коэф брать
+	res.w = this.w;
 	return (res);
 }
+
+/*
+** **************************************************************************
+**	t_vector3 ft_vec3_normalize(t_vector3 vtc)
+**	Function that normalize vector.
+** **************************************************************************
+*/
 
 t_vector3	ft_vec3_normalize(t_vector3 vtc)
 {

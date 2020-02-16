@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:33:02 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 15:33:18 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** **************************************************************************
 */
 
-static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
+static void		sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == 'w')
 		se->wsad[0] = se->ev.type == SDL_KEYDOWN;
@@ -42,23 +42,20 @@ static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 ** **************************************************************************
 */
 
-static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
+static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
 		se->quit = 1;
 		return (0);
 	}
-	if (se->ev.key.keysym.sym == ' ' && se->ground)
+	if (se->ev.key.keysym.sym == ' ' && se->ground && pl->fly != 1)
 	{
-		pl->velocity.z += 0.5;
+		pl->velo.z += 0.75f;
 		se->falling = 1;
 	}
 	if (se->ev.key.keysym.sym == SDLK_LCTRL)
-	{
 		se->ducking = se->ev.type == SDL_KEYDOWN;
-		se->falling = 1;
-	}
 	sub_events_2(se, pl);
 	return (1);
 }
@@ -70,7 +67,26 @@ static int	sub_events(t_new_sub_ev *se, t_new_player *pl)
 ** **************************************************************************
 */
 
-int			events(t_new_sub_ev *se, t_new_player *pl)
+static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
+{
+	if (se->ev.button.button == SDL_BUTTON_LEFT)
+		pl->count_sprite = 10;
+	if (se->ev.button.button == SDL_BUTTON_RIGHT)
+		pl->light = pl->light == 0.5f ? 1.0f : 0.5f;
+	if (se->ev.button.button == SDL_BUTTON_MIDDLE)
+	{
+		se->falling = 1;
+		if (pl->fly == 1)
+			pl->fly = 0;
+		else
+		{
+			pl->fly = 1;
+			pl->velo.z = 1.3f;
+		}
+	}
+}
+
+int				events(t_new_sub_ev *se, t_new_player *pl)
 {
 	while (SDL_PollEvent(&se->ev))
 	{
@@ -84,21 +100,13 @@ int			events(t_new_sub_ev *se, t_new_player *pl)
 						return (0);
 			}
 			if (se->ev.type == SDL_MOUSEBUTTONDOWN)
-			{
-				if (se->ev.button.button == SDL_BUTTON_LEFT)
-					pl->count_sprite = 10;
-				if (se->ev.button.button == SDL_BUTTON_RIGHT)
-				{
-					pl->light == 0.5f ? pl->light = 1.0f : 0;
-					pl->light != 0.5f ? pl->light = 0.5f : 0;
-				}
-			}
+				mouse_events(se, pl);
 		}
 	}
 	return (1);
 }
 
-void		ft_game_events(t_new_temp *data)
+void			ft_game_events(t_new_temp *data)
 {
-	events(&data->se, &data->pl);
+	events(&data->se, data->pl);
 }
