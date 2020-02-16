@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 15:17:50 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:33:20 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 {
-	pl->where.x = v->x;
-	pl->where.y = v->y;
-	pl->where.z = 0;
-	pl->velocity.x = 0;
-	pl->velocity.y = 0;
-	pl->velocity.z = 0;
+	pl->pos.x = v->x;
+	pl->pos.y = v->y;
+	pl->pos.z = 0;
+	pl->velo.x = 0;
+	pl->velo.y = 0;
+	pl->velo.z = 0;
 	pl->angle = 0;
 	pl->anglesin = 0;
 	pl->anglecos = 0;
@@ -36,9 +36,8 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->but_all = -1;
 	pl->but_nb = -1;
 	pl->lvl = NULL;
-	pl->light = 1.0f;
+	pl->light = 1;
 	pl->pix = (int *)pl->srf->pixels;
-	// pl->sector = 0;
 }
 
 void	ft_game_redraw(void *d, t_list *dom)
@@ -57,11 +56,11 @@ void	ft_game_redraw(void *d, t_list *dom)
 		data->pl->count_sprite = 1;
 	}
 	draw_pistol(&wpn, data->pl);
-	data->op.eye_h = data->se.ducking ? CROUCH_H : EYE_H;
+	data->pl->hole.z = data->se.ducking ? CROUCH_H : EYE_H;
 	data->se.ground = !data->se.falling;
-	events_jumps(&data->se, data->pl, &data->op, &data->ot);
-	motion_chk(&data->op, data->pl, &data->ot, &data->se);
-	motion_move_pl(&(t_new_xy){0, 0}, data->pl);
+	events_jumps(&data->se, data->pl, &data->ot);
+	motion_chk(data->pl, &data->ot, &data->se);
+//	motion_move_pl(&(t_new_xy){0, 0}, data->pl);
 	events_new_mouse_move(&data->ms, data->pl);
 	events_vel(data->pl, &data->se, &data->ot);
 	if (!events(&data->se, data->pl))

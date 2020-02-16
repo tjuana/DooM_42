@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:13:51 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 16:01:57 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:32:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static int	but_dist(t_new_player *pl, int s_nb)
 	tmp_dist = 3;
 	vec.x = (pl->sectors[s_nb].vertex[1].x + pl->sectors[s_nb].vertex[0].x) / 2;
 	vec.y = (pl->sectors[s_nb].vertex[1].y + pl->sectors[s_nb].vertex[0].y) / 2;
-	vec.x = vec.x - pl->where.x;
-	vec.y = vec.y - pl->where.y;
+	vec.x = vec.x - pl->pos.x;
+	vec.y = vec.y - pl->pos.y;
 	tmp_dist = (int)sqrt(pow(vec.x, 2) + pow(vec.y, 2));
 	vec2.x = pl->anglecos;
 	vec2.y = pl->anglesin;

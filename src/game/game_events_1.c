@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 15:13:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:33:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
 	}
 	if (se->ev.key.keysym.sym == ' ' && se->ground && pl->fly != 1)
 	{
-		pl->velocity.z += 0.75f;
+		pl->velo.z += 0.75f;
 		se->falling = 1;
 	}
 	if (se->ev.key.keysym.sym == SDLK_LCTRL)
@@ -81,7 +81,7 @@ static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
 		else
 		{
 			pl->fly = 1;
-			pl->velocity.z = 1.3f;
+			pl->velo.z = 1.3f;
 		}
 	}
 }

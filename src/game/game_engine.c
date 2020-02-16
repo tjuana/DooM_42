@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 12:47:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:26:34 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,13 @@ static int	ceil_floor_calcs(t_new_player *pl, int s)
 		pl->n = 11;
 	if (engine_cross(pl) == 0)
 		return (0);
-	pl->ceil.yceil = pl->sect->ceil - pl->where.z;
-	pl->floor.yfloor = pl->sect->floor - pl->where.z;
+	pl->ceil.yceil = pl->sect->ceil - pl->pos.z;
+	pl->floor.yfloor = pl->sect->floor - pl->pos.z;
 	neib = pl->sect->neighbors[s];
 	if (neib >= 0)
 	{
-		pl->ceil.nyceil = pl->sectors[neib].ceil - pl->where.z;
-		pl->floor.nyfloor = pl->sectors[neib].floor - pl->where.z;
+		pl->ceil.nyceil = pl->sectors[neib].ceil - pl->pos.z;
+		pl->floor.nyfloor = pl->sectors[neib].floor - pl->pos.z;
 	}
 	if (engine_scale(pl, pl->cycle.current->sx1,\
 			pl->cycle.current->sx2) == 0)

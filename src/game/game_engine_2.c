@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 16:11:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:26:01 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void			engine_calcs(int x, t_new_player *pl, int operation)
 		pl->t.mapx = pl->t.mapz * (WIN_W / 2 - (float)pl->t.x) \
 		/ (WIN_W * (H_FOV));
 		pl->t.txtx1 = (unsigned int)(((pl->t.mapz * pl->anglecos + pl->t.mapx *\
-		pl->anglesin) + pl->where.x) * 256);
+		pl->anglesin) + pl->pos.x) * 256);
 		pl->t.txtz = (unsigned int)(((pl->t.mapz * pl->anglesin - pl->t.mapx * \
-		pl->anglecos) + pl->where.y) * 256);
+		pl->anglecos) + pl->pos.y) * 256);
 	}
 	else if (operation == 2)
 	{
@@ -69,8 +69,10 @@ void			draw_ceil_floor(int x, t_new_player *pl)
 			pix1(pl, ROCK2);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil == 20)
 			pix_sky(&pl->t, pl);
+			// ft_put_pixel_to_surface(pl, &pl->t, SKY);
 		if (pl->t.y >= pl->ceil.cya)
 			pix1(pl, GREEN);
+			// ft_put_pixel_to_surface(pl, &pl->t, GREEN);
 	}
 }
 

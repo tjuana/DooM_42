@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_cross.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nshelly <nshelly@student.21school.>        +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/15 19:17:56 by nshelly          ###   ########.fr       */
+/*   Updated: 2020/02/16 17:26:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void			xy_vertex_of_sectors(t_new_xy *v_start, t_new_xy *v_end,\
 	t_new_player *pl)
 {
 	v_start->x = pl->sectors[pl->cycle.current->sec_nb].vertex[pl->s + 0].x \
-	- pl->where.x;
+	- pl->pos.x;
 	v_start->y = pl->sectors[pl->cycle.current->sec_nb].vertex[pl->s + 0].y - \
-	pl->where.y;
+	pl->pos.y;
 	v_end->x = pl->sectors[pl->cycle.current->sec_nb].vertex[pl->s + 1].x - \
-	pl->where.x;
+	pl->pos.x;
 	v_end->y = pl->sectors[pl->cycle.current->sec_nb].vertex[pl->s + 1].y - \
-	pl->where.y;
+	pl->pos.y;
 	pl->t1.x = v_start->x * pl->anglesin - v_start->y * pl->anglecos;
 	pl->t1.y = v_start->x * pl->anglecos + v_start->y * pl->anglesin;
 	pl->t2.x = v_end->x * pl->anglesin - v_end->y * pl->anglecos;

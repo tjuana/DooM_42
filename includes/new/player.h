@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 16:35:40 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:24:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ typedef struct	s_new_player
 	t_new_xy		t2;
 	t_new_xy		scale_1;
 	t_new_xy		scale_2;
-    t_new_xyz		where;      // Current position
-    t_new_xyz		velocity;   // Current motion vector
+    t_new_xyz		pos;      // Current position
+    t_new_xyz		velo;   // Current motion vector
+	t_new_xyz		hole;
     float		angle;
     float		anglesin;//player view sin
     float		anglecos;//player view cos

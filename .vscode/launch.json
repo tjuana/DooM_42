@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/maps/button"],
+			"args": ["${workspaceRoot}/maps/bugmap"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

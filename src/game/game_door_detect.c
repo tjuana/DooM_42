@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 16:02:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:25:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static int	door_vert_find(t_new_player *pl, t_vector3 *vec, int s_nb)
 			pl->sectors[s_nb].vertex[j].x) / 2;
 			vec->y = (pl->sectors[s_nb].vertex[i].y + \
 			pl->sectors[s_nb].vertex[j].y) / 2;
-			vec->x = vec->x - pl->where.x;
-			vec->y = vec->y - pl->where.y;
+			vec->x = vec->x - pl->pos.x;
+			vec->y = vec->y - pl->pos.y;
 			tmp_dist = (int)sqrt(pow(vec->x, 2) + pow(vec->y, 2));
 			tmp_dist <= dist ? dist = tmp_dist : 0;
 		}

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 15:58:15 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 17:33:27 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		ft_player_save(t_new_player *pl)
 	v.y = (float)ft_atoi(pl->file.split[2]);
 	n = ft_atoi(pl->file.split[4]);
 	player_init(pl, &v, &n);
-	pl->where.z = pl->sectors[pl->sector].floor + EYE_H * 2;
+	pl->pos.z = pl->sectors[pl->sector].floor + EYE_H * 2;
 	if (pl->file.split)
 		ft_2arrclean(&pl->file.split);
 }

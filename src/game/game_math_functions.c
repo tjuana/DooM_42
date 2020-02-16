@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_math_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 13:07:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:29:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ float		clamp(float a, float mi, float ma)
 ** vxs: Vector cross product
 */
 
-float		vxs(float x0, float y0, float x1, float y1)
+float		vxs(float x1, float y1, float x2, float y2)
 {
-	return ((x0) * (y1) - (x1) * (y0));
+	return ((x1) * (y2) - (x2) * (y1));
 }
 
 /*
 ** overlap:  Determine whether the two number ranges overlap.
 */
 
-int			overlap(float a0, float a1, float b0, float b1)
+int			overlap(float a1, float a2, float b1, float b2)
 {
-	return (min(a0, a1) <= max(b0, b1) && min(b0, b1) <= max(a0, a1));
+	return (min(a1, a2) <= max(b1, b2) && min(b1, b2) <= max(a1, a2));
 }
