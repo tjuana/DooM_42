@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 12:38:11 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:03:08 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@
 
 void			end_game(t_new_player *pl)
 {
-	int i;
-	i = -1;
-	//better use free(pl);
-	SDL_Delay(777);
+	SDL_Delay(77);
 	if (pl)
 	{
 		free(pl);
@@ -42,8 +39,8 @@ void			end_game(t_new_player *pl)
 
 t_new_player	*load_next(t_new_player *pl)
 {
-	char *lvl;
-	int j;
+	char			*lvl;
+	int				j;
 	t_new_sector	*sector;
 
 	j = -1;

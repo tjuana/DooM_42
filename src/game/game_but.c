@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 18:30:48 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:01:32 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void		but_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_BUT];
-	
+
 	pl->but_all = 0;
 	i = -1;
 	while (++i < pl->sectors_nb)

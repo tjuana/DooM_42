@@ -6,54 +6,11 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 14:34:25 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:04:26 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-static int	motion_move_pl2(t_new_sector *sect, \
-t_new_xy *delt, int i, t_new_xy *pt)
-{
-	t_new_xy	*vert;
-	float		point_side;
-	int			inter;
-
-	vert = sect->vertex;
-	inter = IntersectBox(pt->x, pt->y, pt->x + delt->x, pt->y + delt->y, \
-		vert[i].x, vert[i].y, vert[i + 1].x, vert[i + 1].y);
-	point_side = PointSide(pt->x + delt->x, pt->y + delt->y, vert[i].x, \
-		vert[i].y, vert[i + 1].x, vert[i + 1].y);
-	if (sect->neighbors[i] < 0 && inter && point_side < 0)
-		return (-666);
-	if (inter && point_side < 0)
-	{
-		return (sect->neighbors[i]);
-	}
-	return (-777);
-}
-
-static int	motion_corner(t_new_sector *sect, int i, t_new_player *pl)
-{
-	float		len;
-	float		len2;
-	float		x;
-	float		y;
-	t_new_xy	*vert;
-
-	vert = sect->vertex;
-	x = pl->where.x + pl->velocity.x;
-	y = pl->where.y + pl->velocity.y;
-	len = sqrt(pow(vert[i].x - x, 2) + pow(vert[i].y - y, 2));
-	len2 = sqrt(pow(vert[i + 1].x - x, 2) + pow(vert[i + 1].y - y, 2));
-	if (len <= 0.1777 || len2 <= 0.1777)
-	{
-		pl->velocity.x = 0;
-		pl->velocity.y = 0;
-		return (0);
-	}
-	return (1);
-}
 
 /*
 ** **************************************************************************
@@ -69,14 +26,12 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 	int				res;
 	int				i;
 
-	pt.x = pl->where.x;
-	pt.y = pl->where.y;
 	sect = &pl->sectors[pl->sector];
 	i = -1;
 	res = -1;
 	while (++i < sect->npoints)
 	{
-		if ((res = motion_move_pl2(sect, delt, i, &pt)) == -777)
+		if ((res = motion_chk_sec(sect, delt, i, pl)) == -777)
 			continue ;
 		else if (res == -666)
 			return ;
@@ -135,26 +90,33 @@ void		motion_chk(t_new_sect_ops *op, t_new_player *pl, \
 t_new_others *ot, t_new_sub_ev *se)
 {
 	int		i;
+	float	point_side;
+	int		inter;
 
 	i = -1;
 	if (ot->moving != 1)
 		return ;
-	op->px = pl->where.x;
-	op->py = pl->where.y;
-	op->dx = pl->velocity.x;
-	op->dy = pl->velocity.y;
+	op->p.x = pl->where.x;
+	op->p.y = pl->where.y;
+	op->d.x = pl->velocity.x;
+	op->d.y = pl->velocity.y;
 	op->sect = &pl->sectors[pl->sector];
 	op->vert = op->sect->vertex;
 	while (++i < op->sect->npoints)
 	{
-		if (!motion_corner(&pl->sectors[pl->sector], i, pl))
-			return ;
-		if ((IntersectBox(op->px, op->py, op->px + op->dx, op->py + op->dy, \
-		op->vert[i].x, op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) \
-		&& PointSide(op->px + op->dx, op->py + op->dy, op->vert[i].x, \
-		op->vert[i].y, op->vert[i + 1].x, op->vert[i + 1].y) < 0))
+		inter = intersectbox(
+			(t_new_xy){op->px, op->py},
+			(t_new_xy){op->px + op->dx, op->py + op->dy},
+			(t_new_xy){op->vert[i].x, op->vert[i].y},
+			(t_new_xy){op->vert[i + 1].x, op->vert[i + 1].y}
+		 );
+		point_side = pointside(
+			(t_new_xy){op->px + op->dx, op->py + op->dy},
+			(t_new_xy){op->vert[i].x, op->vert[i].y},
+			(t_new_xy){op->vert[i + 1].x, op->vert[i + 1].y}
+		 );
+		if (inter && point_side < 0)
 			ot->moving = motion_chk_2(op, pl, i);
 	}
 	motion_move_pl(&(t_new_xy){pl->velocity.x, pl->velocity.y}, pl);
-	se->falling = 1;
 }

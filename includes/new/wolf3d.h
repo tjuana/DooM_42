@@ -93,21 +93,24 @@ float		min(float a, float b);
 float		max(float a, float b);
 float		clamp(float a, float mi, float ma);
 float		vxs(float x0, float y0, float x1, float y1);
-int			Overlap(float a0, float a1, float b0, float b1);
-int			IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, float x3, float y3);
-float		PointSide(float px, float py, float x0, float y0,float x1, float y1);
-t_new_xy	intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
+int			overlap(float a0, float a1, float b0, float b1);
+float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		MovePlayer(float dx, float dy, t_new_player *player);
-float		Yaw(float y, float z, t_new_player *player);
+float		yaw(float y, float z, t_new_player *player);
 float		to_deg(float radians);
+t_new_xy	sum_vectors_xy(t_new_xy v0, t_new_xy v1);
 
 /*			motion.c			*/
-void		motion_chk(t_new_sect_ops *op, t_new_player *player, t_new_others *ot, t_new_sub_ev *se);
+void		motion_chk(t_new_sect_ops *op, t_new_player *player, \
+			t_new_others *ot, t_new_sub_ev *se);
 void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
 
+/*			motion2.c			*/
+int			motion_chk_sec(t_new_sector *sect, t_new_xy *delt, \
+			int i, t_new_player *pl);
+
 /*			sdl_addons.c			*/
-SDL_Rect	*ft_create_rect(int w, int h, int x, int y);
 void		ft_sdl_error();
 
 
@@ -119,24 +122,21 @@ t_new_texture	texture_parse(char *fp);
 
 
 /*			vector_1.c			*/
-t_new_vector3	ft_new_vec3_create(t_new_vector3 *orig, t_new_vector3 *dest);
-float			ft_new_vec3_magnitude(t_new_vector3 this);
-t_new_vector3	ft_new_vec3_add(t_new_vector3 this, t_new_vector3 rhs);
-t_new_vector3	ft_new_vec3_sub(t_new_vector3 this, t_new_vector3 rhs);
-t_new_vector3	ft_new_vec3_cross_product(t_new_vector3 this, t_new_vector3 rhs);
+// t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
+// float			ft_vec3_magnitude(t_vector3 this);
+// t_vector3	ft_vec3_add(t_vector3 this, t_vector3 rhs);
+// t_vector3	ft_vec3_sub(t_vector3 this, t_vector3 rhs);
+// t_vector3	ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
 
-/*			vector_2.c			*/
-float			ft_new_vec3_dot_product(t_new_vector3 this, t_new_vector3 rhs);
-float			ft_new_vec3_cosinus(t_new_vector3 this, t_new_vector3 rhs);
-t_new_vector3	ft_new_vec3_opposite(t_new_vector3 this);
-t_new_vector3	ft_new_vec3_scalar_product(t_new_vector3 this, float k);
-t_new_vector3	ft_new_vec3_normalize(t_new_vector3 vtc);
+// /*			vector_2.c			*/
+// float			ft_vec3_dot_product(t_vector3 this, t_vector3 rhs);
+// float			ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
+// t_vector3	ft_vec3_opposite(t_vector3 this);
+// t_vector3	ft_vec3_scalar_product(t_vector3 this, float k);
+// t_vector3	ft_vec3_normalize(t_vector3 vtc);
 
 /*			vector_3.c			*/
-float			vec2_cos(t_new_vector3 vec1, t_new_vector3 vec2);
-
-// void vline(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
-void			vline(int x, int y1,int y2, int top,int middle,int bottom, SDL_Surface* surface);
+float			ft_vec2_cos(t_vector3 vec1, t_vector3 vec2);
 
 int				events(t_new_sub_ev *se, t_new_player *pl);
 void			ft_game_events(t_new_temp *data);
@@ -163,15 +163,14 @@ void			load_pistol(t_gun *wpn);
 int				load_pistol_sprite(t_gun *wpn, int sprite_count);
 SDL_Surface		*load_pistol_part(int sprite);
 void			draw_pistol(t_gun *wpn, t_new_player *pl);
-
+//game walls.c
 void			draw_walls(int x, t_new_player *pl, int wall, int img);
-t_scaler		scalar_create(int a, int b, int c, int d, int f);
+t_scaler		scalar_create(int a, int b, int c, int f);
 int				scr_nxt(t_scaler *i);
-int			color_transoform(int color, float percent);
+int			ft_hex_transform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
-void		pix1(t_new_player *pl, int image);
+void		pix1(t_new_player *pl, int img);
 void        load_imgs(SDL_Surface *img[10]);//load images
-void vline_graffiti(int x, t_new_player *pl, t_scaler ty, int n);
 void    draw_ceil_floor(int x, t_new_player *pl);
 
 // sky
@@ -179,7 +178,21 @@ int			load_sky(t_new_player * pl);
 void		pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
-int				hexcolor( int r, int g, int b);
+int				ft_rgb_to_hex( int r, int g, int b);
 void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
+
+void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
+void		ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
+
+int		ft_rgb_to_hex(int r, int g, int b);
+int		ft_color_struct_to_hex(t_new_color color);
+int		ft_hex_transform(int color, float percent);
+
+
+int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
+float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
+t_new_xy	intersect(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4);
+float		yaw(float y, float z, t_new_player *player);
+float		to_deg(float radians);
 
 #endif

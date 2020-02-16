@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_sdl_addons.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 18:11:19 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:50:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-/*
-** **************************************************************************
-**	SDL_Rect *ft_create_rect(int w, int h, int x, int y)
-**	Function to create SDL_Rect
-** **************************************************************************
-*/
-
-SDL_Rect	*ft_create_rect(int w, int h, int x, int y)
-{
-	SDL_Rect	*tmp;
-
-	tmp = (SDL_Rect*)ft_my_malloc(sizeof(tmp));
-	tmp->h = h;
-	tmp->w = w;
-	tmp->x = x;
-	tmp->y = y;
-	return (tmp);
-}
 
 void		ft_sdl_error(t_sdl *sdl)
 {

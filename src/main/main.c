@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 18:06:57 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 15:16:57 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,15 @@ void	ft_main(int c, char **v)
 	ft_editor_init(&w);
 	ft_main_gui_init(&w);
 	ft_editor_gui_init(&w);
-	ft_game_init(&w, v[1]); 
+	ft_game_init(&w, v[1]);
 	ft_gui_redraw(&w);
 	data.pl->tex = load_textures(data.pl);
+	// fpsinit();
 	while (w.sdl->running)
+	{
 		ft_main_events(&w);
+		// fpsthink();
+	}
 	ft_editor_desctuct(&w);
 }
 

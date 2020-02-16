@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 20:37:16 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:52:53 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int		ft_gui_redraw(t_wolf3d *w)
 	SDL_RenderClear(w->sdl->renderer) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;
 	ft_gui_redraw_elem(w, w->gui.dom);
-	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->srf->pixels, WIN_WIDTH * 4) != 0 ? \
+	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->srf->pixels, \
+		w->gui.win_w * 4) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;
 	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, 0, 0) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;

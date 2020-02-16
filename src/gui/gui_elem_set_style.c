@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:23:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:58:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:52:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	ft_gui_elem_set_text(t_list *list, \
 	elem = list->content;
 	elem->type = GUI_TEXT;
 	elem->str = ft_strdup(str);
-	elem->fs = font_size;
+	elem->fs = (int)(font_size * (WIN_WIDTH / 1280.0));
+	// printf("font_size:%d   elem->fs: %d\n", font_size, elem->fs);
 	elem->fs == 0 ? elem->fs = 16 : 0;
 }
 

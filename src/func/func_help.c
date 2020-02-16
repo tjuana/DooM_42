@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/12 19:55:45 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 15:19:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			ft_clean_sdl(t_wolf3d *w)
 	SDL_DestroyRenderer(w->sdl->renderer);
 	SDL_DestroyWindow(w->sdl->win);
 	// SDL_FreeSurface(w->sdl->srf);
-	SDL_Delay(777);
+	SDL_Delay(77);
 	IMG_Quit();
 	SDL_Quit();
 }

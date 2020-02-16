@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/16 15:09:21 by tjuana           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 # include "wolf3d.h"
@@ -54,6 +66,8 @@ typedef struct	s_new_player
 	t_new_ceil		ceil;
 	t_new_floor		floor;
 
+	t_new_xy	near_point;
+	t_new_xy 	far_point;
 	float		nearz;
 	float		farz;
 	float		nearside;
@@ -90,6 +104,7 @@ typedef struct	s_new_player
 	int        *pix;
 	int 		y;
 	t_scaler    ty;
+	int 		fly;
 
 
 	// camera vertex
