@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 15:09:21 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 16:35:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct	s_new_player
 	float         u0;// "
 	float         u1;
 	int			txtx;
-	int        *pix;
+	int			*pix;
 	int 		y;
 	t_scaler    ty;
 	int 		fly;
