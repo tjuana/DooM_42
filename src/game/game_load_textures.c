@@ -6,15 +6,35 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/12 15:25:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:57:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
+static void		transform_venom(t_new_texture *venom)
+{
+	int i;
+	int hex;
+
+	i = 1;
+	while (i < venom->h * venom->w)
+	{
+		hex = ft_rgb_to_hex(venom->pixels[i].r, venom->pixels[i].g, \
+		venom->pixels[i].b);
+		if (hex >= 15800000)
+		{
+			venom->pixels[i].a = 0;
+		}
+		i++;
+	}
+}
+
 static void		load_textures_2(t_new_texture *t_arr)
 {
-	t_arr[14] = texture_parse("Img_tga/venom_face.tga");
+	t_arr[11] = texture_parse("Img_tga/wall_orange.tga");
+	t_arr[12] = texture_parse("Img_tga/venom_face.tga");
+	t_arr[13] = texture_parse("Img_tga/graffiti.tga");
 }
 
 /*
@@ -46,9 +66,7 @@ t_new_texture	*load_textures(t_new_player *pl)
 	t_arr[8] = texture_parse("Img_tga/revolver0.tga");
 	t_arr[9] = texture_parse("Img_tga/revolver1.tga");
 	t_arr[10] = texture_parse("Img_tga/revolver2.tga");
-	t_arr[11] = texture_parse("Img_tga/wall_orange.tga");
-	t_arr[12] = texture_parse("Img_tga/venom_face.tga");
-	t_arr[13] = texture_parse("Img_tga/graffiti.tga");
 	load_textures_2(t_arr);
+	transform_venom(&t_arr[12]);
 	return (t_arr);
 }

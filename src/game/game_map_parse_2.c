@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_map_parse2.c                                  :+:      :+:    :+:   */
+/*   game_map_parse_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/13 15:19:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:49:25 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,16 @@ void		ft_player_save(t_new_player *pl)
 	v.y = (float)ft_atoi(pl->file.split[2]);
 	n = ft_atoi(pl->file.split[4]);
 	player_init(pl, &v, &n);
-	pl->where.z = pl->sectors[pl->sector].floor + EYE_H;
+	pl->where.z = pl->sectors[pl->sector].floor + EYE_H * 2;
+	ft_2arrclean(&pl->file.split);
 }
 
 void		ft_level_save(t_new_player *pl)
 {
+	char	*strdup;
+
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	pl->lvl = ft_strcpy(ft_strnew(ft_strlen(pl->file.split[1])), pl->file.split[1]);
+	pl->lvl = ft_strdup(pl->file.split[1]);
 	ft_2arrclean(&pl->file.split);
 }

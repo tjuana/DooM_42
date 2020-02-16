@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/15 20:11:14 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/16 13:56:50 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -190,10 +190,12 @@ GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
 GAME_SRCS_LIST = \
 game_but.c \
 game_but_detect.c \
+game_color.c \
 game_door.c \
 game_door_detect.c \
 game_engine.c \
 game_engine_2.c \
+game_engine_cross.c \
 game_events_1.c \
 game_events_2.c \
 game_gun.c \
@@ -202,14 +204,14 @@ game_load_textures.c \
 game_main.c \
 game_map_parse.c \
 game_map_parse_2.c \
-game_math_functions.c \
-game_motion.c\
-game_motion_2.c\
+game_motion.c \
 game_sdl_addons.c \
 game_texture_parser.c \
 game_textures.c \
 game_walls.c \
-game_color.c
+game_math_functions.c \
+game_math_functions2.c \
+game_math_functions3.c 
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 15:22:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:48:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,21 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 {
 	float	z;
 
-	z = 0;
 	if (se->falling == 0)
 		return ;
-	pl->velocity.z -= 0.005;//0.0005;//0.015;
+	pl->velocity.z -= 0.1f;
+	if (pl->fly == 1 && pl->velocity.z <= 0)
+		se->falling = 0;
 	z = pl->where.z + pl->velocity.z;
 	if (pl->velocity.z < 0 && z < pl->sectors[pl->sector].floor + op->eye_h)
 	{
 		pl->where.z = pl->sectors[pl->sector].floor + op->eye_h;
 		pl->velocity.z = 0;
-		se->falling = 0;
 		se->ground = 1;
 	}
 	else if (pl->velocity.z > 0 && z > pl->sectors[pl->sector].ceil)
 	{
 		pl->velocity.z = 0;
-		se->falling = 1;
 	}
 	if (se->falling)
 	{
