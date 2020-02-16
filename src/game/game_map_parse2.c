@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/13 17:34:06 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 15:00:32 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
 		pl->file.i++;
 		count++;
 	}
-	ft_2arrclean(&pl->file.split);
+	if (pl->file.split)
+		ft_2arrclean(&pl->file.split);
 	return (vertex);
 }
 
@@ -35,14 +36,14 @@ void		ft_sector_save(t_new_player *pl, t_new_xy *vertex)
 	t_new_sector	*sector;
 	int				number;
 
-	sector = &pl->sectors[pl->file.count_sectors];
-	number = pl->file.tmp[pl->file.count_sectors];
-	pl->sectors[pl->file.count_sectors].npoints = pl->file.count_sector_vertex;
+	sector = &pl->sectors[pl->file.count_sectors2];
+	number = pl->file.tmp[pl->file.count_sectors2];
+	pl->sectors[pl->file.count_sectors2].npoints = pl->file.count_sector_vertex;
 	sector->neighbors = ft_my_malloc(sizeof(char) * (number + 1));
 	sector->vertex = ft_my_malloc(sizeof(t_new_xy) * (number + 1));
 	sector->npoints = number;
 	ft_fill_the_sector(sector, number, pl->file, vertex);
-	pl->file.count_sectors++;
+	pl->file.count_sectors2++;
 }
 
 void		ft_fill_the_sector(t_new_sector *sector, int number, \
@@ -63,11 +64,16 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 		sector->vertex[v_c++].y = vertex[ft_atoi(file.split[s_c++])].y;
 	}
 	sector->vertex[0] = vertex[ft_atoi(file.split[s_c - 1])];
-	number = file.tmp[file.count_sectors];
+	number = file.tmp[file.count_sectors2];
 	v_c = 0;
 	while (number--)
+	{
 		sector->neighbors[v_c++] = ft_atoi(file.split[s_c++]);
-	ft_2arrclean(&file.split);
+		if (ft_atoi(file.split[s_c - 1]) >= file.count_sectors)
+			ft_error("BAD NEIGHBOUR");
+	}
+	if (file.split)
+		ft_2arrclean(&file.split);
 }
 
 void		ft_player_save(t_new_player *pl)
@@ -82,7 +88,8 @@ void		ft_player_save(t_new_player *pl)
 	n = ft_atoi(pl->file.split[4]);
 	player_init(pl, &v, &n);
 	pl->where.z = pl->sectors[pl->sector].floor + EYE_H * 2;
-	ft_2arrclean(&pl->file.split);
+	if (pl->file.split)
+		ft_2arrclean(&pl->file.split);
 }
 
 void		ft_level_save(t_new_player *pl)
@@ -92,5 +99,6 @@ void		ft_level_save(t_new_player *pl)
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
 	pl->lvl = ft_strdup(pl->file.split[1]);
-	ft_2arrclean(&pl->file.split);
+	if (pl->file.split)
+		ft_2arrclean(&pl->file.split);
 }

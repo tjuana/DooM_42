@@ -7,11 +7,12 @@ typedef struct	s_file_read
 	int			fd;
 	int			res;
 	char		*line;
-	int			tmp[40];
+	int			tmp[700];
 	char		**split;
 	char		*ptr_my;
 	int			i;
 	int			count_sectors;
+	int			count_sectors2;
 	int			count_sector_vertex;
 	int			vertex_count;
 }				t_file_read;

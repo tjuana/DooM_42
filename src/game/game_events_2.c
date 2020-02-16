@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 15:22:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:41:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
 	SDL_SetRelativeMouseMode(1);
 	pl->angle += ms->x * 0.03f;
 	ms->yaw = clamp(ms->yaw + ms->y * 0.05f, -5, 5);
-	pl->yaw = ms->yaw - pl->velocity.z * 0.5f;
+	pl->yaw = ms->yaw - pl->velocity.z * 0.3f;
 	pl->anglesin = sinf(pl->angle);
 	pl->anglecos = cosf(pl->angle);
 }

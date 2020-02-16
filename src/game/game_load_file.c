@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 19:48:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:38:11 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void			end_game(t_new_player *pl)
 t_new_player	*load_next(t_new_player *pl)
 {
 	char *lvl;
-	int i = 0;
-	int j = -1;
+	int j;
 	t_new_sector	*sector;
 
+	j = -1;
 	while (j++ < pl->sectors->npoints)
 	{
 		sector = &pl->sectors[j];
