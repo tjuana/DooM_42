@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 12:46:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:23:52 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void		but_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_BUT];
-	
+
 	pl->but_all = 0;
 	i = -1;
 	while (++i < pl->sectors_nb)

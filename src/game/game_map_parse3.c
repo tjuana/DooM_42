@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.h                                             :+:      :+:    :+:   */
+/*   game_map_parse3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/16 16:34:17 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 16:34:18 by tjuana           ###   ########.fr       */
+/*   Created: 2020/02/16 15:44:06 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/16 15:46:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HELP_H
-# define HELP_H
+#include "doom.h"
 
-typedef struct	s_new_tmp_trio //sectorno, sx1, sx2;
+void	ft_check_ver_nei(int v_c, t_file_read file)
 {
-    int	sec_nb;
-    int	sx1;
-    int	sx2;
-}				t_new_tmp_trio;
-typedef struct	s_new_xy
-{
-    float	x;
-    float	y;
-}				t_new_xy;
-
-typedef struct	s_new_xyz
-{
-    float	x;
-    float	y;
-    float	z;
-}				t_new_xyz;
-
-typedef struct	s_new_rect
-{
-    t_new_xy	size;
-    t_new_xy	crd;
-}				t_new_rect;
-
-#endif
+	if ((v_c / 2) != file.tmp[file.count_sectors2])
+		ft_error("BAD NEIGHBOUR");
+}

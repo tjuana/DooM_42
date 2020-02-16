@@ -42,6 +42,8 @@
 		"utility": "cpp",
 		"animations.h": "c",
 		"sstream": "c",
-		"cstdlib": "c"
+		"cstdlib": "c",
+		"complex": "c",
+		"cmath": "c"
 	},
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:14 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:51:53 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:34:41 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 
 void	pix1(t_new_player *pl, int img)
 {
-	unsigned int p;
-	int hex;
+	unsigned int	p;
+	int				hex;
 
-	p = (pl->t.txtz % pl->tex[img].h) * pl->tex[img].w + (pl->t.txtx1 % pl->tex[img].w);
+	p = (pl->t.txtz % pl->tex[img].h) * pl->tex[img].w + (pl->t.txtx1 % \
+			pl->tex[img].w);
 	hex = ft_color_struct_to_hex(pl->tex[img].pixels[p]);
 	pl->pix[pl->t.y * WIN_W + pl->t.x] = ft_hex_transform(hex, pl->light);
 }
@@ -42,22 +43,12 @@ void	pix1(t_new_player *pl, int img)
 
 void	pix_sky(t_textures *t, t_new_player *pl)
 {
-	int hex;
-	unsigned int p;
+	int				hex;
+	unsigned int	p;
 
 	p = (t->y % pl->tex[SKY].h) * pl->tex[SKY].w + (t->x % pl->tex[SKY].w);
 	hex = ft_color_struct_to_hex(pl->tex[SKY].pixels[p]);
 	pl->pix[t->y * WIN_W + t->x] = hex;
-}
-
-void	ft_put_pixel_to_surface(t_new_player *pl, int x, int y, int img, float light)
-{	
-	int hex;
-	unsigned int p;
-
-	p = (y % pl->tex[img].h) * pl->tex[img].w + (x % pl->tex[img].w);
-	hex = ft_color_struct_to_hex(pl->tex[img].pixels[p]);
-	pl->pix[y * WIN_W + x] = hex;
 }
 
 /*
@@ -69,15 +60,16 @@ void	ft_put_pixel_to_surface(t_new_player *pl, int x, int y, int img, float ligh
 void	ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img)
 {
 	unsigned		txty;
-	int 			hex;
+	int				hex;
 	unsigned int	p;
 
 	txty = scr_nxt(&pl->ty);
 	p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);
-	hex = ft_hex_transform(ft_color_struct_to_hex(pl->tex[img].pixels[p]), pl->light);
+	hex = ft_hex_transform(ft_color_struct_to_hex(pl->tex[img].pixels[p]), \
+													pl->light);
 	if (pl->tex[img].pixels[p].a == 0)
 	{
-		p = (pl->y%pl->tex[SKY].h) * pl->tex[SKY].w + x%pl->tex[SKY].w ;
+		p = (pl->y % pl->tex[SKY].h) * pl->tex[SKY].w + x % pl->tex[SKY].w;
 		hex = ft_color_struct_to_hex(pl->tex[SKY].pixels[p]);
 	}
 	pl->pix[pl->y * WIN_W + x] = hex;
@@ -94,12 +86,13 @@ void	ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, \
 			int img)
 {
 	unsigned		txty;
-	unsigned int 	p;
+	unsigned int	p;
 	int				hex;
 
 	txty = -(scr_nxt(&pl->ty) + 220);
 	p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);
-	hex = ft_hex_transform(ft_color_struct_to_hex(pl->tex[img].pixels[p]), pl->light);
+	hex = ft_hex_transform(ft_color_struct_to_hex(pl->tex[img].pixels[p]), \
+													pl->light);
 	if (hex >= 16000000)
 	{
 		pl->tex[img].pixels[p].a = 0;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/16 17:24:48 by tjuana           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
@@ -38,7 +50,6 @@ typedef	struct		s_new_temp
     t_new_mouse			ms;
     t_new_player		*pl;
     t_new_others		ot;
-    t_new_sect_ops		op;
 	t_new_wolf3d		w;
 }					t_new_temp;
 
@@ -72,7 +83,7 @@ int			events(t_new_sub_ev *se, t_new_player *player);
 /*			events_2.c			*/
 void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl);
 void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot);
-void		events_jumps(t_new_sub_ev *se, t_new_player *pl, t_new_sect_ops *op, t_new_others *ot);
+void		events_jumps(t_new_sub_ev *se, t_new_player *pl, t_new_others *ot);
 
 /*			load_file.c			*/
 t_new_player	*load_next(t_new_player *pl);
@@ -102,8 +113,8 @@ float		to_deg(float radians);
 t_new_xy	sum_vectors_xy(t_new_xy v0, t_new_xy v1);
 
 /*			motion.c			*/
-void		motion_chk(t_new_sect_ops *op, t_new_player *player, \
-			t_new_others *ot, t_new_sub_ev *se);
+void		motion_chk(t_new_player *player, t_new_others *ot, \
+			t_new_sub_ev *se);
 void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
 
 /*			motion2.c			*/
@@ -188,7 +199,6 @@ int		ft_rgb_to_hex(int r, int g, int b);
 int		ft_color_struct_to_hex(t_new_color color);
 int		ft_hex_transform(int color, float percent);
 
-void	ft_put_pixel_to_surface(t_new_player *pl, int x, int y, int img, float light);
 
 int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
 float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);

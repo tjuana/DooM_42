@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 12:49:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:28:57 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void		ft_vertex_count(t_new_player *pl)
 		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[i++] != NULL)
 		pl->file.vertex_count++;
-	ft_2arrclean(&pl->file.split);
+	if (pl->file.split)
+		ft_2arrclean(&pl->file.split);
 }
 
 void		ft_sector_count(t_new_player *pl)
@@ -66,7 +67,8 @@ void		ft_sector_count(t_new_player *pl)
 	pl->file.count_sector_vertex /= 2;
 	pl->file.count_sectors++;
 	pl->file.tmp[pl->file.count_sectors] = pl->file.count_sector_vertex;
-	ft_2arrclean(&pl->file.split);
+	if (pl->file.split)
+		ft_2arrclean(&pl->file.split);
 }
 
 t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)
@@ -87,7 +89,7 @@ void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
 	t_new_xy		*vertex;
 
 	vertex = ft_malloc_sec_vertex(pl, ag);
-	pl->file.count_sectors = 0;
+	pl->file.count_sectors2 = 0;
 	pl->file.i = 0;
 	while ((pl->file.res = get_next_line(pl->file.fd, &pl->file.line)) > 0)
 	{

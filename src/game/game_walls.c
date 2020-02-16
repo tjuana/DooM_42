@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:51:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:32:31 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 ** **************************************************************************
 */
 
-void draw_walls(int x, t_new_player *pl, int wall_type, int img)
+void		draw_walls(int x, t_new_player *pl, int wall_type, int img)
 {
 	draw_limits_for_walls(wall_type, pl, img);
 	if (pl->y2 >= pl->y1)
@@ -90,7 +90,7 @@ void draw_walls(int x, t_new_player *pl, int wall_type, int img)
 ** **************************************************************************
 */
 
-void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+void		draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
 {
 	draw_limits_for_walls(wall_type, pl, img);
 	if (pl->y2 >= pl->y1)

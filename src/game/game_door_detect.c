@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door_detect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 12:46:45 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:25:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static int	door_vert_find(t_new_player *pl, t_vector3 *vec, int s_nb)
 			pl->sectors[s_nb].vertex[j].x) / 2;
 			vec->y = (pl->sectors[s_nb].vertex[i].y + \
 			pl->sectors[s_nb].vertex[j].y) / 2;
-			vec->x = vec->x - pl->where.x;
-			vec->y = vec->y - pl->where.y;
+			vec->x = vec->x - pl->pos.x;
+			vec->y = vec->y - pl->pos.y;
 			tmp_dist = (int)sqrt(pow(vec->x, 2) + pow(vec->y, 2));
 			tmp_dist <= dist ? dist = tmp_dist : 0;
 		}
@@ -82,7 +82,7 @@ static int	door_dist(t_new_player *pl, int s_nb)
 {
 	t_vector3	vec;
 	t_vector3	vec2;
-	int				tmp_dist;
+	int			tmp_dist;
 
 	tmp_dist = 6;
 	tmp_dist = door_vert_find(pl, &vec, s_nb);

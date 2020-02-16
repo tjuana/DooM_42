@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_load_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 12:48:41 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:27:34 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@
 
 void			end_game(t_new_player *pl)
 {
-	SDL_Delay(777);
+	SDL_Delay(77);
 	if (pl)
+	{
 		free(pl);
+		// pl = NULL;
+	}
 	exit(EXIT_SUCCESS);
 }
 

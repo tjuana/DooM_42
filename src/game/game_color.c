@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:20:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/14 18:41:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:24:03 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 int		ft_rgb_to_hex(int r, int g, int b)
 {
-	return ((r<<16) | (g<<8) | b);
+	return ((r << 16) | (g << 8) | b);
 }
 
 int		ft_color_struct_to_hex(t_new_color color)

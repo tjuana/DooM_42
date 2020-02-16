@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/16 17:24:53 by tjuana           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PLAYER_H
 #define PLAYER_H
 # include "wolf3d.h"
@@ -7,11 +19,12 @@ typedef struct	s_file_read
 	int			fd;
 	int			res;
 	char		*line;
-	int			tmp[201];
+	int			tmp[700];
 	char		**split;
 	char		*ptr_my;
 	int			i;
 	int			count_sectors;
+	int			count_sectors2;
 	int			count_sector_vertex;
 	int			vertex_count;
 }				t_file_read;
@@ -32,8 +45,9 @@ typedef struct	s_new_player
 	t_new_xy		t2;
 	t_new_xy		scale_1;
 	t_new_xy		scale_2;
-    t_new_xyz		where;      // Current position
-    t_new_xyz		velocity;   // Current motion vector
+    t_new_xyz		pos;      // Current position
+    t_new_xyz		velo;   // Current motion vector
+	t_new_xyz		hole;
     float		angle;
     float		anglesin;//player view sin
     float		anglecos;//player view cos
@@ -88,7 +102,7 @@ typedef struct	s_new_player
 	float         u0;// "
 	float         u1;
 	int			txtx;
-	int        *pix;
+	int			*pix;
 	int 		y;
 	t_scaler    ty;
 	int 		fly;

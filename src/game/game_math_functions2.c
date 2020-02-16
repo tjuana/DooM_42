@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_math_functions2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:34:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 13:00:17 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:30:24 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 ** intersectbox: Determine whether two 2D-boxes intersect.
 */
 
-int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3)
+int			intersectbox(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4)
 {
-	return (overlap(v0.x, v1.x, v2.x, v3.x) && overlap(v0.y, v1.y, v2.y, v3.y));
+	return (overlap(v1.x, v2.x, v3.x, v4.x) && overlap(v1.y, v2.y, v3.y, v4.y));
 }
 
 /*
@@ -26,10 +26,10 @@ int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3)
 ** Return value: <0, =0 or >0.
 */
 
-float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1)
+float		pointside(t_new_xy p, t_new_xy v1, t_new_xy v2)
 {
-	return (vxs((v1.x) - (v0.x), (v1.y) - (v0.y), \
-	(p.x) - (v0.x), (p.y) - (v0.y)));
+	return (vxs((v2.x) - (v1.x), (v2.y) - (v1.y), \
+	(p.x) - (v1.x), (p.y) - (v1.y)));
 }
 
 /*
@@ -66,5 +66,5 @@ float		yaw(float y, float z, t_new_player *player)
 
 float		to_deg(float radians)
 {
-	return (radians * (180.0 / M_PI));
+	return (radians * (180 / M_PI));
 }
