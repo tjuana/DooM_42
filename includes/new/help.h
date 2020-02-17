@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:17 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 16:34:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 17:50:10 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct	s_new_tmp_trio //sectorno, sx1, sx2;
 }				t_new_tmp_trio;
 typedef struct	s_new_xy
 {
-    float	x;
-    float	y;
+    double	x;
+    double	y;
 }				t_new_xy;
 
 typedef struct	s_new_xyz

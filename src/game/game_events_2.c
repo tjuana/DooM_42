@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 17:27:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 17:59:05 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 
 	if (se->wsad[3])
 	{
-		ot->move_vec[0] -= pl->anglesin * 0.37;
-		ot->move_vec[1] += pl->anglecos * 0.37;
+		ot->move_vec[0] -= pl->anglesin * 0.33;
+		ot->move_vec[1] += pl->anglecos * 0.33;
 	}
 	push = (se->wsad[0] || se->wsad[1] || se->wsad[2] || se->wsad[3]);
 	speed = push ? 0.4 : 0.2;
@@ -48,7 +48,7 @@ void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 {
 	float	speed;
 
-	speed = 0.37;
+	speed = 0.33;
 	ot->move_vec[0] = 0;
 	ot->move_vec[1] = 0;
 	if (se->wsad[0])

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 19:18:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 16:39:28 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void		ft_level_save(t_new_player *pl)
 
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	pl->lvl = ft_strdup(pl->file.split[1]);
+	if ((pl->lvl = ft_strdup(pl->file.split[1])) == 0)
+		ft_error("fuck_off");
 	if (pl->file.split)
 		ft_2arrclean(&pl->file.split);
 }

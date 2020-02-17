@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 12:49:00 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 17:55:30 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->sector = *n;
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
-	pl->near_point.y = 0.0001;
+	pl->near_point.y = 0.0000077;
 	pl->far_point.y = 5;
 	pl->near_point.x = 0.00001;
 	pl->far_point.x = 1000;
@@ -61,7 +61,6 @@ void	ft_game_redraw(void *d, t_list *dom)
 	data->se.ground = !data->se.falling;
 	events_jumps(&data->se, data->pl, &data->ot);
 	motion_chk(data->pl, &data->ot, &data->se);
-//	motion_move_pl(&(t_new_xy){0, 0}, data->pl);
 	events_new_mouse_move(&data->ms, data->pl);
 	events_vel(data->pl, &data->se, &data->ot);
 	if (!events(&data->se, data->pl))

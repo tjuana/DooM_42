@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 16:01:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 16:43:46 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	SDL_RENDERER_ACCELERATED, &sdl->win, &sdl->renderer) < 0)
 		ft_sdl_error(sdl);
 	sdl->pixels = ft_my_malloc((sizeof(Uint32) * WIN_WIDTH) * WIN_HEIGHT);
-	// if (!(sdl->srf = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, \
-	// 	32, 0, 0, 0, 0)))
-	// 	ft_sdl_error(sdl);
 	if (!(sdl->text = SDL_CreateTexture(sdl->renderer, \
-		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, \
+		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, \
 		WIN_WIDTH, WIN_HEIGHT)))
 		ft_error("SDL non textures");
 	sdl->running = 1;
