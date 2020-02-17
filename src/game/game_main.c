@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 20:17:38 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 20:21:05 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 
 }
 
-void	ft_game_redraw(void *d, t_list *dom)
+void	ft_game_redraw(t_wolf3d *w, t_list *dom)
 {
-	t_wolf3d	*w;
 	t_new_temp	*data;
 	t_gun		wpn;
 
-	w = (t_wolf3d*)d;
 	data = w->new_data;
 	wpn.sprite_counter = 1;
 	engine_begin(data->pl);
