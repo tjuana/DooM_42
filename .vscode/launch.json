@@ -4,13 +4,12 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-
 		{
 			"name": "debug doom (without args)",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/maps/1800triangle"],
+			"args": ["${workspaceRoot}/maps/testmap"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
 			// "args": [],
 			"stopAtEntry": false,
