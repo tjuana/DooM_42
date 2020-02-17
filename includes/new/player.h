@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 17:24:53 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 15:37:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ typedef struct	s_new_player
 
 	t_new_xy	near_point;
 	t_new_xy 	far_point;
-	float		nearz;
-	float		farz;
-	float		nearside;
-	float		farside;
 
 	float		x1;
 	float		x2;

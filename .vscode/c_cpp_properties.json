@@ -1,22 +1,22 @@
 {
-    "configurations": [
-        {
-            "name": "Mac",
-            "includePath": [
-                "${workspaceFolder}/include/**",
+	"configurations": [
+		{
+			"name": "Mac",
+			"includePath": [
+				"${workspaceFolder}/include/**",
 				"/.brew/Cellar/sdl2/2.0.10/include/**",
 				"${workspaceFolder}/includes/**",
 				"${workspaceFolder}/libft/includes/*"
-            ],
-            "defines": [],
-            "macFrameworkPath": [
-                "/.brew/Cellar/"
-            ],
-            "compilerPath": "/usr/bin/clang",
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x64"
-        }
-    ],
-    "version": 4
+			],
+			"defines": [],
+			"macFrameworkPath": [
+				"/.brew/Cellar/"
+			],
+			"compilerPath": "/usr/bin/clang",
+			"cStandard": "c11",
+			"cppStandard": "c++17",
+			"intelliSenseMode": "clang-x64"
+		}
+	],
+	"version": 4
 }

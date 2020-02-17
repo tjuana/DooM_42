@@ -2,6 +2,7 @@
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"editor.tabSize": 4,
+	"editor.renderWhitespace": "all",
 	"files.associations": {
 		"__bit_reference": "c",
 		"algorithm": "c",

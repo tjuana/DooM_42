@@ -1,12 +1,10 @@
 {
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "gcc build active file",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "gcc build active file",
 			"command": "make -j32",
-			// "command": "gcc -g src/editor/jhony.c",
- 
-        }
-    ],
-    "version": "2.0.0"
+		}
+	],
+	"version": "2.0.0"
 }
