@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 16:29:18 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:36:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct	s_file_read
 typedef struct	s_new_player
 {
 	SDL_Surface *img[10];
-	SDL_Window	*win;
-	SDL_Renderer	*rend;
+	// SDL_Window	*win;
+	// SDL_Renderer	*rend;
 
 	// SDL_Texture	*texture;
 	t_new_texture	*textures;
@@ -67,8 +67,8 @@ typedef struct	s_new_player
 
 	t_new_xy	near_point;
 	t_new_xy 	far_point;
-	float		nearz;
-	float		farz;
+	// float		nearz;
+	// float		farz;
 	float		nearside;
 	float		farside;
 
@@ -97,7 +97,7 @@ typedef struct	s_new_player
 	int         s;
 	t_new_xy 		org1;
 	t_new_xy 		org2;
-	float         u0;// "
+	float         u0;
 	float         u1;
 	int			txtx;
 	int			*pix;
