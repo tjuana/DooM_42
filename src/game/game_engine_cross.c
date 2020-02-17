@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 17:26:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 16:03:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static void		engine_cross2(t_new_player *pl, t_new_xy i1, t_new_xy i2)
 	pl->org1.y = pl->t1.y;
 	pl->org2.x = pl->t2.x;
 	pl->org2.y = pl->t2.y;
-	(pl->t1.y < pl->nearz && i1.y > 0) ? pl->t1 = i1 : pl->t1;
-	(pl->t1.y < pl->nearz && i1.y < 0) ? pl->t1 = i2 : pl->t1;
-	(pl->t2.y < pl->nearz && i1.y > 0) ? pl->t2 = i1 : pl->t2;
-	(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;
+	(pl->t1.y < pl->near_point.y && i1.y > 0) ? pl->t1 = i1 : pl->t1;
+	(pl->t1.y < pl->near_point.y  && i1.y < 0) ? pl->t1 = i2 : pl->t1;
+	(pl->t2.y < pl->near_point.y  && i1.y > 0) ? pl->t2 = i1 : pl->t2;
+	(pl->t2.y < pl->near_point.y  && i1.y < 0) ? pl->t2 = i2 : pl->t2;
 	if (fabsf(pl->t2.x - pl->t1.x) > fabsf(pl->t2.y - pl->t1.y))
 	{
 		pl->u0 = ((pl->t1.x - pl->org1.x) * 1000 / (pl->org2.x - pl->org1.x));

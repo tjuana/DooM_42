@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 12:23:05 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 16:01:17 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		ft_sdl_error(sdl);
 	IMG_Init(IMG_INIT_PNG) == 0 ? ft_putstr_fd(IMG_GetError(), 2) : 0;
-	sdl->pixels = ft_my_malloc((sizeof(Uint32) * WIN_WIDTH) * WIN_HEIGHT);
 	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, \
 	SDL_RENDERER_ACCELERATED, &sdl->win, &sdl->renderer) < 0)
 		ft_sdl_error(sdl);
+	sdl->pixels = ft_my_malloc((sizeof(Uint32) * WIN_WIDTH) * WIN_HEIGHT);
 	// if (!(sdl->srf = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, \
 	// 	32, 0, 0, 0, 0)))
 	// 	ft_sdl_error(sdl);
