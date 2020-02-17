@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 18:23:45 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 19:08:39 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 */
 # define WIN_WIDTH				1280
 # define WIN_HEIGHT				720
-# define VER_WIDTH				54
-# define VER_HEIGHT				33
+# define VER_WIDTH				500
+# define VER_HEIGHT				500
 # define SECTORS				1900
 /*
 ** **************************************************************************

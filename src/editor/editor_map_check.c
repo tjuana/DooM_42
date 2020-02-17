@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 17:45:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 19:00:31 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,12 @@ int		ft_new_editor_map_check_area(t_wolf3d *w)
 	s = w->sector->content;
 	if (s->vertex_count == 0)
 		return (1);
-	if (ft_search_sector_in_sector(w, s))
-		return (0);
+	// if (ft_search_sector_in_sector(w, s))
+	// 	return (0);
 	if (!ft_check_origin_vertex(w->sector->content, pos))
 		return (0);
-	if (ft_search_sectors_cross(w, *s->vertex[s->vertex_count - 1], pos))
-		return (0);
+	// if (ft_search_sectors_cross(w, *s->vertex[s->vertex_count - 1], pos))
+	// 	return (0);
 	if (s->status == 1 || s->vertex_count < 2)
 		return (1);
 	return (ft_new_editor_map_check_halfplanes(s, pos));
