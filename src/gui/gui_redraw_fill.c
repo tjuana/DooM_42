@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw_fill.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 15:29:16 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:20:56 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, \
 		while (x <= v2.x && x < w->gui.win_w)
 		{
 			if (d == 0.0)
-				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = color;
+				((int*)w->sdl->pixels)[x + (y * w->gui.win_w)] = color;
 			else
-				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = \
+				((int*)w->sdl->pixels)[x + (y * w->gui.win_w)] = \
 					ft_fdf_get_color(color, \
-					((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)], d);
+					((int*)w->sdl->pixels)[x + (y * w->gui.win_w)], d);
 			x++;
 		}
 		y++;

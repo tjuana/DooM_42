@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_sdl_addons.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 12:50:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 19:31:48 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		ft_sdl_error(t_sdl *sdl)
 		SDL_DestroyRenderer(sdl->renderer);
 	if (sdl->win)
 		SDL_DestroyWindow(sdl->win);
+	free(sdl);
 	IMG_Quit();
 	SDL_Quit();
 	exit(EXIT_FAILURE);

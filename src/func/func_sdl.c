@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:45:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:23:05 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		ft_sdl_error(sdl);
 	IMG_Init(IMG_INIT_PNG) == 0 ? ft_putstr_fd(IMG_GetError(), 2) : 0;
+	sdl->pixels = ft_my_malloc((sizeof(Uint32) * WIN_WIDTH) * WIN_HEIGHT);
 	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, \
-	0, &sdl->win, &sdl->renderer) < 0)
+	SDL_RENDERER_ACCELERATED, &sdl->win, &sdl->renderer) < 0)
 		ft_sdl_error(sdl);
-	if (!(sdl->srf = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, \
-		32, 0, 0, 0, 0)))
-		ft_sdl_error(sdl);
+	// if (!(sdl->srf = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, \
+	// 	32, 0, 0, 0, 0)))
+	// 	ft_sdl_error(sdl);
 	if (!(sdl->text = SDL_CreateTexture(sdl->renderer, \
 		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, \
 		WIN_WIDTH, WIN_HEIGHT)))

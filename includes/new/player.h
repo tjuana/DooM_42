@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 17:24:53 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 12:46:51 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct	s_file_read
 	int			fd;
 	int			res;
 	char		*line;
-	int			tmp[700];
+	int			tmp[SECTORS];
 	char		**split;
 	char		*ptr_my;
 	int			i;
@@ -32,12 +32,10 @@ typedef struct	s_file_read
 typedef struct	s_new_player
 {
 	SDL_Surface *img[10];
-
-	SDL_Surface	*srf;
 	SDL_Window	*win;
 	SDL_Renderer	*rend;
 
-	SDL_Texture	*texture;
+	// SDL_Texture	*texture;
 	t_new_texture	*textures;
 	int			textures_nb;
 
@@ -76,8 +74,8 @@ typedef struct	s_new_player
 
 	float		x1;
 	float		x2;
-	int			y_top[WIN_W];
-	int			y_bot[WIN_W];
+	int			*y_top;
+	int			*y_bot;
 	int			beginx;
 	int			endx;
 	int			contin;
