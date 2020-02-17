@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 19:40:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 18:34:19 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		transform_venom(t_new_texture *venom)
 {
 	int i;
-	int hex;
+	Uint32 hex;
 
 	i = 1;
 	while (i < venom->h * venom->w)

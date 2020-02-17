@@ -6,15 +6,15 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:51:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/15 20:55:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 15:40:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-#define MAP_WIDTH		18
-#define MAP_HEIGHT		18
-#define	SECTOR_W		3
+#define MAP_WIDTH		10
+#define MAP_HEIGHT		10
+#define	SECTOR_W		1
 
 void	ft_me_recursion_algorithm(t_wolf3d *w, int i, int j, int n)
 {
@@ -50,7 +50,6 @@ void	ft_me_recursion_algorithm(t_wolf3d *w, int i, int j, int n)
 
 
 
-	// ft_editor_delete_last_vertex(w);
 	ft_editor_check_turn_vertexes(w);
 	sector->neighbors = ft_my_malloc(sizeof(int) * sector->vertex_count);
 	ft_bzero(sector->neighbors, sizeof(int) * sector->vertex_count);
@@ -58,8 +57,6 @@ void	ft_me_recursion_algorithm(t_wolf3d *w, int i, int j, int n)
 		sector->status = SECTOR_STATUS_POLYGON;
 	else
 		printf("error!\n");
-
-	printf("neigbors: %d %d %d\n", sector->neighbors[0], sector->neighbors[1], sector->neighbors[2]);
 
 	ft_map_set_new_sector(w, sector);
 	sector->status = SECTOR_STATUS_POLYGON;

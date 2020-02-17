@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 17:55:30 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 18:39:15 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->sector = *n;
 	pl->ceil.nyceil = 0;
 	pl->floor.nyfloor = 0;
-	pl->near_point.y = 0.0000077;
+	pl->near_point.y = 0.0001;
 	pl->far_point.y = 5;
 	pl->near_point.x = 0.00001;
 	pl->far_point.x = 1000;
@@ -37,7 +37,7 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->but_nb = -1;
 	pl->lvl = NULL;
 	pl->light = 1;
-	pl->pix = (int *)pl->pixels;
+	pl->pix = pl->pixels;
 
 }
 
