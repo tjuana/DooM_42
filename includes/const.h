@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 18:11:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:18:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WIN_HEIGHT				720
 # define VER_WIDTH				54
 # define VER_HEIGHT				33
-
+# define SECTORS				777
 /*
 ** **************************************************************************
 **	Mode
@@ -57,9 +57,7 @@
 # define GUI_MAP_GRID_LIMIT_BR	0x4
 
 # define H_FOV					(1.0 * 0.73f * WIN_H / WIN_W)
-# define V_FOV					(1.0 * .2f)
-// # define H_FOV					(1.0 * 0.88f * WIN_H / WIN_W)
-// # define V_FOV					(1.0 * (1.0 - 0.88f))
+# define V_FOV					(1.0 * .237f)
 
 /*
  *

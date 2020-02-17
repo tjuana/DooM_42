@@ -18,9 +18,8 @@ typedef struct	s_new_sector//have to be static
 {
     float		floor;//floor height
 	float		ceil;//ceil height
-    t_new_xy	*vertex; //here stored all sector vertexes.
-    int			*neighbors;// Each edge may have a corresponding neighboring sector
-    // signed char	*neighbors;// Each edge may have a corresponding neighboring sector
+    t_new_xy		*vertex; //here stored all sector vertexes.
+    signed char	*neighbors;// Each edge may have a corresponding neighboring sector
     int			npoints;// How many vertexes there are
 }				t_new_sector;//*sectors = NULL;
 

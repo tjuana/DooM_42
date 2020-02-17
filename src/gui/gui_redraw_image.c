@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw_image.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:41:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 15:55:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:21:05 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_gui_draw_image_put_pixel(t_wolf3d *w, int x, int y, int color)
 {
 	if (color != 0x00ffffff && color != 0x00000000)
 	{
-		((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = \
+		((int*)w->sdl->pixels)[x + (y * w->gui.win_w)] = \
 			(int)color;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:40 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 18:59:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_draw_gun
 	float	x_num;
 	float	y_num;
 	unsigned int p;
-	int hex;
+	unsigned int hex;
 }				t_draw_gun;
 # define WALL_FULL 2
 # define WALL_TOP  0

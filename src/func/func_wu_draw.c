@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:27 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 19:08:56 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:17:04 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 		return ;
 	color = wu->color1;
 	color = ft_fdf_get_color(color, \
-		((int*)data->sdl->srf->pixels)[pos], wu->temp_f);
-	((int*)data->sdl->srf->pixels)[pos] = color;
+		((int*)data->sdl->pixels)[pos], wu->temp_f);
+	((int*)data->sdl->pixels)[pos] = color;
+	// 		((int*)data->sdl->srf->pixels)[pos], wu->temp_f);
+	// ((int*)data->sdl->srf->pixels)[pos] = color;
 }
 
 void		ft_fdf_draw_line_first_pixels(t_wolf3d *data, t_fdf_wu **wu)

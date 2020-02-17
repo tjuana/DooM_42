@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 15:54:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:16:57 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->but_nb = -1;
 	pl->lvl = NULL;
 	pl->light = 1;
-	pl->pix = (int *)pl->srf->pixels;
+	pl->pix = (int *)pl->pixels;
+
 }
 
 void	ft_game_redraw(void *d, t_list *dom)
@@ -75,8 +76,10 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data = (t_new_temp*)w->new_data;
 	data->pl->sectors_nb = 0;
 	data->se.quit = 0;
-	data->pl->srf = w->sdl->srf;
+	data->pl->pixels = w->sdl->pixels;
 	ft_my_parse_map(data->pl, path);
+	data->pl->y_top = ft_my_malloc(sizeof(int) * WIN_WIDTH);
+	data->pl->y_bot = ft_my_malloc(sizeof(int) * WIN_WIDTH);
 	SDL_ShowCursor(SDL_ENABLE);
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;

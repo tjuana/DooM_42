@@ -5,7 +5,7 @@
 typedef struct	s_new_sub_ev
 {
     SDL_Event	ev;
-    int			wsad[10];
+    int			wsad[40];
     int			ground;
     int			falling;
     int			ducking;
