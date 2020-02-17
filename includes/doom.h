@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:02:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/14 15:41:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 20:11:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 void	ft_main_gui_init_win(t_list *head);
 void	ft_main_gui_init(t_wolf3d *w);
-void	ft_game_redraw(void *d, t_list *dom);
+void	ft_game_redraw(t_wolf3d *w, t_list *dom);
 void	ft_game_gui_init_hud(t_list *head);
 
 void	ft_gui_mousebuttonup_win_menu_btngame(\

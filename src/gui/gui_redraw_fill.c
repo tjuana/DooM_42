@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 16:16:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:49:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	ft_gui_fill_area_rect(t_wolf3d *w, t_gui_rect coord, \
 			x >= area.v1.x && x < area.v2.x)
 		{
 			if (d == 0.0)
-				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = color;
+				((int*)w->sdl->pixels)[x + (y * w->gui.win_w)] = color;
 			else
-				((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = \
+				((int*)w->sdl->pixels)[x + (y * w->gui.win_w)] = \
 					ft_fdf_get_color(color, \
-					((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)], d);
+					((int*)w->sdl->pixels)[x + (y * w->gui.win_w)], d);
 			x++;
 		}
 		y++;

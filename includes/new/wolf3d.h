@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 19:04:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 20:14:07 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,9 +195,7 @@ void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
 void		ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
 
-int		ft_rgb_to_hex(int r, int g, int b);
 int		ft_color_struct_to_hex(t_new_color color);
-int		ft_hex_transform(int color, float percent);
 
 
 int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
