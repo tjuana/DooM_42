@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 20:04:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:08:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,32 @@ void	ft_gui_events_keydown_me(t_wolf3d *w, SDL_Event *e)
 		ft_gui_redraw(w);
 }
 
+void	ft_gui_events_keydowm_map(t_wolf3d *w, SDL_Event *e)
+{
+	int	check;
+
+	check = 1;
+	if (e->key.keysym.scancode == SDL_SCANCODE_UP)
+		w->gui_map.v.y -= 2.0;
+	else if (e->key.keysym.scancode == SDL_SCANCODE_DOWN)
+		w->gui_map.v.y += 2.0;
+	else if (e->key.keysym.scancode == SDL_SCANCODE_LEFT)
+		w->gui_map.v.x -= 2.0;
+	else if (e->key.keysym.scancode == SDL_SCANCODE_RIGHT)
+		w->gui_map.v.x += 2.0;
+	else
+		check = 0;
+	if (check)
+		ft_gui_redraw(w);
+}
+
 void	ft_gui_events_keydown(t_wolf3d *w, SDL_Event *e)
 {
 	if (e->type == SDL_KEYDOWN)
 	{
+		// For all me mode
+		if (w->gui.mode == GUI_MD_ME || w->gui.mode == GUI_MD_ME_SET_SECTOR)
+			ft_gui_events_keydowm_map(w, e);
 		if (w->gui.mode == GUI_MD_ME)
 			ft_gui_events_keydown_me(w, e);
 		else if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
