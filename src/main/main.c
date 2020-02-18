@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 20:27:46 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 18:50:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_main(int c, char **v)
 	data.pl = (t_new_player *)ft_my_malloc(sizeof(t_new_player));
 	w.new_data = &data;
 	w.sdl = sdl_init(w.sdl);
-	ft_init_wolf(&w);
 	ft_gui_init(&w);
 	ft_editor_init(&w);
 	ft_main_gui_init(&w);

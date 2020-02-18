@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 18:22:19 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 21:05:32 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct	s_new_player
 	int			beginx;
 	int			endx;
 	int			contin;
-	void		*pixels;
+	Uint32		*pixels;
 
 	char		*lvl;
 	t_file_read	file;	//open map
@@ -109,6 +109,8 @@ typedef struct	s_new_player
 	// camera vertex
 	t_vector3	fov_vec1;
 	t_vector3	fov_vec2;
+
+		Mix_Chunk			*shoot_sound;
 }				t_new_player;
 
 #endif

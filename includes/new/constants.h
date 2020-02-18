@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:30:37 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 16:57:46 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 14:19:09 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@
 // #define HOR_FOV (0.73f * WIN_H)  //Affects the horizontal field of vision
 // #define HOR_FOV (0.88888f * WIN_H)  //Affects the horizontal field of vision
 // #define VER_FOV (0.28125f * WIN_H)    //Affects the vertical field of vision
-#define MAX_QUEUE 32 //maximum number of pending portal renders (engine)
+#define MAX_QUEUE 64 //maximum number of pending portal renders (engine)
 #define MAX_DOORS 100 //maximum number of doors
 #define MAX_BUT 100 //maximum number of buttons
 
-#define FOV_CONST	0.88888f
 
 #endif
-
-//0.28125

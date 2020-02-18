@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/17 21:17:20 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 21:19:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_new_player	*load_next(t_new_player *pl)
 	t_new_sector	*sector;
 
 	j = -1;
-	ft_free_sectors(pl);
+	// ft_free_sectors(pl);
 	while (j++ < (pl->file.count_sectors - 1))
 	{
 		sector = &pl->sectors[j];

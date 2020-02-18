@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 16:52:19 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 19:36:14 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int				ft_error(char *code)
 {
+	system("osascript -e \'display notification\"Used default value!\" with title \"ERRROOOORRR!\"\'");
 	ft_putendl(code);
 	exit(EXIT_FAILURE);
 	return (1);
@@ -36,7 +37,6 @@ void			ft_clean_sdl(t_wolf3d *w)
 	SDL_DestroyTexture(w->sdl->text);
 	SDL_DestroyRenderer(w->sdl->renderer);
 	SDL_DestroyWindow(w->sdl->win);
-	// SDL_FreeSurface(w->sdl->srf);
 	SDL_Delay(777);
 	IMG_Quit();
 	SDL_Quit();

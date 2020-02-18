@@ -46,6 +46,8 @@
 		"cstdlib": "c",
 		"complex": "c",
 		"cmath": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"pthread.h": "c",
+		"sdl_image.h": "c"
 	},
 }

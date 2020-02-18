@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:42:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 21:06:07 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "func_struct.h"
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
+
+// # define S_WEAPON_SHOT 1
+// # define S_BACKGROUND 0
+// typedef enum		e_sound_ch
+// {
+// 	S_BACKGROUND,
+// 	S_WEAPON_SHOT
+// }					t_sound_ch;
 
 /*
 ** **************************************************************************
@@ -41,7 +49,8 @@ void			ft_clean_sdl(t_wolf3d *w);
 ** **************************************************************************
 */
 t_sdl			*sdl_init(t_sdl *sdl);
-
+void		sound_shoot(t_new_player *sdl);
+void			sound_play(Mix_Chunk *sound_name);
 /*
 ** **************************************************************************
 **	func/func_wu_color.c
@@ -112,5 +121,6 @@ void			ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
 					t_gui_rect area, int color);
 
 void			ft_me_generate_triangles(t_wolf3d *w);
+
 
 #endif

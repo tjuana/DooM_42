@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 20:26:14 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 20:07:58 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "SDL2/SDL_thread.h"
 # include "SDL2/SDL_ttf.h"
 # include "SDL2/SDL_image.h"
+# include "SDL2/SDL_mixer.h"
 # include <pthread.h>
 # include <string.h>
 # include <stdio.h>

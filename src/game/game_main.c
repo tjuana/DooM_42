@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 20:28:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 18:33:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_game_redraw(t_wolf3d *w, t_list *dom)
 	data = w->new_data;
 	wpn.sprite_counter = 1;
 	engine_begin(data->pl);
+
 	if (data->pl->count_sprite == 10)
 	{
 		wpn.sprite_counter = 2;
