@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/18 20:11:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:31:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct	s_file_read
 	int			fd;
 	int			res;
 	char		*line;
+	char		*ag;
 	int			tmp[SECTORS];
 	char		**split;
 	char		*ptr_my;
@@ -111,6 +112,9 @@ typedef struct	s_new_player
 	t_vector3	fov_vec2;
 
 	void		*wolf3d;	// pointer to wolf3d!
+
+	int			live_count;
+	int			bullet_count;
 }				t_new_player;
 
 #endif

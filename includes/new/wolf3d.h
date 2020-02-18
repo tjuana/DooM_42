@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 20:14:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:27:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,5 +203,7 @@ float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
 t_new_xy	intersect(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4);
 float		yaw(float y, float z, t_new_player *player);
 float		to_deg(float radians);
+
+t_new_player	*reload(t_new_player *pl);
 
 #endif

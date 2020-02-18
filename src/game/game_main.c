@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/18 20:14:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:45:51 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->lvl = NULL;
 	pl->light = 1;
 	pl->pix = (int *)pl->pixels;
+	pl->live_count = 100;
+	pl->bullet_count = 10;
 
 }
 
@@ -122,7 +124,7 @@ void	ft_game_gui_init_menu(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_game_hud_pistolcount", (t_gui_coord)\
 	{250, 10, 0}, (t_gui_coord){354, 50, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "100", 16);
+	ft_gui_elem_set_text(elem->child, "10", 16);
 	ft_gui_elem_set_parent(head, elem->child);
 }
 
@@ -140,6 +142,17 @@ void	ft_game_gui_init_hud(t_list *head)
 		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xbfffff00);
 	ft_gui_elem_set_text(elem->child, "DVER MNE ZAPILI!", 72);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, elem->child);
+	ft_gui_elem_init(&elem->child, "win_game_diedbg", (t_gui_coord){0, 0, 0}, \
+		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(elem->child, 0xbfff0000);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, elem->child);
+	ft_gui_elem_init(&elem->child, "win_game_diedtext", (t_gui_coord){300, 300, 0}, \
+		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(elem->child, 0xbfffffff);
+	ft_gui_elem_set_text(elem->child, "VI UMERLI! HAH!", 72);
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 }

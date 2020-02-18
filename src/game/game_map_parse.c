@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/16 19:16:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 20:25:48 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		ft_my_parse_map(t_new_player *pl, char *ag)
 	pl->file.count_sectors = -1;
 	if (!ag)
 		ag = "maps/button";
+	pl->file.ag = ag;
 	if ((pl->file.fd = open(ag, O_RDONLY)) < 0)
 		ft_error("BAD FILE");
 	pl->file.vertex_count = 0;
