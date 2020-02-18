@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 13:24:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 19:27:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <libft.h>
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
+# include "general_struct.h"
 
 /*
 ** **************************************************************************
@@ -139,6 +140,8 @@ void				ft_gui_mousewheel(t_wolf3d *w, SDL_Event e, \
 **	gui/gui_redraw.c
 ** **************************************************************************
 */
+void				ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, \
+						SDL_Surface *surf);
 void				ft_gui_draw_image(t_wolf3d *w, t_list *list);
 void				ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, \
 						t_gui_coord v2, int color);
@@ -146,10 +149,25 @@ void				ft_gui_draw_border(t_wolf3d *w, t_list *list, \
 						int color, int border_width);
 void				ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color);
 void				ft_gui_redraw_elem(t_wolf3d *w, t_list *dom);
-int					ft_gui_redraw_frame(t_wolf3d *w);
 void				ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, \
 						int color);
 void				ft_gui_redraw_elem_font(t_wolf3d *w, t_list *dom);
 int					ft_gui_redraw(t_wolf3d *w);
+
+/*
+** **************************************************************************
+**	gui/gui_init.c
+** **************************************************************************
+*/
+void				ft_gui_init(t_wolf3d *w);
+
+SDL_Rect			*ft_gui_create_sdl_rect(int w, int h, int x, int y);
+void				ft_gui_set_sdl_color(SDL_Color *sdl_color, int color);
+
+void				ft_gui_elem_set_grid(t_list *dom, t_gui_coord count, int margin);
+void				ft_gui_elem_init_grid(t_list *parent, char *name, int pos, t_gui_coord count);
+
+void				ft_gui_fill_area_rect(t_wolf3d *w, t_gui_rect coord, \
+						t_gui_rect area, int color);
 
 #endif

@@ -6,82 +6,134 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 21:01:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 18:20:33 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 15:59:04 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 /*
-**	void ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
-**	
-**	Function that set map name.
+** **************************************************************************
+**	char ft_gui_get_keydown_letter(SDL_Event e)
+**
+**	Function that return keydown letter
+** **************************************************************************
 */
-void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
+
+char	ft_gui_get_keydown_letter(SDL_Event e)
+{
+	if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
+		e.key.keysym.scancode <= SDL_SCANCODE_Z)
+		return ('a' + e.key.keysym.scancode - 4);
+	if (e.key.keysym.scancode >= SDL_SCANCODE_1 && \
+		e.key.keysym.scancode <= SDL_SCANCODE_9)
+		return ('1' + e.key.keysym.scancode - SDL_SCANCODE_1);
+	if (e.key.keysym.scancode == SDL_SCANCODE_0)
+		return ('0');
+	return ('\0');
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_focus_add_letter(SDL_Event e, t_gui_elem *elem)
+**
+**	Function that add new letter for input.
+** **************************************************************************
+*/
+
+void	ft_gui_focus_type_numb(SDL_Event e, t_gui_elem *elem)
+{
+	int	numb;
+
+	numb = ft_atoi(elem->str);
+	if (e.key.keysym.scancode == SDL_SCANCODE_UP)
+		numb++;
+	if (e.key.keysym.scancode == SDL_SCANCODE_DOWN)
+		numb--;
+	if (numb > 1000)
+		numb = 1000;
+	if (numb < 0)
+		numb = 0;
+	free(elem->str);
+	elem->str = ft_itoa(numb);
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_focus_add_letter(SDL_Event e, t_gui_elem *elem)
+**
+**	Function that add new letter for input.
+** **************************************************************************
+*/
+
+void	ft_gui_focus_add_letter(SDL_Event e, t_gui_elem *elem)
 {
 	char	c;
-	t_gui_elem	*elem;
 	char	*str;
-	int		numb;
+
+	if (ft_strlen(elem->str) > 20)
+		return ;
+	c = ft_gui_get_keydown_letter(e);
+	if (ft_strlen(elem->str) == 1 && elem->str[0] == ' ')
+	{
+		str = ft_strnew(1);
+		str[0] = c;
+	}
+	else
+	{
+		str = ft_strnew(ft_strlen(elem->str) + 1);
+		str = ft_strncpy(str, elem->str, ft_strlen(elem->str));
+		str[ft_strlen(elem->str)] = c;
+	}
+	free(elem->str);
+	elem->str = str;
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_focus_delete_letter(t_gui_elem *elem)
+**
+**	Function that delete last letter.
+** **************************************************************************
+*/
+
+void	ft_gui_focus_delete_letter(t_gui_elem *elem)
+{
+	char	*str;
+
+	if (ft_strlen(elem->str) == 1)
+		str = ft_strdup(" ");
+	else
+	{
+		str = ft_strnew(ft_strlen(elem->str) - 1);
+		str = ft_strncpy(str, elem->str, ft_strlen(elem->str) - 1);
+	}
+	free(elem->str);
+	elem->str = str;
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
+**
+**	Function that set map name.
+** **************************************************************************
+*/
+
+void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
+{
+	char		c;
+	t_gui_elem	*elem;
+	char		*str;
+	int			numb;
 
 	w->gui.search_elem = GUI_EVENT_ON;
 	elem = dom->content;
-	// if (elem)
-		// return ;
 	if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
 		e.key.keysym.scancode <= SDL_SCANCODE_0)
-	{
-		if (ft_strlen(elem->str) > 20)
-			return ;
-		// Выделить в отдельную функцию (набор текста в input)
-		if (e.key.keysym.scancode >= SDL_SCANCODE_A && \
-			e.key.keysym.scancode <= SDL_SCANCODE_Z)
-			c = 'a' + e.key.keysym.scancode - 4;
-		if (e.key.keysym.scancode >= SDL_SCANCODE_1 && \
-			e.key.keysym.scancode <= SDL_SCANCODE_9)
-			c = '1' + e.key.keysym.scancode - SDL_SCANCODE_1;
-		if (e.key.keysym.scancode == SDL_SCANCODE_0)
-			c = '0';
-		if (ft_strlen(elem->str) == 1 && elem->str[0] == ' ')
-		{
-			str = ft_strnew(1);
-			str[0] = c;
-		}
-		else
-		{
-			str = ft_strnew(ft_strlen(elem->str) + 1);
-			str = ft_strncpy(str, elem->str, ft_strlen(elem->str));
-			str[ft_strlen(elem->str)] = c;
-		}
-
-		free(elem->str);
-		elem->str = str;
-	}
+		ft_gui_focus_add_letter(e, elem);
 	else if (e.key.keysym.scancode == SDL_SCANCODE_BACKSPACE)
-	{
-		if (ft_strlen(elem->str) == 1)
-			str = ft_strdup(" ");
-		else
-		{
-			str = ft_strnew(ft_strlen(elem->str) - 1);
-			str = ft_strncpy(str, elem->str, ft_strlen(elem->str) - 1);
-		}
-		free(elem->str);
-		elem->str = str;
-	}
+		ft_gui_focus_delete_letter(elem);
 	if (elem->type == GUI_INPUT_NUMB)
-	{
-		numb = ft_atoi(elem->str);
-		if (e.key.keysym.scancode == SDL_SCANCODE_UP)
-			numb++;
-		if (e.key.keysym.scancode == SDL_SCANCODE_DOWN)
-			numb--;
-
-		if (numb > 1000)
-			numb = 1000;
-		if (numb < 0)
-			numb = 0;
-		free(elem->str);
-		elem->str = ft_itoa(numb);
-	}
+		ft_gui_focus_type_numb(e, elem);
 }

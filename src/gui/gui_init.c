@@ -6,14 +6,23 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 17:57:51 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 18:03:29 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/07 15:28:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
+
+/*
+** **************************************************************************
+**	void ft_gui_init(t_wolf3d *w)
+**
+**	Function that set gui constant.
+** **************************************************************************
+*/
 
 void	ft_gui_init(t_wolf3d *w)
 {
 	w->gui.win_w = WIN_WIDTH;
 	w->gui.win_h = WIN_HEIGHT;
+	w->gui.focus_elem = NULL;
 }

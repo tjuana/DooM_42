@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/21 21:23:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/26 21:40:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILE_H
 # define FILE_H
 
-#include "wolf3d.h"
-# define VER_HEIGHT (int)33
-# define VER_WIDTH (int)54
-
+# include "doom.h"
 
 typedef struct			s_file
 {

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_addons.c                                       :+:      :+:    :+:   */
+/*   game_sdl_addons.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/20 18:23:49 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/16 19:31:48 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
-/*
-** **************************************************************************
-**	SDL_Rect *ft_create_rect(int w, int h, int x, int y)
-**	Function to create SDL_Rect
-** **************************************************************************
-*/
-
-SDL_Rect	*ft_create_rect(int w, int h, int x, int y)
+void		ft_sdl_error(t_sdl *sdl)
 {
-	SDL_Rect	*tmp;
-
-	if (!(tmp = (SDL_Rect*)malloc(sizeof(tmp))))
-		return (0);
-	tmp->h = h;
-	tmp->w = w;
-	tmp->x = x;
-	tmp->y = y;
-	return (tmp);
+	SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, \
+	"Couldn't create window and renderer: %s", SDL_GetError());
+	if (sdl->text)
+		SDL_DestroyTexture(sdl->text);
+	if (sdl->srf)
+		SDL_FreeSurface(sdl->srf);
+	if (sdl->renderer)
+		SDL_DestroyRenderer(sdl->renderer);
+	if (sdl->win)
+		SDL_DestroyWindow(sdl->win);
+	free(sdl);
+	IMG_Quit();
+	SDL_Quit();
+	exit(EXIT_FAILURE);
 }

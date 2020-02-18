@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/21 21:30:32 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:42:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void			fpsthink();
 **	func/func_help.c
 ** **************************************************************************
 */
-SDL_Surface		*ft_sdl_load_bmp(char *str);
 int				ft_error(char *code);
 void			*ft_my_malloc(size_t s);
-int				ft_cleanmem(t_list **lst);
 void			ft_clean_sdl(t_wolf3d *w);
 
 /*
@@ -80,5 +78,39 @@ void			ft_fdf_draw_line_param(t_wolf3d *data, t_fdf_wu **wu);
 void			ft_fdf_wu(t_vector3 *dot_1, t_vector3 *dot_2, t_wolf3d *data);
 void			ft_fdf_wu_color(t_vector3 *dot_1, t_vector3 *dot_2, \
 					t_wolf3d *data, int color);
+void			ft_fdf_wu_rect_color(t_wolf3d *data, t_gui_rect coord, \
+					t_gui_rect area, int color);
+
+/*
+** **************************************************************************
+**	func/func_help.c
+** **************************************************************************
+*/
+void			ft_clean_sdl(t_wolf3d *w);
+void			*ft_my_malloc(size_t s);
+int				ft_error(char *code);
+
+/*
+** **************************************************************************
+**	func/func_sdl.c
+** **************************************************************************
+*/
+t_sdl			*sdl_init(t_sdl *sdl);
+void			ft_init_wolf(t_wolf3d *w);
+void			ft_we_need_more_init(t_wolf3d *w);
+
+/*
+** **************************************************************************
+**	func/func_sound.c
+** **************************************************************************
+*/
+void			ft_init_sound(t_wolf3d *w);
+void			ft_load_sound(t_wolf3d *w);
+void			ft_play_shot(t_wolf3d *w);
+
+void			ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
+					t_gui_rect area, int color);
+
+void			ft_me_generate_triangles(t_wolf3d *w);
 
 #endif

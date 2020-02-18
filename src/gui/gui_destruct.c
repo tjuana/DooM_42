@@ -6,11 +6,19 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 15:38:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:52:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
+
+/*
+** **************************************************************************
+**	void ft_gui_desctuct_events(t_list *events)
+**
+**	Function that destruct all element events.
+** **************************************************************************
+*/
 
 void	ft_gui_desctuct_events(t_list *events)
 {
@@ -23,10 +31,13 @@ void	ft_gui_desctuct_events(t_list *events)
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_desctuct(t_list *dom)
-**	
+**
 **	Function that destruct all gui values.
+** **************************************************************************
 */
+
 void	ft_gui_desctuct(t_list *dom)
 {
 	t_list		*list;
@@ -39,19 +50,22 @@ void	ft_gui_desctuct(t_list *dom)
 		elem = list->content;
 		ft_gui_desctuct(elem->child);
 		ft_gui_desctuct_events(elem->events);
-		// free(elem->surf); // How to close?
 		free(elem->name);
 		free(elem->str);
 		free(elem);
 		free(list);
 	}
+	dom = NULL;
 }
 
 /*
+** **************************************************************************
 **	void ft_gui_desctuct_fonts(t_list *fonts_list)
-**	
+**
 **	Function that desctuct all fonts.
+** **************************************************************************
 */
+
 void	ft_gui_desctuct_fonts(t_list *fonts_list)
 {
 	t_list		*list;
@@ -60,9 +74,9 @@ void	ft_gui_desctuct_fonts(t_list *fonts_list)
 	list = fonts_list;
 	if (list != NULL)
 	{
-		ft_gui_desctuct(list->next);
 		font = list->content;
 		TTF_CloseFont(font->ptr);
+		font->ptr = NULL;
 		free(font->path);
 	}
 }

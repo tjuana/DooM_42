@@ -1,74 +1,58 @@
-//
-// Created by Nymphadora Shelly on 19/12/2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_math_functions.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/08 12:08:45 by nshelly           #+#    #+#             */
+/*   Updated: 2020/02/16 17:29:21 by tjuana           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
+
 /*
- * min: Choose smaller of two scalars.
- */
-float min(float a, float b)
+** min: Choose smaller of two scalars.
+*/
+
+float		min(float a, float b)
 {
-    return  (((a) < (b)) ? (a) : (b));
-}
-/*
- * max: Choose greater of two scalars.
- */
-float max(float a, float b)
-{
-    return  (((a) > (b)) ? (a) : (b));
-}
-/*
- * clamp: fijar los valores  eun rango establecido
- */
-float clamp(float a, float mi, float ma)
-{
-    return  (min(max(a,mi),ma));
-}
-/*
- * vxs: Vector cross product
- */
-float vxs(float x0, float y0, float x1, float y1)
-{
-    return ((x0)*(y1) - (x1)*(y0));
-}
-/*
- * Overlap:  Determine whether the two number ranges overlap.
- */
-int Overlap(float a0, float a1, float b0, float b1)
-{
-    return (min(a0,a1) <= max(b0,b1) && min(b0,b1) <= max(a0,a1));
-}
-/*
- * IntersectBox: Determine whether two 2D-boxes intersect.
- */
-int IntersectBox(float x0, float y0, float x1, float y1,float x2, float y2, float x3, float y3)
-{
-    return (Overlap(x0,x1,x2,x3) && Overlap(y0,y1,y2,y3));
-}
-/*
- * PointSide: Determine which side of a line the point is on. Return value: <0, =0 or >0.
- */
-float PointSide(float px, float py, float x0, float y0,float x1, float y1)
-{
-    return (vxs((x1)-(x0), (y1)-(y0), (px)-(x0), (py)-(y0)));
-}
-/*
- * Intersect: Calculate the point of intersection between two lines.
- */
-t_new_xy Intersect(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4)
-{
-    t_new_xy xy;
-    xy.x = vxs(vxs(x1,y1, x2,y2), (x1)-(x2), vxs(x3,y3, x4,y4), (x3)-(x4)) / vxs((x1)-(x2), (y1)-(y2), (x3)-(x4), (y3)-(y4));
-    xy.y = vxs(vxs(x1,y1, x2,y2), (y1)-(y2), vxs(x3,y3, x4,y4), (y3)-(y4)) / vxs((x1)-(x2), (y1)-(y2), (x3)-(x4), (y3)-(y4));
-    return (xy);
+	return (((a) < (b)) ? (a) : (b));
 }
 
-float Yaw(float y, float z, t_new_player *player)
+/*
+** max: Choose greater of two scalars.
+*/
+
+float		max(float a, float b)
 {
-    return(y + z*player->yaw);
+	return (((a) > (b)) ? (a) : (b));
 }
 
-double to_degrees(double radians)
+/*
+** clamp: fijar los valores  eun rango establecido
+*/
+
+float		clamp(float a, float mi, float ma)
 {
-    return radians * (180.0 / M_PI);
+	return (min(max(a, mi), ma));
+}
+
+/*
+** vxs: Vector cross product
+*/
+
+float		vxs(float x1, float y1, float x2, float y2)
+{
+	return ((x1) * (y2) - (x2) * (y1));
+}
+
+/*
+** overlap:  Determine whether the two number ranges overlap.
+*/
+
+int			overlap(float a1, float a2, float b1, float b2)
+{
+	return (min(a1, a2) <= max(b1, b2) && min(b1, b2) <= max(a1, a2));
 }

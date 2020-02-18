@@ -2,42 +2,48 @@
 #define ENGINE_H
 # include "wolf3d.h"
 
+#define hfov (0.73f*WIN_H)
+#define vfov (.2f*WIN_H)
+
 typedef struct	s_new_cycle//item
 {
-	t_tmp_trio	queue[MAX_QUEUE];
-	t_tmp_trio	*head;
-	t_tmp_trio	*current;
-	t_tmp_trio	*tail;
+	t_new_tmp_trio	queue[MAX_QUEUE];//sectors queue for draw sector by sector
+	t_new_tmp_trio	*head;
+	t_new_tmp_trio	*current;
+	t_new_tmp_trio	*tail;
 	int			*rend_sec;
 }				t_new_cycle;
 
 typedef struct	s_new_sector//have to be static
 {
-    float		floor;
-	float		ceil;
-    t_new_xy	*vertex; //here stored all sector vertexes.
+    float		floor;//floor height
+	float		ceil;//ceil height
+    t_new_xy		*vertex; //here stored all sector vertexes.
     signed char	*neighbors;// Each edge may have a corresponding neighboring sector
     int			npoints;// How many vertexes there are
 }				t_new_sector;//*sectors = NULL;
 
-typedef struct s_new_sector_ops
+/*typedef struct s_new_sect_ops
 {
+	const t_new_sector	*sect;
+    const t_new_xy		*vert;
+    t_new_xy 			p;
+    t_new_xy			d;
     float			px;
     float			dx;
     float			py;
     float			dy;
-    const t_new_sector	*sect;
-    const t_new_xy		*vert;
-    float			eyeheight;
+    float			eye_h;
     float			hole_low;
     float			hole_high;
-    float			xd;
-    float			yd;
-}					t_new_sector_ops;
+	t_new_xy		dir_vec;
+    //float			xd;
+    //float			yd;
+}					t_new_sect_ops;*/
 
 typedef struct	s_new_others
 {
-    float	move_vec[2];
+    float	move_vec[2];//when player moves
     int		moving;
 }			t_new_others;
 

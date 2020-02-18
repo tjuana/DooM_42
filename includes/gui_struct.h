@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/25 18:00:00 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:42:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define GUI_STRUCT_H
 
 # include <libft.h>
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_ttf.h"
-# include "SDL2/SDL_image.h"
 
 /*
 ** **************************************************************************
@@ -57,7 +54,6 @@
 */
 # define GUI_NOT_REDRAW			0x00
 # define GUI_REDRAW				0x01
-# define GUI_REDRAW_FRAME		0x02
 
 /*
 ** **************************************************************************
@@ -154,6 +150,15 @@ typedef struct		s_gui_font
 	int				half_menu;
 }					t_gui_font;
 
+typedef struct		s_gui_grid
+{
+	t_gui_rect		area;
+	int				margin;
+	t_gui_coord		count;		// column (x) and row (y) count
+	int				elem_w;
+	int				elem_h;
+}					t_gui_grid;
+
 /*
 ** **************************************************************************
 **	t_gui_elem
@@ -177,6 +182,7 @@ typedef struct		s_gui_font
 **	void (*redraw)		| function that redraw element
 **	void (*redraw)		| function that redraw element font
 **	SDL_Surface *surf	| pointer to element surface (image)
+**	t_gui_grid grid		| element grid
 ** **************************************************************************
 */
 typedef struct		s_gui_elem
@@ -197,6 +203,7 @@ typedef struct		s_gui_elem
 	void			(*redraw)(void *data, t_list *dom);
 	void			(*redraw_font)(void *data, t_list *dom);
 	SDL_Surface		*surf;
+	t_gui_grid		grid;
 }					t_gui_elem;
 
 /*

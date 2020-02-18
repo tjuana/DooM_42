@@ -6,11 +6,19 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:27 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/23 18:47:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:49:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
+
+/*
+
+	(*wu)->rx1 = area.v1.x >= 0 ? area.v1.x : 0;
+	(*wu)->ry1 = area.v1.y >= 0 ? area.v1.y : 0;
+	(*wu)->rx2 = area.v2.x <= WIN_WIDTH ? area.v2.x : WIN_WIDTH;
+	(*wu)->ry2 = area.v2.x <= WIN_HEIGHT ? area.v2.x : WIN_HEIGHT;
+*/
 
 void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 {
@@ -18,10 +26,8 @@ void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 	int		pos;
 	double	o;
 
-	// Special rules for map frame
 	if (x < wu->rx1 || x >= wu->rx2 || y < wu->ry1 || y >= wu->ry2)
 		return ;
-	// if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 	wu->temp_f = 1 - wu->temp_f;
 	if (wu->steps == 0)
 		o = 0.0;
@@ -31,8 +37,11 @@ void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 	if ((pos >= WIN_HEIGHT * WIN_WIDTH || pos < 0))
 		return ;
 	color = wu->color1;
-	color = ft_fdf_get_color(color, (int)data->sdl->pixels[pos], wu->temp_f);
-	data->sdl->pixels[pos] = color;
+	color = ft_fdf_get_color(color, \
+		((int*)data->sdl->pixels)[pos], wu->temp_f);
+	((int*)data->sdl->pixels)[pos] = color;
+	// 		((int*)data->sdl->pixels)[pos], wu->temp_f);
+	// ((int*)data->sdl->pixels)[pos] = color;
 }
 
 void		ft_fdf_draw_line_first_pixels(t_wolf3d *data, t_fdf_wu **wu)

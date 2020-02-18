@@ -6,18 +6,23 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 19:25:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/16 13:47:27 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:22:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom.h"
 
 /*
-**	void ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousemotion_input(void *data, SDL_Event e,
+**		t_list *dom, int type)
+**
 **	Function that transform input status for mousemotuin event.
+** **************************************************************************
 */
-void	ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousemotion_input(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 	t_gui_elem	*elem;
@@ -29,11 +34,16 @@ void	ft_gui_mousemotion_input(void *data, SDL_Event e, t_list *dom, int type)
 }
 
 /*
-**	void ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousebuttondown_input(void *data, SDL_Event e,
+**		t_list *dom, int type)
+**
 **	Function that transform input status for mousebuttondown event.
+** **************************************************************************
 */
-void	ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousebuttondown_input(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 
@@ -42,11 +52,16 @@ void	ft_gui_mousebuttondown_input(void *data, SDL_Event e, t_list *dom, int type
 }
 
 /*
-**	void ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type)
-**	
+** **************************************************************************
+**	void ft_gui_mousebuttonup_input(void *data, SDL_Event e,
+**		t_list *dom, int type)
+**
 **	Function that transform input status for mousebuttonup event.
+** **************************************************************************
 */
-void	ft_gui_mousebuttonup_input(void *data, SDL_Event e, t_list *dom, int type)
+
+void	ft_gui_mousebuttonup_input(void *data, SDL_Event e, \
+			t_list *dom, int type)
 {
 	t_wolf3d	*w;
 
