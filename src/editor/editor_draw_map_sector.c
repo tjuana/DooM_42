@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 22:28:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 19:18:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 21:00:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,10 @@ void		ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s)
 	{
 		c1 = ft_gui_map_vertex_to_coord(w, *s->vertex[i++]);
 		ft_gui_draw_point(w, c1, s->color);
+	}
+	if (s->status == 0 && s->vertex_count > 0)
+	{
+		c1 = ft_gui_map_vertex_to_coord(w, *s->vertex[0]);
+		ft_gui_draw_point(w, c1, 0xffffff);
 	}
 }

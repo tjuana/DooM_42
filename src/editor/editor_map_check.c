@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 17:43:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:56:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ int		ft_check_origin_vertex(t_sector *s, t_vector3 v)
 		i++;
 	}
 	if (s->vertex_count == 2 && ft_compare_vertexes(v, *s->vertex[0]))
+		return (0);
+	if (v.y < s->vertex[0]->y)
+		return (0);
+	if (v.y == s->vertex[0]->y && v.x < s->vertex[0]->x)
 		return (0);
 	return (1);
 }
