@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 21:07:35 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/18 21:19:09 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void			set_window_icon(t_sdl *sdl)
 	SDL_FreeSurface(sur_win);
 	SDL_FreeSurface(sur_img);
 	SDL_SetWindowIcon(sdl->win, conv_sur_img);
-	SDL_FreeSurface(conv_sur_img);
+	// SDL_FreeSurface(conv_sur_img);
 }
 
 static Mix_Chunk		*sound_init(char *name)

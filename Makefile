@@ -6,7 +6,7 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/18 20:45:33 by tjuana           ###   ########.fr        #
+#    Updated: 2020/02/18 21:20:49 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ GUI_NAME = gui_test
 
 # Сompiler settings
 CC = gcc
-FLAGS = -g -O3 -O0 -Ofast
+FLAGS = -g -O3 -O0 -march=native -m64 -flto -funroll-loops -Ofast
 
 # SDL2 settings
 USERNAME = $(shell whoami)
