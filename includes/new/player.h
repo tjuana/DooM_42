@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 16:36:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:11:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ typedef struct	s_new_player
 	// camera vertex
 	t_vector3	fov_vec1;
 	t_vector3	fov_vec2;
+
+	void		*wolf3d;	// pointer to wolf3d!
 }				t_new_player;
 
 #endif

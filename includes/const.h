@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/18 13:58:12 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 18:26:48 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 # define GUI_MAP_GRID_LIMIT_BR	0x4
 
 # define H_FOV					(1.0 * 0.73f * WIN_H / WIN_W)
-# define V_FOV					(1.0 * .237f)
+# define V_FOV					(1.0 * .2f)
 
 /*
  *

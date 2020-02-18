@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 16:08:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:12:12 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ void	ft_gui_events_keydown(t_wolf3d *w, SDL_Event *e)
 {
 	if (e->type == SDL_KEYDOWN)
 	{
-		// For all me mode
-		if (w->gui.mode == GUI_MD_ME || w->gui.mode == GUI_MD_ME_SET_SECTOR)
+		if (w->gui.mode == GUI_MD_ME)
 			ft_gui_events_keydowm_map(w, e);
 		if (w->gui.mode == GUI_MD_ME)
 			ft_gui_events_keydown_me(w, e);

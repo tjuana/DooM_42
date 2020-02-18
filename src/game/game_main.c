@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 20:11:02 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 20:14:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	t_new_temp	*data;
 
 	data = (t_new_temp*)w->new_data;
+	data->pl->wolf3d = w;
 	data->pl->sectors_nb = 0;
 	data->se.quit = 0;
 	data->pl->pixels = w->sdl->pixels;
@@ -135,4 +136,10 @@ void	ft_game_gui_init_hud(t_list *head)
 	ft_gui_elem_set_color(elem->child, 0xbf000000);
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_game_gui_init_menu(elem->child);
+	ft_gui_elem_init(&elem->child, "win_game_doortext", (t_gui_coord){300, 300, 0}, \
+		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(elem->child, 0xbfffff00);
+	ft_gui_elem_set_text(elem->child, "DVER MNE ZAPILI!", 72);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, elem->child);
 }
