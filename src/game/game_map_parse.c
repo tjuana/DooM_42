@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/28 15:17:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/30 17:38:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void		ft_vertex_count(t_new_player *pl)
 	int	i;
 
 	i = 2;
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (pl->file.split = ft_strsplit(pl->file.ptr_my, '\t'))
+		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[i++] != NULL)
 		pl->file.vertex_count++;
 	ft_2arrclean(&pl->file.split);
@@ -51,7 +52,8 @@ void		ft_sector_count(t_new_player *pl)
 
 	pl->file.count_sector_vertex = 0;
 	count = 3;
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (pl->file.split = ft_strsplit(pl->file.ptr_my, '\t'))
+		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[count] != NULL)
 	{
 		pl->file.count_sector_vertex++;
@@ -84,6 +86,7 @@ void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
 		free(pl->file.line);
 	}
 	free(pl->file.line);
+	free(vertex);
 }
 
 t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)

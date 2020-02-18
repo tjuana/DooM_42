@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/28 15:21:45 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/01/30 17:38:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
 	int	count;
 
 	count = 2;
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (pl->file.split = ft_strsplit(pl->file.ptr_my, '\t'))
+		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[count] != NULL)
 	{
 		vertex[pl->file.i].y = ft_atoi(pl->file.split[1]);
@@ -50,7 +51,8 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 	int				v_c;
 	int				s_c;
 
-	file.split = ft_strsplit(file.ptr_my, '\t');
+	if (file.split = ft_strsplit(file.ptr_my, '\t'))
+		ft_error("MALLOC_SPLIT");
 	sector->floor = ft_atoi(file.split[1]);
 	sector->ceil = ft_atoi(file.split[2]);
 	v_c = 1;
@@ -78,10 +80,11 @@ void		ft_player_save(t_new_player *pl)
 	int			angle;
 	int			n;
 
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (pl->file.split = ft_strsplit(pl->file.ptr_my, '\t'))
+		ft_error("MALLOC_SPLIT");
 	v.x = ft_atoi(pl->file.split[1]);
 	v.y = ft_atoi(pl->file.split[2]);
-	angle = ft_atoi(pl->file.split[3]);
+	angle = 1;
 	n = ft_atoi(pl->file.split[4]);
 	player_init(pl, &v, &angle, &n);
 	pl->where.z = pl->sectors[pl->sector].floor + EyeHeight;
@@ -93,6 +96,8 @@ void		ft_level_save(t_new_player *pl)
 	int			angle;
 	int			n;
 
-	pl->file.split = ft_strsplit(pl->file.ptr_my, '\t');
+	if (pl->file.split = ft_strsplit(pl->file.ptr_my, '\t'))
+		ft_error("MALLOC_SPLIT");
 	pl->lvl = pl->file.split[1];
+	
 }

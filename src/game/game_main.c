@@ -116,25 +116,13 @@ void	ft_game_redraw(void *d, t_list *dom)
 
 	if (w->sdl->pixels)
 		ft_bzero(w->sdl->pixels, 4 * WIN_W * WIN_H);
-		// ft_memset((void*)pl.srf->pixels, 0x80, 4 * WIN_W * WIN_H);
-
-
 	data->pl.txtx = 0;
 	engine_begin(&data->pl);
-
-		// printf("%d   %d\n", pl.floor.ya, pl.floor.yb);
-		
-	// data->scr_surf = SDL_GetWindowSurface(data->window);
-	// SDL_BlitSurface(w.weapon_texture, ft_create_rect(15, 15, 0, 0), scr_surf, ft_create_rect(50, 50, WIN_W / 2, WIN_H / 2));
 	if (data->pl.count_sprite == 10)// this for the event shoot
 	{
 		data->wpn.sprite_counter = 2;
 		data->pl.count_sprite = 1;
 	}
-	// draw_pistol(&data->wpn,w->sdl->pixels);//draw gun
-	// SDL_UpdateWindowSurface( data->window );
-
-	//Vertical collision detection
 	data->op.eyeheight = data->se.ducking ? DuckHeight : EyeHeight;
 	data->se.ground = !data->se.falling;
 	jumps(&data->se, &data->pl, &data->op, &data->ot);
@@ -147,32 +135,6 @@ void	ft_game_redraw(void *d, t_list *dom)
 		//door(&pl, &se);
 }
 
-// static void	ft_debug(t_new_player *pl)
-// {
-// 	int secnb = 0;
-// 	int i = pl->sectors_nb;
-// 	int point = 0;
-// 	int neig = 0;
-// 	int n = 0;
-// 	int x = 0;
-// 	int y = 0;
-// 	while (secnb < i)
-// 	{
-// 		while (n < pl->sectors->npoints)
-// 		{
-// 			x = pl->sectors[secnb].vertex[point].x;
-// 			y = pl->sectors[secnb].vertex[point].y;
-// 			neig = pl->sectors[secnb].neighbors[point];
-// 			n++;
-// 			point++;
-// 		}
-		
-
-		
-// 		secnb++;
-// 	}
-	
-// }
 
 void	ft_game_init(t_new_temp *data, char *path)
 {
