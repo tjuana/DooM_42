@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_color.c                                       :+:      :+:    :+:   */
+/*   func_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:20:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 18:32:22 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:44:01 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ Uint32		ft_rgb_to_hex(Uint32 r, Uint32 g, Uint32 b)
 	return ((r << 16) | (g << 8) | b);
 }
 
-Uint32		ft_color_struct_to_hex(t_new_color color)
+Uint32		ft_color_struct_to_hex(t_color color)
 {
 	return (ft_rgb_to_hex(color.r, color.g, color.b));
 }
 
 Uint32		ft_hex_transform(int color, float percent)
 {
-	t_new_color	rgb;
+	t_color	rgb;
 
 	rgb.a = (color >> 24) & 0xFF * 0;
 	rgb.r = ((color >> 16) & 0xFF) * percent;

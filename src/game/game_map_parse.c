@@ -6,13 +6,13 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 14:49:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:26:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-void		ft_my_parse_map(t_new_player *pl, char *ag)
+void		ft_game_my_parse_map(t_new_player *pl, char *ag)
 {
 	pl->file.count_sectors = -1;
 	if (!ag)
@@ -27,18 +27,18 @@ void		ft_my_parse_map(t_new_player *pl, char *ag)
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)' ')) != NULL)
 			ft_error("BAD FILE, ONLY TAB , MAN!");
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
-			ft_vertex_count(pl);
+			ft_game_vertex_count(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
-			ft_sector_count(pl);
+			ft_game_sector_count(pl);
 		ft_strdel(&pl->file.line);
 		free(pl->file.line);
 	}
 	free(pl->file.line);
 	close(pl->file.fd);
-	ft_alloc_save_sectors(ag, pl);
+	ft_game_malloc_save_sectors(ag, pl);
 }
 
-void		ft_vertex_count(t_new_player *pl)
+void		ft_game_vertex_count(t_new_player *pl)
 {
 	int	i;
 
@@ -51,7 +51,7 @@ void		ft_vertex_count(t_new_player *pl)
 		ft_2arrclean(&pl->file.split);
 }
 
-void		ft_sector_count(t_new_player *pl)
+void		ft_game_sector_count(t_new_player *pl)
 {
 	int		count;
 
@@ -73,7 +73,7 @@ void		ft_sector_count(t_new_player *pl)
 		ft_2arrclean(&pl->file.split);
 }
 
-t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)
+t_new_xy	*ft_game_malloc_sec_vertex(t_new_player *pl, char *v)
 {
 	t_new_xy		*vertex;
 
@@ -86,23 +86,23 @@ t_new_xy	*ft_malloc_sec_vertex(t_new_player *pl, char *v)
 	return (vertex);
 }
 
-void		ft_alloc_save_sectors(char *ag, t_new_player *pl)
+void		ft_game_malloc_save_sectors(char *ag, t_new_player *pl)
 {
 	t_new_xy		*vertex;
 
-	vertex = ft_malloc_sec_vertex(pl, ag);
+	vertex = ft_game_malloc_sec_vertex(pl, ag);
 	pl->file.count_sectors2 = 0;
 	pl->file.i = 0;
 	while ((pl->file.res = get_next_line(pl->file.fd, &pl->file.line)) > 0)
 	{
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
-			vertex = ft_vertex_save(pl, vertex);
+			vertex = ft_game_vertex_save(pl, vertex);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'m')) != NULL)
-			ft_level_save(pl);
+			ft_game_level_save(pl);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
-			ft_sector_save(pl, vertex);
+			ft_game_sector_save(pl, vertex);
 		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'p')) != NULL)
-			ft_player_save(pl);
+			ft_game_player_save(pl);
 		ft_strdel(&pl->file.line);
 		free(pl->file.line);
 	}

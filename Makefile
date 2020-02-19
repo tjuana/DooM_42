@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/19 17:07:27 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/19 17:44:30 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,7 +99,8 @@ func_wu_color.c \
 func_wu_draw.c \
 func_wu_init.c \
 func_wu_line.c \
-func_wu.c
+func_wu.c \
+func_color.c
 
 FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
 FUNC_OBJS_LIST = $(patsubst %.c, %.o, $(FUNC_LIST))
@@ -192,7 +193,6 @@ GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
 GAME_SRCS_LIST = \
 game_but.c \
 game_but_detect.c \
-game_color.c \
 game_door.c \
 game_door_detect.c \
 game_engine.c \

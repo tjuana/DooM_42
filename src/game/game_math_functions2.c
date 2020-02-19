@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   game_math_functions2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:34:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 17:30:24 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:22:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
 /*
-** intersectbox: Determine whether two 2D-boxes intersect.
+** ft_game_intersectbox: Determine whether two 2D-boxes intersect.
 */
 
-int			intersectbox(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4)
+int			ft_game_intersectbox(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4)
 {
 	return (overlap(v1.x, v2.x, v3.x, v4.x) && overlap(v1.y, v2.y, v3.y, v4.y));
 }
 
 /*
-** pointside: Determine which side of a line the point is on.
+** ft_game_pointside: Determine which side of a line the point is on.
 ** Return value: <0, =0 or >0.
 */
 
-float		pointside(t_new_xy p, t_new_xy v1, t_new_xy v2)
+float		ft_game_pointside(t_new_xy p, t_new_xy v1, t_new_xy v2)
 {
 	return (vxs((v2.x) - (v1.x), (v2.y) - (v1.y), \
 	(p.x) - (v1.x), (p.y) - (v1.y)));

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 14:50:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:28:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	void end_game(t_new_player *pl)
+**	void ft_game_end_game(t_new_player *pl)
 **	Function to end game
 ** **************************************************************************
 */
 
-void			end_game(t_new_player *pl)
+void			ft_game_end_game(t_new_player *pl)
 {
 	SDL_Delay(77);
 	if (pl)
@@ -62,7 +62,7 @@ t_new_player	*load_next(t_new_player *pl)
 	pl->sectors = NULL;
 	lvl = ft_strdup(pl->lvl);
 	ft_strdel(&pl->lvl);
-	ft_my_parse_map(pl, lvl);
+	ft_game_my_parse_map(pl, lvl);
 	ft_strdel(&lvl);
 	free(pl->doors);
 	pl->doors = NULL;
@@ -87,7 +87,7 @@ t_new_player	*reload(t_new_player *pl)
 	}
 	free(pl->sectors);
 	pl->sectors = NULL;
-	ft_my_parse_map(pl, pl->file.ag);
+	ft_game_my_parse_map(pl, pl->file.ag);
 	ft_strdel(&pl->file.ag);
 	free(pl->doors);
 	pl->doors = NULL;

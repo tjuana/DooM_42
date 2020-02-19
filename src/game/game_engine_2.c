@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 17:26:01 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:54:43 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-static	void	operation_cero(int x, t_new_player *pl)
+static	void	ft_game_operation_cero(int x, t_new_player *pl)
 {
 	pl->txtx = (int)((pl->u0 * ((pl->x2 - x) * pl->t2.y) + pl->u1 * \
 		((x - pl->x1) * pl->t1.y)) / ((pl->x2 - x) * pl->t2.y +\
@@ -25,10 +25,10 @@ static	void	operation_cero(int x, t_new_player *pl)
 	pl->ceil.cyb = clamp(pl->floor.yb, pl->y_top[x], pl->y_bot[x]);
 }
 
-void			engine_calcs(int x, t_new_player *pl, int operation)
+void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 {
 	if (operation == 0)
-		operation_cero(x, pl);
+		ft_game_operation_cero(x, pl);
 	if (operation == 1)
 	{
 		pl->t.hei = pl->t.y < pl->ceil.cya ? pl->ceil.yceil : pl->floor.yfloor;
@@ -52,7 +52,7 @@ void			engine_calcs(int x, t_new_player *pl, int operation)
 	}
 }
 
-void			draw_ceil_floor(int x, t_new_player *pl)
+void			ft_game_draw_ceil_floor(int x, t_new_player *pl)
 {
 	pl->t.y = pl->y_top[x];
 	pl->t.x = x;
@@ -64,53 +64,53 @@ void			draw_ceil_floor(int x, t_new_player *pl)
 			continue;
 		}
 		// continue;
-		engine_calcs(x, pl, 1);
+		ft_game_engine_calcs(x, pl, 1);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil != 20)
-			pix1(pl, ROCK2);
+			ft_game_pix1(pl, ROCK2);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil == 20)
-			pix_sky(&pl->t, pl);
+			ft_game_pix_sky(&pl->t, pl);
 			// ft_put_pixel_to_surface(pl, &pl->t, SKY);
 		if (pl->t.y >= pl->ceil.cya)
-			pix1(pl, GREEN);
+			ft_game_pix1(pl, GREEN);
 			// ft_put_pixel_to_surface(pl, &pl->t, GREEN);
 	}
 }
 
 /*
 ** **************************************************************************
-**	static void engine_ceil_floor(t_new_player *pl, int x, int *z, int neib)
+**	static void ft_game_engine_ceil_floor(t_new_player *pl, int x, int *z, int neib)
 **	Function to draw ceil and floor lines and lines betwen them
 ** **************************************************************************
 */
 
-static void		engine_ceil_floor(t_new_player *pl, int x, int neib)
+static void		ft_game_engine_ceil_floor(t_new_player *pl, int x, int neib)
 {
-	engine_calcs(x, pl, 0);
-	draw_ceil_floor(x, pl);
+	ft_game_engine_calcs(x, pl, 0);
+	ft_game_draw_ceil_floor(x, pl);
 	if (neib >= 0)
 	{
-		engine_calcs(x, pl, 2);
-		draw_walls(x, pl, WALL_TOP, pl->n);
+		ft_game_engine_calcs(x, pl, 2);
+		ft_game_draw_walls(x, pl, WALL_TOP, pl->n);
 		pl->y_top[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya),\
 		pl->y_top[x], WIN_H - 1);
-		draw_walls(x, pl, WALL_BOTT, pl->n);
+		ft_game_draw_walls(x, pl, WALL_BOTT, pl->n);
 		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]);
 	}
 	else
 	{
-		draw_walls(x, pl, WALL_FULL, pl->n);
-		draw_graffiti(x, pl, WALL_FULL, 12);
+		ft_game_draw_walls(x, pl, WALL_FULL, pl->n);
+		ft_game_draw_graffiti(x, pl, WALL_FULL, 12);
 	}
 }
 
 /*
 ** **************************************************************************
-**	void engine_ceil_floor(t_new_player *pl, int neib)
+**	void ft_game_engine_ceil_floor(t_new_player *pl, int neib)
 **	Function to draw all needed lines
 ** **************************************************************************
 */
 
-void			engine_put_lines(t_new_player *pl, int neib)
+void			ft_game_engine_put_lines(t_new_player *pl, int neib)
 {
 	int	x;
 
@@ -118,7 +118,7 @@ void			engine_put_lines(t_new_player *pl, int neib)
 	pl->endx = (int)fmin((double)pl->x2, (double)pl->cycle.current->sx2);
 	x = pl->beginx;
 	while (++x <= pl->endx)
-		engine_ceil_floor(pl, x, neib);
+		ft_game_engine_ceil_floor(pl, x, neib);
 	if (neib >= 0 && pl->endx >= pl->beginx && (pl->cycle.head + MAX_QUEUE \
 		+ 1 - pl->cycle.tail) % MAX_QUEUE)
 	{

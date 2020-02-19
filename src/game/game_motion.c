@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_motion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/17 18:04:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:56:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	void motion_move_pl(float dx, float dy, t_new_player *pl)
+**	void ft_game_motion_move_pl(float dx, float dy, t_new_player *pl)
 **	Function to move player and update anglesin/anglecos/sector
 ** **************************************************************************
 */
 
-void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
+void		ft_game_motion_move_pl(t_new_xy *delt, t_new_player *pl)
 {
 	t_new_sector	*sect;
 	t_new_xy		pt;
@@ -31,7 +31,7 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 	res = -1;
 	while (++i < sect->npoints)
 	{
-		if ((res = motion_chk_sec(sect, delt, i, pl)) == -777)
+		if ((res = ft_game_motion_chk_sec(sect, delt, i, pl)) == -777)
 			continue ;
 		else if (res == -666)
 			return ;
@@ -52,7 +52,7 @@ void		motion_move_pl(t_new_xy *delt, t_new_player *pl)
 ** **************************************************************************
 */
 
-static int	motion_slide(t_new_player *pl, t_new_sector *sect, \
+static int	ft_game_motion_slide(t_new_player *pl, t_new_sector *sect, \
 	t_new_xy *vert, int i)
 {
 	float	wall_dx;
@@ -89,7 +89,7 @@ static int	motion_slide(t_new_player *pl, t_new_sector *sect, \
 ** **************************************************************************
 */
 
-void		motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
+void		ft_game_motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 {
 	int				i;
 	int				inter;
@@ -104,12 +104,12 @@ void		motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 	vert = sect->vertex;
 	while (++i < sect->npoints)
 	{
-		inter = intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy){\
+		inter = ft_game_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy){\
 		pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
-		point_side = pointside((t_new_xy){pl->pos.x + pl->velo.x, \
+		point_side = ft_game_pointside((t_new_xy){pl->pos.x + pl->velo.x, \
 		pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
 		if (inter && point_side < 0)
-			ot->moving = motion_slide(pl, sect, vert, i);
+			ot->moving = ft_game_motion_slide(pl, sect, vert, i);
 	}
-	motion_move_pl(&(t_new_xy){pl->velo.x, pl->velo.y}, pl);
+	ft_game_motion_move_pl(&(t_new_xy){pl->velo.x, pl->velo.y}, pl);
 }

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 14:50:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:56:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,50 +54,50 @@ typedef	struct		s_new_temp
 	t_new_wolf3d		w;
 }					t_new_temp;
 
-/*			but_detect.c			*/
-int			but_detect(t_new_player *pl);//return sec_nb of button
+/*			ft_game_but_detect.c			*/
+int			ft_game_but_detect(t_new_player *pl);//return sec_nb of button
 
 /*			but.c			*/
-void		but_total(t_new_player *pl);//create buttons array
-int			but_script(t_new_player *pl, int but_nb, t_new_sub_ev *se);//choose but task
+void		ft_game_but_total(t_new_player *pl);//create buttons array
+int			ft_game_but_script(t_new_player *pl, int but_nb, t_new_sub_ev *se);//choose but task
 
-/*			door_detect.c			*/
-int			door_detect(t_new_player *pl);//return sec_nb of door
+/*			ft_game_door_detect.c			*/
+int			ft_game_door_detect(t_new_player *pl);//return sec_nb of door
 
 /*			door.c			*/
-void		door_total(t_new_player *pl);
-void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se);//when you press E key or button
+void		ft_game_door_total(t_new_player *pl);
+void		ft_game_door_but_сlick(t_new_player *pl, t_new_sub_ev *se);//when you press E key or button
 void		door(t_new_player *pl, t_new_sub_ev *se);//cycle for open door
 
 /*			engine_exp.c			*/
-// int			engine_cross(t_new_player *pl, int sec_n, unsigned s);
-int			engine_cross(t_new_player *pl);
-void		engine_put_lines(t_new_player *pl, int neib);
+// int			ft_game_engine_cross(t_new_player *pl, int sec_n, unsigned s);
+int			ft_game_engine_cross(t_new_player *pl);
+void		ft_game_engine_put_lines(t_new_player *pl, int neib);
 
 /*			engine.c			*/
-void		engine_begin(t_new_player *pl);
-int			engine_scale(t_new_player *pl, int sx1, int sx2);
+void		ft_game_engine_begin(t_new_player *pl);
+int			ft_game_engine_scale(t_new_player *pl, int sx1, int sx2);
 
 /*			events_1.c			*/
 int			events(t_new_sub_ev *se, t_new_player *player);
 
 /*			events_2.c			*/
-void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl);
-void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot);
-void		events_jumps(t_new_sub_ev *se, t_new_player *pl, t_new_others *ot);
+void		ft_game_events_new_mouse_move(t_new_mouse *ms, t_new_player *pl);
+void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot);
+void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, t_new_others *ot);
 
 /*			load_file.c			*/
 t_new_player	*load_next(t_new_player *pl);
 void		load_file(char *ag, t_new_player *pl);
 
-/*			load_textures.c			*/
-t_new_texture	*load_textures(t_new_player *pl);
+/*			ft_game_load_textures.c			*/
+t_new_texture	*ft_game_load_textures(t_new_player *pl);
 void		texture_init(t_new_player *pl);
 SDL_Texture	*texture_new(t_new_player *pl);
 
 /*			main.c			*/
 int			main(int ac, char **ag);
-// void		player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n);
+// void		ft_game_player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n);
 void		line(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
 
 /*			math_functions.c			*/
@@ -106,20 +106,20 @@ float		max(float a, float b);
 float		clamp(float a, float mi, float ma);
 float		vxs(float x0, float y0, float x1, float y1);
 int			overlap(float a0, float a1, float b0, float b1);
-float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
+float		ft_game_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		MovePlayer(float dx, float dy, t_new_player *player);
 float		yaw(float y, float z, t_new_player *player);
 float		to_deg(float radians);
-t_new_xy	sum_vectors_xy(t_new_xy v0, t_new_xy v1);
+t_new_xy	ft_game_sum_vectors_xy(t_new_xy v0, t_new_xy v1);
 
 /*			motion.c			*/
-void		motion_chk(t_new_player *player, t_new_others *ot, \
+void		ft_game_motion_chk(t_new_player *player, t_new_others *ot, \
 			t_new_sub_ev *se);
-void		motion_move_pl(t_new_xy *delt, t_new_player *pl);
+void		ft_game_motion_move_pl(t_new_xy *delt, t_new_player *pl);
 
 /*			motion2.c			*/
-int			motion_chk_sec(t_new_sector *sect, t_new_xy *delt, \
+int			ft_game_motion_chk_sec(t_new_sector *sect, t_new_xy *delt, \
 			int i, t_new_player *pl);
 
 /*			sdl_addons.c			*/
@@ -128,7 +128,7 @@ void		ft_sdl_error();
 
 
 /*			texture_parser.c			*/
-t_new_texture	texture_parse(char *fp);
+t_new_texture	ft_game_texture_parse(char *fp);
 
 
 
@@ -156,51 +156,47 @@ void			ft_game_events(t_new_temp *data);
 void			ft_game_init(t_wolf3d *w, char *path);
 
 ///parse map for game
-void			ft_my_parse_map(t_new_player *pl, char *ag);
-void			ft_alloc_save_sectors(char *ag, t_new_player *pl);
-t_new_xy		*ft_vertex_save(t_new_player *pl, t_new_xy *vertex);
-void			ft_sector_save(t_new_player *pl, t_new_xy *vertex);
-void			ft_sector_count(t_new_player *pl);
-void				ft_vertex_count(t_new_player *pl);
-t_new_xy		*ft_malloc_sec_vertex(t_new_player *pl, char *v);
-void			ft_fill_the_sector(t_new_sector *sector, int number, \
+void			ft_game_my_parse_map(t_new_player *pl, char *ag);
+void			ft_game_malloc_save_sectors(char *ag, t_new_player *pl);
+t_new_xy		*ft_game_vertex_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_game_sector_save(t_new_player *pl, t_new_xy *vertex);
+void			ft_game_sector_count(t_new_player *pl);
+void				ft_game_vertex_count(t_new_player *pl);
+t_new_xy		*ft_game_malloc_sec_vertex(t_new_player *pl, char *v);
+void			ft_game_fill_the_sector(t_new_sector *sector, int number, \
 					t_file_read file, t_new_xy *vertex);
-void			ft_player_save(t_new_player *pl);
-void			player_init(t_new_player *pl, t_new_xy *v, int *n);
-void			ft_level_save(t_new_player *pl);
+void			ft_game_player_save(t_new_player *pl);
+void			ft_game_player_init(t_new_player *pl, t_new_xy *v, int *n);
+void			ft_game_level_save(t_new_player *pl);
 
 // texture.h
 void			draw_cur_pistol_sprite(t_gun *wpn, int width, int height, int cur_sprite, SDL_Surface *surface);
 void			load_pistol(t_gun *wpn);
 int				load_pistol_sprite(t_gun *wpn, int sprite_count);
 SDL_Surface		*load_pistol_part(int sprite);
-void			draw_pistol(t_gun *wpn, t_new_player *pl);
+void			ft_game_draw_pistol(t_gun *wpn, t_new_player *pl);
 //game walls.c
-void			draw_walls(int x, t_new_player *pl, int wall, int img);
-t_scaler		scalar_create(int a, int b, int c, int f);
-int				scr_nxt(t_scaler *i);
+void			ft_game_draw_walls(int x, t_new_player *pl, int wall, int img);
+t_scaler		ft_game_scalar_create(int a, int b, int c, int f);
+int				ft_game_scr_nxt(t_scaler *i);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
-void		pix1(t_new_player *pl, int img);
+void		ft_game_pix1(t_new_player *pl, int img);
 void        load_imgs(SDL_Surface *img[10]);//load images
-void    draw_ceil_floor(int x, t_new_player *pl);
+void    ft_game_draw_ceil_floor(int x, t_new_player *pl);
 
 // sky
 int			load_sky(t_new_player * pl);
-void		pix_sky(t_textures *t, t_new_player *pl);
+void		ft_game_pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
 Uint32				ft_rgb_to_hex( Uint32 r, Uint32 g, Uint32 b);
-void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
+void ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 
 void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
-void		ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
+void		ft_game_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
 
-Uint32		ft_color_struct_to_hex(t_new_color color);
-Uint32		ft_hex_transform(int color, float percent);
-
-
-int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
-float		pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
+int			ft_game_intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
+float		ft_game_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
 t_new_xy	intersect(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4);
 float		yaw(float y, float z, t_new_player *player);
 float		to_deg(float radians);

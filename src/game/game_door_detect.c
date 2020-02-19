@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_door_detect.c                                 :+:      :+:    :+:   */
+/*   game_ft_game_door_detect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	static int door_bool(int dist, float degree)
+**	static int ft_game_door_bool(int dist, float degree)
 **	Function to check angle between view vec and door center
 ** **************************************************************************
 */
 
-static int	door_bool(int dist, float degree)
+static int	ft_game_door_bool(int dist, float degree)
 {
 	degree = (int)degree % 360;
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
@@ -42,7 +42,7 @@ static int	door_bool(int dist, float degree)
 ** **************************************************************************
 */
 
-static int	door_vert_find(t_new_player *pl, t_vector3 *vec, int s_nb)
+static int	ft_game_door_vert_find(t_new_player *pl, t_vector3 *vec, int s_nb)
 {
 	int	dist;
 	int	tmp_dist;
@@ -73,24 +73,24 @@ static int	door_vert_find(t_new_player *pl, t_vector3 *vec, int s_nb)
 
 /*
 ** **************************************************************************
-**	static int door_dist(t_vector3 vec1, t_vector3 vec2)
+**	static int ft_game_door_dist(t_vector3 vec1, t_vector3 vec2)
 **	Function to define distance to door
 ** **************************************************************************
 */
 
-static int	door_dist(t_new_player *pl, int s_nb)
+static int	ft_game_door_dist(t_new_player *pl, int s_nb)
 {
 	t_vector3	vec;
 	t_vector3	vec2;
 	int			tmp_dist;
 
 	tmp_dist = 6;
-	tmp_dist = door_vert_find(pl, &vec, s_nb);
+	tmp_dist = ft_game_door_vert_find(pl, &vec, s_nb);
 	vec2.x = pl->anglecos;
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	if (door_bool(tmp_dist, to_deg(acos(ft_vec2_cos(vec, vec2)))) == -1)
+	if (ft_game_door_bool(tmp_dist, to_deg(acos(ft_vec2_cos(vec, vec2)))) == -1)
 		return (6);
 	return (tmp_dist);
 }
@@ -102,7 +102,7 @@ static int	door_dist(t_new_player *pl, int s_nb)
 ** **************************************************************************
 */
 
-int			door_detect(t_new_player *pl)
+int			ft_game_door_detect(t_new_player *pl)
 {
 	int	i;
 	int	s_nb;
@@ -121,7 +121,7 @@ int			door_detect(t_new_player *pl)
 		if ((pl->sectors[pl->sector].neighbors[i] >= 0) && \
 		(!pl->sectors[s_nb].floor && !pl->sectors[s_nb].ceil))
 		{
-			tmp_dist = door_dist(pl, s_nb);
+			tmp_dist = ft_game_door_dist(pl, s_nb);
 			if ((tmp_dist <= dist) && (door_sec_nb = s_nb))
 				dist = tmp_dist;
 		}

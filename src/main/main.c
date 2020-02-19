@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 18:50:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:26:48 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_main(int c, char **v)
 	ft_editor_gui_init(&w);
 	ft_game_init(&w, v[1]);
 	ft_gui_redraw(&w);
-	data.pl->tex = load_textures(data.pl);
+	data.pl->tex = ft_game_load_textures(data.pl);
 	fpsinit();
 	while (w.sdl->running)
 	{

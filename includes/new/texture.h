@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/17 18:21:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:43:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 
 
-typedef struct s_draw_gun
+typedef struct s_fdraw_gun
 {
 	unsigned int		x;
 	unsigned int		y;
@@ -72,11 +72,11 @@ typedef struct		s_new_color
 	u_int8_t		g;
 	u_int8_t		b;
 	u_int8_t		a;
-}					t_new_color;
+}					t_color;
 
 typedef struct		s_new_texture
 {
-	t_new_color		*pixels;
+	t_color		*pixels;
 	unsigned int	w;
 	unsigned int	h;
 }					t_new_texture;
