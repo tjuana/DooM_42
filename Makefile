@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/19 19:50:20 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/19 20:55:39 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ GUI_NAME = gui_test
 # Сompiler settings
 CC = gcc
 FLAGS_NORME = -Wall -Wextra -Werror
-FLAGS = -g -O3 -O0 -march=native -m64 -flto -funroll-loops -Ofast #$(FLAGS_NORME)
+FLAGS = -g -O3 -O0  #$(FLAGS_NORME)
 
 # SDL2 settings
 USERNAME = $(shell whoami)
