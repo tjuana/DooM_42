@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 17:56:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:26:12 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static int	ft_game_motion_chk_next_sec(t_new_xy *delt, t_new_player *pl, int sec
 	vert = sect_next->vertex;
 	while (++i < sect_next->npoints)
 	{
-		inter = ft_game_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy)\
+		inter = ft_math_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy)\
 		{pl->pos.x + delt->x, pl->pos.y + delt->y}, vert[i], vert[i + 1]);
-		point_side = ft_game_pointside((t_new_xy){pl->pos.x + delt->x, pl->pos.y + \
+		point_side = ft_math_pointside((t_new_xy){pl->pos.x + delt->x, pl->pos.y + \
 		delt->y}, vert[i], vert[i + 1]);
 		if (sect_next->neighbors[i] >= 0 && \
 		pl->sectors[sec_nb].floor - pl->pos.z > -4)
@@ -63,9 +63,9 @@ t_new_xy *delt, int i, t_new_player *pl)
 	int				inter;
 
 	vert = sect->vertex;
-	inter = ft_game_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy)\
+	inter = ft_math_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy)\
 	{pl->pos.x + delt->x, pl->pos.y + delt->y}, vert[i], vert[i + 1]);
-	point_side = ft_game_pointside((t_new_xy){pl->pos.x + delt->x, pl->pos.y + \
+	point_side = ft_math_pointside((t_new_xy){pl->pos.x + delt->x, pl->pos.y + \
 	delt->y}, vert[i], vert[i + 1]);
 	if (sect->neighbors[i] < 0 && inter && point_side < 0)
 		return (-666);

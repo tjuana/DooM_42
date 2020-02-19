@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 17:43:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:27:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,6 @@ typedef struct s_textures
 	int y;
 }               t_textures;
 
-
-typedef struct		s_new_color
-{
-	u_int8_t		r;
-	u_int8_t		g;
-	u_int8_t		b;
-	u_int8_t		a;
-}					t_color;
 
 typedef struct		s_new_texture
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:17 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 17:50:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 18:25:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ typedef struct	s_new_tmp_trio //sectorno, sx1, sx2;
     int	sx1;
     int	sx2;
 }				t_new_tmp_trio;
+
+// ---
 typedef struct	s_new_xy
 {
     double	x;
     double	y;
 }				t_new_xy;
 
+// ---
 typedef struct	s_new_xyz
 {
     float	x;

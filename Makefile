@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/19 17:44:30 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/19 18:31:03 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,10 @@ algebra_matrix.c \
 algebra_vectors_1.c \
 algebra_vectors_2.c \
 algebra_vectors_3.c \
-algebra_vectors_func.c
+algebra_vectors_func.c \
+algebra_math_1.c \
+algebra_math_2.c \
+algebra_math_3.c
 
 ALGEBRA_OBJS_DIRECTORY = $(OBJS_PATH)
 ALGEBRA_OBJS_LIST = $(patsubst %.c, %.o, $(ALGEBRA_LIST))
@@ -195,7 +198,7 @@ game_but.c \
 game_but_detect.c \
 game_door.c \
 game_door_detect.c \
-game_engine.c \
+game_engine_1.c \
 game_engine_2.c \
 game_engine_cross.c \
 game_events_1.c \
@@ -204,17 +207,15 @@ game_gun.c \
 game_load_file.c \
 game_load_textures.c \
 game_main.c \
-game_map_parse.c \
+game_map_parse_1.c \
 game_map_parse_2.c \
-game_motion.c \
+game_map_parse_3.c \
+game_motion_1.c \
 game_motion_2.c \
 game_sdl_addons.c \
 game_texture_parser.c \
 game_textures.c \
-game_walls.c \
-game_math_functions.c \
-game_math_functions2.c \
-game_math_functions3.c 
+game_walls.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

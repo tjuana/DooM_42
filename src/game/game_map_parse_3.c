@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_math_functions3.c                             :+:      :+:    :+:   */
+/*   game_map_parse_3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 17:21:37 by dorange-         ###   ########.fr       */
+/*   Created: 2020/02/16 15:44:06 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/19 18:31:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_new_xy	ft_game_sum_vectors_xy(t_new_xy v0, t_new_xy v1)
+// [deprecated function]
+void	ft_game_check_ver_nei(int v_c, t_file_read file)
 {
-	t_new_xy result;
-
-	result.x = v0.x + v1.x;
-	result.y = v0.y + v1.y;
-	return (result);
+	if ((v_c / 2) != file.tmp[file.count_sectors2])
+		ft_error("BAD NEIGHBOUR");
 }

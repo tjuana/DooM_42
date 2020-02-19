@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_engine.c                                      :+:      :+:    :+:   */
+/*   game_engine_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 17:36:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:29:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,22 @@ int			ft_game_engine_scale(t_new_player *pl, int sx1, int sx2)
 	pl->scale_2.y = vfov / pl->t2.y;
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
-	pl->ceil.y1a = WIN_H / 2 - (int)(yaw(pl->ceil.yceil, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->floor.y1b = WIN_H / 2 - (int)(yaw(pl->floor.yfloor, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->ceil.y2a = WIN_H / 2 - (int)(yaw(pl->ceil.yceil, \
-	pl->t2.y, pl) * pl->scale_2.y);
-	pl->floor.y2b = WIN_H / 2 - (int)(yaw(pl->floor.yfloor, \
-	pl->t2.y, pl) * pl->scale_2.y);
-	pl->ceil.ny1a = WIN_H / 2 - (int)(yaw(pl->ceil.nyceil, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->floor.ny1b = WIN_H / 2 - (int)(yaw(pl->floor.nyfloor, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->ceil.ny2a = WIN_H / 2 - (int)(yaw(pl->ceil.nyceil, \
-	pl->t2.y, pl) * pl->scale_2.y);
-	pl->floor.ny2b = WIN_H / 2 - (int)(yaw(pl->floor.nyfloor, \
-	pl->t2.y, pl) * pl->scale_2.y);
+	pl->ceil.y1a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.yceil, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->floor.y1b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.yfloor, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->ceil.y2a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.yceil, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
+	pl->floor.y2b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.yfloor, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
+	pl->ceil.ny1a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.nyceil, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->floor.ny1b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.nyfloor, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->ceil.ny2a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.nyceil, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
+	pl->floor.ny2b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.nyfloor, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
 	if (pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
 		return (0);
 	return (1);

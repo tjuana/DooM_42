@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 17:54:43 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:21:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static	void	ft_game_operation_cero(int x, t_new_player *pl)
 		(x - pl->x1) * pl->t1.y));
 	pl->floor.ya = (x - pl->x1) * (pl->ceil.y2a - pl->ceil.y1a) / (pl->x2\
 		- pl->x1) + pl->ceil.y1a;
-	pl->ceil.cya = clamp(pl->floor.ya, pl->y_top[x], pl->y_bot[x]);
+	pl->ceil.cya = ft_math_clamp(pl->floor.ya, pl->y_top[x], pl->y_bot[x]);
 	pl->floor.yb = (x - pl->x1) * (pl->floor.y2b - pl->floor.y1b) / (pl->x2\
 		- pl->x1) + pl->floor.y1b;
-	pl->ceil.cyb = clamp(pl->floor.yb, pl->y_top[x], pl->y_bot[x]);
+	pl->ceil.cyb = ft_math_clamp(pl->floor.yb, pl->y_top[x], pl->y_bot[x]);
 }
 
 void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
@@ -45,10 +45,10 @@ void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 	{
 		pl->floor.nya = (x - pl->x1) * (pl->ceil.ny2a - pl->ceil.ny1a) /\
 		(pl->x2 - pl->x1) + pl->ceil.ny1a;
-		pl->ceil.cnya = clamp(pl->floor.nya, pl->y_top[x], pl->y_bot[x]);
+		pl->ceil.cnya = ft_math_clamp(pl->floor.nya, pl->y_top[x], pl->y_bot[x]);
 		pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b)\
 		/ (pl->x2 - pl->x1) + pl->floor.ny1b;
-		pl->ceil.cnyb = clamp(pl->floor.nyb, pl->y_top[x], pl->y_bot[x]);
+		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, pl->y_top[x], pl->y_bot[x]);
 	}
 }
 
@@ -91,10 +91,10 @@ static void		ft_game_engine_ceil_floor(t_new_player *pl, int x, int neib)
 	{
 		ft_game_engine_calcs(x, pl, 2);
 		ft_game_draw_walls(x, pl, WALL_TOP, pl->n);
-		pl->y_top[x] = clamp(max(pl->ceil.cya, pl->ceil.cnya),\
+		pl->y_top[x] = ft_math_clamp(ft_math_max(pl->ceil.cya, pl->ceil.cnya),\
 		pl->y_top[x], WIN_H - 1);
 		ft_game_draw_walls(x, pl, WALL_BOTT, pl->n);
-		pl->y_bot[x] = clamp(min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]);
+		pl->y_bot[x] = ft_math_clamp(ft_math_min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]);
 	}
 	else
 	{
@@ -114,8 +114,8 @@ void			ft_game_engine_put_lines(t_new_player *pl, int neib)
 {
 	int	x;
 
-	pl->beginx = (int)fmax((double)pl->x1, (double)pl->cycle.current->sx1);
-	pl->endx = (int)fmin((double)pl->x2, (double)pl->cycle.current->sx2);
+	pl->beginx = (int)fft_math_max((double)pl->x1, (double)pl->cycle.current->sx1);
+	pl->endx = (int)fft_math_min((double)pl->x2, (double)pl->cycle.current->sx2);
 	x = pl->beginx;
 	while (++x <= pl->endx)
 		ft_game_engine_ceil_floor(pl, x, neib);

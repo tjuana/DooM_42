@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 17:56:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:26:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,16 @@ int			main(int ac, char **ag);
 void		line(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
 
 /*			math_functions.c			*/
-float		min(float a, float b);
-float		max(float a, float b);
-float		clamp(float a, float mi, float ma);
-float		vxs(float x0, float y0, float x1, float y1);
-int			overlap(float a0, float a1, float b0, float b1);
-float		ft_game_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
+float		ft_math_min(float a, float b);
+float		ft_math_max(float a, float b);
+float		ft_math_clamp(float a, float mi, float ma);
+int			ft_math_overlap(float a0, float a1, float b0, float b1);
+float		ft_math_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		MovePlayer(float dx, float dy, t_new_player *player);
-float		yaw(float y, float z, t_new_player *player);
-float		to_deg(float radians);
-t_new_xy	ft_game_sum_vectors_xy(t_new_xy v0, t_new_xy v1);
+float		ft_math_yaw(float y, float z, float yaw);
+float		ft_math_to_deg(float radians);
+t_new_xy	ft_math_sum_vectors_xy(t_new_xy v0, t_new_xy v1);
 
 /*			motion.c			*/
 void		ft_game_motion_chk(t_new_player *player, t_new_others *ot, \
@@ -195,11 +194,10 @@ void ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
 void		ft_game_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
 
-int			ft_game_intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
-float		ft_game_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
-t_new_xy	intersect(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4);
-float		yaw(float y, float z, t_new_player *player);
-float		to_deg(float radians);
+int			ft_math_intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
+float		ft_math_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
+t_new_xy	ft_math_intersect(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4);
+float		ft_math_to_deg(float radians);
 
 t_new_player	*reload(t_new_player *pl);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_motion.c                                      :+:      :+:    :+:   */
+/*   game_motion_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 17:56:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:29:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ static int	ft_game_motion_slide(t_new_player *pl, t_new_sector *sect, \
 	pl->hole.y = -1000;
 	if (sect->neighbors[i] >= 0)
 	{
-		pl->hole.x = max(sect->floor, \
+		pl->hole.x = ft_math_max(sect->floor, \
 		pl->sectors[sect->neighbors[i]].floor);
-		pl->hole.y = min(sect->ceil, \
+		pl->hole.y = ft_math_min(sect->ceil, \
 		pl->sectors[sect->neighbors[i]].ceil);
 	}
 	if ((pl->hole.y < pl->pos.z + HEAD_H || \
@@ -104,9 +104,9 @@ void		ft_game_motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 	vert = sect->vertex;
 	while (++i < sect->npoints)
 	{
-		inter = ft_game_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy){\
+		inter = ft_math_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy){\
 		pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
-		point_side = ft_game_pointside((t_new_xy){pl->pos.x + pl->velo.x, \
+		point_side = ft_math_pointside((t_new_xy){pl->pos.x + pl->velo.x, \
 		pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
 		if (inter && point_side < 0)
 			ot->moving = ft_game_motion_slide(pl, sect, vert, i);

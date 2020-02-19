@@ -85,10 +85,10 @@ int				ft_game_engine_cross(t_new_player *pl)
 	{
 		pl->near_point.x = pl->near_point.x * (-1);
 		pl->far_point.x = pl->far_point.x * (-1);
-		i1 = intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
+		i1 = ft_math_intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
 		pl->near_point.x = pl->near_point.x * (-1);
 		pl->far_point.x = pl->far_point.x * (-1);
-		i2 = intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
+		i2 = ft_math_intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
 		if (i1.y < 0 && i2.y < 0)
 			return (0);
 		ft_game_engine_cross2(pl, i1, i2);

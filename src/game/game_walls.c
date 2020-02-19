@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 17:54:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:21:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ static void	ft_game_draw_limits_for_walls(int wall_type, t_new_player *pl, int n
 	pl->ty = ft_game_scalar_create(pl->floor.ya, pl->y1, pl->floor.yb,\
 	pl->tex[n].w - 1);
 	pl->y = pl->y1;
-	pl->y1 = clamp(pl->y1, 0, WIN_H - 1);
-	pl->y2 = clamp(pl->y2, 0, WIN_H - 1);
+	pl->y1 = ft_math_clamp(pl->y1, 0, WIN_H - 1);
+	pl->y2 = ft_math_clamp(pl->y2, 0, WIN_H - 1);
 }
 
 /*

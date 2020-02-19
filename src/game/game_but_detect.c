@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:13:51 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 18:02:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:29:08 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static int	ft_game_but_bool(int dist, float degree, float yaw)
 	if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
-	((to_deg(yaw) < 100) && (to_deg(yaw) > 0)))
+	((ft_math_to_deg(yaw) < 100) && (ft_math_to_deg(yaw) > 0)))
 		return (dist);
 	else if ((degree >= 0) && (degree < 125) && (dist == 0))
 		return (dist);
 	else if ((degree >= 0) && (degree < 15) && (dist == 1) && \
-	((to_deg(yaw) > -100) && (to_deg(yaw) <= 0)))
+	((ft_math_to_deg(yaw) > -100) && (ft_math_to_deg(yaw) <= 0)))
 		return (dist);
 	return (-1);
 }
@@ -58,7 +58,7 @@ static int	ft_game_but_dist(t_new_player *pl, int s_nb)
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	if (ft_game_but_bool(tmp_dist, to_deg(acos(ft_vec2_cos(vec, vec2))), pl->yaw) == -1)
+	if (ft_game_but_bool(tmp_dist, ft_math_to_deg(acos(ft_vec2_cos(vec, vec2))), pl->yaw) == -1)
 		return (3);
 	return (tmp_dist);
 }

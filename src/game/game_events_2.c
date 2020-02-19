@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 17:30:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:21:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void		ft_game_events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
 	SDL_GetRelativeMouseState(&ms->x, &ms->y);
 	SDL_SetRelativeMouseMode(1);
 	pl->angle += ms->x * 0.03f;
-	ms->yaw = clamp(ms->yaw + ms->y * 0.05f, -5, 5);
+	ms->yaw = ft_math_clamp(ms->yaw + ms->y * 0.05f, -5, 5);
 	pl->yaw = ms->yaw - pl->velo.z * 0.5f;
 	pl->anglesin = sinf(pl->angle);
 	pl->anglecos = cosf(pl->angle);
