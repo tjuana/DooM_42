@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 18:59:53 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 18:21:10 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ typedef	struct			s_gun
 	int					pistol_sprite[6][128][128];
 	int					type;
 	double				sprite_counter;
-	int                 w;
-	int                 h;
+	int					w;
+	int					h;
 }						t_gun;
 
 

@@ -5,53 +5,11 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "gcc build and debug active file",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/maps/bugmap"],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			//"preLaunchTask": "gcc build active file"
-		},
-		{
-			"name": "debug doom_nukem with new map",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceRoot}/doom_nukem",
-			//"args": ["${workspaceRoot}/maps/map.txt"],
-			"args": ["${workspaceRoot}/maps/c11"],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			//"preLaunchTask": "gcc build active file"
-		},
-		{
-			"name": "debug doom",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceRoot}/doom_nukem",
-			//"args": ["${workspaceRoot}/maps/map.txt"],
-			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
-			"args": ["${workspaceRoot}/maps/test"],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			"preLaunchTask": "gcc build active file"
-		},
-		{
 			"name": "debug doom (without args)",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			// "args": [],
+			"args": ["${workspaceRoot}/maps/c11"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
 			// "args": [],
 			"stopAtEntry": false,
@@ -61,33 +19,5 @@
 			"MIMode": "lldb",
 			"preLaunchTask": "gcc build active file"
 		},
-		{
-			"name": "debug editor",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceRoot}/map_editor",
-			//"args": ["${workspaceRoot}/maps/map.txt"],
-			// "args": ["${workspaceRoot}/maps/new_template.nnmp"],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			"preLaunchTask": "gcc build active file"
-		},
-		{
-			"name": "debug gui",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceRoot}/a.out",
-			//"args": ["${workspaceRoot}/maps/map.txt"],
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			"preLaunchTask": "gcc build active file"
-		}
 	]
 }

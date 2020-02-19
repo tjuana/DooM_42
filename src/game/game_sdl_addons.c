@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 19:31:48 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 13:13:12 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void		ft_sdl_error(t_sdl *sdl)
 	"Couldn't create window and renderer: %s", SDL_GetError());
 	if (sdl->text)
 		SDL_DestroyTexture(sdl->text);
-	if (sdl->srf)
-		SDL_FreeSurface(sdl->srf);
 	if (sdl->renderer)
 		SDL_DestroyRenderer(sdl->renderer);
 	if (sdl->win)
 		SDL_DestroyWindow(sdl->win);
 	free(sdl);
 	IMG_Quit();
+	Mix_CloseAudio();
 	SDL_Quit();
+	system("osascript -e \'display notification\"In terminal log of error\" with title \"SDL, bro!\"\'");
 	exit(EXIT_FAILURE);
 }

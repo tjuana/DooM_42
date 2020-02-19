@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/18 20:27:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:50:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "SDL2/SDL_thread.h"
 # include "SDL2/SDL_ttf.h"
 # include "SDL2/SDL_image.h"
+# include "SDL2/SDL_mixer.h"
 # include <pthread.h>
 # include <string.h>
 # include <stdio.h>
@@ -178,7 +179,6 @@ void			draw_pistol(t_gun *wpn, t_new_player *pl);
 void			draw_walls(int x, t_new_player *pl, int wall, int img);
 t_scaler		scalar_create(int a, int b, int c, int f);
 int				scr_nxt(t_scaler *i);
-int			ft_hex_transform(int color, float percent);
 int			ft_get_pixel(SDL_Surface *sur, int x, int y);
 void		pix1(t_new_player *pl, int img);
 void        load_imgs(SDL_Surface *img[10]);//load images
@@ -189,13 +189,14 @@ int			load_sky(t_new_player * pl);
 void		pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
-int				ft_rgb_to_hex( int r, int g, int b);
+Uint32				ft_rgb_to_hex( Uint32 r, Uint32 g, Uint32 b);
 void draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 
 void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
 void		ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
 
-int		ft_color_struct_to_hex(t_new_color color);
+Uint32		ft_color_struct_to_hex(t_new_color color);
+Uint32		ft_hex_transform(int color, float percent);
 
 
 int			intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);

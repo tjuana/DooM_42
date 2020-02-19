@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/16 14:09:56 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/19 14:36:52 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ GUI_NAME = gui_test
 
 # Сompiler settings
 CC = gcc
-FLAGS = -g -O3 -O0
+FLAGS = -g -O3 -O0 -march=native -m64 -flto -funroll-loops -Ofast -Wall -Wextra -Werror
 
 # SDL2 settings
 USERNAME = $(shell whoami)
@@ -36,7 +36,8 @@ LIBRARIES = \
 -lft -L$(LIBFT_DIRECTORY)\
 -lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib \
 -lSDL2_ttf -L/Users/$(USERNAME)/.brew/Cellar/sdl2_ttf/2.0.15/lib \
--lSDL2_image -L/Users/$(USERNAME)/.brew/Cellar/sdl2_image/2.0.5/lib
+-lSDL2_image -L/Users/$(USERNAME)/.brew/Cellar/sdl2_image/2.0.5/lib \
+-lSDL2_mixer -L/Users/$(USERNAME)/.brew/Cellar/sdl2_mixer/2.0.4/lib 
 
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(SDL_HEADERS)
 

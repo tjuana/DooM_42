@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:14 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 19:09:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/17 18:37:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	pix1(t_new_player *pl, int img)
 
 void	pix_sky(t_textures *t, t_new_player *pl)
 {
-	int				hex;
+	Uint32			hex;
 	unsigned int	p;
 
 	p = (t->y % pl->tex[SKY].h) * pl->tex[SKY].w + (t->x % pl->tex[SKY].w);
@@ -60,7 +60,7 @@ void	pix_sky(t_textures *t, t_new_player *pl)
 void	ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img)
 {
 	unsigned		txty;
-	int				hex;
+	Uint32			hex;
 	unsigned int	p;
 
 	txty = scr_nxt(&pl->ty);
@@ -87,7 +87,7 @@ void	ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, \
 {
 	unsigned		txty;
 	unsigned int	p;
-	int				hex;
+	Uint32			hex;
 
 	txty = -(scr_nxt(&pl->ty) + 220);
 	p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);

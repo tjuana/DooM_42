@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/18 18:26:48 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:50:47 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 */
 # define WIN_WIDTH				1280
 # define WIN_HEIGHT				720
-# define VER_WIDTH				100
-# define VER_HEIGHT				100
-# define SECTORS				777
+# define VER_WIDTH				500
+# define VER_HEIGHT				500
+# define SECTORS				1900
+# define VOLUME					77
 /*
 ** **************************************************************************
 **	Mode

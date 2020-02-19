@@ -45,6 +45,9 @@
 		"sstream": "c",
 		"cstdlib": "c",
 		"complex": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"string.h": "c",
+		"pthread.h": "c",
+		"sdl_image.h": "c"
 	},
 }

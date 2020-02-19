@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 16:51:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/18 18:50:18 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_main(int c, char **v)
 	data.pl = (t_new_player *)ft_my_malloc(sizeof(t_new_player));
 	w.new_data = &data;
 	w.sdl = sdl_init(w.sdl);
-	ft_init_wolf(&w);
 	ft_gui_init(&w);
 	ft_editor_init(&w);
 	ft_main_gui_init(&w);
@@ -37,11 +36,11 @@ void	ft_main(int c, char **v)
 	ft_game_init(&w, v[1]);
 	ft_gui_redraw(&w);
 	data.pl->tex = load_textures(data.pl);
-	// fpsinit();
+	fpsinit();
 	while (w.sdl->running)
 	{
 		ft_main_events(&w);
-		// fpsthink();
+		fpsthink();
 	}
 	ft_editor_desctuct(&w);
 }

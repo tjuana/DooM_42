@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/18 20:25:48 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:49:49 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		ft_vertex_count(t_new_player *pl)
 void		ft_sector_count(t_new_player *pl)
 {
 	int		count;
-	char	*s;
 
 	pl->file.count_sector_vertex = 0;
 	count = 3;
@@ -67,6 +66,8 @@ void		ft_sector_count(t_new_player *pl)
 	}
 	pl->file.count_sector_vertex /= 2;
 	pl->file.count_sectors++;
+	if (pl->file.count_sectors > SECTORS)
+		ft_error("Too many sectors");
 	pl->file.tmp[pl->file.count_sectors] = pl->file.count_sector_vertex;
 	if (pl->file.split)
 		ft_2arrclean(&pl->file.split);

@@ -81,6 +81,6 @@ void fpsthink() {
         framespersecond = 1000.f / framespersecond;
 
 		if (framespersecond != INFINITY)
-			printf("%f\n", framespersecond);
+			printf("ebanoe fps:====%f\n", framespersecond);
 
 }

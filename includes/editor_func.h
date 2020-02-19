@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:42:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:40:11 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,10 +361,7 @@ void				ft_sector_num_vertex(t_list *ptr_list, \
 **	editor/editor_save_file2.c
 ** **************************************************************************
 */
-static char			*ft_str_vertex(int i);
-static char			*ft_space(int k, int j);
 void				ft_print_to_file(t_wolf3d *w, int f);
-static char			*ft_my_join_baby(int height, int floor);
 void				ft_print_sectors_to_file(t_wolf3d *w, t_list *list);
 
 /*
@@ -372,7 +369,6 @@ void				ft_print_sectors_to_file(t_wolf3d *w, t_list *list);
 **	editor/editor_save_file3.c
 ** **************************************************************************
 */
-static char			*ft_space_only_join(int j);
 void				ft_player_string(t_wolf3d *w);
 void				ft_save_neighbour(t_sector *sector, int fd);
 void				ft_free_mf(t_wolf3d *w);
