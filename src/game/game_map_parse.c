@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 14:49:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:13:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		ft_sector_count(t_new_player *pl)
 	if (pl->file.count_sectors > SECTORS)
 		ft_error("Too many sectors");
 	pl->file.tmp[pl->file.count_sectors] = pl->file.count_sector_vertex;
-	if (pl->file.split)
+	if (&pl->file.split[0])
 		ft_2arrclean(&pl->file.split);
 }
 
