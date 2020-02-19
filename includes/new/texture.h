@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 20:06:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 21:32:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@
 # define WALL_TOP	0
 # define WALL_BOTT	1
 
+/*
+** **************************************************************************
+**	t_draw_gun
+**
+**	Structure for draw gun.
+**
+**	Arguments:
+**	unsigned int x		|
+**	unsigned int y		|
+**	int x_img			|
+**	float x_num			|
+**	float y_num			|
+**	unsigned int p		|
+**	unsigned int hex	|
+** **************************************************************************
+*/
 typedef struct			s_draw_gun
 {
 	unsigned int		x;
@@ -50,6 +66,22 @@ typedef struct			s_draw_gun
 	unsigned int		hex;
 }						t_draw_gun;
 
+/*
+** **************************************************************************
+**	t_new_texture
+**
+**	Structure for texture.
+**
+**	Arguments:
+**	float hei			|
+**	float mapx			|
+**	float mapz			|
+**	unsigned int txtx1	|
+**	unsigned int txtz	|
+**	int x				|
+**	int y				|
+** **************************************************************************
+*/
 typedef struct			s_textures
 {
 	float				hei;
@@ -61,7 +93,18 @@ typedef struct			s_textures
 	int					y;
 }						t_textures;
 
-
+/*
+** **************************************************************************
+**	t_new_texture
+**
+**	Structure for texture.
+**
+**	Arguments:
+**	t_color *pixels		|
+**	unsigned int w		|
+**	unsigned int h		|
+** **************************************************************************
+*/
 typedef struct			s_new_texture
 {
 	t_color				*pixels;
@@ -69,6 +112,20 @@ typedef struct			s_new_texture
 	unsigned int		h;
 }						t_new_texture;
 
+/*
+** **************************************************************************
+**	t_gun
+**
+**	Structure for gun.
+**
+**	Arguments:
+**	int pistol_sprite[6][128][128]	|
+**	int type						|
+**	double sprite_counter			|
+**	int w							|
+**	int h							|
+** **************************************************************************
+*/
 typedef	struct			s_gun
 {
 	int					pistol_sprite[6][128][128];
@@ -78,6 +135,20 @@ typedef	struct			s_gun
 	int					h;
 }						t_gun;
 
+/*
+** **************************************************************************
+**	t_scaler
+**
+**	Structure for scaler.
+**
+**	Arguments:
+**	int result	|
+**	int bop		|
+**	int fd		|
+**	int ca		|
+**	int cache	|
+** **************************************************************************
+*/
 typedef struct			s_scaler
 {
 	int					result;

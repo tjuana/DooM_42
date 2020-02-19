@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:13:40 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 21:02:04 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "SDL2/SDL_ttf.h"
 # include "SDL2/SDL_image.h"
 # include "SDL2/SDL_mixer.h"
+
 # include <pthread.h>
 # include <string.h>
 # include <stdio.h>
@@ -27,8 +28,8 @@
 # include <string.h>
 # include <libft.h>
 # include <sys/stat.h>
+
 # include "constants.h"
-# include "help.h"
 # include "engine.h"
 # include "events.h"
 # include "door.h"
