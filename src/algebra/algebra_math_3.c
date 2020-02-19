@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 18:26:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:58:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 /*
 ** **************************************************************************
-**	t_new_xy ft_math_sum_vectors_xy(t_new_xy v0, t_new_xy v1)
+**	t_vector3 ft_math_sum_vectors_xy(t_vector3 v0, t_vector3 v1)
 ** **************************************************************************
 */
 
-t_new_xy	ft_math_sum_vectors_xy(t_new_xy v0, t_new_xy v1)
+t_vector3	ft_math_sum_vectors_xy(t_vector3 v0, t_vector3 v1)
 {
-	t_new_xy result;
+	t_vector3 result;
 
 	result.x = v0.x + v1.x;
 	result.y = v0.y + v1.y;

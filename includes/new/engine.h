@@ -18,7 +18,7 @@ typedef struct	s_new_sector//have to be static
 {
     float		floor;//floor height
 	float		ceil;//ceil height
-    t_new_xy		*vertex; //here stored all sector vertexes.
+    t_vector3		*vertex; //here stored all sector vertexes.
     signed char	*neighbors;// Each edge may have a corresponding neighboring sector
     int			npoints;// How many vertexes there are
 }				t_new_sector;//*sectors = NULL;
@@ -26,9 +26,9 @@ typedef struct	s_new_sector//have to be static
 /*typedef struct s_new_sect_ops
 {
 	const t_new_sector	*sect;
-    const t_new_xy		*vert;
-    t_new_xy 			p;
-    t_new_xy			d;
+    const t_vector3		*vert;
+    t_vector3 			p;
+    t_vector3			d;
     float			px;
     float			dx;
     float			py;
@@ -36,7 +36,7 @@ typedef struct	s_new_sector//have to be static
     float			eye_h;
     float			hole_low;
     float			hole_high;
-	t_new_xy		dir_vec;
+	t_vector3		dir_vec;
     //float			xd;
     //float			yd;
 }					t_new_sect_ops;*/

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 18:26:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:10:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,13 @@
 # include "player.h"
 # include "sky.h"
 
-typedef struct	s_new_wolf3d
-{	
-	SDL_Surface	*weapon_texture;
-	t_new_anime		anim;
-	int			*tex_col;
-	int			color;
-}				t_new_wolf3d;
-
-typedef	struct		s_new_temp
+typedef	struct			s_new_temp
 {
     t_new_sub_ev		se;
     t_new_mouse			ms;
     t_new_player		*pl;
     t_new_others		ot;
-	t_new_wolf3d		w;
-}					t_new_temp;
+}						t_new_temp;
 
 /*			ft_game_but_detect.c			*/
 int			ft_game_but_detect(t_new_player *pl);//return sec_nb of button
@@ -97,7 +88,7 @@ SDL_Texture	*texture_new(t_new_player *pl);
 
 /*			main.c			*/
 int			main(int ac, char **ag);
-// void		ft_game_player_init(t_new_player *pl, t_new_xy *v, float *angle, int *n);
+// void		ft_game_player_init(t_new_player *pl, t_vector3 *v, float *angle, int *n);
 void		line(int x, int y1,int y2, int top,int middle,int bottom, t_new_player *pl);
 
 /*			math_functions.c			*/
@@ -105,20 +96,20 @@ float		ft_math_min(float a, float b);
 float		ft_math_max(float a, float b);
 float		ft_math_clamp(float a, float mi, float ma);
 int			ft_math_overlap(float a0, float a1, float b0, float b1);
-float		ft_math_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
+float		ft_math_pointside(t_vector3 p, t_vector3 v0, t_vector3 v1);
 float		Intersect_divider(float x1, float y1, float x2, float y2,float x3, float y3, float x4, float y4);
 void		MovePlayer(float dx, float dy, t_new_player *player);
 float		ft_math_yaw(float y, float z, float yaw);
 float		ft_math_to_deg(float radians);
-t_new_xy	ft_math_sum_vectors_xy(t_new_xy v0, t_new_xy v1);
+t_vector3	ft_math_sum_vectors_xy(t_vector3 v0, t_vector3 v1);
 
 /*			motion.c			*/
 void		ft_game_motion_chk(t_new_player *player, t_new_others *ot, \
 			t_new_sub_ev *se);
-void		ft_game_motion_move_pl(t_new_xy *delt, t_new_player *pl);
+void		ft_game_motion_move_pl(t_vector3 *delt, t_new_player *pl);
 
 /*			motion2.c			*/
-int			ft_game_motion_chk_sec(t_new_sector *sect, t_new_xy *delt, \
+int			ft_game_motion_chk_sec(t_new_sector *sect, t_vector3 *delt, \
 			int i, t_new_player *pl);
 
 /*			sdl_addons.c			*/
@@ -157,15 +148,15 @@ void			ft_game_init(t_wolf3d *w, char *path);
 ///parse map for game
 void			ft_game_my_parse_map(t_new_player *pl, char *ag);
 void			ft_game_malloc_save_sectors(char *ag, t_new_player *pl);
-t_new_xy		*ft_game_vertex_save(t_new_player *pl, t_new_xy *vertex);
-void			ft_game_sector_save(t_new_player *pl, t_new_xy *vertex);
+t_vector3		*ft_game_vertex_save(t_new_player *pl, t_vector3 *vertex);
+void			ft_game_sector_save(t_new_player *pl, t_vector3 *vertex);
 void			ft_game_sector_count(t_new_player *pl);
 void				ft_game_vertex_count(t_new_player *pl);
-t_new_xy		*ft_game_malloc_sec_vertex(t_new_player *pl, char *v);
+t_vector3		*ft_game_malloc_sec_vertex(t_new_player *pl, char *v);
 void			ft_game_fill_the_sector(t_new_sector *sector, int number, \
-					t_file_read file, t_new_xy *vertex);
+					t_file_read file, t_vector3 *vertex);
 void			ft_game_player_save(t_new_player *pl);
-void			ft_game_player_init(t_new_player *pl, t_new_xy *v, int *n);
+void			ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n);
 void			ft_game_level_save(t_new_player *pl);
 
 // texture.h
@@ -194,9 +185,9 @@ void ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
 void		ft_game_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
 
-int			ft_math_intersectbox(t_new_xy v0, t_new_xy v1, t_new_xy v2, t_new_xy v3);
-float		ft_math_pointside(t_new_xy p, t_new_xy v0, t_new_xy v1);
-t_new_xy	ft_math_intersect(t_new_xy v1, t_new_xy v2, t_new_xy v3, t_new_xy v4);
+int			ft_math_intersectbox(t_vector3 v0, t_vector3 v1, t_vector3 v2, t_vector3 v3);
+float		ft_math_pointside(t_vector3 p, t_vector3 v0, t_vector3 v1);
+t_vector3	ft_math_intersect(t_vector3 v1, t_vector3 v2, t_vector3 v3, t_vector3 v4);
 float		ft_math_to_deg(float radians);
 
 t_new_player	*reload(t_new_player *pl);

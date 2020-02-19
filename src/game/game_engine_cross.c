@@ -12,7 +12,7 @@
 
 #include "doom.h"
 
-void			ft_game_xy_vertex_of_sectors(t_new_xy *v_start, t_new_xy *v_end,\
+void			ft_game_xy_vertex_of_sectors(t_vector3 *v_start, t_vector3 *v_end,\
 	t_new_player *pl)
 {
 	v_start->x = pl->sectors[pl->cycle.current->sec_nb].vertex[pl->s + 0].x \
@@ -35,7 +35,7 @@ void			ft_game_xy_vertex_of_sectors(t_new_xy *v_start, t_new_xy *v_end,\
 ** also rotate them around the player's view
 */
 
-static void		ft_game_engine_cross2(t_new_player *pl, t_new_xy i1, t_new_xy i2)
+static void		ft_game_engine_cross2(t_new_player *pl, t_vector3 i1, t_vector3 i2)
 {
 	pl->org1.x = pl->t1.x;
 	pl->org1.y = pl->t1.y;
@@ -69,10 +69,10 @@ static void		ft_game_engine_cross2(t_new_player *pl, t_new_xy i1, t_new_xy i2)
 
 int				ft_game_engine_cross(t_new_player *pl)
 {
-	t_new_xy	i1;
-	t_new_xy	i2;
-	t_new_xy	v_start;
-	t_new_xy	v_end;
+	t_vector3	i1;
+	t_vector3	i2;
+	t_vector3	v_start;
+	t_vector3	v_end;
 
 	ft_game_xy_vertex_of_sectors(&v_start, &v_end, pl);
 	if ((pl->t1.y <= 0) && (pl->t2.y <= 0))

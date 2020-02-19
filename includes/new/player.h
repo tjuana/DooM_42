@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 16:11:09 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:02:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,91 +32,86 @@ typedef struct	s_file_read
 
 typedef struct	s_new_player
 {
-	SDL_Surface *img[10];
-	// SDL_Window	*win;
-	// SDL_Renderer	*rend;
-
-	// SDL_Texture	*texture;
+	SDL_Surface 	*img[10];
 	t_new_texture	*textures;
-	int			textures_nb;
-
-	t_new_xy		t1;
-	t_new_xy		t2;
-	t_new_xy		scale_1;
-	t_new_xy		scale_2;
-    t_new_xyz		pos;      // Current position
-    t_new_xyz		velo;   // Current motion vector
-	t_new_xyz		hole;
-    float		angle;
-    float		anglesin;//player view sin
-    float		anglecos;//player view cos
-    float		yaw;   // Looking towards (and sin() and cos() thereof)
-    unsigned	sector;// Which sector the player is currently in
-	int			sectors_nb;//Sectors number
-    t_new_sector	*sectors;//store all sectors
+	int				textures_nb;
+	t_vector3		t1;
+	t_vector3		t2;
+	t_vector3		scale_1;
+	t_vector3		scale_2;
+	t_vector3		pos;	  // Current position
+	t_vector3		velo;   // Current motion vector
+	t_vector3		hole;
+	float			angle;
+	float			anglesin;//player view sin
+	float			anglecos;//player view cos
+	float			yaw;   // Looking towards (and sin() and cos() thereof)
+	unsigned		sector;// Which sector the player is currently in
+	int				sectors_nb;//Sectors number
+	t_new_sector	*sectors;//store all sectors
 	t_new_cycle		cycle;//one draw_screen cycle
 	t_new_sector	*sect;//current sector
-	int			door_all;//how much doors
-	int			door_nb;//door near with player
+	int				door_all;//how much doors
+	int				door_nb;//door near with player
 	t_new_door		*doors;//array of doors
-	int			but_all;//how much buttons
-	int			but_nb;//buttons near with player
+	int				but_all;//how much buttons
+	int				but_nb;//buttons near with player
 	t_new_but		*buttons;//array of buttons
-	int			neib;
+	int				neib;
 	t_new_ceil		ceil;
 	t_new_floor		floor;
 
-	t_new_xy	near_point;
-	t_new_xy 	far_point;
+	t_vector3		near_point;
+	t_vector3 		far_point;
 	// float		nearz;
 	// float		farz;
-	float		nearside;
-	float		farside;
+	float			nearside;
+	float			farside;
 
-	float		x1;
-	float		x2;
-	int			*y_top;
-	int			*y_bot;
-	int			beginx;
-	int			endx;
-	int			contin;
-	Uint32		*pixels;
+	float			x1;
+	float			x2;
+	int				*y_top;
+	int				*y_bot;
+	int				beginx;
+	int				endx;
+	int				contin;
+	Uint32			*pixels;
 
-	char		*lvl;
-	t_file_read	file;	//open map
+	char			*lvl;
+	t_file_read		file;	//open map
 
-	int         count_sprite;//for start animation
-	float       light;
+	int				 count_sprite;//for start animation
+	float			light;
 
-	int         **sky_pix;
-	t_textures	t;
-	t_new_texture   *tex;
-	int         f;
-	int         y1;
-	int         y2;
-	int         n;
-	int         s;
-	t_new_xy 		org1;
-	t_new_xy 		org2;
-	float         u0;
-	float         u1;
-	int			txtx;
+	int				**sky_pix;
+	t_textures		t;
+	t_new_texture	*tex;
+	int				f;
+	int				y1;
+	int				y2;
+	int				n;
+	int				s;
+	t_vector3 		org1;
+	t_vector3 		org2;
+	float			u0;
+	float			u1;
+	int				txtx;
 	Uint32			*pix;
-	int 		y;
-	t_scaler    ty;
-	int 		fly;
+	int 			y;
+	t_scaler		ty;
+	int 			fly;
 
 
 	// camera vertex
-	t_vector3	fov_vec1;
-	t_vector3	fov_vec2;
+	t_vector3		fov_vec1;
+	t_vector3		fov_vec2;
 
-	void		*wolf3d;	// pointer to wolf3d!
+	void			*wolf3d;	// pointer to wolf3d!
 
-	int			live_count;
-	int			bullet_count;
-	Mix_Chunk	*shoot_sound;
-	Mix_Chunk	*door_sound;
-}				t_new_player;
+	int				live_count;
+	int				bullet_count;
+	Mix_Chunk		*shoot_sound;
+	Mix_Chunk		*door_sound;
+}					t_new_player;
 
 #endif
