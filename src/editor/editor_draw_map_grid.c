@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:48:33 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 15:54:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:45:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, t_gui_elem *elem, \
 */
 
 void	ft_gui_draw_map_grid_limit_line(t_wolf3d *w, t_gui_elem *elem, \
-			t_vector3 v, int scale)
+			t_vector3 v)
 {
 	t_gui_coord	pos;
 

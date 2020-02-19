@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 17:26:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:34:44 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_new_xy	*ft_game_vertex_save(t_new_player *pl, t_new_xy *vertex)
 		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[count] != NULL)
 	{
-		vertex[pl->file.i].y = atof(pl->file.split[1]);
-		vertex[pl->file.i].x = atof(pl->file.split[count]);
+		vertex[pl->file.i].y = ft_atoi(pl->file.split[1]);
+		vertex[pl->file.i].x = ft_atoi(pl->file.split[count]);
 		pl->file.i++;
 		count++;
 	}
@@ -54,8 +54,8 @@ void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
 
 	if (!(file.split = ft_strsplit(file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	sector->floor = atof(file.split[1]);
-	sector->ceil = atof(file.split[2]);
+	sector->floor = ft_atoi(file.split[1]);
+	sector->ceil = ft_atoi(file.split[2]);
 	v_c = 1;
 	s_c = 3;
 	while (number--)

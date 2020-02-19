@@ -6,11 +6,17 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 18:21:55 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:31:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
+
+/*
+** **************************************************************************
+**	static void ft_game_operation_cero(int x, t_new_player *pl)
+** **************************************************************************
+*/
 
 static	void	ft_game_operation_cero(int x, t_new_player *pl)
 {
@@ -25,32 +31,47 @@ static	void	ft_game_operation_cero(int x, t_new_player *pl)
 	pl->ceil.cyb = ft_math_clamp(pl->floor.yb, pl->y_top[x], pl->y_bot[x]);
 }
 
+/*
+** **************************************************************************
+**	void ft_game_engine_calcs(int x, t_new_player *pl, int operation)
+** **************************************************************************
+*/
+
 void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 {
 	if (operation == 0)
 		ft_game_operation_cero(x, pl);
 	if (operation == 1)
 	{
-		pl->t.hei = pl->t.y < pl->ceil.cya ? pl->ceil.yceil : pl->floor.yfloor;
+		pl->t.hei = pl->t.y < pl->ceil.cya ? pl->ceil.yceil : \
+			pl->floor.yfloor;
 		pl->t.mapz = pl->t.hei * WIN_H * V_FOV / ((WIN_H / 2 - \
 		(float)pl->t.y) - pl->yaw * WIN_H * V_FOV);
 		pl->t.mapx = pl->t.mapz * (WIN_W / 2 - (float)pl->t.x) \
 		/ (WIN_W * (H_FOV));
-		pl->t.txtx1 = (unsigned int)(((pl->t.mapz * pl->anglecos + pl->t.mapx *\
-		pl->anglesin) + pl->pos.x) * 256);
-		pl->t.txtz = (unsigned int)(((pl->t.mapz * pl->anglesin - pl->t.mapx * \
-		pl->anglecos) + pl->pos.y) * 256);
+		pl->t.txtx1 = (unsigned int)(((pl->t.mapz * pl->anglecos + \
+			pl->t.mapx * pl->anglesin) + pl->pos.x) * 256);
+		pl->t.txtz = (unsigned int)(((pl->t.mapz * pl->anglesin - \
+			pl->t.mapx * pl->anglecos) + pl->pos.y) * 256);
 	}
 	else if (operation == 2)
 	{
-		pl->floor.nya = (x - pl->x1) * (pl->ceil.ny2a - pl->ceil.ny1a) /\
+		pl->floor.nya = (x - pl->x1) * (pl->ceil.ny2a - pl->ceil.ny1a) / \
 		(pl->x2 - pl->x1) + pl->ceil.ny1a;
-		pl->ceil.cnya = ft_math_clamp(pl->floor.nya, pl->y_top[x], pl->y_bot[x]);
+		pl->ceil.cnya = ft_math_clamp(pl->floor.nya, \
+			pl->y_top[x], pl->y_bot[x]);
 		pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b)\
 		/ (pl->x2 - pl->x1) + pl->floor.ny1b;
-		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, pl->y_top[x], pl->y_bot[x]);
+		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, \
+			pl->y_top[x], pl->y_bot[x]);
 	}
 }
+
+/*
+** **************************************************************************
+**	void ft_game_draw_ceil_floor(int x, t_new_player *pl)
+** **************************************************************************
+*/
 
 void			ft_game_draw_ceil_floor(int x, t_new_player *pl)
 {
@@ -63,22 +84,20 @@ void			ft_game_draw_ceil_floor(int x, t_new_player *pl)
 			pl->t.y = pl->ceil.cyb;
 			continue;
 		}
-		// continue;
 		ft_game_engine_calcs(x, pl, 1);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil != 20)
 			ft_game_pix1(pl, ROCK2);
 		if (pl->t.y < pl->ceil.cya && pl->sect->ceil == 20)
 			ft_game_pix_sky(&pl->t, pl);
-			// ft_put_pixel_to_surface(pl, &pl->t, SKY);
 		if (pl->t.y >= pl->ceil.cya)
 			ft_game_pix1(pl, GREEN);
-			// ft_put_pixel_to_surface(pl, &pl->t, GREEN);
 	}
 }
 
 /*
 ** **************************************************************************
-**	static void ft_game_engine_ceil_floor(t_new_player *pl, int x, int *z, int neib)
+**	static void ft_game_engine_ceil_floor(t_new_player *pl, int x,
+**		int *z, int neib)
 **	Function to draw ceil and floor lines and lines betwen them
 ** **************************************************************************
 */
@@ -94,7 +113,8 @@ static void		ft_game_engine_ceil_floor(t_new_player *pl, int x, int neib)
 		pl->y_top[x] = ft_math_clamp(ft_math_max(pl->ceil.cya, pl->ceil.cnya),\
 		pl->y_top[x], WIN_H - 1);
 		ft_game_draw_walls(x, pl, WALL_BOTT, pl->n);
-		pl->y_bot[x] = ft_math_clamp(ft_math_min(pl->ceil.cyb, pl->ceil.cnyb), 0, pl->y_bot[x]);
+		pl->y_bot[x] = ft_math_clamp(ft_math_min(pl->ceil.cyb, pl->ceil.cnyb),\
+			0, pl->y_bot[x]);
 	}
 	else
 	{
@@ -114,8 +134,10 @@ void			ft_game_engine_put_lines(t_new_player *pl, int neib)
 {
 	int	x;
 
-	pl->beginx = (int)fft_math_max((double)pl->x1, (double)pl->cycle.current->sx1);
-	pl->endx = (int)fft_math_min((double)pl->x2, (double)pl->cycle.current->sx2);
+	pl->beginx = (int)ft_math_max((double)pl->x1, \
+		(double)pl->cycle.current->sx1);
+	pl->endx = (int)ft_math_min((double)pl->x2, \
+		(double)pl->cycle.current->sx2);
 	x = pl->beginx;
 	while (++x <= pl->endx)
 		ft_game_engine_ceil_floor(pl, x, neib);

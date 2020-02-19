@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/19 18:31:03 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/19 19:50:20 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -209,7 +209,6 @@ game_load_textures.c \
 game_main.c \
 game_map_parse_1.c \
 game_map_parse_2.c \
-game_map_parse_3.c \
 game_motion_1.c \
 game_motion_2.c \
 game_sdl_addons.c \

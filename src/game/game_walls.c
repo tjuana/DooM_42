@@ -6,13 +6,13 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 18:21:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:08:53 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_scaler	ft_game_scalar_create(int a, int b, int c, int f)
+t_scaler		ft_game_scalar_create(int a, int b, int c, int f)
 {
 	t_scaler	s;
 	int			d;
@@ -28,7 +28,7 @@ t_scaler	ft_game_scalar_create(int a, int b, int c, int f)
 	return (s);
 }
 
-int			ft_game_scr_nxt(t_scaler *i)
+int				ft_game_scr_nxt(t_scaler *i)
 {
 	i->cache += i->fd;
 	while (i->cache >= i->ca)
@@ -39,7 +39,8 @@ int			ft_game_scr_nxt(t_scaler *i)
 	return (i->result);
 }
 
-static void	ft_game_draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
+static void		ft_game_draw_limits_for_walls(int wall_type, \
+					t_new_player *pl, int n)
 {
 	if (wall_type == 0)
 	{
@@ -71,7 +72,8 @@ static void	ft_game_draw_limits_for_walls(int wall_type, t_new_player *pl, int n
 ** **************************************************************************
 */
 
-void		ft_game_draw_walls(int x, t_new_player *pl, int wall_type, int img)
+void			ft_game_draw_walls(int x, t_new_player *pl, \
+					int wall_type, int img)
 {
 	ft_game_draw_limits_for_walls(wall_type, pl, img);
 	if (pl->y2 >= pl->y1)
@@ -84,13 +86,14 @@ void		ft_game_draw_walls(int x, t_new_player *pl, int wall_type, int img)
 **	void ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
 **
 **	>
-**	ft_game_draw_graffiti, we just draw over an already drawn wall, so we can draw
-**	in every wall we want, with this logic we also can draw on floors
-**	and ceilings.
+**	ft_game_draw_graffiti, we just draw over an already drawn wall,
+**	so we can draw in every wall we want, with this logic we also can draw on
+**	floors and ceilings.
 ** **************************************************************************
 */
 
-void		ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+void			ft_game_draw_graffiti(int x, t_new_player *pl, \
+					int wall_type, int img)
 {
 	ft_game_draw_limits_for_walls(wall_type, pl, img);
 	if (pl->y2 >= pl->y1)

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 17:43:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:22:27 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 ** **************************************************************************
 **	static t_color *ft_game_texture_parse_2(unsigned char *src, \
 **	unsigned w, unsigned h, unsigned bpp)
+**
 **	Function to store raw_pixels to pixels we need
 ** **************************************************************************
 */
 
-static t_color	*ft_game_texture_parse_3(unsigned char *src, size_t i, unsigned bpp)
+static t_color		*ft_game_texture_parse_3(unsigned char *src, \
+						size_t i, unsigned bpp)
 {
-	t_color	*res;
-	size_t		j;
+	t_color			*res;
+	size_t			j;
 
 	j = 0;
 	if (!(res = (t_color *)malloc(sizeof(t_color) * i + 1)))
@@ -56,7 +58,8 @@ static t_color	*ft_game_texture_parse_3(unsigned char *src, size_t i, unsigned b
 ** **************************************************************************
 */
 
-t_new_texture		ft_game_texture_parse_2(size_t f_size, int fd, unsigned char *head)
+t_new_texture		ft_game_texture_parse_2(size_t f_size, int fd, \
+						unsigned char *head)
 {
 	t_new_texture	res;
 	unsigned char	*pix_raw;
@@ -87,7 +90,8 @@ t_new_texture		ft_game_texture_parse_2(size_t f_size, int fd, unsigned char *hea
 ** **************************************************************************
 */
 
-static void			ft_game_texture_header_chk(char *fp, int fd, unsigned char *head)
+static void			ft_game_texture_header_chk(char *fp, int fd, \
+						unsigned char *head)
 {
 	if (!fp || (fd < 0) || (fd > 10240) || (access(fp, F_OK) == -1))
 	{

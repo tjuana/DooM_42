@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 18:29:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:25:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ static int	ft_game_motion_slide(t_new_player *pl, t_new_sector *sect, \
 ** **************************************************************************
 */
 
-void		ft_game_motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
+void		ft_game_motion_chk(t_new_player *pl, \
+				t_new_others *ot, t_new_sub_ev *se)
 {
 	int				i;
 	int				inter;
@@ -104,10 +105,11 @@ void		ft_game_motion_chk(t_new_player *pl, t_new_others *ot, t_new_sub_ev *se)
 	vert = sect->vertex;
 	while (++i < sect->npoints)
 	{
-		inter = ft_math_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, (t_new_xy){\
-		pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
+		inter = ft_math_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, \
+			(t_new_xy){pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y}, \
+			vert[i], vert[i + 1]);
 		point_side = ft_math_pointside((t_new_xy){pl->pos.x + pl->velo.x, \
-		pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
+			pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
 		if (inter && point_side < 0)
 			ot->moving = ft_game_motion_slide(pl, sect, vert, i);
 	}

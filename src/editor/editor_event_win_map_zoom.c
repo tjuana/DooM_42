@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:33:29 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:41:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:38:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_gui_mousewheel_win_map(void *data, SDL_Event e, \
 	t_vector3	old_offset;
 	t_vector3	v;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	old_offset = ft_gui_map_coord_to_vertex(w, w->gui.mouse_pos);
 	if (e.wheel.y > 0)

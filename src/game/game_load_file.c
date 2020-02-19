@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 17:28:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:31:59 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void			ft_game_end_game(t_new_player *pl)
 {
 	SDL_Delay(77);
 	if (pl)
-	{
 		free(pl);
-		// pl = NULL;
-	}
 	exit(EXIT_SUCCESS);
 }
 
@@ -45,7 +42,6 @@ t_new_player	*load_next(t_new_player *pl)
 	t_new_sector	*sector;
 
 	j = -1;
-	// ft_free_sectors(pl);
 	while (j++ < (pl->file.count_sectors - 1))
 	{
 		sector = &pl->sectors[j];

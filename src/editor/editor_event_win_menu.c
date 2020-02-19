@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:12:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:44:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:39:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_gui_mousebuttonup_win_menu_btnsector(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_list		*list;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_menu"), \
@@ -40,6 +42,8 @@ void	ft_gui_mousebuttonup_win_menu_btnplayer(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_list		*list;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_menu"), \
@@ -57,6 +61,8 @@ void	ft_gui_mousebuttonup_win_menu_btnsprite(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_list		*list;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_menu"), \
@@ -91,6 +97,8 @@ void	ft_gui_mousebuttonup_win_menu_btndoor(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_list		*list;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_menu"), \

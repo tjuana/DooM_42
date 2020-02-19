@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 18:21:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:27:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 ** **************************************************************************
 */
 
-static void	ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+static void	ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se, \
+				t_new_others *ot)
 {
 	float	speed;
 	int		push;
@@ -39,12 +40,14 @@ static void	ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_other
 
 /*
 ** **************************************************************************
-**	void ft_game_events_vel_dir(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+**	void ft_game_events_vel_dir(t_new_player *pl, t_new_sub_ev *se,
+**		t_new_others *ot)
 **	Function manage player velocity
 ** **************************************************************************
 */
 
-void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, \
+				t_new_others *ot)
 {
 	float	speed;
 
@@ -78,7 +81,7 @@ void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 */
 
 void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, \
-			t_new_others *ot)
+				t_new_others *ot)
 {
 	float	z;
 

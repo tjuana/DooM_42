@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:38:48 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 21:10:04 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:38:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_gui_mousemotion_win_map(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_gui_coord	coord;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	coord = ft_gui_map_check_mouse(w, \
 		w->gui.mouse_pos, dom->content);

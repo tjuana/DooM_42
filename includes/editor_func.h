@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 14:40:11 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:49:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ void				ft_gui_draw_map(t_wolf3d *w, t_list *list);
 **	editor/editor_draw_map_door.c
 ** **************************************************************************
 */
-void				ft_draw_area_hatch(t_wolf3d *w, \
-						t_gui_rect rect, int color);
-t_gui_rect			ft_sector_get_rect(t_wolf3d *w, t_sector *s);
 void				ft_editor_draw_door(t_wolf3d *w, t_sector *s);
 
 /*
@@ -59,7 +56,7 @@ void				ft_editor_draw_door(t_wolf3d *w, t_sector *s);
 void				ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, \
 						t_gui_elem *elem, t_vector3 v, int type);
 void				ft_gui_draw_map_grid_limit_line(t_wolf3d *w, \
-						t_gui_elem *elem, t_vector3 v, int scale);
+						t_gui_elem *elem, t_vector3 v);
 void				ft_gui_draw_map_grid(t_wolf3d *w, \
 						t_gui_elem *elem, int scale);
 

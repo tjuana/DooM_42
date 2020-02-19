@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 18:29:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:33:16 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,16 @@ static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	t_list		*list;
 	t_gui_elem	*elem;
+
 	if (se->ev.button.button == SDL_BUTTON_LEFT)
 	{
 		pl->count_sprite = 10;
 		if (pl->bullet_count > 0)
 		{
 			pl->bullet_count--;
-			list = ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game_hud_pistolcount");
+			list = ft_gui_search_elem_by_name(\
+				((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_hud_pistolcount");
 			elem = list->content;
 			free(elem->str);
 			elem->str = ft_itoa(pl->bullet_count);
@@ -97,7 +100,9 @@ static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 		else if (pl->live_count > 0)
 		{
 			pl->live_count -= 10;
-			list = ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game_hud_livescount");
+			list = ft_gui_search_elem_by_name(\
+				((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_hud_livescount");
 			elem = list->content;
 			free(elem->str);
 			elem->str = ft_itoa(pl->live_count);
