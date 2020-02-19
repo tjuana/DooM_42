@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_gui_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:36:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 17:33:48 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:42:12 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_main_gui_init(t_wolf3d *w)
 	w->gui.search_elem = GUI_EVENT_OFF;
 	w->gui.dom = NULL;
 	w->gui.fonts = NULL;
-	w->gui.mode = GUI_MD_ME;
+	w->gui.mode = GUI_MD_MENU;
 	ft_editor_gui_init(w);
 	ft_gui_elem_init(&w->gui.dom, "win", (t_gui_coord){0, 0, 0}, \
 		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});

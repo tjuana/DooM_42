@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 14:49:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:40:07 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void	ft_gui_events_mouse(t_wolf3d *w, SDL_Event *e)
 		ft_gui_mousemotion(w, *e, w->gui.dom);
 }
 
+/*
+** **************************************************************************
+**	void ft_gui_events_keydown_set_sector(t_wolf3d *w, SDL_Event *e)
+** **************************************************************************
+*/
+
 void	ft_gui_events_keydown_set_sector(t_wolf3d *w, SDL_Event *e)
 {
 	int	check;
@@ -49,6 +55,12 @@ void	ft_gui_events_keydown_set_sector(t_wolf3d *w, SDL_Event *e)
 	if (check)
 		ft_gui_redraw(w);
 }
+
+/*
+** **************************************************************************
+**	void ft_gui_events_keydown_me(t_wolf3d *w, SDL_Event *e)
+** **************************************************************************
+*/
 
 void	ft_gui_events_keydown_me(t_wolf3d *w, SDL_Event *e)
 {
@@ -66,6 +78,12 @@ void	ft_gui_events_keydown_me(t_wolf3d *w, SDL_Event *e)
 	if (check)
 		ft_gui_redraw(w);
 }
+
+/*
+** **************************************************************************
+**	void ft_gui_events_keydowm_map(t_wolf3d *w, SDL_Event *e)
+** **************************************************************************
+*/
 
 void	ft_gui_events_keydowm_map(t_wolf3d *w, SDL_Event *e)
 {
@@ -86,21 +104,27 @@ void	ft_gui_events_keydowm_map(t_wolf3d *w, SDL_Event *e)
 		ft_gui_redraw(w);
 }
 
+/*
+** **************************************************************************
+**	void ft_gui_events_keydown(t_wolf3d *w, SDL_Event *e)
+** **************************************************************************
+*/
+
 void	ft_gui_events_keydown(t_wolf3d *w, SDL_Event *e)
 {
 	if (e->type == SDL_KEYDOWN)
 	{
+		if (w->gui.mode == GUI_MD_MENU)
+		{
+			(e->key.keysym.scancode == SDL_SCANCODE_ESCAPE) ? \
+				w->sdl->running = 0 : 0;
+		}
 		if (w->gui.mode == GUI_MD_ME)
 			ft_gui_events_keydowm_map(w, e);
 		if (w->gui.mode == GUI_MD_ME)
 			ft_gui_events_keydown_me(w, e);
 		else if (w->gui.mode == GUI_MD_ME_SET_SECTOR)
 			ft_gui_events_keydown_set_sector(w, e);
-		else
-		{
-			(e->key.keysym.scancode == SDL_SCANCODE_ESCAPE) ? \
-				w->sdl->running = 0 : 0;
-		}
 		if (w->gui.focus_elem != NULL)
 			ft_gui_focus_keydown(w, *e, w->gui.focus_elem);
 	}

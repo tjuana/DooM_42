@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:16:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 19:39:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:35:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	ft_gui_mousebuttonup_win_editor_menu_btnmenu(\
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), \
 		GUI_ELEM_VISIBLE);
-	w->gui.mode = GUI_MD_ME_SET_PLAYER;
+	w->gui.mode = GUI_MD_MENU;
 	w->player_status = 0;
 }

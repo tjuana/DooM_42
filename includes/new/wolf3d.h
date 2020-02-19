@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:10:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:13:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@
 # include <sys/stat.h>
 # include "constants.h"
 # include "help.h"
-# include "animations.h"
 # include "engine.h"
 # include "events.h"
 # include "door.h"
 # include "texture.h"
 # include "player.h"
-# include "sky.h"
 
 typedef	struct			s_new_temp
 {
