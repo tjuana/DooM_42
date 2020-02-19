@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:55:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 21:05:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:24:38 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct			s_sdl
 	SDL_Renderer		*renderer;
 	Uint32				*pixels;
 	SDL_Texture			*text;
+	SDL_Texture			*text2;
 	// SDL_Surface			**textures;
 	// SDL_AudioSpec		*wav_spect;
 	// Uint32				*wav_len;

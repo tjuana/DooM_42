@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 19:58:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:43:53 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vector3	*ft_game_vertex_save(t_new_player *pl, t_vector3 *vertex)
 		pl->file.i++;
 		count++;
 	}
-	if (pl->file.split)
+	if (&pl->file.split[0])
 		ft_2arrclean(&pl->file.split);
 	return (vertex);
 }
@@ -72,7 +72,7 @@ void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
 		if (ft_atoi(file.split[s_c - 1]) >= (file.count_sectors + 1))
 			ft_error("BAD NEIGHBOUR");
 	}
-	if (file.split)
+	if (&file.split[0])
 		ft_2arrclean(&file.split);
 }
 
@@ -98,6 +98,6 @@ void		ft_game_level_save(t_new_player *pl)
 		ft_error("MALLOC_SPLIT");
 	if (!(pl->lvl = ft_strdup(pl->file.split[1])))
 		ft_error("fuck_off");
-	if (pl->file.split)
+	if (&pl->file.split[0])
 		ft_2arrclean(&pl->file.split);
 }

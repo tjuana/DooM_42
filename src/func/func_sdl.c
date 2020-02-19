@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 16:13:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:41:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,12 @@ void		sdl_create_background_music(t_sdl *sdl)
 		VOLUME);
 }
 
-void		sound_shoot(t_new_player *pl)
+void		sound(t_new_player *pl, char *name)
 {
-	if (!(pl->shoot_sound = Mix_LoadWAV("Sounds/pistol.wav")))
-		ft_error("no shoot sound, man");
+	if (!(pl->sound = Mix_LoadWAV(name)))
+		ft_error("no sound, man");
 	if (!Mix_Playing(1))
-		if (Mix_PlayChannel(1, pl->shoot_sound, 0) == -1 || !pl->shoot_sound)
-			ft_error("Audio play error");
-}
-
-void		door_sound(t_new_player *pl)
-{
-	if (!(pl->door_sound = Mix_LoadWAV("Sounds/door.wav")))
-		ft_error("no shoot sound, man");
-	if (!Mix_Playing(1))
-		if (Mix_PlayChannel(1, pl->door_sound, 0) == -1 || !pl->door_sound)
+		if (Mix_PlayChannel(1, pl->sound, 0) == -1 || !pl->sound)
 			ft_error("Audio play error");
 }
 
@@ -72,7 +63,7 @@ t_sdl		*sdl_init(t_sdl *sdl)
 		ft_sdl_error(sdl);
 	sdl->pixels = ft_my_malloc((sizeof(Uint32) * WIN_WIDTH) * WIN_HEIGHT);
 	if (!(sdl->text = SDL_CreateTexture(sdl->renderer, \
-		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, \
+		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, \
 		WIN_WIDTH, WIN_HEIGHT)))
 		ft_error("SDL non textures");
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);

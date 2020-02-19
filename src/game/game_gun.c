@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_gun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:40:12 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 17:29:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:15:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	ft_game_draw_gun(t_new_player *pl, int width, int height, int n)
 		height++;
 	}
 	if (n > 9)
-		sound_shoot(pl);
+		sound(pl, "Sounds/pistol.wav");
 }
 
 void		ft_game_draw_pistol(t_gun *wpn, t_new_player *pl)

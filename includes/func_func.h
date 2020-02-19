@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 16:12:15 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:33:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void			ft_clean_sdl(t_wolf3d *w);
 **	func/func_sdl.c
 ** **************************************************************************
 */
-void			door_sound(t_new_player *pl);
-void			sound_shoot(t_new_player *sdl);
+void			sound(t_new_player *pl, char *name);
+
 void			sdl_create_background_music(t_sdl *sdl);
 Mix_Chunk		*sound_init(char *name);
 void			ft_set_window_icon(t_sdl *sdl);

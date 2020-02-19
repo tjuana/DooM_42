@@ -16,7 +16,7 @@ typedef struct	s_new_cycle//item
 
 typedef struct	s_new_sector//have to be static
 {
-    float		floor;//floor height
+	float		floor;//floor height
 	float		ceil;//ceil height
     t_vector3		*vertex; //here stored all sector vertexes.
     signed char	*neighbors;// Each edge may have a corresponding neighboring sector
