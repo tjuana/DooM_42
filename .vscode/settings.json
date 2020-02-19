@@ -48,6 +48,7 @@
 		"cmath": "c",
 		"string.h": "c",
 		"pthread.h": "c",
-		"sdl_image.h": "c"
+		"sdl_image.h": "c",
+		"typeinfo": "c"
 	},
 }

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:40:12 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 16:04:23 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:34:24 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_gun(t_new_player *pl, int width, int height, int n)
 		height++;
 	}
 	if (n > 9)
-		sound_shoot(pl);
+		sound_shoot(pl, "Sounds/pistol.wav");
 }
 
 void		draw_pistol(t_gun *wpn, t_new_player *pl)
