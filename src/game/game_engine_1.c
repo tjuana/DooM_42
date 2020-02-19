@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_engine.c                                      :+:      :+:    :+:   */
+/*   game_engine_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/18 14:08:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 18:29:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	static int engine_pick_sec(t_new_player *pl)
+**	static int ft_game_engine_pick_sec(t_new_player *pl)
 **	Function to pick a sector & slice from the queue to draw
 ** **************************************************************************
 */
 
-static int	engine_pick_sec(t_new_player *pl)
+static int	ft_game_engine_pick_sec(t_new_player *pl)
 {
 	pl->cycle.current = pl->cycle.tail;
 	if (++pl->cycle.tail == pl->cycle.queue + MAX_QUEUE)
@@ -33,12 +33,12 @@ static int	engine_pick_sec(t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	static void engine_preset(t_new_player *pl)
+**	static void ft_game_engine_preset(t_new_player *pl)
 **	Function to set up some arrays and lists for engine
 ** **************************************************************************
 */
 
-static void	engine_preset(t_new_player *pl)
+static void	ft_game_engine_preset(t_new_player *pl)
 {
 	int	i;
 	int	*rend_sec;
@@ -65,12 +65,12 @@ static void	engine_preset(t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	int engine_scale(t_new_player *pl, int sx1, int sx2)
+**	int ft_game_engine_scale(t_new_player *pl, int sx1, int sx2)
 **	Function to scale floor & ceil
 ** **************************************************************************
 */
 
-int			engine_scale(t_new_player *pl, int sx1, int sx2)
+int			ft_game_engine_scale(t_new_player *pl, int sx1, int sx2)
 {
 	pl->scale_1.x = hfov / pl->t1.y;
 	pl->scale_1.y = vfov / pl->t1.y;
@@ -78,22 +78,22 @@ int			engine_scale(t_new_player *pl, int sx1, int sx2)
 	pl->scale_2.y = vfov / pl->t2.y;
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
-	pl->ceil.y1a = WIN_H / 2 - (int)(yaw(pl->ceil.yceil, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->floor.y1b = WIN_H / 2 - (int)(yaw(pl->floor.yfloor, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->ceil.y2a = WIN_H / 2 - (int)(yaw(pl->ceil.yceil, \
-	pl->t2.y, pl) * pl->scale_2.y);
-	pl->floor.y2b = WIN_H / 2 - (int)(yaw(pl->floor.yfloor, \
-	pl->t2.y, pl) * pl->scale_2.y);
-	pl->ceil.ny1a = WIN_H / 2 - (int)(yaw(pl->ceil.nyceil, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->floor.ny1b = WIN_H / 2 - (int)(yaw(pl->floor.nyfloor, \
-	pl->t1.y, pl) * pl->scale_1.y);
-	pl->ceil.ny2a = WIN_H / 2 - (int)(yaw(pl->ceil.nyceil, \
-	pl->t2.y, pl) * pl->scale_2.y);
-	pl->floor.ny2b = WIN_H / 2 - (int)(yaw(pl->floor.nyfloor, \
-	pl->t2.y, pl) * pl->scale_2.y);
+	pl->ceil.y1a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.yceil, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->floor.y1b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.yfloor, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->ceil.y2a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.yceil, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
+	pl->floor.y2b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.yfloor, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
+	pl->ceil.ny1a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.nyceil, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->floor.ny1b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.nyfloor, \
+	pl->t1.y, pl->yaw) * pl->scale_1.y);
+	pl->ceil.ny2a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.nyceil, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
+	pl->floor.ny2b = WIN_H / 2 - (int)(ft_math_yaw(pl->floor.nyfloor, \
+	pl->t2.y, pl->yaw) * pl->scale_2.y);
 	if (pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
 		return (0);
 	return (1);
@@ -101,12 +101,12 @@ int			engine_scale(t_new_player *pl, int sx1, int sx2)
 
 /*
 ** **************************************************************************
-**	void engine_begin(t_new_player *pl)
+**	void ft_game_engine_begin(t_new_player *pl)
 **	Function to start engine calculations and draw all lines
 ** **************************************************************************
 */
 
-static int	ceil_floor_calcs(t_new_player *pl, int s)
+static int	ft_game_ceil_floor_calcs(t_new_player *pl, int s)
 {
 	int neib;
 
@@ -117,7 +117,7 @@ static int	ceil_floor_calcs(t_new_player *pl, int s)
 		pl->n = FENCE;
 	if (s == 2)
 		pl->n = 11;
-	if (engine_cross(pl) == 0)
+	if (ft_game_engine_cross(pl) == 0)
 		return (0);
 	pl->ceil.yceil = pl->sect->ceil - pl->pos.z;
 	pl->floor.yfloor = pl->sect->floor - pl->pos.z;
@@ -127,25 +127,25 @@ static int	ceil_floor_calcs(t_new_player *pl, int s)
 		pl->ceil.nyceil = pl->sectors[neib].ceil - pl->pos.z;
 		pl->floor.nyfloor = pl->sectors[neib].floor - pl->pos.z;
 	}
-	if (engine_scale(pl, pl->cycle.current->sx1,\
+	if (ft_game_engine_scale(pl, pl->cycle.current->sx1,\
 			pl->cycle.current->sx2) == 0)
 		return (0);
-	engine_put_lines(pl, neib);
+	ft_game_engine_put_lines(pl, neib);
 	return (1);
 }
 
-void		engine_begin(t_new_player *pl)
+void		ft_game_engine_begin(t_new_player *pl)
 {
 	int	s;
 
-	engine_preset(pl);
+	ft_game_engine_preset(pl);
 	while (pl->cycle.head != pl->cycle.tail)
 	{
-		if ((s = engine_pick_sec(pl)) == -2)
+		if ((s = ft_game_engine_pick_sec(pl)) == -2)
 			continue;
 		while (++s < pl->sect->npoints)
 		{
-			if (ceil_floor_calcs(pl, s) == 0)
+			if (ft_game_ceil_floor_calcs(pl, s) == 0)
 				continue;
 		}
 		++pl->cycle.rend_sec[pl->cycle.current->sec_nb];

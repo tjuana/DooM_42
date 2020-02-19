@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 20:02:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:15:46 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		ft_sdl_error(t_sdl *sdl)
 	IMG_Quit();
 	Mix_CloseAudio();
 	SDL_Quit();
-	system("osascript -e \'display notification\"In terminal log of error\" with title \"SDL, bro!\"\'");
+	system("osascript -e \'display notification\"In terminal log of error\" \
+		with title \"SDL, bro!\"\'");
 	exit(EXIT_FAILURE);
 }

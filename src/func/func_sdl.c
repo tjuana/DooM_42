@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:03:57 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:41:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_sdl		*sdl_init(t_sdl *sdl)
 		ft_sdl_error(sdl);
 	sdl->pixels = ft_my_malloc((sizeof(Uint32) * WIN_WIDTH) * WIN_HEIGHT);
 	if (!(sdl->text = SDL_CreateTexture(sdl->renderer, \
-		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, \
+		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, \
 		WIN_WIDTH, WIN_HEIGHT)))
 		ft_error("SDL non textures");
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);

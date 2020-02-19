@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/19 15:51:12 by tjuana           ###   ########.fr        #
+#    Updated: 2020/02/19 19:50:20 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,9 @@ GUI_NAME = gui_test
 
 # Сompiler settings
 CC = gcc
-FLAGS = -g -O3 -O0 -march=native -m64 -flto -funroll-loops -Ofast 
-#-march=native -m64 -flto -funroll-loops -Ofast 
+FLAGS_NORME = -Wall -Wextra -Werror
+FLAGS = -g -O3 -O0 -march=native -m64 -flto -funroll-loops -Ofast #$(FLAGS_NORME)
+
 # SDL2 settings
 USERNAME = $(shell whoami)
 LIBRARIES = \
@@ -77,7 +78,10 @@ algebra_matrix.c \
 algebra_vectors_1.c \
 algebra_vectors_2.c \
 algebra_vectors_3.c \
-algebra_vectors_func.c
+algebra_vectors_func.c \
+algebra_math_1.c \
+algebra_math_2.c \
+algebra_math_3.c
 
 ALGEBRA_OBJS_DIRECTORY = $(OBJS_PATH)
 ALGEBRA_OBJS_LIST = $(patsubst %.c, %.o, $(ALGEBRA_LIST))
@@ -98,7 +102,8 @@ func_wu_color.c \
 func_wu_draw.c \
 func_wu_init.c \
 func_wu_line.c \
-func_wu.c
+func_wu.c \
+func_color.c
 
 FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
 FUNC_OBJS_LIST = $(patsubst %.c, %.o, $(FUNC_LIST))
@@ -191,10 +196,9 @@ GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
 GAME_SRCS_LIST = \
 game_but.c \
 game_but_detect.c \
-game_color.c \
 game_door.c \
 game_door_detect.c \
-game_engine.c \
+game_engine_1.c \
 game_engine_2.c \
 game_engine_cross.c \
 game_events_1.c \
@@ -203,17 +207,14 @@ game_gun.c \
 game_load_file.c \
 game_load_textures.c \
 game_main.c \
-game_map_parse.c \
+game_map_parse_1.c \
 game_map_parse_2.c \
-game_motion.c \
+game_motion_1.c \
 game_motion_2.c \
 game_sdl_addons.c \
 game_texture_parser.c \
 game_textures.c \
-game_walls.c \
-game_math_functions.c \
-game_math_functions2.c \
-game_math_functions3.c 
+game_walls.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

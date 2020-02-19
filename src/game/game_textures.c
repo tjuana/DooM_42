@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:14 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 18:37:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:10:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 /*
 ** **************************************************************************
-**	void pix1(t_new_player *pl, int image)
+**	void ft_game_pix1(t_new_player *pl, int image)
 **
 **	Function that put pixel color for texture.
 ** **************************************************************************
 */
 
-void	pix1(t_new_player *pl, int img)
+void	ft_game_pix1(t_new_player *pl, int img)
 {
 	unsigned int	p;
 	int				hex;
@@ -33,15 +33,15 @@ void	pix1(t_new_player *pl, int img)
 
 /*
 ** **************************************************************************
-**	void pix_sky(t_textures *t, t_new_player *pl)
+**	void ft_game_pix_sky(t_textures *t, t_new_player *pl)
 **
 **	Function that put pixel color for skybox.
 **
-**	pix1 <-> pix_sky
+**	ft_game_pix1 <-> ft_game_pix_sky
 ** **************************************************************************
 */
 
-void	pix_sky(t_textures *t, t_new_player *pl)
+void	ft_game_pix_sky(t_textures *t, t_new_player *pl)
 {
 	Uint32			hex;
 	unsigned int	p;
@@ -63,10 +63,11 @@ void	ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img)
 	Uint32			hex;
 	unsigned int	p;
 
-	txty = scr_nxt(&pl->ty);
-	p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);
-	hex = ft_hex_transform(ft_color_struct_to_hex(pl->tex[img].pixels[p]), \
-													pl->light);
+	txty = ft_game_scr_nxt(&pl->ty);
+	p = (txty % pl->tex[img].h) * pl->tex[img].w + \
+		(pl->txtx % pl->tex[img].w);
+	hex = ft_hex_transform(ft_color_struct_to_hex(\
+		pl->tex[img].pixels[p]), pl->light);
 	if (pl->tex[img].pixels[p].a == 0)
 	{
 		p = (pl->y % pl->tex[SKY].h) * pl->tex[SKY].w + x % pl->tex[SKY].w;
@@ -77,22 +78,23 @@ void	ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img)
 
 /*
 ** **************************************************************************
-**	void ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl,
+**	void ft_game_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl,
 **		int img)
 ** **************************************************************************
 */
 
-void	ft_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, \
+void	ft_game_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, \
 			int img)
 {
 	unsigned		txty;
 	unsigned int	p;
 	Uint32			hex;
 
-	txty = -(scr_nxt(&pl->ty) + 220);
-	p = (txty % pl->tex[img].h) * pl->tex[img].w + (pl->txtx % pl->tex[img].w);
-	hex = ft_hex_transform(ft_color_struct_to_hex(pl->tex[img].pixels[p]), \
-													pl->light);
+	txty = -(ft_game_scr_nxt(&pl->ty) + 220);
+	p = (txty % pl->tex[img].h) * pl->tex[img].w + \
+		(pl->txtx % pl->tex[img].w);
+	hex = ft_hex_transform(ft_color_struct_to_hex(\
+		pl->tex[img].pixels[p]), pl->light);
 	if (hex >= 16000000)
 	{
 		pl->tex[img].pixels[p].a = 0;

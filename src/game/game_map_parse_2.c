@@ -6,13 +6,13 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:13:05 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:15:31 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
+t_new_xy	*ft_game_vertex_save(t_new_player *pl, t_new_xy *vertex)
 {
 	int	count;
 
@@ -31,7 +31,7 @@ t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
 	return (vertex);
 }
 
-void		ft_sector_save(t_new_player *pl, t_new_xy *vertex)
+void		ft_game_sector_save(t_new_player *pl, t_new_xy *vertex)
 {
 	t_new_sector	*sector;
 	int				number;
@@ -42,11 +42,11 @@ void		ft_sector_save(t_new_player *pl, t_new_xy *vertex)
 	sector->neighbors = ft_my_malloc(sizeof(char) * (number + 1));
 	sector->vertex = ft_my_malloc(sizeof(t_new_xy) * (number + 1));
 	sector->npoints = number;
-	ft_fill_the_sector(sector, number, pl->file, vertex);
+	ft_game_fill_the_sector(sector, number, pl->file, vertex);
 	pl->file.count_sectors2++;
 }
 
-void		ft_fill_the_sector(t_new_sector *sector, int number, \
+void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
 	t_file_read file, t_new_xy *vertex)
 {
 	int				v_c;
@@ -76,7 +76,7 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 		ft_2arrclean(&file.split);
 }
 
-void		ft_player_save(t_new_player *pl)
+void		ft_game_player_save(t_new_player *pl)
 {
 	t_new_xy	v;
 	int			n;
@@ -86,13 +86,13 @@ void		ft_player_save(t_new_player *pl)
 	v.x = (float)ft_atoi(pl->file.split[1]);
 	v.y = (float)ft_atoi(pl->file.split[2]);
 	n = ft_atoi(pl->file.split[4]);
-	player_init(pl, &v, &n);
+	ft_game_player_init(pl, &v, &n);
 	pl->pos.z = pl->sectors[pl->sector].floor + EYE_H * 2;
 	if (pl->file.split)
 		ft_2arrclean(&pl->file.split);
 }
 
-void		ft_level_save(t_new_player *pl)
+void		ft_game_level_save(t_new_player *pl)
 {
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 14:50:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:33:16 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
+**	static void	ft_game_sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 **	Third function to manage key input
 ** **************************************************************************
 */
 
-static void		sub_events_2(t_new_sub_ev *se, t_new_player *pl)
+static void		ft_game_sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == 'q')
 	{
@@ -44,17 +44,17 @@ static void		sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 	if (se->ev.key.keysym.sym == SDLK_LSHIFT)
 		se->wsad[6] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
-		door_but_сlick(pl, se);
+		ft_game_door_but_сlick(pl, se);
 }
 
 /*
 ** **************************************************************************
-**	static int sub_events(t_new_sub_ev *se, t_new_player *pl)
+**	static int ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 **	Second function to manage key input
 ** **************************************************************************
 */
 
-static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
+static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
@@ -68,7 +68,7 @@ static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
 	}
 	if (se->ev.key.keysym.sym == SDLK_LCTRL)
 		se->ducking = se->ev.type == SDL_KEYDOWN;
-	sub_events_2(se, pl);
+	ft_game_sub_events_2(se, pl);
 	return (1);
 }
 
@@ -79,17 +79,20 @@ static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
 ** **************************************************************************
 */
 
-static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
+static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	t_list		*list;
 	t_gui_elem	*elem;
+
 	if (se->ev.button.button == SDL_BUTTON_LEFT)
 	{
 		pl->count_sprite = 10;
 		if (pl->bullet_count > 0)
 		{
 			pl->bullet_count--;
-			list = ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game_hud_pistolcount");
+			list = ft_gui_search_elem_by_name(\
+				((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_hud_pistolcount");
 			elem = list->content;
 			free(elem->str);
 			elem->str = ft_itoa(pl->bullet_count);
@@ -97,7 +100,9 @@ static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
 		else if (pl->live_count > 0)
 		{
 			pl->live_count -= 10;
-			list = ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game_hud_livescount");
+			list = ft_gui_search_elem_by_name(\
+				((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_hud_livescount");
 			elem = list->content;
 			free(elem->str);
 			elem->str = ft_itoa(pl->live_count);
@@ -137,11 +142,11 @@ int				events(t_new_sub_ev *se, t_new_player *pl)
 			if (se->ev.type == SDL_KEYDOWN || se->ev.type == SDL_KEYUP)
 			{
 				if (se->ev.key.keysym.sym)
-					if (!sub_events(se, pl))
+					if (!ft_game_sub_events(se, pl))
 						return (0);
 			}
 			if (se->ev.type == SDL_MOUSEBUTTONDOWN)
-				mouse_events(se, pl);
+				ft_game_mouse_events(se, pl);
 		}
 	}
 	return (1);

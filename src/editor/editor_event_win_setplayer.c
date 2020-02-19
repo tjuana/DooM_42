@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:19:37 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:44:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:40:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_gui_mousebuttonup_win_setplayer_btnsaveplayer(void *data, \
 	t_wolf3d	*w;
 	t_list		*list;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_pl"), \
@@ -34,6 +36,8 @@ void	ft_gui_mousebuttonup_win_setplayer_btncancel(void *data, \
 	t_wolf3d	*w;
 	t_list		*list;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_pl"), \

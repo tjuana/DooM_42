@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/17 17:59:05 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:27:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 /*
 ** **************************************************************************
-**	static void events_vel_2(t_new_player *pl, t_new_sub_ev *se,
+**	static void ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se,
 **	\ t_new_others *ot)
 **	Function manage player move
 ** **************************************************************************
 */
 
-static void	events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+static void	ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se, \
+				t_new_others *ot)
 {
 	float	speed;
 	int		push;
@@ -39,12 +40,14 @@ static void	events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 
 /*
 ** **************************************************************************
-**	void events_vel_dir(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+**	void ft_game_events_vel_dir(t_new_player *pl, t_new_sub_ev *se,
+**		t_new_others *ot)
 **	Function manage player velocity
 ** **************************************************************************
 */
 
-void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, \
+				t_new_others *ot)
 {
 	float	speed;
 
@@ -66,7 +69,7 @@ void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 		ot->move_vec[0] += pl->anglesin * speed;
 		ot->move_vec[1] -= pl->anglecos * speed;
 	}
-	events_vel_2(pl, se, ot);
+	ft_game_events_vel_2(pl, se, ot);
 }
 
 /*
@@ -77,8 +80,8 @@ void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 ** **************************************************************************
 */
 
-void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
-			t_new_others *ot)
+void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, \
+				t_new_others *ot)
 {
 	float	z;
 
@@ -112,12 +115,12 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 ** **************************************************************************
 */
 
-void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
+void		ft_game_events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
 {
 	SDL_GetRelativeMouseState(&ms->x, &ms->y);
 	SDL_SetRelativeMouseMode(1);
 	pl->angle += ms->x * 0.03f;
-	ms->yaw = clamp(ms->yaw + ms->y * 0.05f, -5, 5);
+	ms->yaw = ft_math_clamp(ms->yaw + ms->y * 0.05f, -5, 5);
 	pl->yaw = ms->yaw - pl->velo.z * 0.5f;
 	pl->anglesin = sinf(pl->angle);
 	pl->anglecos = cosf(pl->angle);
