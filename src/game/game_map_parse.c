@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 18:01:50 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 14:39:57 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void		ft_vertex_count(t_new_player *pl)
 void		ft_sector_count(t_new_player *pl)
 {
 	int		count;
-	char	*s;
 
 	pl->file.count_sector_vertex = 0;
 	count = 3;

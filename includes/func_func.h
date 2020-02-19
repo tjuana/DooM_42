@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 21:06:07 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 14:30:48 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,7 @@
 # include "func_struct.h"
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
-
-// # define S_WEAPON_SHOT 1
-// # define S_BACKGROUND 0
-// typedef enum		e_sound_ch
-// {
-// 	S_BACKGROUND,
-// 	S_WEAPON_SHOT
-// }					t_sound_ch;
+# include "SDL2/SDL_mixer.h"
 
 /*
 ** **************************************************************************
@@ -49,8 +42,10 @@ void			ft_clean_sdl(t_wolf3d *w);
 ** **************************************************************************
 */
 t_sdl			*sdl_init(t_sdl *sdl);
-void		sound_shoot(t_new_player *sdl);
-void			sound_play(Mix_Chunk *sound_name);
+void			sound_shoot(t_new_player *sdl);
+void			sdl_create_background_music(t_sdl *sdl);
+Mix_Chunk		*sound_init(char *name);
+void			ft_set_window_icon(t_sdl *sdl);
 /*
 ** **************************************************************************
 **	func/func_wu_color.c
