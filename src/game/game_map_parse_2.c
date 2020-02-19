@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/17 20:50:03 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 17:07:51 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_new_xy	*ft_vertex_save(t_new_player *pl, t_new_xy *vertex)
 		ft_error("MALLOC_SPLIT");
 	while (pl->file.split[count] != NULL)
 	{
-		vertex[pl->file.i].y = ft_atoi(pl->file.split[1]);
-		vertex[pl->file.i].x = ft_atoi(pl->file.split[count]);
+		vertex[pl->file.i].y = atoi(pl->file.split[1]);
+		vertex[pl->file.i].x = atoi(pl->file.split[count]);
 		pl->file.i++;
 		count++;
 	}
@@ -60,8 +60,8 @@ void		ft_fill_the_sector(t_new_sector *sector, int number, \
 	s_c = 3;
 	while (number--)
 	{
-		sector->vertex[v_c].x = vertex[ft_atoi(file.split[s_c])].x;
-		sector->vertex[v_c++].y = vertex[ft_atoi(file.split[s_c++])].y;
+		sector->vertex[v_c].x = vertex[atoi(file.split[s_c])].x;
+		sector->vertex[v_c++].y = vertex[atoi(file.split[s_c++])].y;
 	}
 	sector->vertex[0] = vertex[ft_atoi(file.split[s_c - 1])];
 	number = file.tmp[file.count_sectors2];
@@ -94,8 +94,6 @@ void		ft_player_save(t_new_player *pl)
 
 void		ft_level_save(t_new_player *pl)
 {
-	char	*strdup;
-
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
 	if (!(pl->lvl = ft_strdup(pl->file.split[1])))
