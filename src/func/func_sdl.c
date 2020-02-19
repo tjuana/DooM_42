@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 14:46:38 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:13:10 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,11 @@ void		ft_set_window_icon(t_sdl *sdl)
 	SDL_FreeSurface(conv_sur_img);
 }
 
-Mix_Chunk	*sound_init(char *name)
-{
-	Mix_Chunk	*sound;
-
-	if (!(sound = Mix_LoadWAV(name)))
-		ft_error("no music, man");
-	Mix_VolumeChunk(sound, VOLUME);
-	return (sound);
-}
-
 void		sdl_create_background_music(t_sdl *sdl)
 {
-	sdl->music = sound_init("music/background.wav");
+	if (!(sdl->music = Mix_LoadWAV("music/background.wav")))
+		ft_error("no music, man");
+	Mix_VolumeChunk(sdl->music, VOLUME);
 	if (Mix_PlayChannel(0, sdl->music, -1) == -1)
 		ft_error("music");
 	else
@@ -53,9 +45,19 @@ void		sdl_create_background_music(t_sdl *sdl)
 
 void		sound_shoot(t_new_player *pl)
 {
-	pl->shoot_sound = sound_init("music/shot.wav");
+	if (!(pl->shoot_sound = Mix_LoadWAV("Sounds/pistol.wav")))
+		ft_error("no shoot sound, man");
 	if (!Mix_Playing(1))
 		if (Mix_PlayChannel(1, pl->shoot_sound, 0) == -1 || !pl->shoot_sound)
+			ft_error("Audio play error");
+}
+
+void		door_sound(t_new_player *pl)
+{
+	if (!(pl->door_sound = Mix_LoadWAV("Sounds/door.wav")))
+		ft_error("no shoot sound, man");
+	if (!Mix_Playing(1))
+		if (Mix_PlayChannel(1, pl->door_sound, 0) == -1 || !pl->door_sound)
 			ft_error("Audio play error");
 }
 

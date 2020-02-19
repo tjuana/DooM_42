@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/18 20:15:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 16:21:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 		door_total(pl);
 		but_total(pl);
 	}
-	// printf("dver open\n");
 	if (pl->door_all < 1 || (but_script(pl, but_detect(pl), se) == 1))
 		return ;
 	d_sec_nb = door_detect(pl);
@@ -96,9 +95,12 @@ void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 	if ((d_nb == -1) || (pl->doors[d_nb].state == 1))
 		return ;
 	else
+	{
 		ft_gui_elem_set_status(\
 			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
 			"win_game_doortext"), GUI_ELEM_VISIBLE);
+		door_sound(pl);
+	}
 	pl->door_nb = d_nb;
 	if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[d_nb].max_d)
 	{

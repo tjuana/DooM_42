@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:40:12 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 13:42:00 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:04:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	draw_gun(t_new_player *pl, int width, int height, int n)
 		g.y = (int)g.y_num;
 		height++;
 	}
+	if (n > 9)
+		sound_shoot(pl);
 }
 
 void		draw_pistol(t_gun *wpn, t_new_player *pl)
@@ -51,7 +53,6 @@ void		draw_pistol(t_gun *wpn, t_new_player *pl)
 	else if (wpn->sprite_counter > 1)
 	{
 		draw_gun(pl, WIN_W - 430, WIN_H - 340, n + 1);
-				sound_shoot(pl);
 		wpn->sprite_counter += 1;
 	}
 	if (wpn->sprite_counter > 3)
