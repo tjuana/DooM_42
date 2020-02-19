@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/doom_nukem",
-			"args": ["${workspaceRoot}/maps/testmap"],
+			"args": ["${workspaceRoot}/maps/000"],
 			// "args": ["${workspaceRoot}/new_maps/map1.txt"],
 			// "args": [],
 			"stopAtEntry": false,

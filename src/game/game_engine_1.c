@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 18:29:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 21:13:49 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ static int	ft_game_ceil_floor_calcs(t_new_player *pl, int s)
 	pl->ceil.yceil = pl->sect->ceil - pl->pos.z;
 	pl->floor.yfloor = pl->sect->floor - pl->pos.z;
 	neib = pl->sect->neighbors[s];
-	if (neib >= 0)
+	if (neib >= 0 && neib < pl->sectors_nb)
 	{
 		pl->ceil.nyceil = pl->sectors[neib].ceil - pl->pos.z;
 		pl->floor.nyfloor = pl->sectors[neib].floor - pl->pos.z;

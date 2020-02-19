@@ -6,13 +6,13 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:15:31 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 21:27:36 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_new_xy	*ft_game_vertex_save(t_new_player *pl, t_new_xy *vertex)
+t_vector3	*ft_game_vertex_save(t_new_player *pl, t_vector3 *vertex)
 {
 	int	count;
 
@@ -31,7 +31,7 @@ t_new_xy	*ft_game_vertex_save(t_new_player *pl, t_new_xy *vertex)
 	return (vertex);
 }
 
-void		ft_game_sector_save(t_new_player *pl, t_new_xy *vertex)
+void		ft_game_sector_save(t_new_player *pl, t_vector3 *vertex)
 {
 	t_new_sector	*sector;
 	int				number;
@@ -39,15 +39,15 @@ void		ft_game_sector_save(t_new_player *pl, t_new_xy *vertex)
 	sector = &pl->sectors[pl->file.count_sectors2];
 	number = pl->file.tmp[pl->file.count_sectors2];
 	pl->sectors[pl->file.count_sectors2].npoints = pl->file.count_sector_vertex;
-	sector->neighbors = ft_my_malloc(sizeof(char) * (number + 1));
-	sector->vertex = ft_my_malloc(sizeof(t_new_xy) * (number + 1));
+	sector->neighbors = ft_my_malloc(sizeof(int) * (number + 1));
+	sector->vertex = ft_my_malloc(sizeof(t_vector3) * (number + 1));
 	sector->npoints = number;
 	ft_game_fill_the_sector(sector, number, pl->file, vertex);
 	pl->file.count_sectors2++;
 }
 
 void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
-	t_file_read file, t_new_xy *vertex)
+	t_file_read file, t_vector3 *vertex)
 {
 	int				v_c;
 	int				s_c;
@@ -68,7 +68,9 @@ void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
 	v_c = 0;
 	while (number--)
 	{
-		sector->neighbors[v_c++] = ft_atoi(file.split[s_c++]);
+		sector->neighbors[v_c] = ft_atoi(file.split[s_c]);
+		v_c++;
+		s_c++;
 		if (ft_atoi(file.split[s_c - 1]) >= (file.count_sectors + 1))
 			ft_error("BAD NEIGHBOUR");
 	}
@@ -78,7 +80,7 @@ void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
 
 void		ft_game_player_save(t_new_player *pl)
 {
-	t_new_xy	v;
+	t_vector3	v;
 	int			n;
 
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))

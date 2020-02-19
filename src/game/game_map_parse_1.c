@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:15:24 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 21:01:59 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ void		ft_game_sector_count(t_new_player *pl)
 		ft_2arrclean(&pl->file.split);
 }
 
-t_new_xy	*ft_game_malloc_sec_vertex(t_new_player *pl, char *v)
+t_vector3	*ft_game_malloc_sec_vertex(t_new_player *pl, char *v)
 {
-	t_new_xy		*vertex;
+	t_vector3		*vertex;
 
 	if ((pl->file.fd = open(v, O_RDONLY)) < 0)
 		perror("Error: bad file");
-	vertex = ft_my_malloc(sizeof(t_new_xy) * (pl->file.vertex_count));
+	vertex = ft_my_malloc(sizeof(t_vector3) * (pl->file.vertex_count));
 	pl->sectors = ft_my_malloc(sizeof(t_new_sector) * \
 			(pl->file.count_sectors + 1));
 	pl->sectors_nb = pl->file.count_sectors + 1;
@@ -88,7 +88,7 @@ t_new_xy	*ft_game_malloc_sec_vertex(t_new_player *pl, char *v)
 
 void		ft_game_malloc_save_sectors(char *ag, t_new_player *pl)
 {
-	t_new_xy		*vertex;
+	t_vector3		*vertex;
 
 	vertex = ft_game_malloc_sec_vertex(pl, ag);
 	pl->file.count_sectors2 = 0;

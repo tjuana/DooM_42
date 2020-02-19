@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 19:49:25 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:58:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	ft_game_player_init_config(t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	void ft_game_player_init(t_new_player *pl, t_new_xy *v, int *n)
+**	void ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n)
 ** **************************************************************************
 */
 
-void	ft_game_player_init(t_new_player *pl, t_new_xy *v, int *n)
+void	ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n)
 {
 	pl->pos.x = v->x;
 	pl->pos.y = v->y;

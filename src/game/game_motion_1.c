@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 19:25:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:58:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 ** **************************************************************************
 */
 
-void		ft_game_motion_move_pl(t_new_xy *delt, t_new_player *pl)
+void		ft_game_motion_move_pl(t_vector3 *delt, t_new_player *pl)
 {
 	t_new_sector	*sect;
-	t_new_xy		pt;
+	t_vector3		pt;
 	int				res;
 	int				i;
 
@@ -53,7 +53,7 @@ void		ft_game_motion_move_pl(t_new_xy *delt, t_new_player *pl)
 */
 
 static int	ft_game_motion_slide(t_new_player *pl, t_new_sector *sect, \
-	t_new_xy *vert, int i)
+	t_vector3 *vert, int i)
 {
 	float	wall_dx;
 	float	wall_dy;
@@ -96,7 +96,7 @@ void		ft_game_motion_chk(t_new_player *pl, \
 	int				inter;
 	float			point_side;
 	t_new_sector	*sect;
-	t_new_xy		*vert;
+	t_vector3		*vert;
 
 	i = -1;
 	if (ot->moving != 1)
@@ -105,13 +105,13 @@ void		ft_game_motion_chk(t_new_player *pl, \
 	vert = sect->vertex;
 	while (++i < sect->npoints)
 	{
-		inter = ft_math_intersectbox((t_new_xy){pl->pos.x, pl->pos.y}, \
-			(t_new_xy){pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y}, \
+		inter = ft_math_intersectbox((t_vector3){pl->pos.x, pl->pos.y, 0, 0}, \
+			(t_vector3){pl->pos.x + pl->velo.x, pl->pos.y + pl->velo.y, 0, 0}, \
 			vert[i], vert[i + 1]);
-		point_side = ft_math_pointside((t_new_xy){pl->pos.x + pl->velo.x, \
-			pl->pos.y + pl->velo.y}, vert[i], vert[i + 1]);
+		point_side = ft_math_pointside((t_vector3){pl->pos.x + pl->velo.x, \
+			pl->pos.y + pl->velo.y, 0, 0}, vert[i], vert[i + 1]);
 		if (inter && point_side < 0)
 			ot->moving = ft_game_motion_slide(pl, sect, vert, i);
 	}
-	ft_game_motion_move_pl(&(t_new_xy){pl->velo.x, pl->velo.y}, pl);
+	ft_game_motion_move_pl(&(t_vector3){pl->velo.x, pl->velo.y, 0, 0}, pl);
 }

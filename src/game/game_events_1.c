@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 19:33:16 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:52:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
 		se->quit = 1;
+		((t_wolf3d*)pl->wolf3d)->sdl->running = 0;
+		// ((t_wolf3d*)pl->wolf3d)->gui.mode = GUI_MD_MENU;
 		return (0);
 	}
 	if (se->ev.key.keysym.sym == ' ' && se->ground && pl->fly != 1)
