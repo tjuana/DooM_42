@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 14:49:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:53:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	player_init(t_new_player *pl, t_new_xy *v, int *n)
 	pl->but_nb = -1;
 	pl->lvl = NULL;
 	pl->light = 1;
-	pl->pix = (int *)pl->pixels;
+	pl->pix = pl->pixels;
 	pl->live_count = 100;
 	pl->bullet_count = 10;
 
