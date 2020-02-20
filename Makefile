@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/19 20:38:54 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/20 13:47:24 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,9 @@ GUI_NAME = gui_test
 # Сompiler settings
 CC = gcc
 FLAGS_NORME = -Wall -Wextra -Werror
+FLAGS_O = -O0 -O3
 FLAGS_OPT = -march=native -m64 -flto -funroll-loops -Ofast
-FLAGS = -g -O3 -O0 #$(FLAGS_NORME)
+FLAGS = -g $(FLAGS_O) #$(FLAGS_NORME)
 
 # SDL2 settings
 USERNAME = $(shell whoami)

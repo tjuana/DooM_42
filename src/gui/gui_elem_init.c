@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:52:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:42:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_gui_elem_init(t_list **dom, char *name, \
 	elem.events = NULL;
 	elem.type = GUI_BLOCK;
 	elem.str = NULL;
+	elem.font_path = NULL;
 	list = ft_lstnew(&elem, sizeof(t_gui_elem));
 	if (list == NULL)
 		ft_error("ERROR (N1)");

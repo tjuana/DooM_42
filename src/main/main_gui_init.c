@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:36:24 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:42:12 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 13:48:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,35 @@ void	ft_main_gui_init_win_menu_btn(t_list *head)
 	t_gui_elem	*elem;
 
 	elem = head->content;
-	ft_gui_elem_init_grid(head, "win_menu_btngame", 1, (t_gui_coord){1, 1});
-	ft_gui_elem_set_color(elem->child, 0xffa500);
-	ft_gui_elem_set_button(elem->child, "Game");
+	ft_gui_elem_init_grid(head, "win_menu_title", 1, (t_gui_coord){1, 5});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_text(elem->child, "DOOM", 72, "fonts/Raleway-Black.ttf");
+
+	ft_gui_elem_init_grid(head, "win_menu_title2", 11, (t_gui_coord){1, 5});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_text(elem->child, "NUKEM", 72, "fonts/Raleway-Black.ttf");
+
+	ft_gui_elem_init_grid(head, "win_menu_btngame", 31, (t_gui_coord){2, 2});
+	ft_gui_elem_set_color(elem->child, 0x30444444);
+	ft_gui_elem_set_button(elem->child, "Game", 30);
 	ft_gui_elem_set_event(elem->child, \
 		ft_gui_mousebuttonup_win_menu_btngame, \
 		SDL_MOUSEBUTTONUP, 0);
-	ft_gui_elem_init_grid(head, "win_menu_btneditor", 2, (t_gui_coord){1, 1});
-	ft_gui_elem_set_color(elem->child, 0xffa500);
-	ft_gui_elem_set_button(elem->child, "Editor");
+	ft_gui_elem_init_grid(head, "win_menu_btneditor", 33, (t_gui_coord){2, 2});
+	ft_gui_elem_set_color(elem->child, 0x30444444);
+	ft_gui_elem_set_button(elem->child, "Editor", 30);
 	ft_gui_elem_set_event(elem->child, \
 		ft_gui_mousebuttonup_win_menu_btneditor, \
 		SDL_MOUSEBUTTONUP, 0);
-	ft_gui_elem_init_grid(head, "win_menu_btnexit", 3, (t_gui_coord){1, 1});
-	ft_gui_elem_set_color(elem->child, 0xffa500);
-	ft_gui_elem_set_button(elem->child, "Exit");
+	ft_gui_elem_init_grid(head, "win_menu_btnabout", 51, (t_gui_coord){2, 2});
+	ft_gui_elem_set_color(elem->child, 0x30444444);
+	ft_gui_elem_set_button(elem->child, "About", 30);
+	ft_gui_elem_init_grid(head, "win_menu_btnauthor", 53, (t_gui_coord){2, 2});
+	ft_gui_elem_set_color(elem->child, 0x30444444);
+	ft_gui_elem_set_button(elem->child, "Author", 30);
+	ft_gui_elem_init_grid(head, "win_menu_btnexit", 71, (t_gui_coord){2, 2});
+	ft_gui_elem_set_color(elem->child, 0x30ff0000);
+	ft_gui_elem_set_button(elem->child, "Exit", 30);
 	ft_gui_elem_set_event(elem->child, \
 		ft_gui_mousebuttonup_win_menu_btnexit, \
 		SDL_MOUSEBUTTONUP, 0);

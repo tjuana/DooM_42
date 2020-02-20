@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:42:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:41:20 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ typedef struct		s_gui_grid
 **	void (*redraw)		| function that redraw element font
 **	SDL_Surface *surf	| pointer to element surface (image)
 **	t_gui_grid grid		| element grid
+**	char *font_path		| Font path
 ** **************************************************************************
 */
 typedef struct		s_gui_elem
@@ -204,6 +205,7 @@ typedef struct		s_gui_elem
 	void			(*redraw_font)(void *data, t_list *dom);
 	SDL_Surface		*surf;
 	t_gui_grid		grid;
+	char			*font_path;
 }					t_gui_elem;
 
 /*

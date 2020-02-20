@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:07:32 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:52:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:43:56 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_gui_desctuct(t_list *dom)
 		ft_gui_desctuct_events(elem->events);
 		free(elem->name);
 		free(elem->str);
+		free(elem->font_path);
 		free(elem);
 		free(list);
 	}

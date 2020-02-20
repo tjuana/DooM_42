@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:16:09 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:52:37 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:58:41 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void	ft_gui_elem_set_block(t_list *list)
 ** **************************************************************************
 */
 
-void	ft_gui_elem_set_button(t_list *list, void *str)
+void	ft_gui_elem_set_button(t_list *list, void *str, int font_size)
 {
 	t_gui_elem	*elem;
 
 	elem = list->content;
 	elem->type = GUI_BUTTON;
 	elem->str = ft_strdup(str);
-	elem->fs = (int)(16 * (WIN_WIDTH / 1280.0));
+	elem->fs = (int)(font_size * (WIN_WIDTH / 1280.0));
 	ft_gui_elem_set_event(list, \
 		ft_gui_mousemotion_button, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, \
