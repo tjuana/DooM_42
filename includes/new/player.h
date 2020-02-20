@@ -6,13 +6,21 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 21:15:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:26:49 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 #define PLAYER_H
 # include "wolf3d.h"
+
+/*
+** **************************************************************************
+**	Player status constant
+** **************************************************************************
+*/
+# define PL_STATUS_LIVE	0x01
+# define PL_STATUS_DEAD	0x02
 
 /*
 ** **************************************************************************
@@ -121,6 +129,8 @@ typedef struct		s_file_read
 **	int live_count			|
 **	int bullet_count		|
 **	Mix_Chunk *sound		|
+**	int status				| Player status
+**	int died_timer			| Died timer
 ** **************************************************************************
 */
 typedef struct		s_new_player
@@ -195,6 +205,9 @@ typedef struct		s_new_player
 	int				live_count;
 	int				bullet_count;
 	Mix_Chunk		*sound;
+	int				status;
+	int				died_timer;
+	char			*map_path;
 }					t_new_player;
 
 #endif

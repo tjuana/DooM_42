@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/20 12:45:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:44:34 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,28 @@
 
 void	ft_game_player_init_config(t_new_player *pl)
 {
+	t_list		*list;
+	t_gui_elem	*elem;
+
 	pl->light = 1;
 	pl->live_count = 100;
 	pl->bullet_count = 10;
+	pl->status = PL_STATUS_LIVE;
+	pl->died_timer = 0;
+
+	list = ft_gui_search_elem_by_name(\
+		((t_wolf3d*)pl->wolf3d)->gui.dom, \
+		"win_game_hud_pistolcount");
+	elem = list->content;
+	free(elem->str);
+	elem->str = ft_itoa(pl->bullet_count);
+
+	list = ft_gui_search_elem_by_name(\
+		((t_wolf3d*)pl->wolf3d)->gui.dom, \
+		"win_game_hud_livescount");
+	elem = list->content;
+	free(elem->str);
+	elem->str = ft_itoa(pl->live_count);
 }
 
 /*
@@ -70,6 +89,31 @@ void	ft_game_redraw(t_wolf3d *w, t_list *dom)
 	t_new_temp	*data;
 	t_gun		wpn;
 
+	if (w->gui.mode != GUI_MD_GAME)
+		return ;
+	if (((t_new_temp*)w->new_data)->pl->status == PL_STATUS_DEAD)
+	{
+		sleep(3);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_diedtext"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_diedbg"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, "win_game"), \
+			GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), \
+			GUI_ELEM_VISIBLE);
+		w->gui.mode = GUI_MD_MENU;
+		w->player_status = 0;
+		SDL_ShowCursor(SDL_ENABLE);
+		return ;
+	}
 	(void)dom;
 	data = w->new_data;
 	wpn.sprite_counter = 1;
@@ -102,6 +146,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	t_new_temp	*data;
 
 	data = (t_new_temp*)w->new_data;
+	data->pl->map_path = path;
 	data->pl->wolf3d = w;
 	data->pl->sectors_nb = 0;
 	data->se.quit = 0;
@@ -109,7 +154,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	ft_game_my_parse_map(data->pl, path);
 	data->pl->y_top = ft_my_malloc(sizeof(int) * WIN_WIDTH);
 	data->pl->y_bot = ft_my_malloc(sizeof(int) * WIN_WIDTH);
-	SDL_ShowCursor(SDL_ENABLE);
+	// SDL_ShowCursor(SDL_ENABLE);
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
 	data->se.wsad[2] = 0;

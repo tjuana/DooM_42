@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 20:15:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/20 13:56:33 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,13 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].spd;
-	// else if (se->wsad[4] == 1 && pl->doors[d_nb].state == 1)
-	// {
-	// 	printf("door open!\n");
-	// }
+	else if (se->wsad[4] == 1 && pl->doors[d_nb].state == 1)
+	{
+		// Попробовать сделать так, чтобы операция проделывалась
+		// всего один раз (!)
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+	}
 	pl->doors[d_nb].state = 1;
 }
