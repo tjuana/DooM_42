@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:50:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:59:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_main(int c, char **v)
 		// fpsthink();
 	}
 	ft_editor_desctuct(&w);
+	ft_clean_sdl(&w);
 }
 
 int		main(int c, char **v)

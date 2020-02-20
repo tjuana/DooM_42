@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_help.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 13:54:34 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/20 17:58:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void			ft_clean_sdl(t_wolf3d *w)
 		SDL_DestroyTexture(w->sdl->text);
 	if (w->sdl->renderer)
 		SDL_DestroyRenderer(w->sdl->renderer);
-	if (w->sdl->win)
-		SDL_DestroyWindow(w->sdl->win);
+	// if (w->sdl->win)
+		// SDL_DestroyWindow(w->sdl->win);
 	SDL_Delay(777);
 	IMG_Quit();
 	SDL_Quit();
