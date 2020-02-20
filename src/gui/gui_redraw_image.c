@@ -24,6 +24,11 @@ int		ft_gui_get_image_pixel_pos_elem(int x, int y, t_gui_elem *elem)
 {
 	int	pos;
 
+	if (!elem->surf)
+	{
+		ft_putstr("no surface valid");
+		return (0);
+	}
 	pos = ((y - elem->v1.y) * elem->surf->h / \
 		(elem->v2.y - elem->v1.y) % elem->surf->h) * elem->surf->w + \
 		((x - elem->v1.x) * elem->surf->w / \

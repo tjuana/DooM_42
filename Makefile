@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/20 13:47:24 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/20 17:27:44 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -185,13 +185,9 @@ gui_redraw_image.c \
 gui_mouse_actions.c \
 gui_sdl_func.c
 
-
-
 GUI_OBJS_DIRECTORY = $(OBJS_PATH)
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))
 GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
-
-
 
 # GAME WITH MAIN FILE
 GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/

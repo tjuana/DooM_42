@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/20 15:26:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:29:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,13 @@ typedef struct		s_new_player
 	int				status;
 	int				died_timer;
 	char			*map_path;
-}					t_new_player;
+	// camera vertex
+	t_vector3		fov_vec1;
+	t_vector3		fov_vec2;
+
+
+
+	int 		lunar;
+}				t_new_player;
 
 #endif

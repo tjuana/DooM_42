@@ -39,8 +39,8 @@ static void	ft_game_draw_gun(t_new_player *pl, int width, int height, int n)
 		g.y = (int)g.y_num;
 		height++;
 	}
-	if (n > 9)
-		sound(pl, "Sounds/pistol.wav");
+	//if (n > 9)
+	//	sound(pl, "Sounds/pistol.wav");
 }
 
 void		ft_game_draw_pistol(t_gun *wpn, t_new_player *pl)

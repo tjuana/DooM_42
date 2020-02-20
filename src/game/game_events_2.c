@@ -87,9 +87,14 @@ void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 
 	if (se->falling == 0)
 		return ;
-	pl->velo.z -= 0.1f;
+	if(pl->lunar == 1)
+		pl->velo.z -= 0.015f;
+	else
+		pl->velo.z -= 0.1f;
 	if (pl->fly == 1 && pl->velo.z <= 0)
+	{
 		se->falling = 0;
+	}
 	z = pl->pos.z + pl->velo.z;
 	if (pl->velo.z < 0 && z < pl->sectors[pl->sector].floor + pl->hole.z)
 	{

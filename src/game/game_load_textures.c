@@ -56,7 +56,7 @@ t_new_texture	*ft_game_load_textures(t_new_player *pl)
 		exit(EXIT_FAILURE);
 	}
 	t_arr[0] = ft_game_texture_parse("Img_tga/rock.tga");
-	t_arr[1] = ft_game_texture_parse("Img_tga/ivy.tga");
+	t_arr[1] = ft_game_texture_parse("Img_tga/grid_black2.tga");
 	t_arr[2] = ft_game_texture_parse("Img_tga/marble.tga");
 	t_arr[3] = ft_game_texture_parse("Img_tga/texture_leaf_burch.tga");
 	t_arr[4] = ft_game_texture_parse("Img_tga/rock1.tga");

@@ -70,6 +70,12 @@ typedef struct		s_new_sector
     int				npoints;
 }					t_new_sector;
 
+typedef struct		s_new_xy
+{
+	float			x;
+	float			y;
+}					t_new_xy;
+
 /*
 ** **************************************************************************
 **	t_new_others
@@ -81,11 +87,29 @@ typedef struct		s_new_sector
 **	int						|
 ** **************************************************************************
 */
-typedef struct		s_new_others
+typedef struct	s_new_others
 {
-    float			move_vec[2];
-    int				moving;
-}					t_new_others;
+    float	move_vec[2];//when player moves
+    int		moving;
+}			t_new_others;
+
+// typedef struct		s_new_others
+// {
+// 	const t_new_sector	*sect;
+//     const t_new_xy		*vert;
+//     t_new_xy 			p;
+//     t_new_xy			d;
+//     float			px;
+//     float			dx;
+//     float			py;
+//     float			dy;
+//     float			eye_h;
+//     float			hole_low;
+//     float			hole_high;
+// 	t_new_xy		dir_vec;
+//     //float			xd;
+//     //float			yd;
+// }					t_new_others;
 
 /*
 ** **************************************************************************

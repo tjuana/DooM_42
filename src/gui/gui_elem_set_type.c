@@ -28,10 +28,15 @@ void	ft_gui_elem_set_image(t_list *list, char *path)
 	elem = list->content;
 	elem->type = GUI_IMAGE;
 	temp_surf = IMG_Load(path);
+	if(!temp_surf) {
+		printf("IMG_Load: %s\n", IMG_GetError());
+		exit (1);
+	}
 	elem->surf = SDL_ConvertSurfaceFormat(temp_surf, \
 		SDL_PIXELFORMAT_RGB888, 0);
 	SDL_FreeSurface(temp_surf);
-	elem->surf == NULL ? ft_error("IMAGE LOAD ERROR") : 0;
+
+	//elem->surf == NULL ?ft_error("IMAGE LOAD ERROR") : 0;
 }
 
 /*

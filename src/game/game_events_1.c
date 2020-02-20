@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/20 17:11:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:27:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,25 @@ static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 	{
 		pl->velo.z += 0.75f;
 		se->falling = 1;
+		if (pl->lunar == 1)
+			pl->velo.z = .65f;
 	}
 	if (se->ev.key.keysym.sym == SDLK_LCTRL)
 		se->ducking = se->ev.type == SDL_KEYDOWN;
+	if (se->ev.key.keysym.sym == SDLK_q && pl->fly == 1 && pl->pos.z < pl->sectors[pl->sector].ceil - 2)
+	{
+		pl->pos.z += 0.5f;
+		se->falling = 0;
+	}
+	if (se->ev.key.keysym.sym == SDLK_e && pl->fly == 1)
+	{
+		pl->pos.z -= 0.5f;
+		se->falling = 1;
+	}
+	if(se->ev.key.keysym.sym == SDLK_l)
+	{
+		pl->lunar = 1;
+	}
 	ft_game_sub_events_2(se, pl);
 	return (1);
 }
@@ -93,8 +109,10 @@ static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 	t_list		*list;
 	t_gui_elem	*elem;
 
+	printf("%f\n", pl->sect->ceil);
 	if (se->ev.button.button == SDL_BUTTON_LEFT)
 	{
+		sound(pl, "Sounds/pistol.wav", 1);
 		pl->count_sprite = 10;
 		if (pl->bullet_count > 0)
 		{
@@ -137,7 +155,7 @@ static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 		else
 		{
 			pl->fly = 1;
-			pl->velo.z = 1.3f;
+			pl->velo.z = 0.7f;
 		}
 	}
 }
@@ -151,6 +169,7 @@ int				events(t_new_sub_ev *se, t_new_player *pl)
 		{
 			if (se->ev.type == SDL_KEYDOWN || se->ev.type == SDL_KEYUP)
 			{
+
 				if (se->ev.key.keysym.sym)
 					if (!ft_game_sub_events(se, pl))
 						return (0);
