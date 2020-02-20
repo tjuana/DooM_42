@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 20:52:37 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 18:18:14 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 		se->ducking = se->ev.type == SDL_KEYDOWN;
 	if (se->ev.key.keysym.sym == SDLK_q && pl->fly == 1 && pl->pos.z < pl->sectors[pl->sector].ceil - 2)
 	{
-		pl->pos.z += 0.5f;
+		pl->pos.z += 0.03f;
 		se->falling = 0;
 	}
 	if (se->ev.key.keysym.sym == SDLK_e && pl->fly == 1)
