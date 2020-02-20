@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/20 15:23:53 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:58:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 		((t_wolf3d*)pl->wolf3d)->gui.mode = GUI_MD_MENU;
 		((t_wolf3d*)pl->wolf3d)->player_status = 0;
 		SDL_ShowCursor(SDL_ENABLE);
-		printf("! %d\n", SDL_ShowCursor(SDL_QUERY));
+		SDL_SetRelativeMouseMode(0);
 		return (0);
 	}
 	if (se->ev.key.keysym.sym == ' ' && se->ground && pl->fly != 1)

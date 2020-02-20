@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/20 15:44:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:57:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	ft_game_redraw(t_wolf3d *w, t_list *dom)
 		w->gui.mode = GUI_MD_MENU;
 		w->player_status = 0;
 		SDL_ShowCursor(SDL_ENABLE);
+		SDL_SetRelativeMouseMode(0);
 		return ;
 	}
 	(void)dom;

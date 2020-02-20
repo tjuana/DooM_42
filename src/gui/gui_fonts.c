@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:48:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:53:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,8 @@ void		ft_gui_font_putstr_sdl(t_wolf3d *w, \
 		txtr = SDL_CreateTextureFromSurface(w->sdl->renderer, txtr_s);
 		(txtr == NULL) ? ft_error("FONT ERROR (6)") : 0;
 	}
-	SDL_FreeSurface(txtr_s);
+	if (txtr_s)
+		SDL_FreeSurface(txtr_s);
 	ft_gui_font_rect(w, txtr, f, c);
 	SDL_DestroyTexture(txtr);
 }
