@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:41:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/20 16:37:14 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void		ft_set_window_icon(t_sdl *sdl)
 		ft_sdl_error(sdl);
 	if (!(conv_sur_img = SDL_ConvertSurface(sur_img, sur_win->format, 0)))
 		ft_sdl_error(sdl);
-	SDL_FreeSurface(sur_win);
-	SDL_FreeSurface(sur_img);
+	(sur_win) ? SDL_FreeSurface(sur_win) : 0;
+	(sur_img) ? SDL_FreeSurface(sur_img) : 0;
 	SDL_SetWindowIcon(sdl->win, conv_sur_img);
-	SDL_FreeSurface(conv_sur_img);
+	(conv_sur_img) ? SDL_FreeSurface(conv_sur_img) : 0;
 }
 
 void		sdl_create_background_music(t_sdl *sdl)

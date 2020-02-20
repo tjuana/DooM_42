@@ -6,18 +6,32 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:43:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:15:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
+	//win_game_hud_filename
 void		ft_game_my_parse_map(t_new_player *pl, char *ag)
 {
+	t_list		*list; // hmm...
+	t_gui_elem	*elem; // hmm...
+
 	pl->file.count_sectors = -1;
 	if (!ag)
 		ag = "maps/button";
 	pl->file.ag = ag;
+
+	// hmm...
+	pl->map_path = ag;
+	list = ft_gui_search_elem_by_name(\
+		((t_wolf3d*)pl->wolf3d)->gui.dom, \
+		"win_game_hud_filename");
+	elem = list->content;
+	free(elem->str);
+	elem->str = ft_strdup(pl->map_path);
+
 	if ((pl->file.fd = open(ag, O_RDONLY)) < 0)
 		ft_error("BAD FILE");
 	pl->file.vertex_count = 0;

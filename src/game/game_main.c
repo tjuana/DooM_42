@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/20 15:57:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:19:54 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,7 @@ void	ft_game_init(t_wolf3d *w, char *path)
 {
 	t_new_temp	*data;
 
-	data = (t_new_temp*)w->new_data;
-	data->pl->map_path = path;
+	data = w->new_data;
 	data->pl->wolf3d = w;
 	data->pl->sectors_nb = 0;
 	data->se.quit = 0;
@@ -199,6 +198,25 @@ void	ft_game_gui_init_menu(t_list *head)
 		(t_gui_coord){250, 10, 0}, (t_gui_coord){354, 50, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "10", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_parent(head, elem->child);
+
+	ft_gui_elem_init(&elem->child, "win_game_hud_armors", \
+		(t_gui_coord){316, 16, 0}, \
+		(t_gui_coord){348, 48, 0});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_image(elem->child, "img/armors.png");
+	ft_gui_elem_set_parent(head, elem->child);
+	ft_gui_elem_init(&elem->child, "win_game_hud_armorscount", \
+		(t_gui_coord){350, 10, 0}, (t_gui_coord){454, 50, 0});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_text(elem->child, "10", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_parent(head, elem->child);
+
+
+	ft_gui_elem_init(&elem->child, "win_game_hud_filename", \
+		(t_gui_coord){500, 10, 0}, (t_gui_coord){700, 50, 0});
+	ft_gui_elem_set_color(elem->child, 0xffffff);
+	ft_gui_elem_set_text(elem->child, "file", 16, "fonts/Raleway-Bold.ttf");
 	ft_gui_elem_set_parent(head, elem->child);
 }
 

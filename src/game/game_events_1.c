@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/20 15:58:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 17:11:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
 		ft_gui_elem_set_status(\
-				ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game"), \
-				GUI_ELEM_HIDDEN);
-			ft_gui_elem_set_status(\
-				ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_menu"), \
-				GUI_ELEM_VISIBLE);
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game"), \
+			GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_menu"), \
+			GUI_ELEM_VISIBLE);
 		((t_wolf3d*)pl->wolf3d)->gui.mode = GUI_MD_MENU;
 		((t_wolf3d*)pl->wolf3d)->player_status = 0;
 		SDL_ShowCursor(SDL_ENABLE);
