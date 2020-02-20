@@ -111,6 +111,8 @@ typedef struct	s_new_player
 	int			live_count;
 	int			bullet_count;
 	Mix_Chunk	*sound;
+
+	int 		lunar;
 }				t_new_player;
 
 #endif

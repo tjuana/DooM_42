@@ -41,7 +41,7 @@ void			ft_clean_sdl(t_wolf3d *w);
 **	func/func_sdl.c
 ** **************************************************************************
 */
-void			sound(t_new_player *pl, char *name);
+void			sound(t_new_player *pl, char *name, int channel);
 
 void			sdl_create_background_music(t_sdl *sdl);
 Mix_Chunk		*sound_init(char *name);

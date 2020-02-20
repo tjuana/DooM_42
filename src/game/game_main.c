@@ -80,7 +80,7 @@ void	ft_game_redraw(t_wolf3d *w, t_list *dom)
 		data->pl->count_sprite = 1;
 	}
 	ft_game_draw_pistol(&wpn, data->pl);
-	data->pl->hole.z = data->se.ducking ? CROUCH_H : EYE_H;
+	data->pl->hole.z = data->se.ducking ? CROUCH_H + 1.5 : EYE_H;
 	data->se.ground = !data->se.falling;
 	ft_game_events_jumps(&data->se, data->pl, &data->ot);
 	ft_game_motion_chk(data->pl, &data->ot, &data->se);

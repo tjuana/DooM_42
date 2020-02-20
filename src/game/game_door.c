@@ -99,7 +99,7 @@ void		ft_game_door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 		ft_gui_elem_set_status(\
 			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
 			"win_game_doortext"), GUI_ELEM_VISIBLE);
-		sound(pl, "Sounds/door.wav");
+		sound(pl, "Sounds/door.wav", 3);
 	}
 	pl->door_nb = d_nb;
 	if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[d_nb].max_d)

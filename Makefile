@@ -184,13 +184,9 @@ gui_redraw_image.c \
 gui_mouse_actions.c \
 gui_sdl_func.c
 
-
-
 GUI_OBJS_DIRECTORY = $(OBJS_PATH)
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))
 GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
-
-
 
 # GAME WITH MAIN FILE
 GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
