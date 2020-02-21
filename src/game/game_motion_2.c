@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_motion_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 19:58:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:49:37 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static int	ft_game_motion_chk_next_sec(t_vector3 *delt, \
 	while (++i < sect_next->npoints)
 	{
 		inter = ft_math_intersectbox((t_vector3){pl->pos.x, pl->pos.y, 0, 0}, \
-			(t_vector3){pl->pos.x + delt->x, pl->pos.y + delt->y, 0, 0}, vert[i], \
-			vert[i + 1]);
+			(t_vector3){pl->pos.x + delt->x, pl->pos.y + delt->y, 0, 0}, \
+			vert[i], vert[i + 1]);
 		point_side = ft_math_pointside((t_vector3){pl->pos.x + delt->x, \
 			pl->pos.y + delt->y, 0, 0}, vert[i], vert[i + 1]);
 		if (sect_next->neighbors[i] >= 0 && \
@@ -66,8 +66,9 @@ t_vector3 *delt, int i, t_new_player *pl)
 	int				inter;
 
 	vert = sect->vertex;
-	inter = ft_math_intersectbox((t_vector3){pl->pos.x, pl->pos.y, 0, 0}, (t_vector3)\
-	{pl->pos.x + delt->x, pl->pos.y + delt->y, 0, 0}, vert[i], vert[i + 1]);
+	inter = ft_math_intersectbox((t_vector3){pl->pos.x, pl->pos.y, 0, 0}, \
+	(t_vector3){pl->pos.x + delt->x, pl->pos.y + delt->y, 0, 0}, vert[i], \
+	vert[i + 1]);
 	point_side = ft_math_pointside((t_vector3){pl->pos.x + delt->x, \
 		pl->pos.y + delt->y, 0, 0}, vert[i], vert[i + 1]);
 	if (sect->neighbors[i] < 0 && inter && point_side < 0)

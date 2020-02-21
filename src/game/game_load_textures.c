@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/21 14:06:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 18:48:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ t_new_texture	*ft_game_load_textures(t_new_player *pl)
 	t_new_texture	*t_arr;
 
 	pl->textures_nb = 15;
-	if (!(t_arr = (t_new_texture *)ft_my_malloc(sizeof(t_new_texture) * \
-	pl->textures_nb)))
+	t_arr = (t_new_texture *)ft_my_malloc(sizeof(t_new_texture) \
+												* pl->textures_nb);
 	t_arr[0] = ft_game_texture_parse("Img_tga/carpet_beige2.tga");
 	t_arr[1] = ft_game_texture_parse("Img_tga/asphalt_concrete.tga");
 	t_arr[2] = ft_game_texture_parse("Img_tga/marble.tga");
