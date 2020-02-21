@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 16:58:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 19:39:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,5 +190,29 @@ t_vector3	ft_math_intersect(t_vector3 v1, t_vector3 v2, t_vector3 v3, t_vector3 
 float		ft_math_to_deg(float radians);
 
 t_new_player	*reload(t_new_player *pl);
+
+
+/*
+** **************************************************************************
+**	src/game/game_events_3.c
+** **************************************************************************
+*/
+int				ft_game_events_exit(t_new_player *pl);
+void			ft_game_hidden_message(t_list *dom);
+void			ft_game_set_dead(t_new_player *pl, t_list *dom);
+int				ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl);
+void			ft_game_mouse_events_click(t_new_player *pl);
+
+
+/*
+** **************************************************************************
+**	src/game/game_events_1.c
+** **************************************************************************
+*/
+void			ft_game_sub_events_moving(t_new_sub_ev *se, t_new_player *pl);
+void			ft_game_sub_events_player(t_new_sub_ev *se, t_new_player *pl);
+void			ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl);
+int				events(t_new_sub_ev *se, t_new_player *pl);
+void			ft_game_events(t_new_temp *data);
 
 #endif

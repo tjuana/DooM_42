@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 18:40:41 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/21 19:40:57 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,7 +166,6 @@ gui_events_mouse.c \
 gui_redraw.c \
 gui_elem_init.c \
 gui_destruct.c \
-gui_debug.c \
 gui_mouse.c \
 gui_mouse_event.c \
 gui_elem_button.c \
@@ -200,6 +199,7 @@ game_engine_2.c \
 game_engine_cross.c \
 game_events_1.c \
 game_events_2.c \
+game_events_3.c \
 game_gun.c \
 game_load_file.c \
 game_load_textures.c \
