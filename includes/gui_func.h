@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:57:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:37:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,5 +169,7 @@ void				ft_gui_elem_init_grid(t_list *parent, char *name, int pos, t_gui_coord c
 
 void				ft_gui_fill_area_rect(t_wolf3d *w, t_gui_rect coord, \
 						t_gui_rect area, int color);
+
+void				ft_gui_events_mouse(t_wolf3d *w, SDL_Event *e);
 
 #endif

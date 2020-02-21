@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 21:48:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:06:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:25:49 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	ft_gui_mousebuttonup_win_menu_btngame(void *data, SDL_Event e, \
 	w->gui.mode = GUI_MD_GAME;
 	w->player_status = 0;
 	SDL_ShowCursor(SDL_DISABLE);
-	// ft_game_init(w, ((t_new_temp*)w->new_data)->pl->map_path);
 }
 
 void	ft_gui_mousebuttonup_win_menu_btneditor(void *data, SDL_Event e, \
@@ -97,7 +96,6 @@ void	ft_gui_mousebuttonup_win_menu_btnexit(void *data, SDL_Event e, \
 	(void)type;
 	(void)dom;
 	w = (t_wolf3d*)data;
-	// ft_editor_desctuct(w);
 	w->sdl->running = 0;
 	exit(0);
 }

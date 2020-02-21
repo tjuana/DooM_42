@@ -50,6 +50,7 @@
 		"pthread.h": "c",
 		"sdl_image.h": "c",
 		"typeinfo": "c",
-		"editor_struct.h": "c"
+		"editor_struct.h": "c",
+		"main.h": "c"
 	},
 }

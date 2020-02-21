@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:02:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 18:11:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:49:18 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,73 @@ void	ft_gui_mousebuttonup_win_menu_btnauthor(void *data, SDL_Event e, \
 			t_list *dom, int type);
 void	ft_gui_mousebuttonup_win_author_btnmenu(void *data, SDL_Event e, \
 			t_list *dom, int type);
+
+
+
+
+
+
+
+
+
+
+/*
+** **************************************************************************
+**	src/main/main.c
+** **************************************************************************
+*/
+void	ft_main(int c, char **v);
+
+/*
+** **************************************************************************
+**	src/main/main_btn_action.c
+** **************************************************************************
+*/
+void	ft_gui_mousebuttonup_win_menu_btnauthor(void *data, SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_author_btnmenu(void *data, SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_menu_btngame(void *data, SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_menu_btneditor(void *data, SDL_Event e, \
+			t_list *dom, int type);
+void	ft_gui_mousebuttonup_win_menu_btnexit(void *data, SDL_Event e, \
+			t_list *dom, int type);
+
+/*
+** **************************************************************************
+**	src/main/main_events.c
+** **************************************************************************
+*/
+void	ft_main_events(t_wolf3d *w);
+
+/*
+** **************************************************************************
+**	src/main/main_gui_init.c
+** **************************************************************************
+*/
+void	ft_main_gui_init_win_1(t_list *head);
+void	ft_main_gui_init_win_2(t_list *head);
+void	ft_main_gui_init_win(t_list *head);
+void	ft_main_gui_init(t_wolf3d *w);
+
+/*
+** **************************************************************************
+**	src/main/main_gui_init_author.c
+** **************************************************************************
+*/
+void	ft_main_gui_init_win_author_1(t_list *head);
+void	ft_main_gui_init_win_author_2(t_list *head);
+void	ft_main_gui_init_win_author_3(t_list *head);
+void	ft_main_gui_init_win_author(t_list *head);
+
+/*
+** **************************************************************************
+**	src/main/main_gui_init_menu.c
+** **************************************************************************
+*/
+void	ft_main_gui_init_win_menu_btn_2(t_list *head);
+void	ft_main_gui_init_win_menu_btn(t_list *head);
+void	ft_main_gui_init_win_menu(t_list *head);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 18:24:39 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/21 18:40:41 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,8 @@ OBJS_PATH = ./obj/
 MAIN_SRCS_DIRECTORY = $(SRCS_PATH)main/
 MAIN_LIST = \
 main_gui_init.c \
+main_gui_init_author.c \
+main_gui_init_menu.c \
 main.c \
 main_btn_action.c \
 main_events.c
