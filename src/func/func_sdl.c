@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 15:49:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:29:07 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ void		ft_set_window_icon(t_sdl *sdl)
 
 void		sdl_create_background_music(t_sdl *sdl)
 {
-	if (!(sdl->music = Mix_LoadWAV("music/background.wav")))
+	if (!(sdl->music = Mix_LoadMUS("music/background.wav")))
 		ft_error("no music, man");
-	Mix_VolumeChunk(sdl->music, VOLUME);
-	if (Mix_PlayChannel(0, sdl->music, -1) == -1)
-		ft_error("music");
-	else
-		Mix_VolumeChunk(sdl->music,
-		VOLUME);
+	Mix_VolumeMusic(VOLUME);
+	if(Mix_PlayMusic(sdl->music, -1)==-1)
+		printf("Mix_PlayMusic: %s\n", Mix_GetError());
 }
 
 void		sound(t_new_player *pl, char *name, int channel)
@@ -49,8 +46,6 @@ void		sound(t_new_player *pl, char *name, int channel)
 		ft_error("no sound, man");
 	if (Mix_PlayChannel(channel, pl->sound, 0) == -1 || !pl->sound)
 		ft_error("Audio play error");
-	Mix_FreeChunk(pl->sound);
-	pl->sound = NULL;
 }
 
 t_sdl		*sdl_init(t_sdl *sdl)

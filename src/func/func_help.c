@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 15:51:12 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:23:27 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void			ft_clean_sdl(t_wolf3d *w)
 		SDL_DestroyRenderer(w->sdl->renderer);
 	if (w->sdl->win)
 		SDL_DestroyWindow(w->sdl->win);
-	Mix_FreeChunk(w->sdl->music);
-	w->sdl->music = NULL;
+	Mix_FreeMusic(w->sdl->music);
 	Mix_CloseAudio();
 	SDL_Delay(777);
 	IMG_Quit();

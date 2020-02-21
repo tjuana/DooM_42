@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:23:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 20:23:28 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void		ft_editor_sector_create(t_wolf3d *w)
 	t_list		*list_item;
 
 	sector.id = w->sector_count + 1;
-	printf("sector id: %d\n", sector.id);
 	sector.vertex = NULL;
 	sector.neighbors = NULL;
 	sector.vertex_count = 0;

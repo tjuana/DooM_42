@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:05:50 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:16:13 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,6 @@ void			ft_we_need_more_init(t_wolf3d *w);
 **	func/func_sound.c
 ** **************************************************************************
 */
-void			ft_init_sound(t_wolf3d *w);
-void			ft_load_sound(t_wolf3d *w);
-void			ft_play_shot(t_wolf3d *w);
 
 void			ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
 					t_gui_rect area, int color);

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/21 13:41:12 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:27:30 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 	t_list		*list;
 	t_gui_elem	*elem;
 
-	printf("%f\n", pl->sect->ceil);
 	if (se->ev.button.button == SDL_BUTTON_LEFT)
 	{
 		sound(pl, "Sounds/pistol.wav", 1);

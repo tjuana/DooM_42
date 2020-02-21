@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 18:40:41 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/21 19:34:17 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -203,7 +203,8 @@ game_events_2.c \
 game_gun.c \
 game_load_file.c \
 game_load_textures.c \
-game_main.c \
+game_main_1.c \
+game_main_2.c \
 game_map_parse_1.c \
 game_map_parse_2.c \
 game_motion_1.c \

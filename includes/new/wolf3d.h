@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 16:58:10 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 19:47:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void		ft_game_pix_sky(t_textures *t, t_new_player *pl);
 
 // new file
 Uint32				ft_rgb_to_hex( Uint32 r, Uint32 g, Uint32 b);
-void ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
+void		ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img);
 
 void		ft_draw_walls_put_pixel_to_surface(int x, t_new_player *pl, int img);
 void		ft_game_draw_graffiti_put_pixel_to_surface(int x, t_new_player *pl, int img);
@@ -191,4 +191,13 @@ float		ft_math_to_deg(float radians);
 
 t_new_player	*reload(t_new_player *pl);
 
+///game_main_1.c
+void		ft_game_player_init_config(t_new_player *pl);
+void		ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n);
+void		ft_game_redraw(t_wolf3d *w, t_list *dom);
+
+///game_main_2.c
+void		ft_game_init(t_wolf3d *w, char *path);
+void		ft_game_gui_init_menu(t_list *head);
+void		ft_game_gui_init_hud(t_list *head);
 #endif
