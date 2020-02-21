@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:55:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 21:12:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:33:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct			s_sdl
 	SDL_Texture			*text2;
 	t_font				font;
 	unsigned char		i;
-	Mix_Chunk			*music;
+	Mix_Music			*music;
 }						t_sdl;
 
 typedef struct			s_time

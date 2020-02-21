@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_elem_set_type.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:16:09 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 18:12:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 20:17:15 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void	ft_gui_elem_set_image(t_list *list, char *path)
 	elem->type = GUI_IMAGE;
 	temp_surf = IMG_Load(path);
 	if (!temp_surf)
-	{
-		printf("IMG_Load: %s\n", IMG_GetError());
-		exit(1);
-	}
+		ft_error("ERROR IMG");
 	elem->surf = SDL_ConvertSurfaceFormat(temp_surf, \
 		SDL_PIXELFORMAT_RGB888, 0);
 	SDL_FreeSurface(temp_surf);

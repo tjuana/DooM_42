@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:29:44 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:18:08 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_main(int c, char **v)
 	data.pl->tex = ft_game_load_textures(data.pl);
 	while (w.sdl->running)
 		ft_main_events(&w);
+	Mix_FreeChunk(data.pl->sound);
 	ft_editor_desctuct(&w);
 	ft_clean_sdl(&w);
 }
