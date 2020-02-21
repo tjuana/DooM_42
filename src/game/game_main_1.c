@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 22:01:35 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 22:12:30 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,9 @@ static void	ft_gui_dead(t_wolf3d *w)
 		ft_gui_elem_set_status(\
 			ft_gui_search_elem_by_name(w->gui.dom, \
 			"win_game_diedtext"), GUI_ELEM_HIDDEN);
-		ft_gui_elem_set_status(\
-			ft_gui_search_elem_by_name(w->gui.dom, \
-			"win_game_diedbg"), GUI_ELEM_HIDDEN);
-		ft_gui_elem_set_status(\
+		ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, \
+						"win_game_diedbg"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(
 			ft_gui_search_elem_by_name(w->gui.dom, "win_game"), \
 			GUI_ELEM_HIDDEN);
 		ft_gui_elem_set_status(\

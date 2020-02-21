@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 22:02:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 22:08:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		sdl_create_background_music(t_sdl *sdl)
 	if (!(sdl->music = Mix_LoadMUS("music/background.wav")))
 		ft_error("no music, man");
 	Mix_VolumeMusic(VOLUME);
-	if(Mix_PlayMusic(sdl->music, -1)==-1)
+	if (Mix_PlayMusic(sdl->music, -1) == -1)
 		printf("Mix_PlayMusic: %s\n", Mix_GetError());
 }
 
