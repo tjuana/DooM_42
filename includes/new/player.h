@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 17:15:46 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:14:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
-#define PLAYER_H
+# define PLAYER_H
 # include "wolf3d.h"
 
 /*
@@ -135,7 +135,7 @@ typedef struct		s_file_read
 */
 typedef struct		s_new_player
 {
-	SDL_Surface 	*img[10];
+	SDL_Surface		*img[10];
 	t_new_texture	*textures;
 	int				textures_nb;
 	t_vector3		t1;
@@ -163,10 +163,8 @@ typedef struct		s_new_player
 	int				neib;
 	t_new_ceil		ceil;
 	t_new_floor		floor;
-
 	t_vector3		near_point;
-	t_vector3 		far_point;
-
+	t_vector3		far_point;
 	float			x1;
 	float			x2;
 	int				*y_top;
@@ -175,13 +173,10 @@ typedef struct		s_new_player
 	int				endx;
 	int				contin;
 	Uint32			*pixels;
-
 	char			*lvl;
 	t_file_read		file;
-
 	int				count_sprite;
 	float			light;
-
 	int				**sky_pix;
 	t_textures		t;
 	t_new_texture	*tex;
@@ -190,31 +185,25 @@ typedef struct		s_new_player
 	int				y2;
 	int				n;
 	int				s;
-	t_vector3 		org1;
-	t_vector3 		org2;
+	t_vector3		org1;
+	t_vector3		org2;
 	float			u0;
 	float			u1;
 	int				txtx;
 	Uint32			*pix;
-	int 			y;
+	int				y;
 	t_scaler		ty;
-	int 			fly;
-
+	int				fly;
 	void			*wolf3d;
-
 	int				live_count;
 	int				bullet_count;
 	Mix_Chunk		*sound;
 	int				status;
 	int				died_timer;
 	char			*map_path;
-	// camera vertex
 	t_vector3		fov_vec1;
 	t_vector3		fov_vec2;
-
-
-
-	int 		lunar;
-}				t_new_player;
+	int				lunar;
+}					t_new_player;
 
 #endif

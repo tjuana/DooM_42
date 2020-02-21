@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 19:40:57 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/21 20:59:51 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ algebra_intersect.c \
 algebra_intersect2.c \
 algebra_matrix_transform.c \
 algebra_matrix.c \
+algebra_matrix_2.c \
 algebra_vectors_1.c \
 algebra_vectors_2.c \
 algebra_vectors_3.c \

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 19:54:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:41:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 20:47:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ typedef struct		s_gui_grid
 {
 	t_gui_rect		area;
 	int				margin;
-	t_gui_coord		count;		// column (x) and row (y) count
+	t_gui_coord		count;
 	int				elem_w;
 	int				elem_h;
 }					t_gui_grid;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 15:49:26 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:04:06 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void		ft_set_window_icon(t_sdl *sdl)
 	SDL_Surface		*sur_img;
 	SDL_Surface		*conv_sur_img;
 
-	if (!(sur_win = SDL_CreateRGBSurface(0, WIDTH, HIGHT, 32, 0xFF000000,
-									0x00FF0000, 0x0000FF00, 0x000000FF)))
+	if (!(sur_win = SDL_CreateRGBSurface(0, WIN_WIDTH, WIN_HEIGHT, \
+		32, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF)))
 		ft_sdl_error(sdl);
 	if (!(sur_img = IMG_Load("Textures/file.png")))
 		ft_sdl_error(sdl);

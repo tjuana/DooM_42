@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:22:19 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 17:26:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:07:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,11 @@
 **	Constant
 ** **************************************************************************
 */
-# define DEG2RAD(angleDegrees)		((angleDegrees) * M_PI / 180.0)
-# define RAD2DEG(angleRadians)		((angleRadians) * 180.0 / M_PI)
+# define FOV	90.0
+# define NEAR	1.0
+# define FAR	100.0
 
-# define FOV (double)90.0
-# define WIDTH (double)WIN_WIDTH
-# define HIGHT (double)WIN_HEIGHT
-# define NEAR (double)1.0
-# define FAR (double)100.0
-
-typedef struct  s_vector3
+typedef struct	s_vector3
 {
 	double		x;
 	double		y;
@@ -59,10 +54,17 @@ t_matrix_4x4	ft_oppositive_matrix(t_matrix_4x4 neo);
 
 /*
 ** **************************************************************************
-**	algebra_matrix.c
+**	algebra_matrix_2.c
 ** **************************************************************************
 */
+double			ft_math_deg_to_rad(double angle_degrees);
+double			ft_math_rad_to_deg(double angle_radians);
 
+/*
+** **************************************************************************
+**	algebra_matrix_transform.c
+** **************************************************************************
+*/
 t_matrix_4x4	ft_rx_matrix(t_matrix_4x4 neo, double angle);
 t_matrix_4x4	ft_ry_matrix(t_matrix_4x4 neo, double angle);
 t_matrix_4x4	ft_rz_matrix(t_matrix_4x4 neo, double angle);
@@ -74,7 +76,6 @@ t_matrix_4x4	ft_mult_matrix(t_matrix_4x4 this, t_matrix_4x4 rhs);
 **	algebra_vectors_1.c
 ** **************************************************************************
 */
-
 t_vector3		ft_vec3_create(t_vector3 *orig, t_vector3 *dest);
 double			ft_vec3_magnitude(t_vector3 this);
 t_vector3		ft_vec3_add(t_vector3 this, t_vector3 rhs);
@@ -86,7 +87,6 @@ t_vector3		ft_vec3_cross_product(t_vector3 this, t_vector3 rhs);
 **	algebra_vectors_2.c
 ** **************************************************************************
 */
-
 double			ft_vec3_dot_product(t_vector3 this, t_vector3 rhs);
 double			ft_vec3_cosinus(t_vector3 this, t_vector3 rhs);
 t_vector3		ft_vec3_opposite(t_vector3 this);
@@ -98,7 +98,6 @@ t_vector3		ft_vec3_normalize(t_vector3 vtc);
 **	algebra_vectors_3.c
 ** **************************************************************************
 */
-
 float			ft_vec2_cos(t_vector3 vec1, t_vector3 vec2);
 
 /*

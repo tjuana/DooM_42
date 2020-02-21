@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general_struct.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:55:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:24:38 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:12:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include "file.h"
 # include "gui_struct.h"
 # include "SDL2/SDL_mixer.h"
+
+/*
+** **************************************************************************
+**	Define for music and sound
+** **************************************************************************
+*/
 # define SONG_0			"music/wolf3d_menu.mp3"
 # define SONG_1			"music/song_1.mp3"
 # define SONG_2			"music/song_2.mp3"
@@ -29,7 +35,6 @@ typedef struct			s_font
 {
 	TTF_Font			*ptr_font_18_m;
 	TTF_Font			*ptr_font_14_m;
-
 	TTF_Font			*ptr;
 	SDL_Color			color;
 	int					f_sz;
@@ -42,22 +47,14 @@ typedef struct			s_font
 typedef struct			s_sdl
 {
 	SDL_Surface			*srf;
-	
 	int					running;
 	SDL_Window			*win;
 	SDL_Renderer		*renderer;
 	Uint32				*pixels;
 	SDL_Texture			*text;
 	SDL_Texture			*text2;
-	// SDL_Surface			**textures;
-	// SDL_AudioSpec		*wav_spect;
-	// Uint32				*wav_len;
-	// Uint8				**wav_buff;
-	// SDL_AudioDeviceID	*audio_device;
 	t_font				font;
 	unsigned char		i;
-
-
 	Mix_Chunk			*music;
 }						t_sdl;
 
@@ -76,46 +73,33 @@ typedef struct			s_time
 
 typedef struct			s_wolf3d
 {
-	// game objects
 	t_list				*sector;
 	t_player			pl;
 	t_list				*sprite;
 	t_list				*enemy;
-
-	// game status (temp.)
-	int					sector_status; // 0: nothing; 1: set new sector
-	int					player_status; // 0: nothing; 1: player was set;
-	int					sprite_status; // 0: nothing; 1: sprite was set;
-	int					enemy_status; // 0: nothing; 1: enemy was set;
-	int					door_status;	// door as sector
-
-	// game objects count
+	int					sector_status;
+	int					player_status;
+	int					sprite_status;
+	int					enemy_status;
+	int					door_status;
 	int					sector_count;
 	int					sprite_count;
 	int					enemy_count;
-
-	// texture
 	t_list				*txtr;
 	int					txtr_count;
-
 	t_file				file;
 	t_list				*vertex;
-
 	t_list				*sprites;
-
-	t_sdl				*sdl; //structe for handle sdl  stuff
+	t_sdl				*sdl;
 	t_time				t;
 	int					fd;
-
 	t_vector3			pos;
 	t_gui_coord			pos_start;
 	t_gui_coord			offset;
 	int					v_d;
-
 	t_gui_map			gui_map;
 	t_gui				gui;
-
-	void				*new_data;	// pointer to game data
+	void				*new_data;
 }						t_wolf3d;
 
 #endif

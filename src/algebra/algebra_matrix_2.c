@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.h                                             :+:      :+:    :+:   */
+/*   algebra_matrix_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 15:07:53 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 21:10:08 by dorange-         ###   ########.fr       */
+/*   Created: 2020/02/21 20:55:10 by dorange-          #+#    #+#             */
+/*   Updated: 2020/02/21 21:01:30 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_H
-# define FILE_H
+#include "doom.h"
 
-# include "doom.h"
-
-typedef struct		s_file
+double	ft_math_deg_to_rad(double angle_degrees)
 {
-	int				**map;
-	int				i;
-	int				j;
-	int				count;
-	int				fd;
-	char			*name;
-}					t_file;
+	return ((angle_degrees) * M_PI / 180.0);
+}
 
-#endif
+double	ft_math_rad_to_deg(double angle_radians)
+{
+	return ((angle_radians) * 180.0 / M_PI);
+}

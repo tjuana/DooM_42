@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 19:55:21 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 20:46:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
 # include "general_struct.h"
-
 
 /*
 ** **************************************************************************
@@ -55,7 +54,6 @@ void		ft_gui_elem_set_grid(t_list *dom, t_gui_coord count, \
 				int margin);
 void		ft_gui_elem_set_parent(t_list *parent, t_list *child);
 t_list		*ft_gui_search_elem_by_name(t_list *dom, char *name);
-
 
 /*
 ** **************************************************************************

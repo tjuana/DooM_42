@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 20:33:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:09:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,16 @@
 # define V_FOV					(1.0 * .2f)
 
 /*
- *
- * TEXTURES
- */
-
-# define	LEAF 0
-# define	GREEN 1
-# define	MARBLE 2
-# define 	ROCK1	3
-# define 	ROCK2	4
-# define 	SKY		5
-# define 	FENCE	7
+** **************************************************************************
+**	Define for textures
+** **************************************************************************
+*/
+# define LEAF					0
+# define GREEN					1
+# define MARBLE					2
+# define ROCK1					3
+# define ROCK2					4
+# define SKY					5
+# define FENCE					7
 
 #endif
