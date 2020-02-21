@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 17:25:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ void		ft_gui_font_putstr_sdl(t_wolf3d *w, \
 {
 	SDL_Surface	*txtr_s;
 	SDL_Texture	*txtr;
-	SDL_Rect	*rect;
 	t_font		*f;
 
 	f = &w->sdl->font;

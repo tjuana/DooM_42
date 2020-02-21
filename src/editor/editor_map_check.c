@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 12:45:52 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 16:05:01 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:21:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_check_point_in_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 	int				vtx2_n;
 	int				count;
 
+	(void)w;
 	i = 0;
 	count = 0;
 	while (i < s->vertex_count)

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 22:28:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 16:14:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:11:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void		ft_gui_draw_map_sector_vertex(t_wolf3d *w, t_sector *s)
 {
 	int			i;
 	t_gui_coord	c1;
-	t_gui_coord	c2;
 
 	i = 0;
 	while (i < s->vertex_count)

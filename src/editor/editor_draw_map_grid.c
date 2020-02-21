@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:48:33 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 16:01:29 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:11:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	ft_gui_draw_map_grid_vertical_line(t_wolf3d *w, t_gui_elem *elem, \
 	t_gui_coord	vrtx;
 	int			color;
 
+	(void)scale;
 	vrtx = (t_gui_coord){(int)floor(w->gui_map.v.x), \
 		(int)floor(w->gui_map.v.y), 0};
 	pos = ft_gui_map_vertex_to_coord(w, \
@@ -113,6 +114,7 @@ void	ft_gui_draw_map_grid_horizontal_line(t_wolf3d *w, t_gui_elem *elem, \
 	t_gui_coord	vrtx;
 	int			color;
 
+	(void)scale;
 	vrtx = (t_gui_coord){(int)floor(w->gui_map.v.x), \
 		(int)floor(w->gui_map.v.y), 0};
 	pos = ft_gui_map_vertex_to_coord(w, \

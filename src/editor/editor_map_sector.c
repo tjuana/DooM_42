@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 16:06:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:23:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
 {
 	t_sector	*sector;
 
+	(void)w;
 	while (list)
 	{
 		sector = list->content;

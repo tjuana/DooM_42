@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 11:58:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:19:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:23:45 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int		ft_editor_sector_search_neighbors(t_wolf3d *w, t_sector *sector)
 	int		vtx1_n;
 	int		vtx2_n;
 	int		i;
-	int		v;
 
 	i = 0;
 	while (i < sector->vertex_count)

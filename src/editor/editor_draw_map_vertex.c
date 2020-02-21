@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:54:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 15:53:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:11:57 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, int color)
 	int			v_d;
 	t_gui_elem	*elem;
 	t_gui_rect	vertex;
-	t_gui_rect	area;
 
 	elem = (t_gui_elem*)w->gui_map.ptr->content;
 	v_d = w->gui_map.grid_scale / 8;

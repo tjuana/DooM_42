@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:39:09 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 16:10:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:25:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
 	int				vtx2_n;
 	t_vector3		c;
 
+	(void)w;
 	i = 0;
 	while (i < s->vertex_count)
 	{
