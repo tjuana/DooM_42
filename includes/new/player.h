@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 21:14:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 21:27:38 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,10 @@ typedef struct		s_file_read
 **	Mix_Chunk *sound		|
 **	int status				| Player status
 **	int died_timer			| Died timer
+**	double const_hfov		|
+**	double const_vfov		|
+**	double const_hfov_spec	|
+**	double const_vfov_spec	|
 ** **************************************************************************
 */
 typedef struct		s_new_player
@@ -204,6 +208,10 @@ typedef struct		s_new_player
 	t_vector3		fov_vec1;
 	t_vector3		fov_vec2;
 	int				lunar;
+	double			const_hfov;
+	double			const_vfov;
+	double			const_hfov_spec;
+	double			const_vfov_spec;
 }					t_new_player;
 
 #endif
