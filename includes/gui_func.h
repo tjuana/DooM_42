@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 19:27:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/20 12:57:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void				ft_gui_elem_set_redraw(t_list *list, void *func);
 void				ft_gui_elem_set_redraw_font(t_list *list, void *func);
 void				ft_gui_elem_set_image(t_list *list, char *path);
 void				ft_gui_elem_set_block(t_list *list);
-void				ft_gui_elem_set_button(t_list *list, void *str);
+void				ft_gui_elem_set_button(t_list *list, void *str, int font_size);
 void				ft_gui_elem_set_input(t_list *list, void *str, \
 						int flag_numb);
-void				ft_gui_elem_set_text(t_list *list, void *str, \
-						int font_size);
+void				ft_gui_elem_set_text(t_list *list, \
+						void *str, int font_size, char *font_path);
 void				ft_gui_elem_set_parent(t_list *parent, t_list *child);
 void				ft_gui_delete_status_focus(t_list *dom);
 void				ft_gui_delete_status(t_list *dom);

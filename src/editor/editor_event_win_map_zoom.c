@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_event_win_map_zoom.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:33:29 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 19:38:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 13:47:29 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_gui_mousewheel_win_map(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_vector3	new_offset;
 	t_vector3	old_offset;
-	t_vector3	v;
 
 	(void)e;
 	(void)type;

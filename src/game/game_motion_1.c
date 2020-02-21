@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_motion_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 19:58:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 13:48:16 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 void		ft_game_motion_move_pl(t_vector3 *delt, t_new_player *pl)
 {
 	t_new_sector	*sect;
-	t_vector3		pt;
 	int				res;
 	int				i;
 
@@ -98,6 +97,7 @@ void		ft_game_motion_chk(t_new_player *pl, \
 	t_new_sector	*sect;
 	t_vector3		*vert;
 
+	(void)se;
 	i = -1;
 	if (ot->moving != 1)
 		return ;

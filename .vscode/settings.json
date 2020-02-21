@@ -49,6 +49,7 @@
 		"string.h": "c",
 		"pthread.h": "c",
 		"sdl_image.h": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"editor_struct.h": "c"
 	},
 }

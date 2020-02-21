@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:41:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 15:49:26 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void		ft_set_window_icon(t_sdl *sdl)
 		ft_sdl_error(sdl);
 	if (!(conv_sur_img = SDL_ConvertSurface(sur_img, sur_win->format, 0)))
 		ft_sdl_error(sdl);
-	SDL_FreeSurface(sur_win);
-	SDL_FreeSurface(sur_img);
+	(sur_win) ? SDL_FreeSurface(sur_win) : 0;
+	(sur_img) ? SDL_FreeSurface(sur_img) : 0;
 	SDL_SetWindowIcon(sdl->win, conv_sur_img);
-	SDL_FreeSurface(conv_sur_img);
+	(conv_sur_img) ? SDL_FreeSurface(conv_sur_img) : 0;
 }
 
 void		sdl_create_background_music(t_sdl *sdl)
@@ -47,9 +47,10 @@ void		sound(t_new_player *pl, char *name, int channel)
 {
 	if (!(pl->sound = Mix_LoadWAV(name)))
 		ft_error("no sound, man");
-//	if (!Mix_Playing(1))
-		if (Mix_PlayChannel(channel, pl->sound, 0) == -1 || !pl->sound)
-			ft_error("Audio play error");
+	if (Mix_PlayChannel(channel, pl->sound, 0) == -1 || !pl->sound)
+		ft_error("Audio play error");
+	Mix_FreeChunk(pl->sound);
+	pl->sound = NULL;
 }
 
 t_sdl		*sdl_init(t_sdl *sdl)

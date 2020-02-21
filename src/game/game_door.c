@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 20:15:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 14:27:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void		ft_game_door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 		ft_game_door_total(pl);
 		ft_game_but_total(pl);
 	}
-	if (pl->door_all < 1 || (ft_game_but_script(pl, ft_game_but_detect(pl), se) == 1))
+	if (pl->door_all < 1 || (ft_game_but_script(pl, \
+								ft_game_but_detect(pl), se) == 1))
 		return ;
 	d_sec_nb = ft_game_door_detect(pl);
 	while (++i < pl->door_all)
@@ -132,9 +133,13 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].spd;
-	// else if (se->wsad[4] == 1 && pl->doors[d_nb].state == 1)
-	// {
-	// 	printf("door open!\n");
-	// }
+	else if (se->wsad[4] == 1 && pl->doors[d_nb].state == 1)
+	{
+		// Попробовать сделать так, чтобы операция проделывалась
+		// всего один раз (!)
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+	}
 	pl->doors[d_nb].state = 1;
 }

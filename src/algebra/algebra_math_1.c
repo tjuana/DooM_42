@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algebra_math_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 18:21:57 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:20:07 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ float		ft_math_clamp(float a, float mi, float ma)
 
 int			ft_math_overlap(float a1, float a2, float b1, float b2)
 {
-	return (ft_math_min(a1, a2) <= ft_math_max(b1, b2) && ft_math_min(b1, b2) <= ft_math_max(a1, a2));
+	return (ft_math_min(a1, a2) <= ft_math_max(b1, b2) && \
+					ft_math_min(b1, b2) <= ft_math_max(a1, a2));
 }

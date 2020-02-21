@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_fonts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:59:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/20 17:25:35 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		ft_gui_set_font(t_wolf3d *w, char *font_path, int size)
 
 void		ft_gui_check_glyph_metrics(t_font *f)
 {
-	if (TTF_GlyphMetrics(f->ptr, 'A', 0, 0, 0, 0, &f->g_sz) == -1)
+	if (TTF_GlyphMetrics(f->ptr, 'W', 0, 0, 0, 0, &f->g_sz) == -1)
 		ft_error("FONT SET ERROR");
 }
 
@@ -81,6 +81,7 @@ int			ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, \
 		}
 		f_list = f_list->next;
 	}
+	printf("> %s\n", font_path);
 	if (!(f->ptr = TTF_OpenFont(font_path, f->f_sz)))
 		ft_error("FONT SET ERROR (2)");
 	ft_gui_set_font(w, font_path, size);

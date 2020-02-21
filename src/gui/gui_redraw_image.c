@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw_image.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:41:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 12:21:05 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/20 13:14:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_gui_get_image_pixel_pos_elem(int x, int y, t_gui_elem *elem)
 		return (0);
 	}
 	pos = ((y - elem->v1.y) * elem->surf->h / \
-		(elem->v2.y - elem->v1.y) % elem->surf->h) * elem->surf->h + \
+		(elem->v2.y - elem->v1.y) % elem->surf->h) * elem->surf->w + \
 		((x - elem->v1.x) * elem->surf->w / \
 		(elem->v2.x - elem->v1.x) % elem->surf->w);
 	pos %= (elem->surf->h * elem->surf->w);

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/20 18:18:14 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 13:41:12 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,16 @@ static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
-		se->quit = 1;
-		((t_wolf3d*)pl->wolf3d)->sdl->running = 0;
-		// ((t_wolf3d*)pl->wolf3d)->gui.mode = GUI_MD_MENU;
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_game"), \
+			GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, "win_menu"), \
+			GUI_ELEM_VISIBLE);
+		((t_wolf3d*)pl->wolf3d)->gui.mode = GUI_MD_MENU;
+		((t_wolf3d*)pl->wolf3d)->player_status = 0;
+		SDL_ShowCursor(SDL_ENABLE);
+		SDL_SetRelativeMouseMode(0);
 		return (0);
 	}
 	if (se->ev.key.keysym.sym == ' ' && se->ground && pl->fly != 1)
@@ -133,8 +140,9 @@ static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 				ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
 				"win_game_diedtext"), GUI_ELEM_VISIBLE);
 			ft_gui_elem_set_status(\
-			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
 				"win_game_diedbg"), GUI_ELEM_VISIBLE);
+			pl->status = PL_STATUS_DEAD;
 		}
 	}
 	if (se->ev.button.button == SDL_BUTTON_RIGHT)

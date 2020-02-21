@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   func_wu_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 16:50:27 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 16:49:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:25:46 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
-
-/*
-
-	(*wu)->rx1 = area.v1.x >= 0 ? area.v1.x : 0;
-	(*wu)->ry1 = area.v1.y >= 0 ? area.v1.y : 0;
-	(*wu)->rx2 = area.v2.x <= WIN_WIDTH ? area.v2.x : WIN_WIDTH;
-	(*wu)->ry2 = area.v2.x <= WIN_HEIGHT ? area.v2.x : WIN_HEIGHT;
-*/
 
 void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 {
@@ -40,8 +32,6 @@ void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y)
 	color = ft_fdf_get_color(color, \
 		((int*)data->sdl->pixels)[pos], wu->temp_f);
 	((int*)data->sdl->pixels)[pos] = color;
-	// 		((int*)data->sdl->pixels)[pos], wu->temp_f);
-	// ((int*)data->sdl->pixels)[pos] = color;
 }
 
 void		ft_fdf_draw_line_first_pixels(t_wolf3d *data, t_fdf_wu **wu)
