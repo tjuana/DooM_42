@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/21 17:28:44 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:35:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ static	void	ft_game_operation_cero(int x, t_new_player *pl)
 
 void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 {
-	if (operation == 0)
-		ft_game_operation_cero(x, pl);
+	operation == 0 ? ft_game_operation_cero(x, pl) : 0;
 	if (operation == 1)
 	{
 		pl->t.hei = pl->t.y < pl->ceil.cya ? pl->ceil.yceil : \
@@ -62,7 +61,7 @@ void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 			pl->y_top[x], pl->y_bot[x]);
 		pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b)\
 		/ (pl->x2 - pl->x1) + pl->floor.ny1b;
-		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, 
+		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, \
 			pl->y_top[x], pl->y_bot[x]);
 	}
 }

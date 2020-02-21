@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 17:15:57 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 18:48:39 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ void	ft_game_gui_init_hud(t_list *head)
 	ft_gui_elem_init(&elem->child, "win_game_doortext", \
 		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xbfffff00);
-	ft_gui_elem_set_text(elem->child, "DVER MNE ZAPILI!", 72, "fonts/Raleway-ExtraBold.ttf");
+	ft_gui_elem_set_text(elem->child, "DVER' MNE ZAPILI!", 72, "fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_gui_elem_init(&elem->child, "win_game_diedbg", (t_gui_coord){0, 0, 0}, \
