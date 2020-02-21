@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/21 14:32:51 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:28:15 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 
 	if (se->falling == 0)
 		return ;
-	if(pl->lunar == 1)
+	if (pl->lunar == 1)
 		pl->velo.z -= 0.015f;
 	else
 		pl->velo.z -= 0.1f;

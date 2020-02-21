@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 16:08:24 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:15:46 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,8 @@ typedef struct		s_new_player
 
 	float			x1;
 	float			x2;
-	int				y_top[WIN_W];
-	int				y_bot[WIN_W];
+	int				*y_top;
+	int				*y_bot;
 	int				beginx;
 	int				endx;
 	int				contin;

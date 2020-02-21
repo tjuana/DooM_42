@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 16:26:22 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 **	General programm function.
 ** **************************************************************************
 */
-static void	ft_free(t_new_player *pl)
-{
-	Mix_FreeChunk(pl->sound);
-}
+
 void	ft_main(int c, char **v)
 {
 	t_wolf3d	w;
@@ -42,13 +39,9 @@ void	ft_main(int c, char **v)
 	ft_gui_redraw(&w);
 	data.pl->tex = ft_game_load_textures(data.pl);
 	while (w.sdl->running)
-	{
 		ft_main_events(&w);
-	}
-	ft_free(data.pl);
 	ft_editor_desctuct(&w);
 	ft_clean_sdl(&w);
-
 }
 
 int		main(int c, char **v)

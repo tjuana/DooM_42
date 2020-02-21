@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/19 19:31:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:28:44 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 			pl->y_top[x], pl->y_bot[x]);
 		pl->floor.nyb = (x - pl->x1) * (pl->floor.ny2b - pl->floor.ny1b)\
 		/ (pl->x2 - pl->x1) + pl->floor.ny1b;
-		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, \
+		pl->ceil.cnyb = ft_math_clamp(pl->floor.nyb, 
 			pl->y_top[x], pl->y_bot[x]);
 	}
 }

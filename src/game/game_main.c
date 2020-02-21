@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 16:08:28 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:15:57 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ void	ft_game_init(t_wolf3d *w, char *path)
 	data->se.quit = 0;
 	data->pl->pixels = w->sdl->pixels;
 	ft_game_my_parse_map(data->pl, path);
-	// data->pl->y_top = ft_my_malloc(sizeof(int) * WIN_WIDTH);
-	// data->pl->y_bot = ft_my_malloc(sizeof(int) * WIN_WIDTH);
+	data->pl->y_top = ft_my_malloc(sizeof(int) * WIN_WIDTH);
+	data->pl->y_bot = ft_my_malloc(sizeof(int) * WIN_WIDTH);
 	data->se.wsad[0] = 0;
 	data->se.wsad[1] = 0;
 	data->se.wsad[2] = 0;
