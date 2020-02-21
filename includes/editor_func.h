@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:16:23 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:37:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,8 +305,8 @@ int					ft_check_neighbors_sector_vertex(t_sector *s, \
 **	editor/editor_map_sector_vertex.c
 ** **************************************************************************
 */
-void				ft_editor_sector_set_vertex(t_wolf3d *w, \
-						t_sector *sector, t_vector3 v, int pos);
+void				ft_editor_sector_set_vertex(t_sector *sector, \
+						t_vector3 v, int pos);
 void				ft_editor_sector_del_last_vertex(t_wolf3d *w, \
 						t_sector *sector);
 void				ft_editor_delete_last_vertex(t_wolf3d *w);

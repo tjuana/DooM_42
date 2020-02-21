@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:01:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:12:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:35:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	ft_gui_init_win_menu_set(t_list *head)
 	t_gui_elem	*elem;
 
 	elem = head->content;
-	ft_gui_elem_init_grid(head, "win_me_menu_title", 11, (t_gui_coord){1, 2, 0});
+	ft_gui_elem_init_grid(head, "win_me_menu_title", 11, \
+		(t_gui_coord){1, 2, 0});
 	ft_gui_elem_set_color(elem->child, 0xcccccc);
 	ft_gui_elem_set_text(elem->child, "Set:", 16, "fonts/Raleway-Bold.ttf");
 	ft_gui_elem_init_grid(head, "win_me_menu_txtr", 13, (t_gui_coord){1, 1, 0});
@@ -83,7 +84,8 @@ void	ft_gui_init_win_menu_set(t_list *head)
 	ft_gui_elem_set_color(elem->child, 0xcccccc);
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_DISABLE);
 	ft_gui_elem_set_button(elem->child, "Skybox", 16);
-	ft_gui_elem_init_grid(head, "win_me_menu_savep", 15, (t_gui_coord){2, 1, 0});
+	ft_gui_elem_init_grid(head, "win_me_menu_savep", 15, \
+		(t_gui_coord){2, 1, 0});
 	ft_gui_elem_set_color(elem->child, 0xcccccc);
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_DISABLE);
 	ft_gui_elem_set_button(elem->child, "Point to end game", 16);
@@ -100,7 +102,8 @@ void	ft_gui_init_win_menu_save(t_list *head)
 	t_gui_elem	*elem;
 
 	elem = head->content;
-	ft_gui_elem_init_grid(head, "win_me_menu_titlen", 21, (t_gui_coord){2, 1, 0});
+	ft_gui_elem_init_grid(head, "win_me_menu_titlen", 21, \
+		(t_gui_coord){2, 1, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "Save map as:", 16, \
 		"fonts/Raleway-Bold.ttf");

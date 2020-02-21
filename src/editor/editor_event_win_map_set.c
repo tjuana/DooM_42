@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:17:18 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:36:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 	{
 		if (!ft_new_editor_map_check_area(w))
 			return ;
-		ft_editor_sector_set_vertex(w, w->sector->content, \
+		ft_editor_sector_set_vertex(w->sector->content, \
 			ft_gui_map_coord_to_vertex(w, coord), s->vertex_count);
 		if (s->vertex_count > 1 && \
 			ft_compare_vertexes(*s->vertex[0], \

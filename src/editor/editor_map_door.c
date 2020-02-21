@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 15:39:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:23:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:38:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_set_new_vertex_for_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 	int	vtx1_n;
 	int	vtx2_n;
 
+	(void)w;
 	i = 0;
 	while (i < s->vertex_count)
 	{
@@ -33,7 +34,7 @@ void	ft_set_new_vertex_for_sector(t_wolf3d *w, t_sector *s, t_vector3 v)
 		vtx2_n = (i + 1) % s->vertex_count;
 		if (ft_check_point_in_line_segment(v, *s->vertex[vtx1_n], \
 			*s->vertex[vtx2_n]))
-			ft_editor_sector_set_vertex(w, s, v, i + 1);
+			ft_editor_sector_set_vertex(s, v, i + 1);
 		i++;
 	}
 }

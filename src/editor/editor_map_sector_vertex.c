@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:24:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:40:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** **************************************************************************
-**	void ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
+**	void ft_editor_sector_set_vertex(t_sector *sector, \
 **			t_vector3 v, int pos)
 **
 **	Function that add new vertex for sector.
@@ -27,7 +27,7 @@
 ** **************************************************************************
 */
 
-void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
+void	ft_editor_sector_set_vertex(t_sector *sector, \
 			t_vector3 v, int pos)
 {
 	t_vector3	**vertex;
@@ -35,7 +35,6 @@ void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
 	int			i;
 	int			j;
 
-	(void)w;
 	vertex = ft_my_malloc(sizeof(void*) * sector->vertex_count + 1);
 	i = 0;
 	j = 0;
@@ -150,7 +149,6 @@ void	ft_editor_turn_vertexes(t_sector *s, int numb)
 	while (numb < s->vertex_count)
 	{
 		vertex[i] = s->vertex[numb];
-		printf("%d -> %d: [%.0f, %.0f]\n", numb, i, vertex[i]->x, vertex[i]->y);
 		i++;
 		numb++;
 	}
@@ -158,7 +156,6 @@ void	ft_editor_turn_vertexes(t_sector *s, int numb)
 	while (i < s->vertex_count)
 	{
 		vertex[i] = s->vertex[numb];
-		printf("%d -> %d: [%.0f, %.0f]\n", numb, i, vertex[i]->x, vertex[i]->y);
 		i++;
 		numb++;
 	}
@@ -184,13 +181,9 @@ void	ft_editor_check_turn_vertexes(t_wolf3d *w)
 	i = 1;
 	while (i < s->vertex_count)
 	{
-		if (s->vertex[numb]->y > s->vertex[i]->y)
-		{
-			numb = i;
-			i = 0;
-		}
-		else if (s->vertex[numb]->y == s->vertex[i]->y && \
-			s->vertex[numb]->x > s->vertex[i]->x)
+		if (s->vertex[numb]->y > s->vertex[i]->y || \
+			(s->vertex[numb]->y == s->vertex[i]->y && \
+			s->vertex[numb]->x > s->vertex[i]->x))
 		{
 			numb = i;
 			i = 0;
