@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 16:02:07 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/21 17:07:17 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,9 @@ GUI_NAME = gui_test
 # Сompiler settings
 CC = gcc
 FLAGS_NORME = -Wall -Wextra -Werror
-FLAGS_O = -O0 -O3
-FLAGS_OPT = -march=native -m64 -flto -funroll-loops -Ofast
-FLAGS = -g $(FLAGS_O) #$(FLAGS_NORME)
+#FLAGS_O = -O0 -O3
+#FLAGS_OPT = -march=native -m64 -flto -funroll-loops -Ofast
+FLAGS = -g #$(FLAGS_O) #$(FLAGS_NORME) $(FLAGS_OPT)
 
 # SDL2 settings
 USERNAME = $(shell whoami)
@@ -75,6 +75,7 @@ ALGEBRA_SRCS_DIRECTORY = $(SRCS_PATH)algebra/
 ALGEBRA_LIST = \
 algebra_camera.c \
 algebra_intersect.c \
+algebra_intersect2.c \
 algebra_matrix_transform.c \
 algebra_matrix.c \
 algebra_vectors_1.c \
@@ -97,7 +98,6 @@ ALGEBRA_OBJS = $(addprefix $(ALGEBRA_OBJS_DIRECTORY), $(ALGEBRA_OBJS_LIST))
 # FUNC FUNCTIONS
 FUNC_SRCS_DIRECTORY = $(SRCS_PATH)func/
 FUNC_LIST = \
-func_fpc.c \
 func_help.c \
 func_sdl.c \
 func_wu_color.c \

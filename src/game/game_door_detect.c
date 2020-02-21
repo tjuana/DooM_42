@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_ft_game_door_detect.c                                 :+:      :+:    :+:   */
+/*   game_door_detect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 17:25:21 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 14:29:25 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ static int	ft_game_door_dist(t_new_player *pl, int s_nb)
 	vec2.y = pl->anglesin;
 	vec = ft_vec3_normalize(vec);
 	vec2 = ft_vec3_normalize(vec2);
-	if (ft_game_door_bool(tmp_dist, ft_math_to_deg(acos(ft_vec2_cos(vec, vec2)))) == -1)
+	if (ft_game_door_bool(tmp_dist, \
+			ft_math_to_deg(acos(ft_vec2_cos(vec, vec2)))) == -1)
 		return (6);
 	return (tmp_dist);
 }

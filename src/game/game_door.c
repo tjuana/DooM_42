@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/20 13:56:33 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:27:53 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void		ft_game_door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 		ft_game_door_total(pl);
 		ft_game_but_total(pl);
 	}
-	if (pl->door_all < 1 || (ft_game_but_script(pl, ft_game_but_detect(pl), se) == 1))
+	if (pl->door_all < 1 || (ft_game_but_script(pl, \
+								ft_game_but_detect(pl), se) == 1))
 		return ;
 	d_sec_nb = ft_game_door_detect(pl);
 	while (++i < pl->door_all)

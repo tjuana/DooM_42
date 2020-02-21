@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 16:37:14 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:49:26 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ void		sound(t_new_player *pl, char *name, int channel)
 {
 	if (!(pl->sound = Mix_LoadWAV(name)))
 		ft_error("no sound, man");
-//	if (!Mix_Playing(1))
-		if (Mix_PlayChannel(channel, pl->sound, 0) == -1 || !pl->sound)
-			ft_error("Audio play error");
+	if (Mix_PlayChannel(channel, pl->sound, 0) == -1 || !pl->sound)
+		ft_error("Audio play error");
+	Mix_FreeChunk(pl->sound);
+	pl->sound = NULL;
 }
 
 t_sdl		*sdl_init(t_sdl *sdl)

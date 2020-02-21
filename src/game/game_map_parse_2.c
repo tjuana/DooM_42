@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 16:33:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:06:17 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ void		ft_game_fill_the_sector(t_new_sector *sector, int number, \
 	v_c = 0;
 	while (number--)
 	{
-		sector->neighbors[v_c] = ft_atoi(file.split[s_c]);
-		v_c++;
-		s_c++;
+		sector->neighbors[v_c++] = ft_atoi(file.split[s_c++]);
 		if (ft_atoi(file.split[s_c - 1]) >= (file.count_sectors + 1))
 			ft_error("BAD NEIGHBOUR");
 	}

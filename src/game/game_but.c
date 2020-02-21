@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 18:29:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:58:25 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ static int	ft_game_but_new_door_sec(t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	static int	ft_game_but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
+**	static int	ft_game_but_open_door(t_new_player *pl, int but_nb,
+**										t_new_sub_ev *se)
 **	Function to open door in this sec
 ** **************************************************************************
 */
 
-static int	ft_game_but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
+static int	ft_game_but_open_door(t_new_player *pl, int but_nb, \
+												t_new_sub_ev *se)
 {
 	int	d_sec_nb;
 
@@ -100,7 +102,7 @@ int			ft_game_but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -2))
 		return (ft_game_but_open_door(pl, but_nb, se));
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -4))
-		*pl = *load_next(pl);
+		*pl = *load_next(pl, pl->lvl);
 	return (0);
 }
 

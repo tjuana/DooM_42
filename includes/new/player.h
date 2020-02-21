@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/20 17:29:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:08:24 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,8 @@ typedef struct		s_new_player
 
 	float			x1;
 	float			x2;
-	int				*y_top;
-	int				*y_bot;
+	int				y_top[WIN_W];
+	int				y_bot[WIN_W];
 	int				beginx;
 	int				endx;
 	int				contin;

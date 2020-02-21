@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_help.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/20 17:58:38 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:51:12 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int				ft_error(char *code)
 {
-	system("osascript -e \'display notification\"Used default value!\" with title \"ERRROOOORRR!\"\'");
+	system("osascript -e \'display notification\"Used default value!\" \
+						with title \"ERRROOOORRR!\"\'");
 	ft_putendl(code);
 	exit(EXIT_FAILURE);
 	return (1);
@@ -38,8 +39,11 @@ void			ft_clean_sdl(t_wolf3d *w)
 		SDL_DestroyTexture(w->sdl->text);
 	if (w->sdl->renderer)
 		SDL_DestroyRenderer(w->sdl->renderer);
-	// if (w->sdl->win)
-		// SDL_DestroyWindow(w->sdl->win);
+	if (w->sdl->win)
+		SDL_DestroyWindow(w->sdl->win);
+	Mix_FreeChunk(w->sdl->music);
+	w->sdl->music = NULL;
+	Mix_CloseAudio();
 	SDL_Delay(777);
 	IMG_Quit();
 	SDL_Quit();

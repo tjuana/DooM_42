@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 21:02:04 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:58:10 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot);
 void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, t_new_others *ot);
 
 /*			load_file.c			*/
-t_new_player	*load_next(t_new_player *pl);
+t_new_player	*load_next(t_new_player *pl, char *map);
 void		load_file(char *ag, t_new_player *pl);
 
 /*			ft_game_load_textures.c			*/
