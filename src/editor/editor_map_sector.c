@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 13:56:12 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:06:36 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
 ** **************************************************************************
 */
 
-void	ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
+void		ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
 {
 	ft_set_new_vertex_for_sector_list(w, s->vertex, s->vertex_count);
 	ft_sectors_set_all_neighbors(w);

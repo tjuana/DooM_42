@@ -65,9 +65,9 @@ typedef struct		s_new_sector
 {
 	float			floor;
 	float			ceil;
-    t_vector3		*vertex;
-    signed char		*neighbors;
-    int				npoints;
+	t_vector3		*vertex;
+	int				*neighbors;
+	int				npoints;
 }					t_new_sector;
 
 typedef struct		s_new_xy

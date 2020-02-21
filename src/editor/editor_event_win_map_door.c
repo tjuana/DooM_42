@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:34:51 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/18 21:13:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:52:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,4 @@ void	ft_map_click_door(t_wolf3d *w, SDL_Event e, t_list *elem)
 				s->status = SECTOR_STATUS_POLYGON;
 		}
 	}
-	// if (((t_sector*)w->sector->content)->status == SECTOR_STATUS_READY)
-	// 	((t_sector*)w->sector->content)->status = SECTOR_STATUS_PRESET;
 }

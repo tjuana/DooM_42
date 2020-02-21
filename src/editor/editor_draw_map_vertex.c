@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:54:19 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 19:28:08 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:53:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, int color)
 	vertex.v1.y = c.y - v_d;
 	vertex.v2.x = c.x + v_d;
 	vertex.v2.y = c.y + v_d;
-
-	ft_gui_fill_area_rect(w, vertex, (t_gui_rect){elem->v1, elem->v2, 0, 0}, color);
+	ft_gui_fill_area_rect(w, vertex, \
+		(t_gui_rect){elem->v1, elem->v2, 0, 0}, color);
 }
 
 /*
@@ -48,7 +48,8 @@ void	ft_gui_draw_point(t_wolf3d *w, t_gui_coord c, int color)
 ** **************************************************************************
 */
 
-int		ft_gui_draw_map_vertex(t_wolf3d *w, t_gui_coord c, int status, int mode)
+int		ft_gui_draw_map_vertex(t_wolf3d *w, t_gui_coord c, \
+			int status, int mode)
 {
 	int	color;
 
@@ -80,7 +81,7 @@ int		ft_gui_draw_map_vertex_line(t_wolf3d *w, t_gui_coord c1)
 {
 	t_sector	*s;
 	t_gui_coord	c2;
-	t_gui_elem		*elem;
+	t_gui_elem	*elem;
 
 	elem = (t_gui_elem*)w->gui_map.ptr->content;
 	if (w->gui.mode == GUI_MD_ME_SET_SECTOR && w->sector)
@@ -89,7 +90,8 @@ int		ft_gui_draw_map_vertex_line(t_wolf3d *w, t_gui_coord c1)
 		if (s->status == 0 && s->vertex_count > 0 && \
 			ft_new_editor_map_check_area(w))
 		{
-			c2 = ft_gui_map_vertex_to_coord(w, *s->vertex[s->vertex_count - 1]);
+			c2 = ft_gui_map_vertex_to_coord(w, \
+				*s->vertex[s->vertex_count - 1]);
 			ft_fdf_wu_rect_color(w, (t_gui_rect){c1, c2, 0, 0}, \
 				(t_gui_rect){elem->v1, elem->v2, 0, 0}, 0x888888);
 		}

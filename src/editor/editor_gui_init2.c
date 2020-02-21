@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:01:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:58:17 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:03:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	ft_gui_init_win_menu_save(t_list *head)
 	elem = head->content;
 	ft_gui_elem_init_grid(head, "win_me_menu_titlen", 21, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "Save map as:", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_text(elem->child, "Save map as:", 16, \
+		"fonts/Raleway-Bold.ttf");
 	ft_gui_elem_init_grid(head, "win_me_menu_name", 23, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0xaaaaaa);
 	ft_gui_elem_set_input(elem->child, " ", 0);
@@ -131,7 +132,8 @@ void	ft_gui_init_win_menu(t_list *head)
 	elem = head->content;
 	ft_gui_elem_init_grid(head, "win_menu_btngame", 1, (t_gui_coord){1, 2});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "M A P   E D I T O R", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_text(elem->child, "M A P   E D I T O R", 16, \
+		"fonts/Raleway-Bold.ttf");
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_gui_init_win_menu_add(head);
 	ft_gui_init_win_menu_set(head);

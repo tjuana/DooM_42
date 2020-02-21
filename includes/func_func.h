@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 19:33:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 16:03:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,5 @@ void			ft_play_shot(t_wolf3d *w);
 
 void			ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
 					t_gui_rect area, int color);
-
-void			ft_me_generate_triangles(t_wolf3d *w);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:02:34 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:59:05 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:06:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ft_gui_init_win_setplayer(t_list *head)
 	elem = head->content;
 	ft_gui_elem_init_grid(head, "win_me_pl_title", 1, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set player", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_text(elem->child, "Set player", 16, \
+		"fonts/Raleway-Bold.ttf");
 	ft_gui_elem_init_grid(head, "win_me_pl_save", 25, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save player", 16);
@@ -81,7 +82,8 @@ void	ft_gui_init_win_setsprite(t_list *head)
 	elem = head->content;
 	ft_gui_elem_init_grid(head, "win_me_sprt_title", 1, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set player", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_text(elem->child, "Set player", 16, \
+		"fonts/Raleway-Bold.ttf");
 	ft_gui_elem_init_grid(head, "win_me_sprt_save", 25, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save sprite", 16);
@@ -107,7 +109,8 @@ void	ft_gui_init_win_setenemy(t_list *head)
 	elem = head->content;
 	ft_gui_elem_init_grid(head, "win_me_enemy_title", 1, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Set player", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_text(elem->child, "Set player", 16, \
+		"fonts/Raleway-Bold.ttf");
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_gui_elem_init_grid(head, "win_me_enemy_save", 25, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
@@ -139,7 +142,8 @@ void	ft_gui_init_win_setdoor(t_list *head)
 	ft_gui_elem_set_text(elem->child, "Set door", 16, "fonts/Raleway-Bold.ttf");
 	ft_gui_elem_init_grid(head, "win_me_door_text", 3, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x000000);
-	ft_gui_elem_set_text(elem->child, "Draw line between two sector", 16, "fonts/Raleway-Bold.ttf");
+	ft_gui_elem_set_text(elem->child, "Draw line between two sector", 16, \
+		"fonts/Raleway-Bold.ttf");
 	ft_gui_elem_init_grid(head, "win_me_door_save", 25, (t_gui_coord){2, 1});
 	ft_gui_elem_set_color(elem->child, 0x50c878);
 	ft_gui_elem_set_button(elem->child, "Save door", 16);

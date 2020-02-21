@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:45:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:11:05 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	ft_editor_delete_last_vertex(t_wolf3d *w)
 ** **************************************************************************
 */
 
-void		ft_editor_turn_vertexes(t_sector *s, int numb)
+void	ft_editor_turn_vertexes(t_sector *s, int numb)
 {
 	t_vector3	**vertex;
 	int			i;
@@ -171,7 +171,7 @@ void		ft_editor_turn_vertexes(t_sector *s, int numb)
 ** **************************************************************************
 */
 
-void		ft_editor_check_turn_vertexes(t_wolf3d *w)
+void	ft_editor_check_turn_vertexes(t_wolf3d *w)
 {
 	t_sector	*s;
 	int			numb;

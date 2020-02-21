@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/20 17:27:44 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/21 16:02:07 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,6 @@ EDITOR_SRCS_DIRECTORY = $(SRCS_PATH)editor/
 EDITOR_SRCS_LIST = \
 editor_desctuct.c \
 editor_draw_map.c \
-editor_draw_map_door.c \
 editor_draw_map_grid.c \
 editor_draw_map_objects.c \
 editor_draw_map_sector.c \
@@ -151,8 +150,7 @@ editor_save_file.c \
 editor_save_file2.c \
 editor_save_file3.c \
 editor_map_check_line.c \
-editor_map_check2.c \
-editor_generate_triangles.c
+editor_map_check2.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))
