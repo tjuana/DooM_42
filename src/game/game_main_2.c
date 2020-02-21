@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_main_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:28:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 20:14:21 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:45:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 **	void ft_game_init(t_wolf3d *w, char *path)
 ** **************************************************************************
 */
-
 void		ft_game_init(t_wolf3d *w, char *path)
 {
 	t_new_temp	*data;
 
 	data = w->new_data;
+	data->pl->const_hfov = (0.73f * WIN_H);
+	data->pl->const_vfov = (0.2f * WIN_H);
+	data->pl->const_hfov_spec = (1.0 * 0.73f * WIN_H / WIN_W);
+	data->pl->const_vfov_spec = (1.0 * .2f);
 	data->pl->wolf3d = w;
 	data->pl->sectors_nb = 0;
 	data->se.quit = 0;

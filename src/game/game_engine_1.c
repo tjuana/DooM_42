@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/21 20:19:07 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:47:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ static void	ft_game_engine_preset(t_new_player *pl)
 
 int			ft_game_engine_scale(t_new_player *pl, int sx1, int sx2)
 {
-	pl->scale_1.x = hfov / pl->t1.y;
-	pl->scale_1.y = vfov / pl->t1.y;
-	pl->scale_2.x = hfov / pl->t2.y;
-	pl->scale_2.y = vfov / pl->t2.y;
+	pl->scale_1.x = pl->const_hfov / pl->t1.y;
+	pl->scale_1.y = pl->const_vfov / pl->t1.y;
+	pl->scale_2.x = pl->const_hfov / pl->t2.y;
+	pl->scale_2.y = pl->const_vfov / pl->t2.y;
 	pl->x1 = WIN_W / 2 - (int)(pl->t1.x * pl->scale_1.x);
 	pl->x2 = WIN_W / 2 - (int)(pl->t2.x * pl->scale_2.x);
 	pl->ceil.y1a = WIN_H / 2 - (int)(ft_math_yaw(pl->ceil.yceil, \
