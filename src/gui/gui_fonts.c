@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:27:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:22:21 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int			ft_gui_font_preset_fsc(t_wolf3d *w, char *font_path, \
 		}
 		f_list = f_list->next;
 	}
-	printf("> %s\n", font_path);
 	if (!(f->ptr = TTF_OpenFont(font_path, f->f_sz)))
 		ft_error("FONT SET ERROR (2)");
 	ft_gui_set_font(w, font_path, size);
