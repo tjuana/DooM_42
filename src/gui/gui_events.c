@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 15:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:40:07 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:03:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	ft_gui_events_keydown_me(t_wolf3d *w, SDL_Event *e)
 		ft_gui_mousebuttonup_win_menu_btnsector(w, *e, w->gui.dom, 0);
 	else if (e->key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 		ft_gui_mousebuttonup_win_editor_menu_btnmenu(w, *e, w->gui.dom, 0);
-	else if (e->key.keysym.scancode == SDL_SCANCODE_TAB)
-		ft_me_generate_triangles(w);
 	else
 		check = 0;
 	if (check)

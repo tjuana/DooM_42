@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:02:36 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 19:38:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:16:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_gui_mouse_click_map(t_wolf3d *w, SDL_Event e, t_list *elem)
 		ft_gui_event_set_sprite(w, e, elem);
 	else if (w->gui.mode == GUI_MD_ME_SET_ENEMY)
 		ft_gui_event_set_enemy(w, e, elem);
-	else if (w->gui.mode == GUI_MD_ME_SET_DOOR)
-		ft_map_click_door(w, e, elem);
 }
 
 /*
@@ -47,7 +45,6 @@ void	ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_gui_elem	*elem;
 	t_gui_coord	coord;
 
 	(void)e;
@@ -77,6 +74,9 @@ void	ft_gui_mousebuttonup_win_map(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 21:48:33 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 19:45:59 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:11:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,64 @@ void	ft_gui_draw_map_grid_limit_line(t_wolf3d *w, t_gui_elem *elem, \
 			w, 0x888888);
 }
 
+void	ft_gui_draw_map_grid_vertical_line(t_wolf3d *w, t_gui_elem *elem, \
+			int scale)
+{
+	t_gui_coord	pos;
+	t_gui_coord	vrtx;
+	int			color;
+
+	(void)scale;
+	vrtx = (t_gui_coord){(int)floor(w->gui_map.v.x), \
+		(int)floor(w->gui_map.v.y), 0};
+	pos = ft_gui_map_vertex_to_coord(w, \
+		(t_vector3){floor(vrtx.x), floor(vrtx.y), 0, 0});
+	while (pos.y < elem->v2.y && pos.y < WIN_HEIGHT)
+	{
+		if (!(vrtx.y % 10))
+			color = 0x666666;
+		else if (!(vrtx.y % 2))
+			color = 0x333333;
+		else
+			color = 0x222222;
+		ft_fdf_wu_color(
+			&(t_vector3){elem->v1.x, pos.y, 0, 0}, \
+			&(t_vector3){elem->v2.x, pos.y, 0, 0}, \
+			w, color);
+		pos.y += w->gui_map.grid_scale;
+		vrtx.y++;
+	}
+}
+
+void	ft_gui_draw_map_grid_horizontal_line(t_wolf3d *w, t_gui_elem *elem, \
+			int scale)
+{
+	t_gui_coord	pos;
+	t_gui_coord	vrtx;
+	int			color;
+
+	(void)scale;
+	vrtx = (t_gui_coord){(int)floor(w->gui_map.v.x), \
+		(int)floor(w->gui_map.v.y), 0};
+	pos = ft_gui_map_vertex_to_coord(w, \
+		(t_vector3){floor(vrtx.x), floor(vrtx.y), 0, 0});
+	while (pos.x < elem->v2.x && pos.x < WIN_WIDTH)
+	{
+		if (!(vrtx.x % 10))
+			color = 0x666666;
+		else if (!(vrtx.x % 2))
+			color = 0x333333;
+		else
+			color = 0x222222;
+		ft_fdf_wu_color(
+			&(t_vector3){pos.x, elem->v1.y, 0, 0}, \
+			&(t_vector3){pos.x, elem->v2.y, 0, 0}, \
+			w, color);
+		pos.x += w->gui_map.grid_scale;
+		vrtx.x++;
+	}
+}
+
 /*
 ** **************************************************************************
 **	void ft_gui_draw_map_grid(t_wolf3d *w, t_gui_elem *elem, int scale)
@@ -88,55 +146,6 @@ void	ft_gui_draw_map_grid_limit_line(t_wolf3d *w, t_gui_elem *elem, \
 
 void	ft_gui_draw_map_grid(t_wolf3d *w, t_gui_elem *elem, int scale)
 {
-	t_gui_coord	pos;
-	t_gui_coord	vrtx;
-
-	vrtx = (t_gui_coord){(int)floor(w->gui_map.v.x), \
-		(int)floor(w->gui_map.v.y), 0};
-	pos = ft_gui_map_vertex_to_coord(w, \
-		(t_vector3){floor(vrtx.x), floor(vrtx.y), 0, 0});
-	while (pos.y < elem->v2.y && pos.y < WIN_HEIGHT)
-	{
-		if (!(vrtx.y % 10))
-			ft_fdf_wu_color(
-				&(t_vector3){elem->v1.x, pos.y, 0, 0}, \
-				&(t_vector3){elem->v2.x, pos.y, 0, 0}, \
-				w, 0x666666);
-		else if (!(vrtx.y % 2))
-		{
-			ft_fdf_wu_color(
-				&(t_vector3){elem->v1.x, pos.y, 0, 0}, \
-				&(t_vector3){elem->v2.x, pos.y, 0, 0}, \
-				w, 0x333333);
-		}
-		else
-			ft_fdf_wu_color(
-				&(t_vector3){elem->v1.x, pos.y, 0, 0}, \
-				&(t_vector3){elem->v2.x, pos.y, 0, 0}, \
-				w, 0x222222);
-		pos.y += w->gui_map.grid_scale;
-		vrtx.y++;
-	}
-	while (pos.x < elem->v2.x && pos.x < WIN_WIDTH)
-	{
-		if (!(vrtx.x % 10))
-			ft_fdf_wu_color(
-				&(t_vector3){pos.x, elem->v1.y, 0, 0}, \
-				&(t_vector3){pos.x, elem->v2.y, 0, 0}, \
-				w, 0x666666);
-		else if (!(vrtx.x % 2))
-		{
-			ft_fdf_wu_color(
-				&(t_vector3){pos.x, elem->v1.y, 0, 0}, \
-				&(t_vector3){pos.x, elem->v2.y, 0, 0}, \
-				w, 0x333333);
-		}
-		else
-			ft_fdf_wu_color(
-				&(t_vector3){pos.x, elem->v1.y, 0, 0}, \
-				&(t_vector3){pos.x, elem->v2.y, 0, 0}, \
-				w, 0x222222);
-		pos.x += w->gui_map.grid_scale;
-		vrtx.x++;
-	}
+	ft_gui_draw_map_grid_vertical_line(w, elem, scale);
+	ft_gui_draw_map_grid_horizontal_line(w, elem, scale);
 }

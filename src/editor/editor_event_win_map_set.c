@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 19:46:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:17:18 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_gui_event_set_sector(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_sector	*s;
 
+	(void)e;
 	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, elem->content);
 	s = w->sector->content;
 	if (coord.w && s->status != SECTOR_STATUS_POLYGON)
@@ -56,6 +57,7 @@ void	ft_gui_event_set_player(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_vector3	v;
 
+	(void)e;
 	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	if (coord.w)
@@ -80,6 +82,7 @@ void	ft_gui_event_set_sprite(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_vector3	v;
 
+	(void)e;
 	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	if (coord.w)
@@ -104,6 +107,7 @@ void	ft_gui_event_set_enemy(t_wolf3d *w, SDL_Event e, t_list *elem)
 	t_gui_coord	coord;
 	t_vector3	v;
 
+	(void)e;
 	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
 		elem->content);
 	if (coord.w)

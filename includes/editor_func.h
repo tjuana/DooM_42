@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 19:49:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:16:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,7 @@ void				ft_editor_desctuct(t_wolf3d *w);
 ** **************************************************************************
 */
 void				ft_gui_draw_map_sectors(t_wolf3d *w, t_list *list);
-void				ft_gui_draw_map_doors(t_wolf3d *w, t_list *list);
 void				ft_gui_draw_map(t_wolf3d *w, t_list *list);
-
-/*
-** **************************************************************************
-**	editor/editor_draw_map_door.c
-** **************************************************************************
-*/
-void				ft_editor_draw_door(t_wolf3d *w, t_sector *s);
 
 /*
 ** **************************************************************************
@@ -74,7 +66,6 @@ void				ft_gui_draw_enemies(t_wolf3d *w);
 **	editor/editor_draw_map_sector.c
 ** **************************************************************************
 */
-void				ft_draw_sector_walls(t_wolf3d *w, t_sector *s);
 void				ft_gui_draw_map_sector_walls(t_wolf3d *w, t_sector *s);
 
 /*
@@ -100,16 +91,6 @@ void				ft_gui_mousebuttondown_win_map(void *data, \
 						SDL_Event e, t_list *dom, int type);
 void				ft_gui_mousebuttonup_win_map(void *data, \
 						SDL_Event e, t_list *dom, int type);
-
-/*
-** **************************************************************************
-**	editor/editor_event_win_map_door.c
-** **************************************************************************
-*/
-void				ft_gui_mousemotion_win_map_door(t_wolf3d *w, \
-						SDL_Event e, t_list *dom);
-void				ft_map_click_door(t_wolf3d *w, \
-						SDL_Event e, t_list *elem);
 
 /*
 ** **************************************************************************
@@ -235,8 +216,6 @@ void				ft_editor_gui_init(t_wolf3d *w);
 **	editor/editor_init.c
 ** **************************************************************************
 */
-// void				ft_editor_add_new_txtr(t_wolf3d *w, char *path);
-// void				ft_editor_init_txtr_list(t_wolf3d *w);
 void				ft_editor_init(t_wolf3d *w);
 
 /*

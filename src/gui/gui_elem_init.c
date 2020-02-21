@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 17:34:38 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:42:29 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:26:47 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	ft_gui_elem_init(t_list **dom, char *name, \
 void	ft_gui_elem_init_grid(t_list *parent, char *name, \
 			int pos, t_gui_coord count)
 {
-	t_list		*list;
 	t_gui_elem	*parent_elem;
 	t_gui_coord	v1;
 	t_gui_coord	v2;

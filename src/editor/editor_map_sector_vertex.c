@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:45:32 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:24:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_editor_sector_set_vertex(t_wolf3d *w, t_sector *sector, \
 	int			i;
 	int			j;
 
+	(void)w;
 	vertex = ft_my_malloc(sizeof(void*) * sector->vertex_count + 1);
 	i = 0;
 	j = 0;
@@ -139,7 +140,7 @@ void	ft_editor_delete_last_vertex(t_wolf3d *w)
 ** **************************************************************************
 */
 
-void		ft_editor_turn_vertexes(t_sector *s, int numb)
+void	ft_editor_turn_vertexes(t_sector *s, int numb)
 {
 	t_vector3	**vertex;
 	int			i;
@@ -171,12 +172,13 @@ void		ft_editor_turn_vertexes(t_sector *s, int numb)
 ** **************************************************************************
 */
 
-void		ft_editor_check_turn_vertexes(t_wolf3d *w)
+void	ft_editor_check_turn_vertexes(t_wolf3d *w)
 {
 	t_sector	*s;
 	int			numb;
 	int			i;
 
+	(void)w;
 	s = w->sector->content;
 	numb = 0;
 	i = 1;

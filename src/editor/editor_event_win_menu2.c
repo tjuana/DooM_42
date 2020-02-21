@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:16:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/19 20:35:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:18:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_gui_mousebuttonup_win_menu_btnsavemap(\
 	t_wolf3d	*w;
 
 	(void)e;
+	(void)dom;
 	(void)type;
 	w = (t_wolf3d*)data;
 	w->file.name = ft_gui_elem_get_value(\
@@ -31,6 +32,7 @@ void	ft_gui_mousebuttonup_win_editor_menu_btnmenu(\
 	t_wolf3d	*w;
 
 	(void)e;
+	(void)dom;
 	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\

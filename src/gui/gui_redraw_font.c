@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:40:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:51:38 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int		ft_gui_check_special_lightness(int color)
 
 void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 {
-	int			x;
-	int			y;
 	t_gui_elem	*elem;
 
 	elem = list->content;

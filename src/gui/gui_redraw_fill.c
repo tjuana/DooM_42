@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_redraw_fill.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/17 20:27:31 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,6 @@ void	ft_gui_fill_area(t_wolf3d *w, t_gui_coord v1, \
 void	ft_gui_draw_border(t_wolf3d *w, t_list *list, \
 			int color, int border_width)
 {
-	int			x;
-	int			y;
 	t_gui_elem	*elem;
 
 	elem = list->content;
@@ -130,8 +128,6 @@ void	ft_gui_draw_border(t_wolf3d *w, t_list *list, \
 
 void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 {
-	int			x;
-	int			y;
 	t_gui_elem	*elem;
 
 	elem = list->content;

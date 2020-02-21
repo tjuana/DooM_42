@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/21 17:24:30 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:30:02 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 void			ft_game_end_game(t_new_player *pl)
 {
+	(void)pl;
 	SDL_Delay(77);
 	exit(EXIT_SUCCESS);
 }

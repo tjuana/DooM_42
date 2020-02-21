@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:22:19 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/15 15:40:28 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:26:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,6 @@ typedef struct	s_matrix_4x4
 	int			i;
 	int			j;
 }				t_matrix_4x4;
-
-/*
-** **************************************************************************
-**	algebra_camera.c
-** **************************************************************************
-*/
-
-t_vector3		ft_camera_get_screen_vertex(t_vector3 world_vertex, \
-					t_matrix_4x4 t_mult, t_matrix_4x4 t_proj);
-t_vector3		ft_camera(t_vector3 vtx_orig, t_matrix_4x4 orient, \
-					t_vector3 world_vertex);
 
 /*
 ** **************************************************************************

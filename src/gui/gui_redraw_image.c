@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:41:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 13:14:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:28:07 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, \
 	int			y;
 	int			pos;
 	int			*ptr_color;
-	t_gui_elem	*elem;
 
 	pos = 0;
 	y = rect.v1.y >= 0 ? rect.v1.y : 0;

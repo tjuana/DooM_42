@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 14:48:34 by tjuana           ###   ########.fr        #
+#    Updated: 2020/02/21 17:26:23 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CC = gcc
 FLAGS_NORME = -Wall -Wextra -Werror
 #FLAGS_O = -O0 -O3
 #FLAGS_OPT = -march=native -m64 -flto -funroll-loops -Ofast
-FLAGS = -g #$(FLAGS_O) #$(FLAGS_NORME) $(FLAGS_OPT)
+FLAGS = -g $(FLAGS_NORME) #$(FLAGS_O) #$(FLAGS_NORME) $(FLAGS_OPT)
 
 # SDL2 settings
 USERNAME = $(shell whoami)
@@ -73,7 +73,6 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 # ALGEBRA FUNCTIONS
 ALGEBRA_SRCS_DIRECTORY = $(SRCS_PATH)algebra/
 ALGEBRA_LIST = \
-algebra_camera.c \
 algebra_intersect.c \
 algebra_intersect2.c \
 algebra_matrix_transform.c \
@@ -118,13 +117,11 @@ EDITOR_SRCS_DIRECTORY = $(SRCS_PATH)editor/
 EDITOR_SRCS_LIST = \
 editor_desctuct.c \
 editor_draw_map.c \
-editor_draw_map_door.c \
 editor_draw_map_grid.c \
 editor_draw_map_objects.c \
 editor_draw_map_sector.c \
 editor_draw_map_vertex.c \
 editor_event_win_map_click.c \
-editor_event_win_map_door.c \
 editor_event_win_map_move.c \
 editor_event_win_map_set.c \
 editor_event_win_map_zoom.c \
@@ -151,8 +148,7 @@ editor_save_file.c \
 editor_save_file2.c \
 editor_save_file3.c \
 editor_map_check_line.c \
-editor_map_check2.c \
-editor_generate_triangles.c
+editor_map_check2.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))
