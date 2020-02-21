@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_map_parse_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/19 21:27:36 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 16:33:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		ft_game_sector_save(t_new_player *pl, t_vector3 *vertex)
 	sector = &pl->sectors[pl->file.count_sectors2];
 	number = pl->file.tmp[pl->file.count_sectors2];
 	pl->sectors[pl->file.count_sectors2].npoints = pl->file.count_sector_vertex;
-	sector->neighbors = ft_my_malloc(sizeof(int) * (number + 1));
+	sector->neighbors = ft_my_malloc(sizeof(int) * (number));
 	sector->vertex = ft_my_malloc(sizeof(t_vector3) * (number + 1));
 	sector->npoints = number;
 	ft_game_fill_the_sector(sector, number, pl->file, vertex);
