@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 21:31:33 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 22:00:51 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		ft_set_window_icon(t_sdl *sdl);
 void		sdl_create_background_music(t_sdl *sdl);
 void		sound(t_new_player *pl, char *name, int channel);
 t_sdl		*sdl_init(t_sdl *sdl);
+void	load_sound(t_new_player *pl, char *name);
 
 /*
 ** **************************************************************************
