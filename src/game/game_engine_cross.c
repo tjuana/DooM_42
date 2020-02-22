@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_cross.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/16 15:34:52 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/21 14:31:21 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-void			xy_vertex_of_sectors(t_new_xy *v_start, t_new_xy *v_end,\
-	t_new_player *pl)
+void			ft_game_xy_vertex_of_sectors(t_vector3 *v_start, \
+					t_vector3 *v_end, t_new_player *pl)
 {
 	v_start->x = pl->sectors[pl->cycle.current->sec_nb].vertex[pl->s + 0].x \
 	- pl->pos.x;
@@ -35,17 +35,18 @@ void			xy_vertex_of_sectors(t_new_xy *v_start, t_new_xy *v_end,\
 ** also rotate them around the player's view
 */
 
-static void		engine_cross2(t_new_player *pl, t_new_xy i1, t_new_xy i2)
+static void		ft_game_engine_cross2(t_new_player *pl, t_vector3 i1, \
+										t_vector3 i2)
 {
 	pl->org1.x = pl->t1.x;
 	pl->org1.y = pl->t1.y;
 	pl->org2.x = pl->t2.x;
 	pl->org2.y = pl->t2.y;
-	(pl->t1.y < pl->nearz && i1.y > 0) ? pl->t1 = i1 : pl->t1;
-	(pl->t1.y < pl->nearz && i1.y < 0) ? pl->t1 = i2 : pl->t1;
-	(pl->t2.y < pl->nearz && i1.y > 0) ? pl->t2 = i1 : pl->t2;
-	(pl->t2.y < pl->nearz && i1.y < 0) ? pl->t2 = i2 : pl->t2;
-	if (fabsf(pl->t2.x - pl->t1.x) > fabsf(pl->t2.y - pl->t1.y))
+	(pl->t1.y < pl->near_point.y && i1.y > 0) ? pl->t1 = i1 : pl->t1;
+	(pl->t1.y < pl->near_point.y && i1.y < 0) ? pl->t1 = i2 : pl->t1;
+	(pl->t2.y < pl->near_point.y && i1.y > 0) ? pl->t2 = i1 : pl->t2;
+	(pl->t2.y < pl->near_point.y && i1.y < 0) ? pl->t2 = i2 : pl->t2;
+	if (fabs(pl->t2.x - pl->t1.x) > fabs(pl->t2.y - pl->t1.y))
 	{
 		pl->u0 = ((pl->t1.x - pl->org1.x) * 1000 / (pl->org2.x - pl->org1.x));
 		pl->u1 = ((pl->t2.x - pl->org1.x) * 1000 / (pl->org2.x - pl->org1.x));
@@ -61,20 +62,20 @@ static void		engine_cross2(t_new_player *pl, t_new_xy i1, t_new_xy i2)
 
 /*
 ** **************************************************************************
-**	int engine_cross(t_new_player *pl, int sec_n, unsigned s)
+**	int ft_game_engine_cross(t_new_player *pl, int sec_n, unsigned s)
 **	Function to find intersections and set t1 & t2
 **	t1.y was tz1 before recontruction
 ** **************************************************************************
 */
 
-int				engine_cross(t_new_player *pl)
+int				ft_game_engine_cross(t_new_player *pl)
 {
-	t_new_xy	i1;
-	t_new_xy	i2;
-	t_new_xy	v_start;
-	t_new_xy	v_end;
+	t_vector3	i1;
+	t_vector3	i2;
+	t_vector3	v_start;
+	t_vector3	v_end;
 
-	xy_vertex_of_sectors(&v_start, &v_end, pl);
+	ft_game_xy_vertex_of_sectors(&v_start, &v_end, pl);
 	if ((pl->t1.y <= 0) && (pl->t2.y <= 0))
 	{
 		return (0);
@@ -85,13 +86,13 @@ int				engine_cross(t_new_player *pl)
 	{
 		pl->near_point.x = pl->near_point.x * (-1);
 		pl->far_point.x = pl->far_point.x * (-1);
-		i1 = intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
+		i1 = ft_math_intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
 		pl->near_point.x = pl->near_point.x * (-1);
 		pl->far_point.x = pl->far_point.x * (-1);
-		i2 = intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
+		i2 = ft_math_intersect(pl->t1, pl->t2, pl->near_point, pl->far_point);
 		if (i1.y < 0 && i2.y < 0)
 			return (0);
-		engine_cross2(pl, i1, i2);
+		ft_game_engine_cross2(pl, i1, i2);
 	}
 	return (1);
 }

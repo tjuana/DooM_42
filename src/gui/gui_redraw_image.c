@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:41:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 15:55:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:28:07 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ int		ft_gui_get_image_pixel_pos_elem(int x, int y, t_gui_elem *elem)
 {
 	int	pos;
 
+	if (!elem->surf)
+	{
+		ft_putstr("no surface valid");
+		return (0);
+	}
 	pos = ((y - elem->v1.y) * elem->surf->h / \
-		(elem->v2.y - elem->v1.y) % elem->surf->h) * elem->surf->h + \
+		(elem->v2.y - elem->v1.y) % elem->surf->h) * elem->surf->w + \
 		((x - elem->v1.x) * elem->surf->w / \
 		(elem->v2.x - elem->v1.x) % elem->surf->w);
 	pos %= (elem->surf->h * elem->surf->w);
@@ -66,7 +71,7 @@ void	ft_gui_draw_image_put_pixel(t_wolf3d *w, int x, int y, int color)
 {
 	if (color != 0x00ffffff && color != 0x00000000)
 	{
-		((int*)w->sdl->srf->pixels)[x + (y * w->gui.win_w)] = \
+		((int*)w->sdl->pixels)[x + (y * w->gui.win_w)] = \
 			(int)color;
 	}
 }
@@ -86,7 +91,6 @@ void	ft_gui_draw_image_area(t_wolf3d *w, t_gui_rect rect, \
 	int			y;
 	int			pos;
 	int			*ptr_color;
-	t_gui_elem	*elem;
 
 	pos = 0;
 	y = rect.v1.y >= 0 ? rect.v1.y : 0;

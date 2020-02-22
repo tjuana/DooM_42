@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:40:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 15:58:30 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:50 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int		ft_gui_check_special_lightness(int color)
 
 void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 {
-	int			x;
-	int			y;
 	t_gui_elem	*elem;
 
 	elem = list->content;
@@ -49,8 +47,12 @@ void	ft_gui_putstr_elem_font(t_wolf3d *w, t_list *list, int color)
 	if (elem->type == GUI_BUTTON || elem->type == GUI_TEXT || \
 		elem->type == GUI_INPUT || elem->type == GUI_INPUT_NUMB)
 	{
-		ft_gui_font_preset_fsc(w, "fonts/RobotoMono-Medium.ttf", \
-			elem->fs, color);
+		if (elem->font_path == NULL)
+			ft_gui_font_preset_fsc(w, "fonts/Raleway-Bold.ttf", \
+				elem->fs, color);
+		else
+			ft_gui_font_preset_fsc(w, elem->font_path, \
+				elem->fs, color);
 		ft_gui_font_putstr_sdl(w, elem->str, \
 			(t_gui_coord){elem->v1.x + 10, elem->v1.y + 10, 0});
 	}

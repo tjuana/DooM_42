@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_event_win_map_click.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:02:36 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 17:03:16 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:16:26 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,19 @@ void	ft_gui_mousebuttondown_win_map(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_gui_elem	*elem;
 	t_gui_coord	coord;
 
+	(void)e;
+	(void)type;
 	w = (t_wolf3d*)data;
-	if (w->gui.mode == GUI_MD_ME_SET_DOOR)
-		ft_map_click_door(w, e, dom);
-	else
+	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
+		dom->content);
+	if (coord.w)
 	{
-		coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
-			dom->content);
-		if (coord.w)
-		{
-			w->gui.mouse_pos = coord;
-			ft_gui_mouse_click_map(w, e, dom);
-		}
-		return ;
+		w->gui.mouse_pos = coord;
+		ft_gui_mouse_click_map(w, e, dom);
 	}
+	return ;
 }
 
 /*
@@ -78,6 +74,9 @@ void	ft_gui_mousebuttonup_win_map(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	return ;
 }

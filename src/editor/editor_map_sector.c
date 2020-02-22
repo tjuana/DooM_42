@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 19:06:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 13:56:12 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 20:23:28 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void		ft_editor_sector_create(t_wolf3d *w)
 	t_list		*list_item;
 
 	sector.id = w->sector_count + 1;
-	printf("sector id: %d\n", sector.id);
 	sector.vertex = NULL;
 	sector.neighbors = NULL;
 	sector.vertex_count = 0;
@@ -93,6 +92,7 @@ t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
 {
 	t_sector	*sector;
 
+	(void)w;
 	while (list)
 	{
 		sector = list->content;
@@ -111,7 +111,7 @@ t_sector	*ft_editor_search_sector_by_id(t_wolf3d *w, t_list *list, int i)
 ** **************************************************************************
 */
 
-void	ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
+void		ft_map_set_new_sector(t_wolf3d *w, t_sector *s)
 {
 	ft_set_new_vertex_for_sector_list(w, s->vertex, s->vertex_count);
 	ft_sectors_set_all_neighbors(w);

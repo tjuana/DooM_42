@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:22:12 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:44:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:20:15 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	ft_gui_mousebuttonup_win_setsprite_btnsaveplayer(void *data, \
 			SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list		*list;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_sprt"), \
@@ -32,8 +34,10 @@ void	ft_gui_mousebuttonup_win_setsprite_btncancel(void *data, \
 			SDL_Event e, t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list		*list;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_sprt"), \

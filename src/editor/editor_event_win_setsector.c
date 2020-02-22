@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:17:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:44:22 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:19:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	ft_gui_mousebuttonup_win_setsector_btnsavemap(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list		*list;
 	t_sector	*s;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	s = w->sector->content;
 	if (s->status != SECTOR_STATUS_POLYGON && s->status != SECTOR_STATUS_READY)
@@ -44,8 +46,10 @@ void	ft_gui_mousebuttonup_win_setsector_btncancel(void *data, SDL_Event e, \
 			t_list *dom, int type)
 {
 	t_wolf3d	*w;
-	t_list		*list;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_me_sctr"), \

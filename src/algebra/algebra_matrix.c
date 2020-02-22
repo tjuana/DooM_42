@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/14 15:23:36 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 20:58:44 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_matrix_4x4	ft_translitation(t_matrix_4x4 neo, t_vector3 *vtc)
 t_matrix_4x4	ft_projection(t_matrix_4x4 neo, double ratio, \
 					double near, double far)
 {
-	neo.matrix[1][1] = 1 / tan(0.5 * DEG2RAD(FOV));
+	neo.matrix[1][1] = 1 / tan(0.5 * ft_math_deg_to_rad(FOV));
 	neo.matrix[0][0] = neo.matrix[1][1] / ratio;
 	neo.matrix[2][2] = -1 * (-near - far) / (near - far);
 	neo.matrix[3][2] = -1.00;

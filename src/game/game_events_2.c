@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:04:05 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/16 16:30:15 by drafe            ###   ########.fr       */
+/*   Updated: 2020/02/21 17:28:15 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 /*
 ** **************************************************************************
-**	static void events_vel_2(t_new_player *pl, t_new_sub_ev *se,
+**	static void ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se,
 **	\ t_new_others *ot)
 **	Function manage player move
 ** **************************************************************************
 */
 
-static void	events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+static void	ft_game_events_vel_2(t_new_player *pl, t_new_sub_ev *se, \
+				t_new_others *ot)
 {
 	float	speed;
 	int		push;
 
 	if (se->wsad[3])
 	{
-		ot->move_vec[0] -= pl->anglesin * 0.37;
-		ot->move_vec[1] += pl->anglecos * 0.37;
+		ot->move_vec[0] -= pl->anglesin * 0.33;
+		ot->move_vec[1] += pl->anglecos * 0.33;
 	}
 	push = (se->wsad[0] || se->wsad[1] || se->wsad[2] || se->wsad[3]);
 	speed = push ? 0.4 : 0.2;
@@ -39,16 +40,18 @@ static void	events_vel_2(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 
 /*
 ** **************************************************************************
-**	void events_vel_dir(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+**	void ft_game_events_vel_dir(t_new_player *pl, t_new_sub_ev *se,
+**		t_new_others *ot)
 **	Function manage player velocity
 ** **************************************************************************
 */
 
-void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
+void		ft_game_events_vel(t_new_player *pl, t_new_sub_ev *se, \
+				t_new_others *ot)
 {
 	float	speed;
 
-	speed = 0.37;
+	speed = 0.33;
 	ot->move_vec[0] = 0;
 	ot->move_vec[1] = 0;
 	if (se->wsad[0])
@@ -66,7 +69,7 @@ void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 		ot->move_vec[0] += pl->anglesin * speed;
 		ot->move_vec[1] -= pl->anglecos * speed;
 	}
-	events_vel_2(pl, se, ot);
+	ft_game_events_vel_2(pl, se, ot);
 }
 
 /*
@@ -77,14 +80,17 @@ void		events_vel(t_new_player *pl, t_new_sub_ev *se, t_new_others *ot)
 ** **************************************************************************
 */
 
-void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
-			t_new_others *ot)
+void		ft_game_events_jumps(t_new_sub_ev *se, t_new_player *pl, \
+				t_new_others *ot)
 {
 	float	z;
 
 	if (se->falling == 0)
 		return ;
-	pl->velo.z -= 0.1f;
+	if (pl->lunar == 1)
+		pl->velo.z -= 0.015f;
+	else
+		pl->velo.z -= 0.1f;
 	if (pl->fly == 1 && pl->velo.z <= 0)
 		se->falling = 0;
 	z = pl->pos.z + pl->velo.z;
@@ -95,9 +101,7 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 		se->ground = 1;
 	}
 	else if (pl->velo.z > 0 && z > pl->sectors[pl->sector].ceil)
-	{
 		pl->velo.z = 0;
-	}
 	if (se->falling)
 	{
 		pl->pos.z += pl->velo.z;
@@ -112,12 +116,12 @@ void		events_jumps(t_new_sub_ev *se, t_new_player *pl, \
 ** **************************************************************************
 */
 
-void		events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
+void		ft_game_events_new_mouse_move(t_new_mouse *ms, t_new_player *pl)
 {
 	SDL_GetRelativeMouseState(&ms->x, &ms->y);
 	SDL_SetRelativeMouseMode(1);
 	pl->angle += ms->x * 0.03f;
-	ms->yaw = clamp(ms->yaw + ms->y * 0.05f, -5, 5);
+	ms->yaw = ft_math_clamp(ms->yaw + ms->y * 0.05f, -5, 5);
 	pl->yaw = ms->yaw - pl->velo.z * 0.5f;
 	pl->anglesin = sinf(pl->angle);
 	pl->anglecos = cosf(pl->angle);

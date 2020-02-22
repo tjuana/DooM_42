@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 21:01:57 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 15:59:04 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:27:27 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,7 @@ void	ft_gui_focus_delete_letter(t_gui_elem *elem)
 
 void	ft_gui_focus_keydown(t_wolf3d *w, SDL_Event e, t_list *dom)
 {
-	char		c;
 	t_gui_elem	*elem;
-	char		*str;
-	int			numb;
 
 	w->gui.search_elem = GUI_EVENT_ON;
 	elem = dom->content;

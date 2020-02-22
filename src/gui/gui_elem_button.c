@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:39:41 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:08:56 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:41:29 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	ft_gui_mousemotion_button(void *data, SDL_Event e, \
 	t_wolf3d	*w;
 	t_gui_elem	*elem;
 
+	(void)e;
+	(void)type;
+	(void)dom;
 	w = (t_wolf3d*)data;
 	elem = dom->content;
 	ft_gui_elem_set_status(dom, GUI_ELEM_HOVER);
@@ -46,6 +49,9 @@ void	ft_gui_mousebuttondown_button(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)type;
+	(void)dom;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(dom, GUI_ELEM_ACTIVE);
 }
@@ -64,6 +70,9 @@ void	ft_gui_mousebuttonup_button(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)type;
+	(void)dom;
 	w = (t_wolf3d*)data;
 	ft_gui_delete_status_focus(w->gui.dom);
 	w->gui.focus_elem = NULL;
@@ -84,6 +93,9 @@ void	ft_gui_mousebuttonup_block(void *data, SDL_Event e, \
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)type;
+	(void)dom;
 	w = (t_wolf3d*)data;
 	ft_gui_delete_status_focus(w->gui.dom);
 	w->gui.focus_elem = NULL;

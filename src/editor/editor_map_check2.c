@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 18:39:09 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/15 16:07:35 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:25:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
 	int				vtx2_n;
 	t_vector3		c;
 
+	(void)w;
 	i = 0;
 	while (i < s->vertex_count)
 	{
@@ -74,6 +75,18 @@ int		ft_search_sectors_cross(void *a, t_vector3 v1, t_vector3 v2)
 	return (0);
 }
 
+int		ft_new_editor_map_check_halfplanes_2_vrtx(t_sector *s, t_vector3 pos)
+{
+	t_vector3	vec1;
+	t_vector3	vec2;
+
+	vec1 = ft_vec3_create(s->vertex[0], &pos);
+	vec2 = ft_vec3_create(s->vertex[0], s->vertex[1]);
+	if (ft_vxs_vector(vec1, vec2) > 0.0)
+		return (0);
+	return (1);
+}
+
 /*
 ** **************************************************************************
 **	int ft_new_editor_map_check_halfplanes(t_sector *s, t_vector3 pos)
@@ -86,15 +99,9 @@ int		ft_new_editor_map_check_halfplanes(t_sector *s, t_vector3 pos)
 	t_vector3	vec2;
 
 	if (s->vertex_count == 2)
-	{
-		vec1 = ft_vec3_create(s->vertex[0], &pos);
-		vec2 = ft_vec3_create(s->vertex[0], s->vertex[1]);
-		if (ft_vxs_vector(vec1, vec2) > 0.0)
-			return (0);
-	}
+		ft_new_editor_map_check_halfplanes_2_vrtx(s, pos);
 	else
 	{
-		// printf("check...\n");
 		vec1 = ft_vec3_create(s->vertex[s->vertex_count - 1], &pos);
 		vec2 = ft_vec3_create(s->vertex[s->vertex_count - 2], \
 			s->vertex[s->vertex_count - 1]);
@@ -103,12 +110,9 @@ int		ft_new_editor_map_check_halfplanes(t_sector *s, t_vector3 pos)
 		vec2 = ft_vec3_create(s->vertex[0], s->vertex[s->vertex_count - 1]);
 		if (ft_vxs_vector(vec1, vec2) > 0.0)
 			return (0);
-		printf("-> %d\n", ft_check_intersect_line_and_line_segment(\
-			*s->vertex[s->vertex_count - 1], pos, \
-			*s->vertex[1], *s->vertex[0]));
-		if (ft_check_intersect_line_and_line_segment(\
-			*s->vertex[s->vertex_count - 1], pos, \
-			*s->vertex[1], *s->vertex[0]) == 1)
+		vec1 = ft_vec3_create(&pos, s->vertex[0]);
+		vec2 = ft_vec3_create(s->vertex[0], s->vertex[1]);
+		if (ft_vxs_vector(vec1, vec2) < 0.0)
 			return (0);
 	}
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_save_file2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 20:20:51 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:35:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void		ft_print_to_file(t_wolf3d *w, int f)
 {
 	char	*sy;
 	char	*sx;
-	char	*space_or_not;
 	int		k;
 
 	sy = ft_str_vertex(w->file.i);

@@ -1,0 +1,8 @@
+vertex	0	0	1	41
+vertex	8	43
+vertex	22	0	1	38
+vertex	49	4
+
+sector	22	43		0	1	2	3	6	5	4		-1	-1	-1	-1	-1	-1	-1
+
+player	1	1	1	0

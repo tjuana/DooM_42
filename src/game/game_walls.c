@@ -6,13 +6,13 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:41:49 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/16 12:51:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 19:08:53 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_scaler	scalar_create(int a, int b, int c, int f)
+t_scaler		ft_game_scalar_create(int a, int b, int c, int f)
 {
 	t_scaler	s;
 	int			d;
@@ -28,7 +28,7 @@ t_scaler	scalar_create(int a, int b, int c, int f)
 	return (s);
 }
 
-int			scr_nxt(t_scaler *i)
+int				ft_game_scr_nxt(t_scaler *i)
 {
 	i->cache += i->fd;
 	while (i->cache >= i->ca)
@@ -39,7 +39,8 @@ int			scr_nxt(t_scaler *i)
 	return (i->result);
 }
 
-static void	draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
+static void		ft_game_draw_limits_for_walls(int wall_type, \
+					t_new_player *pl, int n)
 {
 	if (wall_type == 0)
 	{
@@ -56,24 +57,25 @@ static void	draw_limits_for_walls(int wall_type, t_new_player *pl, int n)
 		pl->y1 = pl->ceil.cya;
 		pl->y2 = pl->ceil.cyb;
 	}
-	pl->ty = scalar_create(pl->floor.ya, pl->y1, pl->floor.yb,\
+	pl->ty = ft_game_scalar_create(pl->floor.ya, pl->y1, pl->floor.yb,\
 	pl->tex[n].w - 1);
 	pl->y = pl->y1;
-	pl->y1 = clamp(pl->y1, 0, WIN_H - 1);
-	pl->y2 = clamp(pl->y2, 0, WIN_H - 1);
+	pl->y1 = ft_math_clamp(pl->y1, 0, WIN_H - 1);
+	pl->y2 = ft_math_clamp(pl->y2, 0, WIN_H - 1);
 }
 
 /*
 ** **************************************************************************
-**	void draw_walls(int x, t_new_player *pl, int wall_type, int img)
+**	void ft_game_draw_walls(int x, t_new_player *pl, int wall_type, int img)
 **
 **	Function that draw walls.
 ** **************************************************************************
 */
 
-void draw_walls(int x, t_new_player *pl, int wall_type, int img)
+void			ft_game_draw_walls(int x, t_new_player *pl, \
+					int wall_type, int img)
 {
-	draw_limits_for_walls(wall_type, pl, img);
+	ft_game_draw_limits_for_walls(wall_type, pl, img);
 	if (pl->y2 >= pl->y1)
 		while (pl->y++ <= pl->y2)
 			ft_draw_walls_put_pixel_to_surface(x, pl, img);
@@ -81,19 +83,20 @@ void draw_walls(int x, t_new_player *pl, int wall_type, int img)
 
 /*
 ** **************************************************************************
-**	void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+**	void ft_game_draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
 **
 **	>
-**	draw_graffiti, we just draw over an already drawn wall, so we can draw
-**	in every wall we want, with this logic we also can draw on floors
-**	and ceilings.
+**	ft_game_draw_graffiti, we just draw over an already drawn wall,
+**	so we can draw in every wall we want, with this logic we also can draw on
+**	floors and ceilings.
 ** **************************************************************************
 */
 
-void draw_graffiti(int x, t_new_player *pl, int wall_type, int img)
+void			ft_game_draw_graffiti(int x, t_new_player *pl, \
+					int wall_type, int img)
 {
-	draw_limits_for_walls(wall_type, pl, img);
+	ft_game_draw_limits_for_walls(wall_type, pl, img);
 	if (pl->y2 >= pl->y1)
 		while (pl->y++ <= pl->y2)
-			ft_draw_graffiti_put_pixel_to_surface(x, pl, img);
+			ft_game_draw_graffiti_put_pixel_to_surface(x, pl, img);
 }
