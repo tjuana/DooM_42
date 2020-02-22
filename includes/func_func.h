@@ -100,4 +100,11 @@ void		ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
 void		ft_fdf_draw_line_swap(t_fdf_wu **wu);
 void		ft_fdf_draw_line_param(t_wolf3d *data, t_fdf_wu **wu);
 
+/*
+** **************************************************************************
+**	src/func/func_one_file.c
+** **************************************************************************
+*/
+void		ft_check_folders(void);
+void		ft_unpack(void);
 #endif
