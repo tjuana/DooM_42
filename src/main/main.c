@@ -27,6 +27,7 @@ void	ft_main(int c, char **v)
 
 	if (c > 2)
 		ft_error("WRONG arguments");
+	ft_unpack();
 	ft_bzero(&data, sizeof(t_new_temp));
 	data.pl = (t_new_player *)ft_my_malloc(sizeof(t_new_player));
 	w.new_data = &data;
