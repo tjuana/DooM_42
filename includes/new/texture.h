@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/22 16:34:44 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/22 19:18:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@
 **	float y_num			|
 **	unsigned int p		|
 **	unsigned int hex	|
+**	int widht			| position x
+**	int height			| position h
+**	int n				| number of texture
+**	double scale		| bullet scale
 ** **************************************************************************
 */
 typedef struct			s_draw_gun
@@ -63,8 +67,12 @@ typedef struct			s_draw_gun
 	int					x_img;
 	float				x_num;
 	float				y_num;
-	unsigned int		p;
+	int					p;
 	unsigned int		hex;
+	double				scale;
+	int					width;
+	int					height;
+	int					n;
 }						t_draw_gun;
 
 /*
