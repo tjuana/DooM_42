@@ -61,3 +61,4 @@ t_new_texture	*ft_game_load_textures(t_new_player *pl)
 	ft_game_transform_venom(&t_arr[12]);
 	return (t_arr);
 }
+
