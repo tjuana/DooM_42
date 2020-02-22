@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/21 17:35:40 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/21 21:45:58 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void			ft_game_engine_calcs(int x, t_new_player *pl, int operation)
 	{
 		pl->t.hei = pl->t.y < pl->ceil.cya ? pl->ceil.yceil : \
 			pl->floor.yfloor;
-		pl->t.mapz = pl->t.hei * WIN_H * V_FOV / ((WIN_H / 2 - \
-		(float)pl->t.y) - pl->yaw * WIN_H * V_FOV);
+		pl->t.mapz = pl->t.hei * WIN_H * pl->const_vfov_spec / ((WIN_H / 2 - \
+		(float)pl->t.y) - pl->yaw * WIN_H * pl->const_vfov_spec);
 		pl->t.mapx = pl->t.mapz * (WIN_W / 2 - (float)pl->t.x) \
-		/ (WIN_W * (H_FOV));
+		/ (WIN_W * (pl->const_hfov_spec));
 		pl->t.txtx1 = (unsigned int)(((pl->t.mapz * pl->anglecos + \
 			pl->t.mapx * pl->anglesin) + pl->pos.x) * 256);
 		pl->t.txtz = (unsigned int)(((pl->t.mapz * pl->anglesin - \

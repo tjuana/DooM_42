@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 21:48:55 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/22 13:25:56 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@
 # define GUI_MAP_GRID_LIMIT_TR	0x2
 # define GUI_MAP_GRID_LIMIT_BL	0x3
 # define GUI_MAP_GRID_LIMIT_BR	0x4
-
-# define H_FOV					(1.0 * 0.73f * WIN_H / WIN_W)
-# define V_FOV					(1.0 * .2f)
 
 /*
 ** **************************************************************************
