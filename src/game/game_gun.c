@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   game_gun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:40:12 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/21 20:22:37 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/22 15:18:34 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-static void	ft_game_draw_gun(t_new_player *pl, int width, int height, int n)
+static void	ft_game_draw_gun(t_new_player *pl, int width, \
+				int height, int n)
 {
 	t_draw_gun g;
 
@@ -30,7 +31,9 @@ static void	ft_game_draw_gun(t_new_player *pl, int width, int height, int n)
 			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w;
 			g.hex = ft_rgb_to_hex(pl->tex[n].pixels[g.p].r, \
 			pl->tex[n].pixels[g.p].g, pl->tex[n].pixels[g.p].b);
-			if (pl->tex[n].pixels[g.p].a != 0)
+			if (pl->tex[n].pixels[g.p].a != 0 && \
+				(height * WIN_W + g.x_img >= 0 && \
+				height * WIN_W + g.x_img < WIN_W * WIN_H))
 				pl->pix[height * WIN_W + g.x_img] = \
 				ft_hex_transform(g.hex, pl->light);
 			g.x_img++;

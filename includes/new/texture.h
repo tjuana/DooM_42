@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:29:11 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/19 21:32:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/22 16:34:44 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define SKY		5
 # define FENCE		7
 # define GUN		9
+# define BULLET		14
 
 # define WALL_FULL	2
 # define WALL_TOP	0
@@ -119,7 +120,6 @@ typedef struct			s_new_texture
 **	Structure for gun.
 **
 **	Arguments:
-**	int pistol_sprite[6][128][128]	|
 **	int type						|
 **	double sprite_counter			|
 **	int w							|
@@ -128,7 +128,6 @@ typedef struct			s_new_texture
 */
 typedef	struct			s_gun
 {
-	int					pistol_sprite[6][128][128];
 	int					type;
 	double				sprite_counter;
 	int					w;

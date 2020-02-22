@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_main_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 20:42:33 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/22 15:08:19 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,12 @@ static void	ft_game_redraw_help(t_new_player *pl)
 	{
 		wpn.sprite_counter = 2;
 		pl->count_sprite = 1;
+		pl->bullet_status = 1;
+		pl->bullet_frame = 0;
+		// wpn.scale = 100;
 	}
 	ft_game_draw_pistol(&wpn, pl);
+	ft_game_draw_bullet(&wpn, pl);
 }
 
 /*

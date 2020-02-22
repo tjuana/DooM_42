@@ -6,7 +6,7 @@
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 21:30:32 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/22 14:21:15 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,6 +191,7 @@ GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
 # GAME WITH MAIN FILE
 GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
 GAME_SRCS_LIST = \
+game_bullet.c \
 game_but.c \
 game_but_detect.c \
 game_door.c \
