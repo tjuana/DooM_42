@@ -267,4 +267,10 @@ void				ft_game_draw_walls(int x, t_new_player *pl, \
 						int wall_type, int img);
 void				ft_game_draw_graffiti(int x, t_new_player *pl, \
 						int wall_type, int img);
+/*
+** **************************************************************************
+**	src/game/game_load_sounds.c
+** **************************************************************************
+*/
+void				ft_load_sounds(t_new_player *pl);
 #endif

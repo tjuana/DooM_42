@@ -72,7 +72,7 @@ void			ft_game_mouse_events_click(t_new_player *pl)
 	t_list		*dom;
 
 	dom = ((t_wolf3d*)pl->wolf3d)->gui.dom;
-	sound(pl, "Sounds/pistol.wav", 1);
+	ft_sound_play(pl->sound_pistol, 1);
 	pl->count_sprite = 10;
 	if (pl->bullet_count > 0)
 	{

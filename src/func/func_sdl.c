@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sdl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 21:31:16 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 13:58:59 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,22 @@ void		sdl_create_background_music(t_sdl *sdl)
 	if (!(sdl->music = Mix_LoadMUS("music/background.wav")))
 		ft_error("no music, man");
 	Mix_VolumeMusic(VOLUME);
-	if(Mix_PlayMusic(sdl->music, -1)==-1)
-		printf("Mix_PlayMusic: %s\n", Mix_GetError());
+	if (Mix_PlayMusic(sdl->music, -1) == -1)
+		ft_putstr_fd(Mix_GetError(), 2);
 }
 
-void		sound(t_new_player *pl, char *name, int channel)
+Mix_Chunk	*ft_load_sound(char *name)
 {
-	if (!(pl->sound = Mix_LoadWAV(name)))
+	Mix_Chunk	*sound;
+
+	if (!(sound = Mix_LoadWAV(name)))
 		ft_error("no sound, man");
-	if (Mix_PlayChannel(channel, pl->sound, 0) == -1 || !pl->sound)
+	return (sound);
+}
+
+void		ft_sound_play(Mix_Chunk *name, int channel)
+{
+	if (Mix_PlayChannel(channel, name, 0) == -1 || !name)
 		ft_error("Audio play error");
 }
 
@@ -53,6 +60,8 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	sdl = ft_my_malloc(sizeof(t_sdl));
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 		ft_sdl_error(sdl);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) < 0 ? \
+		ft_putstr_fd(Mix_GetError(), 2) : 0;
 	IMG_Init(IMG_INIT_PNG) == 0 ? ft_putstr_fd(IMG_GetError(), 2) : 0;
 	if (SDL_CreateWindowAndRenderer(WIN_WIDTH, WIN_HEIGHT, \
 	SDL_RENDERER_ACCELERATED, &sdl->win, &sdl->renderer) < 0)
@@ -62,7 +71,6 @@ t_sdl		*sdl_init(t_sdl *sdl)
 		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, \
 		WIN_WIDTH, WIN_HEIGHT)))
 		ft_error("SDL non textures");
-	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
 	ft_set_window_icon(sdl);
 	sdl_create_background_music(sdl);
 	sdl->running = 1;

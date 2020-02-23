@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 21:31:33 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 13:39:45 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ void		ft_clean_sdl(t_wolf3d *w);
 */
 void		ft_set_window_icon(t_sdl *sdl);
 void		sdl_create_background_music(t_sdl *sdl);
-void		sound(t_new_player *pl, char *name, int channel);
+Mix_Chunk	*ft_load_sound(char *name);
 t_sdl		*sdl_init(t_sdl *sdl);
+void		ft_sound_play(Mix_Chunk *name, int channel);
 
 /*
 ** **************************************************************************
@@ -99,4 +100,11 @@ void		ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
 void		ft_fdf_draw_line_swap(t_fdf_wu **wu);
 void		ft_fdf_draw_line_param(t_wolf3d *data, t_fdf_wu **wu);
 
+/*
+** **************************************************************************
+**	src/func/func_one_file.c
+** **************************************************************************
+*/
+void		ft_check_folders(void);
+void		ft_unpack(void);
 #endif

@@ -201,7 +201,10 @@ typedef struct		s_new_player
 	void			*wolf3d;
 	int				live_count;
 	int				bullet_count;
-	Mix_Chunk		*sound;
+	Mix_Chunk		*sound_pistol;
+	Mix_Chunk		*sound_door;
+	Mix_Chunk		*sound_death;
+	Mix_Chunk		*sound_fly;
 	int				status;
 	int				died_timer;
 	char			*map_path;

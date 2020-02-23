@@ -75,7 +75,7 @@ static int	ft_game_door_but_click_check(t_new_player *pl, int d_nb)
 		ft_gui_elem_set_status(\
 			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
 			"win_game_doortext"), GUI_ELEM_VISIBLE);
-		sound(pl, "Sounds/door.wav", 3);
+		ft_sound_play(pl->sound_door, 3);
 	}
 	return (1);
 }
