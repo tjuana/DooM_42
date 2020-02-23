@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/26 16:47:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/28 22:16:35 by dorange-         ###   ########.fr       */
+/*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/22 20:01:25 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,16 @@
 */
 # define WIN_WIDTH				1280
 # define WIN_HEIGHT				720
-# define VER_WIDTH				54
-# define VER_HEIGHT				33
-
+# define VER_WIDTH				500
+# define VER_HEIGHT				500
+# define SECTORS				19000
+# define VOLUME					77
 /*
 ** **************************************************************************
 **	Mode
 ** **************************************************************************
 */
+# define GUI_MD_MENU			0x00008001
 # define GUI_MD_GAME			0x0000A001
 # define GUI_MD_ME				0x0000F001
 # define GUI_MD_ME_SET_SECTOR	0x0000F100
@@ -56,7 +58,17 @@
 # define GUI_MAP_GRID_LIMIT_BL	0x3
 # define GUI_MAP_GRID_LIMIT_BR	0x4
 
-# define H_FOV					(1.0 * 0.73f * WIN_H / WIN_W)
-# define V_FOV					(1.0 * .2f)
+/*
+** **************************************************************************
+**	Define for textures
+** **************************************************************************
+*/
+# define LEAF					0
+# define GREEN					1
+# define MARBLE					2
+# define ROCK1					3
+# define ROCK2					4
+# define SKY					5
+# define FENCE					7
 
 #endif

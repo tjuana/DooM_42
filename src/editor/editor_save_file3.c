@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:45:00 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/29 16:07:50 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/08 13:35:09 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,44 @@ void			ft_save_neighbour(t_sector *sector, int fd)
 			ft_strdel(&str);
 		}
 	}
+}
+
+void			ft_free_mf(t_wolf3d *w)
+{
+	t_list	*lst;
+	int		i;
+
+	lst = NULL;
+	i = -1;
+	lst = w->vertex;
+	while (lst != NULL)
+	{
+		free(lst->content);
+		free(lst);
+		lst = lst->next;
+	}
+	while (++i < VER_HEIGHT)
+		free(w->file.map[i]);
+	free(w->file.map);
+	w->file.map = NULL;
+}
+
+void			ft_allocate_int2darr(t_wolf3d *w)
+{
+	int	i;
+	int count;
+	int j;
+
+	i = -1;
+	j = 0;
+	count = 0;
+	w->file.map = NULL;
+	w->file.map = ft_my_malloc(VER_HEIGHT * sizeof(int *));
+	while (++i < VER_HEIGHT)
+		w->file.map[i] = ft_my_malloc(sizeof(int) * VER_WIDTH);
+	i = -1;
+	j = -1;
+	while (++i < VER_HEIGHT)
+		while (++j < VER_HEIGHT)
+			w->file.map[i][j] = 0;
 }

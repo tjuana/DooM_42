@@ -3,54 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   game_sdl_addons.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:23:39 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:15:46 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-/*
-** **************************************************************************
-**	SDL_Rect *ft_create_rect(int w, int h, int x, int y)
-**	Function to create SDL_Rect
-** **************************************************************************
-*/
-
-SDL_Rect	*ft_create_rect(int w, int h, int x, int y)
+void		ft_sdl_error(t_sdl *sdl)
 {
-	SDL_Rect	*tmp;
-
-	if (!(tmp = (SDL_Rect*)malloc(sizeof(tmp))))
-		return (0);
-	tmp->h = h;
-	tmp->w = w;
-	tmp->x = x;
-	tmp->y = y;
-	return (tmp);
-}
-
-void		ft_sdl_error(t_new_wolf3d *w)
-{
-	const char	*out;
-
-	out = SDL_GetError();
-	ft_putstr_fd("SDL_Error:", 2);
-	ft_putstr_fd(out, 2);
-	ft_putstr_fd("\n", 2);
-	/*if (w->sdl->text)
-		SDL_DestroyTexture(w->sdl->text);
-	if (w->surf)
-		SDL_FreeSurface(w->sdl->surf);
-	if (w->sdl->renderer)
-		SDL_DestroyRenderer(w->sdl->renderer);
-	if (w->sdl->win)
-		SDL_DestroyWindow(w->sdl->win);*/
+	SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, \
+	"Couldn't create window and renderer: %s", SDL_GetError());
+	if (sdl->text)
+		SDL_DestroyTexture(sdl->text);
+	if (sdl->renderer)
+		SDL_DestroyRenderer(sdl->renderer);
+	if (sdl->win)
+		SDL_DestroyWindow(sdl->win);
+	free(sdl);
+	IMG_Quit();
+	Mix_CloseAudio();
 	SDL_Quit();
-	if (w)
-		free(w);
-	w = NULL;
+	system("osascript -e \'display notification\"In terminal log of error\" \
+		with title \"SDL, bro!\"\'");
 	exit(EXIT_FAILURE);
 }

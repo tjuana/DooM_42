@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/22 15:00:23 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	static void door_init(t_new_player *pl, int	*sec_arr)
+**	static void ft_game_door_init(t_new_player *pl, int	*sec_arr)
 **	Function to init array of doors
 ** **************************************************************************
 */
 
-static void	door_init(t_new_player *pl, int *sec_arr)
+static void	ft_game_door_init(t_new_player *pl, int *sec_arr)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ static void	door_init(t_new_player *pl, int *sec_arr)
 	while (++i < pl->door_all)
 	{
 		pl->doors[i].s_nb = sec_arr[i];
-		pl->doors[i].spd = 0.1;
+		pl->doors[i].spd = 0.5;
 		pl->doors[i].max_d = 20;
 		pl->doors[i].min_d = 0;
 		pl->doors[i].state = 0;
@@ -36,12 +36,12 @@ static void	door_init(t_new_player *pl, int *sec_arr)
 
 /*
 ** **************************************************************************
-**	static void door_total(t_new_player *pl)
+**	static void ft_game_door_total(t_new_player *pl)
 **	Function to countdown doors and malloc them
 ** **************************************************************************
 */
 
-static void	door_total(t_new_player *pl)
+void		ft_game_door_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_DOORS];
@@ -61,9 +61,23 @@ static void	door_total(t_new_player *pl)
 		}
 	}
 	if (pl->door_all > 0)
-		if (!(pl->doors = (t_new_door *)malloc(sizeof(t_new_door) * pl->door_all)))
-			exit(EXIT_FAILURE);
-	door_init(pl, sec_arr);
+		pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * \
+		pl->door_all);
+	ft_game_door_init(pl, sec_arr);
+}
+
+static int	ft_game_door_but_click_check(t_new_player *pl, int d_nb)
+{
+	if ((d_nb == -1) || (pl->doors[d_nb].state == 1))
+		return (0);
+	else
+	{
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_VISIBLE);
+		sound(pl, "Sounds/door.wav", 3);
+	}
+	return (1);
 }
 
 /*
@@ -73,7 +87,7 @@ static void	door_total(t_new_player *pl)
 ** **************************************************************************
 */
 
-void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
+void		ft_game_door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 {
 	int	d_nb;
 	int	d_sec_nb;
@@ -81,18 +95,20 @@ void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 
 	i = -1;
 	d_nb = -1;
+	printf("pl.x==%f y==%f z==%f sec==%d\n", pl->pos.x, pl->pos.y, pl->pos.z, pl->sector);
 	if ((pl->door_all == -1) || (pl->but_all == -1))
 	{
-		door_total(pl);
-		but_total(pl);
+		ft_game_door_total(pl);
+		ft_game_but_total(pl);
 	}
-	if (pl->door_all < 1 || (but_script(pl, but_detect(pl), se) == 1))
+	if (pl->door_all < 1 || \
+		(ft_game_but_script(pl, ft_game_but_detect(pl), se) == 1))
 		return ;
-	d_sec_nb = door_detect(pl);
+	d_sec_nb = ft_game_door_detect(pl);
 	while (++i < pl->door_all)
 		if (pl->doors[i].s_nb == d_sec_nb)
 			d_nb = i;
-	if ((d_nb == -1) || (pl->doors[d_nb].state == 1))
+	if (!ft_game_door_but_click_check(pl, d_nb))
 		return ;
 	pl->door_nb = d_nb;
 	if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[d_nb].max_d)
@@ -115,11 +131,17 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 
 	d_nb = pl->door_nb;
 	d_sec_nb = 0;
-	if ((pl->door_all < 1) || (d_nb > pl->door_all))
+	if (pl->door_all < 1 || (d_nb > pl->door_all) || d_nb < 0)
 		return ;
 	d_sec_nb = pl->doors[d_nb].s_nb;
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].spd;
+	else if (se->wsad[4] == 1 && pl->doors[d_nb].state == 1)
+	{
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+	}
 	pl->doors[d_nb].state = 1;
 }

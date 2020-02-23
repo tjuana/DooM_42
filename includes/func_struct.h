@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 20:26:25 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 19:18:06 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 18:27:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,13 @@ typedef struct	s_fdf_get_color
 	int			g_rez;
 	int			b_rez;
 }				t_fdf_get_color;
+
+typedef struct	s_color
+{
+	u_int8_t	r;
+	u_int8_t	g;
+	u_int8_t	b;
+	u_int8_t	a;
+}				t_color;
 
 #endif
