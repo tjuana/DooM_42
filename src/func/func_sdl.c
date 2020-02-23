@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:41:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/23 13:58:59 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 17:02:56 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ t_sdl		*sdl_init(t_sdl *sdl)
 	sdl_create_background_music(sdl);
 	sdl->running = 1;
 	if (TTF_Init() != 0)
-		ft_error("ft_sdl_error(w)\n");
+		ft_error("ttf(w)\n");
 	return (sdl);
 }

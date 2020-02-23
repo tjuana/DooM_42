@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_main_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 14:41:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 16:43:27 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,17 +139,21 @@ void		ft_game_redraw(t_wolf3d *w, t_list *dom)
 {
 	t_new_temp	*data;
 
-	ft_gui_dead(w);
 	(void)dom;
-	data = w->new_data;
-	ft_game_redraw_help(data->pl);
-	data->pl->hole.z = data->se.ducking ? CROUCH_H + 1.5 : EYE_H;
-	data->se.ground = !data->se.falling;
-	ft_game_events_jumps(&data->se, data->pl, &data->ot);
-	ft_game_motion_chk(data->pl, &data->ot, &data->se);
-	ft_game_events_new_mouse_move(&data->ms, data->pl);
-	ft_game_events_vel(data->pl, &data->se, &data->ot);
-	if (!events(&data->se, data->pl))
-		return ;
-	door(data->pl, &data->se);
+	if (((t_new_temp*)w->new_data)->pl->status == PL_STATUS_DEAD)
+		ft_gui_dead(w);
+	else
+	{
+		data = w->new_data;
+		ft_game_redraw_help(data->pl);
+		data->pl->hole.z = data->se.ducking ? CROUCH_H + 1.5 : EYE_H;
+		data->se.ground = !data->se.falling;
+		ft_game_events_jumps(&data->se, data->pl, &data->ot);
+		ft_game_motion_chk(data->pl, &data->ot, &data->se);
+		ft_game_events_new_mouse_move(&data->ms, data->pl);
+		ft_game_events_vel(data->pl, &data->se, &data->ot);
+		if (!events(&data->se, data->pl))
+			return ;
+		door(data->pl, &data->se);
+	}
 }
