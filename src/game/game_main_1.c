@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 13:46:05 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 13:58:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void		ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n)
 	pl->lvl = NULL;
 	pl->pix = pl->pixels;
 	ft_game_player_init_config(pl);
-	ft_load_sounds(pl);
 }
 
 /*
