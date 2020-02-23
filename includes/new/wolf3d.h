@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 22:05:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:28:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,36 @@
 # include "texture.h"
 # include "player.h"
 
-typedef	struct			s_new_temp
+typedef	struct		s_new_temp
 {
-    t_new_sub_ev		se;
-    t_new_mouse			ms;
-    t_new_player		*pl;
-    t_new_others		ot;
-}						t_new_temp;
+	t_new_sub_ev	se;
+	t_new_mouse		ms;
+	t_new_player	*pl;
+	t_new_others	ot;
+}					t_new_temp;
+
+/*
+** **************************************************************************
+**	src/game/game_bullet.c
+** **************************************************************************
+*/
+void				ft_game_draw_bullet(t_gun *wpn, t_new_player *pl);
 
 /*
 ** **************************************************************************
 **	src/game/game_but.c
 ** **************************************************************************
 */
-int			ft_game_but_script(t_new_player *pl, int sec_nb, \
-				t_new_sub_ev *se);
-void		ft_game_but_total(t_new_player *pl);
+int					ft_game_but_script(t_new_player *pl, int sec_nb, \
+						t_new_sub_ev *se);
+void				ft_game_but_total(t_new_player *pl);
 
 /*
 ** **************************************************************************
 **	src/game/game_but_detect.c
 ** **************************************************************************
 */
-int			ft_game_but_detect(t_new_player *pl);
+int					ft_game_but_detect(t_new_player *pl);
 
 /*
 ** **************************************************************************
@@ -69,8 +76,6 @@ void				ft_game_door_total(t_new_player *pl);
 void				ft_game_door_but_сlick(t_new_player *pl, \
 						t_new_sub_ev *se);
 void				door(t_new_player *pl, t_new_sub_ev *se);
-
-
 
 /*
 ** **************************************************************************

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_load_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/23 14:33:40 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 14:41:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_new_texture	*ft_game_load_textures(t_new_player *pl)
 	t_arr[11] = ft_game_texture_parse("Img_tga/bricks_white.tga");
 	t_arr[12] = ft_game_texture_parse("Img_tga/venom_face.tga");
 	t_arr[13] = ft_game_texture_parse("Img_tga/graffiti.tga");
+	t_arr[14] = ft_game_texture_parse("Img_tga/basketball.tga");
 	ft_game_transform_venom(&t_arr[12]);
 	return (t_arr);
 }

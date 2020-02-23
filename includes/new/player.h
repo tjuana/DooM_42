@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 21:31:54 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:17:40 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,9 @@ typedef struct		s_new_player
 	double			const_vfov;
 	double			const_hfov_spec;
 	double			const_vfov_spec;
+
+	int				bullet_status;
+	int				bullet_frame;
 }					t_new_player;
 
 #endif
