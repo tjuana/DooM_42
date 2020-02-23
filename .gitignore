@@ -51,12 +51,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .DS_Store
-<<<<<<< HEAD
 DooM_nuKem
 wolf3d
 *.txt
 gui_test
-=======
-WOLF
-wolf3d
->>>>>>> 7573c3366f4153d317bd5fc61c4903499e451dcc

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:10:50 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 21:34:46 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 14:36:20 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int				ft_error(char *code)
 {
-	system("osascript -e \'display notification\"Used default value!\" \
-						with title \"ERRROOOORRR!\"\'");
+	system("osascript -e \'display notification\"Some ERROR!!Look to the \
+				terminal!\"with title \"ERRROOOORRR!\"\'");
 	ft_putendl(code);
 	exit(EXIT_FAILURE);
 	return (1);
