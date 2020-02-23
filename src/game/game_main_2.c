@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:28:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 14:33:48 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 20:38:41 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ static void	ft_game_gui_init_hud_help(t_list *head, t_gui_elem *elem)
 	ft_gui_elem_init(&elem->child, "win_game_diedtext", \
 		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xfff0000);
-	ft_gui_elem_set_text(elem->child, "VI UMERLI! HAH!", 72, \
+	ft_gui_elem_set_text(elem->child, "PRESS F", 72, \
 									"fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);

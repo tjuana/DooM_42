@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 19:35:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 20:41:17 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,6 @@ static void	ft_gui_dead(t_wolf3d *w)
 			"win_game_diedtext"), GUI_ELEM_HIDDEN);
 		ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, \
 						"win_game_diedbg"), GUI_ELEM_HIDDEN);
-		ft_gui_elem_set_status(
-			ft_gui_search_elem_by_name(w->gui.dom, "win_game"), \
-			GUI_ELEM_HIDDEN);
-		ft_gui_elem_set_status(\
-			ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), \
-			GUI_ELEM_VISIBLE);
 		w->gui.mode = GUI_MD_MENU;
 		w->player_status = 0;
 		SDL_ShowCursor(SDL_ENABLE);

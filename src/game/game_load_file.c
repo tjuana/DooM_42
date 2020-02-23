@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/23 20:17:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 20:40:20 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void		ft_free(t_new_player *pl, char *lvl)
 {
+	ft_game_my_parse_map(pl, lvl);
 	ft_strdel(&lvl);
 	free(pl->doors);
 	pl->doors = NULL;
@@ -41,11 +42,11 @@ t_new_player	*ft_game_end_game2(t_new_player *pl, char *map)
 	t_new_sector	*sector;
 
 	j = -1;
-	while (j++ < (pl->file.count_sectors - 1))
+	while (j++ < (pl->file.count_sectors2 - 1))
 	{
 		sector = &pl->sectors[j];
 		i = -1;
-		while (i++ < sector->npoints)
+		while (i++ <= sector->npoints)
 		{
 			free(sector->vertex);
 			sector->vertex = NULL;
@@ -58,12 +59,9 @@ t_new_player	*ft_game_end_game2(t_new_player *pl, char *map)
 	pl->sectors = NULL;
 	lvl = ft_strdup(map);
 	ft_strdel(&map);
-	ft_game_my_parse_map(pl, lvl);
 	ft_free(pl, lvl);
 	return (pl);
 }
-
-
 
 /*
 ** **************************************************************************
@@ -80,7 +78,7 @@ t_new_player	*load_next(t_new_player *pl, char *map)
 	t_new_sector	*sector;
 
 	j = -1;
-	while (j++ < (pl->file.count_sectors - 1))
+	while (j++ < (pl->file.count_sectors2 - 1))
 	{
 		sector = &pl->sectors[j];
 		i = -1;
@@ -97,7 +95,6 @@ t_new_player	*load_next(t_new_player *pl, char *map)
 	pl->sectors = NULL;
 	lvl = ft_strdup(map);
 	ft_strdel(&map);
-	ft_game_my_parse_map(pl, lvl);
 	ft_free(pl, lvl);
 	return (pl);
 }

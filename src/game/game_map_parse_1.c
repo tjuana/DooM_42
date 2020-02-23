@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 19:59:16 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 20:40:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		ft_game_my_parse_map(t_new_player *pl, char *ag)
 	pl->file.ag = NULL;
 	if (!(pl->file.ag = ft_strdup(ag)))
 		ft_error("ag bro");
-	// pl->file.ag = ft_strdup(ag);
 	if ((pl->file.fd = open(ag, O_RDONLY)) < 0)
 		ft_error("BAD FILE");
 	pl->file.vertex_count = 0;
