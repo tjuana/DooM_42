@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 21:14:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/22 13:37:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 17:51:04 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,12 @@ typedef struct		s_new_cycle
 **	Structure for game sector.
 **
 **	Arguments:
+**	int number				| sector number
 **	float floor				| floor height
-**	floa ceil				| ceil height
+**	float ceil				| ceil height
+**	float temp_floor		| temp floor height
+**	float temp_ceil			| temp ceil height
+**	int flag_visible		| visible sector (?!)
 **	t_vector3 *vertex		| here stored all sector vertexes.
 **	signed char *neighbors	| Each edge may have a corresponding
 **							| neighboring sector
@@ -73,8 +77,12 @@ typedef struct		s_new_cycle
 */
 typedef struct		s_new_sector
 {
+	int				number;
 	float			floor;
 	float			ceil;
+	float			temp_floor;
+	float			temp_ceil;
+	int				flag_visible;
 	t_vector3		*vertex;
 	int				*neighbors;
 	int				npoints;
