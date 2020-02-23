@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 16:43:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 19:35:58 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ void		ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n)
 
 static void	ft_gui_dead(t_wolf3d *w)
 {
+	t_new_player	*pl;
+
+	pl = ((t_new_temp*)w->new_data)->pl;
 	if (w->gui.mode != GUI_MD_GAME)
 		return ;
-	if (((t_new_temp*)w->new_data)->pl->status == PL_STATUS_DEAD)
+	if (pl->status == PL_STATUS_DEAD)
 	{
 		sleep(3);
 		ft_gui_elem_set_status(\
@@ -111,22 +114,22 @@ static void	ft_gui_dead(t_wolf3d *w)
 	}
 }
 
-static void	ft_game_redraw_help(t_new_player *pl)
+static void	ft_game_redraw_help(t_new_temp *data)
 {
 	t_gun		wpn;
 
 	wpn.sprite_counter = 1;
-	ft_game_engine_begin(pl);
-	if (pl->count_sprite == 10)
+	ft_game_engine_begin(data->pl);
+	if (data->pl->count_sprite == 10)
 	{
 		wpn.sprite_counter = 2;
-		pl->count_sprite = 1;
-		pl->bullet_status = 1;
-		pl->bullet_frame = 0;
+		data->pl->count_sprite = 1;
+		data->pl->bullet_status = 1;
+		data->pl->bullet_frame = 0;
 		// wpn.scale = 100;
 	}
-	ft_game_draw_pistol(&wpn, pl);
-	ft_game_draw_bullet(&wpn, pl);
+	ft_game_draw_pistol(&wpn, data->pl);
+	ft_game_draw_bullet(&wpn, data->pl);
 }
 
 /*
@@ -145,7 +148,7 @@ void		ft_game_redraw(t_wolf3d *w, t_list *dom)
 	else
 	{
 		data = w->new_data;
-		ft_game_redraw_help(data->pl);
+		ft_game_redraw_help(data);
 		data->pl->hole.z = data->se.ducking ? CROUCH_H + 1.5 : EYE_H;
 		data->se.ground = !data->se.falling;
 		ft_game_events_jumps(&data->se, data->pl, &data->ot);

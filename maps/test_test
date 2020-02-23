@@ -91,4 +91,4 @@ sector	0	0		195	196	200	199		-1	-1	48	-1
 sector	10	55		196	197	201	200		47	-1	-1	-1
 sector	3	7		53	46				-4	-1
 player	25	40	1	0
-map	maps/test
+map	maps/m3

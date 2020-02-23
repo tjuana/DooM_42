@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 18:41:18 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 18:51:58 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,7 @@ typedef struct		s_new_player
 
 	int				bullet_status;
 	int				bullet_frame;
+	int				flag_move_neighbors;
 }					t_new_player;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/21 21:30:53 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 20:00:52 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ void			ft_game_sub_events_moving(t_new_sub_ev *se, t_new_player *pl)
 		se->wsad[6] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
 		ft_game_door_but_сlick(pl, se);
+	if (se->ev.key.keysym.scancode == SDL_SCANCODE_EQUALS)
+		pl->flag_move_neighbors = 1;
+	if (se->ev.key.keysym.scancode == SDLK_MINUS)
+		pl->flag_move_neighbors = -1;
+	if (se->ev.key.keysym.scancode == SDL_SCANCODE_BACKSPACE)
+		pl->flag_move_neighbors = 0;
+	if (se->ev.key.keysym.sym == 'f' && (se->ev.type == SDL_KEYDOWN))
+		ft_game_end_game(pl, pl->file.ag);
 }
 
 void			ft_game_sub_events_player(t_new_sub_ev *se, t_new_player *pl)

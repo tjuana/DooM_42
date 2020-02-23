@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/22 14:28:03 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 19:54:24 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,8 @@ void				ft_game_draw_pistol(t_gun *wpn, t_new_player *pl);
 **	src/game/game_load_file.c
 ** **************************************************************************
 */
-void				ft_game_end_game(t_new_player *pl);
+void				ft_game_end_game(t_new_player *pl, char *map);
+t_new_player		*ft_game_end_game2(t_new_player *pl, char *map);
 t_new_player		*load_next(t_new_player *pl, char *map);
 
 /*

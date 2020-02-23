@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/21 17:06:17 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 17:53:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		ft_game_sector_save(t_new_player *pl, t_vector3 *vertex)
 	sector->neighbors = ft_my_malloc(sizeof(int) * (number));
 	sector->vertex = ft_my_malloc(sizeof(t_vector3) * (number + 1));
 	sector->npoints = number;
+	sector->number = pl->file.count_sectors2;
 	ft_game_fill_the_sector(sector, number, pl->file, vertex);
 	pl->file.count_sectors2++;
 }

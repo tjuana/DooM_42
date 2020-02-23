@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:32:04 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/23 18:33:33 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 18:54:23 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ static void		ft_game_engine_ceil_floor(t_new_player *pl, int x, int neib)
 	if (neib >= 0)
 	{
 		ft_game_engine_calcs(x, pl, 2);
-		ft_game_draw_walls(x, pl, WALL_TOP, pl->n + pl->jhony);
+		ft_game_draw_walls(x, pl, WALL_TOP, pl->n);
 		pl->y_top[x] = ft_math_clamp(ft_math_max(pl->ceil.cya, pl->ceil.cnya),\
 		pl->y_top[x], WIN_H - 1);
 		ft_game_draw_walls(x, pl, WALL_BOTT, pl->n);
