@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 22:00:51 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 13:39:45 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void		ft_clean_sdl(t_wolf3d *w);
 */
 void		ft_set_window_icon(t_sdl *sdl);
 void		sdl_create_background_music(t_sdl *sdl);
-void		sound(t_new_player *pl, char *name, int channel);
+Mix_Chunk	*ft_load_sound(char *name);
 t_sdl		*sdl_init(t_sdl *sdl);
-void	load_sound(t_new_player *pl, char *name);
+void		ft_sound_play(Mix_Chunk *name, int channel);
 
 /*
 ** **************************************************************************

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/21 21:30:32 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/23 13:46:23 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,8 @@ func_wu_draw.c \
 func_wu_init.c \
 func_wu_line.c \
 func_wu.c \
-func_color.c
+func_color.c \
+func_one_file.c
 
 FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
 FUNC_OBJS_LIST = $(patsubst %.c, %.o, $(FUNC_LIST))
@@ -213,7 +214,8 @@ game_motion_2.c \
 game_sdl_addons.c \
 game_texture_parser.c \
 game_textures.c \
-game_walls.c
+game_walls.c \
+game_load_sounds.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
 GAME_OBJS_LIST = $(patsubst %.c, %.o, $(GAME_SRCS_LIST))

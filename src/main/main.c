@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 21:18:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/23 13:36:09 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_main(int c, char **v)
 
 	if (c > 2)
 		ft_error("WRONG arguments");
-	ft_unpack();
+	// ft_unpack();
 	ft_bzero(&data, sizeof(t_new_temp));
 	data.pl = (t_new_player *)ft_my_malloc(sizeof(t_new_player));
 	w.new_data = &data;
@@ -42,9 +42,9 @@ void	ft_main(int c, char **v)
 	data.pl->tex = ft_game_load_textures(data.pl);
 	while (w.sdl->running)
 		ft_main_events(&w);
-	Mix_FreeChunk(data.pl->sound);
 	ft_editor_desctuct(&w);
 	ft_clean_sdl(&w);
+	// ft_check_folders();
 }
 
 int		main(int c, char **v)
