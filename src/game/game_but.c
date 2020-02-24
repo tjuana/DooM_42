@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/24 12:03:30 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 13:51:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_game_but_new_door_sec(t_new_player *pl)
 */
 
 static int	ft_game_but_open_door(t_new_player *pl, int but_nb, \
-												t_new_sub_ev *se)
+				t_new_sub_ev *se)
 {
 	int	d_sec_nb;
 

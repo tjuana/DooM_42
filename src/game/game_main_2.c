@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_main_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:28:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 20:38:41 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 14:16:43 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,43 @@ void		ft_game_gui_init_menu(t_list *head)
 
 /*
 ** **************************************************************************
-**	void ft_game_gui_init_hud_help(t_list *head)
+**	void ft_game_gui_init_hud_died(t_list *head)
 ** **************************************************************************
 */
 
-static void	ft_game_gui_init_hud_help(t_list *head, t_gui_elem *elem)
+static void	ft_game_gui_init_hud_died(t_list *head, t_gui_elem *elem)
 {
+	ft_gui_elem_init(&elem->child, "win_game_diedbg", (t_gui_coord){0, 0, 0}, \
+		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(elem->child, 0xbfff0000);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, elem->child);
 	ft_gui_elem_init(&elem->child, "win_game_diedtext", \
 		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xfff0000);
 	ft_gui_elem_set_text(elem->child, "PRESS F", 72, \
+									"fonts/Raleway-ExtraBold.ttf");
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, elem->child);
+}
+
+/*
+** **************************************************************************
+**	void ft_game_gui_init_hud_exit(t_list *head)
+** **************************************************************************
+*/
+
+static void	ft_game_gui_init_hud_exit(t_list *head, t_gui_elem *elem)
+{
+	ft_gui_elem_init(&elem->child, "win_game_exitbg", (t_gui_coord){0, 0, 0}, \
+		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(elem->child, 0xbfcccccc);
+	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
+	ft_gui_elem_set_parent(head, elem->child);
+	ft_gui_elem_init(&elem->child, "win_game_exittext", \
+		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+	ft_gui_elem_set_color(elem->child, 0xf000000);
+	ft_gui_elem_set_text(elem->child, "GAME OVER", 72, \
 									"fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
@@ -148,10 +175,6 @@ void		ft_game_gui_init_hud(t_list *head)
 										"fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
-	ft_gui_elem_init(&elem->child, "win_game_diedbg", (t_gui_coord){0, 0, 0}, \
-		(t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
-	ft_gui_elem_set_color(elem->child, 0xbfff0000);
-	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
-	ft_gui_elem_set_parent(head, elem->child);
-	ft_game_gui_init_hud_help(head, elem);
+	ft_game_gui_init_hud_died(head, elem);
+	ft_game_gui_init_hud_exit(head, elem);
 }

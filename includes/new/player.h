@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 13:15:43 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 13:52:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 **	Player status constant
 ** **************************************************************************
 */
-# define PL_STATUS_LIVE	0x01
-# define PL_STATUS_DEAD	0x02
+# define PL_STATUS_LIVE			0x01
+# define PL_STATUS_DEAD			0x02
+# define PL_STATUS_EXIT_GAME	0x03
 
 /*
 ** **************************************************************************

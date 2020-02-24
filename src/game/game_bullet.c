@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 14:12:23 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/22 19:21:09 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 19:51:28 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void		ft_game_draw_bullet(t_gun *wpn, t_new_player *pl)
 		else
 		{
 			g.width = (WIN_W - 400) + (600) * (g.scale - 1.0);
-			g.height = sqrtf(1.0 - g.scale) * (WIN_H - 340) + \
-					2 * g.scale * (1.0 - g.scale) * (-600) + \
-					sqrtf(g.scale) * (WIN_H - 340);
+			g.height = powf(1.0 - g.scale, 2) * (WIN_H - 340) + \
+					2 * g.scale * (1.0 - g.scale) * (10) + \
+					powf(g.scale, 2) * (WIN_H - 340);
 			ft_game_draw_bullet_picture(pl, g);
 			pl->bullet_frame++;
 		}

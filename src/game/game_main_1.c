@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 20:47:58 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:56:39 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,28 @@ static void	ft_gui_dead(t_wolf3d *w)
 			ft_gui_search_elem_by_name(w->gui.dom, \
 			"win_game_diedtext"), GUI_ELEM_HIDDEN);
 		ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, \
-						"win_game_diedbg"), GUI_ELEM_HIDDEN);
+			"win_game_diedbg"), GUI_ELEM_HIDDEN);
 		w->player_status = 0;
+		ft_game_end_game(pl, pl->file.ag);
+		return ;
+	}
+}
+
+static void	ft_game_gui_exit(t_wolf3d *w)
+{
+	t_new_player	*pl;
+
+	pl = ((t_new_temp*)w->new_data)->pl;
+	if (w->gui.mode != GUI_MD_GAME)
+		return ;
+	if (pl->status == PL_STATUS_EXIT_GAME)
+	{
+		sleep(3);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+		w->player_status = 0;
+		w->sdl->running = 0;
 		return ;
 	}
 }
@@ -119,6 +139,7 @@ static void	ft_game_redraw_help(t_new_temp *data)
 		data->pl->bullet_frame = 0;
 		// wpn.scale = 100;
 	}
+	// ft_game_draw_sprite(data->pl);
 	ft_game_draw_pistol(&wpn, data->pl);
 	ft_game_draw_bullet(&wpn, data->pl);
 }
@@ -136,6 +157,8 @@ void		ft_game_redraw(t_wolf3d *w, t_list *dom)
 	(void)dom;
 	if (((t_new_temp*)w->new_data)->pl->status == PL_STATUS_DEAD)
 		ft_gui_dead(w);
+	else if (((t_new_temp*)w->new_data)->pl->status == PL_STATUS_EXIT_GAME)
+		ft_game_gui_exit(w);
 	else
 	{
 		data = w->new_data;
