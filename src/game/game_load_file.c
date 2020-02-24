@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/24 14:49:46 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 15:26:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		ft_free(t_new_player *pl, char *lvl)
 {
-	if (!ft_strcmp(lvl, "EXIT"))
+	if (ft_strcmp(lvl, "EXIT"))
 		ft_game_my_parse_map(pl, lvl);
 	else
 		ft_game_set_exit(pl, ((t_wolf3d*)pl->wolf3d)->gui.dom);
