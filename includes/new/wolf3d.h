@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 14:48:20 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:36:56 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,13 @@ void				ft_game_engine_put_lines(t_new_player *pl, int neib);
 
 /*
 ** **************************************************************************
+**	src/game/game_engine_3.c
+** **************************************************************************
+*/
+void	ft_game_ceil_floor_move(t_new_player *pl);
+
+/*
+** **************************************************************************
 **	src/game/game_engine_cross.c
 ** **************************************************************************
 */
@@ -144,10 +151,18 @@ void				ft_game_events_new_mouse_move(t_new_mouse *ms, \
 */
 int					ft_game_events_exit(t_new_player *pl);
 void				ft_game_hidden_message(t_list *dom);
-void				ft_game_set_dead(t_new_player *pl, t_list *dom);
-void				ft_game_set_exit(t_new_player *pl, t_list *dom);
 int					ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl);
 void				ft_game_mouse_events_click(t_new_player *pl);
+
+/*
+** **************************************************************************
+**	src/game/game_gui.c
+** **************************************************************************
+*/
+void				ft_game_gui_dead(t_wolf3d *w);
+void				ft_game_gui_exit(t_wolf3d *w);
+void				ft_game_set_dead(t_new_player *pl, t_list *dom);
+void				ft_game_set_exit(t_new_player *pl, t_list *dom);
 
 /*
 ** **************************************************************************

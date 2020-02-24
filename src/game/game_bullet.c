@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 14:12:23 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/23 19:51:28 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:00:41 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,9 @@ static void	ft_game_draw_bullet_picture(t_new_player *pl, t_draw_gun g)
 
 void		ft_game_draw_bullet(t_gun *wpn, t_new_player *pl)
 {
-	int			n;
 	t_draw_gun	g;
 
 	(void)wpn;
-	n = GUN;
 	g.scale = (30.0 - pl->bullet_frame) / 30.0;
 	g.n = BULLET;
 	if (pl->bullet_status)

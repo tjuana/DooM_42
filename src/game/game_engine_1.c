@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/24 18:34:03 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 18:35:03 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,6 @@ int			ft_game_engine_scale(t_new_player *pl, int sx1, int sx2)
 	if (pl->x1 >= pl->x2 || pl->x2 < sx1 || pl->x1 > sx2)
 		return (0);
 	return (1);
-}
-
-static void	ft_game_ceil_floor_move(t_new_player *pl)
-{
-	if (pl->flag_move_neighbors == 1)
-	{
-		if (pl->sect->ceil - pl->sect->floor < 20.0)
-			pl->sect->ceil += 0.02;
-	}
-	if (pl->flag_move_neighbors == -1)
-	{
-		if (pl->sect->ceil - pl->sect->floor > 8.0)
-			pl->sect->ceil -= 0.02;
-	}
 }
 
 /*
