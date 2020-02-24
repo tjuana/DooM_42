@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
+#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/23 15:33:58 by tjuana           ###   ########.fr        #
+#    Updated: 2020/02/24 18:17:42 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -203,6 +203,7 @@ game_engine_cross.c \
 game_events_1.c \
 game_events_2.c \
 game_events_3.c \
+game_gui.c \
 game_gun.c \
 game_load_file.c \
 game_load_textures.c \
