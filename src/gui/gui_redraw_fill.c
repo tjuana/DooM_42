@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:44:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:27:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:52:55 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,12 @@ void	ft_gui_fill_elem(t_wolf3d *w, t_list *list, int color)
 	elem = list->content;
 	if (elem == NULL)
 		ft_error("ERROR (N5)");
-	if (elem->status & GUI_ELEM_HOVER)
+	if (elem->status & GUI_ELEM_DISABLE)
+		printf("==\n");
+		// color = ft_fdf_get_color(color, 0xffffff, 0.5);
+	else if (elem->status & GUI_ELEM_HOVER)
 		color = ft_fdf_get_color(color, 0xffffff, 0.5);
-	if (elem->status & GUI_ELEM_ACTIVE)
+	else if (elem->status & GUI_ELEM_ACTIVE)
 		color = ft_fdf_get_color(color, 0x000000, 0.5);
 	ft_gui_fill_area(w, elem->v1, elem->v2, color);
 }

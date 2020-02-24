@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 18:32:54 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 19:01:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ typedef struct		s_new_player
 	void			*wolf3d;
 	int				live_count;
 	int				bullet_count;
+	int				armors_count;
 	Mix_Chunk		*sound_pistol;
 	Mix_Chunk		*sound_door;
 	Mix_Chunk		*sound_death;

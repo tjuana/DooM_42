@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/24 18:27:16 by dorange-         ###   ########.fr        #
+#    Created: 7777/07/07 11:40:58 by tjuana            #+#    #+#              #
+#    Updated: 2020/02/24 18:57:27 by dorange-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,7 +131,6 @@ editor_event_win_map_set.c \
 editor_event_win_map_zoom.c \
 editor_event_win_menu.c \
 editor_event_win_menu2.c \
-editor_event_win_setdoor.c \
 editor_event_win_setenemy.c \
 editor_event_win_setplayer.c \
 editor_event_win_setsector.c \

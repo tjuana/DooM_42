@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 21:00:42 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:59:17 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,6 @@ void			ft_gui_mousebuttonup_win_menu_btnsprite(void *data, \
 					SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_win_menu_btnenemy(void *data, \
 					SDL_Event e, t_list *dom, int type);
-void			ft_gui_mousebuttonup_win_menu_btndoor(void *data, \
-					SDL_Event e, t_list *dom, int type);
 
 /*
 ** **************************************************************************
@@ -141,16 +139,6 @@ void			ft_gui_mousebuttonup_win_menu_btnsavemap(\
 					void *data, SDL_Event e, t_list *dom, int type);
 void			ft_gui_mousebuttonup_win_editor_menu_btnmenu(\
 					void *data, SDL_Event e, t_list *dom, int type);
-
-/*
-** **************************************************************************
-**	src/editor/editor_event_win_setdoor.c
-** **************************************************************************
-*/
-void			ft_gui_mousebuttonup_win_setdoor_btnsave(void *data, \
-					SDL_Event e, t_list *dom, int type);
-void			ft_gui_mousebuttonup_win_setdoor_btncancel(void *data, \
-					SDL_Event e, t_list *dom, int type);
 
 /*
 ** **************************************************************************
@@ -223,7 +211,6 @@ void			ft_gui_init_win_setsector(t_list *head);
 void			ft_gui_init_win_setplayer(t_list *head);
 void			ft_gui_init_win_setsprite(t_list *head);
 void			ft_gui_init_win_setenemy(t_list *head);
-void			ft_gui_init_win_setdoor(t_list *head);
 
 /*
 ** **************************************************************************

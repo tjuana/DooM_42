@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_engine_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/24 18:35:03 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 19:13:48 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ static int	ft_game_engine_pick_sec(t_new_player *pl)
 static void	ft_game_engine_preset(t_new_player *pl)
 {
 	int	i;
-	int	*rend_sec;
 
 	i = -1;
-	rend_sec = (int *)ft_my_malloc(sizeof(int) * (pl->sectors_nb + 1));
+	pl->cycle.rend_sec = (int *)ft_my_malloc(sizeof(int) * (pl->sectors_nb + 1));
 	while (++i < pl->sectors_nb)
-		rend_sec[i] = 0;
-	pl->cycle.rend_sec = rend_sec;
+		pl->cycle.rend_sec[i] = 0;
 	i = -1;
 	while (++i < WIN_W)
 		pl->y_top[i] = 0;

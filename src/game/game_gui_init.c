@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:20:27 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/24 18:20:47 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:00:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ static void	ft_gui_init_menu_2(t_gui_elem *elem, t_list *head)
 		(t_gui_coord){350, 10, 0}, (t_gui_coord){454, 50, 0});
 	ft_gui_elem_set_color(elem->child, 0xffffff);
 	ft_gui_elem_set_text(elem->child, "10", 16, "fonts/Raleway-Bold.ttf");
-	ft_gui_elem_set_parent(head, elem->child);
-	ft_gui_elem_init(&elem->child, "win_game_hud_filename", \
-		(t_gui_coord){500, 10, 0}, (t_gui_coord){700, 50, 0});
-	ft_gui_elem_set_color(elem->child, 0xffffff);
-	ft_gui_elem_set_text(elem->child, "file", 16, "fonts/Raleway-Bold.ttf");
 	ft_gui_elem_set_parent(head, elem->child);
 }
 
@@ -89,10 +84,10 @@ static void	ft_game_gui_init_hud_died(t_list *head, t_gui_elem *elem)
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_gui_elem_init(&elem->child, "win_game_diedtext", \
-		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+		(t_gui_coord){450, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xfff0000);
 	ft_gui_elem_set_text(elem->child, "PRESS F", 72, \
-									"fonts/Raleway-ExtraBold.ttf");
+		"fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 }
@@ -114,7 +109,7 @@ static void	ft_game_gui_init_hud_exit(t_list *head, t_gui_elem *elem)
 		(t_gui_coord){380, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xf000000);
 	ft_gui_elem_set_text(elem->child, "GAME OVER", 72, \
-									"fonts/Raleway-ExtraBold.ttf");
+		"fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 }
@@ -139,7 +134,7 @@ void		ft_game_gui_init_hud(t_list *head)
 		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xbfffff00);
 	ft_gui_elem_set_text(elem->child, "DVER' MNE ZAPILI!", 72, \
-										"fonts/Raleway-ExtraBold.ttf");
+		"fonts/Raleway-ExtraBold.ttf");
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_game_gui_init_hud_died(head, elem);
