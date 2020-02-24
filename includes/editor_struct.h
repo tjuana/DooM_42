@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:32:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:53 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:47:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ typedef struct			s_player
 	t_vector3			pos;
 	double				wall_dist;
 	int					side;
+	int					sector;
 }						t_player;
 
 #endif

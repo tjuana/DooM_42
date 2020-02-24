@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:31:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:36:52 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:47:22 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_gui_event_set_player(t_wolf3d *w, SDL_Event e, t_list *elem)
 {
 	t_gui_coord	coord;
 	t_vector3	v;
+	int			sector_number;
 
 	(void)e;
 	coord = ft_gui_map_check_mouse(w, w->gui.mouse_pos, \
@@ -63,10 +64,12 @@ void	ft_gui_event_set_player(t_wolf3d *w, SDL_Event e, t_list *elem)
 	if (coord.w)
 	{
 		v = ft_gui_map_coord_to_vertex(w, coord);
-		if (ft_search_point_in_sector((void*)w, v))
+		sector_number = ft_search_point_in_sector((void*)w, v);
+		if (sector_number)
 		{
 			w->pl.pos = v;
 			w->player_status = 1;
+			w->pl.sector = sector_number;
 		}
 	}
 }
