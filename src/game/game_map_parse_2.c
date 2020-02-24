@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 12:20:00 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 19:31:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void		ft_game_player_save(t_new_player *pl)
 	if ((n = ft_atoi(pl->file.split[4])) > pl->file.count_sectors)
 		ft_error("Sector not found");
 	ft_game_player_init(pl, &v, &n);
-	pl->pos.z = pl->sectors[pl->sector].floor + EYE_H * 2;
+	pl->pos.z = pl->sectors[pl->sector].floor + EYE_H * 1.3;
 	if (pl->file.split)
 		ft_2arrclean(&pl->file.split);
 }

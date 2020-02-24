@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 19:45:00 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/08 13:35:09 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 19:51:42 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,13 @@ void			ft_player_string(t_wolf3d *w)
 	ft_strdel(&tmp);
 	tmp = ft_strdup(join);
 	ft_strdel(&join);
-	join = ft_strjoin(tmp, "\t1\t0");
+	join = ft_strjoin(tmp, "\t1\t");
+	ft_strdel(&tmp);
+	itoa = ft_itoa(w->pl.sector);
+	tmp = ft_strdup(join);
+	ft_strdel(&join);
+	join = ft_strjoin(tmp, itoa);
+	ft_strdel(&itoa);
 	ft_strdel(&tmp);
 	ft_putstr_fd(join, w->file.fd);
 	ft_strdel(&join);

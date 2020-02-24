@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:33:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:33:26 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:59:31 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,6 @@ void	ft_editor_gui_init_win_me(t_list *head)
 	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, win->child);
 	ft_gui_init_win_setenemy(win->child);
-	ft_gui_elem_init_grid(head, "win_me_door", 4, (t_gui_coord){1, 1, 0});
-	ft_gui_elem_set_grid(win->child, (t_gui_coord){2, 14, 0}, 10);
-	ft_gui_elem_set_color(win->child, GUI_CL_DOOR);
-	ft_gui_elem_set_block(win->child);
-	ft_gui_elem_set_status(win->child, GUI_ELEM_HIDDEN);
-	ft_gui_elem_set_parent(head, win->child);
-	ft_gui_init_win_setdoor(win->child);
 }
 
 /*

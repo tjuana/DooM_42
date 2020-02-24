@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:58:04 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 20:46:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:07:44 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void		ft_gui_delete_status(t_list *dom);
 void		ft_gui_elem_set_color(t_list *list, int color);
 void		ft_gui_elem_set_text(t_list *list, \
 				void *str, int font_size, char *font_path);
+void		ft_gui_elem_change_text(t_list *list, void *ptr_str);
 char		*ft_gui_elem_get_value(t_list *list);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:32:36 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/24 18:45:49 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 19:31:03 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int				ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 void			ft_game_mouse_events_click(t_new_player *pl)
 {
 	t_list		*list;
-	t_gui_elem	*elem;
 	t_list		*dom;
 
 	dom = ((t_wolf3d*)pl->wolf3d)->gui.dom;
@@ -67,19 +66,20 @@ void			ft_game_mouse_events_click(t_new_player *pl)
 	pl->count_sprite = 10;
 	if (pl->bullet_count > 0)
 	{
-		pl->bullet_count--;
 		list = ft_gui_search_elem_by_name(dom, "win_game_hud_pistolcount");
-		elem = list->content;
-		free(elem->str);
-		elem->str = ft_itoa(pl->bullet_count);
+		ft_gui_elem_change_text(list, ft_itoa(--pl->bullet_count));
+	}
+	else if (pl->armors_count > 0)
+	{
+		list = ft_gui_search_elem_by_name(dom, "win_game_hud_armorscount");
+		ft_gui_elem_change_text(list, ft_itoa(--pl->armors_count));
 	}
 	else if (pl->live_count > 0)
 	{
 		pl->live_count -= 10;
+		ft_sound_play(pl->sound_death, 5);
 		list = ft_gui_search_elem_by_name(dom, "win_game_hud_livescount");
-		elem = list->content;
-		free(elem->str);
-		elem->str = ft_itoa(pl->live_count);
+		ft_gui_elem_change_text(list, ft_itoa(pl->live_count));
 	}
 	if (pl->live_count <= 0)
 		ft_game_set_dead(pl, dom);

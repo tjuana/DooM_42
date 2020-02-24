@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:23:59 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/20 12:46:11 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:07:24 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,23 @@ void	ft_gui_elem_set_text(t_list *list, \
 	elem->font_path = ft_strdup(font_path);
 	elem->fs = (int)(font_size * (WIN_WIDTH / 1280.0));
 	elem->fs == 0 ? elem->fs = 16 : 0;
+}
+
+/*
+** **************************************************************************
+**	void ft_gui_elem_set_text(t_list *list, void *str, int font_size)
+**
+**	Function that set pointer to text.
+** **************************************************************************
+*/
+
+void	ft_gui_elem_change_text(t_list *list, void *ptr_str)
+{
+	t_gui_elem	*elem;
+
+	elem = list->content;
+	free(elem->str);
+	elem->str = ptr_str;
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:01:58 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/21 17:35:15 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:59:02 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	ft_gui_init_win_menu_add(t_list *head)
 	ft_gui_elem_init_grid(head, "win_me_menu_door", 7, (t_gui_coord){1, 1, 0});
 	ft_gui_elem_set_color(elem->child, GUI_CL_DOOR);
 	ft_gui_elem_set_button(elem->child, "Door", 16);
-	ft_gui_elem_set_event(elem->child, \
-		ft_gui_mousebuttonup_win_menu_btndoor, SDL_MOUSEBUTTONUP, 0);
 	ft_gui_elem_init_grid(head, "win_me_menu_sprt", 8, (t_gui_coord){1, 1, 0});
 	ft_gui_elem_set_color(elem->child, GUI_CL_SPRITE);
 	ft_gui_elem_set_button(elem->child, "Sprite", 16);

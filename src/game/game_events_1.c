@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/24 18:51:42 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 19:28:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void			ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 		{
 			pl->fly = 1;
 			pl->velo.z = 0.7f;
-			ft_sound_play(pl->sound_fly, 1);
+			ft_sound_play(pl->sound_fly, 4);
 		}
 	}
 }
