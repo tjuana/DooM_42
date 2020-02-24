@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 18:15:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 19:30:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ static void	ft_gui_dead(t_wolf3d *w)
 		w->player_status = 0;
 		SDL_ShowCursor(SDL_ENABLE);
 		SDL_SetRelativeMouseMode(0);
+		// ((t_new_temp*)w->new_data)->pl->status = PL_STATUS_LIVE;
+		// ((t_new_temp*)w->new_data)->pl->live_count = 100;
+		// ((t_new_temp*)w->new_data)->pl->bullet_count = 10;
 		return ;
 	}
 }
@@ -125,6 +128,7 @@ static void	ft_game_redraw_help(t_new_temp *data)
 		data->pl->bullet_frame = 0;
 		// wpn.scale = 100;
 	}
+	// ft_game_draw_sprite(data->pl);
 	ft_game_draw_pistol(&wpn, data->pl);
 	ft_game_draw_bullet(&wpn, data->pl);
 }

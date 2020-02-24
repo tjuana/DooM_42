@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 21:14:55 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/23 17:51:04 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 19:40:52 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ typedef struct		s_new_cycle
 	int				*rend_sec;
 }					t_new_cycle;
 
+# define NEW_SECTOR_TYPE_SECTOR	0x0
+# define NEW_SECTOR_TYPE_SPRITE	0x1
+
+
 /*
 ** **************************************************************************
 **	t_new_sector
@@ -77,6 +81,7 @@ typedef struct		s_new_cycle
 */
 typedef struct		s_new_sector
 {
+	int				type;
 	int				number;
 	float			floor;
 	float			ceil;
