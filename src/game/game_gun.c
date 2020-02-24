@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_gun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 17:40:12 by nshelly           #+#    #+#             */
-/*   Updated: 2020/02/22 15:18:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 13:05:40 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ static void	ft_game_draw_gun(t_new_player *pl, int width, \
 			g.p = (g.y % pl->tex[n].h) * pl->tex[n].w + g.x % pl->tex[n].w;
 			g.hex = ft_rgb_to_hex(pl->tex[n].pixels[g.p].r, \
 			pl->tex[n].pixels[g.p].g, pl->tex[n].pixels[g.p].b);
-			if (pl->tex[n].pixels[g.p].a != 0 && \
-				(height * WIN_W + g.x_img >= 0 && \
-				height * WIN_W + g.x_img < WIN_W * WIN_H))
-				pl->pix[height * WIN_W + g.x_img] = \
+			if (pl->tex[n].pixels[g.p].a != 0 && (height * WIN_W + g.x_img \
+			>= 0 && height * WIN_W + g.x_img < WIN_W * WIN_H))
+				pl->pix[height * WIN_W + g.x_img] =\
 				ft_hex_transform(g.hex, pl->light);
 			g.x_img++;
 		}
