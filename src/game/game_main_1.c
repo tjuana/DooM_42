@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 19:30:10 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 14:46:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ void		ft_game_player_init(t_new_player *pl, t_vector3 *v, int *n)
 
 static void	ft_gui_dead(t_wolf3d *w)
 {
+	t_new_player	*pl;
+
+	pl = ((t_new_temp*)w->new_data)->pl;
 	if (w->gui.mode != GUI_MD_GAME)
 		return ;
-	if (((t_new_temp*)w->new_data)->pl->status == PL_STATUS_DEAD)
+	if (pl->status == PL_STATUS_DEAD)
 	{
 		sleep(3);
 		ft_gui_elem_set_status(\
@@ -96,20 +99,27 @@ static void	ft_gui_dead(t_wolf3d *w)
 			ft_gui_search_elem_by_name(w->gui.dom, \
 			"win_game_diedtext"), GUI_ELEM_HIDDEN);
 		ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, \
-						"win_game_diedbg"), GUI_ELEM_HIDDEN);
-		ft_gui_elem_set_status(
-			ft_gui_search_elem_by_name(w->gui.dom, "win_game"), \
-			GUI_ELEM_HIDDEN);
-		ft_gui_elem_set_status(\
-			ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), \
-			GUI_ELEM_VISIBLE);
-		w->gui.mode = GUI_MD_MENU;
+			"win_game_diedbg"), GUI_ELEM_HIDDEN);
 		w->player_status = 0;
-		SDL_ShowCursor(SDL_ENABLE);
-		SDL_SetRelativeMouseMode(0);
-		// ((t_new_temp*)w->new_data)->pl->status = PL_STATUS_LIVE;
-		// ((t_new_temp*)w->new_data)->pl->live_count = 100;
-		// ((t_new_temp*)w->new_data)->pl->bullet_count = 10;
+		return ;
+	}
+	if (pl->status == PL_STATUS_EXIT_GAME)
+	{
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+		// ft_gui_elem_set_status(\
+		// 	ft_gui_search_elem_by_name(w->gui.dom, \
+		// 	"win_game_exittext"), GUI_ELEM_VISIBLE);
+		// ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, \
+		// 	"win_game_exitbg"), GUI_ELEM_VISIBLE);
+		sleep(3);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_exittext"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(ft_gui_search_elem_by_name(w->gui.dom, \
+			"win_game_exitbg"), GUI_ELEM_HIDDEN);
+		w->player_status = 0;
 		return ;
 	}
 }

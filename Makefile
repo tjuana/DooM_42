@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+         #
+#    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/23 14:41:59 by dorange-         ###   ########.fr        #
+#    Updated: 2020/02/23 15:33:58 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CC = gcc
 FLAGS_NORME = -Wall -Wextra -Werror
 #FLAGS_O = -O0 -O3
 #FLAGS_OPT = -march=native -m64 -flto -funroll-loops -Ofast
-FLAGS = -g $(FLAGS_NORME) #$(FLAGS_O) #$(FLAGS_NORME) $(FLAGS_OPT)
+FLAGS = -g -O0 $(FLAGS_NORME) #$(FLAGS_O) #$(FLAGS_NORME) $(FLAGS_OPT)
 
 # SDL2 settings
 USERNAME = $(shell whoami)

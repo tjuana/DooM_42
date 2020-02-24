@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:31:00 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/23 14:47:13 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 20:40:39 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_main(int c, char **v)
 
 	if (c > 2)
 		ft_error("WRONG arguments");
-	// ft_unpack();
+	//ft_unpack();
 	ft_bzero(&data, sizeof(t_new_temp));
 	data.pl = (t_new_player *)ft_my_malloc(sizeof(t_new_player));
 	w.new_data = &data;

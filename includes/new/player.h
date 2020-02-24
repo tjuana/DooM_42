@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 18:18:44 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 13:52:39 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 **	Player status constant
 ** **************************************************************************
 */
-# define PL_STATUS_LIVE	0x01
-# define PL_STATUS_DEAD	0x02
+# define PL_STATUS_LIVE			0x01
+# define PL_STATUS_DEAD			0x02
+# define PL_STATUS_EXIT_GAME	0x03
 
 /*
 ** **************************************************************************
@@ -219,6 +220,7 @@ typedef struct		s_new_player
 	int				bullet_status;
 	int				bullet_frame;
 	int				flag_move_neighbors;
+	int				m_over;
 }					t_new_player;
 
 #endif
