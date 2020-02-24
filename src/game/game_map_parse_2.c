@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:16:26 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 20:35:08 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:20:00 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ void		ft_game_player_save(t_new_player *pl)
 
 	if (!(pl->file.split = ft_strsplit(pl->file.ptr_my, '\t')))
 		ft_error("MALLOC_SPLIT");
-	v.x = (float)ft_atoi(pl->file.split[1]);
-	v.y = (float)ft_atoi(pl->file.split[2]);
-	n = ft_atoi(pl->file.split[4]);
+	if ((v.x = (float)ft_atoi(pl->file.split[1])) < 0)
+		ft_error("Only positive!");
+	if ((v.y = (float)ft_atoi(pl->file.split[2])) < 0)
+		ft_error("Only positive!");
+	if ((n = ft_atoi(pl->file.split[4])) > pl->file.count_sectors)
+		ft_error("Sector not found");
 	ft_game_player_init(pl, &v, &n);
 	pl->pos.z = pl->sectors[pl->sector].floor + EYE_H * 2;
 	if (pl->file.split)
