@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/23 18:51:43 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:52:55 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,10 @@ static int	ft_game_ceil_floor_calcs(t_new_player *pl, int s)
 	int neib;
 
 	pl->s = s;
-	pl->f = GREEN;
-	pl->n = ROCK1;
 	if (s == 0)
 		pl->n = FENCE;
 	if (s == 2)
-		pl->n = 11;
+		pl->n = 2;
 	if (ft_game_engine_cross(pl) == 0)
 		return (0);
 	pl->ceil.yceil = pl->sect->ceil - pl->pos.z;

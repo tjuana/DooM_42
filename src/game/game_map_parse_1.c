@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:15:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/23 20:40:47 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 18:10:47 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ void		ft_game_my_parse_map(t_new_player *pl, char *ag)
 		pl->file.i = 1;
 		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)' ')) != NULL)
 			ft_error("BAD FILE, ONLY TAB , MAN!");
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
+		else if (((pl->file.ptr_my = ft_strstr(pl->file.line, "vertex")) != \
+					NULL))
 			ft_game_vertex_count(pl);
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
+		else if ((pl->file.ptr_my = ft_strstr(pl->file.line, "sector")) != NULL)
 			ft_game_sector_count(pl);
 		ft_strdel(&pl->file.line);
 		free(pl->file.line);
@@ -97,13 +98,13 @@ void		ft_game_malloc_save_sectors(char *ag, t_new_player *pl)
 	pl->file.i = 0;
 	while ((pl->file.res = get_next_line(pl->file.fd, &pl->file.line)) > 0)
 	{
-		if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'v')) != NULL)
+		if ((pl->file.ptr_my = ft_strstr(pl->file.line, "vertex")) != NULL)
 			vertex = ft_game_vertex_save(pl, vertex);
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'m')) != NULL)
+		else if ((pl->file.ptr_my = ft_strstr(pl->file.line, "map")) != NULL)
 			ft_game_level_save(pl);
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'s')) != NULL)
+		else if ((pl->file.ptr_my = ft_strstr(pl->file.line, "sector")) != NULL)
 			ft_game_sector_save(pl, vertex);
-		else if ((pl->file.ptr_my = ft_strchr(pl->file.line, (int)'p')) != NULL)
+		else if ((pl->file.ptr_my = ft_strstr(pl->file.line, "player")) != NULL)
 			ft_game_player_save(pl);
 		ft_strdel(&pl->file.line);
 		free(pl->file.line);
