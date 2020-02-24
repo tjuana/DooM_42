@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:22:56 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/12 20:37:16 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:27:07 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,16 @@ void	ft_gui_redraw_elem(t_wolf3d *w, t_list *dom)
 
 int		ft_gui_redraw(t_wolf3d *w)
 {
-	ft_bzero(w->sdl->srf->pixels, 4 * w->gui.win_w * w->gui.win_h);
-	SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0xff, 0xff, 0xff) != 0 ? \
+	ft_bzero(w->sdl->pixels, 4 * WIN_WIDTH * WIN_HEIGHT);
+	SDL_SetRenderDrawColor(w->sdl->renderer, 0x00, 0x00, 0x00, 0xff) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;
 	SDL_RenderClear(w->sdl->renderer) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;
 	ft_gui_redraw_elem(w, w->gui.dom);
-	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->srf->pixels, WIN_WIDTH * 4) != 0 ? \
+	SDL_UpdateTexture(w->sdl->text, 0, w->sdl->pixels, 
+		WIN_WIDTH * 4) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;
-	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, 0, 0) != 0 ? \
+	SDL_RenderCopy(w->sdl->renderer, w->sdl->text, NULL, NULL) != 0 ? \
 		ft_sdl_error(w->sdl) : 0;
 	ft_gui_redraw_elem_font(w, w->gui.dom);
 	SDL_RenderPresent(w->sdl->renderer);

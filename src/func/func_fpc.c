@@ -79,6 +79,7 @@ void fpsthink() {
 
         // now to make it an actual frames per second value...
         framespersecond = 1000.f / framespersecond;
-		// printf("%f\n", framespersecond);
 
+		if (framespersecond != INFINITY)
+			printf("fps:====%f\n", framespersecond);
 }

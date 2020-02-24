@@ -6,7 +6,7 @@
 #    By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/08 11:40:58 by tjuana            #+#    #+#              #
-#    Updated: 2020/02/13 16:54:10 by tjuana           ###   ########.fr        #
+#    Updated: 2020/02/19 21:06:02 by tjuana           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@
 #		func/		?
 #		game/		Function for game
 #		gui/		Function for gui-interface
-#		math/		Mathematic functions for calculations
 
 # Project name
 NAME = DooM_nuKem
@@ -29,7 +28,9 @@ GUI_NAME = gui_test
 
 # Сompiler settings
 CC = gcc
-FLAGS = -g -O3 -O0
+FLAGS_NORME = -Wall -Wextra -Werror
+FLAGS_OPT = -march=native -m64 -flto -funroll-loops -Ofast
+FLAGS = -g -O3 -O0 #$(FLAGS_NORME)
 
 # SDL2 settings
 USERNAME = $(shell whoami)
@@ -37,7 +38,8 @@ LIBRARIES = \
 -lft -L$(LIBFT_DIRECTORY)\
 -lSDL2 -lSDL2main -L/Users/$(USERNAME)/.brew/Cellar/sdl2/2.0.10/lib \
 -lSDL2_ttf -L/Users/$(USERNAME)/.brew/Cellar/sdl2_ttf/2.0.15/lib \
--lSDL2_image -L/Users/$(USERNAME)/.brew/Cellar/sdl2_image/2.0.5/lib
+-lSDL2_image -L/Users/$(USERNAME)/.brew/Cellar/sdl2_image/2.0.5/lib \
+-lSDL2_mixer -L/Users/$(USERNAME)/.brew/Cellar/sdl2_mixer/2.0.4/lib 
 
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(SDL_HEADERS)
 
@@ -70,23 +72,21 @@ MAIN_OBJS = $(addprefix $(MAIN_OBJS_DIRECTORY), $(MAIN_OBJS_LIST))
 # ALGEBRA FUNCTIONS
 ALGEBRA_SRCS_DIRECTORY = $(SRCS_PATH)algebra/
 ALGEBRA_LIST = \
+algebra_camera.c \
+algebra_intersect.c \
+algebra_matrix_transform.c \
 algebra_matrix.c \
 algebra_vectors_1.c \
-algebra_vectors_2.c
+algebra_vectors_2.c \
+algebra_vectors_3.c \
+algebra_vectors_func.c \
+algebra_math_1.c \
+algebra_math_2.c \
+algebra_math_3.c
 
 ALGEBRA_OBJS_DIRECTORY = $(OBJS_PATH)
 ALGEBRA_OBJS_LIST = $(patsubst %.c, %.o, $(ALGEBRA_LIST))
 ALGEBRA_OBJS = $(addprefix $(ALGEBRA_OBJS_DIRECTORY), $(ALGEBRA_OBJS_LIST))
-
-# MATH FUNCTIONS
-MATH_SRCS_DIRECTORY = $(SRCS_PATH)math/
-MATH_LIST = \
-math_intersect.c \
-math_vectors.c
-
-MATH_OBJS_DIRECTORY = $(OBJS_PATH)
-MATH_OBJS_LIST = $(patsubst %.c, %.o, $(MATH_LIST))
-MATH_OBJS = $(addprefix $(MATH_OBJS_DIRECTORY), $(MATH_OBJS_LIST))
 
 
 
@@ -103,7 +103,8 @@ func_wu_color.c \
 func_wu_draw.c \
 func_wu_init.c \
 func_wu_line.c \
-func_wu.c
+func_wu.c \
+func_color.c
 
 FUNC_OBJS_DIRECTORY = $(OBJS_PATH)
 FUNC_OBJS_LIST = $(patsubst %.c, %.o, $(FUNC_LIST))
@@ -134,7 +135,8 @@ editor_event_win_setplayer.c \
 editor_event_win_setsector.c \
 editor_event_win_setsprite.c \
 editor_gui_init.c \
-editor_gui_txtr.c \
+editor_gui_init2.c \
+editor_gui_init3.c \
 editor_init.c \
 editor_map_check.c \
 editor_map_door.c \
@@ -146,7 +148,10 @@ editor_map_sector_vertex.c \
 editor_map_sprite.c \
 editor_save_file.c \
 editor_save_file2.c \
-editor_save_file3.c
+editor_save_file3.c \
+editor_map_check_line.c \
+editor_map_check2.c \
+editor_generate_triangles.c
 
 EDITOR_OBJS_DIRECTORY = $(OBJS_PATH)
 EDITOR_OBJS_LIST = $(patsubst %.c, %.o, $(EDITOR_SRCS_LIST))
@@ -179,13 +184,9 @@ gui_redraw_image.c \
 gui_mouse_actions.c \
 gui_sdl_func.c
 
-
-
 GUI_OBJS_DIRECTORY = $(OBJS_PATH)
 GUI_OBJS_LIST = $(patsubst %.c, %.o, $(GUI_SRCS_LIST))
 GUI_OBJS = $(addprefix $(GUI_OBJS_DIRECTORY), $(GUI_OBJS_LIST))
-
-
 
 # GAME WITH MAIN FILE
 GAME_SRCS_DIRECTORY = $(SRCS_PATH)game/
@@ -194,8 +195,8 @@ game_but.c \
 game_but_detect.c \
 game_door.c \
 game_door_detect.c \
-game_engine.c \
-game_engine_exp.c \
+game_engine_1.c \
+game_engine_2.c \
 game_engine_cross.c \
 game_events_1.c \
 game_events_2.c \
@@ -203,19 +204,13 @@ game_gun.c \
 game_load_file.c \
 game_load_textures.c \
 game_main.c \
-game_map_parse.c \
-game_map_parse2.c \
-game_math_functions.c \
-game_math_functions2.c \
-game_math_functions3.c \
-game_motion.c \
+game_map_parse_1.c \
+game_map_parse_2.c \
+game_motion_1.c \
+game_motion_2.c \
 game_sdl_addons.c \
-game_skybox.c \
 game_texture_parser.c \
 game_textures.c \
-game_vectors_1.c \
-game_vectors_2.c \
-game_vectors_3.c \
 game_walls.c
 
 GAME_OBJS_DIRECTORY = $(OBJS_PATH)
@@ -262,32 +257,13 @@ $(MAIN_OBJS) \
 $(GAME_OBJS) \
 $(EDITOR_OBJS) \
 $(ALGEBRA_OBJS) \
-$(MATH_OBJS) \
 $(GUI_OBJS) \
 $(FUNC_OBJS) \
-
-# file for game
-# GAME_OBJS_COMPILE = \
-# $(MATH_OBJS) \
-# $(ALGEBRA_OBJS) \
-# $(FUNC_OBJS) \
-# $(GUI_OBJS) \
-# $(GAME_OBJS)
-
-# # file for editor
-# EDITOR_OBJS_COMPILE = \
-# $(EDITOR_OBJS) \
-# $(GUI_OBJS) \
-# $(MATH_OBJS) \
-# $(FUNC_OBJS) \
-# $(ALGEBRA_OBJS)
 
 $(NAME): $(LIBFT) $(OBJS_COMPILE)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJS_COMPILE) -o $(GAME_NAME)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
-	# @$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(EDITOR_OBJS_COMPILE) -o $(EDITOR_NAME)
-	# @echo "$(EDITOR_NAME): $(GREEN)$(EDITOR_NAME) was created$(RESET)"
 
 
 
@@ -308,11 +284,6 @@ $(GUI_OBJS_DIRECTORY)%.o : $(GUI_SRCS_DIRECTORY)%.c $(HEADERS)
 
 $(ALGEBRA_OBJS_DIRECTORY)%.o : $(ALGEBRA_SRCS_DIRECTORY)%.c $(HEADERS)
 	@mkdir -p $(ALGEBRA_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
-	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
-	@echo "$(C_TX_GREY).$(RESET)\c"
-
-$(MATH_OBJS_DIRECTORY)%.o : $(MATH_SRCS_DIRECTORY)%.c $(HEADERS)
-	@mkdir -p $(MATH_OBJS_DIRECTORY) 2>/dev/null || echo "" > /dev/null
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(C_TX_GREY).$(RESET)\c"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_func.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 16:22:17 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 17:03:17 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 19:49:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ void				ft_gui_draw_map(t_wolf3d *w, t_list *list);
 **	editor/editor_draw_map_door.c
 ** **************************************************************************
 */
-void				ft_draw_area_hatch(t_wolf3d *w, \
-						t_gui_rect rect, int color);
-t_gui_rect			ft_sector_get_rect(t_wolf3d *w, t_sector *s);
 void				ft_editor_draw_door(t_wolf3d *w, t_sector *s);
 
 /*
@@ -59,7 +56,7 @@ void				ft_editor_draw_door(t_wolf3d *w, t_sector *s);
 void				ft_gui_draw_map_grid_limit_sector(t_wolf3d *w, \
 						t_gui_elem *elem, t_vector3 v, int type);
 void				ft_gui_draw_map_grid_limit_line(t_wolf3d *w, \
-						t_gui_elem *elem, t_vector3 v, int scale);
+						t_gui_elem *elem, t_vector3 v);
 void				ft_gui_draw_map_grid(t_wolf3d *w, \
 						t_gui_elem *elem, int scale);
 
@@ -230,15 +227,8 @@ void				ft_gui_init_win_setplayer(t_list *head);
 void				ft_gui_init_win_setsprite(t_list *head);
 void				ft_gui_init_win_setenemy(t_list *head);
 void				ft_gui_init_win_setdoor(t_list *head);
-void				ft_editor_gui_init_win_editor(t_list *head);
+void				ft_editor_gui_init_win_me(t_list *head);
 void				ft_editor_gui_init(t_wolf3d *w);
-
-/*
-** **************************************************************************
-**	editor/editor_gui_txtr.c
-** **************************************************************************
-*/
-void				*ft_editor_redraw_txtr(void *data, t_list *dom);
 
 /*
 ** **************************************************************************
@@ -368,10 +358,7 @@ void				ft_sector_num_vertex(t_list *ptr_list, \
 **	editor/editor_save_file2.c
 ** **************************************************************************
 */
-static char			*ft_str_vertex(int i);
-static char			*ft_space(int k, int j);
 void				ft_print_to_file(t_wolf3d *w, int f);
-static char			*ft_my_join_baby(int height, int floor);
 void				ft_print_sectors_to_file(t_wolf3d *w, t_list *list);
 
 /*
@@ -379,9 +366,38 @@ void				ft_print_sectors_to_file(t_wolf3d *w, t_list *list);
 **	editor/editor_save_file3.c
 ** **************************************************************************
 */
-static char			*ft_space_only_join(int j);
 void				ft_player_string(t_wolf3d *w);
 void				ft_save_neighbour(t_sector *sector, int fd);
 void				ft_free_mf(t_wolf3d *w);
+
+int					ft_check_sector_cross(t_wolf3d *w, t_sector *s, \
+						t_vector3 v1, t_vector3 v2);
+int					ft_search_sectors_cross(void *a, t_vector3 v1, \
+						t_vector3 v2);
+int					ft_new_editor_map_check_halfplanes(t_sector *s, \
+						t_vector3 pos);
+
+int					ft_check_point_in_sector_line_diameter(t_sector *s, \
+						t_vector3 v, double d);
+int					ft_search_point_in_sector_line_diameter(void *a, \
+						t_vector3 v, double d);
+
+void				ft_gui_elem_set_map(t_list *list);
+void				ft_gui_init_win_menu_add_1(t_list *head);
+void				ft_gui_init_win_menu_add(t_list *head);
+void				ft_gui_init_win_menu_set(t_list *head);
+void				ft_gui_init_win_menu_save(t_list *head);
+void				ft_gui_init_win_menu(t_list *head);
+void				ft_gui_init_win_setsector_1(t_list *head);
+void				ft_gui_init_win_setsector(t_list *head);
+void				ft_gui_init_win_setplayer(t_list *head);
+void				ft_gui_init_win_setsprite(t_list *head);
+void				ft_gui_init_win_setenemy(t_list *head);
+void				ft_gui_init_win_setdoor(t_list *head);
+void				ft_editor_gui_init_win_me_1(t_list *head);
+void				ft_editor_gui_init_win_me(t_list *head);
+void				ft_editor_gui_init(t_wolf3d *w);
+
+int					ft_search_sector_in_sector(t_wolf3d *w, t_sector *s);
 
 #endif

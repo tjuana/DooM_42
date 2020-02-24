@@ -3,7 +3,7 @@
 # include "wolf3d.h"
 
 #define hfov (0.73f*WIN_H)
-#define vfov (.2f*WIN_H)
+#define vfov (0.2f*WIN_H)
 
 typedef struct	s_new_cycle//item
 {
@@ -18,12 +18,12 @@ typedef struct	s_new_sector//have to be static
 {
     float		floor;//floor height
 	float		ceil;//ceil height
-    t_new_xy		*vertex; //here stored all sector vertexes.
-    signed char	*neighbors;// Each edge may have a corresponding neighboring sector
+    t_vector3	*vertex; //here stored all sector vertexes.
+    int		*neighbors;// Each edge may have a corresponding neighboring sector
     int			npoints;// How many vertexes there are
 }				t_new_sector;//*sectors = NULL;
 
-typedef struct s_new_sect_ops
+/*typedef struct s_new_sect_ops
 {
 	const t_new_sector	*sect;
     const t_new_xy		*vert;
@@ -36,9 +36,10 @@ typedef struct s_new_sect_ops
     float			eye_h;
     float			hole_low;
     float			hole_high;
-    float			xd;
-    float			yd;
-}					t_new_sect_ops;
+	t_new_xy		dir_vec;
+    //float			xd;
+    //float			yd;
+}					t_new_sect_ops;*/
 
 typedef struct	s_new_others
 {

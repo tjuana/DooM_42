@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gui_fonts.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:58:08 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/07 17:13:34 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/19 20:59:08 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,11 +135,12 @@ void		ft_gui_font_putstr_sdl(t_wolf3d *w, \
 		ft_error("FONT ERROR (5)");
 	else
 	{
-		(w->sdl->renderer == NULL) ? ft_putstr_fd(SDL_GetError(), 2) : 0;
 		txtr = SDL_CreateTextureFromSurface(w->sdl->renderer, txtr_s);
 		(txtr == NULL) ? ft_error("FONT ERROR (6)") : 0;
-		SDL_FreeSurface(txtr_s);
 	}
+	if (txtr_s)
+		SDL_FreeSurface(txtr_s);
 	ft_gui_font_rect(w, txtr, f, c);
-	SDL_DestroyTexture(txtr);
+	if (txtr)
+		SDL_DestroyTexture(txtr);
 }

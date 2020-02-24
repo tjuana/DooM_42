@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_map_sector_vertex.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:45:10 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 14:18:52 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/16 12:45:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,4 +131,71 @@ void	ft_editor_delete_last_vertex(t_wolf3d *w)
 		sector->status = 0;
 		w->sector_status = 1;
 	}
+}
+
+/*
+** **************************************************************************
+**	void ft_editor_turn_vertexes(t_sector *s, int numb)
+** **************************************************************************
+*/
+
+void		ft_editor_turn_vertexes(t_sector *s, int numb)
+{
+	t_vector3	**vertex;
+	int			i;
+
+	vertex = ft_my_malloc(sizeof(void*) * (s->vertex_count));
+	i = 0;
+	while (numb < s->vertex_count)
+	{
+		vertex[i] = s->vertex[numb];
+		printf("%d -> %d: [%.0f, %.0f]\n", numb, i, vertex[i]->x, vertex[i]->y);
+		i++;
+		numb++;
+	}
+	numb = 0;
+	while (i < s->vertex_count)
+	{
+		vertex[i] = s->vertex[numb];
+		printf("%d -> %d: [%.0f, %.0f]\n", numb, i, vertex[i]->x, vertex[i]->y);
+		i++;
+		numb++;
+	}
+	free(s->vertex);
+	s->vertex = vertex;
+}
+
+/*
+** **************************************************************************
+**	void ft_editor_check_turn_vertexes(t_wolf3d *w)
+** **************************************************************************
+*/
+
+void		ft_editor_check_turn_vertexes(t_wolf3d *w)
+{
+	t_sector	*s;
+	int			numb;
+	int			i;
+
+	s = w->sector->content;
+	numb = 0;
+	i = 1;
+	while (i < s->vertex_count)
+	{
+		if (s->vertex[numb]->y > s->vertex[i]->y)
+		{
+			numb = i;
+			i = 0;
+		}
+		else if (s->vertex[numb]->y == s->vertex[i]->y && \
+			s->vertex[numb]->x > s->vertex[i]->x)
+		{
+			numb = i;
+			i = 0;
+		}
+		else
+			i++;
+	}
+	if (numb != 0)
+		ft_editor_turn_vertexes(s, numb);
 }

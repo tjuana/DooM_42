@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_but.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 18:30:48 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 18:29:09 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	static int but_new_door_sec(t_new_player *pl)
+**	static int ft_game_but_new_door_sec(t_new_player *pl)
 **	Function to find door_nb to open
 ** **************************************************************************
 */
 
-static int	but_new_door_sec(t_new_player *pl)
+static int	ft_game_but_new_door_sec(t_new_player *pl)
 {
 	int	i;
 	int	j;
@@ -46,17 +46,17 @@ static int	but_new_door_sec(t_new_player *pl)
 
 /*
 ** **************************************************************************
-**	static int	but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
+**	static int	ft_game_but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
 **	Function to open door in this sec
 ** **************************************************************************
 */
 
-static int	but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
+static int	ft_game_but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
 {
 	int	d_sec_nb;
 
 	d_sec_nb = 0;
-	if ((pl->door_nb = but_new_door_sec(pl)) >= 0)
+	if ((pl->door_nb = ft_game_but_new_door_sec(pl)) >= 0)
 	{
 		d_sec_nb = pl->doors[pl->door_nb].s_nb;
 		if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[pl->door_nb].max_d)
@@ -77,12 +77,12 @@ static int	but_open_door(t_new_player *pl, int but_nb, t_new_sub_ev *se)
 
 /*
 ** **************************************************************************
-**	int but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
+**	int ft_game_but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 **	Function to do button scipts
 ** **************************************************************************
 */
 
-int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
+int			ft_game_but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 {
 	int	i;
 	int	d_nb;
@@ -98,7 +98,7 @@ int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 		if (pl->buttons[i].s_nb == sec_nb)
 			but_nb = i;
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -2))
-		return (but_open_door(pl, but_nb, se));
+		return (ft_game_but_open_door(pl, but_nb, se));
 	if ((but_nb > -1) && (pl->buttons[but_nb].state == -4))
 		*pl = *load_next(pl);
 	return (0);
@@ -106,13 +106,13 @@ int			but_script(t_new_player *pl, int sec_nb, t_new_sub_ev *se)
 
 /*
 ** **************************************************************************
-**	static void but_init(t_new_player *pl, int *sec_arr)
+**	static void ft_game_but_init(t_new_player *pl, int *sec_arr)
 **	Function to init array of buttons
 **	state == (-2) - open door in that sector, (-4) - end lvl
 ** **************************************************************************
 */
 
-static void	but_init(t_new_player *pl, int *sec_arr)
+static void	ft_game_but_init(t_new_player *pl, int *sec_arr)
 {
 	int	i;
 
@@ -126,12 +126,12 @@ static void	but_init(t_new_player *pl, int *sec_arr)
 
 /*
 ** **************************************************************************
-**	static void but_total(t_new_player *pl)
+**	static void ft_game_but_total(t_new_player *pl)
 **	Function to countdown buttons
 ** **************************************************************************
 */
 
-void		but_total(t_new_player *pl)
+void		ft_game_but_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_BUT];
@@ -153,5 +153,5 @@ void		but_total(t_new_player *pl)
 	if (pl->but_all > 0)
 		pl->buttons = (t_new_but *)ft_my_malloc(sizeof(t_new_but) * \
 		pl->but_all);
-	but_init(pl, sec_arr);
+	ft_game_but_init(pl, sec_arr);
 }

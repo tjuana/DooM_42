@@ -12,7 +12,7 @@
 
 #include "doom.h"
 
-void	ft_init_sound(t_wolf3d *w)
+/*void	ft_init_sound(t_wolf3d *w)
 {
 	w->sdl->wav_spect = ft_my_malloc(sizeof(SDL_AudioSpec) * 3);
 	w->sdl->wav_buff = ft_my_malloc(sizeof(Uint8 *) * 3);
@@ -30,9 +30,9 @@ void	ft_init_sound(t_wolf3d *w)
 	&w->sdl->wav_spect[1], NULL, 0);
 	w->sdl->audio_device[2] = SDL_OpenAudioDevice(NULL, 0,
 	&w->sdl->wav_spect[2], NULL, 0);
-}
+}*/
 
-void	ft_load_sound(t_wolf3d *w)
+/*void	ft_load_sound(t_wolf3d *w)
 {
 	w->t.sound_old_time = w->t.sound_time;
 	w->t.sound_time = SDL_GetTicks();
@@ -56,4 +56,4 @@ void	ft_play_shot(t_wolf3d *w)
 		SDL_PauseAudioDevice(w->sdl->audio_device[0], 0);
 		w->t.flag = 0;
 	}
-}
+}*/

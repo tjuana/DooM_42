@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:16:09 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/06 17:18:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/16 12:52:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ void	ft_gui_elem_set_image(t_list *list, char *path)
 
 	elem = list->content;
 	elem->type = GUI_IMAGE;
-	temp_surf = SDL_CreateRGBSurface(0, 1000, 1000, 32, 0, 0, 0, 0);//IMG_Load(path);
+	temp_surf = IMG_Load(path);
+	if(!temp_surf) {
+		printf("IMG_Load: %s\n", IMG_GetError());
+		exit (1);
+	}
 	elem->surf = SDL_ConvertSurfaceFormat(temp_surf, \
 		SDL_PIXELFORMAT_RGB888, 0);
 	SDL_FreeSurface(temp_surf);
-	elem->surf == NULL ? ft_error("IMAGE LOAD ERROR") : 0;
+
+	//elem->surf == NULL ?ft_error("IMAGE LOAD ERROR") : 0;
 }
 
 /*
@@ -67,7 +72,7 @@ void	ft_gui_elem_set_button(t_list *list, void *str)
 	elem = list->content;
 	elem->type = GUI_BUTTON;
 	elem->str = ft_strdup(str);
-	elem->fs = 16;
+	elem->fs = (int)(16 * (WIN_WIDTH / 1280.0));
 	ft_gui_elem_set_event(list, \
 		ft_gui_mousemotion_button, SDL_MOUSEMOTION, 0);
 	ft_gui_elem_set_event(list, \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 18:20:12 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 18:45:36 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:52:37 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 
 /*
 ** **************************************************************************
-**	static void	sub_events_2(t_new_sub_ev *se, t_new_player *pl)
+**	static void	ft_game_sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 **	Third function to manage key input
 ** **************************************************************************
 */
 
-static void		sub_events_2(t_new_sub_ev *se, t_new_player *pl)
+static void		ft_game_sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 {
+	if (se->ev.key.keysym.sym == 'q')
+	{
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_diedtext"), GUI_ELEM_HIDDEN);
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_diedbg"), GUI_ELEM_HIDDEN);
+	}
 	if (se->ev.key.keysym.sym == 'w')
 		se->wsad[0] = se->ev.type == SDL_KEYDOWN;
 	if (se->ev.key.keysym.sym == 's')
@@ -32,31 +44,49 @@ static void		sub_events_2(t_new_sub_ev *se, t_new_player *pl)
 	if (se->ev.key.keysym.sym == SDLK_LSHIFT)
 		se->wsad[6] = (se->ev.type == SDL_KEYDOWN);
 	if (se->ev.key.keysym.sym == 'e' && (se->ev.type == SDL_KEYDOWN))
-		door_but_сlick(pl, se);
+		ft_game_door_but_сlick(pl, se);
 }
 
 /*
 ** **************************************************************************
-**	static int sub_events(t_new_sub_ev *se, t_new_player *pl)
+**	static int ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 **	Second function to manage key input
 ** **************************************************************************
 */
 
-static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
+static int		ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl)
 {
 	if (se->ev.key.keysym.sym == SDLK_ESCAPE)
 	{
 		se->quit = 1;
+		((t_wolf3d*)pl->wolf3d)->sdl->running = 0;
+		// ((t_wolf3d*)pl->wolf3d)->gui.mode = GUI_MD_MENU;
 		return (0);
 	}
 	if (se->ev.key.keysym.sym == ' ' && se->ground && pl->fly != 1)
 	{
-		pl->velocity.z += 0.75f;
+		pl->velo.z += 0.75f;
 		se->falling = 1;
+		if (pl->lunar == 1)
+			pl->velo.z = .65f;
 	}
 	if (se->ev.key.keysym.sym == SDLK_LCTRL)
 		se->ducking = se->ev.type == SDL_KEYDOWN;
-	sub_events_2(se, pl);
+	if (se->ev.key.keysym.sym == SDLK_q && pl->fly == 1 && pl->pos.z < pl->sectors[pl->sector].ceil - 2)
+	{
+		pl->pos.z += 0.5f;
+		se->falling = 0;
+	}
+	if (se->ev.key.keysym.sym == SDLK_e && pl->fly == 1)
+	{
+		pl->pos.z -= 0.5f;
+		se->falling = 1;
+	}
+	if(se->ev.key.keysym.sym == SDLK_l)
+	{
+		pl->lunar = 1;
+	}
+	ft_game_sub_events_2(se, pl);
 	return (1);
 }
 
@@ -67,10 +97,46 @@ static int		sub_events(t_new_sub_ev *se, t_new_player *pl)
 ** **************************************************************************
 */
 
-static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
+static	void	ft_game_mouse_events(t_new_sub_ev *se, t_new_player *pl)
 {
+	t_list		*list;
+	t_gui_elem	*elem;
+
+	printf("%d\n", pl->sector);
 	if (se->ev.button.button == SDL_BUTTON_LEFT)
+	{
+		sound(pl, "Sounds/pistol.wav", 1);
 		pl->count_sprite = 10;
+		if (pl->bullet_count > 0)
+		{
+			pl->bullet_count--;
+			list = ft_gui_search_elem_by_name(\
+				((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_hud_pistolcount");
+			elem = list->content;
+			free(elem->str);
+			elem->str = ft_itoa(pl->bullet_count);
+		}
+		else if (pl->live_count > 0)
+		{
+			pl->live_count -= 10;
+			list = ft_gui_search_elem_by_name(\
+				((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_hud_livescount");
+			elem = list->content;
+			free(elem->str);
+			elem->str = ft_itoa(pl->live_count);
+		}
+		if (pl->live_count <= 0)
+		{
+			ft_gui_elem_set_status(\
+				ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_diedtext"), GUI_ELEM_VISIBLE);
+			ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+				"win_game_diedbg"), GUI_ELEM_VISIBLE);
+		}
+	}
 	if (se->ev.button.button == SDL_BUTTON_RIGHT)
 		pl->light = pl->light == 0.5f ? 1.0f : 0.5f;
 	if (se->ev.button.button == SDL_BUTTON_MIDDLE)
@@ -81,7 +147,7 @@ static	void	mouse_events(t_new_sub_ev *se, t_new_player *pl)
 		else
 		{
 			pl->fly = 1;
-			pl->velocity.z = 1.3f;
+			pl->velo.z = 0.7f;
 		}
 	}
 }
@@ -95,12 +161,13 @@ int				events(t_new_sub_ev *se, t_new_player *pl)
 		{
 			if (se->ev.type == SDL_KEYDOWN || se->ev.type == SDL_KEYUP)
 			{
+
 				if (se->ev.key.keysym.sym)
-					if (!sub_events(se, pl))
+					if (!ft_game_sub_events(se, pl))
 						return (0);
 			}
 			if (se->ev.type == SDL_MOUSEBUTTONDOWN)
-				mouse_events(se, pl);
+				ft_game_mouse_events(se, pl);
 		}
 	}
 	return (1);

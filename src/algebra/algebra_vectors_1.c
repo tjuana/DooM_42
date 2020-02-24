@@ -6,13 +6,13 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:38:34 by tjuana            #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/14 15:15:11 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom.h"
 
-t_vector3		ft_vec3_create(t_vector3 *orig, t_vector3 *dest)
+t_vector3	ft_vec3_create(t_vector3 *orig, t_vector3 *dest)
 {
 	t_vector3	this;
 	t_vector3	orig2;
@@ -35,41 +35,40 @@ t_vector3		ft_vec3_create(t_vector3 *orig, t_vector3 *dest)
 	return (this);
 }
 
-double			ft_vec3_magnitude(t_vector3 this)
+double		ft_vec3_magnitude(t_vector3 this)
 {
 	return ((double)(sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2))));
 }
 
-t_vector3		ft_vec3_add(t_vector3 this, t_vector3 rhs)
+t_vector3	ft_vec3_add(t_vector3 this, t_vector3 rhs)
 {
 	t_vector3	res;
 
 	res.x = this.x + rhs.x;
 	res.y = this.y + rhs.y;
 	res.z = this.z + rhs.z;
-	res.w = 0;//вот тут хз чей коэф брать
+	res.w = 0;
 	return (res);
 }
 
-t_vector3		ft_vec3_sub(t_vector3 this, t_vector3 rhs)
+t_vector3	ft_vec3_sub(t_vector3 this, t_vector3 rhs)
 {
 	t_vector3	res;
 
 	res.x = this.x - rhs.x;
 	res.y = this.y - rhs.y;
 	res.z = this.z - rhs.z;
-	res.w = 0;//вот тут хз чей коэф брать
+	res.w = 0;
 	return (res);
 }
 
-t_vector3		ft_vec3_cross_product(t_vector3 this, t_vector3 rhs)
+t_vector3	ft_vec3_cross_product(t_vector3 this, t_vector3 rhs)
 {
 	t_vector3	res;
 
 	res.x = this.y * rhs.z - this.z * rhs.y;
 	res.y = this.z * rhs.x - this.x * rhs.z;
-	res.z = this.x * rhs.y - this.y * rhs.x
-	;
-	res.w = 0;//вот тут хз чей коэф брать
+	res.z = this.x * rhs.y - this.y * rhs.x;
+	res.w = 0;
 	return (res);
 }

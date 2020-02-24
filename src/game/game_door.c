@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 18:46:09 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/13 17:44:06 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:15:08 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	static void door_init(t_new_player *pl, int	*sec_arr)
+**	static void ft_game_door_init(t_new_player *pl, int	*sec_arr)
 **	Function to init array of doors
 ** **************************************************************************
 */
 
-static void	door_init(t_new_player *pl, int *sec_arr)
+static void	ft_game_door_init(t_new_player *pl, int *sec_arr)
 {
 	int	i;
 
@@ -36,12 +36,12 @@ static void	door_init(t_new_player *pl, int *sec_arr)
 
 /*
 ** **************************************************************************
-**	static void door_total(t_new_player *pl)
+**	static void ft_game_door_total(t_new_player *pl)
 **	Function to countdown doors and malloc them
 ** **************************************************************************
 */
 
-void		door_total(t_new_player *pl)
+void		ft_game_door_total(t_new_player *pl)
 {
 	int	i;
 	int	sec_arr[MAX_DOORS];
@@ -63,7 +63,7 @@ void		door_total(t_new_player *pl)
 	if (pl->door_all > 0)
 		pl->doors = (t_new_door *)ft_my_malloc(sizeof(t_new_door) * \
 		pl->door_all);
-	door_init(pl, sec_arr);
+	ft_game_door_init(pl, sec_arr);
 }
 
 /*
@@ -73,7 +73,7 @@ void		door_total(t_new_player *pl)
 ** **************************************************************************
 */
 
-void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
+void		ft_game_door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 {
 	int	d_nb;
 	int	d_sec_nb;
@@ -83,22 +83,33 @@ void		door_but_сlick(t_new_player *pl, t_new_sub_ev *se)
 	d_nb = -1;
 	if ((pl->door_all == -1) || (pl->but_all == -1))
 	{
-		door_total(pl);
-		but_total(pl);
+		ft_game_door_total(pl);
+		ft_game_but_total(pl);
 	}
-	if (pl->door_all < 1 || (but_script(pl, but_detect(pl), se) == 1))
+	if (pl->door_all < 1 || (ft_game_but_script(pl, ft_game_but_detect(pl), se) == 1))
 		return ;
-	d_sec_nb = door_detect(pl);
+	d_sec_nb = ft_game_door_detect(pl);
 	while (++i < pl->door_all)
 		if (pl->doors[i].s_nb == d_sec_nb)
 			d_nb = i;
 	if ((d_nb == -1) || (pl->doors[d_nb].state == 1))
 		return ;
+	else
+	{
+		ft_gui_elem_set_status(\
+			ft_gui_search_elem_by_name(((t_wolf3d*)pl->wolf3d)->gui.dom, \
+			"win_game_doortext"), GUI_ELEM_VISIBLE);
+		sound(pl, "Sounds/door.wav", 3);
+	}
 	pl->door_nb = d_nb;
 	if ((pl->sectors[d_sec_nb].ceil) <= pl->doors[d_nb].max_d)
+	{
 		se->wsad[4] = 1;
+	}
 	else
+	{
 		se->wsad[4] = 0;
+	}
 }
 
 /*
@@ -121,5 +132,9 @@ void		door(t_new_player *pl, t_new_sub_ev *se)
 	if (((pl->sectors[d_sec_nb].ceil + pl->doors[d_nb].spd) \
 	<= pl->doors[d_nb].max_d) && (se->wsad[4] == 1))
 		pl->sectors[d_sec_nb].ceil += pl->doors[d_nb].spd;
+	// else if (se->wsad[4] == 1 && pl->doors[d_nb].state == 1)
+	// {
+	// 	printf("door open!\n");
+	// }
 	pl->doors[d_nb].state = 1;
 }

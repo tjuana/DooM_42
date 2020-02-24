@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:55:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 16:17:13 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/19 20:24:38 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 # include "editor_struct.h"
 # include "file.h"
 # include "gui_struct.h"
+# include "SDL2/SDL_mixer.h"
+# define SONG_0			"music/wolf3d_menu.mp3"
+# define SONG_1			"music/song_1.mp3"
+# define SONG_2			"music/song_2.mp3"
+# define SHOT			"music/shot.wav"
 
 typedef struct			s_font
 {
-	SDL_Surface			*surf[7];
-
 	TTF_Font			*ptr_font_18_m;
 	TTF_Font			*ptr_font_14_m;
 
@@ -39,18 +42,23 @@ typedef struct			s_font
 typedef struct			s_sdl
 {
 	SDL_Surface			*srf;
+	
 	int					running;
 	SDL_Window			*win;
 	SDL_Renderer		*renderer;
-	// Uint32				*pixels;
+	Uint32				*pixels;
 	SDL_Texture			*text;
-	SDL_Surface			**textures;
-	SDL_AudioSpec		*wav_spect;
-	Uint32				*wav_len;
-	Uint8				**wav_buff;
-	SDL_AudioDeviceID	*audio_device;
+	SDL_Texture			*text2;
+	// SDL_Surface			**textures;
+	// SDL_AudioSpec		*wav_spect;
+	// Uint32				*wav_len;
+	// Uint8				**wav_buff;
+	// SDL_AudioDeviceID	*audio_device;
 	t_font				font;
 	unsigned char		i;
+
+
+	Mix_Chunk			*music;
 }						t_sdl;
 
 typedef struct			s_time

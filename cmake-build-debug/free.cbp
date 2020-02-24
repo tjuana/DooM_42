@@ -44,9 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/nshelly/CLionProjects/free/./include"/>
-					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_mixer/2.0.4/include/SDL2"/>
-					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_image/2.0.5/include/SDL2"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/include"/>
 					<Add directory="/Users/nshelly/CLionProjects/free/./libft/includes"/>
 					<Add directory="/Users/nshelly/CLionProjects/free/./src/algebra"/>
 					<Add directory="/Users/nshelly/CLionProjects/free/./includes"/>
@@ -71,9 +69,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/nshelly/CLionProjects/free/./include"/>
-					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_mixer/2.0.4/include/SDL2"/>
-					<Add directory="/Users/nshelly/.brew/Cellar/sdl2_image/2.0.5/include/SDL2"/>
+					<Add directory="/Users/nshelly/CLionProjects/free/include"/>
 					<Add directory="/Users/nshelly/CLionProjects/free/./libft/includes"/>
 					<Add directory="/Users/nshelly/CLionProjects/free/./src/algebra"/>
 					<Add directory="/Users/nshelly/CLionProjects/free/./includes"/>
@@ -128,13 +124,37 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/includes/math_func.h">
 			<Option target="free"/>
 		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_camera.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_intersect.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_math_1.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_math_2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_math_3.c">
+			<Option target="free"/>
+		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_matrix.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_matrix_transform.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_vectors_1.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_vectors_2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_vectors_3.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/algebra/algebra_vectors_func.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_desctuct.c">
@@ -194,16 +214,28 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_event_win_setsprite.c">
 			<Option target="free"/>
 		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_generate_triangles.c">
+			<Option target="free"/>
+		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_gui_init.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_gui_txtr.c">
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_gui_init2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_gui_init3.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_init.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_check.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_check2.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_check_line.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_map_door.c">
@@ -236,6 +268,9 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/editor/editor_save_file3.c">
 			<Option target="free"/>
 		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_color.c">
+			<Option target="free"/>
+		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_fpc.c">
 			<Option target="free"/>
 		</Unit>
@@ -257,9 +292,6 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_draw.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_func.c">
-			<Option target="free"/>
-		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/func/func_wu_init.c">
 			<Option target="free"/>
 		</Unit>
@@ -278,13 +310,13 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_door_detect.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine.c">
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_1.c">
+			<Option target="free"/>
+		</Unit>
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_2.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_cross.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_engine_exp.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_events_1.c">
@@ -305,43 +337,25 @@
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_main.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_map_parse.c">
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_map_parse_1.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_map_parse2.c">
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_map_parse_2.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_math_functions.c">
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_motion_1.c">
 			<Option target="free"/>
 		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_math_functions2.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_math_functions3.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_motion.c">
+		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_motion_2.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_sdl_addons.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_skybox.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_texture_parser.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_textures.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_vectors_1.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_vectors_2.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_vectors_3.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/game/game_walls.c">
@@ -420,12 +434,6 @@
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/src/main/main_gui_init.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/math/math_intersect.c">
-			<Option target="free"/>
-		</Unit>
-		<Unit filename="/Users/nshelly/CLionProjects/free/src/math/math_vectors.c">
 			<Option target="free"/>
 		</Unit>
 		<Unit filename="/Users/nshelly/CLionProjects/free/CMakeLists.txt">

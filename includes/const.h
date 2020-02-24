@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   const.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/26 16:47:07 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/13 17:14:00 by tjuana           ###   ########.fr       */
+/*   Created: 2020/02/16 15:09:33 by tjuana            #+#    #+#             */
+/*   Updated: 2020/02/19 20:33:23 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,16 @@
 */
 # define WIN_WIDTH				1280
 # define WIN_HEIGHT				720
-# define VER_WIDTH				54
-# define VER_HEIGHT				33
-
+# define VER_WIDTH				500
+# define VER_HEIGHT				500
+# define SECTORS				1900
+# define VOLUME					77
 /*
 ** **************************************************************************
 **	Mode
 ** **************************************************************************
 */
+# define GUI_MD_MENU			0x00008001
 # define GUI_MD_GAME			0x0000A001
 # define GUI_MD_ME				0x0000F001
 # define GUI_MD_ME_SET_SECTOR	0x0000F100
@@ -70,6 +72,10 @@
 # define 	ROCK1	3
 # define 	ROCK2	4
 # define 	SKY		5
+# define 	GRIDBLACK	6
 # define 	FENCE	7
+# define 	WALL	11
+# define	VENOM   12
+# define 	GRAFFITI	13
 
 #endif
