@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 18:17:21 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:29:32 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,6 @@ void				ft_game_events_new_mouse_move(t_new_mouse *ms, \
 */
 int					ft_game_events_exit(t_new_player *pl);
 void				ft_game_hidden_message(t_list *dom);
-void				ft_game_set_dead(t_new_player *pl, t_list *dom);
-void				ft_game_set_exit(t_new_player *pl, t_list *dom);
 int					ft_game_sub_events(t_new_sub_ev *se, t_new_player *pl);
 void				ft_game_mouse_events_click(t_new_player *pl);
 
@@ -156,6 +154,8 @@ void				ft_game_mouse_events_click(t_new_player *pl);
 */
 void				ft_game_gui_dead(t_wolf3d *w);
 void				ft_game_gui_exit(t_wolf3d *w);
+void				ft_game_set_dead(t_new_player *pl, t_list *dom);
+void				ft_game_set_exit(t_new_player *pl, t_list *dom);
 
 /*
 ** **************************************************************************

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:32:36 by dorange-          #+#    #+#             */
-/*   Updated: 2020/02/24 14:46:58 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:28:10 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,6 @@ void			ft_game_hidden_message(t_list *dom)
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(dom, \
 		"win_game_diedbg"), GUI_ELEM_HIDDEN);
-}
-
-void			ft_game_set_dead(t_new_player *pl, t_list *dom)
-{
-	ft_gui_elem_set_status(ft_gui_search_elem_by_name(dom, \
-		"win_game_diedtext"), GUI_ELEM_VISIBLE);
-	ft_gui_elem_set_status(ft_gui_search_elem_by_name(dom, \
-		"win_game_diedbg"), GUI_ELEM_VISIBLE);
-	pl->status = PL_STATUS_DEAD;
-}
-
-void			ft_game_set_exit(t_new_player *pl, t_list *dom)
-{
-	ft_gui_elem_set_status(ft_gui_search_elem_by_name(dom, \
-		"win_game_exittext"), GUI_ELEM_VISIBLE);
-	ft_gui_elem_set_status(ft_gui_search_elem_by_name(dom, \
-		"win_game_exitbg"), GUI_ELEM_VISIBLE);
-	pl->status = PL_STATUS_EXIT_GAME;
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 12:08:45 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 18:17:21 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:19:13 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void		ft_game_player_init_config(t_new_player *pl)
 	pl->bullet_count = 10;
 	pl->status = PL_STATUS_LIVE;
 	pl->died_timer = 0;
+	pl->f = GREEN;
+	pl->n = ROCK1;
 	list = ft_gui_search_elem_by_name(\
 		((t_wolf3d*)pl->wolf3d)->gui.dom, \
 		"win_game_hud_pistolcount");
