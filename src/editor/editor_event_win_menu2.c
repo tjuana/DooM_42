@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 15:16:02 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/27 22:14:24 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:18:42 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	ft_gui_mousebuttonup_win_menu_btnsavemap(\
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	w->file.name = ft_gui_elem_get_value(\
-		ft_gui_search_elem_by_name(w->gui.dom, "win_editor_menu_inputmapname"));
+		ft_gui_search_elem_by_name(w->gui.dom, "win_me_menu_name"));
 	ft_save_the_file(w);
 }
 
@@ -28,13 +31,16 @@ void	ft_gui_mousebuttonup_win_editor_menu_btnmenu(\
 {
 	t_wolf3d	*w;
 
+	(void)e;
+	(void)dom;
+	(void)type;
 	w = (t_wolf3d*)data;
 	ft_gui_elem_set_status(\
-		ft_gui_search_elem_by_name(w->gui.dom, "win_editor"), \
+		ft_gui_search_elem_by_name(w->gui.dom, "win_me"), \
 		GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_status(\
 		ft_gui_search_elem_by_name(w->gui.dom, "win_menu"), \
 		GUI_ELEM_VISIBLE);
-	w->gui.mode = GUI_MD_ME_SET_PLAYER;
+	w->gui.mode = GUI_MD_MENU;
 	w->player_status = 0;
 }

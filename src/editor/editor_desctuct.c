@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   editor_desctuct.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:21:05 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 21:40:19 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:51:52 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	ft_editor_desctuct(t_wolf3d *w)
 {
 	ft_gui_desctuct(w->gui.dom);
 	ft_gui_desctuct_fonts(w->gui.fonts);
+	w->gui.dom = NULL;
+	w->gui.fonts = NULL;
 	ft_editor_desctuct_sectors(w);
 	ft_editor_desctuct_objects(w);
-	ft_clean_sdl(w);
 }

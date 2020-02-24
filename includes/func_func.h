@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_func.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:00:40 by dorange-          #+#    #+#             */
-/*   Updated: 2020/01/26 19:17:49 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/23 13:39:45 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,95 +17,94 @@
 # include "func_struct.h"
 # include "SDL2/SDL.h"
 # include "SDL2/SDL_ttf.h"
+# include "SDL2/SDL_mixer.h"
 
 /*
 ** **************************************************************************
-**	func/func_fpc.c
+**	src/func/func_color.c
 ** **************************************************************************
 */
-void			fpsinit();
-void			fpsthink();
+Uint32		ft_rgb_to_hex(Uint32 r, Uint32 g, Uint32 b);
+Uint32		ft_color_struct_to_hex(t_color color);
+Uint32		ft_hex_transform(int color, float percent);
 
 /*
 ** **************************************************************************
-**	func/func_help.c
+**	src/func/func_help.c
 ** **************************************************************************
 */
-int				ft_error(char *code);
-void			*ft_my_malloc(size_t s);
-void			ft_clean_sdl(t_wolf3d *w);
+int			ft_error(char *code);
+void		*ft_my_malloc(size_t s);
+void		ft_clean_sdl(t_wolf3d *w);
 
 /*
 ** **************************************************************************
-**	func/func_sdl.c
+**	src/func/func_sdl.c
 ** **************************************************************************
 */
-t_sdl			*sdl_init(t_sdl *sdl);
+void		ft_set_window_icon(t_sdl *sdl);
+void		sdl_create_background_music(t_sdl *sdl);
+Mix_Chunk	*ft_load_sound(char *name);
+t_sdl		*sdl_init(t_sdl *sdl);
+void		ft_sound_play(Mix_Chunk *name, int channel);
 
 /*
 ** **************************************************************************
-**	func/func_wu_color.c
+**	src/func/func_wu.c
 ** **************************************************************************
 */
-int				ft_fdf_ipart(double x);
-double			ft_fdf_round(double x);
-double			ft_fdf_fpart(double x);
-int				ft_fdf_get_color(int color1, int color2, double f1);
+void		ft_fdf_swap_double(double *n1, double *n2);
+void		ft_fdf_wu(t_vector3 *dot_1, t_vector3 *dot_2, t_wolf3d *data);
+void		ft_fdf_wu_color(t_vector3 *dot_1, t_vector3 *dot_2, \
+				t_wolf3d *data, int color);
+void		ft_fdf_wu_rect_color(t_wolf3d *data, t_gui_rect coord, \
+				t_gui_rect area, int color);
 
 /*
 ** **************************************************************************
-**	func/func_wu_draw.c
+**	src/func/func_wu_color.c
 ** **************************************************************************
 */
-void			ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y);
-void			ft_fdf_draw_line_first_pixels(t_wolf3d *data, t_fdf_wu **wu);
-void			ft_fdf_draw_line_last_pixels(t_wolf3d *data, t_fdf_wu **wu);
-void			ft_fdf_wu_cycle_x(t_wolf3d *data, t_fdf_wu *wu, double x);
-void			ft_fdf_wu_cycle_y(t_wolf3d *data, t_fdf_wu *wu, double x);
+int			ft_fdf_ipart(double x);
+double		ft_fdf_round(double x);
+double		ft_fdf_fpart(double x);
+int			ft_fdf_get_color(int color1, int color2, double f1);
 
 /*
 ** **************************************************************************
-**	func/func_wu.c
+**	src/func/func_wu_draw.c
 ** **************************************************************************
 */
-void			ft_fdf_init_wu(t_fdf_wu **wu, t_vector3 *dot_1, \
-					t_vector3 *dot_2);
-void			ft_fdf_init_wu_color(t_fdf_wu **wu, t_vector3 *dot_1, \
-					t_vector3 *dot_2, int color);
-void			ft_fdf_swap_double(double *n1, double *n2);
-void			ft_fdf_draw_line_swap(t_fdf_wu **wu);
-void			ft_fdf_draw_line_param(t_wolf3d *data, t_fdf_wu **wu);
-void			ft_fdf_wu(t_vector3 *dot_1, t_vector3 *dot_2, t_wolf3d *data);
-void			ft_fdf_wu_color(t_vector3 *dot_1, t_vector3 *dot_2, \
-					t_wolf3d *data, int color);
-void			ft_fdf_wu_rect_color(t_wolf3d *data, t_gui_rect coord, \
-					t_gui_rect area, int color);
+void		ft_fdf_plot(t_wolf3d *data, t_fdf_wu *wu, int x, int y);
+void		ft_fdf_draw_line_first_pixels(t_wolf3d *data, t_fdf_wu **wu);
+void		ft_fdf_draw_line_last_pixels(t_wolf3d *data, t_fdf_wu **wu);
+void		ft_fdf_wu_cycle_x(t_wolf3d *data, t_fdf_wu *wu, double x);
+void		ft_fdf_wu_cycle_y(t_wolf3d *data, t_fdf_wu *wu, double x);
 
 /*
 ** **************************************************************************
-**	func/func_help.c
+**	src/func/func_wu_init.c
 ** **************************************************************************
 */
-void			ft_clean_sdl(t_wolf3d *w);
-void			*ft_my_malloc(size_t s);
-int				ft_error(char *code);
+void		ft_fdf_init_wu(t_fdf_wu **wu, t_vector3 *dot_1, t_vector3 *dot_2);
+void		ft_fdf_init_wu_color(t_fdf_wu **wu, t_vector3 *dot_1, \
+				t_vector3 *dot_2, int color);
+void		ft_fdf_init_wu_rect_color(t_fdf_wu **wu, t_gui_rect coord, \
+				t_gui_rect area, int color);
 
 /*
 ** **************************************************************************
-**	func/func_sdl.c
+**	src/func/func_wu_line.c
 ** **************************************************************************
 */
-t_sdl			*sdl_init(t_sdl *sdl);
-void			ft_init_wolf(t_wolf3d *w);
-void			ft_we_need_more_init(t_wolf3d *w);
+void		ft_fdf_draw_line_swap(t_fdf_wu **wu);
+void		ft_fdf_draw_line_param(t_wolf3d *data, t_fdf_wu **wu);
 
 /*
 ** **************************************************************************
-**	func/func_sound.c
+**	src/func/func_one_file.c
 ** **************************************************************************
 */
-void			ft_init_sound(t_wolf3d *w);
-void			ft_load_sound(t_wolf3d *w);
-void			ft_play_shot(t_wolf3d *w);
-
+void		ft_check_folders(void);
+void		ft_unpack(void);
 #endif
