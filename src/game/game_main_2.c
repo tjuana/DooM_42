@@ -6,7 +6,7 @@
 /*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 19:28:15 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 14:16:43 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:51:03 by dorange-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ static void	ft_game_gui_init_hud_exit(t_list *head, t_gui_elem *elem)
 	ft_gui_elem_set_status(elem->child, GUI_ELEM_HIDDEN);
 	ft_gui_elem_set_parent(head, elem->child);
 	ft_gui_elem_init(&elem->child, "win_game_exittext", \
-		(t_gui_coord){300, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
+		(t_gui_coord){380, 300, 0}, (t_gui_coord){WIN_WIDTH, WIN_HEIGHT, 0});
 	ft_gui_elem_set_color(elem->child, 0xf000000);
 	ft_gui_elem_set_text(elem->child, "GAME OVER", 72, \
 									"fonts/Raleway-ExtraBold.ttf");
