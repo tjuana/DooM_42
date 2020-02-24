@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 16:34:44 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 18:36:56 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 18:39:01 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void				ft_game_engine_put_lines(t_new_player *pl, int neib);
 **	src/game/game_engine_3.c
 ** **************************************************************************
 */
-void	ft_game_ceil_floor_move(t_new_player *pl);
+void				ft_game_ceil_floor_move(t_new_player *pl);
 
 /*
 ** **************************************************************************
