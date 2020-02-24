@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dorange- <dorange-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 15:09:12 by tjuana            #+#    #+#             */
-/*   Updated: 2020/02/24 13:52:39 by dorange-         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:32:54 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ typedef struct		s_new_player
 	double			const_vfov;
 	double			const_hfov_spec;
 	double			const_vfov_spec;
-
+	int				ch;
 	int				bullet_status;
 	int				bullet_frame;
 	int				flag_move_neighbors;
