@@ -6,7 +6,7 @@
 /*   By: tjuana <tjuana@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:05:31 by drafe             #+#    #+#             */
-/*   Updated: 2020/02/24 13:49:27 by tjuana           ###   ########.fr       */
+/*   Updated: 2020/02/24 14:29:24 by tjuana           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		ft_free(t_new_player *pl, char *lvl)
 	if (!ft_strcmp(lvl, "EXIT"))
 		ft_game_my_parse_map(pl, lvl);
 	else
-		pl->status == PL_STATUS_EXIT_GAME;
+		pl->status = PL_STATUS_EXIT_GAME;
 	ft_strdel(&lvl);
 	free(pl->doors);
 	pl->doors = NULL;
