@@ -1,141 +1,50 @@
-EVALUATION SHEET
-================
+# Doom Nukem
 
-Welcome back Wolf3D
--------------------
-The Wolf3D project features are present and work perfectly.
-We have to be able to:
-- [x] : Move with keys on the keyboard in real time, rotate 360 degrees,
-move forward, move back.
-- [x] : Close the window and **exit the program cleanly** with the
-ESC or by clicking on the red cross at the window border.
-- [x] : There are textures on the walls.
+![screenshot/screen_game_begin.png](screenshot/screen_game_begin.png)
 
-Visual Elements
----------------
-Check that these graphic elements are present (1 point per element):
-- [x] : You can look in all directions (top to bottom and right to left).
-- [x] :(?) The spaces must have any shape, rooms with a different number of
-walls, with several orientations.
-- [x] :(?) The floor and the ceiling have an adjustable height with unevenness
-between the different spaces.
-- [ ] : The floor and ceiling must be able to be inclined.
-- [x] : Textures are present on the floor and ceiling.
+This game is a mix of Doom and Duke Nukem 3D. We implemented some basics functional elements and added new functionality. It was funny.
 
-Decor elements
---------------
-Check that these elements of the decor are present (1 point per element):
-- [x] :(?) A sky must be present (not replace the texture of the ceiling by a sky...).
-- [ ] : There must be partially transparent walls to see the space at the back.
-- [ ] : There should be decorative elements on the walls, above the main texture.
-- [ ] : There are sprites that always face the player as well as
-multi-sprites displayed according to the player's orientation, such as
-seeing a front, side or back character.
-- [x] : Ambient light must be present, affecting the walls and objects present.
+# How to use
 
-On-screen text display
-----------------------
-- [ ] : Check that messages can be displayed during the game, overprinted.
+We used Make (Makefile, Mac Os) as a build automation tool.
 
-HUD - Head-Up Display
----------------------
-- [ ] : Check that there are at least 3 elements on the HUD.
+    $> make -j32
+    $> ./doom_nukem (standard pack)
+    or
+    $> ./doom_nukem [filename]
 
-Movements
----------
-Check that these gameplay elements are functional:
-- [x] : The movements are fluid, we can turn on oneself and from top to bottom. (2 points)
-- [x] : It's possible to strafe in a fluid way. (1 point)
-- [x] : Interactions with walls and steps are correct
-managed according to their size and in a fluid movement. (2 points)
+# Map editor
 
-Advanced Movements
-------------------
-Check that these gameplay advanced elements are functional:
-- [ ] : It's possible to run, jump, fall, bend down and get up in a fluid way. (3 points)
-- [ ] : It's possible to fly and/or swim in a fluid way. (2 points)
+![screenshot/screen_map_editor.png](screenshot/screen_map_editor.png)
 
-Interaction with the decor
---------------------------
-Check that the following interactions are functional:
-- [ ] : The objects present react well in proportion to their visual
-representation. (1 points)
-- [ ] : The items present may or may not be picked up and added to an inventory. (2 points)
-- [x] : Interactions are possible with the elements of the decor
-(Activate a plate, a button...). (2 points)
+You can use standard functional for creating game maps.
 
-Advanced interactions
----------------------
-Check that the following advanced interactions are functional:
-- [ ] : There are actions that are executed following a/few action(s),
-be open-minded. (1 points)
-- [ ] : Actions can modify all the elements of the game, the forms,
-their properties. (2 points)
-- [x] : There are animations present following an interaction
-(Like opening a door). (2 points)
+# Game interface
 
-Overall atmosphere of the game
-------------------------------
-Check the following to note the mood of the game (1 point per element):
-- [ ] : Characters and objects can have their own actions.
-- [ ] : Projectiles can be fired with interaction on the environment.
-- [ ] : The game contains a story, with a mission and a goal to achieve.
-- [ ] : There is a beginning and an end of level.
-- [ ] : Music and sound effects are present.
+![screenshot/screen_game.png](screenshot/screen_game.png)
 
-Level Editor
-------------
-Check there is a functional level editor with the following features
-(1 point per élément) :
-- [x] : Editing spaces (walls, floors, ceilings).
-- [x] : Texture editing.
-- [ ] : Edit actions.
-- [ ] : Objects editing.
-- [ ] : Edition of general elements (beginning and end of level, terrestrial or
-lunar gravity, type of weapons available and damage, standard of living
-at the start, background music, solo/team, etc).
+## Some standard actions
 
-Packaging
----------
-- [ ] : All the elements necessary for the game must be in a single file.
-You should only be able to start the game with the binary doom-nukem
-and this file.
+W/A/S/D — player movement
 
+Space — jump
 
----------
-100/35 = 2.8 POINTS FOR ONE THING
----------
+⇧Shift — squat
 
+E — open the door/click on a game action button
 
+Click on the mouse wheel — Fly mode (Q/E — fly height modifier)
 
+Click on the left mouse button — shot
 
-----------
-Bonus part
-----------
-Reminder : Remember that for the duration of the defence, no segfault, nor other unexpected, premature, uncontrolled or unexpected termination of the program, else the final grade is 0. Use the appropriate flag. This rule is active thoughout the whole defence. We will look at your bonuses if and only if your mandatory part is EXCELLENT. This means that your must complete the mandatory part, beginning to end, and your error management must be flawless, even in cases of twisted or bad usage. So if the mandatory part didn't score all the point during this defence bonuses will be totally IGNORED.
-Suggested bonuses
+ESC — exit
 
-Check that the recommended bonuses are properly implemented:
-- [ ] : A menu to choose the level or difficulty options. (2 points)
-- [] : The atmosphere and the decor are meticulous. (1 points)
-- [ ] : The story and the scenario are complex and elaborate. (1 points)
-- [] : A good immersion, if you are transported in the game it is that
-the Group has succeeded in its work. (1 points)
+# Author
 
-Delivered multithread
----------------------
+[danjos91](https://github.com/danjos91)
 
-- [] : The game has a rendering mode using threads using the library
-of the processor to speed up the rendering and fluidity of the game.
+[lokswin](https://github.com/lokswin)
 
-Network
--------
-- [ ] : A lobby is present and it is possible to play multi in network.
+[nasvetil](https://github.com/nasvetil)
 
-Be crazy
---------
-
-Here you are in the free bonus section, note the creativity and originality
-of the game. Give one point for each additional bonus you consider good.
-Creativity is an important point in your education and in the world of
-digital, never forget it !
+[tjuana](https://github.com/tjuana)
