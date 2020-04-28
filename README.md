@@ -1,8 +1,12 @@
 # Doom Nukem
 
-![screenshot/screen_game_begin.png](screenshot/screen_game_begin.png)
+![https://github.com/tjuana/DooM_42/raw/master/image.gif](https://github.com/tjuana/DooM_42/raw/master/image.gif)
 
 This game is a mix of Doom and Duke Nukem 3D. We implemented some basics functional elements and added new functionality. It was funny.
+
+# Main menu
+
+![screenshot/screen_game_begin.png](screenshot/screen_game_begin.png)
 
 # How to use
 
@@ -25,19 +29,19 @@ You can use standard functional for creating game maps.
 
 ## Some standard actions
 
-W/A/S/D — player movement
+`W / A / S / D` — player movement
 
-Space — jump
+`Space` — jump
 
-⇧Shift — squat
+`⇧ Shift` — squat
 
-E — open the door/click on a game action button
+`E` — open the door/click on a game action button
 
-Click on the mouse wheel — Fly mode (Q/E — fly height modifier)
+Click on the mouse wheel — Fly mode (`Q / E` — fly height modifier)
 
 Click on the left mouse button — shot
 
-ESC — exit
+`ESC` — exit
 
 # Author
 
