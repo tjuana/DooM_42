@@ -1,3 +1,4 @@
+
 # Doom Nukem
 
 ![https://github.com/tjuana/DooM_42/raw/master/image.gif](https://github.com/tjuana/DooM_42/raw/master/image.gif)
@@ -52,3 +53,9 @@ Click on the left mouse button — shot
 [nasvetil](https://github.com/nasvetil)
 
 [tjuana](https://github.com/tjuana)
+=======
+DooM-Nukem-3D
+#42_school project - Doom-style PortalRendering game.
+
+![Image alt](https://github.com/tjuana/DooM_42/raw/master/image.gif)
+
